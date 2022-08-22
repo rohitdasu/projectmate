@@ -52,7 +52,7 @@ Find people who have the same vision as you do and contribute to each other for 
 3. Start the backend server.
 
    ```sh
-   npm start
+   npm run build && npm run start
    ```
 
  
