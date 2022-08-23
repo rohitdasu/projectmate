@@ -14,11 +14,10 @@ const Home: NextPage = () => {
       </Head>
 
       <nav tw="flex h-24 w-full items-center bg-white justify-between border-t px-20 shadow-md">
-        <a href="/">
-          <span tw="text-2xl font-semibold font-mono text-gray-900">
-            projectmate
-          </span>
-        </a>
+        <span tw="text-2xl font-semibold font-mono text-gray-900">
+          projectmate
+        </span>
+
         <div tw="flex items-center justify-between w-[100px]">
           <a
             href="https://github.com/rohitdasu/projectmate"
