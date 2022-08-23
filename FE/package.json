@@ -12,6 +12,7 @@
     "@emotion/react": "^11.10.0",
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.0",
+    "lottie-react-web": "^2.2.2",
     "next": "latest",
     "react": "18.1.0",
     "react-dom": "18.1.0"
