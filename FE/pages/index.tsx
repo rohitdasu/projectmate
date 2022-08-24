@@ -42,8 +42,8 @@ const Home: NextPage = () => {
         </div>
       </nav>
 
-      <main tw="lg:flex  lg:w-full flex-1 text-center">
-        <div tw="flex flex-col items-center justify-center h-[70vh]   lg:m-0 lg:w-1/2  px-4 lg:px-20 border-r">
+      <main tw="flex  lg:w-full flex-1 text-center">
+        <div tw="flex flex-col items-center justify-center lg:m-0 lg:w-1/2  px-4 lg:px-20">
           <h1 tw="text-4xl font-bold font-bold text-gray-900">
             Welcome to projectmate - a place where you find project mates
           </h1>
@@ -59,7 +59,7 @@ const Home: NextPage = () => {
             JOIN US
           </button>
         </div>
-        <div tw="hidden lg:inline-flex">
+        <div tw="hidden lg:inline-flex border-l lg:px-20">
           <Lottie
             tw="h-[200px] w-[100px]"
             options={{
