@@ -59,7 +59,7 @@ const Home: NextPage = () => {
             JOIN US
           </button>
         </div>
-        <div className="hidden lg:inline-flex">
+        <div tw="hidden lg:inline-flex">
           <Lottie
             tw="h-[200px] w-[100px]"
             options={{
