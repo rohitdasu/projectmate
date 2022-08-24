@@ -13,7 +13,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <nav tw="flex h-24 w-full items-center bg-white justify-between border-t px-20 shadow-md">
+      <nav tw="flex h-24 w-full items-center bg-white justify-between border-t px-6 md:px-20 shadow-md">
         <span tw="text-2xl font-semibold font-mono text-gray-900">
           projectmate
         </span>
@@ -42,8 +42,8 @@ const Home: NextPage = () => {
         </div>
       </nav>
 
-      <main tw="flex w-full flex-1 text-center">
-        <div tw="flex flex-col items-center justify-center w-1/2 px-20 border-r">
+      <main tw="lg:flex  lg:w-full flex-1 text-center">
+        <div tw="flex flex-col items-center justify-center h-[77vh]   lg:m-0 lg:w-1/2  px-4 lg:px-20 border-r">
           <h1 tw="text-4xl font-bold font-bold text-gray-900">
             Welcome to projectmate - a place where you find project mates
           </h1>
@@ -54,12 +54,12 @@ const Home: NextPage = () => {
 
           <button
             type="button"
-            tw="mt-16 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-8 py-3 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+            tw="lg:mt-16 mt-4 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-8 py-3 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
           >
             JOIN US
           </button>
         </div>
-        <div>
+        <div className="hidden lg:inline-flex">
           <Lottie
             tw="h-[200px] w-[100px]"
             options={{
@@ -68,11 +68,11 @@ const Home: NextPage = () => {
           />
         </div>
       </main>
-      <footer tw="flex flex-col h-24 w-full items-center bg-white justify-center border-t px-20 shadow-md">
+      <footer tw="flex flex-col h-24 w-full items-center bg-white justify-center border-t px-6 lg:px-20 shadow-md">
         <p tw="text-lg font-light text-gray-800 mb-2 pb-0">
           Shout-out to our contributors
         </p>
-        <div tw="flex items-center justify-evenly w-1/5">
+        <div tw="flex items-center justify-around w-[80%] lg:w-1/5">
           <Image
             src="https://avatars.githubusercontent.com/u/66621672?s=64&v=4"
             height={30}
