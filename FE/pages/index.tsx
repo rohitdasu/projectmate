@@ -43,7 +43,7 @@ const Home: NextPage = () => {
       </nav>
 
       <main tw="lg:flex  lg:w-full flex-1 text-center">
-        <div tw="flex flex-col items-center justify-center h-[77vh]   lg:m-0 lg:w-1/2  px-4 lg:px-20 border-r">
+        <div tw="flex flex-col items-center justify-center h-[70vh]   lg:m-0 lg:w-1/2  px-4 lg:px-20 border-r">
           <h1 tw="text-4xl font-bold font-bold text-gray-900">
             Welcome to projectmate - a place where you find project mates
           </h1>
