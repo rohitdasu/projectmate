@@ -1,26 +1,13 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import Image from 'next/image';
-function MyModal({ isOpen, setIsOpen }: any) {
+function AuthModal({ isOpen, setIsOpen }: any) {
   function closeModal() {
     setIsOpen(false);
   }
 
-  function openModal() {
-    setIsOpen(true);
-  }
   return (
     <>
-      {/* <div className="fixed inset-0 flex items-center justify-center">
-        <button
-          type="button"
-          onClick={openModal}
-          className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-        >
-          Open dialog
-        </button>
-      </div> */}
-
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
@@ -63,11 +50,7 @@ function MyModal({ isOpen, setIsOpen }: any) {
                       />
                       <span>Github</span>
                     </button>
-                    {/* <div className=" flex w-full items-center space-x-2">
-                      <div className="bg-black h-[1px] w-[60%]" />
-                      <span>or</span>
-                      <div className="bg-black h-[1px] w-[60%]" />
-                    </div> */}
+
                     <button className="items-center flex space-x-2">
                       <Image
                         src="/google.png"
@@ -88,4 +71,4 @@ function MyModal({ isOpen, setIsOpen }: any) {
   );
 }
 
-export default MyModal;
+export default AuthModal;

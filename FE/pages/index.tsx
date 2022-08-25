@@ -4,7 +4,7 @@ import Image from 'next/image';
 import tw from 'twin.macro';
 import Lottie from 'lottie-react-web';
 import animation from '../public/animation-lottie.json';
-import MyModal from '../components/MyModal';
+import AuthModal from '../components/AuthModal';
 import { useState } from 'react';
 
 const Home: NextPage = () => {
@@ -49,7 +49,7 @@ const Home: NextPage = () => {
       </nav>
 
       <main tw="flex  lg:w-full flex-1 text-center">
-        <MyModal isOpen={isOpen} setIsOpen={setIsOpen} />
+        <AuthModal isOpen={isOpen} setIsOpen={setIsOpen} />
         <div tw="flex flex-col items-center justify-center lg:m-0 lg:w-1/2  px-4 lg:px-20">
           <h1 tw="text-4xl font-bold font-bold text-gray-900">
             Welcome to projectmate - a place where you find project mates
