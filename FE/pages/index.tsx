@@ -4,8 +4,14 @@ import Image from 'next/image';
 import tw from 'twin.macro';
 import Lottie from 'lottie-react-web';
 import animation from '../public/animation-lottie.json';
+import AuthModal from '../components/AuthModal';
+import { useState } from 'react';
 
 const Home: NextPage = () => {
+  let [isOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
   return (
     <div tw="flex min-h-screen flex-col items-center justify-center">
       <Head>
@@ -43,6 +49,7 @@ const Home: NextPage = () => {
       </nav>
 
       <main tw="flex  lg:w-full flex-1 text-center">
+        <AuthModal isOpen={isOpen} setIsOpen={setIsOpen} />
         <div tw="flex flex-col items-center justify-center lg:m-0 lg:w-1/2  px-4 lg:px-20">
           <h1 tw="text-4xl font-bold font-bold text-gray-900">
             Welcome to projectmate - a place where you find project mates
@@ -53,6 +60,7 @@ const Home: NextPage = () => {
           </p>
 
           <button
+            onClick={openModal}
             type="button"
             tw="lg:mt-16 mt-4 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-8 py-3 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
           >
