@@ -56,7 +56,7 @@ function MyModal({ isOpen, setIsOpen }: any) {
                   <div className=" mx-4  flex h-[100px] justify-evenly  items-center ">
                     <button className="items-center flex space-x-2 ">
                       <Image
-                        src="/github-logo.png"
+                        src="/github.svg"
                         height={30}
                         width={30}
                         alt="github-logo"
