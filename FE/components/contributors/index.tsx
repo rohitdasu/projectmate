@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Fragment } from 'react';
+import tw from 'twin.macro';
 import { IContributors } from '../../interfaces';
 
 type Props = {
