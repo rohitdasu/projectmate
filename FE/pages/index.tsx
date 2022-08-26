@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import tw from 'twin.macro';
@@ -6,8 +6,14 @@ import Lottie from 'lottie-react-web';
 import animation from '../public/animation-lottie.json';
 import AuthModal from '../components/AuthModal';
 import { useState } from 'react';
+import ContributorList from '../components/contributors';
+import { IContributors } from '../interfaces';
 
-const Home: NextPage = () => {
+type Props = {
+  contributors: IContributors[];
+};
+
+const Home: NextPage<Props> = ({ contributors }) => {
   let [isOpen, setIsOpen] = useState(false);
   function openModal() {
     setIsOpen(true);
@@ -80,28 +86,9 @@ const Home: NextPage = () => {
         <p tw="text-lg font-light text-gray-800 mb-2 pb-0">
           Shout-out to our contributors
         </p>
+
         <div tw="flex items-center justify-around w-[80%] lg:w-1/5">
-          <Image
-            src="https://avatars.githubusercontent.com/u/66621672?s=64&v=4"
-            height={30}
-            width={30}
-            tw="rounded-full bg-black"
-            alt=""
-          />
-          <Image
-            src="https://avatars.githubusercontent.com/u/48400770?s=64&v=4"
-            height={30}
-            width={30}
-            tw="rounded-full bg-black"
-            alt=""
-          />
-          <Image
-            src="https://avatars.githubusercontent.com/u/107752425?s=88&u=4100b00ef035da1c3a7337800bf9957714b9a912&v=4"
-            height={30}
-            width={30}
-            tw="rounded-full bg-black"
-            alt=""
-          />
+          <ContributorList contributors={contributors} />
         </div>
       </footer>
     </div>
@@ -109,3 +96,16 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const data = await fetch(
+    'https://api.github.com/repos/rohitdasu/projectmate/contributors'
+  );
+  const json = await data.json();
+
+  return {
+    props: {
+      contributors: json,
+    },
+  };
+};
