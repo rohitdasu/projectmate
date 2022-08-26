@@ -11,13 +11,14 @@ Find people who have the same vision as you do and contribute to each other for 
 
 ## Instructions to start the project
 
-`You need to first start the backend application and then frontend. Make sure you're having the backend up and running.`
-
-Clone this repo.
+**Clone this repo.**
 
    ```sh
    git clone https://github.com/rohitdasu/projectmate.git
    ```
+> **Note**
+>
+> You need to first start the backend application and then frontend. Make sure you're having the backend up and running.
 
 ## How to start Back-end (Node.js)
 
@@ -64,9 +65,7 @@ Clone this repo.
    ```
   
  ## Thanks to all Contributors💙
+ 
 <a href="https://github.com/rohitdasu/projectmate/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=rohitdasu/projectmate" />
 </a>
-
-   
- 
