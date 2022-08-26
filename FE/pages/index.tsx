@@ -13,13 +13,11 @@ type Props = {
   contributors: IContributors[];
 };
 
-const Home = ({ contributors }: Props) => {
+const Home: NextPage<Props> = ({ contributors }) => {
   let [isOpen, setIsOpen] = useState(false);
   function openModal() {
     setIsOpen(true);
   }
-  // get avatar_url and html_url for each contributor from github api
-
   return (
     <div tw="flex min-h-screen flex-col items-center justify-center">
       <Head>
