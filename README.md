@@ -62,7 +62,11 @@ Clone this repo.
    ```sh
    npm run dev
    ```
-   
-   
+  
+ ## Thanks to all Contributors💙
+<a href="https://github.com/rohitdasu/projectmate/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=rohitdasu/projectmate" />
+</a>
+
    
  
