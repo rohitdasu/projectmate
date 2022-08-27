@@ -5,7 +5,18 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ["'Poppins', sans-serif"],
+      mono: ['Alegreya Sans SC'],
+    },
+    extend: {
+      colors: {
+        'primary-color': 'var(--primary-color)',
+        'dark-color': 'var(--dark-color)',
+        'dark-mode': 'var(--dark-mode)',
+        'secondary-color': 'var(--secondary-color)',
+      },
+    },
   },
   plugins: [],
-}
+};
