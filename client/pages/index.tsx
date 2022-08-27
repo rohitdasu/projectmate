@@ -56,9 +56,10 @@ const Home: NextPage<Props> = ({ contributors }) => {
             JOIN US
           </button>
         </div>
-        <div tw="hidden  lg:inline-flex mr-[2rem] ">
+
+        <div tw="hidden lg:inline-flex  lg:px-20">
           <Lottie
-            tw="h-[200px] w-[50px]"
+            tw="h-[200px] w-[100px]"
             options={{
               animationData: animation,
             }}
