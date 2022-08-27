@@ -4,10 +4,8 @@ import Image from 'next/image';
 import tw from 'twin.macro';
 import Lottie from 'lottie-react-web';
 import animation from '../public/animation-lottie.json';
-import AuthModal from '../components/AuthModal';
 import { useState } from 'react';
-import ContributorList from '../components/contributors';
-import { IContributors } from '../interfaces';
+import { IContributors, ContributorList, AuthModal } from '../components';
 
 type Props = {
   contributors: IContributors[];

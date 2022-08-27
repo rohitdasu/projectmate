@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import { Fragment } from 'react';
 import tw from 'twin.macro';
-import { IContributors } from '../../interfaces';
+import { IContributors } from './ContributorList.interface';
 
 type Props = {
   contributors: IContributors[];
 };
 
-const ContributorList = ({ contributors }: Props) => {
+export const ContributorList = ({ contributors }: Props) => {
   return (
     <Fragment>
       {contributors.map((contributor, index) => (
@@ -30,5 +30,3 @@ const ContributorList = ({ contributors }: Props) => {
     </Fragment>
   );
 };
-
-export default ContributorList;

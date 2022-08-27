@@ -2,7 +2,9 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import Image from 'next/image';
 import tw from 'twin.macro';
-function AuthModal({ isOpen, setIsOpen }: any) {
+import { AuthModalProps } from './AuthModal.interface';
+
+export const AuthModal = ({ isOpen, setIsOpen }: AuthModalProps) => {
   function closeModal() {
     setIsOpen(false);
   }
@@ -70,6 +72,4 @@ function AuthModal({ isOpen, setIsOpen }: any) {
       </Transition>
     </>
   );
-}
-
-export default AuthModal;
+};
