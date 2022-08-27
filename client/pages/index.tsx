@@ -29,7 +29,7 @@ const Home: NextPage<Props> = ({ contributors }) => {
       <Navbar />
       <main tw="flex   lg:w-full flex-1 ">
         <AuthModal />
-        <div tw="flex  flex-col flex-1 text-center md:text-left items-center justify-center lg:m-0 lg:w-1/2   lg:px-20">
+        <div tw="flex  flex-col flex-1 text-center md:text-left  justify-center lg:m-0 lg:w-1/2   lg:px-20">
           <h1
             className={`lg:leading-[82px] leading-normal font-bold  text-dark-color md:text-[55px] text-[40px]  capitalize ${
               Mode && '!text-white'
@@ -51,7 +51,7 @@ const Home: NextPage<Props> = ({ contributors }) => {
           <button
             onClick={() => dispatch(openModal())}
             type="button"
-            className="w-[170px]   h-[49px] mt-[20px] bg-[#2854EECC] text-white rounded-md"
+            className="w-[170px] mx-auto sm:mx-0   h-[49px] mt-[20px] bg-[#2854EECC] text-white rounded-md"
           >
             JOIN US
           </button>
