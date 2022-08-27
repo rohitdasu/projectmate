@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import helmet from "helmet";
 import secureRoutes from "./routes";
+import dbConnect from "./database";
 
 dotenv.config();
 
@@ -16,10 +17,12 @@ const main = async () => {
   app.use(bodyParser.json()); // for parsing application/json
   app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+  await dbConnect();
+  
   app.use("/api/v1", secureRoutes);
 
   app.get("/", (req: Request, res: Response, next: NextFunction) => {
-    res.send("This is root API");
+    res.send("This is root API for projectmate");
   });
 
   app.listen(PORT, () => {
