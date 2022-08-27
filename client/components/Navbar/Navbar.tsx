@@ -77,14 +77,14 @@ const Navbar = () => {
         >
           {Mode ? (
             <Image
-              src={`${menuState ? '/light-cross.png' : '/light-menu.png'} `}
+              src={`${menuState ? '/light-close.png' : '/light-menu.png'} `}
               alt="menu"
               height={30}
               width={30}
             />
           ) : (
             <Image
-              src={`${menuState ? '/dark-close.png' : '/menu.png'} `}
+              src={`${menuState ? '/dark-close.png' : '/dark-menu.png'} `}
               alt="menu"
               height={30}
               width={30}
