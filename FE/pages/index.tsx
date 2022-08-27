@@ -7,7 +7,7 @@ import animation from '../public/animation-lottie.json';
 import { IContributors, ContributorList, AuthModal } from '../components';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { openModal } from '../slices/modalSlice';
-import { changeMode } from '../slices/ModeSlice';
+import Navbar from '../components/Navbar/Navbar';
 
 type Props = {
   contributors: IContributors[];
@@ -24,126 +24,12 @@ const Home: NextPage<Props> = ({ contributors }) => {
     >
       <Head>
         <title>projectmate</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/dark-logo.svg" />
       </Head>
-
-      <nav
-        className={`flex  h-24 w-full items-center bg-white justify-between border-t px-6 md:px-20 shadow-md ${
-          Mode && '!bg-dark-mode'
-        }`}
-      >
-        <span
-          className={`text-2xl flex items-center  md:space-x-2 font-semibold font-mono text-gray-900 uppercase ${
-            Mode && 'text-white'
-          }`}
-        >
-          {Mode ? (
-            <Image src="/dark-logo.svg" height={40} width={40} alt="logo" />
-          ) : (
-            <Image src="/logo.svg" height={40} width={40} alt="logo" />
-          )}
-          <p>
-            project<span className="text-primary-color">mate</span>
-          </p>
-        </span>
-        <div
-          className={`hidden lg:flex justify-around items-center w-[400px] h-full ${
-            Mode && 'text-white'
-          }`}
-        >
-          <a
-            href="#"
-            className="text-[20px] flex items-center font-normal active"
-          >
-            Home
-          </a>
-          <a href="#" className="text-[20px] flex items-center font-normal ">
-            Projects
-          </a>
-          <a href="#" className="text-[20px] flex items-center font-normal">
-            About
-          </a>
-        </div>
-        <div className="flex items-center justify-between space-x-2 w-[150px]">
-          <a
-            href="#"
-            onClick={() => dispatch(changeMode())}
-            className={`${
-              Mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-            } p-2 rounded-full flex items-center justify-center `}
-          >
-            {Mode ? (
-              <Image
-                src={'/light-mode.svg'}
-                alt="night-mode"
-                height={25}
-                width={25}
-              />
-            ) : (
-              <Image
-                src={'/night-mode.svg'}
-                alt="night-mode"
-                height={20}
-                width={20}
-              />
-            )}
-          </a>
-          <a
-            href="https://github.com/rohitdasu/projectmate"
-            target="_blank"
-            rel="noreferrer"
-            className={`${
-              Mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-            } p-2 rounded-full flex items-center justify-center `}
-          >
-            {Mode ? (
-              <Image
-                src="/dark-github.svg"
-                alt="Vercel Logo"
-                width={30}
-                height={30}
-              />
-            ) : (
-              <Image
-                src="/github.svg"
-                alt="Vercel Logo"
-                width={30}
-                height={30}
-              />
-            )}
-          </a>
-          <a
-            href="https://discord.gg/M2BMPdku"
-            target="_blank"
-            rel="noreferrer"
-            className={`${
-              Mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-            } p-2 rounded-full flex items-center justify-center `}
-          >
-            {Mode ? (
-              <Image
-                tw="ml-4"
-                src="/dark-discord.svg"
-                alt="Vercel Logo"
-                width={30}
-                height={30}
-              />
-            ) : (
-              <Image
-                tw="ml-4"
-                src="/discord.svg"
-                alt="Vercel Logo"
-                width={30}
-                height={30}
-              />
-            )}
-          </a>
-        </div>
-      </nav>
-
+      <Navbar />
       <main tw="flex   lg:w-full flex-1 ">
         <AuthModal />
-        <div tw="flex  flex-col flex-1 text-center items-center justify-center lg:m-0 lg:w-1/2   lg:px-20">
+        <div tw="flex  flex-col flex-1 text-center md:text-left items-center justify-center lg:m-0 lg:w-1/2   lg:px-20">
           <h1
             className={`lg:leading-[82px] leading-normal font-bold  text-dark-color md:text-[55px] text-[40px]  capitalize ${
               Mode && '!text-white'
