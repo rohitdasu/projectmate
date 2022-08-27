@@ -1,6 +1,5 @@
-import express, { Router, Request, Response, NextFunction } from "express";
-import { HomeSchema } from "../database/models/Home";
-import { PostSchema } from "../database/models/Post";
+import express, { Router, Request, Response } from "express";
+import { HomeSchema, PostSchema } from "../database/";
 
 const router: Router = express();
 
