@@ -51,7 +51,7 @@ const Home: NextPage<Props> = ({ contributors }) => {
           <button
             onClick={() => dispatch(openModal())}
             type="button"
-            className="w-[170px] mx-auto sm:mx-0   h-[49px] mt-[20px] bg-[#2854EECC] text-white rounded-md"
+            className="w-[170px] mx-auto md:mx-0   h-[49px] mt-[20px] bg-[#2854EECC] text-white rounded-md"
           >
             JOIN US
           </button>
