@@ -1,17 +1,17 @@
 import express, { Router, Request, Response, NextFunction } from "express";
+import { HomeSchema } from "../database/models/Home";
+import { PostSchema } from "../database/models/Post";
+
 const router: Router = express();
 
 const main = () => {
-  router.post("/", async (req: Request, res: Response) => {
-    const { _id, username, password, name, phone, email } = req.body;
-    const data = {
-      _id,
-      username,
-      password,
-      name,
-      phone,
-      email,
-    };
+  router.get("/", async (req: Request, res: Response) => {
+    const data = await HomeSchema.find();
+    res.send(data[0]);
+  });
+
+  router.get("/projects", async (req: Request, res: Response) => {
+    const data = await PostSchema.find();
     res.send(data);
   });
 };
