@@ -2,17 +2,20 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import Image from 'next/image';
 import tw from 'twin.macro';
-import { AuthModalProps } from './AuthModal.interface';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { closeModal } from '../../slices/modalSlice';
 
-export const AuthModal = ({ isOpen, setIsOpen }: AuthModalProps) => {
-  function closeModal() {
-    setIsOpen(false);
-  }
-
+export const AuthModal = () => {
+  const isOpen = useAppSelector((state) => state.modal.modal);
+  const dispatch = useAppDispatch();
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" tw="relative z-10" onClose={closeModal}>
+        <Dialog
+          as="div"
+          tw="relative z-10"
+          onClose={() => dispatch(closeModal())}
+        >
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
