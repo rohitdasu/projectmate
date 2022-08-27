@@ -2,10 +2,10 @@
   "name": "projectmate",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.ts",
+  "main": "src/server.ts",
   "scripts": {
-    "start": "node dist/index.js",
-    "dev": "ts-node src/index.ts",
+    "start": "node dist/server.js",
+    "dev": "ts-node src/server.ts",
     "build": "tsc -p ."
   },
   "author": "",
