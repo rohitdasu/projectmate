@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
-import config from "config";
+import dotenv from "dotenv";
 
-const dbName: string = config.get("dbname");
-const username: string = config.get("username");
-const password: string = config.get("password");
+dotenv.config();
+
+const dbName: string = process.env.dbname || "";
+const username: string = process.env.username || "";
+const password: string = process.env.password || "";
 
 const dbConnect = async () => {
   mongoose
