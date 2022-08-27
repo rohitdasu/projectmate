@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import config from "config";
 
-const dbName: string = config.get("app.dbConfig.dbName");
-const username: string = config.get("app.dbConfig.username");
-const password: string = config.get("app.dbConfig.password");
+const dbName: string = config.get("dbname");
+const username: string = config.get("username");
+const password: string = config.get("password");
 
 const dbConnect = async () => {
   mongoose
