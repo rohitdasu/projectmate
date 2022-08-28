@@ -5,7 +5,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "cd .. && husky install"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/css": "^11.10.0",
