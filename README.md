@@ -7,7 +7,7 @@ Find people who have the same vision as you do and contribute to each other for 
 
 ## Connect with us
 
-![Discord](https://img.shields.io/badge/-discord-black?style=social&logo=discord&link=https://discord.gg/M2BMPdku)
+[![Discord](https://img.shields.io/badge/-discord-black?style=social&logo=discord)](https://discord.gg/M2BMPdku)
 
 ## Tech Stack ⚙
 
