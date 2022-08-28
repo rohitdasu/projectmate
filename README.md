@@ -53,6 +53,18 @@ Find people who have the same vision as you do and contribute to each other for 
    npm run dev
    ```
 
+## Contributing Guidlines
+
+After you have installed projectmate app on your local machine, go to our [CONTRIBUTING.md](https://github.com/rohitdasu/projectmate/blob/main/CONTRIBUTING.md) file to help with all you need to know before getting started with making changes to the codebase.
+
+## Code of Conduct
+
+View [CODE_OF_CONDUCT.md](https://github.com/rohitdasu/projectmate/blob/main/CODE_OF_CONDUCT.md)
+
+## 🔓 License
+
+projectmate is licensed under the MIT License - see the [LICENSE](https://github.com/rohitdasu/projectmate/blob/main/LICENSE) file for details.
+
 ## Thanks to all Contributors💙
 
 <a href="https://github.com/rohitdasu/projectmate/graphs/contributors">
