@@ -23,7 +23,7 @@ Find people who have the same vision as you do and contribute to each other for 
 
 ### Steps:
 
-1. **Clone thie repository**
+1. **Clone this repository**
 
    ```sh
    git clone https://github.com/rohitdasu/projectmate.git
@@ -53,7 +53,7 @@ Find people who have the same vision as you do and contribute to each other for 
    npm run dev
    ```
 
-## Contributing Guidlines
+## Contributing Guidelines
 
 After you have installed projectmate app on your local machine, go to our [CONTRIBUTING.md](https://github.com/rohitdasu/projectmate/blob/main/CONTRIBUTING.md) file to help with all you need to know before getting started with making changes to the codebase.
 
