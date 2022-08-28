@@ -1,71 +1,56 @@
 # projectmate - find your project mate online ⚡
-Live at - https://project-mate.vercel.app <br/><br/>
+
+Live at 🌏 - https://project-mate.vercel.app
+
 A web app where you can find contributors for your open-source project or as an individual contributor you can find open-source projects. Best place to start building in public.
 Find people who have the same vision as you do and contribute to each other for building amazing products.
 
 ## Tech Stack ⚙
-1. Frontend - Next.js  
-2. CSS Framework - Tailwind  
-2. Backend - Node.js (Express.js) + MongoDB
 
+![Next](https://img.shields.io/badge/-NEXT-black?style=flat-square&logo=next.js)
+![MongoDB](https://img.shields.io/badge/-MongoDB-black?style=flat-square&logo=mongodb)
+![TailwindCSS](https://img.shields.io/badge/-Tailwind-black?style=flat-square&logo=tailwindcss)
 
-## Instructions to start the project
+1. Frontend - Next.js
+2. CSS Framework - Tailwind
+3. Backend - NextJS APIs + MongoDB
 
-**Clone this repo.**
+## Instructions to start the app
+
+### Steps:
+
+1. **Clone thie repository**
 
    ```sh
    git clone https://github.com/rohitdasu/projectmate.git
    ```
-> **Note**
->
-> You need to first start the backend application and then frontend. Make sure you're having the backend up and running.
 
-## How to start Back-end (Node.js)
-
-### Steps - 
-
-1. Go into the backend directory.
+2. Go into the project directory
 
    ```sh
-   cd projectmate/BE
+   cd projectmate
    ```
 
- 2. Install all the dependencies
- 
-    ```sh
-    npm install
-    ```
+3. Create `.env.local` file from `.env.template` file. `MONGODB_URI` is the `connection string` which you'll get from mongodb. [for reference](https://www.mongodb.com/docs/manual/reference/connection-string/)
 
-3. Start the backend server.
-
-   ```sh
-   npm run build && npm run start
-   ```
-
-## How to start Front-end (Next.js + Tailwind CSS)
-
-### Steps: 
-
-   
-1. Go into the frontend directory
-
-   ```sh
-   cd projectmate/FE
-   ```
-
-2. Install all the dependencies
+4. Install all the dependencies
 
    ```sh
    npm install
    ```
-3. Start the application development server
+
+> **Note**
+>
+> If npm install failed, then try `npm install --force`.
+
+5. Start the application development server
 
    ```sh
    npm run dev
    ```
-  
- ## Thanks to all Contributors💙
- 
+
+## Thanks to all Contributors💙
+
 <a href="https://github.com/rohitdasu/projectmate/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=rohitdasu/projectmate" />
 </a>
