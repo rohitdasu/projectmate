@@ -5,6 +5,10 @@ Live at 🌏 - https://project-mate.vercel.app
 A web app where you can find contributors for your open-source project or as an individual contributor you can find open-source projects. Best place to start building in public.
 Find people who have the same vision as you do and contribute to each other for building amazing products.
 
+## Connect with us
+
+![Discord](https://img.shields.io/badge/-discord-black?style=social&logo=discord&link=https://discord.gg/M2BMPdku)
+
 ## Tech Stack ⚙
 
 ![Next](https://img.shields.io/badge/-NEXT-black?style=flat-square&logo=next.js)
@@ -41,7 +45,7 @@ Find people who have the same vision as you do and contribute to each other for 
 
 > **Note**
 >
-> If npm install failed, then try `npm install --force`.
+> If npm install fails, try `npm install --force`.
 
 5. Start the application development server
 
