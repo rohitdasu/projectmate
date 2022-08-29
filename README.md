@@ -1,71 +1,27 @@
-# projectmate - find your project mate online ⚡
-Live at - https://project-mate.vercel.app <br/><br/>
-A web app where you can find contributors for your open-source project or as an individual contributor you can find open-source projects. Best place to start building in public.
-Find people who have the same vision as you do and contribute to each other for building amazing products.
+# Next.js + Tailwind CSS Example
 
-## Tech Stack ⚙
-1. Frontend - Next.js  
-2. CSS Framework - Tailwind  
-2. Backend - Node.js (Express.js) + MongoDB
+This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
 
+## Deploy your own
 
-## Instructions to start the project
+Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
 
-**Clone this repo.**
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
 
-   ```sh
-   git clone https://github.com/rohitdasu/projectmate.git
-   ```
-> **Note**
->
-> You need to first start the backend application and then frontend. Make sure you're having the backend up and running.
+## How to use
 
-## How to start Back-end (Node.js)
+Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
 
-### Steps - 
+```bash
+npx create-next-app --example with-tailwindcss with-tailwindcss-app
+```
 
-1. Go into the backend directory.
+```bash
+yarn create next-app --example with-tailwindcss with-tailwindcss-app
+```
 
-   ```sh
-   cd projectmate/BE
-   ```
+```bash
+pnpm create next-app --example with-tailwindcss with-tailwindcss-app
+```
 
- 2. Install all the dependencies
- 
-    ```sh
-    npm install
-    ```
-
-3. Start the backend server.
-
-   ```sh
-   npm run build && npm run start
-   ```
-
-## How to start Front-end (Next.js + Tailwind CSS)
-
-### Steps: 
-
-   
-1. Go into the frontend directory
-
-   ```sh
-   cd projectmate/FE
-   ```
-
-2. Install all the dependencies
-
-   ```sh
-   npm install
-   ```
-3. Start the application development server
-
-   ```sh
-   npm run dev
-   ```
-  
- ## Thanks to all Contributors💙
- 
-<a href="https://github.com/rohitdasu/projectmate/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=rohitdasu/projectmate" />
-</a>
+Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
