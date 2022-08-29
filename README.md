@@ -1,27 +1,72 @@
-# Next.js + Tailwind CSS Example
+# projectmate - find your project mate online ⚡
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+Live at 🌏 - https://project-mate.vercel.app
 
-## Deploy your own
+A web app where you can find contributors for your open-source project or as an individual contributor you can find open-source projects. Best place to start building in public.
+Find people who have the same vision as you do and contribute to each other for building amazing products.
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+## Connect with us
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+[![Discord](https://img.shields.io/badge/-discord-black?style=social&logo=discord)](https://discord.gg/M2BMPdku)
 
-## How to use
+## Tech Stack ⚙
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+![Next](https://img.shields.io/badge/-NEXT-black?style=flat-square&logo=next.js)
+![MongoDB](https://img.shields.io/badge/-MongoDB-black?style=flat-square&logo=mongodb)
+![TailwindCSS](https://img.shields.io/badge/-Tailwind-black?style=flat-square&logo=tailwindcss)
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-```
+1. Frontend - Next.js
+2. CSS Framework - Tailwind
+3. Backend - NextJS APIs + MongoDB
 
-```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
+## Instructions to start the app
 
-```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
-```
+### Steps:
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+1. **Clone this repository**
+
+   ```sh
+   git clone https://github.com/rohitdasu/projectmate.git
+   ```
+
+2. Go into the project directory
+
+   ```sh
+   cd projectmate
+   ```
+
+3. Create `.env.local` file from `.env.template` file. `MONGODB_URI` is the `connection string` which you'll get from mongodb. [for reference](https://www.mongodb.com/docs/manual/reference/connection-string/)
+
+4. Install all the dependencies
+
+   ```sh
+   npm install
+   ```
+
+> **Note**
+>
+> If npm install fails, try `npm install --force`.
+
+5. Start the application development server
+
+   ```sh
+   npm run dev
+   ```
+
+## Contributing Guidelines
+
+After you have installed projectmate app on your local machine, go to our [CONTRIBUTING.md](https://github.com/rohitdasu/projectmate/blob/main/CONTRIBUTING.md) file to help with all you need to know before getting started with making changes to the codebase.
+
+## Code of Conduct
+
+View [CODE_OF_CONDUCT.md](https://github.com/rohitdasu/projectmate/blob/main/CODE_OF_CONDUCT.md)
+
+## 🔓 License
+
+projectmate is licensed under the MIT License - see the [LICENSE](https://github.com/rohitdasu/projectmate/blob/main/LICENSE) file for details.
+
+## Thanks to all Contributors💙
+
+<a href="https://github.com/rohitdasu/projectmate/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=rohitdasu/projectmate" />
+</a>
