@@ -7,6 +7,7 @@ import { Icon } from '@iconify/react';
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const Mode = useAppSelector((state) => state.mode.mode);
+
   const [menuState, setMenuState] = useState(false);
   return (
     <nav className={`relative w-full h-max`}>
@@ -80,23 +81,23 @@ const Navbar = () => {
             {Mode ? (
               menuState ? (
                 <Icon
-                  icon="charm:menu-hamburger"
+                  icon="akar-icons:cross"
                   color="white"
                   height={30}
                   width={30}
                 />
               ) : (
                 <Icon
-                  icon="akar-icons:cross"
+                  icon="charm:menu-hamburger"
                   color="white"
                   height={30}
                   width={30}
                 />
               )
             ) : menuState ? (
-              <Icon icon="charm:menu-hamburger" height={30} width={30} />
-            ) : (
               <Icon icon="akar-icons:cross" height={30} width={30} />
+            ) : (
+              <Icon icon="charm:menu-hamburger" height={30} width={30} />
             )}
           </a>
           <a
@@ -158,7 +159,7 @@ const Navbar = () => {
       >
         <ul
           className={`${
-            menuState ? 'hidden' : 'flex sm:hidden '
+            menuState ? 'flex sm:hidden' : 'hidden'
           } w-full flex-col   space-y-2  p-4 mt-4  rounded-lg  border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 `}
         >
           <li>
