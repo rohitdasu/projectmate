@@ -29,7 +29,7 @@ const Home: NextPage<Props> = ({ contributors }) => {
       <Navbar />
       <main tw="flex   lg:w-full flex-1 ">
         <AuthModal />
-        <div tw="flex  flex-col flex-1 text-center md:text-left  justify-center lg:m-0 lg:w-1/2   lg:px-20">
+        <div tw="flex flex-col px-[2px] flex-1 text-center md:text-left   justify-center lg:m-0 lg:w-1/2   lg:px-20">
           <h1
             className={`lg:leading-[82px] leading-normal font-bold  text-dark-color md:text-[55px] text-[40px]  capitalize ${
               Mode && '!text-white'
@@ -41,7 +41,7 @@ const Home: NextPage<Props> = ({ contributors }) => {
           </h1>
 
           <p
-            className={`mt-4 px-2   md:leading-[30px] leading-normal md:text-[20px] text-[17px] font-light text-gray-800 ${
+            className={`mt-4    md:leading-[30px] leading-normal md:text-[20px] text-[17px] font-light text-gray-800 ${
               Mode && '!text-white'
             } `}
           >
