@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { changeMode } from '../../store/slices/ModeSlice';
 import { Icon } from '@iconify/react';
+import tw from 'twin.macro';
 
 export const Navbar = () => {
   const dispatch = useAppDispatch();
@@ -10,16 +11,14 @@ export const Navbar = () => {
 
   const [menuState, setMenuState] = useState(false);
   return (
-    <nav className={`relative w-full h-max`}>
+    <nav tw="relative w-full h-full">
       <div
-        className={`flex h-20  w-full items-center bg-white justify-between border-t px-2 sm:px-6 md:px-20 shadow-md ${
-          Mode && '!bg-dark-mode'
-        }`}
+        className={`${Mode && '!bg-dark-mode'}`}
+        tw="flex h-20  w-full items-center bg-white justify-between border-t px-2 sm:px-6 md:px-20 shadow-md"
       >
         <span
-          className={`text-2xl flex items-center  md:space-x-2 font-semibold font-mono text-gray-900 uppercase ${
-            Mode && '!text-white'
-          }`}
+          className={`${Mode && '!text-white'}`}
+          tw="text-2xl flex items-center  md:space-x-2 font-semibold font-mono text-gray-900 uppercase"
         >
           {Mode ? (
             <Image src="/dark-logo.svg" height={40} width={40} alt="logo" />
@@ -27,7 +26,7 @@ export const Navbar = () => {
             <Image src="/logo.svg" height={40} width={40} alt="logo" />
           )}
           <p>
-            project<span className="text-primary-color">mate</span>
+            project<span tw="text-primary-color">mate</span>
           </p>
         </span>
         <div
@@ -35,20 +34,17 @@ export const Navbar = () => {
             Mode && 'text-white'
           }`}
         >
-          <a
-            href="#"
-            className="text-[20px] flex items-center font-normal active"
-          >
+          <a href="#" tw="text-[20px] flex items-center" className="active">
             Home
           </a>
-          <a href="#" className="text-[20px] flex items-center font-normal ">
+          <a href="#" tw="text-[20px] flex items-center font-normal">
             Projects
           </a>
-          <a href="#" className="text-[20px] flex items-center font-normal">
+          <a href="#" tw="text-[20px] flex items-center font-normal">
             About
           </a>
         </div>
-        <div className="flex items-center justify-between space-x-2 w-max sm:w-[150px]">
+        <div tw="flex items-center justify-between space-x-2 w-max sm:w-[150px]">
           <a
             href="#"
             onClick={() => dispatch(changeMode())}

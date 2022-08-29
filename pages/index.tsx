@@ -35,7 +35,7 @@ const Home: NextPage<Props> = ({ contributors }) => {
             }`}
           >
             A place where you find{' '}
-            <span className="text-primary-color uppercase">OpenSource</span>{' '}
+            <span tw="text-primary-color uppercase">OpenSource</span>{' '}
             Projects
           </h1>
 
