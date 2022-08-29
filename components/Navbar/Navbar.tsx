@@ -95,7 +95,7 @@ export const Navbar = () => {
                 />
               )
             ) : menuState ? (
-              <Icon icon="akar-icons:cross" height={20} width={20} />
+              <Icon icon="akar-icons:cross" height={30} width={30} />
             ) : (
               <Icon icon="charm:menu-hamburger" height={30} width={30} />
             )}
@@ -125,7 +125,7 @@ export const Navbar = () => {
             )}
           </a>
           <a
-            href="https://discord.gg/M2BMPdku"
+            href="https://discord.gg/FQtyMWFZQ9"
             target="_blank"
             rel="noreferrer"
             className={`${
