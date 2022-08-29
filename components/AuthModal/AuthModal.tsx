@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import Image from 'next/image';
 import tw from 'twin.macro';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { closeModal } from '../../slices/modalSlice';
+import { closeModal } from '../../store/slices/modalSlice';
 
 export const AuthModal = () => {
   const mode = useAppSelector((state) => state.mode.mode);

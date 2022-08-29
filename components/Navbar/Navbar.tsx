@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { changeMode } from '../../slices/ModeSlice';
+import { changeMode } from '../../store/slices/ModeSlice';
 import { Icon } from '@iconify/react';
 
 const Navbar = () => {

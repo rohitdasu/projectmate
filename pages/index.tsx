@@ -6,7 +6,7 @@ import Lottie from 'lottie-react-web';
 import animation from '../public/animation-lottie.json';
 import { IContributors, ContributorList, AuthModal } from '../components';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { openModal } from '../slices/modalSlice';
+import { openModal } from '../store/slices/modalSlice';
 import Navbar from '../components/Navbar/Navbar';
 
 type Props = {
