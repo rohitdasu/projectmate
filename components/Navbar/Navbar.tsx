@@ -75,7 +75,7 @@ const Navbar = () => {
             onClick={() => setMenuState(!menuState)}
             className={`${
               Mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-            } p-2 sm:hidden rounded-full flex items-center justify-center `}
+            } p-2 sm:hidden cursor-pointer rounded-full flex items-center justify-center `}
           >
             {Mode ? (
               menuState ? (
@@ -152,13 +152,15 @@ const Navbar = () => {
         </div>
       </div>
       <div
-        className={`" ${
-          menuState && 'hidden'
-        } absolute z-55 w-full shadow-lg  ${
+        className={`absolute  z-55 w-full shadow-lg  ${
           Mode ? 'bg-dark-mode' : 'bg-white'
         } md:block md:w-auto"`}
       >
-        <ul className="flex w-full flex-col  space-y-2  p-4 mt-4  rounded-lg  border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 ">
+        <ul
+          className={`${
+            menuState ? 'hidden' : 'flex sm:hidden '
+          } w-full flex-col   space-y-2  p-4 mt-4  rounded-lg  border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 `}
+        >
           <li>
             <a
               href="#"
