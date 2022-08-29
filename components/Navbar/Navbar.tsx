@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { changeMode } from '../../store/slices/ModeSlice';
 import { Icon } from '@iconify/react';
 
-const Navbar = () => {
+export const Navbar = () => {
   const dispatch = useAppDispatch();
   const Mode = useAppSelector((state) => state.mode.mode);
 
@@ -217,5 +217,3 @@ const Navbar = () => {
     </nav>
   );
 };
-
-export default Navbar;
