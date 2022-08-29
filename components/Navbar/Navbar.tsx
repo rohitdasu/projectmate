@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { changeMode } from '../../slices/ModeSlice';
+import { Icon } from '@iconify/react';
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
@@ -76,19 +77,37 @@ const Navbar = () => {
           } p-2 sm:hidden rounded-full flex items-center justify-center `}
         >
           {Mode ? (
-            <Image
-              src={`${menuState ? '/light-close.png' : '/light-menu.png'} `}
-              alt="menu"
-              height={30}
-              width={30}
-            />
+            // <Image
+            //   src={`${menuState ? '/light-close.png' : '/light-menu.png'} `}
+            //   alt="menu"
+            //   height={30}
+            //   width={30}
+            // />
+            menuState ? (
+              <Icon
+                icon="charm:menu-hamburger"
+                color="white"
+                height={30}
+                width={30}
+              />
+            ) : (
+              <Icon
+                icon="akar-icons:cross"
+                color="white"
+                height={30}
+                width={30}
+              />
+            )
+          ) : // <Image
+          //   src={`${menuState ? '/dark-close.png' : '/dark-menu.png'} `}
+          //   alt="menu"
+          //   height={30}
+          //   width={30}
+          // />
+          menuState ? (
+            <Icon icon="charm:menu-hamburger" height={30} width={30} />
           ) : (
-            <Image
-              src={`${menuState ? '/dark-close.png' : '/dark-menu.png'} `}
-              alt="menu"
-              height={30}
-              width={30}
-            />
+            <Icon icon="akar-icons:cross" height={30} width={30} />
           )}
         </a>
         <a
