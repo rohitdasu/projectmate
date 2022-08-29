@@ -5,8 +5,9 @@ import tw from 'twin.macro';
 import Lottie from 'lottie-react-web';
 import animation from '../public/animation-lottie.json';
 import { IContributors, ContributorList, AuthModal } from '../components';
-import { useAppDispatch } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { openModal } from '../slices/modalSlice';
+import Navbar from '../components/Navbar/Navbar';
 
 type Props = {
   contributors: IContributors[];
@@ -14,61 +15,48 @@ type Props = {
 
 const Home: NextPage<Props> = ({ contributors }) => {
   const dispatch = useAppDispatch();
+  const Mode = useAppSelector((state) => state.mode.mode);
   return (
-    <div tw="flex min-h-screen flex-col items-center justify-center">
+    <div
+      className={`flex min-h-screen flex-col items-center justify-center ${
+        Mode && 'bg-dark-mode'
+      }`}
+    >
       <Head>
         <title>projectmate</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/dark-logo.svg" />
       </Head>
-
-      <nav tw="flex h-24 w-full items-center bg-white justify-between border-t px-6 md:px-20 shadow-md">
-        <span tw="text-2xl font-semibold font-mono text-gray-900">
-          projectmate
-        </span>
-
-        <div tw="flex items-center justify-between w-[100px]">
-          <a
-            href="https://github.com/rohitdasu/projectmate"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image src="/github.svg" alt="Vercel Logo" width={40} height={40} />
-          </a>
-          <a
-            href="https://discord.gg/M2BMPdku"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image
-              tw="ml-4"
-              src="/discord.svg"
-              alt="Vercel Logo"
-              width={40}
-              height={40}
-            />
-          </a>
-        </div>
-      </nav>
-
-      <main tw="flex  lg:w-full flex-1 text-center">
+      <Navbar />
+      <main tw="flex   lg:w-full flex-1 ">
         <AuthModal />
-        <div tw="flex flex-col items-center justify-center lg:m-0 lg:w-1/2  px-4 lg:px-20">
-          <h1 tw="text-4xl font-bold font-bold text-gray-900">
-            Welcome to projectmate - a place where you find project mates
+        <div tw="flex flex-col px-[2px] flex-1 text-center md:text-left   justify-center lg:m-0 lg:w-1/2   lg:px-20">
+          <h1
+            className={`lg:leading-[82px] leading-normal font-bold  text-dark-color md:text-[55px] text-[40px]  capitalize ${
+              Mode && '!text-white'
+            }`}
+          >
+            A place where you find{' '}
+            <span className="text-primary-color uppercase">OpenSource</span>{' '}
+            Projects
           </h1>
 
-          <p tw="mt-6 text-2xl font-normal text-gray-800">
-            Find contributors and find projects to contribute
+          <p
+            className={`mt-4    md:leading-[30px] leading-normal md:text-[20px] text-[17px] font-light text-gray-800 ${
+              Mode && '!text-white'
+            } `}
+          >
+            We will help you to find opensource project and contributors.
           </p>
 
           <button
             onClick={() => dispatch(openModal())}
             type="button"
-            tw="lg:mt-16 mt-4 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-8 py-3 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+            className="w-[170px] mx-auto md:mx-0   h-[49px] mt-[20px] bg-[#2854EECC] text-white rounded-md"
           >
             JOIN US
           </button>
         </div>
+
         <div tw="hidden lg:inline-flex  lg:px-20">
           <Lottie
             tw="h-[200px] w-[100px]"
@@ -78,8 +66,12 @@ const Home: NextPage<Props> = ({ contributors }) => {
           />
         </div>
       </main>
-      <footer tw="flex flex-col h-24 w-full items-center bg-white justify-center border-t px-6 lg:px-20 shadow-md">
-        <p tw="text-lg font-light text-gray-800 mb-2 pb-0">
+      <footer
+        className={`flex  flex-col h-24 w-full items-center bg-white justify-center border-t px-6 lg:px-20 shadow-md ${
+          Mode && '!bg-dark-mode border-t-0'
+        } `}
+      >
+        <p className={`text-lg font-light  mb-2 pb-0 ${Mode && 'text-white'}`}>
           Shout-out to our contributors
         </p>
 

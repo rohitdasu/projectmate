@@ -6,6 +6,7 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { closeModal } from '../../slices/modalSlice';
 
 export const AuthModal = () => {
+  const mode = useAppSelector((state) => state.mode.mode);
   const isOpen = useAppSelector((state) => state.modal.modal);
   const dispatch = useAppDispatch();
   return (
@@ -39,22 +40,41 @@ export const AuthModal = () => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel tw="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel
+                  className={`w-full ${
+                    mode ? '!bg-dark-mode' : '!bg-white'
+                  }  max-w-md transform overflow-hidden rounded-2xl  p-6 text-left align-middle shadow-xl transition-all`}
+                >
                   <Dialog.Title
                     as="h3"
-                    tw="text-lg text-center font-medium leading-6 text-gray-900"
+                    className={`text-lg text-center font-medium leading-6 text-gray-900 ${
+                      mode ? '!text-white' : '!text-gray-700'
+                    }`}
                   >
                     Continue with your social accounts.
                   </Dialog.Title>
                   <div tw="mx-4  flex h-[100px] justify-evenly  items-center ">
                     <button tw="items-center flex space-x-2 ">
-                      <Image
-                        src="/github.svg"
-                        height={30}
-                        width={30}
-                        alt="github-logo"
-                      />
-                      <span>Github</span>
+                      {mode ? (
+                        <Image
+                          src="/dark-github.svg"
+                          height={30}
+                          width={30}
+                          alt="github-logo"
+                        />
+                      ) : (
+                        <Image
+                          src="/github.svg"
+                          height={30}
+                          width={30}
+                          alt="github-logo"
+                        />
+                      )}
+                      <span
+                        className={`${mode ? 'text-white' : 'text-gray-700'}`}
+                      >
+                        Github
+                      </span>
                     </button>
 
                     <button tw="items-center flex space-x-2">
@@ -64,7 +84,11 @@ export const AuthModal = () => {
                         height={30}
                         width={30}
                       />
-                      <span>Google</span>
+                      <span
+                        className={`${mode ? 'text-white' : 'text-gray-700'}`}
+                      >
+                        Google
+                      </span>
                     </button>
                   </div>
                 </Dialog.Panel>
