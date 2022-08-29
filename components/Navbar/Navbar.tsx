@@ -95,7 +95,7 @@ const Navbar = () => {
                 />
               )
             ) : menuState ? (
-              <Icon icon="akar-icons:cross" height={30} width={30} />
+              <Icon icon="akar-icons:cross" height={20} width={20} />
             ) : (
               <Icon icon="charm:menu-hamburger" height={30} width={30} />
             )}
