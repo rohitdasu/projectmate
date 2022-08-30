@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import Image from 'next/image';
 import tw from 'twin.macro';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { closeModal } from '../../slices/modalSlice';
+import { closeModal } from '../../store/slices/modalSlice';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, Provider_github, Provider_google } from '../../lib/firebase';
 import Router, { useRouter } from 'next/router';

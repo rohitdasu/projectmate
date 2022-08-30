@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { changeMode } from '../../slices/ModeSlice';
+import { changeMode } from '../../store/slices/ModeSlice';
 import { Icon } from '@iconify/react';
 
-const Navbar = () => {
+export const Navbar = () => {
   const dispatch = useAppDispatch();
   const Mode = useAppSelector((state) => state.mode.mode);
 
@@ -125,7 +125,7 @@ const Navbar = () => {
             )}
           </a>
           <a
-            href="https://discord.gg/M2BMPdku"
+            href="https://discord.gg/FQtyMWFZQ9"
             target="_blank"
             rel="noreferrer"
             className={`${
@@ -217,5 +217,3 @@ const Navbar = () => {
     </nav>
   );
 };
-
-export default Navbar;

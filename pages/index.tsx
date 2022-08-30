@@ -4,10 +4,10 @@ import Image from 'next/image';
 import tw from 'twin.macro';
 import Lottie from 'lottie-react-web';
 import animation from '../public/animation-lottie.json';
+import { Navbar } from '../components/Navbar';
 import { IContributors, ContributorList, AuthModal } from '../components';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { openModal } from '../slices/modalSlice';
-import Navbar from '../components/Navbar/Navbar';
+import { openModal } from '../store/slices/modalSlice';
 
 type Props = {
   contributors: IContributors[];
@@ -51,7 +51,7 @@ const Home: NextPage<Props> = ({ contributors }) => {
           <button
             onClick={() => dispatch(openModal())}
             type="button"
-            className="w-[170px] mx-auto md:mx-0   h-[49px] mt-[20px] bg-[#2854EECC] text-white rounded-md"
+            tw="border border-white w-[170px] mx-auto md:mx-0 font-semibold h-[49px] mt-[20px] bg-[#2854EECC] text-white rounded-md"
           >
             JOIN US
           </button>
