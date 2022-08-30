@@ -9,6 +9,10 @@ import { useRouter } from 'next/router';
 const Dashboard: NextPage = () => {
   const [user] = useAuthState(auth);
   const router = useRouter();
+  const handleSignOut = () => {
+    signOut(auth);
+    router.push('/');
+  };
   return (
     <div className="flex flex-col space-y-4 h-screen w-screen justify-center items-center">
       <Head>
@@ -17,10 +21,7 @@ const Dashboard: NextPage = () => {
       <h1 className="text-3xl font-semibold">Hello {user?.displayName} 👋</h1>
       <button
         className="bg-blue-500 p-2 rounded-md text-white"
-        onClick={() => {
-          signOut(auth);
-          router.push('/');
-        }}
+        onClick={handleSignOut}
       >
         Sign out
       </button>
