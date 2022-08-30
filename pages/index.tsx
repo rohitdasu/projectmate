@@ -4,7 +4,8 @@ import Image from 'next/image';
 import tw from 'twin.macro';
 import Lottie from 'lottie-react-web';
 import animation from '../public/animation-lottie.json';
-import { IContributors, ContributorList, AuthModal, Navbar } from '../components';
+import { Navbar } from '../components/Navbar';
+import { IContributors, ContributorList, AuthModal } from '../components';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { openModal } from '../store/slices/modalSlice';
 
