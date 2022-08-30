@@ -4,11 +4,29 @@ import Image from 'next/image';
 import tw from 'twin.macro';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { closeModal } from '../../slices/modalSlice';
+import { signInWithPopup } from 'firebase/auth';
+import { auth, Provider_github, Provider_google } from '../../lib/firebase';
+import Router, { useRouter } from 'next/router';
 
 export const AuthModal = () => {
   const mode = useAppSelector((state) => state.mode.mode);
   const isOpen = useAppSelector((state) => state.modal.modal);
+  const router = useRouter();
   const dispatch = useAppDispatch();
+  const handleGoogleSignin = () => {
+    signInWithPopup(auth, Provider_google)
+      .then(() => {
+        router.push('/dashboard');
+      })
+      .catch((error) => alert(error.message));
+  };
+  const handleGithubSignin = () => {
+    signInWithPopup(auth, Provider_github)
+      .then(() => {
+        router.push('/dashboard');
+      })
+      .catch((error) => alert(error.message));
+  };
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -54,7 +72,10 @@ export const AuthModal = () => {
                     Continue with your social accounts.
                   </Dialog.Title>
                   <div tw="mx-4  flex h-[100px] justify-evenly  items-center ">
-                    <button tw="items-center flex space-x-2 ">
+                    <button
+                      tw="items-center flex space-x-2 "
+                      onClick={handleGithubSignin}
+                    >
                       {mode ? (
                         <Image
                           src="/dark-github.svg"
@@ -77,7 +98,10 @@ export const AuthModal = () => {
                       </span>
                     </button>
 
-                    <button tw="items-center flex space-x-2">
+                    <button
+                      tw="items-center flex space-x-2"
+                      onClick={handleGoogleSignin}
+                    >
                       <Image
                         src="/google.png"
                         alt="google-logo"
