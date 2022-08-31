@@ -21,9 +21,9 @@ export const Navbar = ({ active }: data_type) => {
   const [menuState, setMenuState] = useState(false);
   const [user] = useAuthState(auth);
   return (
-    <nav className={`relative w-full h-max`}>
+    <nav className={`relative shadow-md bg-white w-full h-max`}>
       <div
-        className={`flex h-20  w-full items-center bg-white justify-between border-t px-2 sm:px-6 md:px-20 shadow-md ${
+        className={`flex h-20  w-[95%] items-center bg-white justify-between border-t px-2 sm:px-6 md:px-20  ${
           Mode && '!bg-dark-mode'
         }`}
       >

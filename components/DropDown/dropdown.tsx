@@ -44,15 +44,13 @@ export default function DropDown({ userImg }: any) {
           >
             <div className="px-1 py-1 w-full ">
               <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`hover:bg-primary-color ${
-                      mode ? '!text-white' : '!text-gray-900'
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  >
-                    Profile
-                  </button>
-                )}
+                <button
+                  className={`hover:bg-primary-color ${
+                    mode ? '!text-white' : '!text-gray-900'
+                  } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                >
+                  Profile
+                </button>
               </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
