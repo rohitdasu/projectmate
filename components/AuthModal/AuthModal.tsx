@@ -7,6 +7,7 @@ import { closeModal } from '../../store/slices/modalSlice';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, Provider_github, Provider_google } from '../../lib/firebase';
 import Router, { useRouter } from 'next/router';
+import toast, { Toaster } from 'react-hot-toast';
 
 export const AuthModal = () => {
   const mode = useAppSelector((state) => state.mode.mode);
@@ -16,16 +17,59 @@ export const AuthModal = () => {
   const handleGoogleSignin = () => {
     signInWithPopup(auth, Provider_google)
       .then(() => {
-        router.push('/dashboard');
+        mode
+          ? toast.success('Login Successful', {
+              duration: 2000,
+              style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+              },
+            })
+          : toast.success('Login Successful');
       })
-      .catch((error) => alert(error.message));
+      .catch((error) =>
+        mode
+          ? toast.error(error.code, {
+              duration: 2000,
+              style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+              },
+            })
+          : toast.error(error.code)
+      );
+
+    dispatch(closeModal());
   };
   const handleGithubSignin = () => {
     signInWithPopup(auth, Provider_github)
       .then(() => {
-        router.push('/dashboard');
+        mode
+          ? toast.success('Login Successful', {
+              duration: 2000,
+              style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+              },
+            })
+          : toast.success('Login Successful');
       })
-      .catch((error) => alert(error.message));
+      .catch((error) =>
+        mode
+          ? toast.error(error.code, {
+              duration: 2000,
+              style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+              },
+            })
+          : toast.error(error.code)
+      );
+    dispatch(closeModal());
   };
   return (
     <>
@@ -35,6 +79,7 @@ export const AuthModal = () => {
           tw="relative z-10"
           onClose={() => dispatch(closeModal())}
         >
+          <Toaster />
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
