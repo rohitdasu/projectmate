@@ -53,8 +53,8 @@ export const Navbar = ({ active }: NavProps) => {
             <a
               href=""
               className={`text-[20px] h-full ${
-                Mode && 'hover:bg-gray-800'
-              } items-center flex px-2 hover:bg-gray-100 font-normal ${
+                Mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+              } items-center flex px-2  font-normal ${
                 active === 'home' && 'active'
               }`}
             >
@@ -65,8 +65,8 @@ export const Navbar = ({ active }: NavProps) => {
             <a
               href="#"
               className={`text-[20px] ${
-                Mode && 'hover:bg-gray-800'
-              } h-full flex items-center px-2 hover:bg-gray-100 font-normal ${
+                Mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+              } h-full flex items-center px-2 font-normal ${
                 active === 'projects' && 'active'
               }`}
             >
@@ -77,8 +77,8 @@ export const Navbar = ({ active }: NavProps) => {
             <a
               href="#"
               className={`text-[20px] ${
-                Mode && 'hover:bg-gray-800'
-              } h-full flex items-center px-2 hover:bg-gray-100 font-normal ${
+                Mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+              } h-full flex items-center px-2 font-normal ${
                 active === 'about' && 'active'
               }`}
             >
