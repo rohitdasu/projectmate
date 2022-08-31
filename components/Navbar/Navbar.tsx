@@ -32,12 +32,6 @@ export const Navbar = ({ active }: data_type) => {
           Mode && '!bg-dark-mode'
         }`}
       >
-      <div
-        className={`flex h-20  w-[95%] items-center bg-white justify-between border-t px-2 sm:px-6 md:px-20  ${
-          Mode && '!bg-dark-mode'
-        }`}
->>>>>>> ad13872ff31b421095ed83ee64f351983384a6b3
-      >
         <span
           className={`${Mode && '!text-white'}`}
           tw="text-2xl flex items-center  md:space-x-2 font-semibold font-mono text-gray-900 uppercase"
