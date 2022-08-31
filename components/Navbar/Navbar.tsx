@@ -266,31 +266,35 @@ export const Navbar = ({ active }: data_type) => {
               Discord
             </a>
           </li>
-          <li>
-            <a
-              href="#"
-              className={`block ${
-                Mode ? 'text-white' : 'text-dark-mode'
-              }    py-2 pr-4 pl-3  `}
-            >
-              Profile
-            </a>
-          </li>
-          <li
-            onClick={() => {
-              signOut(auth);
-              dispatch(closeuserLogged());
-            }}
-          >
-            <a
-              href="#"
-              className={`block ${
-                Mode ? 'text-white' : 'text-dark-mode'
-              }    py-2 pr-4 pl-3  `}
-            >
-              Log out
-            </a>
-          </li>
+          {userlogged && (
+            <>
+              <li>
+                <a
+                  href="#"
+                  className={`block ${
+                    Mode ? 'text-white' : 'text-dark-mode'
+                  }    py-2 pr-4 pl-3  `}
+                >
+                  Profile
+                </a>
+              </li>
+              <li
+                onClick={() => {
+                  signOut(auth);
+                  dispatch(closeuserLogged());
+                }}
+              >
+                <a
+                  href="#"
+                  className={`block ${
+                    Mode ? 'text-white' : 'text-dark-mode'
+                  }    py-2 pr-4 pl-3  `}
+                >
+                  Log out
+                </a>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </nav>
