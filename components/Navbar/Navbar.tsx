@@ -182,14 +182,6 @@ export const Navbar = ({ active }: data_type) => {
                 />
               )}
             </a>
-            <a
-              href="#"
-              target="_blank"
-              rel="noreferrer"
-              className={`${
-                Mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-              } p-2 hidden rounded-full sm:flex items-center justify-center `}
-            ></a>
           </div>
           {userlogged && (
             <div className={`${userlogged ? 'flex' : 'hidden'} items-center`}>

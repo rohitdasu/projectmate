@@ -14,7 +14,9 @@ export default function DropDown({ userImg }: any) {
   // mode - false (light-mode) | mode - true (dark-mode)
   return (
     <div
-      className={` fixed ${userLogged ? 'block' : '!hidden'} w-max text-right`}
+      className={` fixed ${
+        userLogged ? 'block' : '!hidden'
+      } z-[999] w-max text-right`}
     >
       <Menu as="div" className="relative inline-block text-left">
         <div>
