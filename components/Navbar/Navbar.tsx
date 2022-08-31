@@ -3,12 +3,23 @@ import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { changeMode } from '../../store/slices/ModeSlice';
 import { Icon } from '@iconify/react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../lib/firebase';
+import { signOut } from 'firebase/auth';
+import Link from 'next/link';
+import DropDown from '../DropDown/dropdown';
+import { closeuserLogged } from '../../store/slices/userSlice';
 
-export const Navbar = () => {
+type data_type = {
+  active: String;
+};
+
+export const Navbar = ({ active }: data_type) => {
   const dispatch = useAppDispatch();
   const Mode = useAppSelector((state) => state.mode.mode);
-
+  const userlogged = useAppSelector((state) => state.user.userLogged);
   const [menuState, setMenuState] = useState(false);
+  const [user] = useAuthState(auth);
   return (
     <nav className={`relative w-full h-max`}>
       <div
@@ -26,130 +37,165 @@ export const Navbar = () => {
           ) : (
             <Image src="/logo.svg" height={40} width={40} alt="logo" />
           )}
+
           <p>
             project<span className="text-primary-color">mate</span>
           </p>
         </span>
+
         <div
           className={`hidden lg:flex justify-around items-center w-[400px] h-full ${
             Mode && 'text-white'
           }`}
         >
-          <a
-            href="#"
-            className="text-[20px] flex items-center font-normal active"
-          >
-            Home
-          </a>
-          <a href="#" className="text-[20px] flex items-center font-normal ">
-            Projects
-          </a>
-          <a href="#" className="text-[20px] flex items-center font-normal">
-            About
-          </a>
+          <Link href={'/'}>
+            <a
+              href=""
+              className={`text-[20px] flex items-center font-normal ${
+                active === 'home' && 'active'
+              }`}
+            >
+              Home
+            </a>
+          </Link>
+          <Link href={'/projects'}>
+            <a
+              href="#"
+              className={`text-[20px] flex items-center font-normal ${
+                active === 'projects' && 'active'
+              }`}
+            >
+              Projects
+            </a>
+          </Link>
+          <Link href={'/about'}>
+            <a
+              href="#"
+              className={`text-[20px] flex items-center font-normal ${
+                active === 'about' && 'active'
+              }`}
+            >
+              About
+            </a>
+          </Link>
         </div>
-        <div className="flex items-center justify-between space-x-2 w-max sm:w-[150px]">
-          <a
-            href="#"
-            onClick={() => dispatch(changeMode())}
-            className={`${
-              Mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-            } p-2 rounded-full flex items-center justify-center `}
-          >
-            {Mode ? (
-              <Image
-                src={'/light-mode.svg'}
-                alt="night-mode"
-                height={25}
-                width={25}
-              />
-            ) : (
-              <Image
-                src={'/night-mode.svg'}
-                alt="night-mode"
-                height={20}
-                width={20}
-              />
-            )}
-          </a>
-          <a
-            onClick={() => setMenuState(!menuState)}
-            className={`${
-              Mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-            } p-2 sm:hidden cursor-pointer rounded-full flex items-center justify-center `}
-          >
-            {Mode ? (
-              menuState ? (
-                <Icon
-                  icon="akar-icons:cross"
-                  color="white"
+        <div className="flex  items-center">
+          <div className="flex items-center justify-between space-x-2 w-max sm:w-[150px]">
+            <a
+              href="#"
+              onClick={() => dispatch(changeMode())}
+              className={`${
+                Mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
+              } p-2 rounded-full flex items-center justify-center `}
+            >
+              {Mode ? (
+                <Image
+                  src={'/light-mode.svg'}
+                  alt="night-mode"
                   height={30}
                   width={30}
                 />
               ) : (
-                <Icon
-                  icon="charm:menu-hamburger"
-                  color="white"
+                <Image
+                  src={'/night-mode.svg'}
+                  alt="night-mode"
                   height={30}
                   width={30}
                 />
-              )
-            ) : menuState ? (
-              <Icon icon="akar-icons:cross" height={30} width={30} />
-            ) : (
-              <Icon icon="charm:menu-hamburger" height={30} width={30} />
-            )}
-          </a>
-          <a
-            href="https://github.com/rohitdasu/projectmate"
-            target="_blank"
-            rel="noreferrer"
-            className={`${
-              Mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-            } p-2 hidden rounded-full sm:flex items-center justify-center `}
-          >
-            {Mode ? (
-              <Image
-                src="/dark-github.svg"
-                alt="Github Logo"
-                width={30}
-                height={30}
-              />
-            ) : (
-              <Image
-                src="/github.svg"
-                alt="Github Logo"
-                width={30}
-                height={30}
-              />
-            )}
-          </a>
-          <a
-            href="https://discord.gg/FQtyMWFZQ9"
-            target="_blank"
-            rel="noreferrer"
-            className={`${
-              Mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-            } p-2 hidden rounded-full sm:flex items-center justify-center `}
-          >
-            {Mode ? (
-              <Image
-                tw="ml-4"
-                src="/dark-discord.svg"
-                alt="Discord-logo"
-                width={30}
-                height={30}
-              />
-            ) : (
-              <Image
-                tw="ml-4"
-                src="/discord.svg"
-                alt="Discord-logo"
-                width={30}
-                height={30}
-              />
-            )}
-          </a>
+              )}
+            </a>
+            <a
+              onClick={() => setMenuState(!menuState)}
+              className={`${
+                Mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
+              } p-2 sm:hidden cursor-pointer rounded-full flex items-center justify-center `}
+            >
+              {Mode ? (
+                menuState ? (
+                  <Icon
+                    icon="akar-icons:cross"
+                    color="white"
+                    height={30}
+                    width={30}
+                  />
+                ) : (
+                  <Icon
+                    icon="charm:menu-hamburger"
+                    color="white"
+                    height={30}
+                    width={30}
+                  />
+                )
+              ) : menuState ? (
+                <Icon icon="akar-icons:cross" height={30} width={30} />
+              ) : (
+                <Icon icon="charm:menu-hamburger" height={30} width={30} />
+              )}
+            </a>
+            <a
+              href="https://github.com/rohitdasu/projectmate"
+              target="_blank"
+              rel="noreferrer"
+              className={`${
+                Mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
+              } p-2 hidden rounded-full sm:flex items-center justify-center `}
+            >
+              {Mode ? (
+                <Image
+                  src="/dark-github.svg"
+                  alt="Github Logo"
+                  width={40}
+                  height={40}
+                />
+              ) : (
+                <Image
+                  src="/github.svg"
+                  alt="Github Logo"
+                  width={40}
+                  height={40}
+                />
+              )}
+            </a>
+            <a
+              href="https://discord.gg/FQtyMWFZQ9"
+              target="_blank"
+              rel="noreferrer"
+              className={`${
+                Mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
+              } p-2 hidden rounded-full sm:flex items-center justify-center `}
+            >
+              {Mode ? (
+                <Image
+                  tw="ml-4"
+                  src="/dark-discord.svg"
+                  alt="Discord-logo"
+                  width={40}
+                  height={40}
+                />
+              ) : (
+                <Image
+                  tw="ml-4"
+                  src="/discord.svg"
+                  alt="Discord-logo"
+                  width={40}
+                  height={40}
+                />
+              )}
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+              className={`${
+                Mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
+              } p-2 hidden rounded-full sm:flex items-center justify-center `}
+            ></a>
+          </div>
+          {userlogged && (
+            <div className={`${userlogged ? 'flex' : 'hidden'} items-center`}>
+              <DropDown userImg={user?.photoURL} />
+            </div>
+          )}
         </div>
       </div>
       <div
@@ -163,38 +209,46 @@ export const Navbar = () => {
           } w-full flex-col   space-y-2  p-4 mt-4  rounded-lg  border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 `}
         >
           <li>
-            <a
-              href="#"
+            <Link
+              href="/"
               className={`block ${
                 Mode ? 'text-dark-mode' : 'text-white'
               } bg-primary-color py-2 pr-4 pl-3 text-white rounded font-semibold`}
             >
-              Home
-            </a>
+              <span
+                className={`block ${
+                  Mode ? 'text-dark-mode' : 'text-white'
+                } bg-primary-color py-2 pr-4 pl-3 text-white rounded font-semibold`}
+              >
+                Home
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link href={'/projects'}>
+              <span
+                className={`block ${
+                  Mode ? 'text-white' : 'text-black'
+                } py-2 pr-4 pl-3  `}
+              >
+                Project
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link href={'/about'}>
+              <span
+                className={`block ${
+                  Mode ? 'text-white' : 'text-black'
+                } py-2 pr-4 pl-3  `}
+              >
+                About
+              </span>
+            </Link>
           </li>
           <li>
             <a
-              href="#"
-              className={`block ${
-                Mode ? 'text-white' : 'text-black'
-              } py-2 pr-4 pl-3  `}
-            >
-              Project
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className={`block ${
-                Mode ? 'text-white' : 'text-black'
-              } py-2 pr-4 pl-3  `}
-            >
-              About
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
+              href="https://github.com/rohitdasu/projectmate"
               className={`block ${
                 Mode ? 'text-white' : 'text-black'
               } py-2 pr-4 pl-3  `}
@@ -204,12 +258,37 @@ export const Navbar = () => {
           </li>
           <li>
             <a
-              href="#"
+              href="https://discord.gg/FQtyMWFZQ9"
               className={`block ${
                 Mode ? 'text-white' : 'text-dark-mode'
               }    py-2 pr-4 pl-3  `}
             >
               Discord
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className={`block ${
+                Mode ? 'text-white' : 'text-dark-mode'
+              }    py-2 pr-4 pl-3  `}
+            >
+              Profile
+            </a>
+          </li>
+          <li
+            onClick={() => {
+              signOut(auth);
+              dispatch(closeuserLogged());
+            }}
+          >
+            <a
+              href="#"
+              className={`block ${
+                Mode ? 'text-white' : 'text-dark-mode'
+              }    py-2 pr-4 pl-3  `}
+            >
+              Log out
             </a>
           </li>
         </ul>
