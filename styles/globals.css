@@ -15,7 +15,7 @@ body {
 @tailwind utilities;
 
 .active {
-  @apply text-secondary-color font-semibold border-b-[3px] border-b-[#093BEC75] h-[100%];
+  @apply text-secondary-color font-semibold border-b-[3px] border-b-[#093BEC75];
 }
 .hover-overlay {
   @apply bg-gray-500 rounded-full;

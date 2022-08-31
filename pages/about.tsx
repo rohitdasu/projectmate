@@ -9,7 +9,6 @@ type Props = {
 };
 
 const About: NextPage<Props> = ({ contributors }) => {
-  const userLoggedState = useAppSelector((state) => state.user.userLogged);
   const Mode = useAppSelector((state) => state.mode.mode);
   return (
     <div

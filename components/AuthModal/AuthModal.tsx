@@ -1,24 +1,23 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import Image from 'next/image';
-import tw from 'twin.macro';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { closeModal } from '../../store/slices/modalSlice';
+import { closeModal } from '../../store/slices/sliceModal';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, Provider_github, Provider_google } from '../../lib/firebase';
-import Router, { useRouter } from 'next/router';
 import toast, { Toaster } from 'react-hot-toast';
+import tw from 'twin.macro';
 
 export const AuthModal = () => {
   const mode = useAppSelector((state) => state.mode.mode);
   const isOpen = useAppSelector((state) => state.modal.modal);
-  const router = useRouter();
   const dispatch = useAppDispatch();
   const handleGoogleSignin = () => {
     signInWithPopup(auth, Provider_google)
       .then(() => {
         mode
           ? toast.success('Login Successful', {
+              position: 'bottom-center',
               duration: 2000,
               style: {
                 borderRadius: '10px',
@@ -26,11 +25,12 @@ export const AuthModal = () => {
                 color: '#fff',
               },
             })
-          : toast.success('Login Successful');
+          : toast.success('Login Successful', { position: 'bottom-center' });
       })
       .catch((error) =>
         mode
-          ? toast.error(error.code, {
+          ? toast.error(error.message, {
+              position: 'bottom-center',
               duration: 2000,
               style: {
                 borderRadius: '10px',
@@ -38,9 +38,8 @@ export const AuthModal = () => {
                 color: '#fff',
               },
             })
-          : toast.error(error.code)
+          : toast.error(error.message, { position: 'bottom-center' })
       );
-
     dispatch(closeModal());
   };
   const handleGithubSignin = () => {
@@ -48,6 +47,7 @@ export const AuthModal = () => {
       .then(() => {
         mode
           ? toast.success('Login Successful', {
+              position: 'bottom-center',
               duration: 2000,
               style: {
                 borderRadius: '10px',
@@ -55,11 +55,12 @@ export const AuthModal = () => {
                 color: '#fff',
               },
             })
-          : toast.success('Login Successful');
+          : toast.success('Login Successful', { position: 'bottom-center' });
       })
       .catch((error) =>
         mode
-          ? toast.error(error.code, {
+          ? toast.error(error.message, {
+              position: 'bottom-center',
               duration: 2000,
               style: {
                 borderRadius: '10px',
@@ -67,7 +68,7 @@ export const AuthModal = () => {
                 color: '#fff',
               },
             })
-          : toast.error(error.code)
+          : toast.error(error.message, { position: 'bottom-center' })
       );
     dispatch(closeModal());
   };
