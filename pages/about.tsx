@@ -21,7 +21,7 @@ const About: NextPage<Props> = ({ contributors }) => {
         <title>Projectmate | About</title>
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
-      <Navbar active={'about'} userlogged={userLoggedState} />
+      <Navbar active={'about'} />
       <main tw="flex   lg:w-full flex-1 "></main>
       <footer
         className={`flex  flex-col h-24 mt-auto w-full items-center bg-white justify-center border-t px-6 lg:px-20 shadow-md ${

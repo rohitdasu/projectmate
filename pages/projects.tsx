@@ -16,7 +16,7 @@ const Projects = () => {
         <title>Projectmate | Projects</title>
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
-      <Navbar active={'projects'} userlogged={userLoggedState} />
+      <Navbar active={'projects'} />
       <main tw="flex   lg:w-full flex-1 "></main>
     </div>
   );
