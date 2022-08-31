@@ -4,17 +4,30 @@ import Image from 'next/image';
 import tw from 'twin.macro';
 import Lottie from 'lottie-react-web';
 import animation from '../public/animation-lottie.json';
-import { IContributors, ContributorList, AuthModal, Navbar } from '../components';
+import { Navbar } from '../components/Navbar';
+import { IContributors, ContributorList, AuthModal } from '../components';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { openModal } from '../store/slices/modalSlice';
+import { Toaster } from 'react-hot-toast';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../lib/firebase';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { openuserLogged } from '../store/slices/userSlice';
 
-type Props = {
-  contributors: IContributors[];
-};
-
-const Home: NextPage<Props> = ({ contributors }) => {
+const Home: NextPage = () => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const Mode = useAppSelector((state) => state.mode.mode);
+  const userState = useAppSelector((state) => state.user.userLogged);
+  const [user] = useAuthState(auth);
+  // const [userlooged, setUserlooged] = useState(false);
+  useEffect(() => {
+    if (user?.displayName) {
+      dispatch(openuserLogged());
+    }
+  }, [user, dispatch]);
+
   return (
     <div
       className={`flex min-h-screen flex-col items-center justify-center ${
@@ -25,8 +38,9 @@ const Home: NextPage<Props> = ({ contributors }) => {
         <title>projectmate</title>
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
-      <Navbar />
+      <Navbar active={'home'} />
       <main tw="flex   lg:w-full flex-1 ">
+        <Toaster />
         <AuthModal />
         <div tw="flex flex-col px-[2px] flex-1 text-center md:text-left   justify-center lg:m-0 lg:w-1/2   lg:px-20">
           <h1
@@ -47,15 +61,24 @@ const Home: NextPage<Props> = ({ contributors }) => {
             We will help you to find opensource project and contributors.
           </p>
 
-          <button
-            onClick={() => dispatch(openModal())}
-            type="button"
-            tw="border border-white w-[170px] mx-auto md:mx-0 font-semibold h-[49px] mt-[20px] bg-[#2854EECC] text-white rounded-md"
-          >
-            JOIN US
-          </button>
+          {userState ? (
+            <button
+              onClick={() => router.push('/projects')}
+              type="button"
+              tw="border border-white w-[170px] mx-auto md:mx-0 font-semibold h-[49px] mt-[20px] bg-[#2854EECC] text-white rounded-md"
+            >
+              Explore Projects
+            </button>
+          ) : (
+            <button
+              onClick={() => dispatch(openModal())}
+              type="button"
+              tw="border border-white w-[170px] mx-auto md:mx-0 font-semibold h-[49px] mt-[20px] bg-[#2854EECC] text-white rounded-md"
+            >
+              JOIN US
+            </button>
+          )}
         </div>
-
         <div tw="hidden lg:inline-flex  lg:px-20">
           <Lottie
             tw="h-[200px] w-[100px]"
@@ -65,34 +88,8 @@ const Home: NextPage<Props> = ({ contributors }) => {
           />
         </div>
       </main>
-      <footer
-        className={`flex  flex-col h-24 w-full items-center bg-white justify-center border-t px-6 lg:px-20 shadow-md ${
-          Mode && '!bg-dark-mode border-t-0'
-        } `}
-      >
-        <p className={`text-lg font-light  mb-2 pb-0 ${Mode && 'text-white'}`}>
-          Shout-out to our contributors
-        </p>
-
-        <div tw="flex items-center justify-around w-[80%] lg:w-1/5">
-          <ContributorList contributors={contributors} />
-        </div>
-      </footer>
     </div>
   );
 };
 
 export default Home;
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const data = await fetch(
-    'https://api.github.com/repos/rohitdasu/projectmate/contributors'
-  );
-  const json = await data.json();
-
-  return {
-    props: {
-      contributors: json,
-    },
-  };
-};

@@ -14,11 +14,14 @@
     "@emotion/styled": "^11.10.0",
     "@headlessui/react": "^1.6.6",
     "@reduxjs/toolkit": "^1.8.5",
+    "firebase": "^9.9.3",
     "lottie-react-web": "^2.2.2",
     "mongodb": "^4.9.0",
     "next": "latest",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-firebase-hooks": "^5.0.3",
+    "react-hot-toast": "^2.3.0",
     "react-redux": "^8.0.2"
   },
   "devDependencies": {
