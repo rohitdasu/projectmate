@@ -4,7 +4,7 @@ import { useAppSelector } from '../app/hooks';
 import { Navbar } from '../components';
 
 const Projects = () => {
-  const userLoggedState = useAppSelector((state) => state.user.userLogged);
+  const userLoggedState = useAppSelector((state) => state.user.isLogged);
   const Mode = useAppSelector((state) => state.mode.mode);
   return (
     <div

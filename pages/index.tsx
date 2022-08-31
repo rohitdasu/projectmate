@@ -10,18 +10,18 @@ import animation from '../public/animation-lottie.json';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { AuthModal, Navbar } from '../components';
 import { openModal } from '../store/slices/sliceModal';
-import { openuserLogged } from '../store/slices/sliceUser';
+import { setUserLogged } from '../store/slices/sliceUser';
 import tw from 'twin.macro';
 
 const Home: NextPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const Mode = useAppSelector((state) => state.mode.mode);
-  const userState = useAppSelector((state) => state.user.userLogged);
+  const userState = useAppSelector((state) => state.user.isLogged);
   const [user] = useAuthState(auth);
   useEffect(() => {
     if (user?.displayName) {
-      dispatch(openuserLogged());
+      dispatch(setUserLogged());
     }
   }, [user, dispatch]);
 

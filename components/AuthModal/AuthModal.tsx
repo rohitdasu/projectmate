@@ -17,6 +17,7 @@ export const AuthModal = () => {
       .then(() => {
         mode
           ? toast.success('Login Successful', {
+              position: 'bottom-center',
               duration: 2000,
               style: {
                 borderRadius: '10px',
@@ -24,11 +25,12 @@ export const AuthModal = () => {
                 color: '#fff',
               },
             })
-          : toast.success('Login Successful');
+          : toast.success('Login Successful', { position: 'bottom-center' });
       })
       .catch((error) =>
         mode
-          ? toast.error(error.code, {
+          ? toast.error(error.message, {
+              position: 'bottom-center',
               duration: 2000,
               style: {
                 borderRadius: '10px',
@@ -36,9 +38,8 @@ export const AuthModal = () => {
                 color: '#fff',
               },
             })
-          : toast.error(error.code)
+          : toast.error(error.message, { position: 'bottom-center' })
       );
-
     dispatch(closeModal());
   };
   const handleGithubSignin = () => {
@@ -46,6 +47,7 @@ export const AuthModal = () => {
       .then(() => {
         mode
           ? toast.success('Login Successful', {
+              position: 'bottom-center',
               duration: 2000,
               style: {
                 borderRadius: '10px',
@@ -53,11 +55,12 @@ export const AuthModal = () => {
                 color: '#fff',
               },
             })
-          : toast.success('Login Successful');
+          : toast.success('Login Successful', { position: 'bottom-center' });
       })
       .catch((error) =>
         mode
-          ? toast.error(error.code, {
+          ? toast.error(error.message, {
+              position: 'bottom-center',
               duration: 2000,
               style: {
                 borderRadius: '10px',
@@ -65,7 +68,7 @@ export const AuthModal = () => {
                 color: '#fff',
               },
             })
-          : toast.error(error.code)
+          : toast.error(error.message, { position: 'bottom-center' })
       );
     dispatch(closeModal());
   };

@@ -5,17 +5,18 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
 import { useAppSelector } from '../../app/hooks';
 import { useDispatch } from 'react-redux';
-import { closeuserLogged } from '../../store/slices/sliceUser';
+import { setUserLoggedOut } from '../../store/slices/sliceUser';
+import toast from 'react-hot-toast';
 
 export function DropDown({ userImg }: any) {
   const dispatch = useDispatch();
   const mode = useAppSelector((state) => state.mode.mode);
-  const userLogged = useAppSelector((state) => state.user.userLogged);
+  const isLogged = useAppSelector((state) => state.user.isLogged);
   // mode - false (light-mode) | mode - true (dark-mode)
   return (
     <div
       className={` fixed ${
-        userLogged ? 'block' : '!hidden'
+        isLogged ? 'block' : '!hidden'
       } z-[999] w-max text-right`}
     >
       <Menu as="div" className="relative inline-block text-left">
@@ -41,15 +42,13 @@ export function DropDown({ userImg }: any) {
         >
           <Menu.Items
             className={`absolute right-0 mt-2 w-40 ${
-              mode ? '!bg-dark-mode' : '!bg-white'
+              mode ? '!bg-gray-700 text-white' : '!bg-white'
             } origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
           >
             <div className="px-1 py-1 w-full ">
               <Menu.Item>
                 <button
-                  className={`hover:bg-primary-color ${
-                    mode ? '!text-white' : '!text-gray-900'
-                  } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  className={`hover:bg-primary-color hover:text-white group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
                   Profile
                 </button>
@@ -59,11 +58,22 @@ export function DropDown({ userImg }: any) {
                   <button
                     onClick={() => {
                       signOut(auth);
-                      dispatch(closeuserLogged());
+                      dispatch(setUserLoggedOut());
+                      mode
+                        ? toast.success('Logout was successful', {
+                            position: 'bottom-center',
+                            duration: 2000,
+                            style: {
+                              borderRadius: '10px',
+                              background: '#333',
+                              color: '#fff',
+                            },
+                          })
+                        : toast.success('Logout was successful', {
+                            position: 'bottom-center',
+                          });
                     }}
-                    className={`hover:bg-primary-color ${
-                      mode ? '!text-white' : '!text-gray-900'
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    className={`hover:bg-primary-color hover:text-white group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
                     Logout
                   </button>

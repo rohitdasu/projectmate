@@ -1,28 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '..';
 
-interface UserLogged {
-  userLogged: boolean;
+interface UserType {
+  isLogged: boolean;
 }
 
-const initialState: UserLogged = {
-  userLogged: false,
+const initialState: UserType = {
+  isLogged: false,
 };
 
 export const userLoggedSlice = createSlice({
-  name: 'userLogged',
+  name: 'isLogged',
   initialState,
   reducers: {
-    openuserLogged: (state) => {
-      state.userLogged = true;
+    setUserLogged: (state) => {
+      state.isLogged = true;
     },
-    closeuserLogged: (state) => {
-      state.userLogged = false;
+    setUserLoggedOut: (state) => {
+      state.isLogged = false;
     },
   },
 });
 
-export const { openuserLogged, closeuserLogged } = userLoggedSlice.actions;
+export const { setUserLogged, setUserLoggedOut } = userLoggedSlice.actions;
 
 export const selectuserLogged = (state: RootState) => state.user;
 

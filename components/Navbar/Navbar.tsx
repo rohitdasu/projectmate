@@ -8,13 +8,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../lib/firebase';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { changeMode } from '../../store/slices/sliceMode';
-import { closeuserLogged } from '../../store/slices/sliceUser';
+import { setUserLoggedOut } from '../../store/slices/sliceUser';
 import { NavProps } from './Navbar.interface';
 
 export const Navbar = ({ active }: NavProps) => {
   const dispatch = useAppDispatch();
   const Mode = useAppSelector((state) => state.mode.mode);
-  const userlogged = useAppSelector((state) => state.user.userLogged);
+  const userlogged = useAppSelector((state) => state.user.isLogged);
   const [menuState, setMenuState] = useState(false);
   const [user] = useAuthState(auth);
   return (
@@ -52,7 +52,9 @@ export const Navbar = ({ active }: NavProps) => {
           <Link href={'/'}>
             <a
               href=""
-              className={`text-[20px] h-full items-center flex px-2 hover:bg-gray-100 font-normal ${
+              className={`text-[20px] h-full ${
+                Mode && 'hover:bg-gray-800'
+              } items-center flex px-2 hover:bg-gray-100 font-normal ${
                 active === 'home' && 'active'
               }`}
             >
@@ -62,7 +64,9 @@ export const Navbar = ({ active }: NavProps) => {
           <Link href={'/projects'}>
             <a
               href="#"
-              className={`text-[20px] h-full flex items-center px-2 hover:bg-gray-100 font-normal ${
+              className={`text-[20px] ${
+                Mode && 'hover:bg-gray-800'
+              } h-full flex items-center px-2 hover:bg-gray-100 font-normal ${
                 active === 'projects' && 'active'
               }`}
             >
@@ -72,7 +76,9 @@ export const Navbar = ({ active }: NavProps) => {
           <Link href={'/about'}>
             <a
               href="#"
-              className={`text-[20px] h-full flex items-center px-2 hover:bg-gray-100 font-normal ${
+              className={`text-[20px] ${
+                Mode && 'hover:bg-gray-800'
+              } h-full flex items-center px-2 hover:bg-gray-100 font-normal ${
                 active === 'about' && 'active'
               }`}
             >
@@ -278,7 +284,7 @@ export const Navbar = ({ active }: NavProps) => {
               <li
                 onClick={() => {
                   signOut(auth);
-                  dispatch(closeuserLogged());
+                  dispatch(setUserLoggedOut());
                 }}
               >
                 <a
