@@ -1,18 +1,16 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import Image from 'next/image';
-import tw from 'twin.macro';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { closeModal } from '../../store/slices/modalSlice';
+import { closeModal } from '../../store/slices/sliceModal';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, Provider_github, Provider_google } from '../../lib/firebase';
-import Router, { useRouter } from 'next/router';
 import toast, { Toaster } from 'react-hot-toast';
+import tw from 'twin.macro';
 
 export const AuthModal = () => {
   const mode = useAppSelector((state) => state.mode.mode);
   const isOpen = useAppSelector((state) => state.modal.modal);
-  const router = useRouter();
   const dispatch = useAppDispatch();
   const handleGoogleSignin = () => {
     signInWithPopup(auth, Provider_google)

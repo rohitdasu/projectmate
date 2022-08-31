@@ -17,7 +17,7 @@ const Projects = () => {
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
       <Navbar active={'projects'} />
-      <main tw="flex   lg:w-full flex-1 "></main>
+      <main tw="flex lg:w-full flex-1"></main>
     </div>
   );
 };

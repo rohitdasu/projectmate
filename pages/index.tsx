@@ -1,19 +1,17 @@
-import type { GetServerSideProps, NextPage } from 'next';
+import { useEffect } from 'react';
+import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
-import tw from 'twin.macro';
+import { useRouter } from 'next/router';
+import { auth } from '../lib/firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Toaster } from 'react-hot-toast';
 import Lottie from 'lottie-react-web';
 import animation from '../public/animation-lottie.json';
-import { Navbar } from '../components/Navbar';
-import { IContributors, ContributorList, AuthModal } from '../components';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { openModal } from '../store/slices/modalSlice';
-import { Toaster } from 'react-hot-toast';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../lib/firebase';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { openuserLogged } from '../store/slices/userSlice';
+import { AuthModal, Navbar } from '../components';
+import { openModal } from '../store/slices/sliceModal';
+import { openuserLogged } from '../store/slices/sliceUser';
+import tw from 'twin.macro';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -21,7 +19,6 @@ const Home: NextPage = () => {
   const Mode = useAppSelector((state) => state.mode.mode);
   const userState = useAppSelector((state) => state.user.userLogged);
   const [user] = useAuthState(auth);
-  // const [userlooged, setUserlooged] = useState(false);
   useEffect(() => {
     if (user?.displayName) {
       dispatch(openuserLogged());

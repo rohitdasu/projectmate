@@ -1,13 +1,13 @@
+import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
-import { Fragment, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
 import { useAppSelector } from '../../app/hooks';
 import { useDispatch } from 'react-redux';
-import { closeuserLogged } from '../../store/slices/userSlice';
+import { closeuserLogged } from '../../store/slices/sliceUser';
 
-export default function DropDown({ userImg }: any) {
+export function DropDown({ userImg }: any) {
   const dispatch = useDispatch();
   const mode = useAppSelector((state) => state.mode.mode);
   const userLogged = useAppSelector((state) => state.user.userLogged);
