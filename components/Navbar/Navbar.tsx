@@ -220,8 +220,11 @@ export const Navbar = ({ active }: NavProps) => {
             >
               <span
                 className={`block ${
-                  Mode ? 'text-dark-mode' : 'text-white'
-                } bg-primary-color py-2 pr-4 pl-3 text-white rounded font-semibold`}
+                  Mode ? 'text-white' : 'text-black'
+                } py-2 hover:bg-primary-color hover:text-white hover:font-semibold pr-4 pl-3 ${
+                  active === 'home' &&
+                  'bg-primary-color !text-white font-semibold'
+                }`}
               >
                 Home
               </span>
@@ -232,7 +235,10 @@ export const Navbar = ({ active }: NavProps) => {
               <span
                 className={`block ${
                   Mode ? 'text-white' : 'text-black'
-                } py-2 pr-4 pl-3  `}
+                } py-2 hover:bg-primary-color hover:text-white hover:font-semibold pr-4 pl-3  ${
+                  active === 'projects' &&
+                  'bg-primary-color !text-white font-semibold'
+                } `}
               >
                 Project
               </span>
@@ -243,7 +249,10 @@ export const Navbar = ({ active }: NavProps) => {
               <span
                 className={`block ${
                   Mode ? 'text-white' : 'text-black'
-                } py-2 pr-4 pl-3  `}
+                } py-2 hover:bg-primary-color hover:text-white hover:font-semibold  pr-4 pl-3 ${
+                  active === 'about' &&
+                  'bg-primary-color !text-white font-semibold'
+                }  `}
               >
                 About
               </span>
@@ -254,7 +263,7 @@ export const Navbar = ({ active }: NavProps) => {
               href="https://github.com/rohitdasu/projectmate"
               className={`block ${
                 Mode ? 'text-white' : 'text-black'
-              } py-2 pr-4 pl-3  `}
+              } py-2 hover:bg-primary-color hover:text-white hover:font-semibold pr-4 pl-3  `}
             >
               Github
             </a>
@@ -264,7 +273,7 @@ export const Navbar = ({ active }: NavProps) => {
               href="https://discord.gg/FQtyMWFZQ9"
               className={`block ${
                 Mode ? 'text-white' : 'text-dark-mode'
-              }    py-2 pr-4 pl-3  `}
+              }    py-2 hover:bg-primary-color hover:text-white hover:font-semibold pr-4 pl-3  `}
             >
               Discord
             </a>
@@ -276,7 +285,7 @@ export const Navbar = ({ active }: NavProps) => {
                   href="#"
                   className={`block ${
                     Mode ? 'text-white' : 'text-dark-mode'
-                  }    py-2 pr-4 pl-3  `}
+                  }    py-2 hover:bg-primary-color hover:text-white hover:font-semibold pr-4 pl-3  `}
                 >
                   Profile
                 </a>
@@ -291,7 +300,7 @@ export const Navbar = ({ active }: NavProps) => {
                   href="#"
                   className={`block ${
                     Mode ? 'text-white' : 'text-dark-mode'
-                  }    py-2 pr-4 pl-3  `}
+                  }    py-2 hover:bg-primary-color hover:text-white hover:font-semibold pr-4 pl-3  `}
                 >
                   Log out
                 </a>
