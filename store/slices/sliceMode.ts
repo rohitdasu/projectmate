@@ -21,6 +21,6 @@ export const modeSlice = createSlice({
 
 export const { changeMode } = modeSlice.actions;
 
-export const selectmode = (state: RootState) => state.mode;
+export const selectMode = (state: RootState) => state.mode;
 
 export default modeSlice.reducer;

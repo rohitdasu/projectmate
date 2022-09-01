@@ -16,6 +16,7 @@ export const ContributorList = ({ contributors }: Props) => {
           href={contributor.html_url}
           target="_blank"
           rel="noreferrer"
+          className="mx-2"
           title={contributor.html_url.split('/')[3]}
         >
           <Image
