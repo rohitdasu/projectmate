@@ -21,7 +21,7 @@ const Projects = () => {
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
       <Navbar active={'projects'} />
-      <main className="flex   mt-[7rem] gap-4 mx-auto flex-1">
+      <main className="flex overflow-hidden mt-[7rem] gap-4 mx-auto flex-1">
         <Filter />
         <div className="flex   z-[99] ml-0  xl:w-[670px]  w-[95%] mx-auto  flex-col space-y-2 ">
           <div className="fixed lg:w-auto w-full z-[999]">
