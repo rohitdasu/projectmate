@@ -8,7 +8,7 @@ const Project = ({ name, description, tags }) => {
     <div
       className={` ${
         Mode ? 'text-white bg-box-color border-gray-200' : 'text-dark-color'
-      } text-white shadow-md md:w-full w-[95%] p-2 rounded-md sm:pb-0  pb-[2rem] mx-auto  py-2 items-center md:flex  justify-center space-x-2 space-y-2`}
+      } text-white shadow-md md:w-full w-[95%] p-2 rounded-md sm:pb-0  pb-[2rem] !mx-auto  py-2 items-center md:flex  justify-center space-x-2 space-y-2`}
     >
       <div className="md:w-[500px] w-[250px] mx-auto h-auto">
         <Image
