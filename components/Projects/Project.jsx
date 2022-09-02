@@ -8,20 +8,22 @@ const Project = ({ name, description, tags }) => {
     <div
       className={` ${
         Mode ? 'text-white border-gray-200' : 'text-dark-color border-gray-600'
-      } text-white border-b   py-2 items-center md:flex  space-x-2 space-y-2`}
+      } text-white border-b md:w-full w-[90%] sm:pb-0  pb-[2rem] mx-auto  py-2 items-center md:flex  space-x-2 space-y-2`}
     >
-      <Image
-        src={'/open-source.png'}
-        alt={name}
-        height={'500'}
-        width={'500'}
-        className="object-contain h-[200px] w-[200px]  "
-      />
+      <div className="md:w-[500px] w-[250px] mx-auto h-auto">
+        <Image
+          src={'/open-source.png'}
+          alt={name}
+          height={'300'}
+          width={'300'}
+          className="object-contain  "
+        />
+      </div>
       <div className="flex flex-col space-y-2">
         <h1 className="font-semibold text-xl">{name}</h1>
         <p className="text-[14px] ">{description}</p>
-        <div className="flex justify-between items-center ">
-          <div className="flex space-x-2">
+        <div className="sm:flex block justify-between items-center ">
+          <div className="flex  space-x-2">
             {tags.map((tag, i) => (
               <p
                 key={i}
@@ -34,7 +36,7 @@ const Project = ({ name, description, tags }) => {
             ))}
           </div>
           <button
-            className={`p-2 flex items-center space-x-2 mr-4 bg-secondary-color ${
+            className={`p-2 sm:my-0 my-2 flex items-center space-x-2 mr-4 bg-secondary-color ${
               !Mode && 'text-white'
             } rounded-md`}
           >
