@@ -24,7 +24,7 @@ export const Navbar = ({ active }: NavProps) => {
       }`}
     >
       <div
-        className={`flex h-20  w-[95%] items-center bg-white justify-between border-t px-2 sm:px-6 md:px-20  ${
+        className={`flex h-20  w-[95%] mx-auto items-center bg-white justify-between border-t px-2 sm:px-6 md:px-20  ${
           Mode && '!bg-dark-mode'
         }`}
       >

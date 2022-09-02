@@ -3,7 +3,7 @@ import Project from './Project';
 
 export const ProjectShowcase = () => {
   return (
-    <div className="flex sm:h-[600px] h-full  scroll-hide overflow-y-scroll flex-col !mt-[4rem] space-y-4">
+    <div className="flex sm:h-[600px] h-max w-full  scroll-hide overflow-y-scroll flex-col !mt-[4rem] space-y-4">
       {projects.map((project) => (
         <Project
           key={project.id}

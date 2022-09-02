@@ -14,6 +14,7 @@ module.exports = {
         'primary-color': 'var(--primary-color)',
         'dark-color': 'var(--dark-color)',
         'dark-mode': 'var(--dark-mode)',
+        'box-color': 'var(--box-color)',
         'secondary-color': 'var(--secondary-color)',
       },
     },
