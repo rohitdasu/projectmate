@@ -13,7 +13,10 @@ export default async function handler(
   }
 }
 
-async function getHome(req: NextApiRequest, res: NextApiResponse<ResponseType>) {
+async function getHome(
+  req: NextApiRequest,
+  res: NextApiResponse<ResponseType>
+) {
   try {
     let { db } = await connectToDatabase();
 

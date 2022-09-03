@@ -13,7 +13,10 @@ export default async function handler(
   }
 }
 
-async function getProjects(req: NextApiRequest, res: NextApiResponse<ResponseType>) {
+async function getProjects(
+  req: NextApiRequest,
+  res: NextApiResponse<ResponseType>
+) {
   try {
     let { db } = await connectToDatabase();
 
