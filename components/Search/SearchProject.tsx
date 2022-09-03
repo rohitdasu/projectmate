@@ -4,7 +4,7 @@ import Image from 'next/image';
 export const SearchProject = () => {
   const [searchInput, setSearchInput] = useState('');
   return (
-    <form className=" my-2  px-2  lg:w-[670px] w-[90%]  z-[999] bg-white rounded-md shadow-md flex items-center space-x-2 mx-auto">
+    <form className="my-2 mx-2 md:mx-auto px-2 md:w-1/2 z-[999] bg-white rounded-md shadow-md flex items-center space-x-2">
       <Image
         src="/search.svg"
         height={18}

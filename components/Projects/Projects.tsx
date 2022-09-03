@@ -1,5 +1,5 @@
 import { projects } from '../../sample-data/data';
-import Project from './Project';
+import { Project } from './Project';
 
 export const Projects = () => {
   return (
@@ -8,7 +8,7 @@ export const Projects = () => {
         <Project
           key={project.id}
           description={project.description}
-          name={project.name}
+          title={project.title}
           tags={project.tags}
         />
       ))}

@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useAppSelector } from '../../app/hooks';
 
-const Project = ({ name, description, tags }: any) => {
+export const Project = ({ title, description, tags }: any) => {
   const Mode = useAppSelector((state) => state.mode.mode);
   return (
     <div
@@ -13,14 +13,14 @@ const Project = ({ name, description, tags }: any) => {
       <div className="md:w-[500px] w-[250px] mx-auto h-auto">
         <Image
           src={'/open-source.png'}
-          alt={name}
+          alt={title}
           height={'300'}
           width={'300'}
           className="object-contain  "
         />
       </div>
       <div className="flex flex-col space-y-2">
-        <h1 className="font-semibold text-xl">{name}</h1>
+        <h1 className="font-semibold text-xl">{title}</h1>
         <p className="text-[14px] ">{description}</p>
         <div className="sm:flex block justify-between items-center ">
           <div className="flex  space-x-2">
@@ -54,5 +54,3 @@ const Project = ({ name, description, tags }: any) => {
     </div>
   );
 };
-
-export default Project;

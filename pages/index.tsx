@@ -32,14 +32,14 @@ const Home: NextPage = () => {
       }`}
     >
       <Head>
-        <title>projectmate</title>
+        <title>Projectmate | Home</title>
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
       <Navbar active={'home'} />
-      <main tw="flex mt-[8rem]   lg:w-full flex-1 ">
+      <main tw="flex mt-[5rem] lg:w-full flex-1 ">
         <Toaster />
         <AuthModal />
-        <div tw="flex flex-col px-[2px] flex-1 text-center md:text-left   justify-center lg:m-0 lg:w-1/2   lg:px-20">
+        <div tw="flex flex-col px-[2px] flex-1 text-center md:text-left justify-center lg:m-0 lg:w-1/2 lg:px-20">
           <h1
             className={`lg:leading-[82px] leading-normal font-bold  text-dark-color md:text-[55px] text-[40px]  capitalize ${
               Mode && '!text-white'

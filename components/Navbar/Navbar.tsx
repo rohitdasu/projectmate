@@ -28,6 +28,7 @@ export const Navbar = ({ active }: NavProps) => {
           Mode && '!bg-dark-mode'
         }`}
       >
+        <div>
         <span
           className={`text-2xl flex items-center  md:space-x-2 font-semibold font-mono text-gray-900 uppercase ${
             Mode && '!text-white'
@@ -43,6 +44,7 @@ export const Navbar = ({ active }: NavProps) => {
             project<span className="text-primary-color">mate</span>
           </p>
         </span>
+        </div>
 
         <div
           className={`hidden lg:flex justify-around items-center w-[400px] h-full ${
