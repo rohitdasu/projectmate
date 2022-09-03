@@ -15,13 +15,11 @@ const Projects = () => {
       <Navbar active={'projects'} />
       <main className="flex flex-col w-full mt-20">
         <div
-          className={`w-full fixed z-50 ${
-            mode ? 'bg-dark-mode' : 'bg-white'
-          }`}
+          className={`w-full fixed z-50 ${mode ? 'bg-dark-mode' : 'bg-white'}`}
         >
           <Search />
         </div>
-        <div className="w-full md:w-1/2 mt-16 mb-4 mx-auto space-y-6">
+        <div className="w-full md:w-1/2 mt-16 mb-4 mx-auto space-y-4">
           {projects.map((project) => {
             return (
               <Project
