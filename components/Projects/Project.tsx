@@ -36,7 +36,7 @@ export const Project = ({ title, description, tags }: any) => {
             ))}
           </div>
           <button
-            className={`p-2 mt-2 sm:my-0 flex items-center space-x-2 bg-secondary-color ${
+            className={`p-2 mt-2 sm:my-0 flex justify-center items-center space-x-2 bg-secondary-color ${
               !Mode && 'text-white'
             } rounded-md`}
           >

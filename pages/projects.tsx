@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
 import { useAppSelector } from '../app/hooks';
-import { SearchProject, Project, Navbar } from '../components';
+import { Search, Project, Navbar } from '../components';
 import { projects } from '../sample-data/data';
 
 const Projects = () => {
@@ -15,11 +15,11 @@ const Projects = () => {
       <Navbar active={'projects'} />
       <main className="flex flex-col w-full mt-20">
         <div
-          className={`h-[70px] w-full fixed z-50 ${
+          className={`w-full fixed z-50 ${
             Mode ? 'bg-dark-mode' : 'bg-white'
           }`}
         >
-          <SearchProject />
+          <Search />
         </div>
         <div className="w-full md:w-1/2 mt-16 mb-4 mx-auto space-y-6">
           {projects.map((project) => {
