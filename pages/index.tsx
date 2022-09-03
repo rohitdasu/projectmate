@@ -1,16 +1,12 @@
-import { useEffect } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { auth } from '../lib/firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { Toaster } from 'react-hot-toast';
 import Lottie from 'lottie-react-web';
 import animation from '../public/animation-lottie.json';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { AuthModal, Navbar } from '../components';
 import { openModal } from '../store/slices/sliceModal';
-import { setUserLogged } from '../store/slices/sliceUser';
 import tw from 'twin.macro';
 
 const Home: NextPage = () => {
@@ -18,12 +14,6 @@ const Home: NextPage = () => {
   const dispatch = useAppDispatch();
   const Mode = useAppSelector((state) => state.mode.mode);
   const userState = useAppSelector((state) => state.user.isLogged);
-  const [user] = useAuthState(auth);
-  useEffect(() => {
-    if (user?.displayName) {
-      dispatch(setUserLogged());
-    }
-  }, [user, dispatch]);
 
   return (
     <div

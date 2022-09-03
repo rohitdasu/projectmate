@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
 import { Avatar } from '../Avatar';
@@ -8,7 +8,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../lib/firebase';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { changeMode } from '../../store/slices/sliceMode';
-import { setUserLoggedOut } from '../../store/slices/sliceUser';
+import { setUserLogged, setUserLoggedOut } from '../../store/slices/sliceUser';
 import { NavProps } from './Navbar.interface';
 
 export const Navbar = ({ active }: NavProps) => {
@@ -17,6 +17,13 @@ export const Navbar = ({ active }: NavProps) => {
   const userlogged = useAppSelector((state) => state.user.isLogged);
   const [menuState, setMenuState] = useState(false);
   const [user] = useAuthState(auth);
+  
+  useEffect(() => {
+    if (user?.displayName) {
+      dispatch(setUserLogged());
+    }
+  }, [user, dispatch]);
+
   return (
     <nav
       className={` fixed  z-[999] shadow-md bg-white w-screen h-max  ${
