@@ -31,9 +31,11 @@ export const Project = ({ title, description, tags, author }: any) => {
             {tags.map((tag: any, i: any) => (
               <p
                 key={i}
-                className={`px-2 py-1 ${
-                  !mode && 'text-[#373737] bg-[#DEDEDE] border border-[#C9C9C9]'
-                } border border-[#363D45] bg-[#31363E] text-[14px]  cursor-pointer rounded-full`}
+                className={`px-2 py-1 text-[14px] rounded-full cursor-pointer ${
+                  !mode
+                    ? 'text-[#373737] bg-[#dedede] border border-[#c9c9c9]'
+                    : 'border border-[#363d45] bg-[#31363e]'
+                }`}
               >
                 {tag}
               </p>
