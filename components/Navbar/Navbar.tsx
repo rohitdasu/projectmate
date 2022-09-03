@@ -19,12 +19,12 @@ export const Navbar = ({ active }: NavProps) => {
   const [user] = useAuthState(auth);
   return (
     <nav
-      className={`relative shadow-md bg-white w-full h-max  ${
+      className={` fixed  z-[999] shadow-md bg-white w-screen h-max  ${
         Mode && '!bg-dark-mode'
       }`}
     >
       <div
-        className={`flex h-20  w-[95%] items-center bg-white justify-between border-t px-2 sm:px-6 md:px-20  ${
+        className={`flex h-20  w-[95%] mx-auto items-center bg-white justify-between border-t px-2 sm:px-6 md:px-20  ${
           Mode && '!bg-dark-mode'
         }`}
       >
@@ -63,7 +63,7 @@ export const Navbar = ({ active }: NavProps) => {
           </Link>
           <Link href={'/projects'}>
             <a
-              href="#"
+              href=""
               className={`text-[20px] ${
                 Mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
               } h-full flex items-center px-2 font-normal ${
