@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
-import { DropDown } from '../DropDown';
+import { Avatar } from '../Avatar';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../lib/firebase';
@@ -24,7 +24,7 @@ export const Navbar = ({ active }: NavProps) => {
       }`}
     >
       <div
-        className={`flex h-20  w-[95%] mx-auto items-center bg-white justify-between border-t px-2 sm:px-6 md:px-10  ${
+        className={`flex h-20  w-[95%] mx-auto items-center bg-white justify-between px-2 sm:px-6 md:px-10  ${
           Mode && '!bg-dark-mode'
         }`}
       >
@@ -191,7 +191,7 @@ export const Navbar = ({ active }: NavProps) => {
               <div
                 className={`${userlogged && 'sm:flex'}  items-center hidden`}
               >
-                <DropDown userImg={user?.photoURL} />
+                <Avatar userImg={user?.photoURL} />
               </div>
             )}
           </div>

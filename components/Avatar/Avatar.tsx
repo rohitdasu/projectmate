@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { setUserLoggedOut } from '../../store/slices/sliceUser';
 import toast from 'react-hot-toast';
 
-export function DropDown({ userImg }: any) {
+export function Avatar({ userImg }: any) {
   const dispatch = useDispatch();
   const mode = useAppSelector((state) => state.mode.mode);
   const isLogged = useAppSelector((state) => state.user.isLogged);

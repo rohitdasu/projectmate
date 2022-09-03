@@ -4,7 +4,7 @@ import { useAppSelector } from '../app/hooks';
 import { Navbar } from '../components';
 import { Features } from '../components/Features';
 import { Filter } from '../components/Filter';
-import { ProjectShowcase } from '../components/Projects';
+import { Projects as ProjectsSection } from '../components/Projects';
 import { SearchProject } from '../components/Search';
 
 const Projects = () => {
@@ -31,7 +31,7 @@ const Projects = () => {
           >
             <SearchProject />
           </div>
-          <ProjectShowcase />
+          <ProjectsSection />
         </div>
         <Features />
       </main>

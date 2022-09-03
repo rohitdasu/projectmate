@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useAppSelector } from '../../app/hooks';
 
-const Project = ({ name, description, tags }) => {
+const Project = ({ name, description, tags }: any) => {
   const Mode = useAppSelector((state) => state.mode.mode);
   return (
     <div
@@ -24,7 +24,7 @@ const Project = ({ name, description, tags }) => {
         <p className="text-[14px] ">{description}</p>
         <div className="sm:flex block justify-between items-center ">
           <div className="flex  space-x-2">
-            {tags.map((tag, i) => (
+            {tags.map((tag: any, i: any) => (
               <p
                 key={i}
                 className={`p-2  ${
