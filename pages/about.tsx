@@ -1,6 +1,6 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { NextPage } from 'next';
 import Head from 'next/head';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppSelector } from '../app/hooks';
 import { IContributors, Navbar, ContributorList } from '../components';
 
@@ -8,7 +8,20 @@ type Props = {
   contributors: IContributors[];
 };
 
-const About: NextPage<Props> = ({ contributors }) => {
+const About: NextPage<Props> = () => {
+  const [contributors, setContributors] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      'https://api.github.com/repos/rohitdasu/projectmate/contributors'
+    ).then((response) => {
+      const json = response.json();
+      json.then((data) => {
+        setContributors(data);
+      });
+    });
+  }, []);
+
   const mode = useAppSelector((state) => state.mode.mode);
   return (
     <div
@@ -40,16 +53,3 @@ const About: NextPage<Props> = ({ contributors }) => {
 };
 
 export default About;
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const data = await fetch(
-    'https://api.github.com/repos/rohitdasu/projectmate/contributors'
-  );
-  const json = await data.json();
-
-  return {
-    props: {
-      contributors: json,
-    },
-  };
-};

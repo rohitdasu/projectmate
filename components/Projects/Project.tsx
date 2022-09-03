@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useAppSelector } from '../../app/hooks';
 
-export const Project = ({ title, description, tags }: any) => {
+export const Project = ({ title, description, tags, author }: any) => {
   const mode = useAppSelector((state) => state.mode.mode);
   return (
     <div
@@ -20,7 +20,7 @@ export const Project = ({ title, description, tags }: any) => {
         />
       </div>
       <div className="flex flex-col space-y-2 p-2">
-        <h1 className="font-semibold text-xl">{title}</h1>
+        <h1 className="font-semibold text-xl">{title} - <span className='text-lg font-light'>{author}</span></h1>
         <p className="text-[14px] ">{description}</p>
         <div className="flex flex-col md:flex-row md:justify-between md:items-center">
           <div className="flex space-x-2">
