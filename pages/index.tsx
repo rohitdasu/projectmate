@@ -12,13 +12,13 @@ import tw from 'twin.macro';
 const Home: NextPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const Mode = useAppSelector((state) => state.mode.mode);
+  const mode = useAppSelector((state) => state.mode.mode);
   const userState = useAppSelector((state) => state.user.isLogged);
 
   return (
     <div
       className={`flex min-h-screen flex-col items-center  ${
-        Mode && 'bg-dark-mode'
+        mode && 'bg-dark-mode'
       }`}
     >
       <Head>
@@ -32,7 +32,7 @@ const Home: NextPage = () => {
         <div tw="flex flex-col px-[2px] flex-1 text-center md:text-left justify-center lg:m-0 lg:w-1/2 lg:px-20">
           <h1
             className={`lg:leading-[82px] leading-normal font-bold  text-dark-color md:text-[55px] text-[40px]  capitalize ${
-              Mode && '!text-white'
+              mode && '!text-white'
             }`}
           >
             A place where you find{' '}
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
 
           <p
             className={`mt-4    md:leading-[30px] leading-normal md:text-[20px] text-[17px] font-light text-gray-800 ${
-              Mode && '!text-white'
+              mode && '!text-white'
             } `}
           >
             We will help you to find opensource project and contributors.

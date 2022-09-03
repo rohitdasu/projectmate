@@ -5,9 +5,9 @@ import { Search, Project, Navbar } from '../components';
 import { projects } from '../sample-data/data';
 
 const Projects = () => {
-  const Mode = useAppSelector((state) => state.mode.mode);
+  const mode = useAppSelector((state) => state.mode.mode);
   return (
-    <div className={`flex ${Mode && 'bg-dark-mode'}`}>
+    <div className={`flex ${mode && 'bg-dark-mode'}`}>
       <Head>
         <title>Projectmate | Projects</title>
         <link rel="icon" href="/dark-logo.svg" />
@@ -16,7 +16,7 @@ const Projects = () => {
       <main className="flex flex-col w-full mt-20">
         <div
           className={`w-full fixed z-50 ${
-            Mode ? 'bg-dark-mode' : 'bg-white'
+            mode ? 'bg-dark-mode' : 'bg-white'
           }`}
         >
           <Search />
