@@ -8,20 +8,18 @@ import { useDispatch } from 'react-redux';
 import { setUserLoggedOut } from '../../store/slices/sliceUser';
 import toast from 'react-hot-toast';
 
-export function DropDown({ userImg }: any) {
+export function Avatar({ userImg }: any) {
   const dispatch = useDispatch();
   const mode = useAppSelector((state) => state.mode.mode);
   const isLogged = useAppSelector((state) => state.user.isLogged);
   // mode - false (light-mode) | mode - true (dark-mode)
   return (
     <div
-      className={` fixed ${
-        isLogged ? 'block' : '!hidden'
-      } z-[999] w-max text-right`}
+      className={`${isLogged ? 'block' : '!hidden'} z-50 w-max text-right`}
     >
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="inline-flex w-full justify-center rounded-md  bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+          <Menu.Button className="inline-flex w-full p-2 items-center space-x-2 justify-center rounded-md bg-opacity-20 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
             <Image
               src={userImg}
               alt="user-photo"
@@ -29,6 +27,7 @@ export function DropDown({ userImg }: any) {
               width={40}
               className="object-contain rounded-full"
             />
+            <span className={ !mode ? 'text-gray-500': 'text-white'}>▼</span>
           </Menu.Button>
         </div>
         <Transition

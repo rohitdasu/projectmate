@@ -1,48 +1,38 @@
-import { useEffect } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { auth } from '../lib/firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { Toaster } from 'react-hot-toast';
 import Lottie from 'lottie-react-web';
 import animation from '../public/animation-lottie.json';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { AuthModal, Navbar } from '../components';
 import { openModal } from '../store/slices/sliceModal';
-import { setUserLogged } from '../store/slices/sliceUser';
 import tw from 'twin.macro';
 
 const Home: NextPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const Mode = useAppSelector((state) => state.mode.mode);
+  const mode = useAppSelector((state) => state.mode.mode);
   const userState = useAppSelector((state) => state.user.isLogged);
-  const [user] = useAuthState(auth);
-  useEffect(() => {
-    if (user?.displayName) {
-      dispatch(setUserLogged());
-    }
-  }, [user, dispatch]);
 
   return (
     <div
       className={`flex min-h-screen flex-col items-center  ${
-        Mode && 'bg-dark-mode'
+        mode && 'bg-dark-mode'
       }`}
     >
       <Head>
-        <title>projectmate</title>
+        <title>Projectmate | Home</title>
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
       <Navbar active={'home'} />
-      <main tw="flex mt-[8rem]   lg:w-full flex-1 ">
+      <main tw="flex mt-[5rem] lg:w-full flex-1 ">
         <Toaster />
         <AuthModal />
-        <div tw="flex flex-col px-[2px] flex-1 text-center md:text-left   justify-center lg:m-0 lg:w-1/2   lg:px-20">
+        <div tw="flex flex-col px-[2px] flex-1 text-center md:text-left justify-center lg:m-0 lg:w-1/2 lg:px-20">
           <h1
             className={`lg:leading-[82px] leading-normal font-bold  text-dark-color md:text-[55px] text-[40px]  capitalize ${
-              Mode && '!text-white'
+              mode && '!text-white'
             }`}
           >
             A place where you find{' '}
@@ -52,7 +42,7 @@ const Home: NextPage = () => {
 
           <p
             className={`mt-4    md:leading-[30px] leading-normal md:text-[20px] text-[17px] font-light text-gray-800 ${
-              Mode && '!text-white'
+              mode && '!text-white'
             } `}
           >
             We will help you to find opensource project and contributors.
