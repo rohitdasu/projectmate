@@ -15,13 +15,11 @@ export function DropDown({ userImg }: any) {
   // mode - false (light-mode) | mode - true (dark-mode)
   return (
     <div
-      className={` fixed ${
-        isLogged ? 'block' : '!hidden'
-      } z-[999] w-max text-right`}
+      className={`${isLogged ? 'block' : '!hidden'} z-50 w-max text-right`}
     >
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="inline-flex w-full justify-center rounded-md  bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+          <Menu.Button className="inline-flex w-full p-2 justify-center rounded-md bg-opacity-20 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
             <Image
               src={userImg}
               alt="user-photo"

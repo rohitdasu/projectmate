@@ -87,7 +87,7 @@ export const Navbar = ({ active }: NavProps) => {
           </Link>
         </div>
         <div className="flex  items-center">
-          <div className="flex items-center justify-between space-x-2 w-max sm:w-[150px]">
+          <div className="flex items-center justify-between space-x-2 w-max">
             <a
               href="#"
               onClick={() => dispatch(changeMode())}
@@ -189,16 +189,14 @@ export const Navbar = ({ active }: NavProps) => {
                 />
               )}
             </a>
+            {userlogged && (
+              <div
+                className={`${userlogged && 'sm:flex'}  items-center hidden`}
+              >
+                <DropDown userImg={user?.photoURL} />
+              </div>
+            )}
           </div>
-          {userlogged && (
-            <div
-              className={`${
-                userlogged ? 'sm:flex hidden' : 'hidden'
-              }  items-center`}
-            >
-              <DropDown userImg={user?.photoURL} />
-            </div>
-          )}
         </div>
       </div>
       <div
