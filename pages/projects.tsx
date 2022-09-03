@@ -21,7 +21,7 @@ const Projects = () => {
         >
           <SearchProject />
         </div>
-        <div className="w-1/2 mt-16 mb-4 mx-auto space-y-6">
+        <div className="w-full md:w-1/2 mt-16 mb-4 mx-auto space-y-6">
           {projects.map((project) => {
             return (
               <Project
