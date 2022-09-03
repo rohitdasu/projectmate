@@ -24,7 +24,11 @@ const Projects = () => {
       <main className="flex overflow-hidden mt-[7rem] gap-4 mx-auto flex-1">
         <Filter />
         <div className="flex   z-[99] ml-0  xl:w-[670px]  w-full items-center  flex-col space-y-2 ">
-          <div className="fixed  sm:top-auto top-[5rem]  xl:w-auto sm:h-auto h-[10%] bg-dark-mode w-full z-[999]">
+          <div
+            className={`fixed  sm:top-auto top-[5rem]  xl:w-auto sm:h-auto h-[10%]  w-full z-[999] ${
+              Mode ? 'bg-dark-mode' : 'bg-white'
+            }`}
+          >
             <SearchProject />
           </div>
           <ProjectShowcase />
