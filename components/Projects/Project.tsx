@@ -44,14 +44,7 @@ export const Project = ({ title, description, tags, author }: any) => {
               !mode && 'text-white'
             } rounded-md`}
           >
-            <span className="mr-2">Contribute</span>
-            <Image
-              src="/right-arrows.png"
-              height={15}
-              width={15}
-              alt="go"
-              className=""
-            />
+            <span>Contribute</span>
           </button>
         </div>
       </div>
