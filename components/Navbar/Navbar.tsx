@@ -24,7 +24,7 @@ export const Navbar = ({ active }: NavProps) => {
       }`}
     >
       <div
-        className={`flex h-20  w-[95%] mx-auto items-center bg-white justify-between border-t px-2 sm:px-6 md:px-20  ${
+        className={`flex h-20  w-[95%] mx-auto items-center bg-white justify-between border-t px-2 sm:px-6 md:px-10  ${
           Mode && '!bg-dark-mode'
         }`}
       >
@@ -87,7 +87,7 @@ export const Navbar = ({ active }: NavProps) => {
           </Link>
         </div>
         <div className="flex  items-center">
-          <div className="flex items-center justify-between space-x-2 w-max">
+          <div className="flex items-center justify-between w-max">
             <a
               href="#"
               onClick={() => dispatch(changeMode())}
@@ -173,7 +173,6 @@ export const Navbar = ({ active }: NavProps) => {
             >
               {Mode ? (
                 <Image
-                  tw="ml-4"
                   src="/dark-discord.svg"
                   alt="Discord-logo"
                   width={40}
@@ -181,7 +180,6 @@ export const Navbar = ({ active }: NavProps) => {
                 />
               ) : (
                 <Image
-                  tw="ml-4"
                   src="/discord.svg"
                   alt="Discord-logo"
                   width={40}
