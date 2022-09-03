@@ -5,6 +5,7 @@
   --dark-color: #000000b2;
   --secondary-color: #2854eecc;
   --dark-mode: #1c2128;
+  --box-color: #1f242b;
 }
 body {
   font-family: 'Poppins', sans-serif;
@@ -19,4 +20,15 @@ body {
 }
 .hover-overlay {
   @apply bg-gray-500 rounded-full;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scroll-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scroll-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

@@ -27,7 +27,7 @@ const Home: NextPage = () => {
 
   return (
     <div
-      className={`flex min-h-screen flex-col items-center justify-center ${
+      className={`flex min-h-screen flex-col items-center  ${
         Mode && 'bg-dark-mode'
       }`}
     >
@@ -36,7 +36,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
       <Navbar active={'home'} />
-      <main tw="flex   lg:w-full flex-1 ">
+      <main tw="flex mt-[8rem]   lg:w-full flex-1 ">
         <Toaster />
         <AuthModal />
         <div tw="flex flex-col px-[2px] flex-1 text-center md:text-left   justify-center lg:m-0 lg:w-1/2   lg:px-20">
