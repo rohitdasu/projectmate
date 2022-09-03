@@ -29,6 +29,7 @@ const Projects = () => {
                 description={project.description}
                 title={project.title}
                 tags={project.tags}
+                author={project.author}
               />
             );
           })}
