@@ -19,7 +19,7 @@ export function Avatar({ userImg }: any) {
     >
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="inline-flex w-full p-2 justify-center rounded-md bg-opacity-20 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+          <Menu.Button className="inline-flex w-full p-2 items-center space-x-2 justify-center rounded-md bg-opacity-20 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
             <Image
               src={userImg}
               alt="user-photo"
@@ -27,6 +27,7 @@ export function Avatar({ userImg }: any) {
               width={40}
               className="object-contain rounded-full"
             />
+            <span className={ !mode ? 'text-gray-500': 'text-white'}>▼</span>
           </Menu.Button>
         </div>
         <Transition
