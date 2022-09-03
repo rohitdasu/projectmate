@@ -8,23 +8,23 @@ export default async function handler(
 ) {
   switch (req.method) {
     case 'GET': {
-      return getHome(req, res);
+      return getProjects(req, res);
     }
   }
 }
 
-async function getHome(req: NextApiRequest, res: NextApiResponse<ResponseType>) {
+async function getProjects(req: NextApiRequest, res: NextApiResponse<ResponseType>) {
   try {
     let { db } = await connectToDatabase();
 
-    let home = await db
-      .collection('homes')
+    let projects = await db
+      .collection('projects')
       .find({})
       .sort({ published: -1 })
       .toArray();
 
     return res.json({
-      data: JSON.parse(JSON.stringify(home[0])),
+      data: JSON.parse(JSON.stringify(projects)),
       success: true,
     });
   } catch (err: any) {
