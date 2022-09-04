@@ -6,18 +6,21 @@ A web app where you can find contributors for your open-source project or as an 
 Find people who have the same vision as you do and contribute to each other for building amazing products.
 
 ## Connect with us
+As a community, we always encourage people to share their thoughts and ideas. Do you want to talk to us? Join our Discord server by clicking the badge below.
 
-[![Discord](https://img.shields.io/badge/-discord-black?style=social&logo=discord)](https://discord.gg/FQtyMWFZQ9)
+[![DISCORD - Join](https://img.shields.io/badge/DISCORD-Join-2ea44f?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FQtyMWFZQ9)
 
 ## Tech Stack ⚙
 
-![Next](https://img.shields.io/badge/-NEXT-black?style=flat-square&logo=next.js)
-![MongoDB](https://img.shields.io/badge/-MongoDB-black?style=flat-square&logo=mongodb)
-![TailwindCSS](https://img.shields.io/badge/-Tailwind-black?style=flat-square&logo=tailwindcss)
+![Next.js](https://img.shields.io/badge/Next.js-305FCB?style=for-the-badge&logo=next.js&logoColor=white)
+![tailwind css](https://img.shields.io/badge/tailwind_css-305FCB?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-305FCB?style=for-the-badge&logo=firebase&logoColor=orange)
+![MongoDB](https://img.shields.io/badge/MongoDB-305FCB?style=for-the-badge&logo=mongodb&logoColor=white)
 
-1. Frontend - Next.js
-2. CSS Framework - Tailwind
-3. Backend - NextJS APIs + MongoDB
+
+1. Frontend - **Next.js**
+2. CSS Framework - **Tailwind CSS**
+3. Backend - **NextJS APIs + Firebase Auth + MongoDB**
 
 ## Instructions to start the app
 
@@ -42,10 +45,6 @@ Find people who have the same vision as you do and contribute to each other for 
    ```sh
    npm install
    ```
-
-> **Note**
->
-> If npm install fails, try `npm install --force`.
 
 5. Start the application development server
 
