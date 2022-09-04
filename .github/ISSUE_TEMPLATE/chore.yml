@@ -1,7 +1,7 @@
-name: DX - Developer Experience
-description: Report an issue to help improve the developer experience.
-title: '[DX] <description>'
-labels: ['dx']
+name: chore
+description: Report an issue that doesn't effect on production code.
+title: '[CHORE] <description>'
+labels: ['chore']
 body:
   - type: textarea
     id: description
