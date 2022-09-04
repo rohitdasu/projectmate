@@ -8,7 +8,7 @@ Find people who have the same vision as you do and contribute to each other for 
 ## Connect with us
 As a community, we always encourage people to share their thoughts and ideas. Do you want to talk to us? Join our Discord server by clicking the badge below.
 
-[![DISCORD - Join](https://img.shields.io/badge/DISCORD-Join-2ea44f?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/9NGVjh9h)
+[![DISCORD - Join](https://img.shields.io/badge/DISCORD-Join-2ea44f?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FQtyMWFZQ9)
 
 ## Tech Stack ⚙
 
@@ -20,7 +20,7 @@ As a community, we always encourage people to share their thoughts and ideas. Do
 
 1. Frontend - **Next.js**
 2. CSS Framework - **Tailwind CSS**
-3. Backend - **NextJS APIs + MongoDB**
+3. Backend - **NextJS APIs + Firebase Auth + MongoDB**
 
 ## Instructions to start the app
 
@@ -45,10 +45,6 @@ As a community, we always encourage people to share their thoughts and ideas. Do
    ```sh
    npm install
    ```
-
-> **Note**
->
-> If npm install fails, try `npm install --force`.
 
 5. Start the application development server
 
