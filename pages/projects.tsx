@@ -1,39 +1,37 @@
 import Head from 'next/head';
 import React from 'react';
 import { useAppSelector } from '../app/hooks';
-import { Navbar } from '../components';
-import { Features } from '../components/Features';
-import { Filter } from '../components/Filter';
-import { ProjectShowcase } from '../components/Projects';
-import { SearchProject } from '../components/Search';
+import { Search, Project, Navbar } from '../components';
+import { projects } from '../sample-data/data';
 
 const Projects = () => {
-  const userLoggedState = useAppSelector((state) => state.user.isLogged);
-  const Mode = useAppSelector((state) => state.mode.mode);
+  const mode = useAppSelector((state) => state.mode.mode);
   return (
-    <div
-      className={`flex lg:h-screen h-full w-full  !overflow--hidden   flex-col items-center  ${
-        Mode && 'bg-dark-mode'
-      }`}
-    >
+    <div className={`flex ${mode && 'bg-dark-mode'}`}>
       <Head>
         <title>Projectmate | Projects</title>
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
       <Navbar active={'projects'} />
-      <main className="flex overflow-hidden mt-[7rem] gap-4 mx-auto flex-1">
-        <Filter />
-        <div className="flex   z-[99] ml-0  xl:w-[670px]  w-full items-center  flex-col space-y-2 ">
-          <div
-            className={`fixed  sm:top-auto top-[5rem]  xl:w-auto sm:h-auto h-[10%]  w-full z-[999] ${
-              Mode ? 'bg-dark-mode' : 'bg-white'
-            }`}
-          >
-            <SearchProject />
-          </div>
-          <ProjectShowcase />
+      <main className="flex flex-col w-full mt-20">
+        <div
+          className={`w-full fixed z-50 ${mode ? 'bg-dark-mode' : 'bg-white'}`}
+        >
+          <Search />
         </div>
-        <Features />
+        <div className="w-full md:w-1/2 mt-16 mb-4 mx-auto space-y-4">
+          {projects.map((project) => {
+            return (
+              <Project
+                key={project.id}
+                description={project.description}
+                title={project.title}
+                tags={project.tags}
+                author={project.author}
+              />
+            );
+          })}
+        </div>
       </main>
     </div>
   );
