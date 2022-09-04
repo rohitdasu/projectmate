@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { useAppSelector } from '../app/hooks';
 import { IContributors, Navbar, ContributorList } from '../components';
 
@@ -34,7 +35,9 @@ const About: NextPage<Props> = () => {
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
       <Navbar active={'about'} />
-      <main tw="flex mt-[8rem]  lg:w-full flex-1 "></main>
+      <main tw="flex mt-[8rem]  lg:w-full flex-1 ">
+        <Toaster />
+      </main>
       <footer
         className={`flex  flex-col h-24 mt-auto w-full items-center bg-white justify-center border-t px-6 lg:px-20 shadow-md ${
           mode && '!bg-dark-mode border-t-0'
