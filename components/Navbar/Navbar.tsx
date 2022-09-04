@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { changeMode } from '../../store/slices/sliceMode';
 import { setUserLogged, setUserLoggedOut } from '../../store/slices/sliceUser';
 import { NavProps } from './Navbar.interface';
+import toast from 'react-hot-toast';
 
 export const Navbar = ({ active }: NavProps) => {
   const dispatch = useAppDispatch();
@@ -17,7 +18,7 @@ export const Navbar = ({ active }: NavProps) => {
   const userlogged = useAppSelector((state) => state.user.isLogged);
   const [menuState, setMenuState] = useState(false);
   const [user] = useAuthState(auth);
-  
+
   useEffect(() => {
     if (user?.displayName) {
       dispatch(setUserLogged());
@@ -36,21 +37,21 @@ export const Navbar = ({ active }: NavProps) => {
         }`}
       >
         <div>
-        <span
-          className={`text-2xl flex items-center  md:space-x-2 font-semibold font-mono text-gray-900 uppercase ${
-            mode && '!text-white'
-          }`}
-        >
-          {mode ? (
-            <Image src="/dark-logo.svg" height={40} width={40} alt="logo" />
-          ) : (
-            <Image src="/logo.svg" height={40} width={40} alt="logo" />
-          )}
+          <span
+            className={`text-2xl flex items-center  md:space-x-2 font-semibold font-mono text-gray-900 uppercase ${
+              mode && '!text-white'
+            }`}
+          >
+            {mode ? (
+              <Image src="/dark-logo.svg" height={40} width={40} alt="logo" />
+            ) : (
+              <Image src="/logo.svg" height={40} width={40} alt="logo" />
+            )}
 
-          <p>
-            project<span className="text-primary-color">mate</span>
-          </p>
-        </span>
+            <p>
+              project<span className="text-primary-color">mate</span>
+            </p>
+          </span>
         </div>
 
         <div
@@ -299,6 +300,20 @@ export const Navbar = ({ active }: NavProps) => {
                 onClick={() => {
                   signOut(auth);
                   dispatch(setUserLoggedOut());
+                  mode
+                    ? toast.success('Logout was successful', {
+                        position: 'bottom-center',
+                        duration: 2000,
+                        style: {
+                          borderRadius: '10px',
+                          background: '#333',
+                          color: '#fff',
+                        },
+                      })
+                    : toast.success('Logout was successful', {
+                        position: 'bottom-center',
+                      });
+                  setMenuState(!menuState);
                 }}
               >
                 <a
