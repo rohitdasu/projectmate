@@ -4,6 +4,11 @@ import { useAppSelector } from '../../app/hooks';
 
 export const Project = ({ title, description, tags, author }: any) => {
   const mode = useAppSelector((state) => state.mode.mode);
+  const isLoggedIn = useAppSelector((state) => state.user.isLogged);
+  const contributeHandler = () => {
+    alert('Work still in progress');
+  };
+
   return (
     <div
       className={`${
@@ -42,11 +47,17 @@ export const Project = ({ title, description, tags, author }: any) => {
             ))}
           </div>
           <button
-            className={`p-2 mt-2 sm:my-0 flex justify-center items-center space-x-2 bg-secondary-color ${
+            disabled={!isLoggedIn}
+            className={`p-2 mt-2 sm:my-0 flex rounded-md justify-center items-center space-x-2 ${
               !mode && 'text-white'
-            } rounded-md`}
+            } ${
+              !isLoggedIn
+                ? 'bg-blue-400 cursor-not-allowed'
+                : 'bg-secondary-color'
+            }`}
+            onClick={contributeHandler}
           >
-            <span>Contribute</span>
+            Contribute
           </button>
         </div>
       </div>
