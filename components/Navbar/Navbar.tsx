@@ -11,7 +11,6 @@ import { changeMode } from '../../store/slices/sliceMode';
 import { setUserLogged, setUserLoggedOut } from '../../store/slices/sliceUser';
 import { NavProps } from './Navbar.interface';
 import toast from 'react-hot-toast';
-import { Tooltip } from '../Tooltip';
 
 export const Navbar = ({ active }: NavProps) => {
   const dispatch = useAppDispatch();
@@ -60,52 +59,42 @@ export const Navbar = ({ active }: NavProps) => {
             mode && 'text-white'
           }`}
         >
-          <Tooltip content="Home" placement="left" wrapperClassName="h-full">
-            <Link href={'/'}>
-              <a
-                href=""
-                className={`text-[20px] h-full ${
-                  mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
-                } items-center flex px-2  font-normal ${
-                  active === 'home' && 'active'
-                }`}
-              >
-                Home
-              </a>
-            </Link>
-          </Tooltip>
-          <Tooltip
-            content="Projects"
-            placement="down"
-            wrapperClassName="h-full"
-          >
-            <Link href={'/projects'}>
-              <a
-                href=""
-                className={`text-[20px] ${
-                  mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
-                } h-full flex items-center px-2 font-normal ${
-                  active === 'projects' && 'active'
-                }`}
-              >
-                Projects
-              </a>
-            </Link>
-          </Tooltip>
-          <Tooltip content="About" placement="right" wrapperClassName="h-full">
-            <Link href={'/about'}>
-              <a
-                href="#"
-                className={`text-[20px] ${
-                  mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
-                } h-full flex items-center px-2 font-normal ${
-                  active === 'about' && 'active'
-                }`}
-              >
-                About
-              </a>
-            </Link>
-          </Tooltip>
+          <Link href={'/'}>
+            <a
+              href=""
+              className={`text-[20px] h-full ${
+                mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+              } items-center flex px-2  font-normal ${
+                active === 'home' && 'active'
+              }`}
+            >
+              Home
+            </a>
+          </Link>
+          <Link href={'/projects'}>
+            <a
+              href=""
+              className={`text-[20px] ${
+                mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+              } h-full flex items-center px-2 font-normal ${
+                active === 'projects' && 'active'
+              }`}
+            >
+              Projects
+            </a>
+          </Link>
+          <Link href={'/about'}>
+            <a
+              href="#"
+              className={`text-[20px] ${
+                mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+              } h-full flex items-center px-2 font-normal ${
+                active === 'about' && 'active'
+              }`}
+            >
+              About
+            </a>
+          </Link>
         </div>
         <div className="flex  items-center">
           <div className="flex items-center justify-between w-max">

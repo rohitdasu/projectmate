@@ -5,7 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import Lottie from 'lottie-react-web';
 import animation from '../public/animation-lottie.json';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { AuthModal, Navbar, Tooltip } from '../components';
+import { AuthModal, Navbar } from '../components';
 import { openModal } from '../store/slices/sliceModal';
 import tw from 'twin.macro';
 
@@ -57,15 +57,13 @@ const Home: NextPage = () => {
               Explore Projects
             </button>
           ) : (
-            <Tooltip content="Join us" placement="right">
-              <button
-                onClick={() => dispatch(openModal())}
-                type="button"
-                tw="border border-white w-[170px] mx-auto md:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
-              >
-                JOIN US
-              </button>
-            </Tooltip>
+            <button
+              onClick={() => dispatch(openModal())}
+              type="button"
+              tw="border border-white w-[170px] mx-auto md:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
+            >
+              JOIN US
+            </button>
           )}
         </div>
         <div tw="hidden lg:inline-flex  lg:px-20">
