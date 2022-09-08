@@ -1,9 +1,16 @@
 import React from 'react';
 import Image from 'next/image';
 import { useAppSelector } from '../../app/hooks';
+import { useDispatch } from 'react-redux';
+import { openModal } from '../../store/slices/sliceModal';
 
 export const Project = ({ title, description, tags, author }: any) => {
   const mode = useAppSelector((state) => state.mode.mode);
+  const userLogged = useAppSelector((state) => state.user.isLogged);
+  const dispatch = useDispatch();
+  const handleContribute = () => {
+    return;
+  };
   return (
     <div
       className={`${
@@ -42,6 +49,9 @@ export const Project = ({ title, description, tags, author }: any) => {
             ))}
           </div>
           <button
+            onClick={() =>
+              userLogged ? handleContribute : dispatch(openModal())
+            }
             className={`p-2 mt-2 sm:my-0 flex justify-center items-center space-x-2 bg-secondary-color ${
               !mode && 'text-white'
             } rounded-md`}

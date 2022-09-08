@@ -77,7 +77,7 @@ export const AuthModal = () => {
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
-          tw="relative z-10"
+          tw="relative z-[999]"
           onClose={() => dispatch(closeModal())}
         >
           <Toaster />
