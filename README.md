@@ -1,7 +1,7 @@
 # ProjectMate - find your project mate online
 
 ## Demo
-Click here → https://project-mate.vercel.app
+Check out the website: [https://project-mate.vercel.app](https://project-mate.vercel.app)
 
 ## Description
 
