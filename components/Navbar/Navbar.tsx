@@ -161,15 +161,15 @@ export const Navbar = ({ active }: NavProps) => {
                 <Image
                   src="/dark-github.svg"
                   alt="Github Logo"
-                  width={40}
-                  height={40}
+                  width={30}
+                  height={30}
                 />
               ) : (
                 <Image
                   src="/github.svg"
                   alt="Github Logo"
-                  width={40}
-                  height={40}
+                  width={30}
+                  height={30}
                 />
               )}
             </a>
@@ -185,15 +185,15 @@ export const Navbar = ({ active }: NavProps) => {
                 <Image
                   src="/dark-discord.svg"
                   alt="Discord-logo"
-                  width={40}
-                  height={40}
+                  width={30}
+                  height={30}
                 />
               ) : (
                 <Image
                   src="/discord.svg"
                   alt="Discord-logo"
-                  width={40}
-                  height={40}
+                  width={30}
+                  height={30}
                 />
               )}
             </a>
