@@ -1,12 +1,9 @@
 # ProjectMate - find your project mate online
+A web app where you can find contributors for your open-source project or as an individual contributor you can find open-source projects. Best place to start open-source contribution.
+Find people who have the same vision as you do and contribute for building amazing products.
 
 ## Demo
 Check out the website: [https://project-mate.vercel.app](https://project-mate.vercel.app)
-
-## Description
-
-A web app where you can find contributors for your open-source project or as an individual contributor you can find open-source projects. Best place to start open-source contribution.
-Find people who have the same vision as you do and contribute for building amazing products.
 
 ## Connect with us
 As a community, we always encourage people to share their thoughts and ideas. Do you want to talk to us? Join our Discord server by clicking the badge below.
