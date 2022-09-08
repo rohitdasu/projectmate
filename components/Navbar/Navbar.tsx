@@ -74,30 +74,38 @@ export const Navbar = ({ active }: NavProps) => {
               </a>
             </Link>
           </Tooltip>
-          <Link href={'/projects'}>
-            <a
-              href=""
-              className={`text-[20px] ${
-                mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
-              } h-full flex items-center px-2 font-normal ${
-                active === 'projects' && 'active'
-              }`}
-            >
-              Projects
-            </a>
-          </Link>
-          <Link href={'/about'}>
-            <a
-              href="#"
-              className={`text-[20px] ${
-                mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
-              } h-full flex items-center px-2 font-normal ${
-                active === 'about' && 'active'
-              }`}
-            >
-              About
-            </a>
-          </Link>
+          <Tooltip
+            content="Projects"
+            placement="down"
+            wrapperClassName="h-full"
+          >
+            <Link href={'/projects'}>
+              <a
+                href=""
+                className={`text-[20px] ${
+                  mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+                } h-full flex items-center px-2 font-normal ${
+                  active === 'projects' && 'active'
+                }`}
+              >
+                Projects
+              </a>
+            </Link>
+          </Tooltip>
+          <Tooltip content="About" placement="right" wrapperClassName="h-full">
+            <Link href={'/about'}>
+              <a
+                href="#"
+                className={`text-[20px] ${
+                  mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+                } h-full flex items-center px-2 font-normal ${
+                  active === 'about' && 'active'
+                }`}
+              >
+                About
+              </a>
+            </Link>
+          </Tooltip>
         </div>
         <div className="flex  items-center">
           <div className="flex items-center justify-between w-max">
