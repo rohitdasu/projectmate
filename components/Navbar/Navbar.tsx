@@ -11,6 +11,7 @@ import { changeMode } from '../../store/slices/sliceMode';
 import { setUserLogged, setUserLoggedOut } from '../../store/slices/sliceUser';
 import { NavProps } from './Navbar.interface';
 import toast from 'react-hot-toast';
+import { Tooltip } from '../Tooltip';
 
 export const Navbar = ({ active }: NavProps) => {
   const dispatch = useAppDispatch();
@@ -59,68 +60,80 @@ export const Navbar = ({ active }: NavProps) => {
             mode && 'text-white'
           }`}
         >
-          <Link href={'/'}>
-            <a
-              href=""
-              className={`text-[20px] h-full ${
-                mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
-              } items-center flex px-2  font-normal ${
-                active === 'home' && 'active'
-              }`}
-            >
-              Home
-            </a>
-          </Link>
-          <Link href={'/projects'}>
-            <a
-              href=""
-              className={`text-[20px] ${
-                mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
-              } h-full flex items-center px-2 font-normal ${
-                active === 'projects' && 'active'
-              }`}
-            >
-              Projects
-            </a>
-          </Link>
-          <Link href={'/about'}>
-            <a
-              href="#"
-              className={`text-[20px] ${
-                mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
-              } h-full flex items-center px-2 font-normal ${
-                active === 'about' && 'active'
-              }`}
-            >
-              About
-            </a>
-          </Link>
+          <Tooltip content="Home" placement="left" wrapperClassName="h-full">
+            <Link href={'/'}>
+              <a
+                href=""
+                className={`text-[20px] h-full ${
+                  mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+                } items-center flex px-2  font-normal ${
+                  active === 'home' && 'active'
+                }`}
+              >
+                Home
+              </a>
+            </Link>
+          </Tooltip>
+          <Tooltip
+            content="Projects"
+            placement="down"
+            wrapperClassName="h-full"
+          >
+            <Link href={'/projects'}>
+              <a
+                href=""
+                className={`text-[20px] ${
+                  mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+                } h-full flex items-center px-2 font-normal ${
+                  active === 'projects' && 'active'
+                }`}
+              >
+                Projects
+              </a>
+            </Link>
+          </Tooltip>
+          <Tooltip content="About" placement="right" wrapperClassName="h-full">
+            <Link href={'/about'}>
+              <a
+                href="#"
+                className={`text-[20px] ${
+                  mode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+                } h-full flex items-center px-2 font-normal ${
+                  active === 'about' && 'active'
+                }`}
+              >
+                About
+              </a>
+            </Link>
+          </Tooltip>
         </div>
         <div className="flex  items-center">
           <div className="flex items-center justify-between w-max">
-            <a
-              href="#"
-              onClick={() => dispatch(changeMode())}
-              className={`${
-                mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-              } p-2 rounded-full flex items-center justify-center `}
-            >
-              {mode ? (
-                <Image
-                  src={'/light-mode.svg'}
-                  alt="night-mode"
-                  height={30}
-                  width={30}
-                />
-              ) : (
-                <Image
-                  src={'/night-mode.svg'}
-                  alt="night-mode"
-                  height={30}
-                  width={30}
-                />
-              )}
-            </a>
+            <Tooltip content="Toggle color mode">
+              <a
+                href="#"
+                onClick={() => dispatch(changeMode())}
+                className={`${
+                  mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
+                } p-2 rounded-full flex items-center justify-center `}
+              >
+                {mode ? (
+                  <Image
+                    src={'/light-mode.svg'}
+                    alt="night-mode"
+                    height={30}
+                    width={30}
+                  />
+                ) : (
+                  <Image
+                    src={'/night-mode.svg'}
+                    alt="night-mode"
+                    height={30}
+                    width={30}
+                  />
+                )}
+              </a>
+            </Tooltip>
             <a
               onClick={() => setMenuState(!menuState)}
               className={`${
@@ -149,54 +162,58 @@ export const Navbar = ({ active }: NavProps) => {
                 <Icon icon="charm:menu-hamburger" height={30} width={30} />
               )}
             </a>
-            <a
-              href="https://github.com/rohitdasu/projectmate"
-              target="_blank"
-              rel="noreferrer"
-              className={`${
-                mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-              } p-2 hidden rounded-full sm:flex items-center justify-center `}
-            >
-              {mode ? (
-                <Image
-                  src="/dark-github.svg"
-                  alt="Github Logo"
-                  width={40}
-                  height={40}
-                />
-              ) : (
-                <Image
-                  src="/github.svg"
-                  alt="Github Logo"
-                  width={40}
-                  height={40}
-                />
-              )}
-            </a>
-            <a
-              href="https://discord.gg/FQtyMWFZQ9"
-              target="_blank"
-              rel="noreferrer"
-              className={`${
-                mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-              } p-2 hidden rounded-full sm:flex items-center justify-center `}
-            >
-              {mode ? (
-                <Image
-                  src="/dark-discord.svg"
-                  alt="Discord-logo"
-                  width={40}
-                  height={40}
-                />
-              ) : (
-                <Image
-                  src="/discord.svg"
-                  alt="Discord-logo"
-                  width={40}
-                  height={40}
-                />
-              )}
-            </a>
+            <Tooltip content="Github">
+              <a
+                href="https://github.com/rohitdasu/projectmate"
+                target="_blank"
+                rel="noreferrer"
+                className={`${
+                  mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
+                } p-2 hidden rounded-full sm:flex items-center justify-center `}
+              >
+                {mode ? (
+                  <Image
+                    src="/dark-github.svg"
+                    alt="Github Logo"
+                    width={40}
+                    height={40}
+                  />
+                ) : (
+                  <Image
+                    src="/github.svg"
+                    alt="Github Logo"
+                    width={40}
+                    height={40}
+                  />
+                )}
+              </a>
+            </Tooltip>
+            <Tooltip content="Discord">
+              <a
+                href="https://discord.gg/FQtyMWFZQ9"
+                target="_blank"
+                rel="noreferrer"
+                className={`${
+                  mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
+                } p-2 hidden rounded-full sm:flex items-center justify-center `}
+              >
+                {mode ? (
+                  <Image
+                    src="/dark-discord.svg"
+                    alt="Discord-logo"
+                    width={40}
+                    height={40}
+                  />
+                ) : (
+                  <Image
+                    src="/discord.svg"
+                    alt="Discord-logo"
+                    width={40}
+                    height={40}
+                  />
+                )}
+              </a>
+            </Tooltip>
             {userlogged && (
               <div
                 className={`${userlogged && 'sm:flex'}  items-center hidden`}
