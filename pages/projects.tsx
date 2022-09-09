@@ -2,7 +2,7 @@ import Head from 'next/head';
 import React from 'react';
 import { Toaster } from 'react-hot-toast';
 import { useAppSelector } from '../app/hooks';
-import { Search, Project, Navbar } from '../components';
+import { Search, Project, Navbar, AuthModal } from '../components';
 import { projects } from '../sample-data/data';
 
 const Projects = () => {
@@ -17,6 +17,7 @@ const Projects = () => {
       <Navbar active={'projects'} />
       <main className="flex flex-col w-full mt-20">
         <Toaster />
+        <AuthModal title={'Login to Continue'} />
         <div
           className={`w-full fixed z-50 ${mode ? 'bg-dark-mode' : 'bg-white'}`}
         >
