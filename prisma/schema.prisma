@@ -10,13 +10,36 @@ datasource db {
   url      = env("MONGODB_URI")
 }
 
+model User {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  email     String
+  comment   Comment[]
+  project   Project[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
 model Project {
+  id               String    @id @default(auto()) @map("_id") @db.ObjectId
+  author           String
+  title            String
+  description      String
+  githubRepository String
+  tags             String[]
+  user             User      @relation(fields: [userId], references: [id])
+  userId           String    @db.ObjectId
+  comment          Comment[]
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+model Comment {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  author      String?
-  title       String?
-  description String?
-  githubRepository String?
-  tags String[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  username    User     @relation(fields: [userId], references: [id])
+  userId      String   @db.ObjectId
+  description String
+  project     Project  @relation(fields: [projectId], references: [id])
+  projectId   String   @db.ObjectId
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
