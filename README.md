@@ -59,11 +59,11 @@ Any contributions you make are truly appreciated, go to our [CONTRIBUTING.md](ht
 
 View [CODE_OF_CONDUCT.md](https://github.com/rohitdasu/projectmate/blob/main/CODE_OF_CONDUCT.md)
 
-## 🔓 License
+## License
 
 projectmate is licensed under the MIT License - see the [LICENSE](https://github.com/rohitdasu/projectmate/blob/main/LICENSE) file for details.
 
-## Thanks to all Contributors💙
+## Thanks to all Contributors
 
 <a href="https://github.com/rohitdasu/projectmate/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=rohitdasu/projectmate" />
