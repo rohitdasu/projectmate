@@ -8,7 +8,11 @@ import { auth, Provider_github, Provider_google } from '../../lib/firebase';
 import toast, { Toaster } from 'react-hot-toast';
 import tw from 'twin.macro';
 
-export const AuthModal = () => {
+type Auth_data = {
+  title: String;
+};
+
+export const AuthModal = ({ title }: Auth_data) => {
   const mode = useAppSelector((state) => state.mode.mode);
   const isOpen = useAppSelector((state) => state.modal.modal);
   const dispatch = useAppDispatch();
@@ -115,7 +119,7 @@ export const AuthModal = () => {
                       mode ? '!text-white' : '!text-gray-700'
                     }`}
                   >
-                    Continue with your social accounts.
+                    {title}
                   </Dialog.Title>
                   <div tw="mx-4  flex h-[100px] justify-evenly  items-center ">
                     <button

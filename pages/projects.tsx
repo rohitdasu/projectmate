@@ -17,7 +17,7 @@ const Projects = () => {
       <Navbar active={'projects'} />
       <main className="flex flex-col w-full mt-20">
         <Toaster />
-        <AuthModal />
+        <AuthModal title={'Login to Continue'} />
         <div
           className={`w-full fixed z-50 ${mode ? 'bg-dark-mode' : 'bg-white'}`}
         >
