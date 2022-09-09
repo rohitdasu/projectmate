@@ -12,10 +12,10 @@ datasource db {
 
 model Project {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  author      String?
-  title       String?
-  description String?
-  githubRepository String?
+  author      String
+  title       String
+  description String
+  githubRepository String
   tags String[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
