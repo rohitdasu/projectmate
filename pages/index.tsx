@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Toaster } from 'react-hot-toast';
-import Lottie from 'lottie-react-web';
+import Lottie from 'lottie-react';
 import animation from '../public/animation-lottie.json';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { AuthModal, Navbar } from '../components';
@@ -67,12 +67,7 @@ const Home: NextPage = () => {
           )}
         </div>
         <div tw="hidden lg:inline-flex  lg:px-20">
-          <Lottie
-            tw="h-[200px] w-[100px]"
-            options={{
-              animationData: animation,
-            }}
-          />
+          <Lottie animationData={animation} />
         </div>
       </main>
     </div>
