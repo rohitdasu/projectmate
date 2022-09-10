@@ -5,13 +5,10 @@ import { closeModal } from '../../store/slices/sliceModal';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, Provider_github, Provider_google } from '../../lib/firebase';
 import toast, { Toaster } from 'react-hot-toast';
+import { IAuthData } from './index';
 import 'twin.macro';
 
-type Auth_data = {
-  title: string;
-};
-
-export const AuthModal = ({ title }: Auth_data) => {
+export const AuthModal = ({ title }: IAuthData) => {
   const mode = useAppSelector((state) => state.mode.mode);
   const isOpen = useAppSelector((state) => state.modal.modal);
   const dispatch = useAppDispatch();
