@@ -14,11 +14,11 @@ export const Tooltip = ({
   const mode = useAppSelector((state) => state.mode.mode);
 
   const tipBg = mode
-    ? '[&>.react-tooltip-lite]:bg-gray-500'
-    : '[&>.react-tooltip-lite]:bg-gray-700';
+    ? '[&>.react-tooltip-lite]:invisible md:[&>.react-tooltip-lite]:bg-gray-500 md:[&>.react-tooltip-lite]:visible'
+    : '[&>.react-tooltip-lite]:invisible md:[&>.react-tooltip-lite]:bg-gray-700 md:[&>.react-tooltip-lite]:visible';
   const arrowBorder = mode
-    ? '[&>.react-tooltip-lite-arrow]:border-gray-500'
-    : '[&>.react-tooltip-lite-arrow]:border-gray-700';
+    ? '[&>.react-tooltip-lite-arrow]:!invisible md:[&>.react-tooltip-lite-arrow]:border-gray-500 md:[&>.react-tooltip-lite-arrow]:!visible'
+    : '[&>.react-tooltip-lite-arrow]:!invisible md:[&>.react-tooltip-lite-arrow]:border-gray-700 md:[&>.react-tooltip-lite-arrow]:!visible';
   const Wrapper = wrapperTag;
 
   return (
@@ -28,7 +28,7 @@ export const Tooltip = ({
         direction={placement}
         distance={distanceInPx}
         tagName={wrapperTag}
-        tipContentClassName={`${tipBg} ${arrowBorder} [&>.react-tooltip-lite]:text-white [&>.react-tooltip-lite]:!rounded-md`}
+        tipContentClassName={`${tipBg} ${arrowBorder} [&>.react-tooltip-lite]:text-white [&>.react-tooltip-lite]:text-sm [&>.react-tooltip-lite]:text-center [&>.react-tooltip-lite]:!rounded-md`}
       >
         {children}
       </TooltipLite>
