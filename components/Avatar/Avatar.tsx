@@ -24,10 +24,8 @@ export function Avatar({ userImg, email }: AvatarProps) {
         <div>
           <Menu.Button
             className={`${
-              !mode
-                ? 'text-gray-500 hover:text-gray-800'
-                : 'text-white hover:text-gray-300'
-            } inline-flex w-full p-2 items-center space-x-2 justify-center rounded-md bg-opacity-20 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+              !mode ? 'text-gray-500' : 'text-white'
+            } hover:opacity-80 inline-flex w-full p-2 items-center space-x-2 justify-center rounded-md bg-opacity-20 text-sm font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
           >
             <Image
               src={
@@ -35,8 +33,8 @@ export function Avatar({ userImg, email }: AvatarProps) {
                 `https://avatars.dicebear.com/api/initials/${email}.svg`
               }
               alt="user-photo"
-              height={30}
-              width={30}
+              height={35}
+              width={35}
               className="object-contain rounded-full"
             />
             <span>▼</span>
