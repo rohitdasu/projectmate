@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { changeMode } from '../../store/slices/sliceMode';
 import { setUserLogged, setUserLoggedOut } from '../../store/slices/sliceUser';
 import { NavProps } from './Navbar.interface';
+import { Tooltip } from '../Tooltip';
 import toast from 'react-hot-toast';
 
 export const Navbar = ({ active }: NavProps) => {
@@ -36,9 +37,9 @@ export const Navbar = ({ active }: NavProps) => {
           mode && '!bg-dark-mode'
         }`}
       >
-        <div>
+        <Link href={'/'}>
           <span
-            className={`text-2xl flex items-center  md:space-x-2 font-semibold font-mono text-gray-900 uppercase ${
+            className={`text-2xl flex items-center  md:space-x-2 font-semibold font-mono text-gray-900 uppercase cursor-pointer ${
               mode && '!text-white'
             }`}
           >
@@ -52,7 +53,7 @@ export const Navbar = ({ active }: NavProps) => {
               project<span className="text-primary-color">mate</span>
             </p>
           </span>
-        </div>
+        </Link>
 
         <div
           className={`hidden lg:flex justify-around items-center w-[400px] h-full ${
@@ -98,29 +99,31 @@ export const Navbar = ({ active }: NavProps) => {
         </div>
         <div className="flex  items-center">
           <div className="flex items-center justify-between w-max">
-            <a
-              href="#"
-              onClick={() => dispatch(changeMode())}
-              className={`${
-                mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-              } p-2 rounded-full flex items-center justify-center `}
-            >
-              {mode ? (
-                <Image
-                  src={'/light-mode.svg'}
-                  alt="night-mode"
-                  height={30}
-                  width={30}
-                />
-              ) : (
-                <Image
-                  src={'/night-mode.svg'}
-                  alt="night-mode"
-                  height={30}
-                  width={30}
-                />
-              )}
-            </a>
+            <Tooltip content={'Toggle mode'} wrapperTag="div" placement="up">
+              <a
+                href="#"
+                onClick={() => dispatch(changeMode())}
+                className={`${
+                  mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
+                } p-2 rounded-full flex items-center justify-center `}
+              >
+                {mode ? (
+                  <Image
+                    src={'/light-mode.svg'}
+                    alt="night-mode"
+                    height={30}
+                    width={30}
+                  />
+                ) : (
+                  <Image
+                    src={'/night-mode.svg'}
+                    alt="night-mode"
+                    height={30}
+                    width={30}
+                  />
+                )}
+              </a>
+            </Tooltip>
             <a
               onClick={() => setMenuState(!menuState)}
               className={`${
@@ -149,54 +152,58 @@ export const Navbar = ({ active }: NavProps) => {
                 <Icon icon="charm:menu-hamburger" height={30} width={30} />
               )}
             </a>
-            <a
-              href="https://github.com/rohitdasu/projectmate"
-              target="_blank"
-              rel="noreferrer"
-              className={`${
-                mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-              } p-2 hidden rounded-full sm:flex items-center justify-center `}
-            >
-              {mode ? (
-                <Image
-                  src="/dark-github.svg"
-                  alt="Github Logo"
-                  width={30}
-                  height={30}
-                />
-              ) : (
-                <Image
-                  src="/github.svg"
-                  alt="Github Logo"
-                  width={30}
-                  height={30}
-                />
-              )}
-            </a>
-            <a
-              href="https://discord.gg/FQtyMWFZQ9"
-              target="_blank"
-              rel="noreferrer"
-              className={`${
-                mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-              } p-2 hidden rounded-full sm:flex items-center justify-center `}
-            >
-              {mode ? (
-                <Image
-                  src="/dark-discord.svg"
-                  alt="Discord-logo"
-                  width={30}
-                  height={30}
-                />
-              ) : (
-                <Image
-                  src="/discord.svg"
-                  alt="Discord-logo"
-                  width={30}
-                  height={30}
-                />
-              )}
-            </a>
+            <Tooltip content={'Github'} wrapperTag="div" placement="up">
+              <a
+                href="https://github.com/rohitdasu/projectmate"
+                target="_blank"
+                rel="noreferrer"
+                className={`${
+                  mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
+                } p-2 hidden rounded-full sm:flex items-center justify-center `}
+              >
+                {mode ? (
+                  <Image
+                    src="/dark-github.svg"
+                    alt="Github Logo"
+                    width={30}
+                    height={30}
+                  />
+                ) : (
+                  <Image
+                    src="/github.svg"
+                    alt="Github Logo"
+                    width={30}
+                    height={30}
+                  />
+                )}
+              </a>
+            </Tooltip>
+            <Tooltip content={'Discord'} wrapperTag="div" placement="up">
+              <a
+                href="https://discord.gg/FQtyMWFZQ9"
+                target="_blank"
+                rel="noreferrer"
+                className={`${
+                  mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
+                } p-2 hidden rounded-full sm:flex items-center justify-center `}
+              >
+                {mode ? (
+                  <Image
+                    src="/dark-discord.svg"
+                    alt="Discord-logo"
+                    width={30}
+                    height={30}
+                  />
+                ) : (
+                  <Image
+                    src="/discord.svg"
+                    alt="Discord-logo"
+                    width={30}
+                    height={30}
+                  />
+                )}
+              </a>
+            </Tooltip>
             {userlogged && (
               <div
                 className={`${userlogged && 'sm:flex'}  items-center hidden`}
