@@ -6,14 +6,10 @@ import { auth } from '../../lib/firebase';
 import { useAppSelector } from '../../app/hooks';
 import { useDispatch } from 'react-redux';
 import { setUserLoggedOut } from '../../store/slices/sliceUser';
+import { IAvatar } from './avatar.interface';
 import toast from 'react-hot-toast';
 
-type AvatarProps = {
-  userImg: string | null | undefined;
-  email: string | null | undefined;
-};
-
-export function Avatar({ userImg, email }: AvatarProps) {
+export function Avatar({ userImg, email }: IAvatar) {
   const dispatch = useDispatch();
   const mode = useAppSelector((state) => state.mode.mode);
   const isLogged = useAppSelector((state) => state.user.isLogged);
