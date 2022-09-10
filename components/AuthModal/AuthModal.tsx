@@ -5,7 +5,7 @@ import { closeModal } from '../../store/slices/sliceModal';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, Provider_github, Provider_google } from '../../lib/firebase';
 import toast, { Toaster } from 'react-hot-toast';
-import { IAuthData } from './index';
+import { IAuthData } from './Auth.interface';
 import 'twin.macro';
 
 export const AuthModal = ({ title }: IAuthData) => {
