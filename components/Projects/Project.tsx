@@ -4,7 +4,14 @@ import { useAppSelector } from '../../app/hooks';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../store/slices/sliceModal';
 
-export const Project = ({ title, description, tags, author }: any) => {
+type ProjectProps = {
+  title: string;
+  description: string;
+  tags: string[];
+  author: string;
+};
+
+export const Project = ({ title, description, tags, author }: ProjectProps) => {
   const mode = useAppSelector((state) => state.mode.mode);
   const userLogged = useAppSelector((state) => state.user.isLogged);
   const dispatch = useDispatch();
@@ -35,7 +42,7 @@ export const Project = ({ title, description, tags, author }: any) => {
         <p className="text-[14px] ">{description}</p>
         <div className="flex flex-col md:flex-row md:justify-between md:items-center">
           <div className="flex space-x-2">
-            {tags.map((tag: any, i: any) => (
+            {tags.map((tag: string, i: number) => (
               <p
                 key={i}
                 className={`px-2 py-1 text-[14px] rounded-full cursor-pointer ${

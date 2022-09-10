@@ -7,8 +7,9 @@ import { useAppSelector } from '../../app/hooks';
 import { useDispatch } from 'react-redux';
 import { setUserLoggedOut } from '../../store/slices/sliceUser';
 import toast from 'react-hot-toast';
+import { IAvatar } from './Avatar.interface';
 
-export function Avatar({ userImg }: any) {
+export function Avatar({ userImg, email }: IAvatar) {
   const dispatch = useDispatch();
   const mode = useAppSelector((state) => state.mode.mode);
   const isLogged = useAppSelector((state) => state.user.isLogged);
@@ -23,7 +24,10 @@ export function Avatar({ userImg }: any) {
             } hover:opacity-80 inline-flex w-full p-2 items-center space-x-2 justify-center rounded-md bg-opacity-20 text-sm font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
           >
             <Image
-              src={userImg}
+              src={
+                userImg ||
+                `https://avatars.dicebear.com/api/initials/${email}.svg`
+              }
               alt="user-photo"
               height={35}
               width={35}
@@ -55,30 +59,28 @@ export function Avatar({ userImg }: any) {
                 </button>
               </Menu.Item>
               <Menu.Item>
-                {({ active }) => (
-                  <button
-                    onClick={() => {
-                      signOut(auth);
-                      dispatch(setUserLoggedOut());
-                      mode
-                        ? toast.success('Logout was successful', {
-                            position: 'bottom-center',
-                            duration: 2000,
-                            style: {
-                              borderRadius: '10px',
-                              background: '#333',
-                              color: '#fff',
-                            },
-                          })
-                        : toast.success('Logout was successful', {
-                            position: 'bottom-center',
-                          });
-                    }}
-                    className={`hover:bg-primary-color hover:text-white group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  >
-                    Logout
-                  </button>
-                )}
+                <button
+                  onClick={() => {
+                    signOut(auth);
+                    dispatch(setUserLoggedOut());
+                    mode
+                      ? toast.success('Logout was successful', {
+                          position: 'bottom-center',
+                          duration: 2000,
+                          style: {
+                            borderRadius: '10px',
+                            background: '#333',
+                            color: '#fff',
+                          },
+                        })
+                      : toast.success('Logout was successful', {
+                          position: 'bottom-center',
+                        });
+                  }}
+                  className={`hover:bg-primary-color hover:text-white group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                >
+                  Logout
+                </button>
               </Menu.Item>
             </div>
           </Menu.Items>

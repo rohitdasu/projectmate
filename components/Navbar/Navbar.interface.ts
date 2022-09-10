@@ -1,3 +1,3 @@
 export type NavProps = {
-  active: String;
+  active: string;
 };

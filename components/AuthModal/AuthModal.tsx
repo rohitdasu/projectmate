@@ -1,18 +1,14 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
-import Image from 'next/image';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { closeModal } from '../../store/slices/sliceModal';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, Provider_github, Provider_google } from '../../lib/firebase';
 import toast, { Toaster } from 'react-hot-toast';
-import tw from 'twin.macro';
+import { IAuthData } from './Auth.interface';
+import 'twin.macro';
 
-type Auth_data = {
-  title: String;
-};
-
-export const AuthModal = ({ title }: Auth_data) => {
+export const AuthModal = ({ title }: IAuthData) => {
   const mode = useAppSelector((state) => state.mode.mode);
   const isOpen = useAppSelector((state) => state.modal.modal);
   const dispatch = useAppDispatch();

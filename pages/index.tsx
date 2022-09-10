@@ -7,7 +7,7 @@ import animation from '../public/animation-lottie.json';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { AuthModal, Navbar } from '../components';
 import { openModal } from '../store/slices/sliceModal';
-import tw from 'twin.macro';
+import 'twin.macro';
 
 const Home: NextPage = () => {
   const router = useRouter();

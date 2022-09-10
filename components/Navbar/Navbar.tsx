@@ -16,7 +16,7 @@ import toast from 'react-hot-toast';
 export const Navbar = ({ active }: NavProps) => {
   const dispatch = useAppDispatch();
   const mode = useAppSelector((state) => state.mode.mode);
-  const userlogged = useAppSelector((state) => state.user.isLogged);
+  const userLogged = useAppSelector((state) => state.user.isLogged);
   const [menuState, setMenuState] = useState(false);
   const [user] = useAuthState(auth);
 
@@ -194,11 +194,11 @@ export const Navbar = ({ active }: NavProps) => {
                 </svg>
               </a>
             </Tooltip>
-            {userlogged && (
+            {userLogged && (
               <div
-                className={`${userlogged && 'sm:flex'}  items-center hidden`}
+                className={`${userLogged && 'sm:flex'}  items-center hidden`}
               >
-                <Avatar userImg={user?.photoURL} />
+                <Avatar userImg={user?.photoURL} email={user?.email} />
               </div>
             )}
           </div>
@@ -281,7 +281,7 @@ export const Navbar = ({ active }: NavProps) => {
               Discord
             </a>
           </li>
-          {userlogged && (
+          {userLogged && (
             <>
               <li>
                 <a
