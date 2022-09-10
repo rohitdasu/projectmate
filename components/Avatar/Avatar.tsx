@@ -8,23 +8,35 @@ import { useDispatch } from 'react-redux';
 import { setUserLoggedOut } from '../../store/slices/sliceUser';
 import toast from 'react-hot-toast';
 
-export function Avatar({ userImg }: any) {
+type AvatarProps = {
+  userImg: string | null | undefined;
+  email: string | null | undefined;
+};
+
+export function Avatar({ userImg, email }: AvatarProps) {
   const dispatch = useDispatch();
   const mode = useAppSelector((state) => state.mode.mode);
   const isLogged = useAppSelector((state) => state.user.isLogged);
   // mode - false (light-mode) | mode - true (dark-mode)
   return (
-    <div
-      className={`${isLogged ? 'block' : '!hidden'} z-50 w-max text-right`}
-    >
+    <div className={`${isLogged ? 'block' : '!hidden'} z-50 w-max text-right`}>
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className={`${ !mode ? 'text-gray-500 hover:text-gray-800': 'text-white hover:text-gray-300'} inline-flex w-full p-2 items-center space-x-2 justify-center rounded-md bg-opacity-20 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}>
+          <Menu.Button
+            className={`${
+              !mode
+                ? 'text-gray-500 hover:text-gray-800'
+                : 'text-white hover:text-gray-300'
+            } inline-flex w-full p-2 items-center space-x-2 justify-center rounded-md bg-opacity-20 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+          >
             <Image
-              src={userImg}
+              src={
+                userImg ||
+                `https://avatars.dicebear.com/api/initials/${email}.svg`
+              }
               alt="user-photo"
-              height={40}
-              width={40}
+              height={30}
+              width={30}
               className="object-contain rounded-full"
             />
             <span>▼</span>
@@ -53,30 +65,28 @@ export function Avatar({ userImg }: any) {
                 </button>
               </Menu.Item>
               <Menu.Item>
-                {({ active }) => (
-                  <button
-                    onClick={() => {
-                      signOut(auth);
-                      dispatch(setUserLoggedOut());
-                      mode
-                        ? toast.success('Logout was successful', {
-                            position: 'bottom-center',
-                            duration: 2000,
-                            style: {
-                              borderRadius: '10px',
-                              background: '#333',
-                              color: '#fff',
-                            },
-                          })
-                        : toast.success('Logout was successful', {
-                            position: 'bottom-center',
-                          });
-                    }}
-                    className={`hover:bg-primary-color hover:text-white group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  >
-                    Logout
-                  </button>
-                )}
+                <button
+                  onClick={() => {
+                    signOut(auth);
+                    dispatch(setUserLoggedOut());
+                    mode
+                      ? toast.success('Logout was successful', {
+                          position: 'bottom-center',
+                          duration: 2000,
+                          style: {
+                            borderRadius: '10px',
+                            background: '#333',
+                            color: '#fff',
+                          },
+                        })
+                      : toast.success('Logout was successful', {
+                          position: 'bottom-center',
+                        });
+                  }}
+                  className={`hover:bg-primary-color hover:text-white group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                >
+                  Logout
+                </button>
               </Menu.Item>
             </div>
           </Menu.Items>
