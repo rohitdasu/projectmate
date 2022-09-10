@@ -7,9 +7,8 @@ import { useAppSelector } from '../../app/hooks';
 import { useDispatch } from 'react-redux';
 import { setUserLoggedOut } from '../../store/slices/sliceUser';
 import toast from 'react-hot-toast';
-import { IAvatar } from './Avatar.interface';
 
-export function Avatar({ userImg, email }: IAvatar) {
+export function Avatar({ userImg, email }: any) {
   const dispatch = useDispatch();
   const mode = useAppSelector((state) => state.mode.mode);
   const isLogged = useAppSelector((state) => state.user.isLogged);
