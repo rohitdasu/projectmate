@@ -17,7 +17,6 @@
     "@reduxjs/toolkit": "^1.8.5",
     "firebase": "^9.9.3",
     "lottie-react": "^2.3.1",
-    "mongodb": "^4.9.0",
     "next": "latest",
     "prisma": "^4.3.1",
     "react": "18.1.0",
