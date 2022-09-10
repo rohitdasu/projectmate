@@ -14,17 +14,19 @@ export function Avatar({ userImg }: any) {
   const isLogged = useAppSelector((state) => state.user.isLogged);
   // mode - false (light-mode) | mode - true (dark-mode)
   return (
-    <div
-      className={`${isLogged ? 'block' : '!hidden'} z-50 w-max text-right`}
-    >
+    <div className={`${isLogged ? 'block' : '!hidden'} z-50 w-max text-right`}>
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className={`${ !mode ? 'text-gray-500 hover:text-gray-800': 'text-white hover:text-gray-300'} inline-flex w-full p-2 items-center space-x-2 justify-center rounded-md bg-opacity-20 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}>
+          <Menu.Button
+            className={`${
+              !mode ? 'text-gray-500' : 'text-white'
+            } hover:opacity-80 inline-flex w-full p-2 items-center space-x-2 justify-center rounded-md bg-opacity-20 text-sm font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+          >
             <Image
               src={userImg}
               alt="user-photo"
-              height={40}
-              width={40}
+              height={35}
+              width={35}
               className="object-contain rounded-full"
             />
             <span>▼</span>
