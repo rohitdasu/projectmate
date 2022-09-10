@@ -3,13 +3,7 @@ import Image from 'next/image';
 import { useAppSelector } from '../../app/hooks';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../store/slices/sliceModal';
-
-type ProjectProps = {
-  title: string;
-  description: string;
-  tags: string[];
-  author: string;
-};
+import { ProjectProps } from './Project.interface';
 
 export const Project = ({ title, description, tags, author }: ProjectProps) => {
   const mode = useAppSelector((state) => state.mode.mode);
