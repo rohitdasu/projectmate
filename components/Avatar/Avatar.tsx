@@ -6,8 +6,8 @@ import { auth } from '../../lib/firebase';
 import { useAppSelector } from '../../app/hooks';
 import { useDispatch } from 'react-redux';
 import { setUserLoggedOut } from '../../store/slices/sliceUser';
-import { IAvatar } from './avatar.interface';
 import toast from 'react-hot-toast';
+import { IAvatar } from './index';
 
 export function Avatar({ userImg, email }: IAvatar) {
   const dispatch = useDispatch();
