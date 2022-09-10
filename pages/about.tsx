@@ -17,9 +17,13 @@ const About: NextPage<Props> = () => {
       'https://api.github.com/repos/rohitdasu/projectmate/contributors'
     ).then((response) => {
       const json = response.json();
-      json.then((data) => {
-        setContributors(data);
-      });
+      json
+        .then((data) => {
+          setContributors(data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     });
   }, []);
 
