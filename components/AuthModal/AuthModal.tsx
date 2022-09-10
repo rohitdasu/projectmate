@@ -6,6 +6,7 @@ import { closeModal } from '../../store/slices/sliceModal';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, Provider_github, Provider_google } from '../../lib/firebase';
 import toast, { Toaster } from 'react-hot-toast';
+import 'twin.macro';
 
 type Auth_data = {
   title: string;
