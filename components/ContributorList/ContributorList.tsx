@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Fragment } from 'react';
-import tw from 'twin.macro';
 import { IContributors } from './ContributorList.interface';
+import 'twin.macro';
 
 type Props = {
   contributors: IContributors[];
