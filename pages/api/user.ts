@@ -30,10 +30,11 @@ async function getUsers(req: NextApiRequest, res: NextApiResponse) {
 }
 
 async function addUser(req: NextApiRequest, res: NextApiResponse) {
-  const { email } = req.body;
+  const { email, firebaseUID } = req.body;
   await prisma.user
     .create({
       data: {
+        firebaseUID,
         email,
       },
     })
