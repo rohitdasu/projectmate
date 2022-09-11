@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { addUser } from './service/user.service';
+import { addUser, getUsers } from './service/user.service';
 import { errorResponse, successResponse } from './utils/http.response';
 
 export default async function handler(
@@ -34,22 +34,28 @@ export default async function handler(
     }
   }
 
+  if (req.method === 'GET') {
+    try {
+      const data = await getUsers();
+      return successResponse({
+        res,
+        message: '',
+        results: data,
+        statusCode: 200,
+        error: false,
+      });
+    } catch (error) {
+      return errorResponse({
+        res,
+        message: 'Internal Error',
+        statusCode: 500,
+      });
+    }
+  }
+
   return errorResponse({
     res,
     message: 'Bad Request',
     statusCode: 400,
   });
 }
-
-// async function getUsers(req: NextApiRequest, res: NextApiResponse) {
-//   await prisma.user
-//     .findMany()
-//     .then((data) => {
-//       res
-//         .status(200)
-//         .json({ message: 'Users data', success: true, data: data });
-//     })
-//     .catch((e) => {
-//       res.status(400).json({ data: null, message: e.message, success: false });
-//     });
-// }
