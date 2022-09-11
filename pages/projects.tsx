@@ -1,12 +1,23 @@
 import Head from 'next/head';
-import React from 'react';
+import React, { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { useAppSelector } from '../app/hooks';
-import { Search, Project, Navbar, AuthModal } from '../components';
+import { Search, Project, Navbar, AuthModal, Tooltip } from '../components';
+import {
+  FloatingMenu,
+  MainButton,
+  ChildButton,
+  Directions,
+} from 'react-floating-button-menu';
 import { projects } from '../sample-data/data';
+import { Icon } from '@iconify/react';
+import 'twin.macro';
 
 const Projects = () => {
   const mode = useAppSelector((state) => state.mode.mode);
+  const [isOpen, setIsOpen] = useState(false);
+  const fabColor = mode ? '#eee' : '#444';
+  const tColor = mode ? '#000' : '#fff';
 
   return (
     <div className={`flex ${mode && 'bg-dark-mode'}`}>
@@ -35,6 +46,50 @@ const Projects = () => {
               />
             );
           })}
+        </div>
+        <div tw="bottom-7 fixed right-7 bottom-7">
+          <FloatingMenu
+            slideSpeed={300}
+            direction={Directions.Up}
+            spacing={18}
+            isOpen={isOpen}
+          >
+            <MainButton
+              iconResting={
+                <Icon
+                  icon="akar-icons:plus"
+                  color={tColor}
+                  height={30}
+                  width={30}
+                />
+              }
+              iconActive={
+                <Icon
+                  icon="akar-icons:cross"
+                  color={tColor}
+                  height={30}
+                  width={30}
+                />
+              }
+              onClick={() => setIsOpen(!isOpen)}
+              size={56}
+              background={fabColor}
+            />
+
+            <ChildButton
+              icon={
+                <Icon
+                  icon="akar-icons:file"
+                  color={tColor}
+                  height={30}
+                  width={30}
+                />
+              }
+              size={56}
+              onClick={() => alert('clicked on create project')}
+              background={fabColor}
+            />
+          </FloatingMenu>
         </div>
       </main>
     </div>
