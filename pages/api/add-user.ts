@@ -9,16 +9,16 @@ export default async function handler(
   const { email } = req.body;
 
   if (req.method === 'POST') {
-    const new_user = await prisma.user
+    await prisma.user
       .create({
         data: {
-          email: email,
+          email,
         },
       })
-      .then(() => {
+      .then((data) => {
         res
           .status(200)
-          .json({ message: 'User is created', success: true, data: new_user });
+          .json({ message: 'User is created', success: true, data: data });
       })
       .catch((e) => {
         console.log(e);
