@@ -22,7 +22,9 @@ export default async function handler(
       })
       .catch((e) => {
         console.log(e);
-        res.json({ data: null, message: e, success: false });
+        res
+          .status(400)
+          .json({ data: null, message: e.message, success: false });
       });
   }
 }
