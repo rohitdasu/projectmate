@@ -6,11 +6,11 @@ import { NextApiResponse } from 'next';
 export /** */
 const successResponse = (args: {
   res: NextApiResponse;
-  message: string | '';
+  message: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   results: any;
-  error: boolean | false;
-  statusCode: number | 200;
+  error: boolean;
+  statusCode: number;
 }) => {
   const { res, message, results, statusCode } = args;
   return res.status(statusCode).json({
@@ -25,8 +25,8 @@ const successResponse = (args: {
  */
 export const errorResponse = (args: {
   res: NextApiResponse;
-  message: string | 'Internal Server Error';
-  statusCode: number | 500;
+  message: string;
+  statusCode: number;
 }) => {
   const { res, message, statusCode } = args;
   res.status(statusCode).json({
