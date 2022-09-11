@@ -14,7 +14,7 @@ As a community, we always encourage people to share their thoughts and ideas. Do
 
 ![Next.js](https://img.shields.io/badge/Next.js-305FCB?style=for-the-badge&logo=next.js&logoColor=white)
 ![tailwind css](https://img.shields.io/badge/tailwind_css-305FCB?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-305FCB?style=for-the-badge&logo=firebase&logoColor=orange)
+![Firebase](https://img.shields.io/badge/Firebase-305FCB?style=for-the-badge&logo=firebase&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-305FCB?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-305FCB?style=for-the-badge&logo=prisma&logoColor=white)
 
