@@ -7,8 +7,8 @@ type ProjectType = {
   title: string;
   description: string;
   githubRepo: string;
-  tags: any;
-  userId: any;
+  tags: string[];
+  userId: string;
 };
 
 export default async function handler(
