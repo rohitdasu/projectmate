@@ -1,5 +1,6 @@
 export type ResponseType = {
-  data: [] | {} | null;
+  // data: [] | null | void ;    -- TODO - Need to improve the data(type).
+  data: any;
   message?: string;
   success: boolean;
 };
