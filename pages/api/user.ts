@@ -15,7 +15,7 @@ export default async function handler(
         res,
         message: 'user created successfully',
         results: data,
-        error: false,
+        success: true,
         statusCode: 201,
       });
     } catch (error) {
@@ -24,12 +24,14 @@ export default async function handler(
           res,
           message: 'User already exist',
           statusCode: 400,
+          success: false,
         });
       }
       return errorResponse({
         res,
         message: 'Internal Error',
         statusCode: 500,
+        success: false,
       });
     }
   }
@@ -42,13 +44,14 @@ export default async function handler(
         message: '',
         results: data,
         statusCode: 200,
-        error: false,
+        success: true,
       });
     } catch (error) {
       return errorResponse({
         res,
         message: 'Internal Error',
         statusCode: 500,
+        success: false,
       });
     }
   }
@@ -57,5 +60,6 @@ export default async function handler(
     res,
     message: 'Bad Request',
     statusCode: 400,
+    success: false,
   });
 }

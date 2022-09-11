@@ -9,13 +9,13 @@ const successResponse = (args: {
   message: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   results: any;
-  error: boolean;
+  success: boolean;
   statusCode: number;
 }) => {
-  const { res, message, results, statusCode } = args;
+  const { res, message, results, success, statusCode } = args;
   return res.status(statusCode).json({
     message: message,
-    error: false,
+    success: success,
     results,
   });
 };
@@ -27,10 +27,11 @@ export const errorResponse = (args: {
   res: NextApiResponse;
   message: string;
   statusCode: number;
+  success: boolean;
 }) => {
-  const { res, message, statusCode } = args;
+  const { res, message, success, statusCode } = args;
   res.status(statusCode).json({
-    error: true,
+    success: success,
     message,
   });
 };
