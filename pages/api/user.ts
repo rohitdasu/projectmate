@@ -8,7 +8,6 @@ export default async function handler(
 ) {
   switch (req.method) {
     case 'GET': {
-      console.log('Get method');
       return getUsers(req, res);
     }
     case 'POST': {
@@ -18,7 +17,6 @@ export default async function handler(
 }
 
 async function getUsers(req: NextApiRequest, res: NextApiResponse) {
-  console.log('Getting all users');
   await prisma.user
     .findMany()
     .then((data) => {
@@ -27,7 +25,6 @@ async function getUsers(req: NextApiRequest, res: NextApiResponse) {
         .json({ message: 'Users data', success: true, data: data });
     })
     .catch((e) => {
-      console.log(e);
       res.status(400).json({ data: null, message: e.message, success: false });
     });
 }
@@ -46,7 +43,6 @@ async function addUser(req: NextApiRequest, res: NextApiResponse) {
         .json({ message: 'User is created', success: true, data: data });
     })
     .catch((e) => {
-      console.log(e);
       res.status(400).json({ data: null, message: e.message, success: false });
     });
 }
