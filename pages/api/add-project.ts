@@ -2,14 +2,14 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { ResponseType } from '../../interfaces';
 import { prisma } from '../../lib/prisma';
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseType>
 ) {
   const { authorName, title, description, githubRepo, tags, userId } = req.body;
 
   if (req.method === 'POST') {
-    const new_project = prisma.project
+    await prisma.project
       .create({
         data: {
           author: authorName,
@@ -24,7 +24,7 @@ export default function handler(
         res.status(200).json({
           message: 'Project is created',
           success: true,
-          data: new_project,
+          data: null,
         });
       })
       .catch((e: any) => {

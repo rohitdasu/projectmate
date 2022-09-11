@@ -2,14 +2,14 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { ResponseType } from '../../interfaces';
 import { prisma } from '../../lib/prisma';
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseType>
 ) {
   const { email } = req.body;
 
   if (req.method === 'POST') {
-    const new_user = prisma.user
+    await prisma.user
       .create({
         data: {
           email: email,
@@ -18,7 +18,7 @@ export default function handler(
       .then(() => {
         res
           .status(200)
-          .json({ message: 'User is created', success: true, data: new_user });
+          .json({ message: 'User is created', success: true, data: null });
       })
       .catch((e: any) => {
         console.log(e);
