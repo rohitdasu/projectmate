@@ -6,25 +6,47 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseType>
 ) {
-  const { email } = req.body;
-
-  if (req.method === 'POST') {
-    await prisma.user
-      .create({
-        data: {
-          email,
-        },
-      })
-      .then((data) => {
-        res
-          .status(200)
-          .json({ message: 'User is created', success: true, data: data });
-      })
-      .catch((e) => {
-        console.log(e);
-        res
-          .status(400)
-          .json({ data: null, message: e.message, success: false });
-      });
+  switch (req.method) {
+    case 'GET': {
+      console.log('Get method');
+      return getUsers(req, res);
+    }
+    case 'POST': {
+      return addUser(req, res);
+    }
   }
+}
+
+async function getUsers(req: NextApiRequest, res: NextApiResponse) {
+  console.log('Getting all users');
+  await prisma.user
+    .findMany()
+    .then((data) => {
+      res
+        .status(200)
+        .json({ message: 'Users data', success: true, data: data });
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(400).json({ data: null, message: e.message, success: false });
+    });
+}
+
+async function addUser(req: NextApiRequest, res: NextApiResponse) {
+  const { email } = req.body;
+  await prisma.user
+    .create({
+      data: {
+        email,
+      },
+    })
+    .then((data) => {
+      res
+        .status(200)
+        .json({ message: 'User is created', success: true, data: data });
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(400).json({ data: null, message: e.message, success: false });
+    });
 }
