@@ -1,30 +1,36 @@
+import { NextApiResponse } from 'next';
+
 /**
  * @desc    Send any success response
  */
 export /** */
-const success = (args: {
-  message?: string;
+const successResponse = (args: {
+  res: NextApiResponse;
+  message: string | '';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   results: any;
-  statusCode: number;
+  error: boolean | false;
+  statusCode: number | 200;
 }) => {
-  const { message, results, statusCode } = args;
-  return {
-    message: message ? message : '',
+  const { res, message, results, statusCode } = args;
+  return res.status(statusCode).json({
+    message: message,
     error: false,
-    code: statusCode,
     results,
-  };
+  });
 };
 
 /**
  * @desc    Send any error response
  */
-export const error = (args: { message: string; statusCode: number }) => {
-  const { message, statusCode } = args;
-  return {
-    message,
-    code: statusCode,
+export const errorResponse = (args: {
+  res: NextApiResponse;
+  message: string | 'Internal Server Error';
+  statusCode: number | 500;
+}) => {
+  const { res, message, statusCode } = args;
+  res.status(statusCode).json({
     error: true,
-  };
+    message,
+  });
 };
