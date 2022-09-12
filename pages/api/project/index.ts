@@ -7,59 +7,60 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === 'GET') {
-    try {
-      const data = await getAllProject();
-      return successResponse({
-        res,
-        message: '',
-        results: data,
-        statusCode: 200,
-        success: true,
-      });
-    } catch (error) {
+  switch (req.method) {
+    case 'GET':
+      try {
+        const data = await getAllProject();
+        return successResponse({
+          res,
+          message: '',
+          results: data,
+          statusCode: 200,
+          success: true,
+        });
+      } catch (error) {
+        return errorResponse({
+          res,
+          message: 'Internal Error',
+          statusCode: 500,
+          success: false,
+        });
+      }
+
+    case 'POST':
+      const { title, description, githubRepository, tags, authorId } = req.body;
+      try {
+        const data = await addProject({
+          title,
+          description,
+          githubRepository,
+          tags,
+          authorId,
+        });
+        return successResponse({
+          res,
+          message: '',
+          results: data,
+          statusCode: 201,
+          success: true,
+        });
+      } catch (error) {
+        return errorResponse({
+          res,
+          message: 'Internal Error',
+          statusCode: 500,
+          success: false,
+        });
+      }
+
+    default:
       return errorResponse({
         res,
-        message: 'Internal Error',
-        statusCode: 500,
+        message: 'Bad Request',
+        statusCode: 400,
         success: false,
       });
-    }
   }
-
-  if (req.method === 'POST') {
-    const { title, description, githubRepository, tags, authorId } = req.body;
-    try {
-      const data = await addProject({
-        title,
-        description,
-        githubRepository,
-        tags,
-        authorId,
-      });
-      return successResponse({
-        res,
-        message: '',
-        results: data,
-        statusCode: 201,
-        success: true,
-      });
-    } catch (error) {
-      return errorResponse({
-        res,
-        message: 'Internal Error',
-        statusCode: 500,
-        success: false,
-      });
-    }
-  }
-
-  return errorResponse({
-    res,
-    message: 'Bad Request',
-    statusCode: 400,
-    success: false,
-  });
 }
 
 async function getAllProject() {
