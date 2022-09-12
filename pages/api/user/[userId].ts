@@ -12,6 +12,16 @@ export default async function handler(
 
     try {
       const data = await getUsersByFirebaseUID(userId?.toString());
+      if (!data) {
+        return successResponse({
+          res,
+          message: "User doesn't exist",
+          results: data,
+          statusCode: 200,
+          success: false,
+        });
+      }
+
       return successResponse({
         res,
         message: '',
