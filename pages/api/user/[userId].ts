@@ -56,6 +56,9 @@ async function getUsersByFirebaseUID(firebaseUID?: string) {
       where: {
         firebaseUID,
       },
+      include: {
+        project: true,
+      },
     });
     return data;
   } catch (error) {
