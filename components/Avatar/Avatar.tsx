@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { setUserLoggedOut } from '../../store/slices/sliceUser';
 import toast from 'react-hot-toast';
 import { IAvatar } from './Avatar.interface';
+import { Icon } from '@iconify/react';
 
 export function Avatar({ userImg, email }: IAvatar) {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export function Avatar({ userImg, email }: IAvatar) {
           <Menu.Button
             className={`${
               !mode ? 'text-gray-500' : 'text-white'
-            } hover:opacity-80 inline-flex w-full p-2 items-center space-x-2 justify-center rounded-md bg-opacity-20 text-sm font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+            } hover:opacity-80 inline-flex w-full p-2 items-center space-x-1 justify-center rounded-md bg-opacity-20 text-sm font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
           >
             <Image
               src={
@@ -33,7 +34,12 @@ export function Avatar({ userImg, email }: IAvatar) {
               width={35}
               className="object-contain rounded-full"
             />
-            <span>▼</span>
+            <Icon
+              icon="akar-icons:triangle-fill"
+              className='rotate-180'
+              height={12}
+              width={12}
+            />
           </Menu.Button>
         </div>
         <Transition
