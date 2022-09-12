@@ -7,43 +7,52 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === 'GET') {
-    const { postId } = req.query;
+  switch (req.method) {
+    case 'GET':
+      const { postId } = req.query;
+      try {
+        const data = await getPostById(postId?.toString());
+        if (!data) {
+          return successResponse({
+            res,
+            message: "Project doesn't exist",
+            results: data,
+            statusCode: 200,
+            success: false,
+          });
+        }
 
-    try {
-      const data = await getPostById(postId?.toString());
-      if (!data) {
         return successResponse({
           res,
-          message: "Project doesn't exist",
+          message: '',
           results: data,
           statusCode: 200,
+          success: true,
+        });
+      } catch (error) {
+        if (error.code === 'P2023') {
+          return errorResponse({
+            res,
+            message: 'Invalid project id',
+            statusCode: 400,
+            success: false,
+          });
+        }
+        return errorResponse({
+          res,
+          message: 'Internal Error',
+          statusCode: 500,
           success: false,
         });
       }
-
-      return successResponse({
-        res,
-        message: '',
-        results: data,
-        statusCode: 200,
-        success: true,
-      });
-    } catch (error) {
+    default:
       return errorResponse({
         res,
-        message: 'Internal Error',
-        statusCode: 500,
+        message: 'Bad Request',
+        statusCode: 400,
         success: false,
       });
-    }
   }
-  return errorResponse({
-    res,
-    message: 'Bad Request',
-    statusCode: 400,
-    success: false,
-  });
 }
 
 async function getPostById(id?: string) {
