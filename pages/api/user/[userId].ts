@@ -7,43 +7,46 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === 'GET') {
-    const { userId } = req.query;
+  switch (req.method) {
+    case 'GET':
+      const { userId } = req.query;
 
-    try {
-      const data = await getUsersByFirebaseUID(userId?.toString());
-      if (!data) {
+      try {
+        const data = await getUsersByFirebaseUID(userId?.toString());
+        if (!data) {
+          return successResponse({
+            res,
+            message: "User doesn't exist",
+            results: data,
+            statusCode: 200,
+            success: false,
+          });
+        }
+
         return successResponse({
           res,
-          message: "User doesn't exist",
+          message: '',
           results: data,
           statusCode: 200,
+          success: true,
+        });
+      } catch (error) {
+        return errorResponse({
+          res,
+          message: 'Internal Error',
+          statusCode: 500,
           success: false,
         });
       }
 
-      return successResponse({
-        res,
-        message: '',
-        results: data,
-        statusCode: 200,
-        success: true,
-      });
-    } catch (error) {
+    default:
       return errorResponse({
         res,
-        message: 'Internal Error',
-        statusCode: 500,
+        message: 'Bad Request',
+        statusCode: 400,
         success: false,
       });
-    }
   }
-  return errorResponse({
-    res,
-    message: 'Bad Request',
-    statusCode: 400,
-    success: false,
-  });
 }
 
 async function getUsersByFirebaseUID(firebaseUID?: string) {
