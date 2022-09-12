@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { addUser, getUsers } from './service/user.service';
-import { errorResponse, successResponse } from './utils/http.response';
+import { errorResponse, successResponse } from '../../../lib/http.response';
+import { prisma } from '../../../lib/prisma';
+import { User } from '@prisma/client';
 
 export default async function handler(
   req: NextApiRequest,
@@ -62,4 +63,28 @@ export default async function handler(
     statusCode: 400,
     success: false,
   });
+}
+
+async function addUser(args: { email: string; firebaseUID: string }) {
+  const { email, firebaseUID } = args;
+  try {
+    const data = await prisma.user.create({
+      data: {
+        firebaseUID,
+        email,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getUsers() {
+  try {
+    const data: User[] = await prisma.user.findMany();
+    return data;
+  } catch (error) {
+    throw error;
+  }
 }

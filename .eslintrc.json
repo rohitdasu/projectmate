@@ -10,6 +10,7 @@
     "prettier"
   ],
   "rules": {
-    "consistent-return": "warn"
+    "consistent-return": "warn",
+    "no-console": "warn"
   }
 }

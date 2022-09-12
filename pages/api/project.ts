@@ -6,7 +6,7 @@ type ProjectType = {
   author: string;
   title: string;
   description: string;
-  githubRepo: string;
+  githubRepository: string;
   tags: string[];
   userId: string;
 };
@@ -29,7 +29,7 @@ export default async function handler(
 
 async function getPost(req: NextApiRequest, res: NextApiResponse) {
   await prisma.project
-    .findMany()
+    .findMany({ include: { author: {} } })
     .then((data) => {
       res
         .status(200)
@@ -41,17 +41,16 @@ async function getPost(req: NextApiRequest, res: NextApiResponse) {
 }
 
 async function addPost(req: NextApiRequest, res: NextApiResponse) {
-  const { author, title, description, githubRepo, tags, userId }: ProjectType =
+  const { title, description, githubRepository, tags, userId }: ProjectType =
     req.body;
   await prisma.project
     .create({
       data: {
-        author,
         title,
         description,
-        githubRepository: githubRepo,
-        userId,
+        githubRepository,
         tags,
+        authorId: userId,
       },
     })
     .then((data) => {
@@ -62,6 +61,7 @@ async function addPost(req: NextApiRequest, res: NextApiResponse) {
       });
     })
     .catch((e) => {
+      console.log(e);
       res.status(400).json({ data: e, message: e, success: false });
     });
 }
