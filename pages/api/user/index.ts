@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '@/lib/prisma';
 import { User } from '@prisma/client';
-import apiHandler from '@/lib/apiHandler';
+import bodyValidator from '@/lib/bodyValidator';
 import {
   errorResponse,
   successResponse,
@@ -34,7 +34,7 @@ export default async function handler(
       }
     case 'POST':
       try {
-        const validatedBody = await apiHandler(req, userSchema);
+        const validatedBody = await bodyValidator(req, userSchema);
         const { email, firebaseUID } = validatedBody;
         const data = await addUser({ email, firebaseUID });
         return successResponse({

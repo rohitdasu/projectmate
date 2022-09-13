@@ -1,7 +1,13 @@
 import { Project } from '@prisma/client';
 import { NextApiResponse, NextApiRequest } from 'next';
-import { errorResponse, successResponse } from '../../../lib/http.response';
-import { prisma } from '../../../lib/prisma';
+import {
+  errorResponse,
+  successResponse,
+  validationResponse,
+} from '@/lib/http.response';
+import { prisma } from '@/lib/prisma';
+import bodyValidator from '@/lib/bodyValidator';
+import { postSchema } from '@/schema/postSchema';
 
 export default async function handler(
   req: NextApiRequest,
@@ -28,8 +34,10 @@ export default async function handler(
       }
 
     case 'POST':
-      const { title, description, githubRepository, tags, authorId } = req.body;
       try {
+        const validatedBody = await bodyValidator(req, postSchema);
+        const { title, description, githubRepository, tags, authorId } =
+          validatedBody;
         const data = await addProject({
           title,
           description,
@@ -45,6 +53,12 @@ export default async function handler(
           success: true,
         });
       } catch (error) {
+        if (error.name === 'ZodError') {
+          return validationResponse({
+            res,
+            error,
+          });
+        }
         return errorResponse({
           res,
           message: 'Internal Error',

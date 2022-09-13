@@ -1,7 +1,7 @@
 import { NextApiRequest } from 'next';
 import { z } from 'zod';
 
-export default async function apiHandler(
+export default async function bodyValidator(
   req: NextApiRequest,
   schema: z.ZodType
 ) {
