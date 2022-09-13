@@ -35,3 +35,18 @@ export const errorResponse = (args: {
     message,
   });
 };
+
+/**
+ * @desc    Send any validation response
+ */
+export const validationResponse = (args: {
+  res: NextApiResponse;
+  error: any;
+}) => {
+  const { res, error } = args;
+  res.status(400).json({
+    success: false,
+    message: 'Validation error',
+    error,
+  });
+};
