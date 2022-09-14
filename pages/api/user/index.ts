@@ -1,7 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { errorResponse, successResponse } from '../../../lib/http.response';
-import { prisma } from '../../../lib/prisma';
+import { prisma } from '@/lib/prisma';
 import { User } from '@prisma/client';
+import bodyValidator from '@/lib/bodyValidator';
+import {
+  errorResponse,
+  successResponse,
+  validationResponse,
+} from '@/lib/http.response';
+import { userSchema } from '@/schema/index';
 
 export default async function handler(
   req: NextApiRequest,
@@ -27,8 +33,9 @@ export default async function handler(
         });
       }
     case 'POST':
-      const { email, firebaseUID } = req.body;
       try {
+        const validatedBody = await bodyValidator(req, userSchema);
+        const { email, firebaseUID } = validatedBody;
         const data = await addUser({ email, firebaseUID });
         return successResponse({
           res,
@@ -44,6 +51,12 @@ export default async function handler(
             message: 'User already exist',
             statusCode: 400,
             success: false,
+          });
+        }
+        if (error.name === 'ZodError') {
+          return validationResponse({
+            res,
+            error,
           });
         }
         return errorResponse({
