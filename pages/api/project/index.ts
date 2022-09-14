@@ -7,7 +7,7 @@ import {
 } from '@/lib/http.response';
 import { prisma } from '@/lib/prisma';
 import bodyValidator from '@/lib/bodyValidator';
-import { postSchema } from '@/schema/postSchema';
+import { postSchema } from '@/schema/index';
 
 export default async function handler(
   req: NextApiRequest,

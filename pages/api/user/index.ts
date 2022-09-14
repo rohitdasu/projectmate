@@ -7,7 +7,7 @@ import {
   successResponse,
   validationResponse,
 } from '@/lib/http.response';
-import { userSchema } from '@/schema/userSchema';
+import { userSchema } from '@/schema/index';
 
 export default async function handler(
   req: NextApiRequest,
