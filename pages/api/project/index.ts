@@ -36,13 +36,20 @@ export default async function handler(
     case 'POST':
       try {
         const validatedBody = await bodyValidator(req, postSchema);
-        const { title, description, githubRepository, tags, authorId } =
-          validatedBody;
+        const {
+          title,
+          description,
+          githubRepository,
+          tags,
+          coverImg,
+          authorId,
+        } = validatedBody;
         const data = await addProject({
           title,
           description,
           githubRepository,
           tags,
+          coverImg,
           authorId,
         });
         return successResponse({
@@ -93,9 +100,11 @@ async function addProject(args: {
   description: string;
   githubRepository: string;
   tags: string[];
+  coverImg: string;
   authorId: string;
 }) {
-  const { title, description, githubRepository, tags, authorId } = args;
+  const { title, description, githubRepository, tags, coverImg, authorId } =
+    args;
   try {
     const data = await prisma.project.create({
       data: {
@@ -103,11 +112,17 @@ async function addProject(args: {
         description,
         githubRepository,
         tags,
-        authorId,
+        coverImg,
+        author: {
+          connect: {
+            id: authorId,
+          },
+        },
       },
     });
     return data;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 }
