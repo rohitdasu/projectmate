@@ -49,7 +49,7 @@ export default async function handler(
           return errorResponse({
             res,
             message: 'User already exist',
-            statusCode: 400,
+            statusCode: 200,
             success: false,
           });
         }
