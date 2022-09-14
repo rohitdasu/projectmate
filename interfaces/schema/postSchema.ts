@@ -10,9 +10,13 @@ export const postSchema = z.object({
       required_error: 'Description is required',
     })
     .min(15),
-  githubRepository: z
+  githubRepository: z.string({
+    required_error: 'githubRepository is required',
+  }),
+
+  coverImg: z
     .string({
-      required_error: 'githubRepository is required',
+      required_error: 'Cover image is required',
     })
     .url(),
 

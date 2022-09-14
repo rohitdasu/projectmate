@@ -2,76 +2,80 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { closeModal } from '../../store/slices/sliceModal';
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithPopup, signOut } from 'firebase/auth';
 import { auth, Provider_github, Provider_google } from '../../lib/firebase';
 import toast, { Toaster } from 'react-hot-toast';
 import { IAuthData } from './Auth.interface';
 import 'twin.macro';
+import { setUserLoggedOut } from 'store/slices/sliceUser';
+
+enum ProviderType {
+  'GOOGLE',
+  'GITHUB',
+}
 
 export const AuthModal = ({ title }: IAuthData) => {
   const mode = useAppSelector((state) => state.mode.mode);
   const isOpen = useAppSelector((state) => state.modal.modal);
   const dispatch = useAppDispatch();
-  const handleGoogleSignin = () => {
-    signInWithPopup(auth, Provider_google)
-      .then(() => {
-        mode
-          ? toast.success('Login Successful', {
-              position: 'bottom-center',
-              duration: 2000,
-              style: {
-                borderRadius: '10px',
-                background: '#333',
-                color: '#fff',
-              },
-            })
-          : toast.success('Login Successful', { position: 'bottom-center' });
-      })
-      .catch((error) =>
-        mode
-          ? toast.error(error.message, {
-              position: 'bottom-center',
-              duration: 2000,
-              style: {
-                borderRadius: '10px',
-                background: '#333',
-                color: '#fff',
-              },
-            })
-          : toast.error(error.message, { position: 'bottom-center' })
-      );
-    dispatch(closeModal());
+
+  const createUser = async (
+    email: string | null,
+    firebaseUID: string | null
+  ): Promise<boolean> => {
+    const body = {
+      email,
+      firebaseUID,
+    };
+    const res = await fetch('/api/user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+    if (res.ok) {
+      return true;
+    }
+    await signOut(auth);
+    dispatch(setUserLoggedOut());
+    throw Error('Something went wrong! Please try again.');
   };
-  const handleGithubSignin = () => {
-    signInWithPopup(auth, Provider_github)
-      .then(() => {
-        mode
-          ? toast.success('Login Successful', {
-              position: 'bottom-center',
-              duration: 2000,
-              style: {
-                borderRadius: '10px',
-                background: '#333',
-                color: '#fff',
-              },
-            })
-          : toast.success('Login Successful', { position: 'bottom-center' });
-      })
-      .catch((error) =>
-        mode
-          ? toast.error(error.message, {
-              position: 'bottom-center',
-              duration: 2000,
-              style: {
-                borderRadius: '10px',
-                background: '#333',
-                color: '#fff',
-              },
-            })
-          : toast.error(error.message, { position: 'bottom-center' })
+
+  const handleSignin = async (loginWith: ProviderType) => {
+    try {
+      dispatch(closeModal());
+      const data = await signInWithPopup(
+        auth,
+        loginWith === ProviderType.GOOGLE ? Provider_google : Provider_github
       );
-    dispatch(closeModal());
+      await createUser(data.user.email, data.user.uid);
+      mode
+        ? toast.success('Login Successful', {
+            position: 'bottom-center',
+            duration: 2000,
+            style: {
+              borderRadius: '10px',
+              background: '#333',
+              color: '#fff',
+            },
+          })
+        : toast.success('Login Successful', { position: 'bottom-center' });
+    } catch (error) {
+      mode
+        ? toast.error(error.message, {
+            position: 'bottom-center',
+            duration: 2000,
+            style: {
+              borderRadius: '10px',
+              background: '#333',
+              color: '#fff',
+            },
+          })
+        : toast.error(error.message, { position: 'bottom-center' });
+    }
   };
+
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -120,7 +124,7 @@ export const AuthModal = ({ title }: IAuthData) => {
                   <div tw="mx-4  flex h-[100px] justify-evenly  items-center ">
                     <button
                       tw="items-center flex space-x-2 "
-                      onClick={handleGithubSignin}
+                      onClick={() => handleSignin(ProviderType.GITHUB)}
                     >
                       <svg
                         width="30"
@@ -145,7 +149,7 @@ export const AuthModal = ({ title }: IAuthData) => {
 
                     <button
                       tw="items-center flex space-x-2"
-                      onClick={handleGoogleSignin}
+                      onClick={() => handleSignin(ProviderType.GOOGLE)}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
