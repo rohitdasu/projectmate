@@ -122,7 +122,6 @@ async function addProject(args: {
     });
     return data;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 }
