@@ -52,7 +52,7 @@ const Home: NextPage = () => {
             <button
               onClick={() => router.push('/projects')}
               type="button"
-              tw="border border-white w-[170px] mx-auto md:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
+              tw="border focus:ring focus:bg-blue-800 border-white w-[170px] mx-auto md:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
             >
               Explore Projects
             </button>
@@ -60,7 +60,7 @@ const Home: NextPage = () => {
             <button
               onClick={() => dispatch(openModal())}
               type="button"
-              tw="border border-white w-[170px] mx-auto md:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
+              tw="border focus:ring focus:bg-blue-800 border-white w-[170px] mx-auto md:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
             >
               JOIN US
             </button>
