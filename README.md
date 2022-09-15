@@ -11,6 +11,7 @@ Check out the website: [https://project-mate.vercel.app](https://project-mate.ve
 As a community, we always encourage people to share their thoughts and ideas. Do you want to talk to us? Join our Discord server by clicking the badge below.
 
 [![DISCORD - Join](https://img.shields.io/badge/DISCORD-Join-2ea44f?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FQtyMWFZQ9)
+[![FIGMA - View](https://img.shields.io/badge/Figma-View-2ea44f?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/3v3ckbS8o24Me4L93so4js/projectmate)
 
 ## Tech stack
 
