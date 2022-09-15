@@ -1,4 +1,6 @@
-# ProjectMate - find your project mate online
+# PROJECTMATE - find your project mate online
+![PROJECTMATE find your project mate online](https://user-images.githubusercontent.com/48400770/190438248-fc0f3e42-c6d3-4d07-bcba-10e7fece4bc2.png)
+
 A web app where you can find contributors for your open-source project or as an individual contributor you can find open-source projects. Best place to start open-source contribution.
 Find people who have the same vision as you do and contribute for building amazing products.
 
@@ -17,15 +19,15 @@ As a community, we always encourage people to share their thoughts and ideas. Do
 ![Firebase](https://img.shields.io/badge/Firebase-305FCB?style=for-the-badge&logo=firebase&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-305FCB?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-305FCB?style=for-the-badge&logo=prisma&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-305FCB?style=for-the-badge&logo=figma&logoColor=white)
 
 
 1. Frontend - **Next.js**
 2. CSS Framework - **Tailwind CSS**
 3. Backend - **NextJS APIs + Firebase Auth + MongoDB + Prisma ORM**
+4. Design & Prototype - Figma
 
 ## Installation steps
-
-### Steps:
 
 1. Fork the project
 
