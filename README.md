@@ -5,7 +5,7 @@ A web app where you can find contributors for your open-source project or as an 
 Find people who have the same vision as you do and contribute for building amazing products.
 
 ## Demo
-Check out the website: [https://project-mate.vercel.app](https://project-mate.vercel.app)
+Check out the web app: [https://project-mate.vercel.app](https://project-mate.vercel.app)
 
 ## Connect with us
 As a community, we always encourage people to share their thoughts and ideas. Do you want to talk to us? Join our Discord server by clicking the badge below.
