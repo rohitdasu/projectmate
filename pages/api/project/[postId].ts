@@ -2,11 +2,16 @@ import { Project } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { errorResponse, successResponse } from '@/lib/http.response';
 import { prisma } from '@/lib/prisma';
+import apiAuth from '@/lib/apiAuth';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const isAuth = await apiAuth(req);
+  if (!isAuth) {
+    return res.status(401).json('Unauthorized');
+  }
   switch (req.method) {
     case 'GET':
       const { postId } = req.query;
