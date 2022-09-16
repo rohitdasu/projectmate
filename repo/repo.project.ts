@@ -8,3 +8,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         props: {projects: projects}
     }
 }
+
+// async function findProjects() : Promise<Project[]> {
+//     const prisma = new PrismaClient();
+//     return await prisma.project.findMany({take: 30});
+// }
+//
+// findProjects().then((projects)=>{
+//     console.log(projects);
+// });
+
