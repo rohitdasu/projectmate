@@ -8,11 +8,22 @@ import {
   validationResponse,
 } from '@/lib/http.response';
 import { userSchema } from '@/schema/index';
+import apiAuth from '@/lib/apiAuth';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const isAuth = await apiAuth(req);
+  if (!isAuth) {
+    return errorResponse({
+      res,
+      message: 'Unauthorized',
+      statusCode: 401,
+      success: false,
+    });
+  }
+
   switch (req.method) {
     case 'GET':
       try {

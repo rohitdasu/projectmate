@@ -10,7 +10,12 @@ export default async function handler(
 ) {
   const isAuth = await apiAuth(req);
   if (!isAuth) {
-    return res.status(401).json('Unauthorized');
+    return errorResponse({
+      res,
+      message: 'Unauthorized',
+      statusCode: 401,
+      success: false,
+    });
   }
   switch (req.method) {
     case 'GET':

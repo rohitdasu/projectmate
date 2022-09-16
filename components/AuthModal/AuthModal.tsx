@@ -21,7 +21,8 @@ export const AuthModal = ({ title }: IAuthData) => {
 
   const createUser = async (
     email: string | null,
-    firebaseUID: string | null
+    firebaseUID: string | null,
+    token: string
   ): Promise<boolean> => {
     const body = {
       email,
@@ -31,6 +32,7 @@ export const AuthModal = ({ title }: IAuthData) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(body),
     });
@@ -49,7 +51,9 @@ export const AuthModal = ({ title }: IAuthData) => {
         auth,
         loginWith === ProviderType.GOOGLE ? Provider_google : Provider_github
       );
-      await createUser(data.user.email, data.user.uid);
+
+      const token = await data.user.getIdToken();
+      await createUser(data.user.email, data.user.uid, token);
       mode
         ? toast.success('Login Successful', {
             position: 'bottom-center',
