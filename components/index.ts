@@ -4,4 +4,3 @@ export * from './ContributorList';
 export * from './Navbar';
 export * from './Projects';
 export * from './Search';
-export * from './Tooltip';

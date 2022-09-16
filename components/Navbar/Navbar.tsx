@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { changeMode } from '../../store/slices/sliceMode';
 import { setUserLogged, setUserLoggedOut } from '../../store/slices/sliceUser';
 import { NavProps } from './Navbar.interface';
-import { Tooltip } from '../Tooltip';
+import { Tooltip } from 'flowbite-react';
 import toast from 'react-hot-toast';
 
 export const Navbar = ({ active }: NavProps) => {
@@ -93,7 +93,7 @@ export const Navbar = ({ active }: NavProps) => {
         </div>
         <div className="flex  items-center">
           <div className="flex items-center justify-between w-max">
-            <Tooltip content={'Toggle mode'} wrapperTag="div" placement="up">
+            <Tooltip content={'Toggle mode'} style={mode ? 'light' : 'dark'}>
               <a
                 href="#"
                 onClick={() => dispatch(changeMode())}
@@ -146,7 +146,7 @@ export const Navbar = ({ active }: NavProps) => {
                 <Icon icon="charm:menu-hamburger" height={30} width={30} />
               )}
             </a>
-            <Tooltip content={'Github'} wrapperTag="div" placement="up">
+            <Tooltip content={'Github'} style={mode ? 'light' : 'dark'}>
               <a
                 href="https://github.com/rohitdasu/projectmate"
                 target="_blank"
@@ -171,7 +171,7 @@ export const Navbar = ({ active }: NavProps) => {
                 </svg>
               </a>
             </Tooltip>
-            <Tooltip content={'Discord'} wrapperTag="div" placement="up">
+            <Tooltip content={'Discord'} style={mode ? 'light' : 'dark'}>
               <a
                 href="https://discord.gg/FQtyMWFZQ9"
                 target="_blank"
