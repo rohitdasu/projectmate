@@ -9,11 +9,10 @@ import {
   ChildButton,
   Directions,
 } from 'react-floating-button-menu';
-import { projects } from '../sample-data/data';
 import { Icon } from '@iconify/react';
 import 'twin.macro';
 
-const Projects = () => {
+const Projects = ({projects}) => {
   const mode = useAppSelector((state) => state.mode.mode);
   const isLoggedIn = useAppSelector((state) => state.user.isLogged);
   const [isOpen, setIsOpen] = useState(false);
