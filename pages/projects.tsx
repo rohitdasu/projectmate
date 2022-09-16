@@ -11,8 +11,8 @@ import {
 } from 'react-floating-button-menu';
 import { Icon } from '@iconify/react';
 import 'twin.macro';
-
-const Projects = ({projects} : {projects: any}) => {
+import {projects} from "../sample-data/data";
+const Projects = () => {
   const mode = useAppSelector((state) => state.mode.mode);
   const isLoggedIn = useAppSelector((state) => state.user.isLogged);
   const [isOpen, setIsOpen] = useState(false);
