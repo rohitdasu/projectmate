@@ -12,7 +12,7 @@ import {
 import { Icon } from '@iconify/react';
 import 'twin.macro';
 
-const Projects = ({projects}) => {
+const Projects = ({projects} : {projects: any}) => {
   const mode = useAppSelector((state) => state.mode.mode);
   const isLoggedIn = useAppSelector((state) => state.user.isLogged);
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +35,7 @@ const Projects = ({projects}) => {
           <Search />
         </div>
         <div className="w-full md:w-1/2 mt-16 mb-4 mx-auto space-y-4">
-          {projects.map((project) => {
+          {projects.map((project: any) => {
             return (
               <Project
                 key={project.id}
