@@ -34,8 +34,8 @@ const Projects = () => {
         >
           <Search />
         </div>
-        <div className="w-full md:w-1/2 mt-16 mb-4 mx-auto space-y-4">
-          {projects.map((project: any) => {
+        <div className="container gap-5 m-auto mt-20 md:p-5 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {projects.map((project) => {
             return (
               <Project
                 key={project.id}
