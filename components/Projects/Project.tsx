@@ -13,7 +13,7 @@ export const Project = ({ title, description, tags, author }: ProjectProps) => {
   };
   return (
     <div className="w-full p-2 md:p-0">
-      <div className="flex flex-col items-center justify-center space-y-2 overflow-hidden rounded-md text-foreground-1">
+      <div className="flex flex-col items-center justify-center space-y-2 overflow-hidden rounded-md shadow-border-shadow text-foreground-1">
         <div className="w-full">
           <Image src={thumbnail} alt={title} placeholder="blur" />
         </div>
