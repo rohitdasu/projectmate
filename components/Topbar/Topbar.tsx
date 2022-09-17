@@ -9,25 +9,31 @@ export const Topbar = () => {
       <nav className="container flex justify-between p-5 m-auto">
         <div className="flex items-center gap-10">
           <Logo />
-          <ul className="hidden gap-5 capitalize md:flex">
-            {appRoutes.map((route) => {
-              const { title, url, Icon } = route;
-              return (
-                <li key={title}>
-                  <Link href={url}>
-                    <a className="flex items-center gap-1">
-                      <Icon />
-                      {title}
-                    </a>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <DesktopRoutes />
         </div>
         <ThemeToggler />
       </nav>
     </div>
+  );
+};
+
+const DesktopRoutes = () => {
+  return (
+    <ul className="hidden gap-5 capitalize md:flex">
+      {appRoutes.map((route) => {
+        const { title, url, Icon } = route;
+        return (
+          <li key={title}>
+            <Link href={url}>
+              <a className="flex items-center gap-1">
+                <Icon />
+                {title}
+              </a>
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 
