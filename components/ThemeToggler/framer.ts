@@ -1,6 +1,5 @@
 export const framer_theme = {
-  initial: { y: -40 },
-  animate: { y: 0 },
-  exit: { y: 40 },
-  transition: { duration: 0.3 },
+  initial: { scale: 0 },
+  animate: { scale: 1 },
+  exit: { scale: 0 },
 };
