@@ -12,6 +12,7 @@ import {
 import { projects } from '../sample-data/data';
 import { Icon } from '@iconify/react';
 import 'twin.macro';
+import { Topbar } from '@/components/Topbar/Topbar';
 
 const Projects = () => {
   const mode = useAppSelector((state) => state.mode.mode);
@@ -21,12 +22,12 @@ const Projects = () => {
   const tColor = mode ? '#000' : '#fff';
 
   return (
-    <div className={`flex ${mode && 'bg-dark-mode'}`}>
+    <div className={`${mode && 'bg-dark-mode'}`}>
       <Head>
         <title>Projectmate | Projects</title>
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
-      <Navbar active={'projects'} />
+      <Topbar />
       <main className="flex flex-col w-full mt-20">
         <Toaster />
         <AuthModal title={'Login to Continue'} />
