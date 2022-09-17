@@ -8,24 +8,21 @@ import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { AuthModal, Navbar } from '../components';
 import { openModal } from '../store/slices/sliceModal';
 import 'twin.macro';
+import { Topbar } from '@/components/Topbar/Topbar';
 
 const Home: NextPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const mode = useAppSelector((state) => state.mode.mode);
   const userState = useAppSelector((state) => state.user.isLogged);
 
   return (
-    <div
-      className={`flex min-h-screen flex-col items-center  ${
-        mode && 'bg-dark-mode'
-      }`}
-    >
+    <div className="flex-col items-center min-h-screen">
       <Head>
         <title>Projectmate | Home</title>
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
-      <Navbar active={'home'} />
+      {/* <Navbar active={'home'} /> */}
+      <Topbar />
       <main tw="flex mt-[5rem] lg:w-full flex-1 ">
         <Toaster />
         <AuthModal
@@ -34,21 +31,13 @@ const Home: NextPage = () => {
           }
         />
         <div tw="flex flex-col px-[2px] flex-1 text-center lg:text-left justify-center lg:m-0 lg:w-1/2 lg:px-20">
-          <h1
-            className={`lg:leading-[82px] leading-normal font-bold  text-dark-color md:text-[55px] text-[40px]  capitalize ${
-              mode && '!text-white'
-            }`}
-          >
+          <h1 className="lg:leading-[82px] leading-normal font-bold md:text-[55px] text-[40px]  capitalize text-foreground-1">
             A place where you find{' '}
-            <span className="text-primary-color uppercase">OpenSource</span>{' '}
+            <span className="uppercase text-primary-color">OpenSource</span>{' '}
             Projects
           </h1>
 
-          <p
-            className={`mt-4    md:leading-[30px] leading-normal md:text-[20px] text-[17px] font-light text-gray-800 ${
-              mode && '!text-white'
-            } `}
-          >
+          <p className="mt-4 md:leading-[30px] leading-normal md:text-[20px] text-[17px] font-light text-gray-800 text-foreground-1">
             We will help you to find opensource project and contributors.
           </p>
 
