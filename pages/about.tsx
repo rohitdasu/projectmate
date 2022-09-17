@@ -28,9 +28,8 @@ const About: NextPage<Props> = () => {
     });
   }, []);
 
-  const mode = useAppSelector((state) => state.mode.mode);
   return (
-    <div className={`flex min-h-screen flex-col  ${mode && 'bg-dark-mode'}`}>
+    <div className="flex flex-col min-h-screen">
       <Head>
         <title>Projectmate | About</title>
         <link rel="icon" href="/dark-logo.svg" />
@@ -40,12 +39,8 @@ const About: NextPage<Props> = () => {
       <main tw="flex mt-[8rem]  lg:w-full flex-1 ">
         <Toaster />
       </main>
-      <footer
-        className={`flex  flex-col h-24 mt-auto w-full items-center bg-white justify-center border-t px-6 lg:px-20 shadow-md ${
-          mode && '!bg-dark-mode border-t-0'
-        } `}
-      >
-        <p className={`text-lg font-light  mb-2 pb-0 ${mode && 'text-white'}`}>
+      <footer className="flex flex-col items-center justify-center w-full h-24 px-6 mt-auto shadow-md lg:px-20 bg-background-1">
+        <p className="pb-0 mb-2 text-lg font-light">
           Shout-out to our contributors
         </p>
 
