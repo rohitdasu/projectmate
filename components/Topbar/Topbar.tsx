@@ -1,12 +1,12 @@
-import Link from 'next/link';
 import React from 'react';
 import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
-import { appRoutes } from './data';
+import { DesktopRoutes } from './DesktopRoutes';
+import { Logo } from './Logo';
 
 export const Topbar = () => {
   return (
     <div className="bg-background-1 text-foreground-1">
-      <nav className="container flex justify-between p-5 m-auto">
+      <nav className="container flex justify-between p-2 py-5 m-auto md:p-5">
         <div className="flex items-center gap-10">
           <Logo />
           <DesktopRoutes />
@@ -14,37 +14,5 @@ export const Topbar = () => {
         <ThemeToggler />
       </nav>
     </div>
-  );
-};
-
-const DesktopRoutes = () => {
-  return (
-    <ul className="hidden gap-5 capitalize md:flex">
-      {appRoutes.map((route) => {
-        const { title, url, Icon } = route;
-        return (
-          <li key={title}>
-            <Link href={url}>
-              <a className="flex items-center gap-1">
-                <Icon />
-                {title}
-              </a>
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
-  );
-};
-
-const Logo = () => {
-  return (
-    <Link href="/">
-      <span className="flex items-center font-mono text-2xl font-semibold uppercase cursor-pointer md:space-x-2 text-foreground-1">
-        <p>
-          project<span className="text-primary-color">mate</span>
-        </p>
-      </span>
-    </Link>
   );
 };
