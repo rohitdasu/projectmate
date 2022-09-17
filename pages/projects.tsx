@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { useAppSelector } from '../app/hooks';
 import { Search, Project, Navbar, AuthModal } from '../components';
-import useSWR from 'swr'
+import useSWR from 'swr';
 
 import {
   FloatingMenu,
@@ -13,19 +13,18 @@ import {
 } from 'react-floating-button-menu';
 import { Icon } from '@iconify/react';
 import 'twin.macro';
-import {projects} from "../sample-data/data";
 const Projects = () => {
   const fetcher = (...args: Parameters<typeof fetch>) =>
-      fetch(...args).then((res) => res.json());
-
-  const { data } = useSWR('/api/project', fetcher)
-  console.log( `SWR data ${data}`);
+    fetch(...args).then((res) => res.json());
+  const { data, error } = useSWR('/api/project', fetcher);
   const mode = useAppSelector((state) => state.mode.mode);
   const isLoggedIn = useAppSelector((state) => state.user.isLogged);
   const [isOpen, setIsOpen] = useState(false);
   const fabColor = mode ? '#eee' : '#444';
   const tColor = mode ? '#000' : '#fff';
 
+  if (error) return <div> failed to load</div>;
+  if (!data) return <div>loading ... </div>;
   return (
     <div className={`flex ${mode && 'bg-dark-mode'}`}>
       <Head>
@@ -42,14 +41,15 @@ const Projects = () => {
           <Search />
         </div>
         <div className="container gap-5 m-auto mt-20 md:p-5 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {projects.map((project) => {
+          {data.results.map((project: any) => {
+            console.log(project);
             return (
               <Project
                 key={project.id}
                 description={project.description}
                 title={project.title}
                 tags={project.tags}
-                author={project.author}
+                author={project.author.email}
               />
             );
           })}
