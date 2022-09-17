@@ -20,7 +20,7 @@ export const ThemeToggler = () => {
 
   return (
     <button
-      className="flex p-1 overflow-hidden text-[1.6rem]"
+      className="flex p-[0.67rem] overflow-hidden text-[1.6rem] shadow-border-shadow rounded-md"
       onClick={toggleTheme}
     >
       <AnimatePresence exitBeforeEnter initial={false}>
