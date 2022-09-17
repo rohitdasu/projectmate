@@ -24,6 +24,9 @@ module.exports = {
         'background-2': 'var(--clr-background-2)',
         'foreground-1': 'var(--clr-foreground-1)',
       },
+      boxShadow: {
+        'border-shadow': 'var(--boxshadow-1)',
+      },
     },
   },
   plugins: [require('flowbite/plugin')],
