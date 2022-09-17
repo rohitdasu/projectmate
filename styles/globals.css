@@ -6,7 +6,18 @@
   --secondary-color: #2854eecc;
   --dark-mode: #1c2128;
   --box-color: #1f242b;
+
+  --clr-background-1: #ffffff;
+  --clr-background-2: #dae6f8;
+  --clr-foreground-1: #1c2128;
 }
+
+[data-theme='dark'] {
+  --clr-background-1: #1c2128;
+  --clr-background-2: #1b2c43;
+  --clr-foreground-1: #ffffff;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
 }
