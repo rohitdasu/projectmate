@@ -31,7 +31,7 @@ const Projects = () => {
       <main className="flex flex-col w-full">
         <Toaster />
         <AuthModal title={'Login to Continue'} />
-        <div className="sticky top-0 z-50 backdrop-blur-3xl">
+        <div className="sticky top-0 z-10 backdrop-blur-3xl">
           <Search />
         </div>
         <div className="container gap-5 m-auto md:p-5 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
