@@ -4,7 +4,6 @@ import { Toaster } from 'react-hot-toast';
 import { useAppSelector } from '../app/hooks';
 import { Search, Project, Navbar, AuthModal } from '../components';
 import useSWR from 'swr';
-
 import {
   FloatingMenu,
   MainButton,
