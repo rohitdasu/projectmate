@@ -4,7 +4,7 @@ import Image from 'next/image';
 export const Search = () => {
   const [searchInput, setSearchInput] = useState('');
   return (
-    <div className="my-2 mx-2 md:mx-auto px-4 md:w-1/2 z-[999] bg-white border border-[#C9C9C9] rounded-md shadow-md flex items-center space-x-2">
+    <div className="my-2 mx-2 md:mx-auto px-4 md:w-1/2 z-[999] bg-white border border-[#C9C9C9] text-black rounded-md shadow-md flex items-center space-x-2">
       <Image
         src="/search.svg"
         height={18}
@@ -16,7 +16,7 @@ export const Search = () => {
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
         placeholder="Search Projects"
-        className="p-2 bg-transparent outline-none flex-1 "
+        className="flex-1 p-2 bg-transparent outline-none "
       />
       {searchInput && (
         <Image
