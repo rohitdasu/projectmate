@@ -6,7 +6,6 @@ import { ProjectProps } from './Project.interface';
 import thumbnail from '../../public/open-source.png';
 
 export const Project = ({ title, description, tags, author }: ProjectProps) => {
-  const mode = useAppSelector((state) => state.mode.mode);
   const userLogged = useAppSelector((state) => state.user.isLogged);
   const dispatch = useDispatch();
   const handleContribute = () => {
@@ -14,7 +13,7 @@ export const Project = ({ title, description, tags, author }: ProjectProps) => {
   };
   return (
     <div className="w-full p-2 md:p-0">
-      <div className="flex flex-col items-center justify-center space-y-2 rounded-md shadow-md text-foreground-1">
+      <div className="flex flex-col items-center justify-center space-y-2 overflow-hidden rounded-md text-foreground-1">
         <div className="w-full">
           <Image src={thumbnail} alt={title} placeholder="blur" />
         </div>

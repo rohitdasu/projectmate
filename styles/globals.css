@@ -10,12 +10,16 @@
   --clr-background-1: #ffffff;
   --clr-background-2: #dae6f8;
   --clr-foreground-1: #1c2128;
+
+  --boxshadow-1: hsl(225, 35%, 91%) 0px 0px 0px 1px;
 }
 
 [data-theme='dark'] {
   --clr-background-1: #1c2128;
   --clr-background-2: #1b2c43;
   --clr-foreground-1: #ffffff;
+
+  --boxshadow-1: hsl(252, 4%, 26%) 0px 0px 0px 1px;
 }
 
 body {
