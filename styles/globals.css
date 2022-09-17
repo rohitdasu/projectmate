@@ -6,7 +6,22 @@
   --secondary-color: #2854eecc;
   --dark-mode: #1c2128;
   --box-color: #1f242b;
+
+  --clr-background-1: #ffffff;
+  --clr-background-2: #eef2f8;
+  --clr-foreground-1: #1c2128;
+
+  --boxshadow-1: hsl(0, 0%, 95%) 0px 0px 0px 1px;
 }
+
+[data-theme='dark'] {
+  --clr-background-1: #1c2128;
+  --clr-background-2: #1b2c43;
+  --clr-foreground-1: #ffffff;
+
+  --boxshadow-1: hsl(214, 19%, 21%) 0px 0px 0px 1px;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
 }
