@@ -42,7 +42,7 @@ As a community, we always encourage people to share their thoughts and ideas. Do
    cd projectmate
    ```
    
-4. Create `.env` file from the `.env.template` file (copy everything in the `.env.template` file and put it in `.env` file with appropriate values). `MONGODB_URI` is the `connection string` which you'll get from mongodb [for reference](https://www.mongodb.com/docs/manual/reference/connection-string/) also, create Firebase account and add API Keys credentials in the `.env` variable.
+4. Create `.env` file from the `.env.template` file (copy everything in the `.env.template` file and put it in `.env` file with appropriate values). `MONGODB_URI` is the `connection string` which you'll get from mongodb [for reference](https://www.mongodb.com/docs/manual/reference/connection-string/) also, create Firebase account and add API Keys credentials in the `.env` variable. To get the Firebase `private_key` and `client_email`, In the Firebase console, open Settings > Service Accounts. Click Generate New Private Key, then confirm by clicking Generate Key for reference. 
 
 5. Install all the dependencies
    ```sh
