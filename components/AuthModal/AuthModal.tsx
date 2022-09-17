@@ -109,21 +109,33 @@ export const AuthModal = ({ title }: IAuthData) => {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel
-                  className={`w-full ${
+                  className={`w-full h-[450px] ${
                     mode ? '!bg-dark-mode' : '!bg-white'
                   }  max-w-md transform overflow-hidden rounded-2xl  p-6 text-left align-middle shadow-xl transition-all`}
                 >
+                  <span
+                    className={`text-2xl flex w-full justify-center items-center  md:space-x-2 font-bold font-mono mb-6 text-gray-900 uppercase ${
+                      mode && '!text-white'
+                    }`}
+                  >
+                    <p>
+                      project<span className="text-primary-color">mate</span>
+                    </p>
+                  </span>
                   <Dialog.Title
                     as="h3"
-                    className={`text-lg text-center font-medium leading-6 text-gray-900 ${
+                    className={`text-lg text-center font-medium leading-6 text-gray-900 mb-20 ${
                       mode ? '!text-white' : '!text-gray-700'
                     }`}
                   >
                     {title}
                   </Dialog.Title>
-                  <div tw="mx-4  flex h-[100px] justify-evenly  items-center ">
+                  <div tw="mx-4 flex h-[100px] justify-evenly flex-col  items-center space-y-8">
                     <button
-                      tw="items-center flex space-x-2 "
+                      tw="items-center flex space-x-2"
+                      className={`w-full border-2 py-2 px-3 rounded-lg ${
+                        mode ? '!border-[#4E4E4E]' : '!border-[#1C2128]'
+                      }`}
                       onClick={() => handleSignin(ProviderType.GITHUB)}
                     >
                       <svg
@@ -141,14 +153,19 @@ export const AuthModal = ({ title }: IAuthData) => {
                         />
                       </svg>
                       <span
-                        className={`${mode ? 'text-white' : 'text-gray-700'}`}
+                        className={`flex justify-center w-full text-lg ${
+                          mode ? 'text-white' : 'text-gray-700'
+                        }`}
                       >
-                        Github
+                        continue with Github
                       </span>
                     </button>
 
                     <button
                       tw="items-center flex space-x-2"
+                      className={`w-full border-2 py-2 px-3 rounded-lg ${
+                        mode ? '!border-[#4E4E4E]' : '!border-[#1C2128]'
+                      }`}
                       onClick={() => handleSignin(ProviderType.GOOGLE)}
                     >
                       <svg
@@ -175,9 +192,11 @@ export const AuthModal = ({ title }: IAuthData) => {
                         />
                       </svg>
                       <span
-                        className={`${mode ? 'text-white' : 'text-gray-700'}`}
+                        className={`flex justify-center w-full text-lg ${
+                          mode ? 'text-white' : 'text-gray-700'
+                        }`}
                       >
-                        Google
+                        continue with Google
                       </span>
                     </button>
                   </div>
