@@ -29,7 +29,7 @@ const Home: NextPage = () => {
       <main tw="flex mt-[5rem] lg:w-full flex-1 ">
         <Toaster />
         <AuthModal title={'Continue with your social accounts.'} />
-        <div tw="flex flex-col px-[2px] flex-1 text-center md:text-left justify-center lg:m-0 lg:w-1/2 lg:px-20">
+        <div tw="flex flex-col px-[2px] flex-1 text-center lg:text-left justify-center lg:m-0 lg:w-1/2 lg:px-20">
           <h1
             className={`lg:leading-[82px] leading-normal font-bold  text-dark-color md:text-[55px] text-[40px]  capitalize ${
               mode && '!text-white'
@@ -52,7 +52,7 @@ const Home: NextPage = () => {
             <button
               onClick={() => router.push('/projects')}
               type="button"
-              tw="border border-white w-[170px] mx-auto md:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
+              tw="border focus:ring focus:bg-blue-800 border-white w-[170px] mx-auto lg:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
             >
               Explore Projects
             </button>
@@ -60,7 +60,7 @@ const Home: NextPage = () => {
             <button
               onClick={() => dispatch(openModal())}
               type="button"
-              tw="border border-white w-[170px] mx-auto md:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
+              tw="border focus:ring focus:bg-blue-800 border-white w-[170px] mx-auto lg:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
             >
               JOIN US
             </button>

@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { changeMode } from '../../store/slices/sliceMode';
 import { setUserLogged, setUserLoggedOut } from '../../store/slices/sliceUser';
 import { NavProps } from './Navbar.interface';
-import { Tooltip } from '../Tooltip';
+import { Tooltip } from 'flowbite-react';
 import toast from 'react-hot-toast';
 
 export const Navbar = ({ active }: NavProps) => {
@@ -93,7 +93,7 @@ export const Navbar = ({ active }: NavProps) => {
         </div>
         <div className="flex  items-center">
           <div className="flex items-center justify-between w-max">
-            <Tooltip content={'Toggle mode'} wrapperTag="div" placement="up">
+            <Tooltip content={'Toggle mode'} style={mode ? 'light' : 'dark'}>
               <a
                 href="#"
                 onClick={() => dispatch(changeMode())}
@@ -122,7 +122,7 @@ export const Navbar = ({ active }: NavProps) => {
               onClick={() => setMenuState(!menuState)}
               className={`${
                 mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-              } p-2 sm:hidden cursor-pointer rounded-full flex items-center justify-center `}
+              } p-2 lg:hidden cursor-pointer rounded-full flex items-center justify-center `}
             >
               {mode ? (
                 menuState ? (
@@ -146,14 +146,14 @@ export const Navbar = ({ active }: NavProps) => {
                 <Icon icon="charm:menu-hamburger" height={30} width={30} />
               )}
             </a>
-            <Tooltip content={'Github'} wrapperTag="div" placement="up">
+            <Tooltip content={'Github'} style={mode ? 'light' : 'dark'}>
               <a
                 href="https://github.com/rohitdasu/projectmate"
                 target="_blank"
                 rel="noreferrer"
                 className={`${
                   mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-                } p-2 hidden rounded-full sm:flex items-center justify-center `}
+                } p-2 hidden rounded-full lg:flex items-center justify-center `}
               >
                 <svg
                   width="30"
@@ -171,14 +171,14 @@ export const Navbar = ({ active }: NavProps) => {
                 </svg>
               </a>
             </Tooltip>
-            <Tooltip content={'Discord'} wrapperTag="div" placement="up">
+            <Tooltip content={'Discord'} style={mode ? 'light' : 'dark'}>
               <a
                 href="https://discord.gg/FQtyMWFZQ9"
                 target="_blank"
                 rel="noreferrer"
                 className={`${
                   mode ? 'hover:bg-gray-700' : 'hover:bg-gray-200'
-                } p-2 hidden rounded-full sm:flex items-center justify-center `}
+                } p-2 hidden rounded-full lg:flex items-center justify-center `}
               >
                 <svg
                   width="30"
@@ -196,7 +196,7 @@ export const Navbar = ({ active }: NavProps) => {
             </Tooltip>
             {userLogged && (
               <div
-                className={`${userLogged && 'sm:flex'}  items-center hidden`}
+                className={`${userLogged && 'lg:flex'}  items-center hidden`}
               >
                 <Avatar userImg={user?.photoURL} email={user?.email} />
               </div>
@@ -211,8 +211,8 @@ export const Navbar = ({ active }: NavProps) => {
       >
         <ul
           className={`${
-            menuState ? 'flex sm:hidden' : 'hidden'
-          } w-full flex-col   space-y-2  p-4 mt-4  rounded-lg  border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 `}
+            menuState ? 'flex lg:hidden' : 'hidden'
+          } w-full flex-col   space-y-2  p-4 mt-4  rounded-lg  border-gray-100 lg:flex-row ld:space-x-8 ld:mt-0 ld:text-sm ld:font-medium ld:border-0 `}
         >
           <li>
             <Link
