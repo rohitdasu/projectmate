@@ -8,6 +8,7 @@ import {
 import { prisma } from '@/lib/prisma';
 import bodyValidator from '@/lib/bodyValidator';
 import { postSchema } from '@/schema/index';
+import apiAuth from '@/lib/apiAuth';
 
 export default async function handler(
   req: NextApiRequest,
@@ -35,6 +36,15 @@ export default async function handler(
 
     case 'POST':
       try {
+        const isAuth = await apiAuth(req);
+        if (!isAuth) {
+          return errorResponse({
+            res,
+            message: 'Unauthorized',
+            statusCode: 401,
+            success: false,
+          });
+        }
         const validatedBody = await bodyValidator(req, postSchema);
         const {
           title,
