@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
 import { DesktopRoutes } from './DesktopRoutes';
+import { Hamburger } from './Hamburger';
 import { Logo } from './Logo';
 
 export const Topbar = () => {
@@ -11,7 +12,10 @@ export const Topbar = () => {
           <Logo />
           <DesktopRoutes />
         </div>
-        <ThemeToggler />
+        <div className="flex items-center gap-2 md:block">
+          <ThemeToggler />
+          <Hamburger />
+        </div>
       </nav>
     </div>
   );

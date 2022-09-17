@@ -1,5 +1,5 @@
 import React from 'react';
 
 export const Hamburger = () => {
-  return <div>Hamburger</div>;
+  return <div className="md:hidden">Hamburger</div>;
 };
