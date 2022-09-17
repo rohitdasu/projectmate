@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { useAppSelector } from '../app/hooks';
 import { Search, Project, Navbar, AuthModal } from '../components';
+import useSWR from 'swr'
+
 import {
   FloatingMenu,
   MainButton,
@@ -13,6 +15,11 @@ import { Icon } from '@iconify/react';
 import 'twin.macro';
 import {projects} from "../sample-data/data";
 const Projects = () => {
+  const fetcher = (...args: Parameters<typeof fetch>) =>
+      fetch(...args).then((res) => res.json());
+
+  const { data } = useSWR('/api/project', fetcher)
+  console.log( `SWR data ${data}`);
   const mode = useAppSelector((state) => state.mode.mode);
   const isLoggedIn = useAppSelector((state) => state.user.isLogged);
   const [isOpen, setIsOpen] = useState(false);
