@@ -22,13 +22,13 @@ const Projects = () => {
   const tColor = mode ? '#000' : '#fff';
 
   return (
-    <div className={`${mode && 'bg-dark-mode'}`}>
+    <div>
       <Head>
         <title>Projectmate | Projects</title>
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
       <Topbar />
-      <main className="flex flex-col w-full mt-20">
+      <main className="flex flex-col w-full">
         <Toaster />
         <AuthModal title={'Login to Continue'} />
         <div

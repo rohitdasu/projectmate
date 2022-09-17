@@ -46,7 +46,7 @@ export default class MyDocument extends Document {
             }}
           />
         </Head>
-        <body>
+        <body className="bg-background-1">
           <Main />
           <NextScript />
         </body>
