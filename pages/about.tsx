@@ -1,3 +1,4 @@
+import { Topbar } from '@/components/Topbar/Topbar';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
@@ -29,16 +30,13 @@ const About: NextPage<Props> = () => {
 
   const mode = useAppSelector((state) => state.mode.mode);
   return (
-    <div
-      className={`flex min-h-screen flex-col items-center  ${
-        mode && 'bg-dark-mode'
-      }`}
-    >
+    <div className={`flex min-h-screen flex-col  ${mode && 'bg-dark-mode'}`}>
       <Head>
         <title>Projectmate | About</title>
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
-      <Navbar active={'about'} />
+      {/* <Navbar active={'about'} /> */}
+      <Topbar />
       <main tw="flex mt-[8rem]  lg:w-full flex-1 ">
         <Toaster />
       </main>
