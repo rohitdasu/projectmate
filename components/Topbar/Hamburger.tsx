@@ -1,5 +1,9 @@
-import React from 'react';
+import { FiMenu } from 'react-icons/fi';
 
 export const Hamburger = () => {
-  return <div className="md:hidden">Hamburger</div>;
+  return (
+    <button className="md:hidden flex p-[0.67rem] overflow-hidden text-[1.6rem] shadow-border-shadow rounded-md">
+      <FiMenu />
+    </button>
+  );
 };
