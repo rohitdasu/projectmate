@@ -157,7 +157,7 @@ export const AuthModal = ({ title }: IAuthData) => {
                           mode ? 'text-white' : 'text-gray-700'
                         }`}
                       >
-                        continue with Github
+                        Continue with Github
                       </span>
                     </button>
 
@@ -196,7 +196,7 @@ export const AuthModal = ({ title }: IAuthData) => {
                           mode ? 'text-white' : 'text-gray-700'
                         }`}
                       >
-                        continue with Google
+                        Continue with Google
                       </span>
                     </button>
                   </div>
