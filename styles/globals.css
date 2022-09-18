@@ -11,6 +11,10 @@
   --clr-background-2: #eef2f8;
   --clr-foreground-1: #1c2128;
 
+  --border-color-1: #1c2128;
+  --clr-filler-1: #000000;
+  --clr-border-1: #959595;
+
   --clr-primary-1: #ec9e58;
 
   --clr-gray-1: #d1d5db;
@@ -22,6 +26,10 @@
   --clr-background-1: #1c2128;
   --clr-background-2: #1b2c43;
   --clr-foreground-1: #ffffff;
+
+  --border-color-1: #4e4e4e;
+  --clr-filler-1: #656565;
+  --clr-border-1: #4e4e4e;
 
   --clr-primary-1: #ec9e58;
 
