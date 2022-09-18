@@ -39,7 +39,7 @@ export const Sidebar = () => {
               className="fixed z-30 left-0 top-0 bottom-0 h-screen bg-background-1 w-[100%] max-w-[19rem] flex flex-col"
               ref={ref}
             >
-              <div className="flex items-center justify-between p-5 border-b-[1px] border-gray-700">
+              <div className="flex items-center justify-between p-5 border-b-[1px] border-gray-1">
                 <Logo />
                 <button
                   className="flex p-[0.67rem] overflow-hidden shadow-border-shadow rounded-md"
