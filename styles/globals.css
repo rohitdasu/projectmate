@@ -11,6 +11,8 @@
   --clr-background-2: #eef2f8;
   --clr-foreground-1: #1c2128;
 
+  --clr-primary-1: #ec9e58;
+
   --boxshadow-1: hsl(0, 0%, 95%) 0px 0px 0px 1px;
 }
 
@@ -18,6 +20,8 @@
   --clr-background-1: #1c2128;
   --clr-background-2: #1b2c43;
   --clr-foreground-1: #ffffff;
+
+  --clr-primary-1: #ec9e58;
 
   --boxshadow-1: hsl(214, 19%, 21%) 0px 0px 0px 1px;
 }

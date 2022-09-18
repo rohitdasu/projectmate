@@ -23,6 +23,7 @@ module.exports = {
         'background-1': 'var(--clr-background-1)',
         'background-2': 'var(--clr-background-2)',
         'foreground-1': 'var(--clr-foreground-1)',
+        'primary-1': 'var(--clr-primary-1)',
       },
       boxShadow: {
         'border-shadow': 'var(--boxshadow-1)',
