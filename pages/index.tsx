@@ -30,7 +30,7 @@ const Home: NextPage = () => {
             'To view projects please verify your identity with these options'
           }
         />
-        <div tw="flex flex-col px-[2px] flex-1 text-center lg:text-left justify-center lg:m-0 lg:w-1/2 lg:px-20">
+        <div tw="flex flex-col px-4 flex-1 text-center lg:text-left justify-center lg:m-0 lg:w-1/2 lg:px-20">
           <h1 className="lg:leading-[82px] leading-normal font-bold md:text-[55px] text-[40px]  capitalize text-foreground-1">
             A place where you find{' '}
             <span className="uppercase text-primary-color">OpenSource</span>{' '}
