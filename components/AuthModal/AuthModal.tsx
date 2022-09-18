@@ -124,11 +124,11 @@ export const AuthModal = ({ title }: IAuthData) => {
                   </span>
                   <Dialog.Title
                     as="h3"
-                    className={`text-lg text-center font-medium leading-6 mb-20 text-gray-900 text-foreground-1`}
+                    className={`text-base lg:text-lg text-center font-medium leading-6 mb-20 text-gray-900 text-foreground-1`}
                   >
                     {title}
                   </Dialog.Title>
-                  <div tw="mx-4 flex h-[100px] justify-evenly space-y-8 flex-col items-center">
+                  <div tw="mx-4 w-[75%] flex mx-auto h-[100px] justify-evenly space-y-8 flex-col items-center">
                     <button
                       tw="items-center flex space-x-2"
                       className={`w-full border-2 py-2 px-3 rounded-lg border-color-1`}
@@ -149,7 +149,7 @@ export const AuthModal = ({ title }: IAuthData) => {
                         />
                       </svg>
                       <span
-                        className={`flex justify-center w-full text-lg text-foreground-1`}
+                        className={`flex justify-center w-full text-base lg:text-lg text-foreground-1`}
                       >
                         Continue with Github
                       </span>
@@ -184,7 +184,7 @@ export const AuthModal = ({ title }: IAuthData) => {
                         />
                       </svg>
                       <span
-                        className={`flex justify-center w-full text-lg text-foreground-1`}
+                        className={`flex justify-center w-full text-base lg:text-lg text-foreground-1`}
                       >
                         Continue with Google
                       </span>
