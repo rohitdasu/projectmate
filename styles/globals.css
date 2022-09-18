@@ -11,6 +11,9 @@
   --clr-background-2: #eef2f8;
   --clr-foreground-1: #1c2128;
 
+  --border-color-1: #1c2128;
+  --clr-filler-1: #000000;
+
   --clr-primary-1: #ec9e58;
 
   --boxshadow-1: hsl(0, 0%, 95%) 0px 0px 0px 1px;
@@ -20,6 +23,9 @@
   --clr-background-1: #1c2128;
   --clr-background-2: #1b2c43;
   --clr-foreground-1: #ffffff;
+
+  --border-color-1: #4e4e4e;
+  --clr-filler-1: #656565;
 
   --clr-primary-1: #ec9e58;
 

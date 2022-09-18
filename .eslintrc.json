@@ -12,5 +12,6 @@
   "rules": {
     "consistent-return": "warn",
     "no-console": "warn"
-  }
+  },
+  "ignorePatterns": ["tailwind.config.js"]
 }
