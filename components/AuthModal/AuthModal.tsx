@@ -112,7 +112,7 @@ export const AuthModal = ({ title }: IAuthData) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full h-[450px] bg-background-1 max-w-md transform overflow-hidden rounded-2xl  p-6 text-left align-middle shadow-xl transition-all border-2 border-[#FD973C]">
+                <Dialog.Panel className="w-full h-[450px] bg-background-1 max-w-md transform overflow-hidden rounded-2xl  p-6 text-left align-middle shadow-xl transition-all border-2 border-color-border-1">
                   <span
                     className={`text-2xl flex w-full justify-center items-center  md:space-x-2 font-bold font-mono text-gray-900 uppercase text-foreground-1 mb-12`}
                   >

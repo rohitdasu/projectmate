@@ -26,6 +26,7 @@ module.exports = {
         'color-1': 'var(--border-color-1)',
         'filler-1': 'var(--clr-filler-1)',
         'primary-1': 'var(--clr-primary-1)',
+        'color-border-1': 'var(--clr-border-1)',
         'gray-1': 'var(--clr-gray-1)',
       },
       boxShadow: {
