@@ -16,7 +16,7 @@ export const DesktopRoutes = () => {
             <Link href={url}>
               <a
                 className={`flex items-center gap-1 ${
-                  isCurrent && 'text-red-200'
+                  isCurrent && 'text-primary-1 font-bold'
                 }`}
                 {...anchorTagProps}
               >
