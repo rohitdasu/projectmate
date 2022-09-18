@@ -31,12 +31,12 @@ export const Sidebar = () => {
           <>
             <motion.div
               {...framer_sidebar_background}
-              className="fixed top-0 bottom-0 left-0 right-0 z-20 backdrop-blur-sm bg-[rgba(0,0,0,0.5)]"
+              className="fixed md:hidden top-0 bottom-0 left-0 right-0 z-20 backdrop-blur-sm bg-[rgba(0,0,0,0.5)]"
             ></motion.div>
 
             <motion.div
               {...framer_sidebar_panel}
-              className="fixed z-30 left-0 top-0 bottom-0 h-screen bg-background-1 w-[100%] max-w-[19rem] flex flex-col"
+              className="fixed md:hidden z-30 left-0 top-0 bottom-0 h-screen bg-background-1 w-[100%] max-w-[19rem] flex flex-col"
               ref={ref}
             >
               <div className="flex items-center justify-between p-5 border-b-[1px] border-gray-1">
