@@ -36,7 +36,7 @@ export const Sidebar = () => {
 
             <motion.div
               {...framer_sidebar_panel}
-              className="absolute z-30 left-0 top-0 bottom-0 h-full bg-background-1 w-[100%] max-w-[19rem] flex flex-col justify-between"
+              className="fixed z-30 left-0 top-0 bottom-0 h-screen bg-background-1 w-[100%] max-w-[19rem] flex flex-col justify-between"
               ref={ref}
             >
               <div className="flex items-center justify-between p-5">
