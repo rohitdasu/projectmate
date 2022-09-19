@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useAppSelector } from '../../app/hooks';
 import { useDispatch } from 'react-redux';
-import { openModal } from '../../store/slices/sliceModal';
+import sliceModal, { openModal } from '../../store/slices/sliceModal';
 import { ProjectProps } from './Project.interface';
 import thumbnail from '../../public/open-source.png';
 import { AiOutlineUser } from 'react-icons/ai';
@@ -26,7 +26,9 @@ export const Project = ({ title, description, tags, author }: ProjectProps) => {
               {author}
             </span>
           </h2>
-          <p className="text-sm ">{description}</p>
+          <p className="text-sm ">
+            {description.slice(0, 160)} {description.length > 160 && '. . .'}
+          </p>
           <div className="flex flex-col gap-5">
             <div className="flex pb-2 space-x-2 md:pb-0">
               {tags.map((tag: string, i: number) => (
