@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { closeModal } from '../../store/slices/sliceModal';
 import { signInWithPopup, signOut } from 'firebase/auth';
-import { auth, providerGithub, providerGoogle } from '../../lib/firebase';
+import { auth, providerGithub, providerGoogle } from '@/lib/firebase';
 import toast, { Toaster } from 'react-hot-toast';
 import { IAuthData } from './Auth.interface';
 import 'twin.macro';
