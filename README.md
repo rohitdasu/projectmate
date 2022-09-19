@@ -48,8 +48,15 @@ As a community, we always encourage people to share their thoughts and ideas. Do
    ```sh
    npm install
    ```
-   
-6. Start the application development server
+6. Synchronize your Prisma schema with your database schema
+   ```sh
+   npx prisma db push
+   ```
+7. Insert required data to your database
+   ```sh
+   npx prisma db seed
+   ```
+8. Start the application development server
    ```sh
    npm run dev
    ```
