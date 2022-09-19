@@ -1,3 +1,4 @@
+import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { Topbar } from '@/components/Topbar/Topbar';
 import { NextPage } from 'next';
 import Head from 'next/head';
@@ -30,24 +31,20 @@ const About: NextPage<Props> = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Head>
-        <title>Projectmate | About</title>
-        <link rel="icon" href="/dark-logo.svg" />
-      </Head>
-      {/* <Navbar active={'about'} /> */}
-      <Topbar />
-      <main tw="flex mt-[8rem]  lg:w-full flex-1 ">
-        <Toaster />
-      </main>
-      <footer className="flex flex-col items-center justify-center w-full h-24 px-6 mt-auto shadow-md lg:px-20 bg-background-1">
-        <p className="pb-0 mb-2 text-lg font-light">
-          Shout-out to our contributors
-        </p>
+      <SharedLayout title="about">
+        <main tw="flex mt-[8rem]  lg:w-full flex-1 ">
+          <Toaster />
+        </main>
+        <footer className="flex flex-col items-center justify-center w-full h-24 px-6 mt-auto shadow-md lg:px-20 bg-background-1">
+          <p className="pb-0 mb-2 text-lg font-light">
+            Shout-out to our contributors
+          </p>
 
-        <div tw="flex items-center justify-around w-[80%] lg:w-1/5">
-          <ContributorList contributors={contributors} />
-        </div>
-      </footer>
+          <div tw="flex items-center justify-around w-[80%] lg:w-1/5">
+            <ContributorList contributors={contributors} />
+          </div>
+        </footer>
+      </SharedLayout>
     </div>
   );
 };

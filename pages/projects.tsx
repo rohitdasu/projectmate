@@ -1,8 +1,7 @@
-import Head from 'next/head';
 import React, { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { useAppSelector } from '../app/hooks';
-import { Search, Project, Navbar, AuthModal } from '../components';
+import { Search, Project, AuthModal } from '../components';
 import useSWR from 'swr';
 import {
   FloatingMenu,
@@ -12,7 +11,7 @@ import {
 } from 'react-floating-button-menu';
 import { Icon } from '@iconify/react';
 import 'twin.macro';
-import { Topbar } from '@/components/Topbar/Topbar';
+import { SharedLayout } from '@/components/Layouts/SharedLayout';
 
 const Projects = () => {
   const fetcher = (...args: Parameters<typeof fetch>) =>
@@ -27,12 +26,7 @@ const Projects = () => {
   if (error) return <div> failed to load</div>;
   if (!data) return <div>loading ... </div>;
   return (
-    <div>
-      <Head>
-        <title>Projectmate | Projects</title>
-        <link rel="icon" href="/dark-logo.svg" />
-      </Head>
-      <Topbar />
+    <SharedLayout title="projects">
       <main className="flex flex-col w-full">
         <Toaster />
         <AuthModal title={'Continue with your social accounts'} />
@@ -41,7 +35,6 @@ const Projects = () => {
         </div>
         <div className="container gap-5 p-3 m-auto md:p-5 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {data.results.map((project: any) => {
-            console.log(project);
             return (
               <Project
                 key={project.id}
@@ -100,7 +93,7 @@ const Projects = () => {
           </div>
         )}
       </main>
-    </div>
+    </SharedLayout>
   );
 };
 
