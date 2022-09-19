@@ -19,7 +19,8 @@
     "paths": {
       "@/schema/*": ["./interfaces/schema/*"],
       "@/lib/*": ["./lib/*"],
-      "@/components/*": ["./components/*"]
+      "@/components/*": ["./components/*"],
+      "@/store/*": ["./store/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
