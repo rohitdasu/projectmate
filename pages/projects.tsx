@@ -35,7 +35,7 @@ const Projects = () => {
       <Topbar />
       <main className="flex flex-col w-full">
         <Toaster />
-        <AuthModal title={'Login to Continue'} />
+        <AuthModal title={'Continue with your social accounts'} />
         <div className="sticky top-0 z-10 backdrop-blur-3xl">
           <Search />
         </div>
