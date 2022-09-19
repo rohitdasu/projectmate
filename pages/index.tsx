@@ -27,7 +27,7 @@ const Home: NextPage = () => {
         <Toaster />
         <AuthModal
           title={
-            'To view projects please verify your identity with these options'
+            'Continue with your social accounts'
           }
         />
         <div tw="flex flex-col px-4 flex-1 text-center lg:text-left justify-center lg:m-0 lg:w-1/2 lg:px-20">
