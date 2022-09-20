@@ -18,6 +18,7 @@ export const ProjectSkeleton = () => (
             <div className="h-7 w-12 bg-gray-200 rounded-full px-2 py-1" />
             <div className="h-7 w-12 bg-gray-200 rounded-full px-2 py-1" />
             <div className="h-7 w-12 bg-gray-200 rounded-full px-2 py-1" />
+
           </div>
           <div className="h-8 w-full bg-gray-200 rounded-md px-2 py-1.5 mt-2 sm:my-0" />
         </div>
