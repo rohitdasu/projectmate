@@ -26,7 +26,7 @@ export const Sidebar = () => {
       >
         <FiMenu />
       </button>
-      <AnimatePresence initial={false} exitBeforeEnter>
+      <AnimatePresence initial={false} mode="wait">
         {open && (
           <>
             <motion.div
