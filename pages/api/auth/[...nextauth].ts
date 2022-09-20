@@ -20,7 +20,7 @@ if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET) {
   throw Error('MISSING GOOGLE CLIENT ID OR SECRET KEY');
 }
 
-export const authOptions: NextAuthOptions = {
+export const ProductionAuthOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
 
   providers: [
@@ -33,16 +33,22 @@ export const authOptions: NextAuthOptions = {
       clientId: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
     }),
+  ],
+};
 
+export const DevAuthOptions: NextAuthOptions = {
+  providers: [
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
+        username: { label: 'Username', type: 'text' },
         password: { label: 'Password', type: 'password' },
       },
 
       async authorize() {
-        const user = { id: 1, name: 'J Smith', email: 'jsmith@example.com' };
+        const user = prisma.user.findFirst({
+          where: { email: 'johndio@test.com' },
+        });
         if (user) {
           return user;
         } else {
@@ -53,4 +59,6 @@ export const authOptions: NextAuthOptions = {
   ],
 };
 
-export default NextAuth(authOptions);
+export default NextAuth(
+  process.env.NODE_ENV === 'production' ? ProductionAuthOptions : DevAuthOptions
+);
