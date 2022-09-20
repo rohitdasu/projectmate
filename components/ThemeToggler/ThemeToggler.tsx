@@ -23,7 +23,7 @@ export const ThemeToggler = () => {
       className="flex p-[0.67rem] overflow-hidden text-[1.6rem] shadow-border-shadow rounded-md"
       onClick={toggleTheme}
     >
-      <AnimatePresence exitBeforeEnter initial={false}>
+      <AnimatePresence mode="wait" initial={false}>
         <motion.span {...framer_theme} className="flex" key={theme}>
           {isDark ? <RiMoonCloudyLine /> : <FiSun />}
         </motion.span>

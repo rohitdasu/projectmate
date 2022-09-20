@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { Toaster } from 'react-hot-toast';
@@ -9,7 +8,7 @@ import { useAppDispatch } from '../app/hooks';
 import { AuthModal } from '../components';
 import { openModal } from '@/store/slices/sliceModal';
 import 'twin.macro';
-import { Topbar } from '@/components/Topbar/Topbar';
+import { SharedLayout } from '@/components/Layouts/SharedLayout';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -17,12 +16,7 @@ const Home: NextPage = () => {
   const { data: session } = useSession();
 
   return (
-    <div className="flex-col items-center min-h-screen">
-      <Head>
-        <title>Projectmate | Home</title>
-        <link rel="icon" href="/dark-logo.svg" />
-      </Head>
-      <Topbar />
+    <SharedLayout title="Home">
       <main tw="flex mt-[5rem] lg:w-full flex-1 ">
         <Toaster />
         <AuthModal title={'Continue with your social accounts'} />
@@ -59,7 +53,7 @@ const Home: NextPage = () => {
           <Lottie animationData={animation} />
         </div>
       </main>
-    </div>
+    </SharedLayout>
   );
 };
 
