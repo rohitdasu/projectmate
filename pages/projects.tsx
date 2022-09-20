@@ -2,7 +2,7 @@ import Head from 'next/head';
 import React, { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { useAppSelector } from '../app/hooks';
-import { Search, Project, Navbar, AuthModal } from '../components';
+import { Search, Project, AuthModal } from '../components';
 import useSWR from 'swr';
 import {
   FloatingMenu,
@@ -13,13 +13,14 @@ import {
 import { Icon } from '@iconify/react';
 import 'twin.macro';
 import { Topbar } from '@/components/Topbar/Topbar';
+import { useSession } from 'next-auth/react';
 
 const Projects = () => {
   const fetcher = (...args: Parameters<typeof fetch>) =>
     fetch(...args).then((res) => res.json());
   const { data, error } = useSWR('/api/project', fetcher);
   const mode = useAppSelector((state) => state.mode.mode);
-  const isLoggedIn = useAppSelector((state) => state.user.isLogged);
+  const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const fabColor = mode ? '#eee' : '#444';
   const tColor = mode ? '#000' : '#fff';
@@ -41,7 +42,6 @@ const Projects = () => {
         </div>
         <div className="container gap-5 p-3 m-auto md:p-5 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {data.results.map((project: any) => {
-            console.log(project);
             return (
               <Project
                 key={project.id}
@@ -53,7 +53,7 @@ const Projects = () => {
             );
           })}
         </div>
-        {isLoggedIn && (
+        {session && (
           <div tw="bottom-7 fixed right-7 md:right-[85px] bottom-7">
             <FloatingMenu
               slideSpeed={300}

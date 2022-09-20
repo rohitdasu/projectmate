@@ -1,19 +1,20 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { Toaster } from 'react-hot-toast';
 import Lottie from 'lottie-react';
 import animation from '../public/animation-lottie.json';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { AuthModal, Navbar } from '../components';
-import { openModal } from '../store/slices/sliceModal';
+import { useAppDispatch } from '../app/hooks';
+import { AuthModal } from '../components';
+import { openModal } from '@/store/slices/sliceModal';
 import 'twin.macro';
 import { Topbar } from '@/components/Topbar/Topbar';
 
 const Home: NextPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const userState = useAppSelector((state) => state.user.isLogged);
+  const { data: session } = useSession();
 
   return (
     <div className="flex-col items-center min-h-screen">
@@ -21,15 +22,10 @@ const Home: NextPage = () => {
         <title>Projectmate | Home</title>
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
-      {/* <Navbar active={'home'} /> */}
       <Topbar />
       <main tw="flex mt-[5rem] lg:w-full flex-1 ">
         <Toaster />
-        <AuthModal
-          title={
-            'Continue with your social accounts'
-          }
-        />
+        <AuthModal title={'Continue with your social accounts'} />
         <div tw="flex flex-col px-4 flex-1 text-center lg:text-left justify-center lg:m-0 lg:w-1/2 lg:px-20">
           <h1 className="lg:leading-[82px] leading-normal font-bold md:text-[55px] text-[40px]  capitalize text-foreground-1">
             A place where you find{' '}
@@ -41,7 +37,7 @@ const Home: NextPage = () => {
             We will help you to find opensource project and contributors.
           </p>
 
-          {userState ? (
+          {session ? (
             <button
               onClick={() => router.push('/projects')}
               type="button"

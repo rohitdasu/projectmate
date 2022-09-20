@@ -1,14 +1,14 @@
 import Image from 'next/image';
-import { useAppSelector } from '../../app/hooks';
 import { useDispatch } from 'react-redux';
-import sliceModal, { openModal } from '../../store/slices/sliceModal';
+import { openModal } from '@/store/slices/sliceModal';
 import { ProjectProps } from './Project.interface';
 import thumbnail from '../../public/open-source.png';
 import { AiOutlineUser } from 'react-icons/ai';
+import { useSession } from 'next-auth/react';
 
 export const Project = ({ title, description, tags, author }: ProjectProps) => {
-  const userLogged = useAppSelector((state) => state.user.isLogged);
   const dispatch = useDispatch();
+  const { data: session } = useSession();
   const handleContribute = () => {
     return;
   };
@@ -42,7 +42,7 @@ export const Project = ({ title, description, tags, author }: ProjectProps) => {
             </div>
             <button
               onClick={() =>
-                userLogged ? handleContribute : dispatch(openModal())
+                session ? handleContribute : dispatch(openModal())
               }
               className="rounded-md px-2 py-1.5 mt-2 sm:my-0 flex justify-center bg-secondary-color text-white font-bold"
             >
