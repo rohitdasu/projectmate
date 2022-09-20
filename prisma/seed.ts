@@ -192,19 +192,20 @@ const projectData = [
 ];
 
 async function main() {
-  return;
-  // await prisma.$connect();
-  // await prisma.user.upsert({
-  //   where: { email: 'user@test.com' },
-  //   update: {},
-  //   create: {
-  //     email: 'user@test.com',
-  //     firebaseUID: '8qfWh2h1Nah4pjWb4MNFRX8GSgr1',
-  //     project: {
-  //       create: projectData,
-  //     },
-  //   },
-  // });
+  await prisma.$connect();
+  await prisma.user.upsert({
+    where: {
+      email: 'johndio@test.com',
+    },
+    update: {},
+    create: {
+      email: 'johndio@test.com',
+      name: 'John Dio',
+      project: {
+        create: projectData,
+      },
+    },
+  });
 }
 
 main()

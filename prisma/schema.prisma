@@ -45,8 +45,8 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  Project       Project[]
-  Comment       Comment[]
+  project       Project[]
+  comment       Comment[]
 }
 
 model VerificationToken {

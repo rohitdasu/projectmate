@@ -70,7 +70,7 @@ async function getUsersById(id?: string) {
         id,
       },
       include: {
-        Project: true,
+        project: true,
       },
     });
     return data;
