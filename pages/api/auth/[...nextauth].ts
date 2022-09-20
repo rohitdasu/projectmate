@@ -60,5 +60,7 @@ export const DevAuthOptions: NextAuthOptions = {
 };
 
 export default NextAuth(
-  process.env.NODE_ENV === 'production' ? ProductionAuthOptions : DevAuthOptions
+  process.env.NODE_ENV === 'development' || process.env.APP_STAGING === 'true'
+    ? DevAuthOptions
+    : ProductionAuthOptions
 );
