@@ -7,7 +7,7 @@ import { Logo } from './Logo';
 export const Topbar = () => {
   return (
     <div className="bg-background-1 text-foreground-1">
-      <nav className="container flex justify-between p-4 py-5 m-auto h-[5.46rem] bg-red-100 md:p-5">
+      <nav className="container flex justify-between p-4 py-5 m-auto h-[5.46rem] md:p-5">
         <div className="flex items-center gap-10">
           <Logo />
           <DesktopRoutes />
