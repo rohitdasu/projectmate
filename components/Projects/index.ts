@@ -1,2 +1,2 @@
-export * from './Project';
+export * from './ProjectsList';
 export * from './Project.interface';

@@ -15,8 +15,8 @@ export const Project = ({ title, description, tags, author }: ProjectProps) => {
   return (
     <div className="w-full p-2 md:p-0">
       <div className="flex flex-col items-center justify-center space-y-2 overflow-hidden rounded-md shadow-border-shadow text-foreground-1">
-        <div className="w-full">
-          <Image src={thumbnail} alt={title} placeholder="blur" />
+        <div className="w-full h-72 relative sm:h-96 md:h-64">
+          <Image className='object-cover' layout='fill' src={thumbnail} alt={title} placeholder="blur" />
         </div>
         <div className="flex flex-col gap-5 p-4 pt-2">
           <h2 className="flex flex-col gap-2 text-xl font-semibold">
@@ -26,8 +26,8 @@ export const Project = ({ title, description, tags, author }: ProjectProps) => {
               {author}
             </span>
           </h2>
-          <p className="text-sm ">
-            {description.slice(0, 160)} {description.length > 160 && '. . .'}
+          <p className="text-sm line-clamp-4">
+            {description}
           </p>
           <div className="flex flex-col gap-5">
             <div className="flex pb-2 space-x-2 md:pb-0">
