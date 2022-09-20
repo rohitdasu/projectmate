@@ -12,8 +12,9 @@ import {
 import { Icon } from '@iconify/react';
 import 'twin.macro';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
+import { NextPage } from 'next';
 
-const Projects = () => {
+const Projects: NextPage = () => {
   const fetcher = (...args: Parameters<typeof fetch>) =>
     fetch(...args).then((res) => res.json());
   const { data, error } = useSWR('/api/project', fetcher);
@@ -25,8 +26,9 @@ const Projects = () => {
 
   if (error) return <div> failed to load</div>;
   if (!data) return <div>loading ... </div>;
+
   return (
-    <SharedLayout title="projects">
+    <SharedLayout title="Projects">
       <main className="flex flex-col w-full">
         <Toaster />
         <AuthModal title={'Continue with your social accounts'} />

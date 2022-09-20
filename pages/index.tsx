@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Toaster } from 'react-hot-toast';
 import Lottie from 'lottie-react';
@@ -8,7 +7,6 @@ import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { AuthModal } from '../components';
 import { openModal } from '../store/slices/sliceModal';
 import 'twin.macro';
-import { Topbar } from '@/components/Topbar/Topbar';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
 
 const Home: NextPage = () => {
