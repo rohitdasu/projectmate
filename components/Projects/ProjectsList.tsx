@@ -1,6 +1,11 @@
+import { Project as ProjectData, User } from '@prisma/client';
 import useSWR from 'swr';
 import { Project } from './Project';
 import { ProjectSkeleton } from './ProjectSkeleton';
+
+interface IProject extends ProjectData {
+  author: User;
+}
 
 export const ProjectsList = () => {
   const fetcher = (...args: Parameters<typeof fetch>) =>
@@ -23,13 +28,13 @@ export const ProjectsList = () => {
         ))
       ) : (
         <>
-          {data.results?.map((project: any) => (
+          {data.results?.map((project: IProject) => (
             <Project
               key={project.id}
               description={project.description}
               title={project.title}
               tags={project.tags}
-              author={project.author.name || project.author.email}
+              author={project.author.name}
             />
           ))}
         </>
