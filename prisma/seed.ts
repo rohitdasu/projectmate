@@ -192,23 +192,23 @@ const projectData = [
 ];
 
 async function main() {
-  await prisma.$connect();
-  await prisma.user.upsert({
-    where: { email: 'user@test.com' },
-    update: {},
-    create: {
-      email: 'user@test.com',
-      firebaseUID: '8qfWh2h1Nah4pjWb4MNFRX8GSgr1',
-      project: {
-        create: projectData,
-      },
-    },
-  });
+  return;
+  // await prisma.$connect();
+  // await prisma.user.upsert({
+  //   where: { email: 'user@test.com' },
+  //   update: {},
+  //   create: {
+  //     email: 'user@test.com',
+  //     firebaseUID: '8qfWh2h1Nah4pjWb4MNFRX8GSgr1',
+  //     project: {
+  //       create: projectData,
+  //     },
+  //   },
+  // });
 }
 
 main()
   .catch((e) => {
-    console.error(e);
     process.exit(1);
   })
   .finally(async () => {

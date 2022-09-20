@@ -21,7 +21,6 @@ if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET) {
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
-  debug: process.env.NODE_ENV !== 'production',
   providers: [
     GithubProvider({
       clientId: GITHUB_CLIENT_ID,
