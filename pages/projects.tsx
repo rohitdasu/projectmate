@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { useAppSelector } from '../app/hooks';
-import { Search, Project, AuthModal } from '../components';
-import useSWR from 'swr';
+import { Search, ProjectsList, AuthModal } from '../components';
 import {
   FloatingMenu,
   MainButton,
@@ -15,18 +14,12 @@ import { useSession } from 'next-auth/react';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { NextPage } from 'next';
 
-const Projects: NextPage = () => {
-  const fetcher = (...args: Parameters<typeof fetch>) =>
-    fetch(...args).then((res) => res.json());
-  const { data, error } = useSWR('/api/project', fetcher);
+const Projects = () => {
   const mode = useAppSelector((state) => state.mode.mode);
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const fabColor = mode ? '#eee' : '#444';
   const tColor = mode ? '#000' : '#fff';
-
-  if (error) return <div> failed to load</div>;
-  if (!data) return <div>loading ... </div>;
 
   return (
     <SharedLayout title="Projects">
@@ -36,19 +29,7 @@ const Projects: NextPage = () => {
         <div className="sticky top-0 z-10 backdrop-blur-3xl">
           <Search />
         </div>
-        <div className="container gap-5 p-3 m-auto md:p-5 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {data.results.map((project: any) => {
-            return (
-              <Project
-                key={project.id}
-                description={project.description}
-                title={project.title}
-                tags={project.tags}
-                author={project.author.email}
-              />
-            );
-          })}
-        </div>
+        <ProjectsList />
         {session && (
           <div tw="bottom-7 fixed right-7 md:right-[85px] bottom-7">
             <FloatingMenu

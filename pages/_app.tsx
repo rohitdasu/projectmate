@@ -11,7 +11,7 @@ import { ThemeProvider } from 'next-themes';
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
-      <ThemeProvider>
+      <ThemeProvider enableSystem={true} attribute="class">
         <Provider store={store}>
           <CacheProvider value={cache}>
             <GlobalStyles />
