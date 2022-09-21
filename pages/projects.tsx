@@ -32,7 +32,7 @@ const Projects = () => {
         </div>
         <ProjectsList />
         {session && (
-          <div className="bottom-7 fixed right-7 md:right-[85px] bottom-7">
+          <div className="bottom-7 fixed right-7 md:right-[85px]">
             <FloatingMenu
               slideSpeed={300}
               direction={Directions.Up}
