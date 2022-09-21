@@ -1,6 +1,6 @@
 import { Project } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { errorResponse, successResponse } from '@/lib/http.response';
+import { errorResponse, successResponse } from '@/lib/httpResponse';
 import { prisma } from '@/lib/prisma';
 import { getServerAuthSession } from '@/lib/getServerAuthSession';
 

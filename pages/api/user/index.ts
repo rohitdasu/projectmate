@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '@/lib/prisma';
 import { User } from '@prisma/client';
-import { errorResponse, successResponse } from '@/lib/http.response';
+import { errorResponse, successResponse } from '@/lib/httpResponse';
 import { getServerAuthSession } from '@/lib/getServerAuthSession';
 
 export default async function handler(
