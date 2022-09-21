@@ -1,15 +1,14 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import Image from 'next/image';
-import { useAppSelector } from '../../app/hooks';
 import toast from 'react-hot-toast';
 import { IAvatar } from './Avatar.interface';
 import { Icon } from '@iconify/react';
 
 export function Avatar({ userImg, email }: IAvatar) {
-  const mode = useAppSelector((state) => state.mode.mode);
+  // TODO
+  const mode = false;
   const isLogged = false;
-  // mode - false (light-mode) | mode - true (dark-mode)
   return (
     <div className={`${isLogged ? 'block' : '!hidden'} z-50 w-max text-right`}>
       <Menu as="div" className="relative inline-block text-left">
