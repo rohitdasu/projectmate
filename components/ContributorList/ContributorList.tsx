@@ -22,7 +22,7 @@ export const ContributorList = ({ contributors }: ContributorProps) => {
               alt={contributor.html_url.split('/')[3]}
               width={30}
               height={30}
-              tw="rounded-full bg-black"
+              className="rounded-full bg-black"
             />
           </a>
         ))}
