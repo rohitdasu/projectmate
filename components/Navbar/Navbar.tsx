@@ -2,13 +2,11 @@ import Image from 'next/image';
 import { useState } from 'react';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
-import { useAppDispatch } from '../../app/hooks';
 import { NavProps } from './Navbar.interface';
 import { Tooltip } from 'flowbite-react';
 import toast from 'react-hot-toast';
 
 export const Navbar = ({ active }: NavProps) => {
-  const dispatch = useAppDispatch();
   const mode = false;
   const userLogged = false;
   const [menuState, setMenuState] = useState(false);

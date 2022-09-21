@@ -211,6 +211,7 @@ async function main() {
 main()
   .catch((e) => {
     process.exit(1);
+    console.log(e);
   })
   .finally(async () => {
     await prisma.$disconnect();
