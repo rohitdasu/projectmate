@@ -2,7 +2,7 @@ import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { NextPage } from 'next';
 import { Toaster } from 'react-hot-toast';
 import useSWR from 'swr';
-import { ContributorList } from '../components';
+import { ContributorList } from '@/components/index';
 
 const About: NextPage = () => {
   const fetcher = (...args: Parameters<typeof fetch>) =>

@@ -1,18 +1,19 @@
 import type { NextPage } from 'next';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { Toaster } from 'react-hot-toast';
 import Lottie from 'lottie-react';
 import animation from '../public/animation-lottie.json';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { useAppDispatch } from '../app/hooks';
 import { AuthModal } from '../components';
-import { openModal } from '../store/slices/sliceModal';
+import { openModal } from '@/store/slices/sliceModal';
 import 'twin.macro';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
 
 const Home: NextPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const userState = useAppSelector((state) => state.user.isLogged);
+  const { data: session } = useSession();
 
   return (
     <SharedLayout title="Home">
@@ -30,7 +31,7 @@ const Home: NextPage = () => {
             We will help you to find opensource project and contributors.
           </p>
 
-          {userState ? (
+          {session ? (
             <button
               onClick={() => router.push('/projects')}
               type="button"

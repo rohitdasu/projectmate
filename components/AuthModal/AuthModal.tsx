@@ -1,84 +1,14 @@
-import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { closeModal } from '../../store/slices/sliceModal';
-import { signInWithPopup, signOut } from 'firebase/auth';
-import { auth, providerGithub, providerGoogle } from '@/lib/firebase';
-import toast, { Toaster } from 'react-hot-toast';
+import { closeModal } from '@/store/slices/sliceModal';
+import { Toaster } from 'react-hot-toast';
 import { IAuthData } from './Auth.interface';
 import 'twin.macro';
-import { setUserLoggedOut } from 'store/slices/sliceUser';
-
-enum ProviderType {
-  'GOOGLE',
-  'GITHUB',
-}
 
 export const AuthModal = ({ title }: IAuthData) => {
-  const mode = useAppSelector((state) => state.mode.mode);
   const isOpen = useAppSelector((state) => state.modal.modal);
   const dispatch = useAppDispatch();
-
-  const createUser = async (
-    email: string | null,
-    firebaseUID: string | null,
-    token: string
-  ): Promise<boolean> => {
-    const body = {
-      email,
-      firebaseUID,
-    };
-    const res = await fetch('/api/user', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(body),
-    });
-    if (res.ok) {
-      return true;
-    }
-    await signOut(auth);
-    dispatch(setUserLoggedOut());
-    throw Error('Something went wrong! Please try again.');
-  };
-
-  const handleSignin = async (loginWith: ProviderType) => {
-    try {
-      dispatch(closeModal());
-      const data = await signInWithPopup(
-        auth,
-        loginWith === ProviderType.GOOGLE ? providerGoogle : providerGithub
-      );
-
-      const token = await data.user.getIdToken();
-      await createUser(data.user.email, data.user.uid, token);
-      mode
-        ? toast.success('Login Successful', {
-            position: 'bottom-center',
-            duration: 2000,
-            style: {
-              borderRadius: '10px',
-              background: '#333',
-              color: '#fff',
-            },
-          })
-        : toast.success('Login Successful', { position: 'bottom-center' });
-    } catch (error) {
-      mode
-        ? toast.error(error.message, {
-            position: 'bottom-center',
-            duration: 2000,
-            style: {
-              borderRadius: '10px',
-              background: '#333',
-              color: '#fff',
-            },
-          })
-        : toast.error(error.message, { position: 'bottom-center' });
-    }
-  };
 
   return (
     <>
@@ -129,7 +59,10 @@ export const AuthModal = ({ title }: IAuthData) => {
                   <div tw="w-full px-0 md:px-12 flex justify-center space-y-6 flex-col items-center">
                     <button
                       className="flex items-center justify-between w-full border py-2 px-3 rounded-lg border-color-1 focus:ring"
-                      onClick={() => handleSignin(ProviderType.GITHUB)}
+                      onClick={() => {
+                        popupCenter('/auth/github', 'Sign In With Github');
+                        dispatch(closeModal());
+                      }}
                     >
                       <svg
                         width="30"
@@ -153,7 +86,10 @@ export const AuthModal = ({ title }: IAuthData) => {
 
                     <button
                       className="items-center justify-between flex w-full border py-2 px-3 rounded-lg border-color-1 focus:ring"
-                      onClick={() => handleSignin(ProviderType.GOOGLE)}
+                      onClick={() => {
+                        popupCenter('/auth/google', 'Sign In With Google');
+                        dispatch(closeModal());
+                      }}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -192,4 +128,32 @@ export const AuthModal = ({ title }: IAuthData) => {
       </Transition>
     </>
   );
+};
+
+const popupCenter = (url: string, title: string) => {
+  const dualScreenLeft = window.screenLeft ?? window.screenX;
+  const dualScreenTop = window.screenTop ?? window.screenY;
+
+  const width =
+    window.innerWidth ?? document.documentElement.clientWidth ?? screen.width;
+
+  const height =
+    window.innerHeight ??
+    document.documentElement.clientHeight ??
+    screen.height;
+
+  const systemZoom = width / window.screen.availWidth;
+
+  const left = (width - 500) / 2 / systemZoom + dualScreenLeft;
+  const top = (height - 550) / 2 / systemZoom + dualScreenTop;
+
+  const newWindow = window.open(
+    url,
+    title,
+    `width=${500 / systemZoom},height=${
+      550 / systemZoom
+    },top=${top},left=${left}`
+  );
+
+  newWindow?.focus();
 };

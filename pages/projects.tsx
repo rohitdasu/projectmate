@@ -10,12 +10,13 @@ import {
 } from 'react-floating-button-menu';
 import { Icon } from '@iconify/react';
 import 'twin.macro';
+import { useSession } from 'next-auth/react';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { NextPage } from 'next';
 
 const Projects = () => {
   const mode = useAppSelector((state) => state.mode.mode);
-  const isLoggedIn = useAppSelector((state) => state.user.isLogged);
+  const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const fabColor = mode ? '#eee' : '#444';
   const tColor = mode ? '#000' : '#fff';
@@ -29,7 +30,7 @@ const Projects = () => {
           <Search />
         </div>
         <ProjectsList />
-        {isLoggedIn && (
+        {session && (
           <div tw="bottom-7 fixed right-7 md:right-[85px] bottom-7">
             <FloatingMenu
               slideSpeed={300}
