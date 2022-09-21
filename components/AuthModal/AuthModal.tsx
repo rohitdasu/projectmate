@@ -4,7 +4,6 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { closeModal } from '@/store/slices/sliceModal';
 import { Toaster } from 'react-hot-toast';
 import { IAuthData } from './Auth.interface';
-import 'twin.macro';
 
 export const AuthModal = ({ title }: IAuthData) => {
   const isOpen = useAppSelector((state) => state.modal.modal);

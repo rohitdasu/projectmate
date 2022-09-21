@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 import Image from 'next/image';
 import { ContributorProps } from './ContributorList.interface';
-import 'twin.macro';
 
 export const ContributorList = ({ contributors }: ContributorProps) => {
   return (

@@ -8,7 +8,7 @@ import {
   Directions,
 } from 'react-floating-button-menu';
 import { Icon } from '@iconify/react';
-import 'twin.macro';
+
 import { useSession } from 'next-auth/react';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { useTheme } from 'next-themes';
