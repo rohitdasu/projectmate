@@ -2,14 +2,14 @@ import { Project } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { errorResponse, successResponse } from '@/lib/http.response';
 import { prisma } from '@/lib/prisma';
-import apiAuth from '@/lib/apiAuth';
+import { getServerAuthSession } from '@/lib/getServerAuthSession';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const isAuth = await apiAuth(req);
-  if (!isAuth) {
+  const session = await getServerAuthSession({ req, res });
+  if (!session) {
     return errorResponse({
       res,
       message: 'Unauthorized',

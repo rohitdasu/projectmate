@@ -1,14 +1,9 @@
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
-import { Avatar } from '../Avatar';
-import { signOut } from 'firebase/auth';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../../lib/firebase';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { changeMode } from '../../store/slices/sliceMode';
-import { setUserLogged, setUserLoggedOut } from '../../store/slices/sliceUser';
 import { NavProps } from './Navbar.interface';
 import { Tooltip } from 'flowbite-react';
 import toast from 'react-hot-toast';
@@ -16,15 +11,8 @@ import toast from 'react-hot-toast';
 export const Navbar = ({ active }: NavProps) => {
   const dispatch = useAppDispatch();
   const mode = useAppSelector((state) => state.mode.mode);
-  const userLogged = useAppSelector((state) => state.user.isLogged);
+  const userLogged = false;
   const [menuState, setMenuState] = useState(false);
-  const [user] = useAuthState(auth);
-
-  useEffect(() => {
-    if (user?.displayName) {
-      dispatch(setUserLogged());
-    }
-  }, [user, dispatch]);
 
   return (
     <nav
@@ -198,7 +186,7 @@ export const Navbar = ({ active }: NavProps) => {
               <div
                 className={`${userLogged && 'lg:flex'}  items-center hidden`}
               >
-                <Avatar userImg={user?.photoURL} email={user?.email} />
+                {/* <Avatar userImg={user?.photoURL} email={user?.email} /> */}
               </div>
             )}
           </div>
@@ -295,8 +283,6 @@ export const Navbar = ({ active }: NavProps) => {
               </li>
               <li
                 onClick={() => {
-                  signOut(auth);
-                  dispatch(setUserLoggedOut());
                   mode
                     ? toast.success('Logout was successful', {
                         position: 'bottom-center',

@@ -1,14 +1,14 @@
 import Image from 'next/image';
-import { useAppSelector } from '../../app/hooks';
 import { useDispatch } from 'react-redux';
-import sliceModal, { openModal } from '../../store/slices/sliceModal';
+import { openModal } from '@/store/slices/sliceModal';
 import { ProjectProps } from './Project.interface';
 import thumbnail from '../../public/open-source.png';
 import { AiOutlineUser } from 'react-icons/ai';
+import { useSession } from 'next-auth/react';
 
 export const Project = ({ title, description, tags, author }: ProjectProps) => {
-  const userLogged = useAppSelector((state) => state.user.isLogged);
   const dispatch = useDispatch();
+  const { data: session } = useSession();
   const handleContribute = () => {
     return;
   };
@@ -16,7 +16,13 @@ export const Project = ({ title, description, tags, author }: ProjectProps) => {
     <div className="w-full p-2 md:p-0">
       <div className="flex flex-col items-center justify-center space-y-2 overflow-hidden rounded-md shadow-border-shadow text-foreground-1">
         <div className="w-full h-72 relative sm:h-96 md:h-64">
-          <Image className='object-cover' layout='fill' src={thumbnail} alt={title} placeholder="blur" />
+          <Image
+            className="object-cover"
+            layout="fill"
+            src={thumbnail}
+            alt={title}
+            placeholder="blur"
+          />
         </div>
         <div className="flex flex-col gap-5 p-4 pt-2">
           <h2 className="flex flex-col gap-2 text-xl font-semibold">
@@ -26,9 +32,7 @@ export const Project = ({ title, description, tags, author }: ProjectProps) => {
               {author}
             </span>
           </h2>
-          <p className="text-sm line-clamp-4">
-            {description}
-          </p>
+          <p className="text-sm line-clamp-4">{description}</p>
           <div className="flex flex-col gap-5">
             <div className="flex pb-2 space-x-2 md:pb-0">
               {tags.map((tag: string, i: number) => (
@@ -42,7 +46,7 @@ export const Project = ({ title, description, tags, author }: ProjectProps) => {
             </div>
             <button
               onClick={() =>
-                userLogged ? handleContribute : dispatch(openModal())
+                session ? handleContribute : dispatch(openModal())
               }
               className="rounded-md px-2 py-1.5 mt-2 sm:my-0 flex justify-center bg-secondary-color text-white font-bold"
             >
