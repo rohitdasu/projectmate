@@ -201,6 +201,8 @@ async function main() {
     create: {
       email: 'johndio@test.com',
       name: 'John Dio',
+      image: null,
+      emailVerified: null,
       project: {
         create: projectData,
       },
