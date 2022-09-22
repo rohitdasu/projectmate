@@ -4,7 +4,7 @@ import {
   errorResponse,
   successResponse,
   validationResponse,
-} from '@/lib/http.response';
+} from '@/lib/httpResponse';
 import { prisma } from '@/lib/prisma';
 import bodyValidator from '@/lib/bodyValidator';
 import { postSchema } from '@/schema/index';

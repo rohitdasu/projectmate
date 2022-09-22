@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { useAppSelector } from '../app/hooks';
 import { Search, ProjectsList, AuthModal } from '../components';
 import {
   FloatingMenu,
@@ -9,13 +8,15 @@ import {
   Directions,
 } from 'react-floating-button-menu';
 import { Icon } from '@iconify/react';
-import 'twin.macro';
+
 import { useSession } from 'next-auth/react';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
-import { NextPage } from 'next';
+import { useTheme } from 'next-themes';
 
 const Projects = () => {
-  const mode = useAppSelector((state) => state.mode.mode);
+  const { theme } = useTheme();
+
+  const mode = theme === 'dark' ? true : false;
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const fabColor = mode ? '#eee' : '#444';
@@ -31,7 +32,7 @@ const Projects = () => {
         </div>
         <ProjectsList />
         {session && (
-          <div tw="bottom-7 fixed right-7 md:right-[85px] bottom-7">
+          <div className="bottom-7 fixed right-7 md:right-[85px]">
             <FloatingMenu
               slideSpeed={300}
               direction={Directions.Up}

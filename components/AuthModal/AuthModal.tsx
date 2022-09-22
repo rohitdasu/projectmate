@@ -4,7 +4,6 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { closeModal } from '@/store/slices/sliceModal';
 import { Toaster } from 'react-hot-toast';
 import { IAuthData } from './Auth.interface';
-import 'twin.macro';
 
 export const AuthModal = ({ title }: IAuthData) => {
   const isOpen = useAppSelector((state) => state.modal.modal);
@@ -15,7 +14,7 @@ export const AuthModal = ({ title }: IAuthData) => {
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
-          tw="relative z-[999]"
+          className="relative z-[999]"
           onClose={() => dispatch(closeModal())}
         >
           <Toaster />
@@ -28,11 +27,11 @@ export const AuthModal = ({ title }: IAuthData) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div tw="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 bg-black bg-opacity-25" />
           </Transition.Child>
 
-          <div tw="fixed inset-0 overflow-y-auto">
-            <div tw="flex min-h-full items-center justify-center p-4 text-center">
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -56,7 +55,7 @@ export const AuthModal = ({ title }: IAuthData) => {
                   >
                     {title}
                   </Dialog.Title>
-                  <div tw="w-full px-0 md:px-12 flex justify-center space-y-6 flex-col items-center">
+                  <div className="w-full px-0 md:px-12 flex justify-center space-y-6 flex-col items-center">
                     <button
                       className="flex items-center justify-between w-full border py-2 px-3 rounded-lg border-color-1 focus:ring"
                       onClick={() => {

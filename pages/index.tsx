@@ -7,7 +7,6 @@ import animation from '../public/animation-lottie.json';
 import { useAppDispatch } from '../app/hooks';
 import { AuthModal } from '../components';
 import { openModal } from '@/store/slices/sliceModal';
-import 'twin.macro';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
 
 const Home: NextPage = () => {
@@ -17,10 +16,10 @@ const Home: NextPage = () => {
 
   return (
     <SharedLayout title="Home">
-      <main tw="flex mt-[5rem] lg:w-full flex-1 ">
+      <main className="flex mt-[5rem] lg:w-full flex-1 ">
         <Toaster />
         <AuthModal title={'Continue with your social accounts'} />
-        <div tw="flex flex-col px-4 flex-1 text-center lg:text-left justify-center lg:m-0 lg:w-1/2 lg:px-20">
+        <div className="flex flex-col px-4 flex-1 text-center lg:text-left justify-center lg:m-0 lg:w-1/2 lg:px-20">
           <h1 className="lg:leading-[82px] leading-normal font-bold md:text-[55px] text-[40px]  capitalize text-foreground-1">
             A place where you find{' '}
             <span className="uppercase text-primary-color">OpenSource</span>{' '}
@@ -35,7 +34,7 @@ const Home: NextPage = () => {
             <button
               onClick={() => router.push('/projects')}
               type="button"
-              tw="border focus:ring focus:bg-blue-800 border-white w-[170px] mx-auto lg:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
+              className="border focus:ring focus:bg-blue-800 border-white w-[170px] mx-auto lg:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
             >
               Explore Projects
             </button>
@@ -43,13 +42,13 @@ const Home: NextPage = () => {
             <button
               onClick={() => dispatch(openModal())}
               type="button"
-              tw="border focus:ring focus:bg-blue-800 border-white w-[170px] mx-auto lg:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
+              className="border focus:ring focus:bg-blue-800 border-white w-[170px] mx-auto lg:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
             >
               JOIN US
             </button>
           )}
         </div>
-        <div tw="hidden lg:inline-flex  lg:px-20">
+        <div className="hidden lg:inline-flex  lg:px-20">
           <Lottie animationData={animation} />
         </div>
       </main>

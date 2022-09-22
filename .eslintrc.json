@@ -7,7 +7,7 @@
   "extends": [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
   "rules": {
     "consistent-return": "warn",
