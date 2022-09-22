@@ -7,16 +7,13 @@ import { Icon } from '@iconify/react';
 
 export function Avatar({ userImg, email }: IAvatar) {
   // TODO
-  const mode = false;
   const isLogged = false;
   return (
     <div className={`${isLogged ? 'block' : '!hidden'} z-50 w-max text-right`}>
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button
-            className={`${
-              !mode ? 'text-gray-500' : 'text-white'
-            } hover:opacity-80 inline-flex w-full p-2 items-center space-x-1 justify-center rounded-md bg-opacity-20 text-sm font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+            className={`text-gray-500 dark:text-white hover:opacity-80 inline-flex w-full p-2 items-center space-x-1 justify-center rounded-md bg-opacity-20 text-sm font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
           >
             <Image
               src={
@@ -46,9 +43,8 @@ export function Avatar({ userImg, email }: IAvatar) {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items
-            className={`absolute right-0 mt-2 w-40 ${
-              mode ? '!bg-gray-700 text-white' : '!bg-white'
-            } origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
+            className={`absolute right-0 mt-2 w-40 dark:bg-gray-700 dark:text-white bg-white
+           origin-top-right divide-y divide-gray-100 rounded-md  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
           >
             <div className="px-1 py-1 w-full ">
               <Menu.Item>
@@ -61,19 +57,11 @@ export function Avatar({ userImg, email }: IAvatar) {
               <Menu.Item>
                 <button
                   onClick={() => {
-                    mode
-                      ? toast.success('Logout was successful', {
-                          position: 'bottom-center',
-                          duration: 2000,
-                          style: {
-                            borderRadius: '10px',
-                            background: '#333',
-                            color: '#fff',
-                          },
-                        })
-                      : toast.success('Logout was successful', {
-                          position: 'bottom-center',
-                        });
+                    toast.success('Logout was successful', {
+                      position: 'bottom-center',
+                      duration: 2000,
+                      className: 'dark:bg-[#333] dark:text-[#fff]',
+                    });
                   }}
                   className={`hover:bg-primary-color hover:text-white group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
