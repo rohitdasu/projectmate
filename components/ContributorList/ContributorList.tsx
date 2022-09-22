@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 import Image from 'next/image';
 import { ContributorProps } from './ContributorList.interface';
-import 'twin.macro';
 
 export const ContributorList = ({ contributors }: ContributorProps) => {
   return (
@@ -22,7 +21,7 @@ export const ContributorList = ({ contributors }: ContributorProps) => {
               alt={contributor.html_url.split('/')[3]}
               width={30}
               height={30}
-              tw="rounded-full bg-black"
+              className="rounded-full bg-black"
             />
           </a>
         ))}
