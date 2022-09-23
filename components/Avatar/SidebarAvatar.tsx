@@ -7,7 +7,7 @@ export function SidebarAvatar() {
     const { user } = session;
     return (
       <>
-        <div className="flex w-full items-center">
+        <div className="flex w-full items-center mt-2">
           <div className="mr-3">
             <div className="relative w-16 h-16 overflow-hidden shadow-border-shadow rounded-full">
               <Image
