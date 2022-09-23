@@ -113,7 +113,7 @@ const AddProject = () => {
             </form>
             <div className="w-[80%] mx-auto">
               <div
-                className={`w-[80%] mx-auto flex items-center border justify-center rounded-md  h-[300px]`}
+                className={`w-[80%] mx-auto flex items-center border border-gray-500 justify-center rounded-md  h-[300px]`}
               >
                 <button className="bg-secondary-color py-2 px-4 rounded-md">
                   Browse files
