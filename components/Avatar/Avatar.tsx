@@ -6,7 +6,6 @@ import { HiOutlineLogout } from 'react-icons/hi';
 import { MdOutlineAccountCircle, MdArrowDropDown } from 'react-icons/md';
 
 export function Avatar() {
-  // TODO
   const { data: session } = useSession();
 
   if (session) {

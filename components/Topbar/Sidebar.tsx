@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { framer_sidebar_background, framer_sidebar_panel } from './framer';
 import { BiArrowBack } from 'react-icons/bi';
 import { Logo } from './Logo';
+import { SidebarAvatar } from '@/components/Avatar';
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -39,15 +40,20 @@ export const Sidebar = () => {
               className="fixed md:hidden z-30 left-0 top-0 bottom-0 h-screen bg-background-1 w-[100%] max-w-[19rem] flex flex-col"
               ref={ref}
             >
-              <div className="flex items-center justify-between p-5 border-b-[1px] border-gray-1">
-                <Logo />
-                <button
-                  className="flex p-[0.67rem] overflow-hidden shadow-border-shadow rounded-md"
-                  onClick={closeSidebar}
-                >
-                  <BiArrowBack />
-                </button>
+              <div className="border-b-[1px] border-gray-1 p-5">
+                <div className="flex items-center justify-between mb-2">
+                  <Logo />
+                  <button
+                    className="flex p-[0.67rem] overflow-hidden shadow-border-shadow rounded-md"
+                    onClick={closeSidebar}
+                  >
+                    <BiArrowBack />
+                  </button>
+                </div>
+
+                <SidebarAvatar />
               </div>
+
               <ul>
                 {appRoutes.map((route) => {
                   const { Icon, anchorTagProps, title, url } = route;

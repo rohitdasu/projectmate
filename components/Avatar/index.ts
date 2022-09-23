@@ -1,2 +1,2 @@
 export * from './Avatar';
-export * from './Avatar.interface';
+export * from './SidebarAvatar';
