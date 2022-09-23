@@ -1,17 +1,11 @@
-export enum Direction {
-  Up = "UP",
-  Down = "DOWN",
-  Left = "LEFT",
-  Right = "RIGHT",
-}
+import { ReactElement } from "react"
 
 export type FloatingMenuProps = {
-  direction: Direction,
-}
-
-export type FloatingButtonProps = {
-  onClick?: () => void,
+  toggleMenu: () => void,
   isOpen: boolean,
-  className?: string,
-  children: JSX.Element,
+  slideSpeed: number,
+  bgColor: string,
+  spacing: number,
+  mainButton: ReactElement,
+  children: ReactElement | ReactElement[]
 }
