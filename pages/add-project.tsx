@@ -7,7 +7,6 @@ import { Icon } from '@iconify/react';
 import { useAppSelector } from 'app/hooks';
 
 const AddProject = () => {
-  const mode = useAppSelector((state) => state.mode.mode);
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState<string>('');
   const [projectName, setProjectName] = useState<string>('');
@@ -34,33 +33,18 @@ const AddProject = () => {
       <main className="flex flex-col w-full">
         <Toaster />
         <AuthModal title={'Login to Continue'} />
-        <div className="w-[90%] mx-auto mt-4">
-          <h1 className="font-semibold text-center text-3xl text-secondary-color">
-            Please fill the form to display to your project
-          </h1>
-          <div className="flex mt-6 space-x-4 ">
-            <div className="w-[35%] ">
-              <div
-                className={`w-[80%] mx-auto flex items-center justify-center rounded-md ${
-                  mode ? 'bg-gray-600' : 'bg-gray-100'
-                } h-[300px]`}
-              >
-                <button className="bg-secondary-color py-2 px-4 rounded-md">
-                  Browse files
-                </button>
-              </div>
-              <span className="w-[80%] mx-auto flex items-center justify-center text-sm text-gray-500 mt-4 ">
-                note: We would advise you to upload a picture. otherwise, the
-                default github icon will appear.
-              </span>
-            </div>
+        <div className="w-[90%] mx-auto my-4">
+          <div className=" flex space-y-4 flex-col">
+            <h1 className="font-semibold  w-[65%]  mx-auto mb-4 text-3xl ">
+              Add Project
+            </h1>
             <form
               onSubmit={(e) => {
                 e.preventDefault();
               }}
-              className="flex-1 space-y-6 px-4"
+              className="w-[80%]  flex flex-col mx-auto space-y-6"
             >
-              <div className="flex flex-col space-y-2">
+              <div className="flex  w-[80%] mx-auto  flex-col space-y-2">
                 <label className="text-lg">
                   Project Name <span className="text-red-500">*</span>
                 </label>
@@ -68,10 +52,10 @@ const AddProject = () => {
                   value={projectName}
                   onChange={(e) => setProjectName(e.target.value)}
                   placeholder="Enter your project name here"
-                  className="flex-1 w-[80%] p-2 bg-transparent outline-none border rounded-md border-gray-500 "
+                  className="flex-1 w-full items-center mx-auto p-2 bg-transparent outline-none border rounded-md border-gray-500 "
                 />
               </div>
-              <div className="flex flex-col space-y-2">
+              <div className="flex flex-col w-[80%] mx-auto space-y-2">
                 <label className="text-lg">
                   Github Repositary <span className="text-red-500">*</span>
                 </label>
@@ -79,10 +63,10 @@ const AddProject = () => {
                   value={githubRepo}
                   onChange={(e) => setGithubRepo(e.target.value)}
                   placeholder="Paste repository link here."
-                  className="flex-1 w-[80%] p-2 bg-transparent outline-none border rounded-md border-gray-500 "
+                  className="flex-1 w-full p-2 bg-transparent outline-none border rounded-md border-gray-500 "
                 />
               </div>
-              <div className="flex flex-col h-auto space-y-2">
+              <div className="flex flex-col w-[80%] mx-auto h-auto space-y-2">
                 <label className="text-lg">
                   Description <span className="text-red-500">*</span>
                 </label>
@@ -91,17 +75,17 @@ const AddProject = () => {
                   onChange={(e) => setProjectInfo(e.target.value)}
                   cols={100}
                   placeholder="Describe your project"
-                  className="w-[80%] bg-transparent  resize-none border-gray-500 border rounded-md outline-none py-2 px-4 h-[100px]"
+                  className="w-full bg-transparent  resize-none border-gray-500 border rounded-md outline-none py-2 px-4 h-[100px]"
                 />
               </div>
-              <div className="flex flex-col space-y-2">
+              <div className="flex flex-col w-[80%] mx-auto space-y-2">
                 <label className="text-lg">Tags</label>
                 <input
                   onKeyDown={addTags}
                   value={tagInput}
                   onChange={(e) => setTagInput(e.target.value)}
                   placeholder="Paste repository link here."
-                  className="flex-1 w-[80%] p-2 bg-transparent outline-none border rounded-md border-gray-500 "
+                  className="flex-1 w-full p-2 bg-transparent outline-none border rounded-md border-gray-500 "
                 />
                 <span className="text-sm text-gray-500">
                   note: only 5 tags are applicable
@@ -126,10 +110,23 @@ const AddProject = () => {
                   ))}
                 </div>
               </div>
-              <button className="bg-secondary-color p-2 rounded-md w-[80%]">
+              <button className="bg-secondary-color p-2 rounded-md w-[80%] mx-auto">
                 Submit
               </button>
             </form>
+            <div className="w-[80%] mx-auto">
+              <div
+                className={`w-[80%] mx-auto flex items-center border justify-center rounded-md  h-[300px]`}
+              >
+                <button className="bg-secondary-color py-2 px-4 rounded-md">
+                  Browse files
+                </button>
+              </div>
+              <span className="w-[80%] mx-auto flex items-center justify-center text-sm text-gray-500 mt-4 ">
+                note: We would advise you to upload a picture. otherwise, the
+                default github icon will appear.
+              </span>
+            </div>
           </div>
         </div>
       </main>
