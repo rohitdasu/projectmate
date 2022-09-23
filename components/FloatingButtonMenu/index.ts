@@ -1,2 +1,2 @@
 export * from './FloatingMenu';
-export type { FloatingMenuProps } from './FloatingButtonMenu.interface';
+export * from './FloatingButtonMenu.interface';
