@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import Image from 'next/image';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { HiOutlineLogout } from 'react-icons/hi';
-import { MdOutlineAccountCircle } from 'react-icons/md';
+import { MdOutlineAccountCircle, MdArrowDropDown } from 'react-icons/md';
 
 export function Avatar() {
   // TODO
@@ -14,8 +14,8 @@ export function Avatar() {
     return (
       <>
         <Menu as="div" className="relative md:inline-block text-left hidden">
-          <div>
-            <Menu.Button className="w-[47px] h-[47px] relative my-[0.67rem] overflow-hidden shadow-border-shadow rounded-full">
+          <Menu.Button className="flex items-center">
+            <div className="w-[47px] h-[47px] relative my-[0.67rem] overflow-hidden shadow-border-shadow rounded-full">
               <Image
                 src={
                   user?.image ||
@@ -24,8 +24,9 @@ export function Avatar() {
                 layout="fill"
                 alt={user?.name || 'avatar'}
               />
-            </Menu.Button>
-          </div>
+            </div>
+            <MdArrowDropDown className="text-2xl" />
+          </Menu.Button>
           <Transition
             as={Fragment}
             enter="transition ease-out duration-100"
@@ -35,17 +36,20 @@ export function Avatar() {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute w-36 right-0 top-[64px] origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <Menu.Items className="absolute w-36 right-0 top-[64px] origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
               <div className="px-1 py-1 w-full ">
                 <Menu.Item>
-                  <button className="flex items-center w-full text-left rounded-md px-2 py-2 hover:bg-primary-color hover:text-white group transition-all ">
-                    <MdOutlineAccountCircle className="text-xl mr-1" />
+                  <button className="flex items-center w-full text-left rounded-md px-2 py-2 hover:bg-primary-color hover:text-white group transition-all">
+                    <MdOutlineAccountCircle className="text-xl mr-2" />
                     Profile
                   </button>
                 </Menu.Item>
                 <Menu.Item>
-                  <button className="flex items-center w-full text-left rounded-md px-2 py-2 hover:bg-primary-color hover:text-white group transition-all ">
-                    <HiOutlineLogout className="text-xl mr-1" /> Logout
+                  <button
+                    className="flex items-center w-full text-left rounded-md px-2 py-2 hover:bg-primary-color hover:text-white group transition-all"
+                    onClick={() => signOut({ redirect: false })}
+                  >
+                    <HiOutlineLogout className="text-xl mr-2" /> Logout
                   </button>
                 </Menu.Item>
               </div>
