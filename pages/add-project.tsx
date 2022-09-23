@@ -33,18 +33,18 @@ const AddProject = () => {
       <main className="flex flex-col w-full">
         <Toaster />
         <AuthModal title={'Login to Continue'} />
-        <div className="w-[90%] mx-auto my-4">
+        <div className="sm:w-[90%] w-full mx-auto my-4">
           <div className=" flex space-y-4 flex-col">
-            <h1 className="font-semibold  w-[65%]  mx-auto mb-4 text-3xl ">
+            <h1 className="font-semibold  w-[85%] sm:w-[65%]  mx-auto mb-4 text-3xl ">
               Add Project
             </h1>
             <form
               onSubmit={(e) => {
                 e.preventDefault();
               }}
-              className="w-[80%]  flex flex-col mx-auto space-y-6"
+              className="w-full sm:w-[80%]  flex flex-col mx-auto space-y-6"
             >
-              <div className="flex  w-[80%] mx-auto  flex-col space-y-2">
+              <div className="flex w-[85%] sm:w-[80%] mx-auto  flex-col space-y-2">
                 <label className="text-lg">
                   Project Name <span className="text-red-500">*</span>
                 </label>
@@ -55,7 +55,7 @@ const AddProject = () => {
                   className="flex-1 w-full items-center mx-auto p-2 bg-transparent outline-none border rounded-md border-gray-500 "
                 />
               </div>
-              <div className="flex flex-col w-[80%] mx-auto space-y-2">
+              <div className="flex flex-col w-[85%] sm:w-[80%] mx-auto space-y-2">
                 <label className="text-lg">
                   Github Repositary <span className="text-red-500">*</span>
                 </label>
@@ -66,7 +66,7 @@ const AddProject = () => {
                   className="flex-1 w-full p-2 bg-transparent outline-none border rounded-md border-gray-500 "
                 />
               </div>
-              <div className="flex flex-col w-[80%] mx-auto h-auto space-y-2">
+              <div className="flex flex-col w-[85%] sm:w-[80%] mx-auto h-auto space-y-2">
                 <label className="text-lg">
                   Description <span className="text-red-500">*</span>
                 </label>
@@ -78,7 +78,7 @@ const AddProject = () => {
                   className="w-full bg-transparent  resize-none border-gray-500 border rounded-md outline-none py-2 px-4 h-[100px]"
                 />
               </div>
-              <div className="flex flex-col w-[80%] mx-auto space-y-2">
+              <div className="flex flex-col w-[85%] sm:w-[80%] mx-auto space-y-2">
                 <label className="text-lg">Tags</label>
                 <input
                   onKeyDown={addTags}
@@ -90,43 +90,46 @@ const AddProject = () => {
                 <span className="text-sm text-gray-500">
                   note: only 5 tags are applicable
                 </span>
-                <div className="flex space-x-2">
+                <div className="flex flex-wrap gap-2 ">
                   {tags.map((tag, i) => (
                     <div
                       key={i}
-                      className="flex flex-wrap group space-x-1 items-center text-[15px] bg-primary-color text-white w-max px-4 py-2 rounded-md"
+                      onClick={() => removeTag(i)}
+                      className="flex flex-wrap group space-x-1 items-center text-[15px]  text-blue-500 bg-background-2 w-max px-4 py-2 rounded-full"
                     >
                       <span className="capitalize">{tag}</span>
 
-                      <Icon
+                      {/* <Icon
                         icon="akar-icons:cross"
                         color="white"
                         height={20}
                         width={20}
                         className="cursor-pointer hover:text-secondary-color rounded-full p-1"
                         onClick={() => removeTag(i)}
-                      />
+                      /> */}
                     </div>
                   ))}
                 </div>
               </div>
             </form>
-            <div className="w-[80%] mx-auto">
+            <div className="w-full flex flex-col space-y-4 sm:w-[80%] mx-auto">
               <div
-                className={`w-[80%] mx-auto flex items-center border border-gray-500 justify-center rounded-md  h-[300px]`}
+                className={`w-[85%] sm:w-[80%] mx-auto flex items-center border border-gray-500 justify-center rounded-md  h-[300px]`}
               >
                 <button className="bg-secondary-color py-2 px-4 rounded-md">
                   Browse files
                 </button>
               </div>
-              <span className="w-[80%] mx-auto flex items-center justify-center text-sm text-gray-500 mt-4 ">
+              <span className="w-[85%] sm:w-[80%] mx-auto flex items-center  text-sm text-gray-500 mt-4 ">
                 note: We would advise you to upload a picture. otherwise, the
                 default github icon will appear.
               </span>
+              <div className="w-[85%] sm:w-[80%] mx-auto  flex justify-end">
+                <button className="bg-secondary-color  px-8 py-2 rounded-md w-max ml-auto">
+                  Submit
+                </button>
+              </div>
             </div>
-            <button className="bg-secondary-color p-2 rounded-md w-[65%] mx-auto">
-              Submit
-            </button>
           </div>
         </div>
       </main>
