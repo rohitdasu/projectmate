@@ -22,7 +22,9 @@ export function SidebarAvatar() {
           </div>
           <div className="flex flex-col">
             <p className="text-sm truncate">{user?.name}</p>
-            <p className="text-xs text-white/75 truncate">{user?.email}</p>
+            <p className="text-xs text-black/60 dark:text-white/75  truncate">
+              {user?.email}
+            </p>
           </div>
         </div>
       </>
