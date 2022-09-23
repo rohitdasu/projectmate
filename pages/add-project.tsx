@@ -110,9 +110,6 @@ const AddProject = () => {
                   ))}
                 </div>
               </div>
-              <button className="bg-secondary-color p-2 rounded-md w-[80%] mx-auto">
-                Submit
-              </button>
             </form>
             <div className="w-[80%] mx-auto">
               <div
@@ -127,6 +124,9 @@ const AddProject = () => {
                 default github icon will appear.
               </span>
             </div>
+            <button className="bg-secondary-color p-2 rounded-md w-[65%] mx-auto">
+              Submit
+            </button>
           </div>
         </div>
       </main>
