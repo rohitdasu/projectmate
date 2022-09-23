@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Head from 'next/head';
 import { Topbar } from '@/components/Topbar/Topbar';
 import { Toaster } from 'react-hot-toast';
 import { AuthModal } from '../components';
-import { Icon } from '@iconify/react';
-import { useAppSelector } from 'app/hooks';
 
 const AddProject = () => {
   const [tags, setTags] = useState<string[]>([]);
@@ -12,6 +10,7 @@ const AddProject = () => {
   const [projectName, setProjectName] = useState<string>('');
   const [githubRepo, setGithubRepo] = useState<string>('');
   const [projectInfo, setProjectInfo] = useState<string>('');
+  const ImagePickerRef = useRef<HTMLInputElement>(null);
 
   const addTags = (e: any) => {
     if (e.key !== 'Enter') return;
@@ -23,6 +22,15 @@ const AddProject = () => {
   };
   const removeTag = (index: any) => {
     setTags(tags.filter((element, i) => i !== index));
+  };
+  const addImageToProject = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const reader = new FileReader();
+    if (e.target.files?.[0]) {
+      reader.readAsDataURL(e.target.files?.[0]);
+    }
+    reader.onload = (readerEvent) => {
+      console.log(readerEvent.target?.result as string);
+    };
   };
   return (
     <div>
@@ -98,15 +106,6 @@ const AddProject = () => {
                       className="flex flex-wrap group space-x-1 items-center text-[15px]  text-blue-500 bg-background-2 w-max px-4 py-2 rounded-full"
                     >
                       <span className="capitalize">{tag}</span>
-
-                      {/* <Icon
-                        icon="akar-icons:cross"
-                        color="white"
-                        height={20}
-                        width={20}
-                        className="cursor-pointer hover:text-secondary-color rounded-full p-1"
-                        onClick={() => removeTag(i)}
-                      /> */}
                     </div>
                   ))}
                 </div>
@@ -116,7 +115,18 @@ const AddProject = () => {
               <div
                 className={`w-[85%] sm:w-[80%] mx-auto flex items-center border border-gray-500 justify-center rounded-md  h-[300px]`}
               >
-                <button className="bg-secondary-color py-2 px-4 rounded-md">
+                <input
+                  type="file"
+                  hidden
+                  ref={ImagePickerRef}
+                  onChange={(e) => addImageToProject(e)}
+                />
+                <button
+                  onClick={() => {
+                    ImagePickerRef.current?.click();
+                  }}
+                  className="bg-secondary-color py-2 px-4 rounded-md"
+                >
                   Browse files
                 </button>
               </div>
