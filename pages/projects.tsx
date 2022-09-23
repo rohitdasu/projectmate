@@ -1,9 +1,6 @@
-import Head from 'next/head';
 import React, { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { useAppSelector } from '../app/hooks';
-import { Search, Project, Navbar, AuthModal } from '../components';
-import useSWR from 'swr';
+import { Search, ProjectsList, AuthModal } from '../components';
 import {
   FloatingMenu,
   MainButton,
@@ -11,50 +8,31 @@ import {
   Directions,
 } from 'react-floating-button-menu';
 import { Icon } from '@iconify/react';
-import 'twin.macro';
-import { Topbar } from '@/components/Topbar/Topbar';
+
+import { useSession } from 'next-auth/react';
+import { SharedLayout } from '@/components/Layouts/SharedLayout';
+import { useTheme } from 'next-themes';
 
 const Projects = () => {
-  const fetcher = (...args: Parameters<typeof fetch>) =>
-    fetch(...args).then((res) => res.json());
-  const { data, error } = useSWR('/api/project', fetcher);
-  const mode = useAppSelector((state) => state.mode.mode);
-  const isLoggedIn = useAppSelector((state) => state.user.isLogged);
+  const { theme } = useTheme();
+
+  const mode = theme === 'dark' ? true : false;
+  const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const fabColor = mode ? '#eee' : '#444';
   const tColor = mode ? '#000' : '#fff';
 
-  if (error) return <div> failed to load</div>;
-  if (!data) return <div>loading ... </div>;
   return (
-    <div>
-      <Head>
-        <title>Projectmate | Projects</title>
-        <link rel="icon" href="/dark-logo.svg" />
-      </Head>
-      <Topbar />
+    <SharedLayout title="Projects">
       <main className="flex flex-col w-full">
         <Toaster />
-        <AuthModal title={'Login to Continue'} />
+        <AuthModal title={'Continue with your social accounts'} />
         <div className="sticky top-0 z-10 backdrop-blur-3xl">
           <Search />
         </div>
-        <div className="container gap-5 m-auto mt-20 md:p-5 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {data.results.map((project: any) => {
-            console.log(project);
-            return (
-              <Project
-                key={project.id}
-                description={project.description}
-                title={project.title}
-                tags={project.tags}
-                author={project.author.email}
-              />
-            );
-          })}
-        </div>
-        {isLoggedIn && (
-          <div tw="bottom-7 fixed right-7 md:right-[85px] bottom-7">
+        <ProjectsList />
+        {session && (
+          <div className="bottom-7 fixed right-7 md:right-[85px]">
             <FloatingMenu
               slideSpeed={300}
               direction={Directions.Up}
@@ -100,7 +78,7 @@ const Projects = () => {
           </div>
         )}
       </main>
-    </div>
+    </SharedLayout>
   );
 };
 

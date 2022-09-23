@@ -19,10 +19,10 @@
 
   --clr-gray-1: #d1d5db;
 
-  --boxshadow-1: hsl(0, 0%, 95%) 0px 0px 0px 1px;
+  --boxshadow-1: hsl(0, 0%, 90%) 0px 0px 0px 1px;
 }
 
-[data-theme='dark'] {
+.dark {
   --clr-background-1: #1c2128;
   --clr-background-2: #1b2c43;
   --clr-foreground-1: #ffffff;

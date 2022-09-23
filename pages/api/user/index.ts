@@ -1,21 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '@/lib/prisma';
 import { User } from '@prisma/client';
-import bodyValidator from '@/lib/bodyValidator';
-import {
-  errorResponse,
-  successResponse,
-  validationResponse,
-} from '@/lib/http.response';
-import { userSchema } from '@/schema/index';
-import apiAuth from '@/lib/apiAuth';
+import { errorResponse, successResponse } from '@/lib/httpResponse';
+import { getServerAuthSession } from '@/lib/getServerAuthSession';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const isAuth = await apiAuth(req);
-  if (!isAuth) {
+  const session = await getServerAuthSession({ req, res });
+  if (!session) {
     return errorResponse({
       res,
       message: 'Unauthorized',
@@ -23,7 +17,6 @@ export default async function handler(
       success: false,
     });
   }
-
   switch (req.method) {
     case 'GET':
       try {
@@ -43,40 +36,6 @@ export default async function handler(
           success: false,
         });
       }
-    case 'POST':
-      try {
-        const validatedBody = await bodyValidator(req, userSchema);
-        const { email, firebaseUID } = validatedBody;
-        const data = await addUser({ email, firebaseUID });
-        return successResponse({
-          res,
-          message: 'user created successfully',
-          results: data,
-          success: true,
-          statusCode: 201,
-        });
-      } catch (error) {
-        if (error.code === 'P2002') {
-          return errorResponse({
-            res,
-            message: 'User already exist',
-            statusCode: 200,
-            success: false,
-          });
-        }
-        if (error.name === 'ZodError') {
-          return validationResponse({
-            res,
-            error,
-          });
-        }
-        return errorResponse({
-          res,
-          message: 'Internal Error',
-          statusCode: 500,
-          success: false,
-        });
-      }
 
     default:
       return errorResponse({
@@ -85,21 +44,6 @@ export default async function handler(
         statusCode: 400,
         success: false,
       });
-  }
-}
-
-async function addUser(args: { email: string; firebaseUID: string }) {
-  const { email, firebaseUID } = args;
-  try {
-    const data = await prisma.user.create({
-      data: {
-        firebaseUID,
-        email,
-      },
-    });
-    return data;
-  } catch (error) {
-    throw error;
   }
 }
 

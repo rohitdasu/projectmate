@@ -1,20 +1,14 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import Image from 'next/image';
-import { signOut } from 'firebase/auth';
-import { auth } from '../../lib/firebase';
-import { useAppSelector } from '../../app/hooks';
-import { useDispatch } from 'react-redux';
-import { setUserLoggedOut } from '../../store/slices/sliceUser';
 import toast from 'react-hot-toast';
 import { IAvatar } from './Avatar.interface';
 import { Icon } from '@iconify/react';
 
 export function Avatar({ userImg, email }: IAvatar) {
-  const dispatch = useDispatch();
-  const mode = useAppSelector((state) => state.mode.mode);
-  const isLogged = useAppSelector((state) => state.user.isLogged);
-  // mode - false (light-mode) | mode - true (dark-mode)
+  // TODO
+  const mode = false;
+  const isLogged = false;
   return (
     <div className={`${isLogged ? 'block' : '!hidden'} z-50 w-max text-right`}>
       <Menu as="div" className="relative inline-block text-left">
@@ -36,7 +30,7 @@ export function Avatar({ userImg, email }: IAvatar) {
             />
             <Icon
               icon="akar-icons:triangle-fill"
-              className='rotate-180'
+              className="rotate-180"
               height={12}
               width={12}
             />
@@ -67,8 +61,6 @@ export function Avatar({ userImg, email }: IAvatar) {
               <Menu.Item>
                 <button
                   onClick={() => {
-                    signOut(auth);
-                    dispatch(setUserLoggedOut());
                     mode
                       ? toast.success('Logout was successful', {
                           position: 'bottom-center',

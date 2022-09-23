@@ -194,11 +194,13 @@ const projectData = [
 async function main() {
   await prisma.$connect();
   await prisma.user.upsert({
-    where: { email: 'user@test.com' },
+    where: {
+      email: 'johndio@test.com',
+    },
     update: {},
     create: {
-      email: 'user@test.com',
-      firebaseUID: '8qfWh2h1Nah4pjWb4MNFRX8GSgr1',
+      email: 'johndio@test.com',
+      name: 'John Dio',
       project: {
         create: projectData,
       },
@@ -208,8 +210,8 @@ async function main() {
 
 main()
   .catch((e) => {
-    console.error(e);
     process.exit(1);
+    console.log(e);
   })
   .finally(async () => {
     await prisma.$disconnect();

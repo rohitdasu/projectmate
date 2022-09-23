@@ -4,11 +4,11 @@ import {
   errorResponse,
   successResponse,
   validationResponse,
-} from '@/lib/http.response';
+} from '@/lib/httpResponse';
 import { prisma } from '@/lib/prisma';
 import bodyValidator from '@/lib/bodyValidator';
 import { postSchema } from '@/schema/index';
-import apiAuth from '@/lib/apiAuth';
+import { getServerAuthSession } from '@/lib/getServerAuthSession';
 
 export default async function handler(
   req: NextApiRequest,
@@ -36,8 +36,8 @@ export default async function handler(
 
     case 'POST':
       try {
-        const isAuth = await apiAuth(req);
-        if (!isAuth) {
+        const session = await getServerAuthSession({ req, res });
+        if (!session) {
           return errorResponse({
             res,
             message: 'Unauthorized',

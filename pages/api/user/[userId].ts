@@ -1,15 +1,15 @@
 import { User } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { errorResponse, successResponse } from '@/lib/http.response';
+import { errorResponse, successResponse } from '@/lib/httpResponse';
 import { prisma } from '@/lib/prisma';
-import apiAuth from '@/lib/apiAuth';
+import { getServerAuthSession } from '@/lib/getServerAuthSession';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const isAuth = await apiAuth(req);
-  if (!isAuth) {
+  const session = await getServerAuthSession({ req, res });
+  if (!session) {
     return errorResponse({
       res,
       message: 'Unauthorized',
@@ -22,7 +22,7 @@ export default async function handler(
       const { userId } = req.query;
 
       try {
-        const data = await getUsersByFirebaseUID(userId?.toString());
+        const data = await getUsersById(userId?.toString());
         if (!data) {
           return successResponse({
             res,
@@ -59,15 +59,15 @@ export default async function handler(
   }
 }
 
-async function getUsersByFirebaseUID(firebaseUID?: string) {
+async function getUsersById(id?: string) {
   try {
-    if (!firebaseUID) {
+    if (!id) {
       return null;
     }
 
     const data: User | null = await prisma.user.findFirst({
       where: {
-        firebaseUID,
+        id,
       },
       include: {
         project: true,
