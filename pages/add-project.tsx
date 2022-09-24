@@ -83,7 +83,7 @@ const AddProject = () => {
                   onChange={(e) => setProjectInfo(e.target.value)}
                   cols={100}
                   placeholder="Describe your project"
-                  className="w-full bg-transparent  resize-none border-gray-500 border rounded-md outline-none py-2 px-4 h-[100px]"
+                  className="w-full bg-transparent  resize-none border-gray-500 border rounded-md outline-none p-2 h-[100px]"
                 />
               </div>
               <div className="flex flex-col w-[85%] sm:w-[80%] mx-auto space-y-2">
@@ -103,7 +103,7 @@ const AddProject = () => {
                     <div
                       key={i}
                       onClick={() => removeTag(i)}
-                      className="flex flex-wrap group space-x-1 items-center text-[15px]  text-blue-500 bg-background-2 w-max px-4 py-2 rounded-full"
+                      className="flex flex-wrap group space-x-1 items-center text-[15px] cursor-pointer text-blue-500 bg-background-2 w-max px-4 py-2 rounded-full"
                     >
                       <span className="capitalize">{tag}</span>
                     </div>
@@ -138,7 +138,7 @@ const AddProject = () => {
                 default github icon will appear.
               </span>
               <div className="w-[85%] sm:w-[80%] mx-auto  flex justify-end">
-                <button className="bg-secondary-color  px-8 py-2 rounded-md w-max ml-auto">
+                <button className="bg-secondary-color  text-white px-8 py-2 rounded-md w-max ml-auto">
                   Submit
                 </button>
               </div>
