@@ -3,6 +3,8 @@ import Head from 'next/head';
 import { Topbar } from '@/components/Topbar/Topbar';
 import { Toaster } from 'react-hot-toast';
 import { AuthModal } from '../components';
+import { FileUploader } from 'react-drag-drop-files';
+import Image from 'next/image';
 
 const AddProject = () => {
   const [tags, setTags] = useState<string[]>([]);
@@ -10,7 +12,8 @@ const AddProject = () => {
   const [projectName, setProjectName] = useState<string>('');
   const [githubRepo, setGithubRepo] = useState<string>('');
   const [projectInfo, setProjectInfo] = useState<string>('');
-  const ImagePickerRef = useRef<HTMLInputElement>(null);
+  const [selectedImage, setSelectedImage] = useState<any>(null);
+  const fileType = ['JPEG', 'JPG', 'PNG', 'GIF'];
 
   const addTags = (e: any) => {
     if (e.key !== 'Enter') return;
@@ -23,13 +26,12 @@ const AddProject = () => {
   const removeTag = (index: any) => {
     setTags(tags.filter((element, i) => i !== index));
   };
-  const addImageToProject = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const addImageToProject = (file: any) => {
     const reader = new FileReader();
-    if (e.target.files?.[0]) {
-      reader.readAsDataURL(e.target.files?.[0]);
-    }
+    console.log(file);
+    reader.readAsDataURL(file);
     reader.onload = (readerEvent) => {
-      console.log(readerEvent.target?.result as string);
+      setSelectedImage(readerEvent.target?.result);
     };
   };
   return (
@@ -113,22 +115,25 @@ const AddProject = () => {
             </form>
             <div className="w-full flex flex-col space-y-4 sm:w-[80%] mx-auto">
               <div
-                className={`w-[85%] sm:w-[80%] mx-auto flex items-center border border-gray-500 justify-center rounded-md  h-[300px]`}
+                className={`w-[85%] relative sm:w-[80%] mx-auto flex   rounded-md  h-[300px]`}
               >
-                <input
-                  type="file"
-                  hidden
-                  ref={ImagePickerRef}
-                  onChange={(e) => addImageToProject(e)}
-                />
-                <button
-                  onClick={() => {
-                    ImagePickerRef.current?.click();
-                  }}
-                  className="bg-secondary-color py-2 px-4 rounded-md"
-                >
-                  Browse files
-                </button>
+                {selectedImage ? (
+                  <Image
+                    onClick={() => setSelectedImage(null)}
+                    src={selectedImage}
+                    alt="project-image"
+                    className="h-full w-full object-contain cursor-pointer"
+                    layout="fill"
+                  />
+                ) : (
+                  <FileUploader
+                    multiple={false}
+                    label="Drag or upload your Image."
+                    classes="file-uploader"
+                    handleChange={addImageToProject}
+                    name="file"
+                  />
+                )}
               </div>
               <span className="w-[85%] sm:w-[80%] mx-auto flex items-center  text-sm text-gray-500 mt-4 ">
                 note: We would advise you to upload a picture. otherwise, the
