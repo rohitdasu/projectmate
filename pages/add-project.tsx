@@ -42,7 +42,7 @@ const AddProject = () => {
       <main className="flex flex-col w-full">
         <Toaster />
         <AuthModal title={'Login to Continue'} />
-        <div className="sm:w-[90%] w-full mx-auto my-4">
+        <div className="sm:w-[90%] w-full mx-auto my-4 mb-8">
           <div className=" flex space-y-4 flex-col">
             <h1 className="font-semibold  w-[85%] sm:w-[65%]  mx-auto mb-4 text-3xl ">
               Add Project
@@ -121,7 +121,7 @@ const AddProject = () => {
                     <Image
                       src={selectedImage}
                       alt="project-image"
-                      className="h-full w-full object-contain cursor-pointer"
+                      className="h-full w-full object-contain "
                       layout="fill"
                     />
 
