@@ -56,49 +56,41 @@ export const Sidebar = () => {
                 <SidebarAvatar />
               </div>
 
-              <div
-                className={`flex flex-col overflow-hidden ${
-                  session ? 'mb-24' : 'mb-0'
-                }`}
-              >
-                <ul className="w-full overflow-auto">
-                  {appRoutes.map((route) => {
-                    const { Icon, anchorTagProps, title, url } = route;
-                    const isCurrent =
-                      pathname === url || pathname.includes(title);
+              <ul className="w-full overflow-auto">
+                {appRoutes.map((route) => {
+                  const { Icon, anchorTagProps, title, url } = route;
+                  const isCurrent =
+                    pathname === url || pathname.includes(title);
 
-                    return (
-                      <li key={title}>
-                        <Link href={url}>
-                          <a
-                            {...anchorTagProps}
-                            className={`flex justify-between items-center gap-2 p-5 text-lg capitalize ${
-                              isCurrent && 'bg-background-2'
-                            }`}
-                          >
-                            {title}
-                            <Icon className="text-2xl" />
-                          </a>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+                  return (
+                    <li key={title}>
+                      <Link href={url}>
+                        <a
+                          {...anchorTagProps}
+                          className={`flex justify-between items-center gap-2 p-5 text-lg capitalize ${
+                            isCurrent && 'bg-background-2'
+                          }`}
+                        >
+                          {title}
+                          <Icon className="text-2xl" />
+                        </a>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
 
               {session && (
-                <div className="border-t-[1px] border-gray-1 absolute w-full bottom-0 h-24">
-                  <button
-                    className="flex justify-between w-full items-center gap-2 p-5 text-lg capitalize"
-                    onClick={() => {
-                      signOut({ redirect: false });
-                      setOpen(false);
-                    }}
-                  >
-                    Logout
-                    <HiOutlineLogout className="text-2xl" />
-                  </button>
-                </div>
+                <button
+                  className="flex justify-between w-full items-center gap-2 p-5 text-lg capitalize"
+                  onClick={() => {
+                    signOut({ redirect: false });
+                    setOpen(false);
+                  }}
+                >
+                  Logout
+                  <HiOutlineLogout className="text-2xl" />
+                </button>
               )}
             </motion.div>
           </>
