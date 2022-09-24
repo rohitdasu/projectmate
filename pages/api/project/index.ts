@@ -45,22 +45,17 @@ export default async function handler(
             success: false,
           });
         }
+        console.log(req.body);
         const validatedBody = await bodyValidator(req, postSchema);
-        const {
-          title,
-          description,
-          githubRepository,
-          tags,
-          coverImg,
-          authorId,
-        } = validatedBody;
+        const { title, description, githubRepository, tags, coverImg, email } =
+          validatedBody;
         const data = await addProject({
           title,
           description,
           githubRepository,
           tags,
           coverImg,
-          authorId,
+          email,
         });
         return successResponse({
           res,
@@ -70,6 +65,7 @@ export default async function handler(
           success: true,
         });
       } catch (error) {
+        console.log(error);
         if (error.name === 'ZodError') {
           return validationResponse({
             res,
@@ -111,10 +107,9 @@ async function addProject(args: {
   githubRepository: string;
   tags: string[];
   coverImg: string;
-  authorId: string;
+  email: string;
 }) {
-  const { title, description, githubRepository, tags, coverImg, authorId } =
-    args;
+  const { title, description, githubRepository, tags, coverImg, email } = args;
   try {
     const data = await prisma.project.create({
       data: {
@@ -125,7 +120,7 @@ async function addProject(args: {
         coverImg,
         author: {
           connect: {
-            id: authorId,
+            email: email,
           },
         },
       },
