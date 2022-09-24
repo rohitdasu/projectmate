@@ -5,6 +5,7 @@ import { AiFillCloseCircle } from 'react-icons/ai';
 import { Toaster } from 'react-hot-toast';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import { useSession } from 'next-auth/react';
 
 type FormInputs = {
   tags: string[];
@@ -23,6 +24,7 @@ const AddProject = () => {
     control,
     formState: { errors },
   } = useForm<FormInputs>();
+  const { data: session } = useSession();
 
   const [tagInput, setTagInput] = useState<string>('');
   const removeTag = (index: number) => {
@@ -33,24 +35,25 @@ const AddProject = () => {
   };
 
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
-    console.log(data);
-    fetch('http://localhost:3000/api/project', {
+    fetch('/api/project', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         title: data.projectName,
         description: data.projectInfo,
         githubRepository: data.githubRepo,
         tags: data.tags,
-        coverImage: '',
-        authorId: '',
+        coverImg:
+          'https://user-images.githubusercontent.com/48400770/190438248-fc0f3e42-c6d3-4d07-bcba-10e7fece4bc2.png',
+        email: session?.user?.email,
       }),
     })
       .then((data) => {
-        // Do some stuff here
         console.log(data);
       })
       .catch((err) => {
-        // Catch and display errors
         console.log(err);
       });
   };
