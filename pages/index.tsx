@@ -16,10 +16,10 @@ const Home: NextPage = () => {
 
   return (
     <SharedLayout title="Home">
-      <main className="flex mt-[5rem] lg:w-full flex-1 ">
+      <div className="flex mt-[5rem] lg:w-full flex-1 ">
         <Toaster />
         <AuthModal title={'Continue with your social accounts'} />
-        <div className="flex flex-col px-4 flex-1 text-center lg:text-left justify-center lg:m-0 lg:w-1/2 lg:px-20">
+        <div className="flex flex-col px-4 flex-1 text-center lg:text-left justify-center lg:m-0 lg:w-1/2">
           <h1 className="lg:leading-[82px] leading-normal font-bold md:text-[55px] text-[40px]  capitalize text-foreground-1">
             A place where you find{' '}
             <span className="uppercase text-primary-color">OpenSource</span>{' '}
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
         <div className="hidden lg:inline-flex  lg:px-20">
           <Lottie animationData={animation} />
         </div>
-      </main>
+      </div>
     </SharedLayout>
   );
 };

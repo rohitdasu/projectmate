@@ -20,7 +20,7 @@ const Projects = () => {
 
   return (
     <SharedLayout title="Projects">
-      <main className="flex flex-col w-full">
+      <div className="flex flex-col w-full">
         <Toaster />
         <AuthModal title={'Continue with your social accounts'} />
         <div className="sticky top-0 z-10 backdrop-blur-3xl">
@@ -55,7 +55,7 @@ const Projects = () => {
             </FloatingMenu>
           </div>
         )}
-      </main>
+      </div>
     </SharedLayout>
   );
 };
