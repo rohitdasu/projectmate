@@ -13,18 +13,18 @@ const AddProject = () => {
   const [projectInfo, setProjectInfo] = useState<string>('');
   const [selectedImage, setSelectedImage] = useState<any>(null);
 
-  const addTags = (e: any) => {
+  const addTags = (e: React.KeyboardEvent) => {
     if (e.key !== 'Enter') return;
-    const value = e.target.value;
+    const value = (e.target as HTMLInputElement).value;
     if (!value.trim()) return;
     if (tags.length >= 5) return;
     setTags([...tags, value]);
     setTagInput('');
   };
-  const removeTag = (index: any) => {
+  const removeTag = (index: number) => {
     setTags(tags.filter((element, i) => i !== index));
   };
-  const addImageToProject = (file: any) => {
+  const addImageToProject = (file: File) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (readerEvent) => {
@@ -32,130 +32,131 @@ const AddProject = () => {
     };
   };
   return (
-    <div>
-      <SharedLayout title="Projectmate | Submit Project">
-        <div className="flex flex-col w-full">
-          <Toaster />
-          <div className="sm:w-[90%] w-full mx-auto my-4 mb-8">
-            <div className=" flex space-y-4 flex-col">
-              <h1 className="font-semibold  w-[85%] sm:w-[65%]  mx-auto mb-4 text-3xl ">
-                Add Project
-              </h1>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                }}
-                className="w-full sm:w-[80%]  flex flex-col mx-auto space-y-6"
-              >
-                <div className="flex w-[85%] sm:w-[80%] mx-auto  flex-col space-y-2">
-                  <label className="text-lg">
-                    Project Name <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    value={projectName}
-                    onChange={(e) => setProjectName(e.target.value)}
-                    placeholder="Enter your project name here"
-                    className="flex-1 w-full items-center mx-auto p-2 bg-transparent outline-none border rounded-md border-gray-500 "
-                  />
-                </div>
-                <div className="flex flex-col w-[85%] sm:w-[80%] mx-auto space-y-2">
-                  <label className="text-lg">
-                    Github Repositary <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    value={githubRepo}
-                    onChange={(e) => setGithubRepo(e.target.value)}
-                    placeholder="Paste repository link here."
-                    className="flex-1 w-full p-2 bg-transparent outline-none border rounded-md border-gray-500 "
-                  />
-                </div>
-                <div className="flex flex-col w-[85%] sm:w-[80%] mx-auto h-auto space-y-2">
-                  <label className="text-lg">
-                    Description <span className="text-red-500">*</span>
-                  </label>
-                  <textarea
-                    value={projectInfo}
-                    onChange={(e) => setProjectInfo(e.target.value)}
-                    cols={100}
-                    placeholder="Describe your project"
-                    className="w-full bg-transparent  resize-none border-gray-500 border rounded-md outline-none p-2 h-[100px]"
-                  />
-                </div>
-                <div className="flex flex-col w-[85%] sm:w-[80%] mx-auto space-y-2">
-                  <label className="text-lg">Tags</label>
-                  <input
-                    onKeyDown={addTags}
-                    value={tagInput}
-                    onChange={(e) => setTagInput(e.target.value)}
-                    placeholder="Paste repository link here."
-                    className="flex-1 w-full p-2 bg-transparent outline-none border rounded-md border-gray-500 "
-                  />
-                  <span className="text-sm text-gray-500">
-                    note: only 5 tags are applicable
-                  </span>
-                  <div className="flex flex-wrap gap-2 ">
-                    {tags.map((tag, i) => (
-                      <div
-                        key={i}
-                        onClick={() => removeTag(i)}
-                        className="flex flex-wrap group space-x-1 items-center text-[15px] cursor-pointer text-blue-500 bg-background-2 w-max px-4 py-2 rounded-full"
-                      >
-                        <span className="capitalize">{tag}</span>
-                      </div>
-                    ))}
+    <SharedLayout title="Projectmate | Submit Project">
+      <Toaster />
+      <div className="flex space-y-4 flex-col w-full mt-4 mb-12">
+        <div className="w-full px-4 lg:px-0 lg:w-[70%] mx-auto">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+            className="w-full flex flex-col mx-auto space-y-6"
+          >
+            <h1 className="font-semibold text-left mb-4 text-3xl">
+              Add Project
+            </h1>
+            <div className="flex flex-col space-y-2 w-full">
+              <label className="text-lg">
+                Project Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                value={projectName}
+                onChange={(e) => setProjectName(e.target.value)}
+                placeholder="Enter your project name here"
+                className="w-full items-center p-2 bg-transparent outline-none border rounded-md border-gray-500 "
+              />
+            </div>
+            <div className="flex flex-col space-y-2 w-full">
+              <label className="text-lg">
+                Github Repositary <span className="text-red-500">*</span>
+              </label>
+              <input
+                value={githubRepo}
+                onChange={(e) => setGithubRepo(e.target.value)}
+                placeholder="Paste repository link here."
+                className="w-full p-2 bg-transparent outline-none border rounded-md border-gray-500 "
+              />
+            </div>
+            <div className="flex flex-col space-y-2 w-full">
+              <label className="text-lg">
+                Description <span className="text-red-500">*</span>
+              </label>
+              <textarea
+                value={projectInfo}
+                onChange={(e) => setProjectInfo(e.target.value)}
+                cols={100}
+                placeholder="Describe your project"
+                className="w-full bg-transparent resize-none border-gray-500 border rounded-md outline-none p-2 h-[150px]"
+              />
+            </div>
+            <div className="flex flex-col space-y-2 w-full">
+              <label className="text-lg">
+                Tags <span className="text-red-500">*</span>
+              </label>
+              <input
+                onKeyDown={addTags}
+                value={tagInput}
+                onChange={(e) => setTagInput(e.target.value)}
+                placeholder="Paste repository link here."
+                className="w-full p-2 bg-transparent outline-none border rounded-md border-gray-500 "
+              />
+              <span className="text-sm text-gray-500">
+                Note: only 5 tags are applicable
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {tags.map((tag, i) => (
+                  <div
+                    key={i}
+                    onClick={() => removeTag(i)}
+                    className="flex flex-wrap group space-x-1 items-center text-[15px] cursor-pointer text-blue-500 bg-background-2 w-max px-4 py-2 rounded-full"
+                  >
+                    <span className="capitalize">{tag}</span>
                   </div>
-                </div>
-              </form>
-              <div className="w-full flex flex-col space-y-4 sm:w-[80%] mx-auto">
-                <div
-                  className={`w-[85%] relative sm:w-[80%] mx-auto flex   rounded-md  h-[300px]`}
-                >
-                  {selectedImage ? (
-                    <>
-                      <Image
-                        src={selectedImage}
-                        alt="project-image"
-                        className="h-full w-full object-contain "
-                        layout="fill"
-                      />
-
-                      <AiFillCloseCircle
-                        onClick={() => setSelectedImage(null)}
-                        height={40}
-                        width={40}
-                        size={30}
-                        style={{
-                          marginLeft: 'auto',
-                          zIndex: '50',
-                          cursor: 'pointer',
-                        }}
-                      />
-                    </>
-                  ) : (
-                    <FileUploader
-                      multiple={false}
-                      label="Drag or upload your Image."
-                      classes="file-uploader"
-                      handleChange={addImageToProject}
-                      name="file"
-                    />
-                  )}
-                </div>
-                <span className="w-[85%] sm:w-[80%] mx-auto flex items-center  text-sm text-gray-500 mt-4 ">
-                  note: We would advise you to upload a picture. otherwise, the
-                  default github icon will appear.
-                </span>
-                <div className="w-[85%] sm:w-[80%] mx-auto  flex justify-end">
-                  <button className="bg-secondary-color  text-white px-8 py-2 rounded-md w-max ml-auto">
-                    Submit
-                  </button>
-                </div>
+                ))}
               </div>
             </div>
-          </div>
+            <div>
+              <label className="text-lg">
+                Image <span className="text-red-500">*</span>
+              </label>
+              <div
+                className={`relative mx-auto flex rounded-md h-[300px] ${
+                  selectedImage ? 'border-2 border-green-700 border-dashed' : ''
+                }`}
+              >
+                {selectedImage ? (
+                  <>
+                    <Image
+                      src={selectedImage}
+                      alt="project-image"
+                      className="h-full w-full object-contain"
+                      layout="fill"
+                    />
+
+                    <AiFillCloseCircle
+                      onClick={() => setSelectedImage(null)}
+                      size={30}
+                      style={{
+                        zIndex: '50',
+                        cursor: 'pointer',
+                        position: 'absolute',
+                        right: 10,
+                        top: 10,
+                      }}
+                    />
+                  </>
+                ) : (
+                  <FileUploader
+                    multiple={false}
+                    label="Drag or upload your Image."
+                    classes="file-uploader"
+                    handleChange={addImageToProject}
+                    name="file"
+                  />
+                )}
+              </div>
+              <span className="mx-auto flex items-center text-sm text-gray-500 mt-4 ">
+                Note: We would advise you to upload a picture. otherwise, the
+                default github icon will appear.
+              </span>
+            </div>
+            <button className="bg-secondary-color  text-white px-8 py-2 rounded-md w-max ml-auto">
+              Submit
+            </button>
+          </form>
         </div>
-      </SharedLayout>
-    </div>
+      </div>
+    </SharedLayout>
   );
 };
 
