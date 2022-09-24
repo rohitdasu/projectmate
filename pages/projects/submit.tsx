@@ -34,6 +34,25 @@ const AddProject = () => {
 
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
     console.log(data);
+    fetch('http://localhost:3000/api/project', {
+      method: 'POST',
+      body: JSON.stringify({
+        title: data.projectName,
+        description: data.projectInfo,
+        githubRepository: data.githubRepo,
+        tags: data.tags,
+        coverImage: '',
+        authorId: '',
+      }),
+    })
+      .then((data) => {
+        // Do some stuff here
+        console.log(data);
+      })
+      .catch((err) => {
+        // Catch and display errors
+        console.log(err);
+      });
   };
 
   return (
