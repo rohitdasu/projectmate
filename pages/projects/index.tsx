@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { Search, ProjectsList, AuthModal } from '../../components';
+import {
+  Search,
+  ProjectsList,
+  AuthModal,
+  SharedLayout,
+} from '../../components';
 import { Icon } from '@iconify/react';
 import { FloatingMenu } from '@/components/FloatingButtonMenu';
 import { useSession } from 'next-auth/react';
-import { SharedLayout } from '@/components/Layouts/SharedLayout';
-import { useTheme } from 'next-themes';
 import { useRouter } from 'next/router';
 
 const Projects = () => {
-  const { theme } = useTheme();
   const router = useRouter();
-
-  const mode = theme === 'dark' ? true : false;
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
-  const fabColor = mode ? '#eee' : '#444';
-  const tColor = mode ? '#000' : '#fff';
+  const fabColor = '#2854eecc';
+  const tColor = 'white';
 
   const toggleFloatingMenu = () => setIsOpen((prevState) => !prevState);
 
