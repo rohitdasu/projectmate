@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import { AuthModal } from '../components';
 import { FileUploader } from 'react-drag-drop-files';
 import Image from 'next/image';
+import { AiFillCloseCircle } from 'react-icons/ai';
 
 const AddProject = () => {
   const [tags, setTags] = useState<string[]>([]);
@@ -116,13 +117,26 @@ const AddProject = () => {
                 className={`w-[85%] relative sm:w-[80%] mx-auto flex   rounded-md  h-[300px]`}
               >
                 {selectedImage ? (
-                  <Image
-                    onClick={() => setSelectedImage(null)}
-                    src={selectedImage}
-                    alt="project-image"
-                    className="h-full w-full object-contain cursor-pointer"
-                    layout="fill"
-                  />
+                  <>
+                    <Image
+                      src={selectedImage}
+                      alt="project-image"
+                      className="h-full w-full object-contain cursor-pointer"
+                      layout="fill"
+                    />
+
+                    <AiFillCloseCircle
+                      onClick={() => setSelectedImage(null)}
+                      height={40}
+                      width={40}
+                      size={30}
+                      style={{
+                        marginLeft: 'auto',
+                        zIndex: '50',
+                        cursor: 'pointer',
+                      }}
+                    />
+                  </>
                 ) : (
                   <FileUploader
                     multiple={false}
