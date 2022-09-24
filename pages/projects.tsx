@@ -6,9 +6,11 @@ import { FloatingMenu } from '@/components/FloatingButtonMenu';
 import { useSession } from 'next-auth/react';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { useTheme } from 'next-themes';
+import { useRouter } from 'next/router';
 
 const Projects = () => {
   const { theme } = useTheme();
+  const router = useRouter();
 
   const mode = theme === 'dark' ? true : false;
   const { data: session } = useSession();
@@ -44,7 +46,7 @@ const Projects = () => {
                 />
               }
             >
-              <div onClick={() => alert('Clicked on create project')}>
+              <div onClick={() => router.push('/add-project')}>
                 <Icon
                   icon="akar-icons:file"
                   color={tColor}
