@@ -13,7 +13,6 @@ const AddProject = () => {
   const [githubRepo, setGithubRepo] = useState<string>('');
   const [projectInfo, setProjectInfo] = useState<string>('');
   const [selectedImage, setSelectedImage] = useState<any>(null);
-  const fileType = ['JPEG', 'JPG', 'PNG', 'GIF'];
 
   const addTags = (e: any) => {
     if (e.key !== 'Enter') return;
@@ -28,7 +27,6 @@ const AddProject = () => {
   };
   const addImageToProject = (file: any) => {
     const reader = new FileReader();
-    console.log(file);
     reader.readAsDataURL(file);
     reader.onload = (readerEvent) => {
       setSelectedImage(readerEvent.target?.result);
