@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { Search, ProjectsList, AuthModal } from '../components';
+import { Search, ProjectsList, AuthModal } from '../../components';
 import { Icon } from '@iconify/react';
 import { FloatingMenu } from '@/components/FloatingButtonMenu';
 import { useSession } from 'next-auth/react';
@@ -46,7 +46,7 @@ const Projects = () => {
                 />
               }
             >
-              <div onClick={() => router.push('/add-project')}>
+              <div onClick={() => router.push('/projects/submit')}>
                 <Icon
                   icon="akar-icons:file"
                   color={tColor}

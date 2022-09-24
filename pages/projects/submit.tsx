@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import { Topbar } from '@/components/Topbar/Topbar';
 import { Toaster } from 'react-hot-toast';
-import { AuthModal } from '../components';
+import { AuthModal } from '@/components/AuthModal';
 import { FileUploader } from 'react-drag-drop-files';
 import Image from 'next/image';
 import { AiFillCloseCircle } from 'react-icons/ai';
