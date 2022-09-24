@@ -24,11 +24,12 @@ const AddProject = () => {
     formState: { errors },
   } = useForm<FormInputs>();
 
-  const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState<string>('');
-
   const removeTag = (index: number) => {
-    setTags(tags.filter((element, i) => i !== index));
+    setValue(
+      'tags',
+      watch('tags').filter((element, i) => i !== index)
+    );
   };
 
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
@@ -40,10 +41,7 @@ const AddProject = () => {
       <Toaster />
       <div className="flex space-y-4 flex-col w-full mt-4 mb-12">
         <div className="w-full px-4 lg:px-0 lg:w-[70%] mx-auto">
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="w-full flex flex-col mx-auto space-y-6"
-          >
+          <form className="w-full flex flex-col mx-auto space-y-6">
             <h1 className="font-semibold text-left mb-4 text-3xl">
               Add Project
             </h1>
@@ -52,37 +50,52 @@ const AddProject = () => {
                 Project Name <span className="text-red-500">*</span>
               </label>
               <input
-                {...register('projectName')}
+                {...register('projectName', { required: true })}
                 placeholder="Enter your project name here"
                 className="w-full items-center p-2 bg-transparent outline-none border rounded-md border-gray-500 "
+                aria-invalid={errors.projectName ? 'true' : 'false'}
               />
+              {errors.projectName?.type === 'required' && (
+                <p className="text-red-500">project name is required</p>
+              )}
             </div>
             <div className="flex flex-col space-y-2 w-full">
               <label className="text-lg">
                 Github Repositary <span className="text-red-500">*</span>
               </label>
               <input
-                {...register('githubRepo')}
+                {...register('githubRepo', { required: true })}
                 placeholder="Paste repository link here."
-                className="w-full p-2 bg-transparent outline-none border rounded-md border-gray-500 "
+                className="w-full p-2 bg-transparent outline-none border rounded-md border-gray-500"
+                aria-invalid={errors.githubRepo ? 'true' : 'false'}
               />
+              {errors.githubRepo?.type === 'required' && (
+                <p className="text-red-500">
+                  github repository link is required
+                </p>
+              )}
             </div>
             <div className="flex flex-col space-y-2 w-full">
               <label className="text-lg">
                 Description <span className="text-red-500">*</span>
               </label>
               <textarea
-                {...register('projectInfo')}
+                {...register('projectInfo', { required: true })}
                 cols={100}
                 placeholder="Describe your project"
                 className="w-full bg-transparent resize-none border-gray-500 border rounded-md outline-none p-2 h-[150px]"
+                aria-invalid={errors.projectInfo ? 'true' : 'false'}
               />
+              {errors.projectInfo?.type === 'required' && (
+                <p className="text-red-500">description is required</p>
+              )}
             </div>
             <div className="flex flex-col space-y-2 w-full">
               <label className="text-lg">
                 Tags <span className="text-red-500">*</span>
               </label>
               <Controller
+                {...register('tags', { required: true })}
                 name="tags"
                 control={control}
                 render={({ field }) => {
@@ -100,16 +113,21 @@ const AddProject = () => {
                             : [value]
                         );
                         setTagInput('');
+                        e.preventDefault();
                       }}
                       value={tagInput}
                       name={field.name}
                       onChange={(e) => setTagInput(e.target.value)}
                       placeholder="Paste repository link here"
                       className="w-full p-2 bg-transparent outline-none border rounded-md border-gray-500"
+                      aria-invalid={errors.tags ? 'true' : 'false'}
                     />
                   );
                 }}
               />
+              {errors.tags?.type === 'required' && (
+                <p className="text-red-500">tags are required</p>
+              )}
               <span className="text-sm text-gray-500">
                 Note: only 5 tags are applicable
               </span>
@@ -187,10 +205,15 @@ const AddProject = () => {
                 default github icon will appear.
               </span>
             </div>
-            <button className="bg-secondary-color text-white px-8 py-2 rounded-md w-max ml-auto">
+          </form>
+          <div className="w-full my-4">
+            <button
+              onClick={handleSubmit(onSubmit)}
+              className="float-right bg-secondary-color text-white px-8 py-2 rounded-md"
+            >
               Submit
             </button>
-          </form>
+          </div>
         </div>
       </div>
     </SharedLayout>
