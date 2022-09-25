@@ -1,7 +1,6 @@
 import type { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import { Toaster } from 'react-hot-toast';
 import Lottie from 'lottie-react';
 import animation from '../public/animation-lottie.json';
 import { useAppDispatch } from '../app/hooks';
@@ -17,7 +16,6 @@ const Home: NextPage = () => {
   return (
     <SharedLayout title="Home">
       <div className="flex mt-[5rem] lg:w-full flex-1 ">
-        <Toaster />
         <AuthModal title={'Continue with your social accounts'} />
         <div className="flex flex-col px-4 flex-1 text-center lg:text-left justify-center lg:m-0 lg:w-1/2">
           <h1 className="lg:leading-[82px] leading-normal font-bold md:text-[55px] text-[40px]  capitalize text-foreground-1">

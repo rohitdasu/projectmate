@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { FileUploader } from 'react-drag-drop-files';
 import { AiFillCloseCircle } from 'react-icons/ai';
-import { Toaster } from 'react-hot-toast';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { useSession } from 'next-auth/react';
@@ -50,17 +49,16 @@ const AddProject = () => {
         email: session?.user?.email,
       }),
     })
-      .then((data) => {
-        console.log(data);
+      .then(() => {
+        alert('project added successfully');
       })
       .catch((err) => {
-        console.log(err);
+        alert(err.message);
       });
   };
 
   return (
     <SharedLayout title="Projectmate | Submit Project">
-      <Toaster />
       <div className="flex space-y-4 flex-col w-full mt-4 mb-12">
         <div className="w-full px-4 lg:px-0 lg:w-[70%] mx-auto">
           <form className="w-full flex flex-col mx-auto space-y-6">

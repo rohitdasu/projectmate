@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Toaster } from 'react-hot-toast';
 import {
   Search,
   ProjectsList,
@@ -23,7 +22,6 @@ const Projects = () => {
   return (
     <SharedLayout title="Projects">
       <div className="flex flex-col w-full">
-        <Toaster />
         <AuthModal title={'Continue with your social accounts'} />
         <div className="sticky top-0 z-10 backdrop-blur-3xl">
           <Search />
