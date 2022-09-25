@@ -21,7 +21,7 @@ export const ProjectsList = () => {
     return <div className="m-auto text-lg my-5">Failed to load projects</div>;
 
   return (
-    <div className="container gap-5 p-3 m-auto md:p-5 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="container gap-5 p-3 m-auto auto-rows-auto md:p-5 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {!data ? (
         skeletonProjectsToLoad.map((randomKey) => (
           <ProjectSkeleton key={randomKey} />
