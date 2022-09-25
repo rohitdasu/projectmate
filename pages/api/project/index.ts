@@ -16,8 +16,13 @@ export default async function handler(
 ) {
   switch (req.method) {
     case 'GET':
+      const { limit, cursorId } = req.query;
+      const projectLimit: number = Number(limit) || 10;
       try {
-        const data = await getAllProject();
+        const data = await getAllProject({
+          limit: projectLimit,
+          cursorId: cursorId ? cursorId.toString() : undefined,
+        });
         return successResponse({
           res,
           message: '',
@@ -64,7 +69,6 @@ export default async function handler(
           success: true,
         });
       } catch (error) {
-        console.log(error);
         if (error.name === 'ZodError') {
           return validationResponse({
             res,
@@ -89,11 +93,29 @@ export default async function handler(
   }
 }
 
-async function getAllProject() {
+async function getAllProject(args: { limit: number; cursorId?: string }) {
+  const { limit, cursorId } = args;
   try {
-    const data: Project[] = await prisma.project.findMany({
-      include: { author: true },
-    });
+    let data: Project[];
+
+    if (cursorId) {
+      data = await prisma.project.findMany({
+        take: limit,
+        skip: 1,
+        cursor: {
+          id: cursorId,
+        },
+        include: { author: false },
+        orderBy: { createdAt: 'desc' },
+      });
+    } else {
+      data = await prisma.project.findMany({
+        take: limit,
+        include: { author: false },
+        orderBy: { createdAt: 'desc' },
+      });
+    }
+
     return data;
   } catch (error) {
     throw error;
