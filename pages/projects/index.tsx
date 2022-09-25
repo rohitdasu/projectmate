@@ -20,9 +20,9 @@ const Projects = () => {
   const ref = useRef(null);
 
   const toggleFloatingMenu = () => setIsOpen((prevState) => !prevState);
-  const handleClickOutisde = () => setIsOpen(false);
+  const handleClickOutside = () => setIsOpen(false);
 
-  useOnClickOutside(ref, handleClickOutisde);
+  useOnClickOutside(ref, handleClickOutside);
 
   return (
     <SharedLayout title="Projects">
