@@ -6,7 +6,7 @@ export const DesktopRoutes = () => {
   const { pathname } = useRouter();
 
   return (
-    <ul className="hidden gap-5 capitalize md:flex">
+    <ul className="hidden gap-5 uppercase md:flex">
       {appRoutes.map((route) => {
         const { title, url, Icon, anchorTagProps } = route;
         const isCurrent = pathname === url || pathname.includes(title);

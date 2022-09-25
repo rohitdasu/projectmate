@@ -137,7 +137,14 @@ const SubmitProject = () => {
                         if (e.key !== 'Enter') return;
                         const value = (e.target as HTMLInputElement).value;
                         if (!value.trim()) return;
-                        if (watch('tags') && watch('tags').length == 5) return;
+                        if (value.length > 15) {
+                          alert("tag length shouldn't exceed 15 characters");
+                          return;
+                        }
+                        if (watch('tags') && watch('tags').length == 5) {
+                          alert('total number of tags should be 5');
+                          return;
+                        }
                         const d = watch('tags');
                         field.onChange(
                           d && d.length > 0
@@ -172,7 +179,7 @@ const SubmitProject = () => {
                       onClick={() => removeTag(i)}
                       className="flex flex-wrap group space-x-1 items-center text-[15px] cursor-pointer text-blue-500 bg-background-2 w-max px-4 py-2 rounded-full"
                     >
-                      <span className="capitalize">{tag}</span>
+                      <span className="uppercase">{tag}</span>
                       <AiFillCloseCircle className="ml-2" />
                     </div>
                   ))}

@@ -67,7 +67,7 @@ export const Sidebar = () => {
                       <Link href={url}>
                         <a
                           {...anchorTagProps}
-                          className={`flex justify-between items-center gap-2 p-5 text-lg capitalize ${
+                          className={`flex justify-between items-center gap-2 p-5 text-lg uppercase ${
                             isCurrent && 'bg-background-2'
                           }`}
                         >
@@ -82,7 +82,7 @@ export const Sidebar = () => {
 
               {session && (
                 <button
-                  className="flex justify-between w-full items-center gap-2 p-5 text-lg capitalize"
+                  className="flex justify-between w-full items-center gap-2 p-5 text-lg uppercase"
                   onClick={() => {
                     signOut({ redirect: false });
                     setOpen(false);
