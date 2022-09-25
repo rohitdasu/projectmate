@@ -1,7 +1,7 @@
 import { string, z } from 'zod';
 
 export const postSchema = z.object({
-  authorId: z.string().min(5),
+  email: z.string().email(),
   title: string({
     required_error: 'Title is required',
   }).min(3),

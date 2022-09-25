@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { closeModal } from '@/store/slices/sliceModal';
-import { Toaster } from 'react-hot-toast';
 import { IAuthData } from './Auth.interface';
 
 export const AuthModal = ({ title }: IAuthData) => {
@@ -17,7 +16,6 @@ export const AuthModal = ({ title }: IAuthData) => {
           className="relative z-[999]"
           onClose={() => dispatch(closeModal())}
         >
-          <Toaster />
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"

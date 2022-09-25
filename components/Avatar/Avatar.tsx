@@ -13,7 +13,7 @@ export function Avatar() {
     return (
       <>
         <Menu as="div" className="relative md:inline-block text-left hidden">
-          <Menu.Button className="flex items-center">
+          <Menu.Button className="flex items-center hover:opacity-80">
             <div className="w-[47px] h-[47px] relative my-[0.67rem] overflow-hidden shadow-border-shadow rounded-full">
               <Image
                 src={

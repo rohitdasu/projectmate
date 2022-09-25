@@ -1,6 +1,5 @@
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { NextPage } from 'next';
-import { Toaster } from 'react-hot-toast';
 import useSWR from 'swr';
 import { ContributorList } from '@/components/index';
 
@@ -15,9 +14,7 @@ const About: NextPage = () => {
 
   return (
     <SharedLayout title="About">
-      <div className="lg:w-full flex-1 ">
-        <Toaster />
-      </div>
+      <div className="lg:w-full flex-1 "></div>
       <footer className="flex flex-col items-center justify-center w-full h-24 px-6 mt-auto lg:px-20 bg-background-1">
         <p className="pb-0 mb-2 text-lg font-light">
           Shout-out to our contributors

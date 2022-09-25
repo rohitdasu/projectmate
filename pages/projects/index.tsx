@@ -1,29 +1,27 @@
 import React, { useState } from 'react';
-import { Toaster } from 'react-hot-toast';
-import { Search, ProjectsList, AuthModal } from '../components';
+import {
+  Search,
+  ProjectsList,
+  AuthModal,
+  SharedLayout,
+} from '../../components';
 import { Icon } from '@iconify/react';
 import { FloatingMenu } from '@/components/FloatingButtonMenu';
 import { useSession } from 'next-auth/react';
-import { SharedLayout } from '@/components/Layouts/SharedLayout';
-import { useTheme } from 'next-themes';
 import { useRouter } from 'next/router';
 
 const Projects = () => {
-  const { theme } = useTheme();
   const router = useRouter();
-
-  const mode = theme === 'dark' ? true : false;
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
-  const fabColor = mode ? '#eee' : '#444';
-  const tColor = mode ? '#000' : '#fff';
+  const fabColor = '#2854eecc';
+  const tColor = 'white';
 
   const toggleFloatingMenu = () => setIsOpen((prevState) => !prevState);
 
   return (
     <SharedLayout title="Projects">
       <div className="flex flex-col w-full">
-        <Toaster />
         <AuthModal title={'Continue with your social accounts'} />
         <div className="sticky top-0 z-10 backdrop-blur-3xl">
           <Search />
@@ -46,7 +44,7 @@ const Projects = () => {
                 />
               }
             >
-              <div onClick={() => router.push('/add-project')}>
+              <div onClick={() => router.push('/projects/submit')}>
                 <Icon
                   icon="akar-icons:file"
                   color={tColor}
