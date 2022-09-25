@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   Search,
   ProjectsList,
@@ -9,6 +9,7 @@ import { Icon } from '@iconify/react';
 import { FloatingMenu } from '@/components/FloatingButtonMenu';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import { useOnClickOutside } from 'usehooks-ts';
 
 const Projects = () => {
   const router = useRouter();
@@ -16,8 +17,12 @@ const Projects = () => {
   const [isOpen, setIsOpen] = useState(false);
   const fabColor = '#2854eecc';
   const tColor = 'white';
+  const ref = useRef(null);
 
   const toggleFloatingMenu = () => setIsOpen((prevState) => !prevState);
+  const handleClickOutside = () => setIsOpen(false);
+
+  useOnClickOutside(ref, handleClickOutside);
 
   return (
     <SharedLayout title="Projects">
@@ -28,7 +33,7 @@ const Projects = () => {
         </div>
         <ProjectsList />
         {session && (
-          <div className="bottom-7 fixed right-7 md:right-[85px]">
+          <div ref={ref} className="bottom-7 fixed right-7 md:right-[85px]">
             <FloatingMenu
               toggleMenu={toggleFloatingMenu}
               isOpen={isOpen}
