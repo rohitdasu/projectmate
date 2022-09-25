@@ -10,9 +10,9 @@ import { useSession } from 'next-auth/react';
 type FormInputs = {
   tags: string[];
   projectName: string;
-  githubRepo: string;
-  projectInfo: string;
-  selectedImage: any;
+  repositoryLink: string;
+  projectDescription: string;
+  coverImage: any;
 };
 
 const AddProject = () => {
@@ -42,8 +42,8 @@ const AddProject = () => {
       },
       body: JSON.stringify({
         title: data.projectName,
-        description: data.projectInfo,
-        githubRepository: data.githubRepo,
+        description: data.projectDescription,
+        githubRepository: data.repositoryLink,
         tags: data.tags,
         coverImg:
           'https://user-images.githubusercontent.com/48400770/190438248-fc0f3e42-c6d3-4d07-bcba-10e7fece4bc2.png',
@@ -72,29 +72,32 @@ const AddProject = () => {
                 Project Name <span className="text-red-500">*</span>
               </label>
               <input
-                {...register('projectName', { required: true })}
-                placeholder="Enter your project name here"
+                {...register('projectName', { required: true, minLength: 3 })}
+                placeholder="Enter your project name"
                 className="w-full items-center p-2 bg-transparent outline-none border rounded-md border-gray-500 "
                 aria-invalid={errors.projectName ? 'true' : 'false'}
               />
               {errors.projectName?.type === 'required' && (
                 <p className="text-red-500">project name is required</p>
               )}
+              {errors.projectName?.type === 'minLength' && (
+                <p className="text-red-500">
+                  project name should be minimum of 3 characters
+                </p>
+              )}
             </div>
             <div className="flex flex-col space-y-2 w-full">
               <label className="text-lg">
-                Github Repositary <span className="text-red-500">*</span>
+                Repositary URL <span className="text-red-500">*</span>
               </label>
               <input
-                {...register('githubRepo', { required: true })}
-                placeholder="Paste repository link here."
+                {...register('repositoryLink', { required: true })}
+                placeholder="Enter your repository URL"
                 className="w-full p-2 bg-transparent outline-none border rounded-md border-gray-500"
-                aria-invalid={errors.githubRepo ? 'true' : 'false'}
+                aria-invalid={errors.repositoryLink ? 'true' : 'false'}
               />
-              {errors.githubRepo?.type === 'required' && (
-                <p className="text-red-500">
-                  github repository link is required
-                </p>
+              {errors.repositoryLink?.type === 'required' && (
+                <p className="text-red-500">repository link is required</p>
               )}
             </div>
             <div className="flex flex-col space-y-2 w-full">
@@ -102,14 +105,22 @@ const AddProject = () => {
                 Description <span className="text-red-500">*</span>
               </label>
               <textarea
-                {...register('projectInfo', { required: true })}
+                {...register('projectDescription', {
+                  required: true,
+                  minLength: 15,
+                })}
                 cols={100}
-                placeholder="Describe your project"
+                placeholder="Enter your project description"
                 className="w-full bg-transparent resize-none border-gray-500 border rounded-md outline-none p-2 h-[150px]"
-                aria-invalid={errors.projectInfo ? 'true' : 'false'}
+                aria-invalid={errors.projectDescription ? 'true' : 'false'}
               />
-              {errors.projectInfo?.type === 'required' && (
+              {errors.projectDescription?.type === 'required' && (
                 <p className="text-red-500">description is required</p>
+              )}
+              {errors.projectDescription?.type === 'minLength' && (
+                <p className="text-red-500">
+                  description should be minimum of 15 characters
+                </p>
               )}
             </div>
             <div className="flex flex-col space-y-2 w-full">
@@ -140,7 +151,7 @@ const AddProject = () => {
                       value={tagInput}
                       name={field.name}
                       onChange={(e) => setTagInput(e.target.value)}
-                      placeholder="Paste repository link here"
+                      placeholder="Enter your project tags"
                       className="w-full p-2 bg-transparent outline-none border rounded-md border-gray-500"
                       aria-invalid={errors.tags ? 'true' : 'false'}
                     />
@@ -163,6 +174,7 @@ const AddProject = () => {
                       className="flex flex-wrap group space-x-1 items-center text-[15px] cursor-pointer text-blue-500 bg-background-2 w-max px-4 py-2 rounded-full"
                     >
                       <span className="capitalize">{tag}</span>
+                      <AiFillCloseCircle className="ml-2" />
                     </div>
                   ))}
               </div>
@@ -171,22 +183,22 @@ const AddProject = () => {
               <label className="text-lg">Image</label>
               <div
                 className={`relative mx-auto flex rounded-md h-[300px] ${
-                  watch('selectedImage')
+                  watch('coverImage')
                     ? 'border-2 border-green-700 border-dashed'
                     : ''
                 }`}
               >
-                {watch('selectedImage') ? (
+                {watch('coverImage') ? (
                   <>
                     <Image
-                      src={watch('selectedImage')}
+                      src={watch('coverImage')}
                       alt="project-image"
                       className="h-full w-full object-contain"
                       layout="fill"
                     />
 
                     <AiFillCloseCircle
-                      onClick={() => setValue('selectedImage', null)}
+                      onClick={() => setValue('coverImage', null)}
                       size={30}
                       style={{
                         zIndex: '50',
@@ -199,7 +211,7 @@ const AddProject = () => {
                   </>
                 ) : (
                   <Controller
-                    name="selectedImage"
+                    name="coverImage"
                     control={control}
                     render={({ field }) => {
                       return (

@@ -45,7 +45,6 @@ export default async function handler(
             success: false,
           });
         }
-        console.log(req.body);
         const validatedBody = await bodyValidator(req, postSchema);
         const { title, description, githubRepository, tags, coverImg, email } =
           validatedBody;
