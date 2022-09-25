@@ -14,7 +14,7 @@ type FormInputs = {
   coverImage: any;
 };
 
-const AddProject = () => {
+const SubmitProject = () => {
   const {
     register,
     handleSubmit,
@@ -254,4 +254,4 @@ const AddProject = () => {
   );
 };
 
-export default AddProject;
+export default SubmitProject;
