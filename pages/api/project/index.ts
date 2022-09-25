@@ -111,7 +111,13 @@ async function getAllProject(args: { limit: number; cursorId?: string }) {
     } else {
       data = await prisma.project.findMany({
         take: limit,
-        include: { author: false },
+        include: {
+          author: {
+            select: {
+              name: true,
+            },
+          },
+        },
         orderBy: { createdAt: 'desc' },
       });
     }

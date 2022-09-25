@@ -6,7 +6,6 @@ import thumbnail from '../../public/open-source.png';
 import { AiOutlineUser } from 'react-icons/ai';
 import { useSession } from 'next-auth/react';
 import { Tags } from './Tags';
-import { TbGasStation, TbTags } from 'react-icons/tb';
 
 export const Project = ({ title, description, tags, author }: ProjectProps) => {
   const dispatch = useDispatch();
