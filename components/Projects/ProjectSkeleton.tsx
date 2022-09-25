@@ -1,6 +1,6 @@
 export const ProjectSkeleton = () => (
   <div className="w-full p-2 md:p-0 animate-pulse">
-    <div className="flex flex-col justify-center space-y-2 overflow-hidden rounded-md shadow-border-shadow text-foreground-1">
+    <div className="h-full flex flex-col justify-center space-y-2 overflow-hidden rounded-md shadow-border-shadow text-foreground-1">
       <div className="flex justify-center items-center w-full h-72 bg-gray-200 sm:h-96 md:h-64 dark:bg-gray-700">
         <svg
           className="w-12 h-12 text-gray-300"
