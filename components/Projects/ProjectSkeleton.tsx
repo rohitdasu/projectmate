@@ -18,7 +18,7 @@ export const ProjectSkeleton = () => (
         <div className="mt-4">
           <div className="h-2 w-full bg-gray-200 rounded-full dark:bg-gray-700" />
           <div className="h-2 w-full bg-gray-200 rounded-full mt-3 dark:bg-gray-700" />
-          <div className="h-2 w-full bg-gray-200 rounded-full mt-3 hidden md:block dark:bg-gray-700" />
+          <div className="h-2 w-full bg-gray-200 rounded-full mt-3 dark:bg-gray-700" />
           <div className="h-2 w-56 bg-gray-200 rounded-full mt-3 dark:bg-gray-700" />
         </div>
         <div className="flex flex-col gap-5">
