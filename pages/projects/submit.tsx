@@ -5,6 +5,7 @@ import { AiFillCloseCircle } from 'react-icons/ai';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { useSession } from 'next-auth/react';
+import Router from 'next/router';
 
 type FormInputs = {
   tags: string[];
@@ -33,6 +34,21 @@ const SubmitProject = () => {
       watch('tags').filter((element: string, i: number) => i !== index)
     );
   };
+
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      Router.push('/');
+    },
+  });
+
+  if (status === 'loading') {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
 
   const onSubmit: SubmitHandler<FormInputs> = async (data: FormInputs) => {
     try {
