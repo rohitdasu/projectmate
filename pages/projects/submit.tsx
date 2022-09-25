@@ -21,6 +21,7 @@ const AddProject = () => {
     setValue,
     watch,
     control,
+    reset,
     formState: { errors },
   } = useForm<FormInputs>();
   const { data: session } = useSession();
@@ -51,6 +52,7 @@ const AddProject = () => {
     })
       .then(() => {
         alert('project added successfully');
+        reset();
       })
       .catch((err) => {
         alert(err.message);
