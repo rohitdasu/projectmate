@@ -30,33 +30,32 @@ const SubmitProject = () => {
   const removeTag = (index: number) => {
     setValue(
       'tags',
-      watch('tags').filter((element, i) => i !== index)
+      watch('tags').filter((element: string, i: number) => i !== index)
     );
   };
 
-  const onSubmit: SubmitHandler<FormInputs> = (data) => {
-    fetch('/api/project', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        title: data.projectName,
-        description: data.projectDescription,
-        githubRepository: data.repositoryLink,
-        tags: data.tags,
-        coverImg:
-          'https://user-images.githubusercontent.com/48400770/190438248-fc0f3e42-c6d3-4d07-bcba-10e7fece4bc2.png',
-        email: session?.user?.email,
-      }),
-    })
-      .then(() => {
-        alert('project added successfully');
-        reset();
-      })
-      .catch((err) => {
-        alert(err.message);
+  const onSubmit: SubmitHandler<FormInputs> = async (data: FormInputs) => {
+    try {
+      await fetch('/api/project', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: data.projectName,
+          description: data.projectDescription,
+          githubRepository: data.repositoryLink,
+          tags: data.tags,
+          coverImg:
+            'https://user-images.githubusercontent.com/48400770/190438248-fc0f3e42-c6d3-4d07-bcba-10e7fece4bc2.png',
+          email: session?.user?.email,
+        }),
       });
+      alert('project added successfully');
+      reset();
+    } catch (e) {
+      alert(e.message);
+    }
   };
 
   return (
@@ -179,8 +178,8 @@ const SubmitProject = () => {
                   ))}
               </div>
             </div>
-            <div>
-              <label className="text-lg">Image</label>
+            <div className="space-y-2">
+              <label className="text-lg">Cover Image</label>
               <div
                 className={`relative mx-auto flex rounded-md h-[300px] ${
                   watch('coverImage')
