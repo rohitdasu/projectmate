@@ -25,7 +25,6 @@ const SubmitProject = () => {
     reset,
     formState: { errors },
   } = useForm<FormInputs>();
-  const { data: session } = useSession();
 
   const [tagInput, setTagInput] = useState<string>('');
   const removeTag = (index: number) => {
@@ -35,7 +34,7 @@ const SubmitProject = () => {
     );
   };
 
-  const { status } = useSession({
+  const { status, data: session } = useSession({
     required: true,
     onUnauthenticated() {
       Router.push('/');
@@ -75,7 +74,7 @@ const SubmitProject = () => {
   };
 
   return (
-    <SharedLayout title="Projectmate | Submit Project">
+    <SharedLayout title="Submit Project">
       <div className="flex space-y-4 flex-col w-full mt-4 mb-12">
         <div className="w-full px-4 lg:px-0 lg:w-[70%] mx-auto">
           <form className="w-full flex flex-col mx-auto space-y-6">
@@ -89,14 +88,14 @@ const SubmitProject = () => {
               <input
                 {...register('projectName', { required: true, minLength: 3 })}
                 placeholder="Enter your project name"
-                className="w-full items-center p-2 bg-transparent outline-none border rounded-md border-gray-500 "
+                className="w-full items-center p-2 bg-transparent outline-none border rounded-md border-gray-500 focus:border-blue-600 focus:border-2"
                 aria-invalid={errors.projectName ? 'true' : 'false'}
               />
               {errors.projectName?.type === 'required' && (
-                <p className="text-red-500">project name is required</p>
+                <p className="text-red-500 text-xs">project name is required</p>
               )}
               {errors.projectName?.type === 'minLength' && (
-                <p className="text-red-500">
+                <p className="text-red-500 text-xs">
                   project name should be minimum of 3 characters
                 </p>
               )}
@@ -108,11 +107,13 @@ const SubmitProject = () => {
               <input
                 {...register('repositoryLink', { required: true })}
                 placeholder="Enter your repository URL"
-                className="w-full p-2 bg-transparent outline-none border rounded-md border-gray-500"
+                className="w-full p-2 bg-transparent outline-none border rounded-md border-gray-500 focus:border-blue-600 focus:border-2"
                 aria-invalid={errors.repositoryLink ? 'true' : 'false'}
               />
               {errors.repositoryLink?.type === 'required' && (
-                <p className="text-red-500">repository link is required</p>
+                <p className="text-red-500 text-xs">
+                  repository link is required
+                </p>
               )}
             </div>
             <div className="flex flex-col space-y-2 w-full">
@@ -126,14 +127,14 @@ const SubmitProject = () => {
                 })}
                 cols={100}
                 placeholder="Enter your project description"
-                className="w-full bg-transparent resize-none border-gray-500 border rounded-md outline-none p-2 h-[150px]"
+                className="w-full bg-transparent resize-none border-gray-500 rounded-md p-2 h-[150px]"
                 aria-invalid={errors.projectDescription ? 'true' : 'false'}
-              />
+              ></textarea>
               {errors.projectDescription?.type === 'required' && (
-                <p className="text-red-500">description is required</p>
+                <p className="text-red-500 text-xs">description is required</p>
               )}
               {errors.projectDescription?.type === 'minLength' && (
-                <p className="text-red-500">
+                <p className="text-red-500 text-xs">
                   description should be minimum of 15 characters
                 </p>
               )}
@@ -174,14 +175,14 @@ const SubmitProject = () => {
                       name={field.name}
                       onChange={(e) => setTagInput(e.target.value)}
                       placeholder="Enter your project tags"
-                      className="w-full p-2 bg-transparent outline-none border rounded-md border-gray-500"
+                      className="w-full p-2 bg-transparent outline-none border rounded-md border-gray-500 focus:border-blue-600 focus:border-2"
                       aria-invalid={errors.tags ? 'true' : 'false'}
                     />
                   );
                 }}
               />
               {errors.tags?.type === 'required' && (
-                <p className="text-red-500">tags are required</p>
+                <p className="text-red-500 text-xs">tags are required</p>
               )}
               <span className="text-sm text-gray-500">
                 Note: only 5 tags are applicable
@@ -265,7 +266,7 @@ const SubmitProject = () => {
           <div className="w-full my-4">
             <button
               onClick={handleSubmit(onSubmit)}
-              className="float-right bg-secondary-color text-white px-8 py-2 rounded-md"
+              className="float-right bg-secondary-color text-white px-8 py-2 rounded-md focus:ring focus:bg-blue-800 hover:bg-blue-800"
             >
               Submit
             </button>
