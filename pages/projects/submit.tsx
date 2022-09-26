@@ -102,7 +102,7 @@ const SubmitProject = () => {
             </div>
             <div className="flex flex-col space-y-2 w-full">
               <label className="text-lg">
-                Repositary URL <span className="text-red-500">*</span>
+                Repository URL <span className="text-red-500">*</span>
               </label>
               <input
                 {...register('repositoryLink', { required: true })}
