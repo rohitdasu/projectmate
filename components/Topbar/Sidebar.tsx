@@ -24,12 +24,13 @@ export const Sidebar = () => {
 
   return (
     <>
-      <button
+      <motion.button
+        whileTap={{ scale: 0.8 }}
         className="md:hidden flex p-[0.67rem] overflow-hidden text-[1.6rem] shadow-border-shadow rounded-md"
         onClick={() => setOpen(true)}
       >
         <FiMenu />
-      </button>
+      </motion.button>
       <AnimatePresence initial={false} mode="wait">
         {open && (
           <>
@@ -46,12 +47,13 @@ export const Sidebar = () => {
               <div className="border-b-[1px] border-gray-1 p-5">
                 <div className="flex items-center justify-between">
                   <Logo />
-                  <button
+                  <motion.button
+                    whileTap={{ scale: 0.8 }}
                     className="flex p-[0.67rem] overflow-hidden shadow-border-shadow rounded-md"
                     onClick={closeSidebar}
                   >
                     <BiArrowBack />
-                  </button>
+                  </motion.button>
                 </div>
                 <SidebarAvatar />
               </div>
@@ -63,7 +65,7 @@ export const Sidebar = () => {
                     pathname === url || pathname.includes(title);
 
                   return (
-                    <li key={title}>
+                    <motion.li whileTap={{ scale: 0.9 }} key={title}>
                       <Link href={url}>
                         <a
                           {...anchorTagProps}
@@ -75,7 +77,7 @@ export const Sidebar = () => {
                           <Icon className="text-2xl" />
                         </a>
                       </Link>
-                    </li>
+                    </motion.li>
                   );
                 })}
               </ul>

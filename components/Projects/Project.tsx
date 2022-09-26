@@ -6,6 +6,7 @@ import thumbnail from '../../public/open-source.png';
 import { AiOutlineUser } from 'react-icons/ai';
 import { useSession } from 'next-auth/react';
 import { Tags } from './Tags';
+import { motion } from 'framer-motion';
 
 export const Project = ({ title, description, tags, author }: ProjectProps) => {
   const dispatch = useDispatch();
@@ -39,14 +40,15 @@ export const Project = ({ title, description, tags, author }: ProjectProps) => {
             <div className="flex pb-2 space-x-2 md:pb-0">
               <Tags tags={tags} tagsNumber={2} />
             </div>
-            <button
+            <motion.button
+              whileTap={{ scale: 0.9 }}
               onClick={() =>
                 session ? handleContribute : dispatch(openModal())
               }
-              className="rounded-md px-2 py-1.5 mt-2 sm:my-0 flex justify-center bg-secondary-color text-white font-bold"
+              className="rounded-md px-2 py-1.5 mt-2 sm:my-0 flex justify-center bg-secondary-color text-white font-bold focus:ring"
             >
               <span>Contribute</span>
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>

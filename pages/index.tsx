@@ -7,6 +7,7 @@ import { useAppDispatch } from '../app/hooks';
 import { AuthModal } from '../components';
 import { openModal } from '@/store/slices/sliceModal';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
+import { motion } from 'framer-motion';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -29,21 +30,23 @@ const Home: NextPage = () => {
           </p>
 
           {session ? (
-            <button
+            <motion.button
+              whileTap={{ scale: 0.9 }}
               onClick={() => router.push('/projects')}
               type="button"
               className="border focus:ring focus:bg-blue-800 border-white w-[170px] mx-auto lg:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
             >
               Explore Projects
-            </button>
+            </motion.button>
           ) : (
-            <button
+            <motion.button
+              whileTap={{ scale: 0.9 }}
               onClick={() => dispatch(openModal())}
               type="button"
               className="border focus:ring focus:bg-blue-800 border-white w-[170px] mx-auto lg:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
             >
               JOIN US
-            </button>
+            </motion.button>
           )}
         </div>
         <div className="hidden lg:inline-flex  lg:px-20">
