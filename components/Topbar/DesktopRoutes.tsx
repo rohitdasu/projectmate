@@ -15,8 +15,7 @@ export const DesktopRoutes = () => {
         return (
           <li key={title}>
             <Link href={url}>
-              <motion.a
-                whileTap={{ scale: 0.9 }}
+              <a
                 className={`flex items-center hover:text-primary-1 gap-1 cursor-pointer ${
                   isCurrent && 'text-primary-1'
                 }`}
@@ -24,7 +23,7 @@ export const DesktopRoutes = () => {
               >
                 <Icon />
                 {title}
-              </motion.a>
+              </a>
             </Link>
           </li>
         );
