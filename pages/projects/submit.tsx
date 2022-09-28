@@ -6,6 +6,7 @@ import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { useSession } from 'next-auth/react';
 import Router from 'next/router';
+import { motion } from 'framer-motion';
 
 type FormInputs = {
   tags: string[];
@@ -81,7 +82,10 @@ const SubmitProject = () => {
             <h1 className="font-semibold text-left mb-4 text-3xl">
               Add Project
             </h1>
-            <div className="flex flex-col space-y-2 w-full">
+            <motion.div
+              whileTap={{ scale: 0.9 }}
+              className="flex flex-col space-y-2 w-full"
+            >
               <label className="text-lg">
                 Project Name <span className="text-red-500">*</span>
               </label>
@@ -99,10 +103,13 @@ const SubmitProject = () => {
                   project name should be minimum of 3 characters
                 </p>
               )}
-            </div>
-            <div className="flex flex-col space-y-2 w-full">
+            </motion.div>
+            <motion.div
+              whileTap={{ scale: 0.9 }}
+              className="flex flex-col space-y-2 w-full"
+            >
               <label className="text-lg">
-                Repositary URL <span className="text-red-500">*</span>
+                Repository URL <span className="text-red-500">*</span>
               </label>
               <input
                 {...register('repositoryLink', { required: true })}
@@ -115,8 +122,11 @@ const SubmitProject = () => {
                   repository link is required
                 </p>
               )}
-            </div>
-            <div className="flex flex-col space-y-2 w-full">
+            </motion.div>
+            <motion.div
+              whileTap={{ scale: 0.9 }}
+              className="flex flex-col space-y-2 w-full"
+            >
               <label className="text-lg">
                 Description <span className="text-red-500">*</span>
               </label>
@@ -138,8 +148,11 @@ const SubmitProject = () => {
                   description should be minimum of 15 characters
                 </p>
               )}
-            </div>
-            <div className="flex flex-col space-y-2 w-full">
+            </motion.div>
+            <motion.div
+              whileTap={{ scale: 0.9 }}
+              className="flex flex-col space-y-2 w-full"
+            >
               <label className="text-lg">
                 Tags <span className="text-red-500">*</span>
               </label>
@@ -201,8 +214,8 @@ const SubmitProject = () => {
                     </div>
                   ))}
               </div>
-            </div>
-            <div className="space-y-2">
+            </motion.div>
+            <motion.div whileTap={{ scale: 0.9 }} className="space-y-2">
               <label className="text-lg">Cover Image</label>
               <div
                 className={`relative mx-auto flex rounded-md h-[300px] ${
@@ -261,15 +274,16 @@ const SubmitProject = () => {
                 Note: We would advise you to upload a picture. otherwise, the
                 default github icon will appear.
               </span>
-            </div>
+            </motion.div>
           </form>
           <div className="w-full my-4">
-            <button
+            <motion.button
+              whileTap={{ scale: 0.9 }}
               onClick={handleSubmit(onSubmit)}
               className="float-right bg-secondary-color text-white px-8 py-2 rounded-md focus:ring focus:bg-blue-800 hover:bg-blue-800"
             >
               Submit
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
