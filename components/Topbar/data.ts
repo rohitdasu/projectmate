@@ -1,9 +1,17 @@
 import { MdRoofing } from 'react-icons/md';
 import { IoCodeSlash } from 'react-icons/io5';
 import { AiOutlineRead } from 'react-icons/ai';
-import { TbBrandGithub, TbBrandDiscord } from 'react-icons/tb';
+import { FaDiscord, FaGithub } from 'react-icons/fa';
+import { IconType } from 'react-icons';
 
-export const appRoutes = [
+export interface IRoute {
+  title: string;
+  url: string;
+  Icon: IconType;
+  anchorTagProps: any;
+}
+
+export const appRoutes: IRoute[] = [
   {
     title: 'home',
     url: '/',
@@ -22,10 +30,13 @@ export const appRoutes = [
     Icon: AiOutlineRead,
     anchorTagProps: {},
   },
+];
+
+export const socialLinks: IRoute[] = [
   {
     title: 'Discord',
     url: 'https://discord.com/invite/FQtyMWFZQ9',
-    Icon: TbBrandDiscord,
+    Icon: FaDiscord,
     anchorTagProps: {
       target: '_blank',
       rel: 'noreferrer',
@@ -34,7 +45,7 @@ export const appRoutes = [
   {
     title: 'GitHub',
     url: 'https://github.com/rohitdasu/projectmate',
-    Icon: TbBrandGithub,
+    Icon: FaGithub,
     anchorTagProps: {
       target: '_blank',
       rel: 'noreferrer',

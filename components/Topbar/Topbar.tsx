@@ -4,6 +4,7 @@ import { DesktopRoutes } from './DesktopRoutes';
 import { Sidebar } from './Sidebar';
 import { Logo } from './Logo';
 import { Avatar } from '../Avatar';
+import { SocialLinks } from './SocialLinks';
 
 export const Topbar = () => {
   return (
@@ -14,6 +15,7 @@ export const Topbar = () => {
           <DesktopRoutes />
         </div>
         <div className="flex items-center gap-2">
+          <SocialLinks />
           <ThemeToggler />
           <Sidebar />
           <Avatar />
