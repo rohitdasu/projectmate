@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
-import { socialLinks } from './data';
+import { getSocialLinks } from './data';
 
 export const SocialLinks = () => {
+
+  const socialLinks = getSocialLinks()
+
   return (
     <div className="hidden md:flex gap-2">
       {socialLinks.map(({ Icon, title, anchorTagProps, url }) => (

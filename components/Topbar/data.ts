@@ -2,6 +2,7 @@ import { MdRoofing } from 'react-icons/md';
 import { IoCodeSlash } from 'react-icons/io5';
 import { AiOutlineRead } from 'react-icons/ai';
 import { FaDiscord, FaGithub } from 'react-icons/fa';
+import { TbBrandGithub, TbBrandDiscord } from 'react-icons/tb';
 import { IconType } from 'react-icons';
 
 type AnchorTagPropsType = {
@@ -34,11 +35,11 @@ export const appRoutes: IRoute[] = [
   },
 ];
 
-export const socialLinks: IRoute[] = [
+export const getSocialLinks = (isSideBar?:boolean): IRoute[] => [
   {
     title: 'Discord',
     url: 'https://discord.com/invite/FQtyMWFZQ9',
-    Icon: FaDiscord,
+    Icon: isSideBar ? TbBrandDiscord : FaDiscord,
     anchorTagProps: {
       target: '_blank',
       rel: 'noreferrer',
@@ -47,7 +48,7 @@ export const socialLinks: IRoute[] = [
   {
     title: 'GitHub',
     url: 'https://github.com/rohitdasu/projectmate',
-    Icon: FaGithub,
+    Icon: isSideBar ? TbBrandGithub : FaGithub,
     anchorTagProps: {
       target: '_blank',
       rel: 'noreferrer',

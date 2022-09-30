@@ -1,7 +1,7 @@
 import { FiMenu } from 'react-icons/fi';
 import { useRef, useState } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
-import { appRoutes, IRoute, socialLinks } from './data';
+import { appRoutes, IRoute, getSocialLinks } from './data';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -21,6 +21,8 @@ export const Sidebar = () => {
   const closeSidebar = () => setOpen(false);
 
   useOnClickOutside(ref, closeSidebar);
+
+  const socialLinks = getSocialLinks(true)
 
   const RenderNavigation: React.FC<{ routes: IRoute[] }> = ({ routes }) => {
     return (
