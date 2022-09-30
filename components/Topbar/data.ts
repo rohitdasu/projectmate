@@ -4,11 +4,16 @@ import { AiOutlineRead } from 'react-icons/ai';
 import { FaDiscord, FaGithub } from 'react-icons/fa';
 import { IconType } from 'react-icons';
 
+type AnchorTagPropsType = {
+  target: string;
+  rel: string;
+};
+
 export interface IRoute {
   title: string;
   url: string;
   Icon: IconType;
-  anchorTagProps: any;
+  anchorTagProps?: AnchorTagPropsType;
 }
 
 export const appRoutes: IRoute[] = [
@@ -16,19 +21,16 @@ export const appRoutes: IRoute[] = [
     title: 'home',
     url: '/',
     Icon: MdRoofing,
-    anchorTagProps: {},
   },
   {
     title: 'projects',
     url: '/projects',
     Icon: IoCodeSlash,
-    anchorTagProps: {},
   },
   {
     title: 'about',
     url: '/about',
     Icon: AiOutlineRead,
-    anchorTagProps: {},
   },
 ];
 
