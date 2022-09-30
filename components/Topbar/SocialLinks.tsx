@@ -2,8 +2,7 @@ import { motion } from 'framer-motion';
 import { getSocialLinks } from './data';
 
 export const SocialLinks = () => {
-
-  const socialLinks = getSocialLinks()
+  const socialLinks = getSocialLinks();
 
   return (
     <div className="hidden md:flex gap-2">

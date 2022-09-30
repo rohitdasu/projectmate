@@ -35,7 +35,7 @@ export const appRoutes: IRoute[] = [
   },
 ];
 
-export const getSocialLinks = (isSideBar?:boolean): IRoute[] => [
+export const getSocialLinks = (isSideBar?: boolean): IRoute[] => [
   {
     title: 'Discord',
     url: 'https://discord.com/invite/FQtyMWFZQ9',

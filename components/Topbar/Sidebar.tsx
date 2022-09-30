@@ -22,7 +22,7 @@ export const Sidebar = () => {
 
   useOnClickOutside(ref, closeSidebar);
 
-  const socialLinks = getSocialLinks(true)
+  const socialLinks = getSocialLinks(true);
 
   const RenderNavigation: React.FC<{ routes: IRoute[] }> = ({ routes }) => {
     return (
