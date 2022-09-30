@@ -15,8 +15,8 @@ export const Topbar = () => {
           <DesktopRoutes />
         </div>
         <div className="flex items-center gap-2">
-          <SocialLinks />
           <ThemeToggler />
+          <SocialLinks />
           <Sidebar />
           <Avatar />
         </div>
