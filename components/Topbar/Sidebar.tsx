@@ -1,7 +1,7 @@
 import { FiMenu } from 'react-icons/fi';
 import { useRef, useState } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
-import { appRoutes } from './data';
+import { appRoutes, IRoute, getSocialLinks } from './data';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -21,6 +21,35 @@ export const Sidebar = () => {
   const closeSidebar = () => setOpen(false);
 
   useOnClickOutside(ref, closeSidebar);
+
+  const socialLinks = getSocialLinks(true);
+
+  const RenderNavigation: React.FC<{ routes: IRoute[] }> = ({ routes }) => {
+    return (
+      <ul className="w-full overflow-auto">
+        {routes.map((route) => {
+          const { Icon, anchorTagProps, title, url } = route;
+          const isCurrent = pathname === url || pathname.includes(title);
+
+          return (
+            <motion.li whileTap={{ scale: 0.9 }} key={title}>
+              <Link href={url}>
+                <a
+                  {...anchorTagProps}
+                  className={`flex justify-between items-center gap-2 p-5 text-lg uppercase ${
+                    isCurrent && 'bg-background-2'
+                  }`}
+                >
+                  {title}
+                  <Icon className="text-2xl" />
+                </a>
+              </Link>
+            </motion.li>
+          );
+        })}
+      </ul>
+    );
+  };
 
   return (
     <>
@@ -58,29 +87,8 @@ export const Sidebar = () => {
                 <SidebarAvatar />
               </div>
 
-              <ul className="w-full overflow-auto">
-                {appRoutes.map((route) => {
-                  const { Icon, anchorTagProps, title, url } = route;
-                  const isCurrent =
-                    pathname === url || pathname.includes(title);
-
-                  return (
-                    <motion.li whileTap={{ scale: 0.9 }} key={title}>
-                      <Link href={url}>
-                        <a
-                          {...anchorTagProps}
-                          className={`flex justify-between items-center gap-2 p-5 text-lg uppercase ${
-                            isCurrent && 'bg-background-2'
-                          }`}
-                        >
-                          {title}
-                          <Icon className="text-2xl" />
-                        </a>
-                      </Link>
-                    </motion.li>
-                  );
-                })}
-              </ul>
+              {<RenderNavigation routes={appRoutes} />}
+              {<RenderNavigation routes={socialLinks} />}
 
               {session && (
                 <button
