@@ -1,7 +1,7 @@
 import { FiMenu } from 'react-icons/fi';
 import { useRef, useState } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
-import { appRoutes } from './data';
+import { appRoutes, IRoute, getSocialLinks } from './data';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -22,14 +22,44 @@ export const Sidebar = () => {
 
   useOnClickOutside(ref, closeSidebar);
 
+  const socialLinks = getSocialLinks(true);
+
+  const RenderNavigation: React.FC<{ routes: IRoute[] }> = ({ routes }) => {
+    return (
+      <ul className="w-full overflow-auto">
+        {routes.map((route) => {
+          const { Icon, anchorTagProps, title, url } = route;
+          const isCurrent = pathname === url || pathname.includes(title);
+
+          return (
+            <motion.li whileTap={{ scale: 0.9 }} key={title}>
+              <Link href={url}>
+                <a
+                  {...anchorTagProps}
+                  className={`flex justify-between items-center gap-2 p-5 text-lg uppercase ${
+                    isCurrent && 'bg-background-2'
+                  }`}
+                >
+                  {title}
+                  <Icon className="text-2xl" />
+                </a>
+              </Link>
+            </motion.li>
+          );
+        })}
+      </ul>
+    );
+  };
+
   return (
     <>
-      <button
+      <motion.button
+        whileTap={{ scale: 0.8 }}
         className="md:hidden flex p-[0.67rem] overflow-hidden text-[1.6rem] shadow-border-shadow rounded-md"
         onClick={() => setOpen(true)}
       >
         <FiMenu />
-      </button>
+      </motion.button>
       <AnimatePresence initial={false} mode="wait">
         {open && (
           <>
@@ -46,39 +76,19 @@ export const Sidebar = () => {
               <div className="border-b-[1px] border-gray-1 p-5">
                 <div className="flex items-center justify-between">
                   <Logo />
-                  <button
+                  <motion.button
+                    whileTap={{ scale: 0.8 }}
                     className="flex p-[0.67rem] overflow-hidden shadow-border-shadow rounded-md"
                     onClick={closeSidebar}
                   >
                     <BiArrowBack />
-                  </button>
+                  </motion.button>
                 </div>
                 <SidebarAvatar />
               </div>
 
-              <ul className="w-full overflow-auto">
-                {appRoutes.map((route) => {
-                  const { Icon, anchorTagProps, title, url } = route;
-                  const isCurrent =
-                    pathname === url || pathname.includes(title);
-
-                  return (
-                    <li key={title}>
-                      <Link href={url}>
-                        <a
-                          {...anchorTagProps}
-                          className={`flex justify-between items-center gap-2 p-5 text-lg uppercase ${
-                            isCurrent && 'bg-background-2'
-                          }`}
-                        >
-                          {title}
-                          <Icon className="text-2xl" />
-                        </a>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
+              {<RenderNavigation routes={appRoutes} />}
+              {<RenderNavigation routes={socialLinks} />}
 
               {session && (
                 <button

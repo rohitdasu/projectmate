@@ -15,7 +15,7 @@ export const DesktopRoutes = () => {
           <li key={title}>
             <Link href={url}>
               <a
-                className={`flex items-center gap-1 ${
+                className={`flex items-center hover:text-primary-1 gap-1 cursor-pointer ${
                   isCurrent && 'text-primary-1'
                 }`}
                 {...anchorTagProps}
