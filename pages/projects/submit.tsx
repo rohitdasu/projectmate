@@ -7,8 +7,8 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { useSession } from 'next-auth/react';
 import Router from 'next/router';
 import { motion } from 'framer-motion';
-import Lottie from "lottie-react";
-import Loader from "./Loader/98288-loading.json";
+import Lottie from 'lottie-react';
+import Loader from "../../public/loading.json";
 
 type FormInputs = {
   tags: string[];
@@ -47,7 +47,7 @@ const SubmitProject = () => {
   if (status === 'loading') { 
     return (
       <div className="h-screen flex items-center justify-center">
-        <Lottie animationData={Loader} loop={true} />
+        <Lottie animationData={Loader}/>
       </div>
     );
   }
