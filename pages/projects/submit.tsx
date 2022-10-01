@@ -45,7 +45,8 @@ const SubmitProject = () => {
   if (status === 'loading') {
     return (
       <div className="h-screen flex items-center justify-center">
-        Loading...
+        {/* Loading... */}
+        <iframe src="https://embed.lottiefiles.com/animation/98194"></iframe>
       </div>
     );
   }
