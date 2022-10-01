@@ -92,6 +92,14 @@ async function getAllProject(args: { limit: number; cursorId?: string }) {
   try {
     let data: Project[];
 
+    const includeOption = {
+      author: {
+        select: {
+          name: true,
+        },
+      },
+    };
+
     if (cursorId) {
       data = await prisma.project.findMany({
         take: limit,
@@ -99,19 +107,13 @@ async function getAllProject(args: { limit: number; cursorId?: string }) {
         cursor: {
           id: cursorId,
         },
-        include: { author: false },
+        include: includeOption,
         orderBy: { createdAt: 'desc' },
       });
     } else {
       data = await prisma.project.findMany({
         take: limit,
-        include: {
-          author: {
-            select: {
-              name: true,
-            },
-          },
-        },
+        include: includeOption,
         orderBy: { createdAt: 'desc' },
       });
     }
