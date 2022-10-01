@@ -15,7 +15,7 @@ export const ProjectsList: React.FC = () => {
     fetch(...args).then((res) => res.json());
 
   const getKey = (pageIndex: number, previousPageData: IProject[]) => {
-    let cursorId: string | null = '';
+    let cursorId = '';
     if (previousPageData) {
       const lastProject = previousPageData[previousPageData.length - 1];
       if (!lastProject) return null;
@@ -68,7 +68,7 @@ export const ProjectsList: React.FC = () => {
               description={project.description}
               title={project.title}
               tags={project.tags}
-              author="TEST"
+              author={project.author.name}
             />
           ))}
         </>
