@@ -6,7 +6,7 @@ import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { useSession } from 'next-auth/react';
 import Router from 'next/router';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 import Lottie from 'lottie-react';
 import Loader from '../../public/loading.json';
 
@@ -97,7 +97,7 @@ const SubmitProject = () => {
               <input
                 {...register('projectName', { required: true, minLength: 3 })}
                 placeholder="Enter your project name"
-                className={`w-full items-center rounded-md border border-gray-500 bg-transparent p-2 outline-none focus:border-2 focus:border-blue-600 focus:border-2 ${
+                className={`w-full items-center rounded-md border border-gray-500 bg-transparent p-2 outline-none focus:border-2 focus:border-2 focus:border-blue-600 ${
                   errors.projectName && 'border-rose-500'
                 }`}
                 aria-invalid={errors.projectName ? 'true' : 'false'}
