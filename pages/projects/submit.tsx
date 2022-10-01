@@ -58,7 +58,7 @@ const SubmitProject = () => {
 
   const onSubmit: SubmitHandler<FormInputs> = async (data: FormInputs) => {
     try {
-      await fetch('/api/projects', {
+      await fetch('/api/project', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
