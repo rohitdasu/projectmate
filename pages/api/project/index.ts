@@ -25,7 +25,6 @@ export default async function handler(
         });
         return res.json(data);
       } catch (error) {
-        console.log(error);
         return errorResponse({
           res,
           message: 'Internal Error',
