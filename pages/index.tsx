@@ -16,16 +16,16 @@ const Home: NextPage = () => {
 
   return (
     <SharedLayout title="Home">
-      <div className="flex mt-[5rem] lg:w-full flex-1 ">
+      <div className="mt-[5rem] flex flex-1 lg:w-full ">
         <AuthModal title={'Continue with your social accounts'} />
-        <div className="flex flex-col px-4 flex-1 text-center lg:text-left justify-center lg:m-0 lg:w-1/2">
-          <h1 className="lg:leading-[82px] leading-normal font-bold md:text-[55px] text-[40px]  uppercase text-foreground-1">
+        <div className="flex flex-1 flex-col justify-center px-4 text-center lg:m-0 lg:w-1/2 lg:text-left">
+          <h1 className="text-[40px] font-bold uppercase leading-normal text-foreground-1  md:text-[55px] lg:leading-[82px]">
             A place where you find{' '}
             <span className="uppercase text-primary-color">OpenSource</span>{' '}
             Projects
           </h1>
 
-          <p className="mt-4 md:leading-[30px] leading-normal md:text-[20px] text-[17px] font-light text-gray-800 text-foreground-1">
+          <p className="mt-4 text-[17px] font-light leading-normal text-gray-800 text-foreground-1 md:text-[20px] md:leading-[30px]">
             We will help you to find opensource project and contributors.
           </p>
 
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
               whileTap={{ scale: 0.9 }}
               onClick={() => router.push('/projects')}
               type="button"
-              className="border focus:ring focus:bg-blue-800 border-white w-[170px] mx-auto lg:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
+              className="mx-auto mt-[20px] h-[49px] w-[170px] rounded-md border border-white bg-secondary-color font-semibold text-white focus:bg-blue-800 focus:ring lg:mx-0"
             >
               Explore Projects
             </motion.button>
@@ -43,7 +43,7 @@ const Home: NextPage = () => {
               whileTap={{ scale: 0.9 }}
               onClick={() => dispatch(openModal())}
               type="button"
-              className="border focus:ring focus:bg-blue-800 border-white w-[170px] mx-auto lg:mx-0 font-semibold h-[49px] mt-[20px] bg-secondary-color text-white rounded-md"
+              className="mx-auto mt-[20px] h-[49px] w-[170px] rounded-md border border-white bg-secondary-color font-semibold text-white focus:bg-blue-800 focus:ring lg:mx-0"
             >
               JOIN US
             </motion.button>

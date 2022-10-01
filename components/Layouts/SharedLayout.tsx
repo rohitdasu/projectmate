@@ -15,7 +15,7 @@ export const SharedLayout: React.FC<IProps> = ({ children, title }) => {
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
       <Topbar />
-      <main className="max-w-screen-xl m-auto">{children}</main>
+      <main className="m-auto max-w-screen-xl">{children}</main>
     </>
   );
 };

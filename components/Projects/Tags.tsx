@@ -8,13 +8,13 @@ export const Tags = ({ tags, tagsNumber }: TagsProps) => (
     {tags.slice(0, tagsNumber).map((tag: string, i: number) => (
       <p
         key={i}
-        className="px-2 py-1 text-sm font-medium text-blue-500 rounded-full cursor-pointer bg-background-2"
+        className="cursor-pointer rounded-full bg-background-2 px-2 py-1 text-sm font-medium text-blue-500"
       >
         {tag}
       </p>
     ))}
     {tags.length - tagsNumber > 0 && (
-      <p className="px-2 py-1 text-sm font-medium text-blue-500 rounded-full cursor-pointer bg-background-2">
+      <p className="cursor-pointer rounded-full bg-background-2 px-2 py-1 text-sm font-medium text-blue-500">
         +{tags.length - tagsNumber}
       </p>
     )}

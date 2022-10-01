@@ -1,9 +1,9 @@
 export const ProjectSkeleton = () => (
-  <div className="w-full p-2 md:p-0 animate-pulse">
-    <div className="h-full flex flex-col justify-center space-y-2 overflow-hidden rounded-md shadow-border-shadow text-foreground-1">
-      <div className="flex justify-center items-center w-full h-72 bg-gray-200 sm:h-96 md:h-64 dark:bg-gray-700">
+  <div className="w-full animate-pulse p-2 md:p-0">
+    <div className="flex h-full flex-col justify-center space-y-2 overflow-hidden rounded-md text-foreground-1 shadow-border-shadow">
+      <div className="flex h-72 w-full items-center justify-center bg-gray-200 dark:bg-gray-700 sm:h-96 md:h-64">
         <svg
-          className="w-12 h-12 text-gray-300"
+          className="h-12 w-12 text-gray-300"
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
           fill="currentColor"
@@ -13,21 +13,21 @@ export const ProjectSkeleton = () => (
         </svg>
       </div>
       <div className="flex flex-col gap-5 p-4 pt-2">
-        <div className="h-4 w-32 bg-gray-200 rounded-full mt-2 dark:bg-gray-700" />
-        <div className="h-2 w-36 bg-gray-200 rounded-full dark:bg-gray-700" />
+        <div className="mt-2 h-4 w-32 rounded-full bg-gray-200 dark:bg-gray-700" />
+        <div className="h-2 w-36 rounded-full bg-gray-200 dark:bg-gray-700" />
         <div className="mt-4">
-          <div className="h-2 w-full bg-gray-200 rounded-full dark:bg-gray-700" />
-          <div className="h-2 w-full bg-gray-200 rounded-full mt-3 dark:bg-gray-700" />
-          <div className="h-2 w-full bg-gray-200 rounded-full mt-3 dark:bg-gray-700" />
-          <div className="h-2 w-56 bg-gray-200 rounded-full mt-3 dark:bg-gray-700" />
+          <div className="h-2 w-full rounded-full bg-gray-200 dark:bg-gray-700" />
+          <div className="mt-3 h-2 w-full rounded-full bg-gray-200 dark:bg-gray-700" />
+          <div className="mt-3 h-2 w-full rounded-full bg-gray-200 dark:bg-gray-700" />
+          <div className="mt-3 h-2 w-56 rounded-full bg-gray-200 dark:bg-gray-700" />
         </div>
         <div className="flex flex-col gap-5">
-          <div className="flex pb-2 space-x-2 md:pb-0 mt-1">
-            <div className="h-7 w-12 bg-gray-200 rounded-full px-2 py-1 dark:bg-gray-700" />
-            <div className="h-7 w-12 bg-gray-200 rounded-full px-2 py-1 dark:bg-gray-700" />
-            <div className="h-7 w-12 bg-gray-200 rounded-full px-2 py-1 dark:bg-gray-700" />
+          <div className="mt-1 flex space-x-2 pb-2 md:pb-0">
+            <div className="h-7 w-12 rounded-full bg-gray-200 px-2 py-1 dark:bg-gray-700" />
+            <div className="h-7 w-12 rounded-full bg-gray-200 px-2 py-1 dark:bg-gray-700" />
+            <div className="h-7 w-12 rounded-full bg-gray-200 px-2 py-1 dark:bg-gray-700" />
           </div>
-          <div className="h-8 w-full bg-gray-200 rounded-md px-2 py-1.5 mt-2 sm:my-0 dark:bg-gray-700" />
+          <div className="mt-2 h-8 w-full rounded-md bg-gray-200 px-2 py-1.5 dark:bg-gray-700 sm:my-0" />
         </div>
       </div>
     </div>
