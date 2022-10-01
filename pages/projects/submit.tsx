@@ -15,7 +15,7 @@ type FormInputs = {
   projectName: string;
   repositoryLink: string;
   projectDescription: string;
-  coverImage: any;
+  coverImage: string | null;
 };
 
 const SubmitProject = () => {
@@ -75,6 +75,8 @@ const SubmitProject = () => {
       alert(e.message);
     }
   };
+
+  const coverImageValue = watch('coverImage');
 
   return (
     <SharedLayout title="Submit Project">
@@ -221,15 +223,15 @@ const SubmitProject = () => {
               <label className="text-lg">Cover Image</label>
               <div
                 className={`relative mx-auto flex h-[300px] rounded-md ${
-                  watch('coverImage')
+                  coverImageValue
                     ? 'border-2 border-dashed border-green-700'
                     : ''
                 }`}
               >
-                {watch('coverImage') ? (
+                {coverImageValue ? (
                   <>
                     <Image
-                      src={watch('coverImage')}
+                      src={coverImageValue}
                       alt="project-image"
                       className="h-full w-full object-contain"
                       layout="fill"

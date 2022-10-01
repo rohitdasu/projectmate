@@ -65,7 +65,7 @@ model Project {
   title            String
   description      String
   githubRepository String
-  coverImg         String
+  coverImg         String?
   tags             String[]
   comment          Comment[]
   createdAt        DateTime  @default(now())
