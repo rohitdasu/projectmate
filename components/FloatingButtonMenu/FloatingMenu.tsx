@@ -13,11 +13,11 @@ export const FloatingMenu = ({
   const arrayChildren = Children.toArray(children);
 
   return (
-    <ul className={`flex flex-col-reverse m-0 p-0`}>
+    <ul className={`m-0 flex flex-col-reverse p-0`}>
       <li
         onClick={toggleMenu}
         style={{ backgroundColor: bgColor, marginTop: `${spacing}px` }}
-        className={`rounded-full relative grid place-items-center lg:cursor-pointer p-3`}
+        className={`relative grid place-items-center rounded-full p-3 lg:cursor-pointer`}
       >
         <div
           className={`transition ease-in-out 
@@ -30,7 +30,7 @@ export const FloatingMenu = ({
         <li
           key={index}
           style={{ backgroundColor: bgColor, marginTop: `${spacing}px` }}
-          className={`translate-y-full z-0 rounded-full relative grid place-items-center lg:cursor-pointer p-3 transition ease-in-out
+          className={`relative z-0 grid translate-y-full place-items-center rounded-full p-3 transition ease-in-out lg:cursor-pointer
           ${isOpen ? 'translate-y-0 scale-100' : 'scale-0'}
           duration-${slideSpeed}`}
         >

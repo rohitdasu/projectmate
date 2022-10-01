@@ -14,9 +14,9 @@ const About: NextPage = () => {
 
   return (
     <SharedLayout title="About">
-      <div className="lg:w-full flex-1 "></div>
-      <footer className="flex flex-col items-center justify-center w-full h-24 px-6 mt-auto lg:px-20 bg-background-1">
-        <p className="pb-0 mb-2 text-lg font-light">
+      <div className="flex-1 lg:w-full "></div>
+      <footer className="mt-auto flex h-24 w-full flex-col items-center justify-center bg-background-1 px-6 lg:px-20">
+        <p className="mb-2 pb-0 text-lg font-light">
           Shout-out to our contributors
         </p>
         <div className="flex flex-wrap items-center justify-center">

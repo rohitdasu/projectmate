@@ -7,13 +7,15 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { useSession } from 'next-auth/react';
 import Router from 'next/router';
 import { toast } from 'react-toastify';
+import Lottie from 'lottie-react';
+import Loader from '../../public/loading.json';
 
 type FormInputs = {
   tags: string[];
   projectName: string;
   repositoryLink: string;
   projectDescription: string;
-  coverImage: any;
+  coverImage: string | null;
 };
 
 const fileTypes: string[] = ['JPG', 'PNG', 'GIF'];
@@ -48,8 +50,8 @@ const SubmitProject = () => {
 
   if (status === 'loading') {
     return (
-      <div className="h-screen flex items-center justify-center">
-        Loading...
+      <div className="flex h-screen items-center justify-center">
+        <Lottie animationData={Loader} />
       </div>
     );
   }
@@ -78,36 +80,38 @@ const SubmitProject = () => {
     }
   };
 
+  const coverImageValue = watch('coverImage');
+
   return (
     <SharedLayout title="Submit Project">
-      <div className="flex space-y-4 flex-col w-full mt-4 mb-12">
-        <div className="w-full px-4 lg:px-0 lg:w-[70%] mx-auto">
-          <form className="w-full flex flex-col mx-auto space-y-6">
-            <h1 className="font-semibold text-left mb-4 text-3xl">
+      <div className="mt-4 mb-12 flex w-full flex-col space-y-4">
+        <div className="mx-auto w-full px-4 lg:w-[70%] lg:px-0">
+          <form className="mx-auto flex w-full flex-col space-y-6">
+            <h1 className="mb-4 text-left text-3xl font-semibold">
               Add Project
             </h1>
-            <div className="flex flex-col space-y-2 w-full">
+            <div className="flex w-full flex-col space-y-2">
               <label className="text-lg">
                 Project Name <span className="text-red-500">*</span>
               </label>
               <input
                 {...register('projectName', { required: true, minLength: 3 })}
                 placeholder="Enter your project name"
-                className={`w-full items-center p-2 bg-transparent outline-none border rounded-md border-gray-500 focus:border-blue-600 focus:border-2 ${
+                className={`w-full items-center rounded-md border border-gray-500 bg-transparent p-2 outline-none focus:border-2 focus:border-blue-600 focus:border-2 ${
                   errors.projectName && 'border-rose-500'
                 }`}
                 aria-invalid={errors.projectName ? 'true' : 'false'}
               />
               {errors.projectName?.type === 'required' && (
-                <p className="text-red-500 text-xs">project name is required</p>
+                <p className="text-xs text-red-500">project name is required</p>
               )}
               {errors.projectName?.type === 'minLength' && (
-                <p className="text-red-500 text-xs">
+                <p className="text-xs text-red-500">
                   project name should be minimum of 3 characters
                 </p>
               )}
             </div>
-            <div className="flex flex-col space-y-2 w-full">
+            <div className="flex w-full flex-col space-y-2">
               <label className="text-lg">
                 Repository URL <span className="text-red-500">*</span>
               </label>
@@ -124,19 +128,19 @@ const SubmitProject = () => {
                   },
                 })}
                 placeholder="Enter your repository URL"
-                className={`w-full p-2 bg-transparent outline-none border rounded-md border-gray-500 focus:border-blue-600 focus:border-2 ${
+                className={`w-full rounded-md border border-gray-500 bg-transparent p-2 outline-none focus:border-2 focus:border-blue-600 ${
                   errors.repositoryLink && 'border-rose-500'
                 }`}
                 aria-invalid={errors.repositoryLink ? 'true' : 'false'}
               />
               {(errors.repositoryLink?.type === 'required' ||
                 errors.repositoryLink?.type === 'pattern') && (
-                <p className="text-red-500 text-xs">
+                <p className="text-xs text-red-500">
                   {errors.repositoryLink?.message}
                 </p>
               )}
             </div>
-            <div className="flex flex-col space-y-2 w-full">
+            <div className="flex w-full flex-col space-y-2">
               <label className="text-lg">
                 Description <span className="text-red-500">*</span>
               </label>
@@ -147,21 +151,21 @@ const SubmitProject = () => {
                 })}
                 cols={100}
                 placeholder="Enter your project description"
-                className={`w-full bg-transparent resize-none border-gray-500 rounded-md p-2 h-[150px] ${
+                className={`h-[150px] w-full resize-none rounded-md border-gray-500 bg-transparent p-2 ${
                   errors.projectDescription && 'border-rose-500'
                 }`}
                 aria-invalid={errors.projectDescription ? 'true' : 'false'}
               ></textarea>
               {errors.projectDescription?.type === 'required' && (
-                <p className="text-red-500 text-xs">description is required</p>
+                <p className="text-xs text-red-500">description is required</p>
               )}
               {errors.projectDescription?.type === 'minLength' && (
-                <p className="text-red-500 text-xs">
+                <p className="text-xs text-red-500">
                   description should be minimum of 160 characters
                 </p>
               )}
             </div>
-            <div className="flex flex-col space-y-2 w-full">
+            <div className="flex w-full flex-col space-y-2">
               <label className="text-lg">
                 Tags <span className="text-red-500">*</span>
               </label>
@@ -199,7 +203,7 @@ const SubmitProject = () => {
                       name={field.name}
                       onChange={(e) => setTagInput(e.target.value)}
                       placeholder="Enter your project tags"
-                      className={`w-full p-2 bg-transparent outline-none border rounded-md border-gray-500 focus:border-blue-600 focus:border-2 ${
+                      className={`w-full rounded-md border border-gray-500 bg-transparent p-2 outline-none focus:border-2 focus:border-blue-600 ${
                         errors.tags && 'border-rose-500'
                       }`}
                       aria-invalid={errors.tags ? 'true' : 'false'}
@@ -208,7 +212,7 @@ const SubmitProject = () => {
                 }}
               />
               {errors.tags?.type === 'required' && (
-                <p className="text-red-500 text-xs">tags are required</p>
+                <p className="text-xs text-red-500">tags are required</p>
               )}
               <span className="text-sm text-gray-500">
                 Note: only 5 tags are applicable
@@ -220,7 +224,7 @@ const SubmitProject = () => {
                     <div
                       key={i}
                       onClick={() => removeTag(i)}
-                      className="flex flex-wrap group space-x-1 items-center text-[15px] cursor-pointer text-blue-500 bg-background-2 w-max px-4 py-2 rounded-full"
+                      className="group flex w-max cursor-pointer flex-wrap items-center space-x-1 rounded-full bg-background-2 px-4 py-2 text-[15px] text-blue-500"
                     >
                       <span className="uppercase">{tag}</span>
                       <AiFillCloseCircle className="ml-2" />
@@ -231,16 +235,16 @@ const SubmitProject = () => {
             <div className="space-y-2">
               <label className="text-lg">Cover Image</label>
               <div
-                className={`relative mx-auto flex rounded-md h-[300px] ${
-                  watch('coverImage')
-                    ? 'border-2 border-green-700 border-dashed'
+                className={`relative mx-auto flex h-[300px] rounded-md ${
+                  coverImageValue
+                    ? 'border-2 border-dashed border-green-700'
                     : ''
                 }`}
               >
-                {watch('coverImage') ? (
+                {coverImageValue ? (
                   <>
                     <Image
-                      src={watch('coverImage')}
+                      src={coverImageValue}
                       alt="project-image"
                       className="h-full w-full object-contain"
                       layout="fill"
@@ -290,16 +294,16 @@ const SubmitProject = () => {
                   />
                 )}
               </div>
-              <span className="mx-auto flex items-center text-sm text-gray-500 mt-4 ">
+              <span className="mx-auto mt-4 flex items-center text-sm text-gray-500 ">
                 Note: We would advise you to upload a picture. otherwise, the
                 default github icon will appear.
               </span>
             </div>
           </form>
-          <div className="w-full my-4">
+          <div className="my-4 w-full">
             <button
               onClick={handleSubmit(onSubmit)}
-              className="float-right bg-secondary-color text-white px-8 py-2 rounded-md focus:ring focus:bg-blue-800 hover:bg-blue-800"
+              className="float-right rounded-md bg-secondary-color px-8 py-2 text-white hover:bg-blue-800 focus:bg-blue-800 focus:ring"
             >
               Submit
             </button>
