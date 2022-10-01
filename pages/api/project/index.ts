@@ -23,13 +23,7 @@ export default async function handler(
           limit: projectLimit,
           cursorId: cursorId ? cursorId.toString() : undefined,
         });
-        return successResponse({
-          res,
-          message: '',
-          results: data,
-          statusCode: 200,
-          success: true,
-        });
+        return res.json(data);
       } catch (error) {
         return errorResponse({
           res,
