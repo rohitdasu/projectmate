@@ -82,3 +82,8 @@ body {
 .file-uploader > svg {
   display: none !important;
 }
+
+.file-uploader-error {
+  --tw-border-opacity: 1;
+  border-color: rgb(244 63 94 / var(--tw-border-opacity)) !important;
+}

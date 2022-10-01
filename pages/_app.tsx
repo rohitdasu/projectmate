@@ -5,6 +5,8 @@ import { ThemeProvider } from 'next-themes';
 import { cache } from '@emotion/css';
 import { CacheProvider } from '@emotion/react';
 import { store } from '../store';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/globals.css';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
@@ -14,6 +16,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <Provider store={store}>
           <CacheProvider value={cache}>
             <Component {...pageProps} />
+            <ToastContainer />
           </CacheProvider>
         </Provider>
       </ThemeProvider>

@@ -31,6 +31,7 @@ export default async function handler(
           success: true,
         });
       } catch (error) {
+        console.log(error);
         return errorResponse({
           res,
           message: 'Internal Error',
