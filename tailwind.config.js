@@ -32,6 +32,9 @@ module.exports = {
       boxShadow: {
         'border-shadow': 'var(--boxshadow-1)',
       },
+      backdropBlur: {
+        custom: '2px',
+      },
     },
   },
   plugins: [require('flowbite/plugin'), require('@tailwindcss/line-clamp')],
