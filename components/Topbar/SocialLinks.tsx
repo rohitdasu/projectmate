@@ -5,14 +5,14 @@ export const SocialLinks = () => {
   const socialLinks = getSocialLinks();
 
   return (
-    <div className="hidden md:flex gap-2">
+    <div className="hidden gap-2 md:flex">
       {socialLinks.map(({ Icon, title, anchorTagProps, url }) => (
         <motion.a
           key={title}
           {...anchorTagProps}
           href={url}
           whileTap={{ scale: 0.8 }}
-          className="flex p-[0.67rem] overflow-hidden text-[1.6rem] shadow-border-shadow rounded-md"
+          className="flex overflow-hidden rounded-md p-[0.67rem] text-[1.6rem] shadow-border-shadow"
         >
           {<Icon />}
         </motion.a>

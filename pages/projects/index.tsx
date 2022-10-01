@@ -26,14 +26,14 @@ const Projects = () => {
 
   return (
     <SharedLayout title="Projects">
-      <div className="flex flex-col w-full">
+      <div className="flex w-full flex-col">
         <AuthModal title={'Continue with your social accounts'} />
         <div className="sticky top-0 z-10 backdrop-blur-3xl">
           <Search />
         </div>
         <ProjectsList />
         {session && (
-          <div ref={ref} className="bottom-7 fixed right-7 md:right-[85px]">
+          <div ref={ref} className="fixed bottom-7 right-7 md:right-[85px]">
             <FloatingMenu
               toggleMenu={toggleFloatingMenu}
               isOpen={isOpen}

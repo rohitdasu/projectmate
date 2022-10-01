@@ -7,9 +7,9 @@ export function SidebarAvatar() {
     const { user } = session;
     return (
       <>
-        <div className="flex w-full items-center mt-2">
+        <div className="mt-2 flex w-full items-center">
           <div className="mr-3">
-            <div className="relative w-16 h-16 overflow-hidden shadow-border-shadow rounded-full">
+            <div className="relative h-16 w-16 overflow-hidden rounded-full shadow-border-shadow">
               <Image
                 src={
                   user?.image ||
@@ -21,8 +21,8 @@ export function SidebarAvatar() {
             </div>
           </div>
           <div className="flex flex-col">
-            <p className="text-sm truncate">{user?.name}</p>
-            <p className="text-xs text-black/60 dark:text-white/75  truncate">
+            <p className="truncate text-sm">{user?.name}</p>
+            <p className="truncate text-xs text-black/60  dark:text-white/75">
               {user?.email}
             </p>
           </div>
