@@ -86,7 +86,7 @@ const SubmitProject = () => {
     <SharedLayout title="Submit Project">
       <div className="mt-4 mb-12 flex w-full flex-col space-y-4">
         <div className="mx-auto w-full px-4 lg:w-[70%] lg:px-0">
-          <form className="mx-auto flex w-full flex-col space-y-6">
+          <form className="form-container mx-auto flex w-full flex-col space-y-6">
             <h1 className="mb-4 text-left text-3xl font-semibold">
               Add Project
             </h1>
@@ -98,7 +98,7 @@ const SubmitProject = () => {
                 {...register('projectName', { required: true, minLength: 3 })}
                 placeholder="Enter your project name"
                 className={`w-full items-center rounded-md border border-gray-500 bg-transparent p-2 outline-none focus:border-2 focus:border-2 focus:border-blue-600 ${
-                  errors.projectName && 'border-rose-500'
+                  errors.projectName && 'border-red-500'
                 }`}
                 aria-invalid={errors.projectName ? 'true' : 'false'}
               />
@@ -129,7 +129,7 @@ const SubmitProject = () => {
                 })}
                 placeholder="Enter your repository URL"
                 className={`w-full rounded-md border border-gray-500 bg-transparent p-2 outline-none focus:border-2 focus:border-blue-600 ${
-                  errors.repositoryLink && 'border-rose-500'
+                  errors.repositoryLink && 'border-red-500'
                 }`}
                 aria-invalid={errors.repositoryLink ? 'true' : 'false'}
               />
@@ -152,7 +152,7 @@ const SubmitProject = () => {
                 cols={100}
                 placeholder="Enter your project description"
                 className={`h-[150px] w-full resize-none rounded-md border-gray-500 bg-transparent p-2 ${
-                  errors.projectDescription && 'border-rose-500'
+                  errors.projectDescription && 'border-red-500'
                 }`}
                 aria-invalid={errors.projectDescription ? 'true' : 'false'}
               ></textarea>
@@ -204,7 +204,7 @@ const SubmitProject = () => {
                       onChange={(e) => setTagInput(e.target.value)}
                       placeholder="Enter your project tags"
                       className={`w-full rounded-md border border-gray-500 bg-transparent p-2 outline-none focus:border-2 focus:border-blue-600 ${
-                        errors.tags && 'border-rose-500'
+                        errors.tags && 'border-red-500'
                       }`}
                       aria-invalid={errors.tags ? 'true' : 'false'}
                     />
@@ -232,7 +232,7 @@ const SubmitProject = () => {
                   ))}
               </div>
             </div>
-            <div className="space-y-2">
+            <div className="cover-container space-y-2">
               <label className="text-lg">Cover Image</label>
               <div
                 className={`relative mx-auto flex h-[300px] rounded-md ${
