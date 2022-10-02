@@ -28,7 +28,7 @@ const Projects = () => {
     <SharedLayout title="Projects">
       <div className="flex flex-col w-full">
         <AuthModal title={'Continue with your social accounts'} />
-        <div className="sticky top-0 z-10 backdrop-blur-custom">
+        <div className="sticky top-0 z-10 backdrop-blur-[2px]">
           <Search />
         </div>
         <ProjectsList />
