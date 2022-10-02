@@ -47,7 +47,7 @@ export const ContributorList = ({ contributors }: ContributorProps) => {
                       className="iconify m-auto mt-1 text-xl"
                       data-icon="icon"
                     >
-                      <Image src="icon.svg" />
+                      <img src="icon.svg" />
                     </span>
                   </a>
                 </li>
