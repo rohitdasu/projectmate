@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { FileUploader } from 'react-drag-drop-files';
 import { AiFillCloseCircle } from 'react-icons/ai';
@@ -9,6 +9,7 @@ import Router from 'next/router';
 import toast from 'react-hot-toast';
 import Lottie from 'lottie-react';
 import Loader from '../../public/loading.json';
+import { v4 as uuidv4 } from 'uuid';
 
 type FormInputs = {
   tags: string[];
@@ -40,6 +41,7 @@ const SubmitProject = () => {
   };
 
   const [fileError, setFileError] = useState(false);
+  const [fileKey, setFileKey] = useState(uuidv4().toString());
 
   const { status, data: session } = useSession({
     required: true,
@@ -75,6 +77,8 @@ const SubmitProject = () => {
       });
       toast.success('project added successfully');
       reset();
+      setFileError(false);
+      setFileKey(uuidv4().toString());
     } catch (e) {
       toast.error(e.message);
     }
@@ -270,6 +274,7 @@ const SubmitProject = () => {
                       return (
                         <FileUploader
                           {...field}
+                          key={fileKey}
                           multiple={false}
                           label="Drag or upload your Image."
                           classes={`file-uploader ${
