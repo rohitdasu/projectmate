@@ -13,13 +13,13 @@ export function Avatar() {
     const { user } = session;
     return (
       <>
-        <Menu as="div" className="relative md:inline-block text-left hidden">
+        <Menu as="div" className="relative hidden text-left md:inline-block">
           <Menu.Button>
             <motion.div
               whileTap={{ scale: 0.9 }}
               className="flex items-center hover:opacity-80"
             >
-              <div className="w-[47px] h-[47px] relative my-[0.67rem] overflow-hidden shadow-border-shadow rounded-full">
+              <div className="relative my-[0.67rem] h-[47px] w-[47px] overflow-hidden rounded-full shadow-border-shadow">
                 <Image
                   src={
                     user?.image ||
@@ -41,16 +41,16 @@ export function Avatar() {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute w-36 right-0 top-[64px] origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
-              <div className="px-1 py-1 w-full ">
+            <Menu.Items className="absolute right-0 top-[64px] z-50 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-700">
+              <div className="w-full px-1 py-1 ">
                 <Menu.Item>
                   <Link href="/profile">
                     <a>
                       <motion.button
                         whileTap={{ scale: 0.9 }}
-                        className="flex items-center w-full text-left rounded-md px-2 py-2 hover:bg-primary-color hover:text-white group transition-all"
+                        className="group flex w-full items-center rounded-md px-2 py-2 text-left transition-all hover:bg-primary-color hover:text-white"
                       >
-                        <MdOutlineAccountCircle className="text-xl mr-2" />
+                        <MdOutlineAccountCircle className="mr-2 text-xl" />
                         Profile
                       </motion.button>
                     </a>
@@ -59,10 +59,10 @@ export function Avatar() {
                 <Menu.Item>
                   <motion.button
                     whileTap={{ scale: 0.9 }}
-                    className="flex items-center w-full text-left rounded-md px-2 py-2 hover:bg-primary-color hover:text-white group transition-all"
+                    className="group flex w-full items-center rounded-md px-2 py-2 text-left transition-all hover:bg-primary-color hover:text-white"
                     onClick={() => signOut({ redirect: false })}
                   >
-                    <HiOutlineLogout className="text-xl mr-2" /> Logout
+                    <HiOutlineLogout className="mr-2 text-xl" /> Logout
                   </motion.button>
                 </Menu.Item>
               </div>

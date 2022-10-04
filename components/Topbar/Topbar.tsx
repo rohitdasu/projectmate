@@ -4,17 +4,19 @@ import { DesktopRoutes } from './DesktopRoutes';
 import { Sidebar } from './Sidebar';
 import { Logo } from './Logo';
 import { Avatar } from '../Avatar';
+import { SocialLinks } from './SocialLinks';
 
 export const Topbar = () => {
   return (
     <div className="bg-background-1 text-foreground-1">
-      <nav className="flex max-w-screen-xl justify-between p-4 py-5 m-auto h-[5.46rem]">
+      <nav className="m-auto flex h-[5.46rem] max-w-screen-xl justify-between p-4 py-5">
         <div className="flex items-center gap-10">
           <Logo />
           <DesktopRoutes />
         </div>
         <div className="flex items-center gap-2">
           <ThemeToggler />
+          <SocialLinks />
           <Sidebar />
           <Avatar />
         </div>

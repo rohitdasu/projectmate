@@ -1,7 +1,7 @@
 import { FiMenu } from 'react-icons/fi';
 import { useRef, useState } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
-import { appRoutes } from './data';
+import { appRoutes, IRoute, getSocialLinks } from './data';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -22,11 +22,40 @@ export const Sidebar = () => {
 
   useOnClickOutside(ref, closeSidebar);
 
+  const socialLinks = getSocialLinks(true);
+
+  const RenderNavigation: React.FC<{ routes: IRoute[] }> = ({ routes }) => {
+    return (
+      <ul className="w-full overflow-auto">
+        {routes.map((route) => {
+          const { Icon, anchorTagProps, title, url } = route;
+          const isCurrent = pathname === url || pathname.includes(title);
+
+          return (
+            <motion.li whileTap={{ scale: 0.9 }} key={title}>
+              <Link href={url}>
+                <a
+                  {...anchorTagProps}
+                  className={`flex items-center justify-between gap-2 p-5 text-lg uppercase ${
+                    isCurrent && 'bg-background-2'
+                  }`}
+                >
+                  {title}
+                  <Icon className="text-2xl" />
+                </a>
+              </Link>
+            </motion.li>
+          );
+        })}
+      </ul>
+    );
+  };
+
   return (
     <>
       <motion.button
         whileTap={{ scale: 0.8 }}
-        className="md:hidden flex p-[0.67rem] overflow-hidden text-[1.6rem] shadow-border-shadow rounded-md"
+        className="flex overflow-hidden rounded-md p-[0.67rem] text-[1.6rem] shadow-border-shadow md:hidden"
         onClick={() => setOpen(true)}
       >
         <FiMenu />
@@ -36,12 +65,12 @@ export const Sidebar = () => {
           <>
             <motion.div
               {...framer_sidebar_background}
-              className="fixed md:hidden top-0 bottom-0 left-0 right-0 z-20 backdrop-blur-sm bg-[rgba(0,0,0,0.5)]"
+              className="fixed top-0 bottom-0 left-0 right-0 z-20 bg-[rgba(0,0,0,0.5)] backdrop-blur-sm md:hidden"
             ></motion.div>
 
             <motion.div
               {...framer_sidebar_panel}
-              className="fixed md:hidden z-30 left-0 top-0 bottom-0 h-screen bg-background-1 w-[100%] max-w-[19rem] flex flex-col"
+              className="fixed left-0 top-0 bottom-0 z-30 flex h-screen w-[100%] max-w-[19rem] flex-col bg-background-1 md:hidden"
               ref={ref}
             >
               <div className="border-b-[1px] border-gray-1 p-5">
@@ -49,7 +78,7 @@ export const Sidebar = () => {
                   <Logo />
                   <motion.button
                     whileTap={{ scale: 0.8 }}
-                    className="flex p-[0.67rem] overflow-hidden shadow-border-shadow rounded-md"
+                    className="flex overflow-hidden rounded-md p-[0.67rem] shadow-border-shadow"
                     onClick={closeSidebar}
                   >
                     <BiArrowBack />
@@ -58,33 +87,12 @@ export const Sidebar = () => {
                 <SidebarAvatar />
               </div>
 
-              <ul className="w-full overflow-auto">
-                {appRoutes.map((route) => {
-                  const { Icon, anchorTagProps, title, url } = route;
-                  const isCurrent =
-                    pathname === url || pathname.includes(title);
-
-                  return (
-                    <motion.li whileTap={{ scale: 0.9 }} key={title}>
-                      <Link href={url}>
-                        <a
-                          {...anchorTagProps}
-                          className={`flex justify-between items-center gap-2 p-5 text-lg uppercase ${
-                            isCurrent && 'bg-background-2'
-                          }`}
-                        >
-                          {title}
-                          <Icon className="text-2xl" />
-                        </a>
-                      </Link>
-                    </motion.li>
-                  );
-                })}
-              </ul>
+              {<RenderNavigation routes={appRoutes} />}
+              {<RenderNavigation routes={socialLinks} />}
 
               {session && (
                 <button
-                  className="flex justify-between w-full items-center gap-2 p-5 text-lg uppercase"
+                  className="flex w-full items-center justify-between gap-2 p-5 text-lg uppercase"
                   onClick={() => {
                     signOut({ redirect: false });
                     setOpen(false);

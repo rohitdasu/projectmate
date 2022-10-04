@@ -1,14 +1,13 @@
+import { Project } from '@prisma/client';
 import { NextApiResponse } from 'next';
 
 /**
  * @desc    Send any success response
  */
-export /** */
-const successResponse = (args: {
+export const successResponse = (args: {
   res: NextApiResponse;
   message: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  results: any;
+  results: Project | boolean | null | unknown;
   success: boolean;
   statusCode: number;
 }) => {
@@ -41,7 +40,7 @@ export const errorResponse = (args: {
  */
 export const validationResponse = (args: {
   res: NextApiResponse;
-  error: any;
+  error: unknown;
 }) => {
   const { res, error } = args;
   res.status(400).json({

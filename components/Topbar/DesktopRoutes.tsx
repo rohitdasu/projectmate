@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { appRoutes } from './data';
@@ -16,7 +15,7 @@ export const DesktopRoutes = () => {
           <li key={title}>
             <Link href={url}>
               <a
-                className={`flex items-center hover:text-primary-1 gap-1 cursor-pointer ${
+                className={`flex cursor-pointer items-center gap-1 hover:text-primary-1 ${
                   isCurrent && 'text-primary-1'
                 }`}
                 {...anchorTagProps}

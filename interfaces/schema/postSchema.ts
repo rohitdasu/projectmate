@@ -14,11 +14,7 @@ export const postSchema = z.object({
     required_error: 'githubRepository is required',
   }),
 
-  coverImg: z
-    .string({
-      required_error: 'Cover image is required',
-    })
-    .url(),
+  coverImg: z.string().url().optional(),
 
   tags: z.array(z.string()).min(1).max(5),
 });
