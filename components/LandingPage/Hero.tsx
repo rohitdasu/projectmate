@@ -28,7 +28,7 @@ export const Hero = () => {
       <div className="flex flex-col items-center gap-10 text-center lg:items-start lg:text-left">
         <h1 className="text-4xl font-bold text-[#2b2b2b] dark:text-white">
           Start Contributing to{' '}
-          <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 bg-clip-text text-transparent dark:from-orange-500 dark:via-orange-800 dark:to-orange-500">
+          <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 bg-clip-text text-transparent dark:from-orange-500 dark:via-orange-700 dark:to-orange-500">
             Open Source
           </span>{' '}
           Projects
