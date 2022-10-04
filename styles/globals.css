@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500&display=swap');
 :root {
-  --primary-color: #ec9e58;
+  --primary-color: #ff7100;
   --dark-color: #000000b2;
   --secondary-color: #2854eecc;
   --dark-mode: #1c2128;
@@ -15,7 +15,7 @@
   --clr-filler-1: #000000;
   --clr-border-1: #959595;
 
-  --clr-primary-1: #ec9e58;
+  --clr-primary-1: #ff7100;
 
   --clr-gray-1: #d1d5db;
 
@@ -31,7 +31,7 @@
   --clr-filler-1: #656565;
   --clr-border-1: #4e4e4e;
 
-  --clr-primary-1: #ec9e58;
+  --clr-primary-1: #ff7100;
 
   --clr-gray-1: #374151;
 

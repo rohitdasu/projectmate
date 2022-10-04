@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
-import { Hero } from '@/components/LandingPage/Hero';
+import { Hero } from '@/components/LandingPage/';
 
 const Home: NextPage = () => {
   return (
