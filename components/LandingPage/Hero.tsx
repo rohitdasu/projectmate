@@ -27,7 +27,11 @@ export const Hero = () => {
       <AuthModal title={'Continue with your social accounts'} />
       <div className="flex flex-col items-center gap-10 text-center lg:items-start lg:text-left">
         <h1 className="text-4xl font-bold text-[#2b2b2b] dark:text-white">
-          Start Contributing to Open Source Projects
+          Start Contributing to{' '}
+          <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 bg-clip-text text-transparent dark:from-orange-500 dark:via-orange-800 dark:to-orange-500">
+            Open Source
+          </span>{' '}
+          Projects
         </h1>
         <p className="max-w-[50rem] font-light  dark:text-gray-300 md:text-xl">
           ProjectMate helps you to find awesome open source projects based on
@@ -38,7 +42,7 @@ export const Hero = () => {
           whileTap={{ scale: 0.9 }}
           onClick={session ? handleRoute : handleModal}
           type="button"
-          className="rounded-md bg-orange-100 p-4 font-semibold text-orange-500 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400 md:text-xl"
+          className="rounded-md bg-orange-100 py-4 px-6 font-semibold text-orange-500 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400 md:text-xl"
         >
           {session ? (
             <span className="flex items-center gap-3">
@@ -48,7 +52,7 @@ export const Hero = () => {
           ) : (
             <span className="flex items-center gap-3">
               <GoPlus />
-              Join Us
+              JOIN US
             </span>
           )}
         </motion.button>
