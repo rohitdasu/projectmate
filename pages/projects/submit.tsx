@@ -9,6 +9,7 @@ import Router from 'next/router';
 import { motion } from 'framer-motion';
 import Lottie from 'lottie-react';
 import Loader from '../../public/loading.json';
+import axios from 'axios';
 
 type FormInputs = {
   tags: string[];
@@ -54,12 +55,9 @@ const SubmitProject = () => {
 
   const onSubmit: SubmitHandler<FormInputs> = async (data: FormInputs) => {
     try {
-      await fetch('/api/project', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+      await axios.post(
+        '/api/project',
+        {
           title: data.projectName,
           description: data.projectDescription,
           githubRepository: data.repositoryLink,
@@ -67,8 +65,13 @@ const SubmitProject = () => {
           coverImg:
             'https://user-images.githubusercontent.com/48400770/190438248-fc0f3e42-c6d3-4d07-bcba-10e7fece4bc2.png',
           email: session?.user?.email,
-        }),
-      });
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
       alert('project added successfully');
       reset();
     } catch (e) {
