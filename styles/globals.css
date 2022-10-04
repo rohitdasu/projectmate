@@ -23,7 +23,7 @@
 }
 
 .dark {
-  --clr-background-1: #1c2128;
+  --clr-background-1: #0c0e11;
   --clr-background-2: #1b2c43;
   --clr-foreground-1: #ffffff;
 
@@ -35,7 +35,7 @@
 
   --clr-gray-1: #374151;
 
-  --boxshadow-1: hsl(214, 19%, 21%) 0px 0px 0px 1px;
+  --boxshadow-1: hsl(212, 19%, 17%) 0px 0px 0px 1px;
 }
 
 body {
@@ -50,7 +50,7 @@ body {
   @apply border-b-[3px] border-b-secondary-color;
 }
 .hover-overlay {
-  @apply bg-gray-500 rounded-full;
+  @apply rounded-full bg-gray-500;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
