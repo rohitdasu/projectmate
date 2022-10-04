@@ -2,10 +2,10 @@ import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { NextPage } from 'next';
 import useSWR from 'swr';
 import { ContributorList } from '@/components/index';
+import axios from 'axios';
 
 const About: NextPage = () => {
-  const fetcher = (...args: Parameters<typeof fetch>) =>
-    fetch(...args).then((res) => res.json());
+  const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
   const { data } = useSWR(
     'https://api.github.com/repos/rohitdasu/projectmate/contributors',
