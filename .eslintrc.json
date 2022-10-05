@@ -11,7 +11,15 @@
   ],
   "rules": {
     "consistent-return": "warn",
-    "no-console": "warn"
+    "no-console": "warn",
+    "react/react-in-jsx-scope": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto",
+        "singleQuote": true
+      }
+    ]
   },
   "ignorePatterns": ["tailwind.config.js"]
 }

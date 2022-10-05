@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500&display=swap');
 :root {
-  --primary-color: #ec9e58;
+  --primary-color: #ff7100;
   --dark-color: #000000b2;
   --secondary-color: #2854eecc;
   --dark-mode: #1c2128;
@@ -15,7 +15,7 @@
   --clr-filler-1: #000000;
   --clr-border-1: #959595;
 
-  --clr-primary-1: #ec9e58;
+  --clr-primary-1: #ff7100;
 
   --clr-gray-1: #d1d5db;
 
@@ -23,7 +23,7 @@
 }
 
 .dark {
-  --clr-background-1: #1c2128;
+  --clr-background-1: #0c0e11;
   --clr-background-2: #1b2c43;
   --clr-foreground-1: #ffffff;
 
@@ -31,15 +31,16 @@
   --clr-filler-1: #656565;
   --clr-border-1: #4e4e4e;
 
-  --clr-primary-1: #ec9e58;
+  --clr-primary-1: #ff7100;
 
   --clr-gray-1: #374151;
 
-  --boxshadow-1: hsl(214, 19%, 21%) 0px 0px 0px 1px;
+  --boxshadow-1: hsl(212, 19%, 17%) 0px 0px 0px 1px;
 }
 
 body {
   font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
 }
 
 @tailwind base;
@@ -50,7 +51,7 @@ body {
   @apply border-b-[3px] border-b-secondary-color;
 }
 .hover-overlay {
-  @apply bg-gray-500 rounded-full;
+  @apply rounded-full bg-gray-500;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
