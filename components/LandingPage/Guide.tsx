@@ -6,8 +6,8 @@ export const Guide = () => {
     <div className="p-4">
       <h2 className="text-center text-3xl font-bold">How it works ?</h2>
       <ul className="relative my-[5rem] flex flex-col items-center gap-[3rem] lg:flex-row lg:gap-[3rem]">
-        <li className="absolute top-0 left-[50%] -z-10 h-[100%] w-[3px] border-2 border-dashed border-orange-500 bg-gradient-to-r dark:border-yellow-300 lg:left-0 lg:top-[50%] lg:h-[3px] lg:w-[95%]"></li>
-        {data.map((item, idx) => {
+        <li className="absolute top-0 left-[50%] -z-10 h-[100%] w-[3px] rounded-[50%] border-2 border-dashed border-orange-500 bg-gradient-to-r dark:border-yellow-300 lg:left-0 lg:top-[50%] lg:h-[3px] lg:w-[95%]"></li>
+        {data.map((item) => {
           const { title, desc, Icon } = item;
           return (
             <li
