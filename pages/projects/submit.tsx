@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { FileUploader } from 'react-drag-drop-files';
 import { AiFillCloseCircle } from 'react-icons/ai';
@@ -6,9 +6,10 @@ import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { useSession } from 'next-auth/react';
 import Router from 'next/router';
-import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
 import Lottie from 'lottie-react';
 import Loader from '../../public/loading.json';
+import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 
 type FormInputs = {
@@ -18,6 +19,8 @@ type FormInputs = {
   projectDescription: string;
   coverImage: string | null;
 };
+
+const fileTypes: string[] = ['JPG', 'JPEG', 'PNG', 'GIF'];
 
 const SubmitProject = () => {
   const {
@@ -37,6 +40,9 @@ const SubmitProject = () => {
       watch('tags').filter((element: string, i: number) => i !== index)
     );
   };
+
+  const [fileError, setFileError] = useState(false);
+  const [fileKey, setFileKey] = useState(uuidv4().toString());
 
   const { status, data: session } = useSession({
     required: true,
@@ -72,10 +78,12 @@ const SubmitProject = () => {
           },
         }
       );
-      alert('project added successfully');
+      toast.success('project added successfully');
       reset();
+      setFileError(false);
+      setFileKey(uuidv4().toString());
     } catch (e) {
-      alert(e.message);
+      toast.error(e.message);
     }
   };
 
@@ -85,21 +93,20 @@ const SubmitProject = () => {
     <SharedLayout title="Submit Project">
       <div className="mt-4 mb-12 flex w-full flex-col space-y-4">
         <div className="mx-auto w-full px-4 lg:w-[70%] lg:px-0">
-          <form className="mx-auto flex w-full flex-col space-y-6">
+          <form className="form-container mx-auto flex w-full flex-col space-y-6">
             <h1 className="mb-4 text-left text-3xl font-semibold">
               Add Project
             </h1>
-            <motion.div
-              whileTap={{ scale: 0.9 }}
-              className="flex w-full flex-col space-y-2"
-            >
+            <div className="flex w-full flex-col space-y-2">
               <label className="text-lg">
                 Project Name <span className="text-red-500">*</span>
               </label>
               <input
                 {...register('projectName', { required: true, minLength: 3 })}
                 placeholder="Enter your project name"
-                className="w-full items-center rounded-md border border-gray-500 bg-transparent p-2 outline-none focus:border-2 focus:border-blue-600"
+                className={`w-full items-center rounded-md border border-gray-500 bg-transparent p-2 outline-none focus:border-2 focus:border-2 focus:border-blue-600 ${
+                  errors.projectName && 'border-red-500'
+                }`}
                 aria-invalid={errors.projectName ? 'true' : 'false'}
               />
               {errors.projectName?.type === 'required' && (
@@ -110,41 +117,50 @@ const SubmitProject = () => {
                   project name should be minimum of 3 characters
                 </p>
               )}
-            </motion.div>
-            <motion.div
-              whileTap={{ scale: 0.9 }}
-              className="flex w-full flex-col space-y-2"
-            >
+            </div>
+            <div className="flex w-full flex-col space-y-2">
               <label className="text-lg">
                 Repository URL <span className="text-red-500">*</span>
               </label>
               <input
-                {...register('repositoryLink', { required: true })}
+                {...register('repositoryLink', {
+                  required: {
+                    value: true,
+                    message: 'repository link is required',
+                  },
+                  pattern: {
+                    value:
+                      /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi,
+                    message: 'repository link is invalid',
+                  },
+                })}
                 placeholder="Enter your repository URL"
-                className="w-full rounded-md border border-gray-500 bg-transparent p-2 outline-none focus:border-2 focus:border-blue-600"
+                className={`w-full rounded-md border border-gray-500 bg-transparent p-2 outline-none focus:border-2 focus:border-blue-600 ${
+                  errors.repositoryLink && 'border-red-500'
+                }`}
                 aria-invalid={errors.repositoryLink ? 'true' : 'false'}
               />
-              {errors.repositoryLink?.type === 'required' && (
+              {(errors.repositoryLink?.type === 'required' ||
+                errors.repositoryLink?.type === 'pattern') && (
                 <p className="text-xs text-red-500">
-                  repository link is required
+                  {errors.repositoryLink?.message}
                 </p>
               )}
-            </motion.div>
-            <motion.div
-              whileTap={{ scale: 0.9 }}
-              className="flex w-full flex-col space-y-2"
-            >
+            </div>
+            <div className="flex w-full flex-col space-y-2">
               <label className="text-lg">
                 Description <span className="text-red-500">*</span>
               </label>
               <textarea
                 {...register('projectDescription', {
                   required: true,
-                  minLength: 15,
+                  minLength: 160,
                 })}
                 cols={100}
                 placeholder="Enter your project description"
-                className="h-[150px] w-full resize-none rounded-md border-gray-500 bg-transparent p-2"
+                className={`h-[150px] w-full resize-none rounded-md border-gray-500 bg-transparent p-2 ${
+                  errors.projectDescription && 'border-red-500'
+                }`}
                 aria-invalid={errors.projectDescription ? 'true' : 'false'}
               ></textarea>
               {errors.projectDescription?.type === 'required' && (
@@ -152,14 +168,11 @@ const SubmitProject = () => {
               )}
               {errors.projectDescription?.type === 'minLength' && (
                 <p className="text-xs text-red-500">
-                  description should be minimum of 15 characters
+                  description should be minimum of 160 characters
                 </p>
               )}
-            </motion.div>
-            <motion.div
-              whileTap={{ scale: 0.9 }}
-              className="flex w-full flex-col space-y-2"
-            >
+            </div>
+            <div className="flex w-full flex-col space-y-2">
               <label className="text-lg">
                 Tags <span className="text-red-500">*</span>
               </label>
@@ -175,11 +188,13 @@ const SubmitProject = () => {
                         const value = (e.target as HTMLInputElement).value;
                         if (!value.trim()) return;
                         if (value.length > 15) {
-                          alert("tag length shouldn't exceed 15 characters");
+                          toast.error(
+                            "tag length shouldn't exceed 15 characters"
+                          );
                           return;
                         }
                         if (watch('tags') && watch('tags').length == 5) {
-                          alert('total number of tags should be 5');
+                          toast.error('total number of tags should be 5');
                           return;
                         }
                         const d = watch('tags');
@@ -195,7 +210,9 @@ const SubmitProject = () => {
                       name={field.name}
                       onChange={(e) => setTagInput(e.target.value)}
                       placeholder="Enter your project tags"
-                      className="w-full rounded-md border border-gray-500 bg-transparent p-2 outline-none focus:border-2 focus:border-blue-600"
+                      className={`w-full rounded-md border border-gray-500 bg-transparent p-2 outline-none focus:border-2 focus:border-blue-600 ${
+                        errors.tags && 'border-red-500'
+                      }`}
                       aria-invalid={errors.tags ? 'true' : 'false'}
                     />
                   );
@@ -221,8 +238,8 @@ const SubmitProject = () => {
                     </div>
                   ))}
               </div>
-            </motion.div>
-            <motion.div whileTap={{ scale: 0.9 }} className="space-y-2">
+            </div>
+            <div className="cover-container space-y-2">
               <label className="text-lg">Cover Image</label>
               <div
                 className={`relative mx-auto flex h-[300px] rounded-md ${
@@ -260,17 +277,25 @@ const SubmitProject = () => {
                       return (
                         <FileUploader
                           {...field}
+                          key={fileKey}
                           multiple={false}
                           label="Drag or upload your Image."
-                          classes="file-uploader"
+                          classes={`file-uploader ${
+                            fileError && 'file-uploader-error'
+                          }`}
                           name={field.name}
+                          maxSize={2}
+                          types={fileTypes}
                           handleChange={(file: File) => {
+                            setFileError(false);
                             const reader = new FileReader();
                             reader.readAsDataURL(file);
                             reader.onload = (readerEvent) => {
                               field.onChange(readerEvent.target?.result);
                             };
                           }}
+                          onTypeError={() => setFileError(true)}
+                          onSizeError={() => setFileError(true)}
                         />
                       );
                     }}
@@ -281,16 +306,15 @@ const SubmitProject = () => {
                 Note: We would advise you to upload a picture. otherwise, the
                 default github icon will appear.
               </span>
-            </motion.div>
+            </div>
           </form>
           <div className="my-4 w-full">
-            <motion.button
-              whileTap={{ scale: 0.9 }}
+            <button
               onClick={handleSubmit(onSubmit)}
               className="float-right rounded-md bg-secondary-color px-8 py-2 text-white hover:bg-blue-800 focus:bg-blue-800 focus:ring"
             >
               Submit
-            </motion.button>
+            </button>
           </div>
         </div>
       </div>

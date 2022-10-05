@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500&display=swap');
+
 :root {
   --primary-color: #ff7100;
   --dark-color: #000000b2;
@@ -50,6 +51,7 @@ body {
 .active {
   @apply border-b-[3px] border-b-secondary-color;
 }
+
 .hover-overlay {
   @apply rounded-full bg-gray-500;
 }
@@ -61,8 +63,10 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .scroll-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .file-uploader {
@@ -82,4 +86,21 @@ body {
 
 .file-uploader > svg {
   display: none !important;
+}
+
+.file-uploader-error {
+  --tw-border-opacity: 1;
+  border-color: rgb(240 82 82 / var(--tw-border-opacity)) !important;
+}
+
+.cover-container span {
+  color: rgb(240 82 82 / var(--tw-border-opacity)) !important;
+}
+
+.app-toaster {
+  background-color: var(--clr-background-1) !important;
+  --tw-shadow: var(--boxshadow-1);
+  --tw-shadow-colored: var(--boxshadow-1);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
 }
