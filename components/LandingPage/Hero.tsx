@@ -26,7 +26,7 @@ export const Hero = () => {
     <header className="m-auto px-4 py-[5rem] lg:flex lg:items-center lg:justify-between">
       <AuthModal title={'Continue with your social accounts'} />
       <div className="flex flex-col items-center gap-10 text-center lg:items-start lg:text-left">
-        <h1 className="text-4xl font-bold text-[#2b2b2b] dark:text-white">
+        <h1 className="text-4xl font-bold">
           Start Contributing to{' '}
           <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 bg-clip-text text-transparent dark:from-orange-500 dark:via-orange-700 dark:to-orange-500">
             Open Source
@@ -35,7 +35,7 @@ export const Hero = () => {
         </h1>
         <p className="max-w-[50rem] font-light  dark:text-gray-300 md:text-xl">
           ProjectMate helps you to find awesome open source projects based on
-          the skills you have. You can also find new contributers for your open
+          the skills you have. You can also find new contributors for your open
           source project by sharing it on ProjectMate !
         </p>
         <motion.button
