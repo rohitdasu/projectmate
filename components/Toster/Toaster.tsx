@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { resolveValue, Toaster, ToastBar } from 'react-hot-toast';
-import { useTheme } from 'next-themes';
+import { useIsDarkTheme } from '../ThemeToggler/utils';
 
 export const AppToaster = () => {
-  const { theme } = useTheme();
+  const isDark = useIsDarkTheme();
 
   return (
     <Toaster position="top-center" toastOptions={{ className: 'app-toaster' }}>
@@ -23,7 +23,7 @@ export const AppToaster = () => {
               <label
                 role="status"
                 aria-live="polite"
-                className={`text-md pl-2 ${theme === 'dark' && 'text-white'}`}
+                className={`text-md pl-2 ${isDark ? 'text-white' : ''}`}
               >
                 {resolveValue(t.message, t)}
               </label>
