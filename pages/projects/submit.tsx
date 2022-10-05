@@ -19,7 +19,7 @@ type FormInputs = {
   coverImage: string | null;
 };
 
-const fileTypes: string[] = ['JPG', 'PNG', 'GIF'];
+const fileTypes: string[] = ['JPG', 'JPEG', 'PNG', 'GIF'];
 
 const SubmitProject = () => {
   const {
