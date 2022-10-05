@@ -10,6 +10,7 @@ import toast from 'react-hot-toast';
 import Lottie from 'lottie-react';
 import Loader from '../../public/loading.json';
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 
 type FormInputs = {
   tags: string[];
@@ -60,12 +61,9 @@ const SubmitProject = () => {
 
   const onSubmit: SubmitHandler<FormInputs> = async (data: FormInputs) => {
     try {
-      await fetch('/api/project', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+      await axios.post(
+        '/api/project',
+        {
           title: data.projectName,
           description: data.projectDescription,
           githubRepository: data.repositoryLink,
@@ -73,8 +71,13 @@ const SubmitProject = () => {
           coverImg:
             'https://user-images.githubusercontent.com/48400770/190438248-fc0f3e42-c6d3-4d07-bcba-10e7fece4bc2.png',
           email: session?.user?.email,
-        }),
-      });
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
       toast.success('project added successfully');
       reset();
       setFileError(false);

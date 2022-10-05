@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import { Project } from './Project';
 import { ProjectSkeleton } from './ProjectSkeleton';
+import axios from 'axios';
 
 interface IProject extends ProjectData {
   author: {
@@ -11,8 +12,7 @@ interface IProject extends ProjectData {
 }
 
 export const ProjectsList: React.FC = () => {
-  const fetcher = (...args: Parameters<typeof fetch>) =>
-    fetch(...args).then((res) => res.json());
+  const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
   const getKey = (pageIndex: number, previousPageData: IProject[]) => {
     let cursorId = '';

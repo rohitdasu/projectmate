@@ -19,6 +19,7 @@
     "@next-auth/prisma-adapter": "^1.0.4",
     "@prisma/client": "^4.3.1",
     "@reduxjs/toolkit": "^1.8.5",
+    "axios": "^0.27.2",
     "dotenv": "^16.0.2",
     "flowbite": "^1.5.3",
     "flowbite-react": "^0.1.11",
