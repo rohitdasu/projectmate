@@ -14,7 +14,7 @@ export const Guide = () => {
               key={title}
               className="relative flex w-[100%] max-w-[30rem] flex-col items-center gap-2 rounded-md bg-gray-100 p-5 text-center dark:bg-[#2b2b2b]"
             >
-              <div className="flex flex-col items-center gap-2">
+              <div className="flex flex-col items-center gap-2 ">
                 <Icon className="text-5xl" />
                 <h2 className="text-lg font-semibold uppercase ">{title}</h2>
               </div>
