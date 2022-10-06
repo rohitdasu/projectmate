@@ -1,10 +1,22 @@
 import Image from 'next/image';
 import { benefits_data } from './data';
+import type { StaticImageData } from 'next/image';
 
-export const Benefit = ({ data }) => {
-  const { image_src, image_alt, title, desc, reverse } = data;
+interface IProps {
+  title: string;
+  desc: string;
+  reverse?: boolean;
+  image_src: StaticImageData;
+  image_alt: string;
+}
 
-  const {} = data;
+export const Benefit: React.FC<IProps> = ({
+  title,
+  desc,
+  reverse,
+  image_src,
+  image_alt,
+}) => {
   return (
     <li
       className={`flex flex-col items-center gap-10 lg:flex-row ${
@@ -31,7 +43,7 @@ export const BenefitsContainer = () => {
   return (
     <ul className="flex flex-col gap-[7rem] px-4 py-[5rem]">
       {benefits_data.map((item) => {
-        return <Benefit key={item.title} data={item} />;
+        return <Benefit key={item.title} {...item} />;
       })}
     </ul>
   );
