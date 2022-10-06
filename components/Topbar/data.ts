@@ -28,11 +28,6 @@ export const appRoutes: IRoute[] = [
     url: '/projects',
     Icon: IoCodeSlash,
   },
-  {
-    title: 'about',
-    url: '/about',
-    Icon: AiOutlineRead,
-  },
 ];
 
 export const getSocialLinks = (isSideBar?: boolean): IRoute[] => [
