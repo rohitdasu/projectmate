@@ -1,6 +1,11 @@
 import type { NextPage } from 'next';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
-import { BenefitsContainer, Guide, Hero } from '@/components/LandingPage/';
+import {
+  About,
+  BenefitsContainer,
+  Guide,
+  Hero,
+} from '@/components/LandingPage/';
 
 const Home: NextPage = () => {
   return (
@@ -8,6 +13,7 @@ const Home: NextPage = () => {
       <Hero />
       <Guide />
       <BenefitsContainer />
+      <About />
     </SharedLayout>
   );
 };
