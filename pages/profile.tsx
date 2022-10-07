@@ -3,9 +3,26 @@ import { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
 import { FaRegEdit, FaTrashAlt } from 'react-icons/fa';
 import { BsFillBookmarkDashFill } from 'react-icons/bs';
+import Router from 'next/router';
+import Lottie from 'lottie-react';
+import Loader from '@/../public/loading.json';
 
 const Profile: NextPage = () => {
-  const { data: session } = useSession();
+  const { status, data: session } = useSession({
+    required: true,
+    onUnauthenticated() {
+      Router.push('/');
+    },
+  });
+
+  if (status === 'loading') {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <Lottie animationData={Loader} />
+      </div>
+    );
+  }
+
   return (
     <SharedLayout title="Profile">
       <div className="m-auto flex w-full flex-col px-4 py-5">
