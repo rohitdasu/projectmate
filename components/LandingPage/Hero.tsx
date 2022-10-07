@@ -23,7 +23,7 @@ export const Hero = () => {
   };
 
   return (
-    <header className="m-auto px-4 py-[5rem] lg:flex lg:items-center lg:justify-between">
+    <header className="m-auto my-[5rem] px-4 lg:flex lg:items-center lg:justify-between">
       <AuthModal title={'Continue with your social accounts'} />
       <div className="flex flex-col items-center gap-10 text-center lg:items-start lg:text-left">
         <h1 className="text-4xl font-bold">

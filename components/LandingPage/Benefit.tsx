@@ -41,7 +41,7 @@ export const Benefit: React.FC<IProps> = ({
 
 export const BenefitsContainer = () => {
   return (
-    <ul className="flex flex-col gap-[7rem] px-4 py-[5rem]">
+    <ul className="my-[7rem] flex flex-col gap-[7rem] px-4">
       {benefits_data.map((item) => {
         return <Benefit key={item.title} {...item} />;
       })}
