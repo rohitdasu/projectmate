@@ -28,7 +28,7 @@ export const SharedLayout: React.FC<IProps> = ({
           This project is published under{' '}
           <a
             className="font-bold"
-            href="https://github.com/Yazdun/projectmate/blob/main/LICENSE"
+            href="https://github.com/rohitdasu/projectmate/blob/main/LICENSE"
             target="_blank"
             rel="noreferrer"
           >
