@@ -1,7 +1,7 @@
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
-import { FaRegEdit, FaTrashAlt } from 'react-icons/fa';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import { BsFillBookmarkDashFill } from 'react-icons/bs';
 import Router from 'next/router';
 import Lottie from 'lottie-react';
@@ -38,34 +38,34 @@ const Profile: NextPage = () => {
         <div className="grid auto-rows-auto gap-5 pt-5 dark:text-[#B7C2D1] sm:grid sm:grid-cols-2 lg:grid-cols-3">
           <div className="flex w-full flex-row items-center justify-between rounded-lg p-4 shadow-border-shadow dark:bg-[#232931]">
             <p className="text-sm sm:text-base">Projectmate</p>
-            <div className="flex flex-row gap-5">
-              <button className="p-3">
-                <FaRegEdit />
+            <div className="flex flex-row">
+              <button className="p-3 transition-all hover:opacity-70">
+                <FaEdit />
               </button>
-              <button className="p-3">
-                <FaTrashAlt />
-              </button>
-            </div>
-          </div>
-          <div className="flex w-full flex-row items-center justify-between rounded-lg p-4 shadow-border-shadow dark:bg-[#232931]">
-            <p className="text-sm sm:text-base">Dribble</p>
-            <div className="flex flex-row gap-5">
-              <button className="p-3">
-                <FaRegEdit />
-              </button>
-              <button className="p-3">
-                <FaTrashAlt />
+              <button className="p-3 transition-all hover:opacity-70">
+                <FaTrash />
               </button>
             </div>
           </div>
           <div className="flex w-full flex-row items-center justify-between rounded-lg p-4 shadow-border-shadow dark:bg-[#232931]">
             <p className="text-sm sm:text-base">React</p>
-            <div className="flex flex-row gap-5">
-              <button className="p-3">
-                <FaRegEdit />
+            <div className="flex flex-row">
+              <button className="p-3 transition-all hover:opacity-70">
+                <FaEdit />
               </button>
-              <button className="p-3">
-                <FaTrashAlt />
+              <button className="p-3 transition-all hover:opacity-70">
+                <FaTrash />
+              </button>
+            </div>
+          </div>
+          <div className="flex w-full flex-row items-center justify-between rounded-lg p-4 shadow-border-shadow dark:bg-[#232931]">
+            <p className="text-sm sm:text-base">Dribble</p>
+            <div className="flex flex-row">
+              <button className="p-3 transition-all hover:opacity-70">
+                <FaEdit />
+              </button>
+              <button className="p-3 transition-all hover:opacity-70">
+                <FaTrash />
               </button>
             </div>
           </div>
@@ -75,18 +75,18 @@ const Profile: NextPage = () => {
         </h2>
         <div className="grid auto-rows-auto gap-5 pt-5 dark:text-[#B7C2D1] sm:grid sm:grid-cols-2 lg:grid-cols-3">
           <div className="relative h-96 w-full rounded-lg shadow-border-shadow dark:bg-[#232931] sm:max-w-2xl">
-            <button className="absolute top-5 right-5 p-3">
-              <BsFillBookmarkDashFill className="text-2xl" />
+            <button className="absolute top-5 right-5 p-3 transition-all hover:opacity-70">
+              <BsFillBookmarkDashFill />
             </button>
           </div>
           <div className="relative h-96 w-full rounded-lg shadow-border-shadow dark:bg-[#232931] sm:max-w-2xl">
-            <button className="absolute top-5 right-5 p-3">
-              <BsFillBookmarkDashFill className="text-2xl" />
+            <button className="absolute top-5 right-5 p-3 transition-all hover:opacity-70">
+              <BsFillBookmarkDashFill />
             </button>
           </div>
           <div className="relative h-96 w-full rounded-lg shadow-border-shadow dark:bg-[#232931] sm:max-w-2xl">
-            <button className="absolute top-5 right-5 p-3">
-              <BsFillBookmarkDashFill className="text-2xl" />
+            <button className="absolute top-5 right-5 p-3 transition-all hover:opacity-70">
+              <BsFillBookmarkDashFill />
             </button>
           </div>
         </div>
