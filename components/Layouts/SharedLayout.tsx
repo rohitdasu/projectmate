@@ -18,7 +18,7 @@ export const SharedLayout: React.FC<IProps> = ({ children, title }) => {
       </Head>
       <Topbar />
       <main className="m-auto max-w-screen-xl">{children}</main>
-      <footer className="px-5 py-10 text-center">
+      <footer className="sticky top-[100%] px-5 py-10 text-center ">
         Copyright {year} © All Rights Reserved
       </footer>
     </>
