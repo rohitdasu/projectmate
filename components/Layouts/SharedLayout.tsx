@@ -24,8 +24,17 @@ export const SharedLayout: React.FC<IProps> = ({
       <Topbar />
       <main className="m-auto max-w-screen-xl">{children}</main>
       {!hideFooter && (
-        <footer className="sticky top-[100%] px-5 py-10 text-center ">
-          Copyright {year} © All Rights Reserved
+        <footer className="sticky top-[100%] border px-5 py-10 text-center dark:border-gray-800">
+          This project is published under{' '}
+          <a
+            className="font-bold"
+            href="https://github.com/Yazdun/projectmate/blob/main/LICENSE"
+            target="_blank"
+            rel="noreferrer"
+          >
+            MIT License
+          </a>{' '}
+          © {year}
         </footer>
       )}
     </>
