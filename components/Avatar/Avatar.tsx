@@ -44,7 +44,7 @@ export function Avatar() {
             <Menu.Items className="absolute right-0 top-[64px] z-50 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-700">
               <div className="w-full px-1 py-1 ">
                 <Menu.Item>
-                  <Link href="/profile">
+                  <Link href="/user/profile">
                     <a>
                       <motion.button
                         whileTap={{ scale: 0.9 }}
