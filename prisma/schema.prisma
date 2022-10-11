@@ -64,6 +64,7 @@ model Project {
   authorId         String    @db.ObjectId
   title            String
   description      String
+  content          String
   githubRepository String
   coverImg         String?
   tags             String[]

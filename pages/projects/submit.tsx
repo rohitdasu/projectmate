@@ -66,6 +66,7 @@ const SubmitProject = () => {
         {
           title: data.projectName,
           description: data.projectDescription,
+          content: '',
           githubRepository: data.repositoryLink,
           tags: data.tags,
           coverImg:
