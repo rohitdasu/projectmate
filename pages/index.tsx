@@ -9,11 +9,13 @@ import {
 
 const Home: NextPage = () => {
   return (
-    <SharedLayout title="Home">
-      <Hero />
-      <Guide />
-      <BenefitsContainer />
-      <About />
+    <SharedLayout title="Home" hasContainer>
+      <div>
+        <Hero />
+        <Guide />
+        <BenefitsContainer />
+        <About />
+      </div>
     </SharedLayout>
   );
 };
