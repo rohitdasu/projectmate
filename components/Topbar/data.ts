@@ -1,6 +1,6 @@
 import { MdRoofing } from 'react-icons/md';
 import { IoCodeSlash } from 'react-icons/io5';
-import { AiOutlineRead } from 'react-icons/ai';
+import { FiFeather } from 'react-icons/fi';
 import { FaDiscord, FaGithub } from 'react-icons/fa';
 import { TbBrandGithub, TbBrandDiscord } from 'react-icons/tb';
 import { IconType } from 'react-icons';
@@ -27,6 +27,11 @@ export const appRoutes: IRoute[] = [
     title: 'projects',
     url: '/projects',
     Icon: IoCodeSlash,
+  },
+  {
+    title: 'blog',
+    url: '/blog',
+    Icon: FiFeather,
   },
 ];
 
