@@ -6,12 +6,14 @@ interface IProps {
   children: React.ReactNode;
   title: string;
   hideFooter?: boolean;
+  hasContainer?: boolean;
 }
 
 export const SharedLayout: React.FC<IProps> = ({
   children,
   title,
   hideFooter,
+  hasContainer,
 }) => {
   const year = new Date().getFullYear();
 
@@ -22,7 +24,9 @@ export const SharedLayout: React.FC<IProps> = ({
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
       <Topbar />
-      <main className="m-auto max-w-screen-xl">{children}</main>
+      <main className={(hasContainer && 'm-auto max-w-screen-xl') || ''}>
+        {children}
+      </main>
       {!hideFooter && (
         <footer className="sticky top-[100%] border px-5 py-10 text-center dark:border-gray-800">
           This project is published under{' '}
