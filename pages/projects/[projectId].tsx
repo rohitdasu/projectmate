@@ -87,9 +87,14 @@ const ProjectDetails = () => {
               ))}
             </div>
           </div>
-          <button className=" flex w-max items-center space-x-4 rounded-md bg-orange-500 px-4 py-2 text-xl font-semibold text-white transition-all hover:bg-orange-600">
+          <a
+            href={projectData?.githubRepository}
+            target="_blank"
+            rel="noopener noreferrer"
+            className=" flex w-max items-center space-x-4 rounded-md bg-orange-500 px-4 py-2 text-xl font-semibold text-white transition-all hover:cursor-pointer hover:bg-orange-600"
+          >
             <span>Contribute now</span> <BsBoxArrowUpRight />
-          </button>
+          </a>
         </div>
       </div>
     </SharedLayout>
