@@ -65,6 +65,7 @@ export const ProjectsList: React.FC = () => {
           {paginatedPosts?.map((project: IProject, i: number) => (
             <Project
               key={i}
+              id={project.id}
               description={project.description}
               title={project.title}
               tags={project.tags}
