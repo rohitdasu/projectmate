@@ -5,25 +5,41 @@ import { BsBoxArrowUpRight } from 'react-icons/bs';
 import axios from 'axios';
 import useSWR from 'swr';
 import thumbnail from '@/../public/open-source.png';
+import { useSession } from 'next-auth/react';
+import Lottie from 'lottie-react';
+import Loader from '../../public/loading.json';
 
 const ProjectDetails = () => {
   const router = useRouter();
   const { projectId } = router.query || {};
-
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
-  const { data, error } = useSWR(`/api/project/${projectId}`, fetcher);
+  const url = `/api/project/${projectId}`;
+  const { data, error } = useSWR(projectId ? url : null, fetcher);
   const { results: projectData } = data || {};
+
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push('/');
+    },
+  });
+
+  if (status === 'loading' || !data) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <Lottie animationData={Loader} />
+      </div>
+    );
+  }
 
   if (error)
     return <div className="m-auto my-5 text-lg">Failed to load projects</div>;
 
-  if (!data) return <div className="m-auto my-5 text-lg">Loading...</div>;
-
   return (
     <SharedLayout title="Project description">
       <div className="flex w-full">
-        <div className="container m-auto mb-10 flex flex-col p-4 md:w-[85%]">
+        <div className="container m-auto mb-10 flex flex-col p-4">
           <h1 className="py-2 text-4xl font-semibold">
             {projectData?.title.toUpperCase()}
           </h1>
@@ -71,7 +87,7 @@ const ProjectDetails = () => {
               ))}
             </div>
           </div>
-          <button className=" flex w-max items-center space-x-4 rounded-md bg-orange-500 px-4 py-2 text-xl font-semibold text-white transition-all hover:bg-orange-400 hover:opacity-90">
+          <button className=" flex w-max items-center space-x-4 rounded-md bg-orange-500 px-4 py-2 text-xl font-semibold text-white transition-all hover:bg-orange-600">
             <span>Contribute now</span> <BsBoxArrowUpRight />
           </button>
         </div>
