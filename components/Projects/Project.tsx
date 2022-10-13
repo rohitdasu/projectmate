@@ -7,12 +7,20 @@ import { AiOutlineUser } from 'react-icons/ai';
 import { useSession } from 'next-auth/react';
 import { Tags } from './Tags';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 
-export const Project = ({ title, description, tags, author }: ProjectProps) => {
+export const Project = ({
+  id,
+  title,
+  description,
+  tags,
+  author,
+}: ProjectProps) => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { data: session } = useSession();
-  const handleContribute = () => {
-    return;
+  const handleContributeClick = () => {
+    session ? router.push(`/projects/${id}`) : dispatch(openModal());
   };
 
   return (
@@ -42,9 +50,7 @@ export const Project = ({ title, description, tags, author }: ProjectProps) => {
             </div>
             <motion.button
               whileTap={{ scale: 0.9 }}
-              onClick={() =>
-                session ? handleContribute : dispatch(openModal())
-              }
+              onClick={handleContributeClick}
               className="mt-2 flex justify-center rounded-md bg-secondary-color px-2 py-1.5 font-bold text-white focus:ring sm:my-0"
             >
               <span>Contribute</span>
