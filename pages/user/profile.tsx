@@ -24,7 +24,7 @@ const Profile: NextPage = () => {
   }
 
   return (
-    <SharedLayout title="Profile">
+    <SharedLayout title="Profile" hasContainer>
       <div className="m-auto flex w-full flex-col px-4 py-5">
         <h1 className="text-xl font-semibold dark:text-[#a6a6a6] sm:text-[30px]">
           <span>Welcome back, </span>
