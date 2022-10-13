@@ -69,7 +69,7 @@ const ProjectDetails = () => {
               {new Date(projectData?.createdAt).toLocaleDateString()}
             </span>
           </div>
-          <div className="my-6 flex flex-col">
+          <div className="my-6 flex flex-col break-words">
             <p>{projectData?.description}</p>
           </div>
           <div>
