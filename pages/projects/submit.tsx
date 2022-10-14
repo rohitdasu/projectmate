@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { FileUploader } from 'react-drag-drop-files';
 import { AiFillCloseCircle } from 'react-icons/ai';
@@ -11,6 +11,9 @@ import Lottie from 'lottie-react';
 import Loader from '../../public/loading.json';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
+import 'react-quill/dist/quill.snow.css';
+import dynamic from 'next/dynamic';
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 type FormInputs = {
   tags: string[];
@@ -306,6 +309,12 @@ const SubmitProject = () => {
                 Note: We would advise you to upload a picture. otherwise, the
                 default github icon will appear.
               </span>
+            </div>
+            <div className="space-y-2">
+              <label className="text-lg">
+                Content <span className="text-red-500">*</span>
+              </label>
+              <ReactQuill theme="snow" value={''} />
             </div>
           </form>
           <div className="my-4 w-full">
