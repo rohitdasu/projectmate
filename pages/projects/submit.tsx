@@ -260,6 +260,18 @@ const SubmitProject = () => {
                 </div>
               )}
             </div>
+            <div className="h-80 space-y-2">
+              <label className="text-lg">
+                Content <span className="text-red-500">*</span>
+              </label>
+              <ReactQuill
+                modules={modules}
+                className="h-52 border-red-500"
+                theme="snow"
+                value={content}
+                onChange={(data) => setContent(data)}
+              />
+            </div>
             <div className="cover-container space-y-2">
               <label className="text-lg">Cover Image</label>
               <div
@@ -327,18 +339,6 @@ const SubmitProject = () => {
                 Note: We would advise you to upload a picture. otherwise, the
                 default github icon will appear.
               </p>
-            </div>
-            <div className="h-80 space-y-2">
-              <label className="text-lg">
-                Content <span className="text-red-500">*</span>
-              </label>
-              <ReactQuill
-                modules={modules}
-                className="h-52 border-red-500"
-                theme="snow"
-                value={content}
-                onChange={(data) => setContent(data)}
-              />
             </div>
           </form>
           <div className="my-4 w-full">
