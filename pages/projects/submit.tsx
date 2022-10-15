@@ -260,7 +260,7 @@ const SubmitProject = () => {
                 </div>
               )}
             </div>
-            <div className="h-80 space-y-2">
+            <div className="h-72 space-y-2">
               <label className="text-lg">
                 Content <span className="text-red-500">*</span>
               </label>
