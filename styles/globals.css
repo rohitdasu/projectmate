@@ -109,3 +109,20 @@ body {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
 }
+
+.ql-container, .ql-toolbar {
+  border: 1px solid rgb(107 114 128)!important;
+}
+
+.ql-container {
+  border-radius: 0 0 6px 6px;
+  border-top: 0px !important;
+}
+
+.ql-toolbar {
+  border-radius: 6px 6px 0 0;
+}
+
+.ql-editor {
+  padding: 12px 8px !important;
+}

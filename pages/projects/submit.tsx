@@ -25,6 +25,21 @@ type FormInputs = {
 
 const fileTypes: string[] = ['JPG', 'JPEG', 'PNG', 'GIF'];
 
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, 3, 4, false] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [
+      { list: 'ordered' },
+      { list: 'bullet' },
+      { indent: '-1' },
+      { indent: '+1' },
+    ],
+    ['link', 'image'],
+    ['clean'],
+  ],
+};
+
 const SubmitProject = () => {
   const {
     register,
@@ -45,6 +60,7 @@ const SubmitProject = () => {
   };
 
   const [fileError, setFileError] = useState(false);
+  const [content, setContent] = useState<string>('');
   const [fileKey, setFileKey] = useState(uuidv4().toString());
 
   const { status, data: session } = useSession({
@@ -93,9 +109,9 @@ const SubmitProject = () => {
   const coverImageValue = watch('coverImage');
 
   return (
-    <SharedLayout title="Submit Project">
-      <div className="mt-4 mb-12 flex w-full flex-col space-y-4">
-        <div className="mx-auto w-full px-4 lg:w-[70%] lg:px-0">
+    <SharedLayout title="Submit Project" hasContainer>
+      <div className="mt-4 mb-12 flex w-full flex-col space-y-4 px-0 lg:px-4">
+        <div className="mx-auto w-full px-4 lg:px-0">
           <form className="form-container mx-auto flex w-full flex-col space-y-6">
             <h1 className="mb-4 text-left text-3xl font-semibold">
               Add Project
@@ -221,26 +237,28 @@ const SubmitProject = () => {
                   );
                 }}
               />
+              <p className="text-sm italic text-gray-500">
+                Note: only 5 tags are applicable
+              </p>
               {errors.tags?.type === 'required' && (
                 <p className="text-xs text-red-500">tags are required</p>
               )}
-              <span className="text-sm text-gray-500">
-                Note: only 5 tags are applicable
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {watch('tags') &&
-                  watch('tags').length > 0 &&
-                  watch('tags').map((tag, i) => (
-                    <div
-                      key={i}
-                      onClick={() => removeTag(i)}
-                      className="group flex w-max cursor-pointer flex-wrap items-center space-x-1 rounded-full bg-background-2 px-4 py-2 text-[15px] text-blue-500"
-                    >
-                      <span className="uppercase">{tag}</span>
-                      <AiFillCloseCircle className="ml-2" />
-                    </div>
-                  ))}
-              </div>
+              {watch('tags') && watch('tags').length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {watch('tags') &&
+                    watch('tags').length > 0 &&
+                    watch('tags').map((tag, i) => (
+                      <div
+                        key={i}
+                        onClick={() => removeTag(i)}
+                        className="group flex w-max cursor-pointer flex-wrap items-center space-x-1 rounded-full bg-background-2 px-4 py-2 text-[15px] text-blue-500"
+                      >
+                        <span className="uppercase">{tag}</span>
+                        <AiFillCloseCircle className="ml-2" />
+                      </div>
+                    ))}
+                </div>
+              )}
             </div>
             <div className="cover-container space-y-2">
               <label className="text-lg">Cover Image</label>
@@ -305,16 +323,22 @@ const SubmitProject = () => {
                   />
                 )}
               </div>
-              <span className="mx-auto mt-4 flex items-center text-sm text-gray-500 ">
+              <p className="mt-4 text-sm italic text-gray-500">
                 Note: We would advise you to upload a picture. otherwise, the
                 default github icon will appear.
-              </span>
+              </p>
             </div>
-            <div className="space-y-2">
+            <div className="h-80 space-y-2">
               <label className="text-lg">
                 Content <span className="text-red-500">*</span>
               </label>
-              <ReactQuill theme="snow" value={''} />
+              <ReactQuill
+                modules={modules}
+                className="h-52 border-red-500"
+                theme="snow"
+                value={content}
+                onChange={(data) => setContent(data)}
+              />
             </div>
           </form>
           <div className="my-4 w-full">
