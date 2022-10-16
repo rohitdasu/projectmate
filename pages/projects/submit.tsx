@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { FileUploader } from 'react-drag-drop-files';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import {
@@ -18,6 +17,7 @@ import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import { Input } from '@/components/Form/Input';
 import { RichTextEditor } from '@/components/Form/RichTextEditor';
+import { FileDrop } from '@/components/Form/FileDrop';
 
 type FormInputs = {
   tags: string[];
@@ -30,40 +30,13 @@ type FormInputs = {
 
 const fileTypes: string[] = ['JPG', 'JPEG', 'PNG', 'GIF'];
 
-const modules = {
-  toolbar: [
-    [{ header: [1, 2, 3, 4, false] }],
-    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-    [
-      { list: 'ordered' },
-      { list: 'bullet' },
-      { indent: '-1' },
-      { indent: '+1' },
-    ],
-    ['link', 'image'],
-    ['clean'],
-  ],
-};
-
 const SubmitProject = () => {
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    watch,
-    control,
-    reset,
-    formState: { errors },
-  } = useForm<FormInputs>();
+  const { handleSubmit, setValue, watch, control, reset } =
+    useForm<FormInputs>();
+  const coverImageValue = watch('coverImage');
+  const tags = watch('tags');
 
   const [tagInput, setTagInput] = useState<string>('');
-  const removeTag = (index: number) => {
-    setValue(
-      'tags',
-      watch('tags').filter((element: string, i: number) => i !== index)
-    );
-  };
-
   const [fileError, setFileError] = useState(false);
   const [fileKey, setFileKey] = useState(uuidv4().toString());
 
@@ -110,9 +83,7 @@ const SubmitProject = () => {
     }
   };
 
-  const coverImageValue = watch('coverImage');
-
-  const handleOnKeyDown = (
+  const onTagAddition = (
     e: React.KeyboardEvent,
     field: ControllerRenderProps<FormInputs, 'tags'>
   ) => {
@@ -123,14 +94,33 @@ const SubmitProject = () => {
       toast.error("tag length shouldn't exceed 15 characters");
       return;
     }
-    if (watch('tags') && watch('tags').length == 5) {
+    if (tags && tags.length == 5) {
       toast.error('total number of tags should be 5');
       return;
     }
-    const d = watch('tags');
-    field.onChange(d && d.length > 0 ? [...watch('tags'), value] : [value]);
+    const d = tags;
+    field.onChange(d && d.length > 0 ? [...tags, value] : [value]);
     setTagInput('');
     e.preventDefault();
+  };
+
+  const onFileChange = (
+    file: File,
+    field: ControllerRenderProps<FormInputs, 'coverImage'>
+  ) => {
+    setFileError(false);
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (readerEvent) => {
+      field.onChange(readerEvent.target?.result);
+    };
+  };
+
+  const removeTag = (index: number) => {
+    setValue(
+      'tags',
+      tags.filter((element: string, i: number) => i !== index)
+    );
   };
 
   return (
@@ -154,6 +144,7 @@ const SubmitProject = () => {
                   message: 'Project name must be at least 2 characters long',
                 },
               }}
+              defaultValue=""
               render={({ field, fieldState }) => {
                 return (
                   <Input
@@ -180,6 +171,7 @@ const SubmitProject = () => {
                   message: 'repository link is invalid',
                 },
               }}
+              defaultValue=""
               render={({ field, fieldState }) => {
                 return (
                   <Input
@@ -206,12 +198,14 @@ const SubmitProject = () => {
                     'Project description must be at least 160 characters long',
                 },
               }}
+              defaultValue=""
               render={({ field, fieldState }) => {
                 return (
                   <Input
                     {...field}
                     placeholder="Enter your project description"
                     error={fieldState.error}
+                    value={field.value}
                     label="Description"
                     required
                   />
@@ -237,15 +231,15 @@ const SubmitProject = () => {
                       error={fieldState.error}
                       label="Tags"
                       value={tagInput}
-                      onKeyDown={(e) => handleOnKeyDown(e, field)}
+                      onKeyDown={(e) => onTagAddition(e, field)}
                       required
                       hintMessage="Note: only 5 tags are allowed"
                     />
-                    {watch('tags') && watch('tags').length > 0 && (
+                    {tags && tags.length > 0 && (
                       <div className="flex flex-wrap gap-2">
-                        {watch('tags') &&
-                          watch('tags').length > 0 &&
-                          watch('tags').map((tag, i) => (
+                        {tags &&
+                          tags.length > 0 &&
+                          tags.map((tag, i) => (
                             <div
                               key={i}
                               onClick={() => removeTag(i)}
@@ -304,10 +298,9 @@ const SubmitProject = () => {
                     control={control}
                     render={({ field }) => {
                       return (
-                        <FileUploader
+                        <FileDrop
                           {...field}
-                          key={fileKey}
-                          multiple={false}
+                          fileKey={fileKey}
                           label="Drag or upload your Image."
                           classes={`file-uploader ${
                             fileError && 'file-uploader-error'
@@ -315,14 +308,9 @@ const SubmitProject = () => {
                           name={field.name}
                           maxSize={2}
                           types={fileTypes}
-                          handleChange={(file: File) => {
-                            setFileError(false);
-                            const reader = new FileReader();
-                            reader.readAsDataURL(file);
-                            reader.onload = (readerEvent) => {
-                              field.onChange(readerEvent.target?.result);
-                            };
-                          }}
+                          handleChange={(file: File) =>
+                            onFileChange(file, field)
+                          }
                           onTypeError={() => setFileError(true)}
                           onSizeError={() => setFileError(true)}
                         />

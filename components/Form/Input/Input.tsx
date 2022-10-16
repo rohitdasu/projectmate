@@ -7,6 +7,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error: FieldError | undefined;
   required?: boolean;
   hintMessage?: string;
+  value: string | undefined;
   label: string;
 }
 
@@ -20,6 +21,7 @@ function MyInput(
     onChange,
     onBlur,
     label,
+    value,
     onKeyDown,
   }: InputProps,
   ref: LegacyRef<HTMLInputElement>
@@ -37,6 +39,7 @@ function MyInput(
         ref={ref}
         onChange={onChange}
         onBlur={onBlur}
+        value={value}
         onKeyDown={onKeyDown}
         placeholder={placeholder}
         aria-invalid={error ? 'true' : 'false'}
