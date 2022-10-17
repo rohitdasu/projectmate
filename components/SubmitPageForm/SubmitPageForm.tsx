@@ -18,7 +18,7 @@ import { Input } from '@/components/Form/Input';
 import { RichTextEditor } from '@/components/Form/RichTextEditor';
 import { FileDrop } from '@/components/Form/FileDrop';
 import { schema } from './schema';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 type FormInputs = {
   tags: string[];
@@ -34,7 +34,7 @@ const fileTypes: string[] = ['JPG', 'JPEG', 'PNG', 'GIF'];
 export const SubmitPageForm = () => {
   const { handleSubmit, setValue, watch, control, reset } = useForm<FormInputs>(
     {
-      resolver: yupResolver(schema),
+      resolver: zodResolver(schema),
     }
   );
   const coverImageValue = watch('coverImage');
