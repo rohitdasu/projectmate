@@ -204,10 +204,10 @@ export const SubmitPageForm = () => {
                         <div
                           key={i}
                           onClick={() => removeTag(i)}
-                          className="group flex w-max cursor-pointer flex-wrap items-center space-x-1 rounded-full bg-background-2 px-4 py-2 text-[15px] text-blue-500"
+                          className="group flex w-max cursor-pointer flex-wrap items-center space-x-2 rounded-full bg-background-2 px-4 py-2 text-[15px] text-blue-500"
                         >
-                          <span>{tag}</span>
-                          <AiFillCloseCircle className="ml-2" />
+                          <span className="text-sm uppercase">{tag}</span>
+                          <AiFillCloseCircle />
                         </div>
                       ))}
                   </div>
