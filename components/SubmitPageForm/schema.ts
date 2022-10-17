@@ -21,6 +21,6 @@ export const schema = z.object({
     .string()
     .min(1, 'project description is required')
     .min(160, 'project description should be at least 160 characters long'),
-  coverImage: z.string(),
-  content: z.string(),
+  coverImage: z.string().optional(),
+  content: z.string().optional(),
 });
