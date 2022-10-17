@@ -9,7 +9,6 @@ import {
 } from 'react-hook-form';
 import { useSession } from 'next-auth/react';
 import Router from 'next/router';
-import toast from 'react-hot-toast';
 import Lottie from 'lottie-react';
 import Loader from '../../public/loading.json';
 import { v4 as uuidv4 } from 'uuid';
@@ -19,6 +18,7 @@ import { RichTextEditor } from '@/components/Form/RichTextEditor';
 import { FileDrop } from '@/components/Form/FileDrop';
 import { schema } from './schema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { toastMessage, messageType } from '../../shared';
 
 type FormInputs = {
   tags: string[];
@@ -78,12 +78,12 @@ export const SubmitPageForm = () => {
           },
         }
       );
-      toast.success('project added successfully');
+      toastMessage('project added successfully', messageType.success);
       reset();
       setFileError(false);
       setFileKey(uuidv4().toString());
     } catch (e) {
-      toast.error(e.message);
+      toastMessage(e.message, messageType.error);
     }
   };
 
@@ -95,11 +95,14 @@ export const SubmitPageForm = () => {
     const value = (e.target as HTMLInputElement).value;
     if (!value.trim()) return;
     if (value.length > 15) {
-      toast.error("tag length shouldn't exceed 15 characters");
+      toastMessage(
+        "tag length shouldn't exceed 15 characters",
+        messageType.error
+      );
       return;
     }
     if (tags && tags.length == 5) {
-      toast.error('total number of tags should be 5');
+      toastMessage('total number of tags should be 5', messageType.error);
       return;
     }
     const d = tags;
