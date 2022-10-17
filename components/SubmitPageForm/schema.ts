@@ -9,7 +9,8 @@ export const schema = z.object({
   projectName: z
     .string()
     .min(1, 'project name is required')
-    .min(2, 'project name should be at least 2 characters long'),
+    .min(2, 'project name should be at least 2 characters long')
+    .max(20, "project name shouldn't be greater than 20 characters long"),
   repositoryLink: z
     .string()
     .min(1, 'repository link is required')
