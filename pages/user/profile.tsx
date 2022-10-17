@@ -74,18 +74,27 @@ const Profile: NextPage = () => {
           Bookmarks
         </h2>
         <div className="grid auto-rows-auto gap-5 pt-5 dark:text-[#B7C2D1] sm:grid sm:grid-cols-2 lg:grid-cols-3">
-          <div className="relative h-96 w-full rounded-lg shadow-border-shadow dark:bg-[#232931] sm:max-w-2xl">
+          <div
+            className="relative h-96 w-full rounded-lg shadow-border-shadow dark:bg-[#232931] sm:max-w-2xl"
+            style={{ backgroundColor: 'rgb(243 244 246)' }}
+          >
             <button className="absolute top-5 right-4 p-3 transition-all hover:opacity-70">
               <BsFillBookmarkDashFill />
             </button>
           </div>
           <div className="relative h-96 w-full rounded-lg shadow-border-shadow dark:bg-[#232931] sm:max-w-2xl">
-            <button className="absolute top-5 right-4 p-3 transition-all hover:opacity-70">
+            <button
+              className="absolute top-5 right-4 p-3 transition-all hover:opacity-70"
+              style={{ backgroundColor: 'rgb(243 244 246)' }}
+            >
               <BsFillBookmarkDashFill />
             </button>
           </div>
           <div className="relative h-96 w-full rounded-lg shadow-border-shadow dark:bg-[#232931] sm:max-w-2xl">
-            <button className="absolute top-5 right-4 p-3 transition-all hover:opacity-70">
+            <button
+              className="absolute top-5 right-4 p-3 transition-all hover:opacity-70"
+              style={{ backgroundColor: 'rgb(243 244 246)' }}
+            >
               <BsFillBookmarkDashFill />
             </button>
           </div>
