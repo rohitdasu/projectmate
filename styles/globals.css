@@ -133,3 +133,7 @@ body {
 .ql-editor:focus {
   border: 2px solid rgb(37 99 235);
 }
+
+.file-types {
+  overflow: initial !important;
+}
