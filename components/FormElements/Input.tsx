@@ -77,7 +77,3 @@ export const Input: React.FC<IProps> = ({
     </div>
   );
 };
-
-export const RawInput = () => {
-  return;
-};

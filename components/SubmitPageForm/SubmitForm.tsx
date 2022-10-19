@@ -77,7 +77,7 @@ export const SubmitForm = () => {
         </div>
 
         <button
-          className="rounded-md bg-blue-600 p-3 text-white"
+          className="rounded-md bg-blue-600 p-5 text-lg text-white"
           onClick={handleSubmit}
         >
           Submit Project
