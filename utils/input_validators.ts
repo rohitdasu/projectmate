@@ -1,17 +1,13 @@
-export const money_validation = {
-  name: 'money',
-  label: 'e-Money Number',
-  type: 'number',
-  id: 'money',
-  placeholder: '238521993',
+export const project_name_validation = {
+  name: 'name',
+  label: 'Project Name',
+  type: 'text',
+  id: 'name',
+  placeholder: 'Enter your project name',
   validation: {
     required: {
       value: true,
-      message: 'Required',
-    },
-    pattern: {
-      value: /^[0-9]*$/,
-      message: 'Digits only',
+      message: 'project name is required      ',
     },
   },
 };

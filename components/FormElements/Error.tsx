@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { framer_error } from './framer';
+import { MdNearbyError } from 'react-icons/md';
 
 interface IProps {
   message: string;
@@ -9,9 +10,10 @@ interface IProps {
 export const InputError: React.FC<IProps> = ({ message }) => {
   return (
     <motion.p
-      className="rounded-md bg-red-600 px-1 text-white dark:bg-red-700"
+      className="flex items-center gap-2 rounded-md px-1 font-semibold text-white text-red-600 dark:font-medium dark:text-red-500"
       {...framer_error}
     >
+      <MdNearbyError />
       {message}
     </motion.p>
   );

@@ -41,14 +41,6 @@ export const Input: React.FC<IProps> = ({
         <label htmlFor={id} className="font-bold">
           {label}
         </label>
-        <AnimatePresence mode="wait" initial={false}>
-          {isInvalid && (
-            <InputError
-              message={inputErrors.error.message}
-              key={inputErrors.error.message}
-            />
-          )}
-        </AnimatePresence>
       </div>
       {multiline ? (
         <textarea
@@ -66,6 +58,14 @@ export const Input: React.FC<IProps> = ({
           {...register(`${name}`, validation)}
         />
       )}
+      <AnimatePresence mode="wait" initial={false}>
+        {isInvalid && (
+          <InputError
+            message={inputErrors.error.message}
+            key={inputErrors.error.message}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
