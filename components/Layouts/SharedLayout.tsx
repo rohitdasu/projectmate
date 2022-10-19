@@ -28,7 +28,7 @@ export const SharedLayout: React.FC<IProps> = ({
         {children}
       </main>
       {!hideFooter && (
-        <footer className="sticky top-[100%] border px-5 py-10 text-center dark:border-gray-800">
+        <footer className="sticky top-[100%] border-t px-5 py-10 text-center dark:border-gray-800">
           This project is published under{' '}
           <a
             className="font-bold"
