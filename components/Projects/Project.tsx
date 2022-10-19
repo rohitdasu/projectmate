@@ -36,7 +36,7 @@ export const Project = ({
           />
         </div>
         <div className="flex w-full grow flex-col gap-5 p-4 pt-4">
-          <h2 className="flex flex-col gap-2 truncate text-xl font-semibold">
+          <h2 className="min-w-[0] flex-1 flex-col gap-2 truncate text-xl font-semibold">
             {title}
             <span className="flex items-center gap-1 text-sm font-light ">
               <AiOutlineUser />
