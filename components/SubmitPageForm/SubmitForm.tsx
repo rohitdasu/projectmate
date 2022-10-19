@@ -7,8 +7,10 @@ export const SubmitForm = () => {
 
   return (
     <FormProvider {...methods}>
-      <Input {...money_validation} />
-      <button>submit</button>
+      <form onSubmit={methods.handleSubmit((data) => console.log(data))}>
+        <Input {...money_validation} />
+        <button>submit</button>
+      </form>
     </FormProvider>
   );
 };

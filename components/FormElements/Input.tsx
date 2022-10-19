@@ -33,7 +33,7 @@ export const Input: React.FC<IProps> = ({
   const isInvalid = is_form_invalid(inputErrors);
 
   const input_tailwind =
-    'px-[1.563rem] autofill:bg-red-100 py-[1.25rem] rounded-md w-full border  dark:border-dark-700 dark:bg-dark-700 focus:outline-none placeholder:opacity-60';
+    'px-[1.563rem] py-[1.25rem] rounded-md w-full border border-slate-200 dark:border-gray-800 focus:outline-none bg-transparent placeholder:opacity-60';
 
   return (
     <div className="flex w-full flex-col gap-2">
