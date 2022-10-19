@@ -6,7 +6,7 @@ import { SubmitForm } from '@/components/SubmitPageForm/SubmitForm';
 const SubmitProject = () => {
   return (
     <SharedLayout title="Submit Project" hasContainer>
-      <div className="mt-4 mb-12 flex w-full flex-col space-y-4 px-0 lg:px-4">
+      <div className="flex w-full flex-col p-4">
         {/* <SubmitPageForm /> */}
         <SubmitForm />
       </div>

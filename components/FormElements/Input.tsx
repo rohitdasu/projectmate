@@ -4,6 +4,7 @@ import { is_form_invalid, find_input_error } from '../../utils';
 import { useFormContext } from 'react-hook-form';
 import { AnimatePresence } from 'framer-motion';
 import { InputError } from './Error';
+import { motion } from 'framer-motion';
 
 interface IProps {
   name: string;
