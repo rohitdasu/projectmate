@@ -12,13 +12,17 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { InputError } from '../FormElements/Error';
 import { AnimatePresence } from 'framer-motion';
 
+interface ITest {
+  prev: string;
+}
+
 export const SubmitForm = () => {
   const methods = useForm();
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState<any>([]);
 
   const handleTagsChange = (e: any) => {
     if (e.target.value.trimStart().includes(' ')) {
-      setTags((prev) => [...prev, e.target.value.trim()]);
+      setTags((prev: any) => [...prev, e.target.value.trim()]);
       setTimeout(() => {
         methods.resetField('tag');
       }, 1);
