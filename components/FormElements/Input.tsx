@@ -5,7 +5,17 @@ import { useFormContext } from 'react-hook-form';
 import { AnimatePresence } from 'framer-motion';
 import { InputError } from './Error';
 
-export const Input = ({
+interface IProps {
+  name: string;
+  label: string;
+  type: string;
+  id: string;
+  placeholder: string;
+  validation?: object;
+  multiline: boolean;
+}
+
+export const Input: React.FC<IProps> = ({
   name,
   label,
   type,
@@ -19,7 +29,7 @@ export const Input = ({
     formState: { errors },
   } = useFormContext();
 
-  const inputErrors = find_input_error(errors, name);
+  const inputErrors: any = find_input_error(errors, name);
   const isInvalid = is_form_invalid(inputErrors);
 
   const input_tailwind =
