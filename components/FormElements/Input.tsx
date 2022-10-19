@@ -16,6 +16,9 @@ interface IProps {
   onChange?: any;
 }
 
+export const input_tailwind_styles =
+  'px-[1.563rem] py-[1.25rem] rounded-md w-full border border-slate-200 dark:border-gray-800 focus:outline-none bg-transparent placeholder:opacity-60';
+
 export const Input: React.FC<IProps> = ({
   name,
   label,
@@ -34,9 +37,6 @@ export const Input: React.FC<IProps> = ({
   const inputErrors: any = find_input_error(errors, name);
   const isInvalid = is_form_invalid(inputErrors);
 
-  const input_tailwind =
-    'px-[1.563rem] py-[1.25rem] rounded-md w-full border border-slate-200 dark:border-gray-800 focus:outline-none bg-transparent placeholder:opacity-60';
-
   return (
     <div className="flex w-full flex-col gap-2">
       <div className="flex justify-between">
@@ -47,7 +47,10 @@ export const Input: React.FC<IProps> = ({
       {multiline ? (
         <textarea
           id={id}
-          className={cn(input_tailwind, 'max-h-[20rem] min-h-[10rem] resize-y')}
+          className={cn(
+            input_tailwind_styles,
+            'max-h-[20rem] min-h-[10rem] resize-y'
+          )}
           placeholder={placeholder}
           {...register(`${name}`, validation)}
         ></textarea>
@@ -55,10 +58,12 @@ export const Input: React.FC<IProps> = ({
         <input
           id={id}
           type={type}
-          className={input_tailwind}
+          className={input_tailwind_styles}
           placeholder={placeholder}
-          {...register(`${name}`, validation)}
-          onChange={onChange && onChange}
+          {...register(`${name}`, {
+            ...validation,
+            onChange: onChange,
+          })}
         />
       )}
       <AnimatePresence mode="wait" initial={false}>
@@ -71,4 +76,8 @@ export const Input: React.FC<IProps> = ({
       </AnimatePresence>
     </div>
   );
+};
+
+export const RawInput = () => {
+  return;
 };
