@@ -12,10 +12,6 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { InputError } from '../FormElements/Error';
 import { AnimatePresence } from 'framer-motion';
 
-interface ITest {
-  prev: string;
-}
-
 export const SubmitForm = () => {
   const methods = useForm();
   const [tags, setTags] = useState<any>([]);
