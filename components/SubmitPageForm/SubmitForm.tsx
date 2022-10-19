@@ -44,13 +44,13 @@ export const SubmitForm = () => {
         onSubmit={(e) => e.preventDefault()}
         className="flex flex-col items-start gap-10"
       >
-        <div className="flex w-full flex-col gap-10 lg:flex-row">
+        <div className="flex flex-col w-full gap-10 lg:flex-row">
           <Input {...project_name_validation} />
           <Input {...project_url_validation} />
         </div>
         <Input {...project_desc_validation} />
         <Input {...project_content_validation} />
-        <div className="flex w-full flex-col gap-3">
+        <div className="flex flex-col w-full gap-3">
           <Input {...project_tags_validation} onChange={handleTagsChange} />
           <AnimatePresence mode="wait" initial={false}>
             {noTag && (
@@ -59,16 +59,16 @@ export const SubmitForm = () => {
           </AnimatePresence>
           {tags.length > 0 && (
             <ul className="flex flex-wrap gap-3">
-              {tags.map((txt, idx) => {
+              {tags.map((txt: string, idx: number) => {
                 return (
                   <li key={idx}>
                     <button
                       onClick={() =>
-                        setTags((prev) => {
+                        setTags((prev: any) => {
                           return prev.filter((i) => i !== txt);
                         })
                       }
-                      className="flex items-center gap-4 rounded-md bg-background-2 p-2 text-blue-500"
+                      className="flex items-center gap-4 p-2 text-blue-500 rounded-md bg-background-2"
                     >
                       {txt}
                       <AiOutlineClose />
@@ -81,7 +81,7 @@ export const SubmitForm = () => {
         </div>
 
         <button
-          className="rounded-md bg-blue-600 p-5 text-lg text-white"
+          className="p-5 text-lg text-white bg-blue-600 rounded-md"
           onClick={handleSubmit}
         >
           Submit Project
