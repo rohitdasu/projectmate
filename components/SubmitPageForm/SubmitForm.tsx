@@ -44,13 +44,13 @@ export const SubmitForm = () => {
         onSubmit={(e) => e.preventDefault()}
         className="flex flex-col items-start gap-10"
       >
-        <div className="flex flex-col w-full gap-10 lg:flex-row">
+        <div className="flex w-full flex-col gap-10 lg:flex-row">
           <Input {...project_name_validation} />
           <Input {...project_url_validation} />
         </div>
         <Input {...project_desc_validation} />
         <Input {...project_content_validation} />
-        <div className="flex flex-col w-full gap-3">
+        <div className="flex w-full flex-col gap-3">
           <Input {...project_tags_validation} onChange={handleTagsChange} />
           <AnimatePresence mode="wait" initial={false}>
             {noTag && (
@@ -65,10 +65,10 @@ export const SubmitForm = () => {
                     <button
                       onClick={() =>
                         setTags((prev: any) => {
-                          return prev.filter((i) => i !== txt);
+                          return prev.filter((i: any) => i !== txt);
                         })
                       }
-                      className="flex items-center gap-4 p-2 text-blue-500 rounded-md bg-background-2"
+                      className="flex items-center gap-4 rounded-md bg-background-2 p-2 text-blue-500"
                     >
                       {txt}
                       <AiOutlineClose />
@@ -81,7 +81,7 @@ export const SubmitForm = () => {
         </div>
 
         <button
-          className="p-5 text-lg text-white bg-blue-600 rounded-md"
+          className="rounded-md bg-blue-600 p-5 text-lg text-white"
           onClick={handleSubmit}
         >
           Submit Project
