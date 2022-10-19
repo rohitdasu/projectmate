@@ -12,7 +12,7 @@ interface IProps {
   id: string;
   placeholder: string;
   validation?: object;
-  multiline: boolean;
+  multiline?: boolean;
 }
 
 export const Input: React.FC<IProps> = ({
@@ -53,7 +53,6 @@ export const Input: React.FC<IProps> = ({
       {multiline ? (
         <textarea
           id={id}
-          type={type}
           className={cn(input_tailwind, 'max-h-[20rem] min-h-[10rem] resize-y')}
           placeholder={placeholder}
           {...register(`${name}`, validation)}
