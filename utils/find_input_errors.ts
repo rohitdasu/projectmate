@@ -1,4 +1,4 @@
-export function find_input_error(errors: object, name: string) {
+export function find_input_error(errors: any, name: string) {
   const filtered = Object.keys(errors)
     .filter((key) => key.includes(name))
     .reduce((cur, key) => {
