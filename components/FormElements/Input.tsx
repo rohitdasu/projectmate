@@ -13,6 +13,7 @@ interface IProps {
   placeholder: string;
   validation?: object;
   multiline?: boolean;
+  onChange?: any;
 }
 
 export const Input: React.FC<IProps> = ({
@@ -23,6 +24,7 @@ export const Input: React.FC<IProps> = ({
   placeholder,
   multiline,
   validation,
+  onChange,
 }) => {
   const {
     register,
@@ -56,6 +58,7 @@ export const Input: React.FC<IProps> = ({
           className={input_tailwind}
           placeholder={placeholder}
           {...register(`${name}`, validation)}
+          onChange={onChange && onChange}
         />
       )}
       <AnimatePresence mode="wait" initial={false}>

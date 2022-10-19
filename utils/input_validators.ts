@@ -58,3 +58,11 @@ export const project_content_validation = {
   placeholder: 'Write some markdown for your project content',
   multiline: true,
 };
+
+export const project_tags_validation = {
+  name: 'tag',
+  label: 'Tag',
+  type: 'text',
+  id: 'md',
+  placeholder: 'separated by space',
+};

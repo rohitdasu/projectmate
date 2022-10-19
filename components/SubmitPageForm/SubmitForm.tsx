@@ -5,6 +5,7 @@ import {
   project_url_validation,
   project_desc_validation,
   project_content_validation,
+  project_tags_validation,
 } from '../../utils/input_validators';
 import { motion } from 'framer-motion';
 
@@ -23,6 +24,10 @@ export const SubmitForm = () => {
         </div>
         <Input {...project_desc_validation} />
         <Input {...project_content_validation} />
+        <Input
+          {...project_tags_validation}
+          onChange={(e) => console.log(e.target.value)}
+        />
         <button className="rounded-md bg-blue-600 p-3 text-white">
           Submit Project
         </button>
