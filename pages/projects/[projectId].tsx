@@ -36,7 +36,7 @@ const ProjectDetails = () => {
     return <div className="m-auto my-5 text-lg">Failed to load projects</div>;
 
   return (
-    <SharedLayout title="Project description">
+    <SharedLayout title="Project description" hasContainer>
       <div className="flex w-full">
         <div className="container m-auto mb-10 flex flex-col p-4">
           <h1 className="py-2 text-4xl font-semibold">
