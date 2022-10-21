@@ -19,10 +19,10 @@ export const Project: FC<IProject> = ({ title }) => {
         {title}
       </p>
       <div className="flex flex-row">
-        <button className="p-3 transition-all hover:opacity-70">
+        <button className="cursor-not-allowed p-3 transition-all hover:opacity-70">
           <FaEdit />
         </button>
-        <button className="p-3 transition-all hover:opacity-70">
+        <button className="cursor-not-allowed p-3 transition-all hover:opacity-70">
           <FaTrash />
         </button>
       </div>
