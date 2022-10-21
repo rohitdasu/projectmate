@@ -4,3 +4,4 @@ export * from './ContributorList';
 export * from './Projects';
 export * from './Search';
 export * from './Layouts';
+export * from './Profile/Project';

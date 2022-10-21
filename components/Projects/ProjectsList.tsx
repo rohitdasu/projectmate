@@ -55,7 +55,7 @@ export const ProjectsList: React.FC = () => {
     return <div className="m-auto my-5 text-lg">Failed to load projects</div>;
 
   return (
-    <div className="container m-auto auto-rows-auto gap-5 p-3 md:grid md:grid-cols-2 md:p-5 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="container m-auto max-w-screen-xl auto-rows-auto gap-5 md:grid md:grid-cols-2 md:p-5 lg:grid-cols-3 xl:grid-cols-4">
       {!data ? (
         skeletonProjectsToLoad.map((randomKey) => (
           <ProjectSkeleton key={randomKey} />
@@ -65,6 +65,7 @@ export const ProjectsList: React.FC = () => {
           {paginatedPosts?.map((project: IProject, i: number) => (
             <Project
               key={i}
+              id={project.id}
               description={project.description}
               title={project.title}
               tags={project.tags}

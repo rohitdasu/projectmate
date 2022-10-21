@@ -1,34 +1,31 @@
-import Image from 'next/image';
 import { useDispatch } from 'react-redux';
 import { openModal } from '@/store/slices/sliceModal';
 import { ProjectProps } from './Project.interface';
-import thumbnail from '../../public/open-source.png';
 import { AiOutlineUser } from 'react-icons/ai';
 import { useSession } from 'next-auth/react';
 import { Tags } from './Tags';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 
-export const Project = ({ title, description, tags, author }: ProjectProps) => {
+export const Project = ({
+  id,
+  title,
+  description,
+  tags,
+  author,
+}: ProjectProps) => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { data: session } = useSession();
-  const handleContribute = () => {
-    return;
+  const handleContributeClick = () => {
+    session ? router.push(`/projects/${id}`) : dispatch(openModal());
   };
 
   return (
     <div className="w-full p-2 md:p-0">
       <div className="flex h-full flex-col items-center overflow-hidden rounded-md text-foreground-1 shadow-border-shadow">
-        <div className="relative h-72 w-full sm:h-96 md:h-64">
-          <Image
-            className="object-cover"
-            layout="fill"
-            src={thumbnail}
-            alt={title}
-            placeholder="blur"
-          />
-        </div>
         <div className="flex w-full grow flex-col gap-5 p-4 pt-4">
-          <h2 className="flex flex-col gap-2 text-xl font-semibold">
+          <h2 className="min-w-[0] flex-1 flex-col gap-2 truncate text-xl font-semibold">
             {title}
             <span className="flex items-center gap-1 text-sm font-light ">
               <AiOutlineUser />
@@ -42,9 +39,7 @@ export const Project = ({ title, description, tags, author }: ProjectProps) => {
             </div>
             <motion.button
               whileTap={{ scale: 0.9 }}
-              onClick={() =>
-                session ? handleContribute : dispatch(openModal())
-              }
+              onClick={handleContributeClick}
               className="mt-2 flex justify-center rounded-md bg-secondary-color px-2 py-1.5 font-bold text-white focus:ring sm:my-0"
             >
               <span>Contribute</span>

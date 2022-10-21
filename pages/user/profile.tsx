@@ -1,8 +1,7 @@
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
+import { Project } from '@/components/Profile/Project';
 import { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
-import { FaEdit, FaTrash } from 'react-icons/fa';
-import { BsFillBookmarkDashFill } from 'react-icons/bs';
 import Router from 'next/router';
 import Lottie from 'lottie-react';
 import Loader from '@/../public/loading.json';
@@ -14,6 +13,25 @@ const Profile: NextPage = () => {
       Router.push('/');
     },
   });
+
+  const projects = [
+    {
+      id: '1',
+      title: 'Projectmate',
+    },
+    {
+      id: '2',
+      title: 'Appwrite',
+    },
+    {
+      id: '3',
+      title: 'Linktree',
+    },
+    {
+      id: '4',
+      title: 'Docker',
+    },
+  ];
 
   if (status === 'loading') {
     return (
@@ -28,49 +46,23 @@ const Profile: NextPage = () => {
       <div className="m-auto flex w-full flex-col px-4 py-5">
         <h1 className="text-xl font-semibold dark:text-[#a6a6a6] sm:text-[30px]">
           <span>Welcome back, </span>
-          <span className="whitespace-nowrap text-[#ED8728]  dark:text-white">
-            {session?.user && session.user.name}&nbsp;🎉
+          <span className="mr-2 whitespace-nowrap  text-[#ED8728] dark:text-white">
+            {session?.user && session.user.name}
           </span>
+          🎉
         </h1>
         <h2 className="pt-10 font-semibold dark:text-[#a6a6a6] sm:text-lg">
           Your Projects
         </h2>
         <div className="grid auto-rows-auto gap-5 pt-5 dark:text-[#B7C2D1] sm:grid sm:grid-cols-2 lg:grid-cols-3">
-          <div className="flex w-full flex-row items-center justify-between rounded-lg p-4 shadow-border-shadow dark:bg-[#232931]">
-            <p className="text-sm sm:text-base">Projectmate</p>
-            <div className="flex flex-row">
-              <button className="p-3 transition-all hover:opacity-70">
-                <FaEdit />
-              </button>
-              <button className="p-3 transition-all hover:opacity-70">
-                <FaTrash />
-              </button>
-            </div>
-          </div>
-          <div className="flex w-full flex-row items-center justify-between rounded-lg p-4 shadow-border-shadow dark:bg-[#232931]">
-            <p className="text-sm sm:text-base">React</p>
-            <div className="flex flex-row">
-              <button className="p-3 transition-all hover:opacity-70">
-                <FaEdit />
-              </button>
-              <button className="p-3 transition-all hover:opacity-70">
-                <FaTrash />
-              </button>
-            </div>
-          </div>
-          <div className="flex w-full flex-row items-center justify-between rounded-lg p-4 shadow-border-shadow dark:bg-[#232931]">
-            <p className="text-sm sm:text-base">Dribble</p>
-            <div className="flex flex-row">
-              <button className="p-3 transition-all hover:opacity-70">
-                <FaEdit />
-              </button>
-              <button className="p-3 transition-all hover:opacity-70">
-                <FaTrash />
-              </button>
-            </div>
-          </div>
+          {projects &&
+            projects.map((item) => {
+              return <Project key={item.id} title={item.title} id={item.id} />;
+            })}
         </div>
-        <h2 className="pt-10 font-semibold dark:text-[#a6a6a6] sm:text-lg">
+        {/*
+        will do this part when we have bookmarks section in our BE
+         <h2 className="pt-10 font-semibold dark:text-[#a6a6a6] sm:text-lg">
           Bookmarks
         </h2>
         <div className="grid auto-rows-auto gap-5 pt-5 dark:text-[#B7C2D1] sm:grid sm:grid-cols-2 lg:grid-cols-3">
@@ -89,7 +81,7 @@ const Profile: NextPage = () => {
               <BsFillBookmarkDashFill />
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </SharedLayout>
   );
