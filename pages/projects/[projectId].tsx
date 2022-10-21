@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { BsBoxArrowUpRight } from 'react-icons/bs';
 import axios from 'axios';
 import useSWR from 'swr';
-import thumbnail from '@/../public/open-source.png';
 import { useSession } from 'next-auth/react';
 import Lottie from 'lottie-react';
 import Loader from '../../public/loading.json';
@@ -37,20 +36,12 @@ const ProjectDetails = () => {
     return <div className="m-auto my-5 text-lg">Failed to load projects</div>;
 
   return (
-    <SharedLayout title="Project description">
+    <SharedLayout title="Project description" hasContainer>
       <div className="flex w-full">
         <div className="container m-auto mb-10 flex flex-col p-4">
           <h1 className="py-2 text-4xl font-semibold">
             {projectData?.title.toUpperCase()}
           </h1>
-          <div className="relative my-2 h-[300px] sm:h-[400px] lg:h-[500px]">
-            <Image
-              className="rounded-2xl object-cover"
-              src={thumbnail}
-              alt="Open source Image"
-              layout="fill"
-            />
-          </div>
           <div className="mt-6 flex flex-row items-center gap-5">
             <Image
               src={
