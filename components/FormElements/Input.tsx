@@ -1,0 +1,79 @@
+import React from 'react';
+import cn from 'classnames';
+import { is_form_invalid, find_input_error } from '../../utils';
+import { useFormContext } from 'react-hook-form';
+import { AnimatePresence } from 'framer-motion';
+import { InputError } from './Error';
+
+interface IProps {
+  name: string;
+  label: string;
+  type: string;
+  id: string;
+  placeholder: string;
+  validation?: object;
+  multiline?: boolean;
+  onChange?: any;
+}
+
+export const input_tailwind_styles =
+  'px-[1.563rem] py-[1.25rem] rounded-md w-full border border-slate-200 dark:border-gray-800 focus:outline-none bg-transparent placeholder:opacity-60';
+
+export const Input: React.FC<IProps> = ({
+  name,
+  label,
+  type,
+  id,
+  placeholder,
+  multiline,
+  validation,
+  onChange,
+}) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
+  const inputErrors: any = find_input_error(errors, name);
+  const isInvalid = is_form_invalid(inputErrors);
+
+  return (
+    <div className="flex w-full flex-col gap-2">
+      <div className="flex justify-between">
+        <label htmlFor={id} className="font-bold">
+          {label}
+        </label>
+      </div>
+      {multiline ? (
+        <textarea
+          id={id}
+          className={cn(
+            input_tailwind_styles,
+            'max-h-[20rem] min-h-[10rem] resize-y'
+          )}
+          placeholder={placeholder}
+          {...register(`${name}`, validation)}
+        ></textarea>
+      ) : (
+        <input
+          id={id}
+          type={type}
+          className={input_tailwind_styles}
+          placeholder={placeholder}
+          {...register(`${name}`, {
+            ...validation,
+            onChange: onChange,
+          })}
+        />
+      )}
+      <AnimatePresence mode="wait" initial={false}>
+        {isInvalid && (
+          <InputError
+            message={inputErrors.error.message}
+            key={inputErrors.error.message}
+          />
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
