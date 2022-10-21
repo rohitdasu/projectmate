@@ -59,7 +59,9 @@ const Profile: NextPage = () => {
               return <Project key={item.id} title={item.title} id={item.id} />;
             })}
         </div>
-        {!projects && <Lottie animationData={animation} style={style} />}
+        {projects && projects.length === 0 && (
+          <Lottie animationData={animation} style={style} />
+        )}
         {error && <Lottie animationData={errorAnimation} style={style} />}
         {/*
         will do this part when we have bookmarks section in our BE
