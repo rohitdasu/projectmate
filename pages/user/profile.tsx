@@ -5,6 +5,10 @@ import { useSession } from 'next-auth/react';
 import Router from 'next/router';
 import Lottie from 'lottie-react';
 import Loader from '@/../public/loading.json';
+import axios from 'axios';
+import useSWR from 'swr';
+import animation from '../../public/no-data.json';
+import errorAnimation from '../../public/error.json';
 
 const Profile: NextPage = () => {
   const { status, data: session } = useSession({
@@ -14,26 +18,12 @@ const Profile: NextPage = () => {
     },
   });
 
-  const projects = [
-    {
-      id: '1',
-      title: 'Projectmate',
-    },
-    {
-      id: '2',
-      title: 'Appwrite',
-    },
-    {
-      id: '3',
-      title: 'Linktree',
-    },
-    {
-      id: '4',
-      title: 'Docker',
-    },
-  ];
+  const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+  const url = `/api/user/project`;
+  const { data, error } = useSWR(url, fetcher);
+  const { results: projects } = data || [];
 
-  if (status === 'loading') {
+  if (status === 'loading' || !data) {
     return (
       <div className="flex h-screen items-center justify-center">
         <Lottie animationData={Loader} />
@@ -41,9 +31,17 @@ const Profile: NextPage = () => {
     );
   }
 
+  const style = {
+    height: 300,
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+  };
+
   return (
     <SharedLayout title="Profile" hasContainer>
-      <div className="m-auto flex w-full flex-col px-4 py-5">
+      <div className="m-auto mb-16 flex w-full flex-col px-4 py-5">
         <h1 className="text-xl font-semibold dark:text-[#a6a6a6] sm:text-[30px]">
           <span>Welcome back, </span>
           <span className="mr-2 whitespace-nowrap  text-[#ED8728] dark:text-white">
@@ -56,10 +54,13 @@ const Profile: NextPage = () => {
         </h2>
         <div className="grid auto-rows-auto gap-5 pt-5 dark:text-[#B7C2D1] sm:grid sm:grid-cols-2 lg:grid-cols-3">
           {projects &&
-            projects.map((item) => {
+            projects.length > 0 &&
+            projects.map((item: { id: string; title: string }) => {
               return <Project key={item.id} title={item.title} id={item.id} />;
             })}
         </div>
+        {!projects && <Lottie animationData={animation} style={style} />}
+        {error && <Lottie animationData={errorAnimation} style={style} />}
         {/*
         will do this part when we have bookmarks section in our BE
          <h2 className="pt-10 font-semibold dark:text-[#a6a6a6] sm:text-lg">
