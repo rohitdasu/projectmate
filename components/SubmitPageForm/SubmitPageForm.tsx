@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import {
   useForm,
@@ -11,11 +10,9 @@ import { useSession } from 'next-auth/react';
 import Router from 'next/router';
 import Lottie from 'lottie-react';
 import Loader from '../../public/loading.json';
-import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import { Input } from '@/components/Form/Input';
 import { RichTextEditor } from '@/components/Form/RichTextEditor';
-import { FileDrop } from '@/components/Form/FileDrop';
 import { schema } from './schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toastMessage, messageType } from '../../shared';
@@ -29,20 +26,15 @@ type FormInputs = {
   content: string | null;
 };
 
-const fileTypes: string[] = ['JPG', 'JPEG', 'PNG', 'GIF'];
-
 export const SubmitPageForm = () => {
   const { handleSubmit, setValue, watch, control, reset } = useForm<FormInputs>(
     {
       resolver: zodResolver(schema),
     }
   );
-  const coverImageValue = watch('coverImage');
   const tags = watch('tags');
   const [loading, setLoading] = useState<boolean>(false);
   const [tagInput, setTagInput] = useState<string>('');
-  const [fileError, setFileError] = useState(false);
-  const [fileKey, setFileKey] = useState(uuidv4().toString());
 
   const { status, data: session } = useSession({
     required: true,
@@ -83,8 +75,6 @@ export const SubmitPageForm = () => {
       setLoading(false);
       toastMessage('project added successfully', messageType.success);
       reset();
-      setFileError(false);
-      setFileKey(uuidv4().toString());
     } catch (e) {
       setLoading(false);
       toastMessage(e.message, messageType.error);
@@ -113,18 +103,6 @@ export const SubmitPageForm = () => {
     field.onChange(d && d.length > 0 ? [...tags, value] : [value]);
     setTagInput('');
     e.preventDefault();
-  };
-
-  const onFileChange = (
-    file: File,
-    field: ControllerRenderProps<FormInputs, 'coverImage'>
-  ) => {
-    setFileError(false);
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = (readerEvent) => {
-      field.onChange(readerEvent.target?.result);
-    };
   };
 
   const removeTag = (index: number) => {
@@ -230,64 +208,6 @@ export const SubmitPageForm = () => {
             return <RichTextEditor {...field} label={'Content'} />;
           }}
         />
-        <div className="cover-container space-y-2">
-          <label className="text-lg">Cover Image</label>
-          <div
-            className={`relative mx-auto flex h-[300px] rounded-md ${
-              coverImageValue ? 'border-2 border-dashed border-green-700' : ''
-            }`}
-          >
-            {coverImageValue ? (
-              <>
-                <Image
-                  src={coverImageValue}
-                  alt="project-image"
-                  className="h-full w-full object-contain"
-                  layout="fill"
-                />
-
-                <AiFillCloseCircle
-                  onClick={() => setValue('coverImage', null)}
-                  size={30}
-                  style={{
-                    zIndex: '50',
-                    cursor: 'pointer',
-                    position: 'absolute',
-                    right: 10,
-                    top: 10,
-                  }}
-                />
-              </>
-            ) : (
-              <Controller
-                name="coverImage"
-                control={control}
-                render={({ field }) => {
-                  return (
-                    <FileDrop
-                      {...field}
-                      fileKey={fileKey}
-                      label="Drag or upload your Image."
-                      classes={`file-uploader ${
-                        fileError && 'file-uploader-error'
-                      }`}
-                      name={field.name}
-                      maxSize={2}
-                      types={fileTypes}
-                      handleChange={(file: File) => onFileChange(file, field)}
-                      onTypeError={() => setFileError(true)}
-                      onSizeError={() => setFileError(true)}
-                    />
-                  );
-                }}
-              />
-            )}
-          </div>
-          <p className="mt-4 text-sm italic text-gray-500">
-            Note: We would advise you to upload a picture. otherwise, the
-            default github icon will appear.
-          </p>
-        </div>
       </form>
       <div className="my-4 w-full">
         <button
