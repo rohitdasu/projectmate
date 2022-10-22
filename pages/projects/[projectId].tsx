@@ -68,12 +68,12 @@ const ProjectDetails = () => {
               Technology stack
             </h1>
             <div className="mt-5 mb-7 flex flex-wrap gap-3">
-              {projectData?.tags.map((tag: string[], index: number) => (
+              {projectData?.tags.map((tag: string, index: number) => (
                 <span
                   key={index}
                   className="group flex w-max cursor-pointer flex-wrap items-center rounded-full bg-background-2 px-3 py-2 text-[15px] text-blue-500"
                 >
-                  NextAuth
+                  {tag}
                 </span>
               ))}
             </div>
