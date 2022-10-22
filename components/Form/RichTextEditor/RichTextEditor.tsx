@@ -6,7 +6,7 @@ const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 interface RichTextEditorProps {
   name: string;
-  onChange: () => void;
+  onChange: (value: string) => void;
   placeholder?: string | undefined;
   error?: FieldError | undefined;
   required?: boolean;

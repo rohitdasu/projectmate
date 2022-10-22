@@ -45,11 +45,19 @@ export default async function handler(
           });
         }
         const validatedBody = await bodyValidator(req, postSchema);
-        const { title, description, githubRepository, tags, coverImg, email } =
-          validatedBody;
+        const {
+          title,
+          description,
+          content,
+          githubRepository,
+          tags,
+          coverImg,
+          email,
+        } = validatedBody;
         const data = await addProject({
           title,
           description,
+          content,
           githubRepository,
           tags,
           coverImg,
@@ -127,17 +135,42 @@ async function getAllProject(args: { limit: number; cursorId?: string }) {
 async function addProject(args: {
   title: string;
   description: string;
+  content: string;
   githubRepository: string;
   tags: string[];
   coverImg: string;
   email: string;
 }) {
-  const { title, description, githubRepository, tags, coverImg, email } = args;
+  const {
+    title,
+    description,
+    content,
+    githubRepository,
+    tags,
+    coverImg,
+    email,
+  } = args;
   try {
+    console.log({
+      data: {
+        title,
+        description,
+        content,
+        githubRepository,
+        tags,
+        coverImg,
+        author: {
+          connect: {
+            email: email,
+          },
+        },
+      },
+    });
     const data = await prisma.project.create({
       data: {
         title,
         description,
+        content,
         githubRepository,
         tags,
         coverImg,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import {
   useForm,
@@ -35,6 +35,7 @@ export const SubmitPageForm = () => {
   const tags = watch('tags');
   const [loading, setLoading] = useState<boolean>(false);
   const [tagInput, setTagInput] = useState<string>('');
+  const [contentInput, setContentInput] = useState<string>('');
 
   const { status, data: session } = useSession({
     required: true,
@@ -51,6 +52,11 @@ export const SubmitPageForm = () => {
     );
   }
 
+  const resetFormData = () => {
+    setContentInput('');
+    reset();
+  };
+
   const onSubmit: SubmitHandler<FormInputs> = async (data: FormInputs) => {
     if (loading) return;
     try {
@@ -60,6 +66,7 @@ export const SubmitPageForm = () => {
         {
           title: data.projectName,
           description: data.projectDescription,
+          content: data.content || '',
           githubRepository: data.repositoryLink,
           tags: data.tags,
           coverImg:
@@ -74,7 +81,7 @@ export const SubmitPageForm = () => {
       );
       setLoading(false);
       toastMessage('project added successfully', messageType.success);
-      reset();
+      resetFormData();
     } catch (e) {
       setLoading(false);
       toastMessage(e.message, messageType.error);
@@ -111,6 +118,15 @@ export const SubmitPageForm = () => {
       tags.filter((element: string, i: number) => i !== index)
     );
   };
+
+  const onContentChange = (
+    contentValue: string,
+    field: ControllerRenderProps<FormInputs, 'content'>
+  ) => {
+    field.onChange(contentValue);
+    setContentInput(contentValue);
+  };
+
   return (
     <div className="mx-auto w-full px-4 lg:px-0">
       <form className="form-container mx-auto flex w-full flex-col space-y-6">
@@ -205,7 +221,14 @@ export const SubmitPageForm = () => {
           name="content"
           control={control}
           render={({ field }) => {
-            return <RichTextEditor {...field} label={'Content'} />;
+            return (
+              <RichTextEditor
+                {...field}
+                label={'Content'}
+                value={contentInput}
+                onChange={(value) => onContentChange(value, field)}
+              />
+            );
           }}
         />
       </form>
