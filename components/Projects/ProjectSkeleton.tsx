@@ -1,5 +1,12 @@
+import { motion } from 'framer-motion';
+
 export const ProjectSkeleton = () => (
-  <div className="w-full animate-pulse p-2 md:p-0">
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="w-full animate-pulse p-2 md:p-0"
+  >
     <div className="flex h-full flex-col justify-center space-y-2 overflow-hidden rounded-md text-foreground-1 shadow-border-shadow">
       <div className="flex flex-col gap-5 p-4 pt-2">
         <div className="mt-2 h-4 w-32 rounded-full bg-gray-200 dark:bg-gray-700" />
@@ -20,5 +27,5 @@ export const ProjectSkeleton = () => (
         </div>
       </div>
     </div>
-  </div>
+  </motion.div>
 );
