@@ -22,7 +22,12 @@ export const Project = ({
   };
 
   return (
-    <div className="w-full p-2 md:p-0">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="w-full p-2 shadow-lg md:p-0"
+    >
       <div className="flex h-full flex-col items-center overflow-hidden rounded-md text-foreground-1 shadow-border-shadow">
         <div className="flex w-full grow flex-col gap-5 p-4 pt-4">
           <h2 className="min-w-[0] flex-1 flex-col gap-2 truncate text-xl font-semibold">
@@ -47,6 +52,6 @@ export const Project = ({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
