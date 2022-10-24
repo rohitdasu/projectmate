@@ -38,23 +38,22 @@ const Projects = () => {
               toggleMenu={toggleFloatingMenu}
               isOpen={isOpen}
               slideSpeed={300}
-              bgColor={fabColor}
               spacing={18}
               mainButton={
                 <Icon
                   icon="akar-icons:plus"
-                  color={tColor}
                   height={30}
                   width={30}
+                  className="text-orange-500 dark:text-orange-400"
                 />
               }
             >
               <div onClick={() => router.push('/projects/submit')}>
                 <Icon
                   icon="akar-icons:file"
-                  color={tColor}
                   height={30}
                   width={30}
+                  className="text-orange-500 dark:text-orange-400"
                 />
               </div>
             </FloatingMenu>

@@ -45,7 +45,7 @@ export const Project = ({
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={handleContributeClick}
-              className="mt-2 flex justify-center rounded-md bg-secondary-color px-2 py-1.5 font-bold text-white focus:ring sm:my-0"
+              className="mt-2 flex justify-center rounded-md bg-orange-100 px-2 py-1.5 font-bold text-orange-500 ring-orange-800 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400 sm:my-0"
             >
               <span>Contribute</span>
             </motion.button>
