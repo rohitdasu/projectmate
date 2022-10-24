@@ -9,7 +9,7 @@ interface IProject {
 
 export const Project: FC<IProject> = ({ title }) => {
   return (
-    <motion.div
+    <motion.li
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -19,13 +19,19 @@ export const Project: FC<IProject> = ({ title }) => {
         {title}
       </p>
       <div className="flex flex-row">
-        <button className="cursor-not-allowed p-3 transition-all hover:opacity-70">
-          <FaEdit />
+        <button
+          className="cursor-not-allowed p-3 transition-all hover:opacity-70"
+          aria-label={`Edit ${title}`}
+        >
+          <FaEdit aria-hidden="true" />
         </button>
-        <button className="cursor-not-allowed p-3 transition-all hover:opacity-70">
-          <FaTrash />
+        <button
+          className="cursor-not-allowed p-3 transition-all hover:opacity-70"
+          aria-label={`Delete ${title}`}
+        >
+          <FaTrash aria-hidden="true" />
         </button>
       </div>
-    </motion.div>
+    </motion.li>
   );
 };
