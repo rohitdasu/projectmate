@@ -52,13 +52,13 @@ const Profile: NextPage = () => {
         <h2 className="pt-10 font-semibold dark:text-[#a6a6a6] sm:text-lg">
           Your Projects
         </h2>
-        <div className="grid auto-rows-auto gap-5 pt-5 dark:text-[#B7C2D1] sm:grid sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid auto-rows-auto gap-5 pt-5 dark:text-[#B7C2D1] sm:grid sm:grid-cols-2 lg:grid-cols-3">
           {projects &&
             projects.length > 0 &&
             projects.map((item: { id: string; title: string }) => {
               return <Project key={item.id} title={item.title} id={item.id} />;
             })}
-        </div>
+        </ul>
         {projects && projects.length === 0 && (
           <Lottie animationData={animation} style={style} />
         )}
