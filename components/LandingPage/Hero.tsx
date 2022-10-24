@@ -42,7 +42,7 @@ export const Hero = () => {
           whileTap={{ scale: 0.9 }}
           onClick={session ? handleRoute : handleModal}
           type="button"
-          className="rounded-md bg-orange-100 py-4 px-6 font-semibold text-orange-500 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400 md:text-xl"
+          className="rounded-md bg-orange-100 py-4 px-6 font-semibold text-orange-500 ring-orange-800 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400 md:text-xl"
         >
           {session ? (
             <span className="flex items-center gap-3">

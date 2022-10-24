@@ -6,7 +6,6 @@ export const FloatingMenu = ({
   isOpen,
   slideSpeed,
   mainButton,
-  bgColor,
   spacing,
   children,
 }: FloatingMenuProps) => {
@@ -16,8 +15,8 @@ export const FloatingMenu = ({
     <ul className={`m-0 flex flex-col-reverse p-0`}>
       <li
         onClick={toggleMenu}
-        style={{ backgroundColor: bgColor, marginTop: `${spacing}px` }}
-        className={`relative grid place-items-center rounded-full p-3 lg:cursor-pointer`}
+        style={{ marginTop: `${spacing}px` }}
+        className={`relative grid place-items-center rounded-full bg-orange-300 p-3 focus:ring dark:bg-[#2c1c0f] lg:cursor-pointer`}
       >
         <div
           className={`transition ease-in-out 
@@ -29,8 +28,8 @@ export const FloatingMenu = ({
       {arrayChildren.map((child, index) => (
         <li
           key={index}
-          style={{ backgroundColor: bgColor, marginTop: `${spacing}px` }}
-          className={`relative z-0 grid translate-y-full place-items-center rounded-full p-3 transition ease-in-out lg:cursor-pointer
+          style={{ marginTop: `${spacing}px` }}
+          className={`relative z-0 grid translate-y-full place-items-center rounded-full  bg-orange-300 p-3 transition ease-in-out focus:ring dark:bg-[#2c1c0f] lg:cursor-pointer
           ${isOpen ? 'translate-y-0 scale-100' : 'scale-0'}
           duration-${slideSpeed}`}
         >

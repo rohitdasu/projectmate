@@ -71,7 +71,7 @@ const ProjectDetails = () => {
               {projectData?.tags.map((tag: string, index: number) => (
                 <span
                   key={index}
-                  className="group flex w-max cursor-pointer flex-wrap items-center rounded-full bg-background-2 px-3 py-2 text-[15px] text-blue-500"
+                  className="group flex w-max cursor-pointer flex-wrap items-center rounded-full bg-background-2 bg-orange-100 px-3 py-2 text-[15px] text-orange-500 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400"
                 >
                   {tag}
                 </span>
@@ -82,7 +82,7 @@ const ProjectDetails = () => {
             href={projectData?.githubRepository}
             target="_blank"
             rel="noopener noreferrer"
-            className=" flex w-max items-center space-x-4 rounded-md bg-orange-500 px-4 py-2 text-xl font-semibold text-white transition-all hover:cursor-pointer hover:bg-orange-600"
+            className="flex w-max items-center space-x-4 rounded-md bg-orange-100 px-4 py-2 text-lg text-orange-500 ring-orange-800 hover:cursor-pointer focus:ring dark:bg-[#2c1c0f] dark:text-orange-400"
           >
             <span>Contribute now</span> <BsBoxArrowUpRight />
           </a>

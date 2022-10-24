@@ -205,7 +205,7 @@ export const SubmitPageForm = () => {
                         <div
                           key={i}
                           onClick={() => removeTag(i)}
-                          className="group flex w-max cursor-pointer flex-wrap items-center space-x-2 rounded-full bg-background-2 px-4 py-2 text-[15px] text-blue-500"
+                          className="group flex w-max cursor-pointer flex-wrap items-center space-x-2 rounded-full bg-background-2 bg-orange-100 px-4 py-2 text-[15px] text-orange-500 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400"
                         >
                           <span className="text-sm uppercase">{tag}</span>
                           <AiFillCloseCircle />
@@ -236,7 +236,7 @@ export const SubmitPageForm = () => {
         <button
           disabled={loading}
           onClick={handleSubmit(onSubmit)}
-          className="float-right flex flex-row items-center gap-4 rounded-md bg-secondary-color px-8 py-2 text-white hover:bg-blue-800 focus:bg-blue-800 focus:ring"
+          className="float-right flex flex-row items-center gap-4 rounded-md bg-orange-100 px-8 py-2 text-orange-500 ring-orange-800 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400"
         >
           Submit
           {loading && (
