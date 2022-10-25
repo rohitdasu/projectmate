@@ -1,5 +1,4 @@
 import { AuthModal } from '@/components/AuthModal';
-import { motion } from 'framer-motion';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useAppDispatch } from '../../app/hooks';
@@ -8,6 +7,7 @@ import { GoPlus } from 'react-icons/go';
 import { MdDashboardCustomize } from 'react-icons/md';
 import Lottie from 'lottie-react';
 import animation from './lotties/hero.json';
+import { Button } from '@/components/Button';
 
 export const Hero = () => {
   const router = useRouter();
@@ -38,11 +38,10 @@ export const Hero = () => {
           the skills you have. You can also find new contributors for your open
           source project by sharing it on ProjectMate !
         </p>
-        <motion.button
-          whileTap={{ scale: 0.9 }}
+        <Button
           onClick={session ? handleRoute : handleModal}
-          type="button"
-          className="rounded-md bg-orange-100 py-4 px-6 font-semibold text-orange-500 ring-orange-800 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400 md:text-xl"
+          isDisabled={false}
+          className="py-4 px-6 font-semibold md:text-xl"
         >
           {session ? (
             <span className="flex items-center gap-3">
@@ -55,7 +54,7 @@ export const Hero = () => {
               JOIN US
             </span>
           )}
-        </motion.button>
+        </Button>
       </div>
       <div className="-mr-10 hidden lg:block">
         <Lottie animationData={animation} style={style} />
