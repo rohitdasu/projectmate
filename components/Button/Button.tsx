@@ -14,7 +14,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   type = 'button',
   onClick,
   isDisabled,
-  haveAnimation = 'true',
+  haveAnimation = true,
   className,
   children,
 }) => (
