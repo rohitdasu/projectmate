@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import {
   useForm,
@@ -16,6 +16,7 @@ import { RichTextEditor } from '@/components/Form/RichTextEditor';
 import { schema } from './schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toastMessage, messageType } from '../../shared';
+import { Button } from '@/components/Button';
 
 type FormInputs = {
   tags: string[];
@@ -233,10 +234,10 @@ export const SubmitPageForm = () => {
         />
       </form>
       <div className="my-4 w-full">
-        <button
-          disabled={loading}
+        <Button
+          isDisabled={loading}
           onClick={handleSubmit(onSubmit)}
-          className="float-right flex flex-row items-center gap-4 rounded-md bg-orange-100 px-8 py-2 text-orange-500 ring-orange-800 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400"
+          className="float-right mt-4 flex flex-row gap-4 px-8 py-2"
         >
           Submit
           {loading && (
@@ -257,7 +258,7 @@ export const SubmitPageForm = () => {
               />
             </svg>
           )}
-        </button>
+        </Button>
       </div>
     </div>
   );

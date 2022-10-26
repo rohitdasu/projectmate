@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react';
 import { Tags } from './Tags';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
+import { Button } from '@/components/Button';
 
 export const Project = ({
   id,
@@ -42,13 +43,13 @@ export const Project = ({
             <div className="flex space-x-2 pb-2 md:pb-0">
               <Tags tags={tags} tagsNumber={2} />
             </div>
-            <motion.button
-              whileTap={{ scale: 0.9 }}
+            <Button
               onClick={handleContributeClick}
-              className="mt-2 flex justify-center rounded-md bg-orange-100 px-2 py-1.5 font-bold text-orange-500 ring-orange-800 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400 sm:my-0"
+              isDisabled={false}
+              className="mt-2 px-2 py-1.5 font-bold sm:my-0"
             >
               <span>Contribute</span>
-            </motion.button>
+            </Button>
           </div>
         </div>
       </div>
