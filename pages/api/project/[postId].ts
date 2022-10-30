@@ -2,21 +2,11 @@ import { Project } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { errorResponse, successResponse } from '@/lib/httpResponse';
 import { prisma } from '@/lib/prisma';
-import { getServerAuthSession } from '@/lib/getServerAuthSession';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const session = await getServerAuthSession({ req, res });
-  if (!session) {
-    return errorResponse({
-      res,
-      message: 'Unauthorized',
-      statusCode: 401,
-      success: false,
-    });
-  }
   switch (req.method) {
     case 'GET':
       const { postId } = req.query;
