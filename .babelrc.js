@@ -9,5 +9,8 @@ module.exports = {
       },
     ],
   ],
-  plugins: [],
+  plugins: [
+    'babel-plugin-macros',
+    ['babel-plugin-styled-components', { ssr: true }],
+  ],
 };
