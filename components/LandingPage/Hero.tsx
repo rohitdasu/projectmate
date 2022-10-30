@@ -7,7 +7,7 @@ import { GoPlus } from 'react-icons/go';
 import { MdDashboardCustomize } from 'react-icons/md';
 import Lottie from 'lottie-react';
 import animation from './lotties/hero.json';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/Form/Button';
 
 export const Hero = () => {
   const router = useRouter();

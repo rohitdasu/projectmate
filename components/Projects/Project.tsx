@@ -6,7 +6,7 @@ import { useSession } from 'next-auth/react';
 import { Tags } from './Tags';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/Form/Button';
 
 export const Project = ({
   id,
