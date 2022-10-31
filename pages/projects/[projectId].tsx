@@ -69,7 +69,10 @@ const ProjectDetails = () => {
               Technology stack
             </h1>
             {projectData && (
-              <Tags className="mt-5 mb-7" tags={projectData.tags} />
+              <Tags
+                className="mt-5 mb-7 flex-wrap gap-3 text-[15px]"
+                tags={projectData.tags}
+              />
             )}
           </div>
           <a

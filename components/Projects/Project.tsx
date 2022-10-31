@@ -41,7 +41,11 @@ export const Project = ({
           <p className="h-[80px] text-sm line-clamp-4">{description}</p>
           <div className="flex flex-col gap-5">
             <div className="flex space-x-2 pb-2 md:pb-0">
-              <Tags tags={tags} tagsToShow={2} textSize="sm" />
+              <Tags
+                tags={tags}
+                tagsToShow={2}
+                className="flex-wrap gap-1 text-sm font-medium"
+              />
             </div>
             <Button
               onClick={handleContributeClick}
