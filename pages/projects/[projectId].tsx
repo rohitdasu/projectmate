@@ -7,6 +7,7 @@ import useSWR from 'swr';
 import { useSession } from 'next-auth/react';
 import Lottie from 'lottie-react';
 import Loader from '../../public/loading.json';
+import { Tags } from '@/components/Tags';
 
 const ProjectDetails = () => {
   const router = useRouter();
@@ -67,16 +68,9 @@ const ProjectDetails = () => {
             <h1 className="mt-6 text-left text-3xl font-semibold">
               Technology stack
             </h1>
-            <div className="mt-5 mb-7 flex flex-wrap gap-3">
-              {projectData?.tags.map((tag: string, index: number) => (
-                <span
-                  key={index}
-                  className="group flex w-max cursor-pointer flex-wrap items-center rounded-full bg-background-2 bg-orange-100 px-3 py-2 text-[15px] text-orange-500 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+            {projectData && (
+              <Tags className="mt-5 mb-7" tags={projectData.tags} />
+            )}
           </div>
           <a
             href={projectData?.githubRepository}
