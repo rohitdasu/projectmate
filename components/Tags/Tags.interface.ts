@@ -1,5 +1,6 @@
 export type TagsProps = {
   tags: string[];
-  tagsToShow?: number;
+  maximumTagsToShow?: number;
+  maximumCharactersToShow?: number;
   className?: string;
 };

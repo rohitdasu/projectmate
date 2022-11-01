@@ -43,7 +43,8 @@ export const Project = ({
             <div className="flex space-x-2 pb-2 md:pb-0">
               <Tags
                 tags={tags}
-                tagsToShow={2}
+                maximumTagsToShow={2}
+                maximumCharactersToShow={24}
                 className="flex-wrap gap-1 text-sm font-medium"
               />
             </div>
