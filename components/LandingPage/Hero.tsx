@@ -40,7 +40,9 @@ export const Hero = () => {
         </p>
         <Button
           onClick={session ? handleRoute : handleModal}
-          isDisabled={false}
+          // disabled={false}
+          href="https://github.com/"
+          as="a"
           className="py-4 px-6 font-semibold md:text-xl"
         >
           {session ? (

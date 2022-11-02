@@ -1,2 +1,2 @@
-export * from './Button';
+export * from './ButtonX';
 export * from './Button.interface';
