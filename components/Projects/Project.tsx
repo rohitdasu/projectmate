@@ -1,8 +1,5 @@
-import { useDispatch } from 'react-redux';
-import { openModal } from '@/store/slices/sliceModal';
 import { ProjectProps } from './Project.interface';
 import { AiOutlineUser } from 'react-icons/ai';
-import { useSession } from 'next-auth/react';
 import { Tags } from './Tags';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
@@ -15,11 +12,9 @@ export const Project = ({
   tags,
   author,
 }: ProjectProps) => {
-  const dispatch = useDispatch();
   const router = useRouter();
-  const { data: session } = useSession();
   const handleContributeClick = () => {
-    session ? router.push(`/projects/${id}`) : dispatch(openModal());
+    router.push(`/projects/${id}`);
   };
 
   return (

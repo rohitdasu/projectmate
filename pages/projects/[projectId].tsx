@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { BsBoxArrowUpRight } from 'react-icons/bs';
 import axios from 'axios';
 import useSWR from 'swr';
-import { useSession } from 'next-auth/react';
 import Lottie from 'lottie-react';
 import Loader from '../../public/loading.json';
 
@@ -17,14 +16,7 @@ const ProjectDetails = () => {
   const { data, error } = useSWR(projectId ? url : null, fetcher);
   const { results: projectData } = data || {};
 
-  const { status } = useSession({
-    required: true,
-    onUnauthenticated() {
-      router.push('/');
-    },
-  });
-
-  if (status === 'loading' || !data) {
+  if (!data) {
     return (
       <div className="flex h-screen items-center justify-center">
         <Lottie animationData={Loader} />
