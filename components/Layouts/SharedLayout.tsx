@@ -36,7 +36,7 @@ export const SharedLayout: React.FC<IProps> = ({
             target="_blank"
             rel="noreferrer"
           >
-            IT License
+            MIT License
           </a>{' '}
           © {year}
         </footer>
