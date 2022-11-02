@@ -7,29 +7,17 @@ export const Tags = ({
   maximumCharactersToShow,
   className,
 }: TagsProps) => {
-  const tagsToShow: string[] = useMemo(() => {
-    if (maximumTagsToShow && maximumCharactersToShow) {
-      let charactersCount = 0;
-      const newValue = tags
-        .filter((tag) => {
-          charactersCount += tag.length;
-          return charactersCount < maximumCharactersToShow;
-        })
-        .slice(0, maximumTagsToShow);
-      return newValue;
-    }
-    if (maximumTagsToShow) {
-      return tags.slice(0, maximumTagsToShow);
-    }
+  const tagsToShow = useMemo(() => {
+    let tempArray = tags;
+    if (maximumTagsToShow) tempArray = tags.slice(0, maximumTagsToShow);
     if (maximumCharactersToShow) {
       let charactersCount = 0;
-      const newValue = tags.filter((tag) => {
+      tempArray = tempArray.filter((tag: string) => {
         charactersCount += tag.length;
         return charactersCount < maximumCharactersToShow;
       });
-      return newValue;
     }
-    return tags;
+    return tempArray;
   }, [maximumCharactersToShow, maximumTagsToShow, tags]);
 
   return (
