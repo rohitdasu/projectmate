@@ -44,7 +44,7 @@ export const Project = ({
               <Tags
                 tags={tags}
                 maximumTagsToShow={2}
-                maximumCharactersToShow={24}
+                maximumCharactersToShow={20}
                 className="flex-wrap gap-1 text-sm font-medium"
               />
             </div>

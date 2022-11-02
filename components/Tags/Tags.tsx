@@ -12,9 +12,15 @@ export const Tags = ({
     if (maximumTagsToShow) tempArray = tags.slice(0, maximumTagsToShow);
     if (maximumCharactersToShow) {
       let charactersCount = 0;
+      if (tempArray[0].length > maximumCharactersToShow) {
+        tempArray[0] = `${tempArray[0].slice(
+          0,
+          maximumCharactersToShow - 3
+        )}...`;
+      }
       tempArray = tempArray.filter((tag: string) => {
         charactersCount += tag.length;
-        return charactersCount < maximumCharactersToShow;
+        return charactersCount <= maximumCharactersToShow;
       });
     }
     return tempArray;
