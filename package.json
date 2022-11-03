@@ -45,7 +45,7 @@
   "devDependencies": {
     "@emotion/babel-plugin": "^11.10.5",
     "@emotion/core": "^11.0.0",
-    "@iconify/react": "^3.2.2",
+    "@iconify/react": "^4.0.0",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@types/node": "17.0.45",
     "@types/react": "18.0.24",
