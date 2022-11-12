@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const Logo = () => {
   return (
-    <Link href="/">
+    <Link href="/" legacyBehavior>
       <motion.span
         whileTap={{ scale: 0.9 }}
         className="flex cursor-pointer items-center font-mono text-2xl font-semibold uppercase text-foreground-1 md:space-x-2"

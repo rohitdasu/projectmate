@@ -33,16 +33,16 @@ export const Sidebar = () => {
 
           return (
             <motion.li whileTap={{ scale: 0.9 }} key={title}>
-              <Link href={url}>
-                <a
-                  {...anchorTagProps}
-                  className={`flex items-center justify-between gap-2 p-5 text-lg uppercase ${
-                    isCurrent && 'bg-background-2'
-                  }`}
-                >
-                  {title}
-                  <Icon className="text-2xl" />
-                </a>
+              <Link
+                href={url}
+                {...anchorTagProps}
+                className={`flex items-center justify-between gap-2 p-5 text-lg uppercase ${
+                  isCurrent && 'bg-background-2'
+                }`}>
+
+                {title}
+                <Icon className="text-2xl" />
+
               </Link>
             </motion.li>
           );
