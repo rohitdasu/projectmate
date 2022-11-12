@@ -20,7 +20,7 @@ export const SharedLayout: React.FC<IProps> = ({
   return (
     <>
       <Head>
-        <title>Projectmate | {title}</title>
+        <title>{`Projectmate | ${title}`}</title>
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
       <Topbar />
