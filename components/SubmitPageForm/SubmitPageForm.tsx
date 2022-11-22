@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { AiFillCloseCircle } from 'react-icons/ai';
 import {
   useForm,
   SubmitHandler,
@@ -17,6 +16,7 @@ import { schema } from './schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toastMessage, messageType } from '../../shared';
 import { Button } from '@/components/Button';
+import { Tags, RemoveTagFc } from '@/components/Tags';
 
 type FormInputs = {
   tags: string[];
@@ -113,7 +113,8 @@ export const SubmitPageForm = () => {
     e.preventDefault();
   };
 
-  const removeTag = (index: number) => {
+  const removeTag: RemoveTagFc = (event, index) => {
+    event.preventDefault();
     setValue(
       'tags',
       tags.filter((element: string, i: number) => i !== index)
@@ -199,20 +200,17 @@ export const SubmitPageForm = () => {
                   hintMessage="Note: only 5 tags are allowed"
                 />
                 {tags && tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
-                    {tags &&
-                      tags.length > 0 &&
-                      tags.map((tag, i) => (
-                        <div
-                          key={i}
-                          onClick={() => removeTag(i)}
-                          className="group flex w-max cursor-pointer flex-wrap items-center space-x-2 rounded-full bg-background-2 bg-orange-100 px-4 py-2 text-[15px] text-orange-500 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400"
-                        >
-                          <span className="text-sm uppercase">{tag}</span>
-                          <AiFillCloseCircle />
-                        </div>
-                      ))}
-                  </div>
+                  <>
+                    <div className="flex flex-wrap gap-2">
+                      {tags && tags.length > 0 && (
+                        <Tags
+                          className="gap-2 uppercase"
+                          tags={tags}
+                          removeTagHandler={removeTag}
+                        />
+                      )}
+                    </div>
+                  </>
                 )}
               </>
             );

@@ -1,6 +1,7 @@
 import { ProjectProps } from './Project.interface';
 import { AiOutlineUser } from 'react-icons/ai';
-import { Tags } from './Tags';
+import { useSession } from 'next-auth/react';
+import { Tags } from '@/components/Tags';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { Button } from '@/components/Button';
@@ -36,7 +37,12 @@ export const Project = ({
           <p className="h-[80px] text-sm line-clamp-4">{description}</p>
           <div className="flex flex-col gap-5">
             <div className="flex space-x-2 pb-2 md:pb-0">
-              <Tags tags={tags} tagsNumber={2} />
+              <Tags
+                tags={tags}
+                maximumTagsToShow={2}
+                maximumCharactersToShow={20}
+                className="flex-wrap gap-1 text-sm font-medium"
+              />
             </div>
             <Button
               onClick={handleContributeClick}
