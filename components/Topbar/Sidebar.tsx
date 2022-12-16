@@ -11,10 +11,13 @@ import { Logo } from './Logo';
 import { SidebarAvatar } from '@/components/Avatar';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { signOut, useSession } from 'next-auth/react';
+import { MdPostAdd } from 'react-icons/md';
+import { messageType, toastMessage } from 'shared';
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(false);
-  const { pathname } = useRouter();
+  const router = useRouter();
+  const { pathname } = router;
   const ref = useRef(null);
   const { data: session } = useSession();
 
@@ -23,6 +26,14 @@ export const Sidebar = () => {
   useOnClickOutside(ref, closeSidebar);
 
   const socialLinks = getSocialLinks(true);
+
+  const gotoSubmitPage = () => {
+    if (session) {
+      router.push('/projects/submit');
+    } else {
+      toastMessage('Please login/register first', messageType.error);
+    }
+  };
 
   const RenderNavigation: React.FC<{ routes: IRoute[] }> = ({ routes }) => {
     return (
@@ -102,6 +113,13 @@ export const Sidebar = () => {
                   <HiOutlineLogout className="text-2xl" />
                 </button>
               )}
+              <button
+                className="flex w-full items-center justify-between gap-2 p-5 text-lg uppercase"
+                onClick={gotoSubmitPage}
+              >
+                Submit project
+                <MdPostAdd className="text-2xl" />
+              </button>
             </motion.div>
           </>
         )}

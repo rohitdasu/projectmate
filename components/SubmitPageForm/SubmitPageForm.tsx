@@ -17,6 +17,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toastMessage, messageType } from '../../shared';
 import { Button } from '@/components/Button';
 import { Tags, RemoveTagFc } from '@/components/Tags';
+import { MdPostAdd } from 'react-icons/md';
 
 type FormInputs = {
   tags: string[];
@@ -237,7 +238,10 @@ export const SubmitPageForm = () => {
           onClick={handleSubmit(onSubmit)}
           className="float-right mt-4 flex flex-row gap-4 px-8 py-2"
         >
-          Submit
+          <div className="flex flex-row items-center gap-1">
+            <MdPostAdd className="text-2xl" />
+            <p>Submit</p>
+          </div>
           {loading && (
             <svg
               aria-hidden="true"
