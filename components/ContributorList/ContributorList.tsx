@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import Image from 'next/image';
 import { ContributorProps } from './ContributorList.interface';
+import { motion } from 'framer-motion';
 
 export const ContributorList = ({ contributors }: ContributorProps) => {
   return (
@@ -8,7 +9,8 @@ export const ContributorList = ({ contributors }: ContributorProps) => {
       {contributors &&
         contributors.length > 0 &&
         contributors.map((contributor, index) => (
-          <a
+          <motion.a
+            whileHover={{ scale: 2.5 }}
             key={index}
             href={contributor.html_url}
             target="_blank"
@@ -23,7 +25,7 @@ export const ContributorList = ({ contributors }: ContributorProps) => {
               height={30}
               className="rounded-full bg-black"
             />
-          </a>
+          </motion.a>
         ))}
     </Fragment>
   );

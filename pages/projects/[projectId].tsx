@@ -71,7 +71,7 @@ const ProjectDetails = () => {
             href={projectData?.githubRepository}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex w-max items-center space-x-4 rounded-md bg-orange-100 px-4 py-2 text-lg text-orange-500 ring-orange-800 hover:cursor-pointer focus:ring dark:bg-[#2c1c0f] dark:text-orange-400"
+            className="flex w-max items-center space-x-4 rounded-md bg-orange-100 px-4 py-2 text-lg text-orange-500 ring-orange-800 hover:cursor-pointer hover:opacity-75 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400"
           >
             <span>Contribute now</span> <BsBoxArrowUpRight />
           </a>

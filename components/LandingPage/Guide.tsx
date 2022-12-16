@@ -1,25 +1,29 @@
+import { motion } from 'framer-motion';
 import React from 'react';
 import { guide_steps as data } from './data';
 
 export const Guide = () => {
   return (
-    <div className="my-28 px-4">
-      <h2 className="text-center text-3xl font-bold">How it works ?</h2>
+    <div className="py-28 px-4">
+      <h2 className="text-center text-3xl font-bold">How it Works ?</h2>
       <ul className="relative mt-[5rem] flex flex-col items-center gap-[3rem] lg:flex-row lg:items-stretch lg:gap-[3rem]">
         <li className="absolute top-0 left-[50%] -z-10 h-[100%] w-[3px] rounded-[50%] border-2 border-dashed border-orange-500 bg-gradient-to-r dark:border-yellow-300 lg:left-0 lg:top-[50%] lg:h-[3px] lg:w-[95%]"></li>
         {data.map((item) => {
           const { title, desc, Icon } = item;
           return (
-            <li
+            <motion.li
+              whileHover={{ scale: 1.1 }}
               key={title}
-              className="relative flex w-[100%] max-w-[30rem] flex-col items-center gap-2 rounded-md bg-gray-100 p-5 text-center dark:bg-[#2b2b2b]"
+              className="relative flex w-[100%] max-w-[30rem] flex-col items-center gap-2 rounded-md bg-gray-100 p-5 text-center hover:bg-gray-200 dark:bg-[#2b2b2b] hover:dark:bg-gray-600"
             >
-              <div className="flex flex-col items-center gap-2 ">
-                <Icon className="text-5xl" />
-                <h2 className="text-lg font-semibold uppercase ">{title}</h2>
+              <div className="flex flex-col items-center gap-2">
+                <Icon className="text-2xl" />
+                <h2 className="text-md font-semibold uppercase">{title}</h2>
               </div>
-              <p className="font-light dark:text-gray-300">{desc}</p>
-            </li>
+              <p className="text-sm font-light text-gray-700 dark:text-gray-300">
+                {desc}
+              </p>
+            </motion.li>
           );
         })}
       </ul>

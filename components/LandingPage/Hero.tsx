@@ -3,11 +3,12 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useAppDispatch } from '../../app/hooks';
 import { openModal } from '@/store/slices/sliceModal';
-import { GoPlus } from 'react-icons/go';
+import { GiClick } from 'react-icons/gi';
 import { MdDashboardCustomize } from 'react-icons/md';
 import Lottie from 'lottie-react';
 import animation from './lotties/hero.json';
 import { Button } from '@/components/Button';
+import { motion } from 'framer-motion';
 
 export const Hero = () => {
   const router = useRouter();
@@ -38,23 +39,33 @@ export const Hero = () => {
           the skills you have. You can also find new contributors for your open
           source project by sharing it on ProjectMate !
         </p>
-        <Button
-          onClick={session ? handleRoute : handleModal}
-          isDisabled={false}
-          className="py-4 px-6 font-semibold md:text-xl"
-        >
-          {session ? (
-            <span className="flex items-center gap-3">
-              <MdDashboardCustomize />
-              Explore Projects
-            </span>
-          ) : (
-            <span className="flex items-center gap-3">
-              <GoPlus />
-              JOIN US
-            </span>
+        <div className="flex w-full flex-col items-center justify-between gap-4 md:w-auto md:flex-row">
+          {!session && (
+            <Button
+              onClick={handleModal}
+              isDisabled={false}
+              className="text-md w-full py-3 px-6 font-semibold md:w-auto md:text-lg"
+            >
+              <span className="flex items-center justify-center gap-3">
+                Login / Register
+                <GiClick className="text-2xl" />
+              </span>
+            </Button>
           )}
-        </Button>
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={handleRoute}
+            className={`text-md w-full rounded-md bg-slate-100 py-3 px-6 font-semibold text-gray-600 hover:opacity-75 focus:ring dark:bg-slate-800 dark:text-gray-200 md:w-auto md:text-lg ${
+              session &&
+              '!bg-orange-100 !text-orange-500 ring-orange-800 dark:bg-[#2c1c0f] dark:text-orange-400'
+            }`}
+          >
+            <span className="flex items-center justify-center gap-3">
+              Explore Projects
+              <MdDashboardCustomize />
+            </span>
+          </motion.button>
+        </div>
       </div>
       <div className="-mr-10 hidden lg:block">
         <Lottie animationData={animation} style={style} />

@@ -6,7 +6,6 @@ import { Logo } from './Logo';
 import { Avatar } from '../Avatar';
 import { SocialLinks } from './SocialLinks';
 import { Button } from '../Button';
-import { MdPostAdd } from 'react-icons/md';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { toastMessage, messageType } from '../../shared';
@@ -16,7 +15,7 @@ export const Topbar = () => {
   const router = useRouter();
   const gotoSubmitPage = () => {
     if (!session) {
-      toastMessage('please login/register first', messageType.error);
+      toastMessage('Please login/register first', messageType.error);
     } else {
       router.push('/projects/submit');
     }
@@ -27,17 +26,16 @@ export const Topbar = () => {
       <nav className="m-auto flex h-[5.46rem] max-w-screen-xl justify-between p-4 py-5">
         <div className="flex items-center gap-10">
           <Logo />
-          <DesktopRoutes />
+          {router.pathname !== '/' && <DesktopRoutes />}
         </div>
         <div className="flex items-center gap-2">
-          {router.pathname !== SUBMIT_PAGE && (
+          {router.pathname !== SUBMIT_PAGE && router.pathname !== '/' && (
             <Button
-              className="hidden items-center gap-1 px-5 py-3 md:flex"
+              className="hidden px-5 py-3 md:block"
               onClick={gotoSubmitPage}
               isDisabled={false}
             >
-              <MdPostAdd className="text-2xl" />
-              <p>Submit</p>
+              Submit Project
             </Button>
           )}
           <ThemeToggler />
