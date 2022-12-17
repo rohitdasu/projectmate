@@ -13,8 +13,8 @@ export const About = () => {
 
   return (
     <div className="py-28 lg:px-4">
-      <div className="flex flex-col items-center gap-5 rounded-lg bg-gray-100 py-6 px-4 dark:bg-[#2c1c0f] dark:text-orange-300 md:rounded-full lg:p-12">
-        <h2 className="text-center text-3xl font-bold ">About Us</h2>
+      <div className="flex flex-col items-center gap-5 rounded-lg bg-slate-100 py-6 px-4 dark:bg-slate-800 dark:text-slate-300 md:rounded-lg lg:p-12">
+        <h2 className="text-center text-3xl font-bold uppercase">about us</h2>
         <p className="m-auto text-center">
           ProjectMate is a platform built by passionate developers in order to
           make OpenSource accessible for everyone around the world. If this

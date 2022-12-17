@@ -1,7 +1,8 @@
-import { BiGitRepoForked, BiCode } from 'react-icons/bi';
+import { BiGitRepoForked, BiCode, BiLink } from 'react-icons/bi';
 import { MdOutlinePersonOutline, MdStarOutline } from 'react-icons/md';
 import { VscIssues } from 'react-icons/vsc';
-import { GrLicense } from 'react-icons/gr';
+import { FiKey } from 'react-icons/fi';
+import { motion } from 'framer-motion';
 
 const Title = ({ ...props }) => {
   return (
@@ -21,7 +22,12 @@ const Value = ({ ...props }) => {
 
 export const Stats = ({ ...props }) => {
   return (
-    <div className="flex flex-col gap-4">
+    <motion.div
+      layout
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="flex flex-col gap-4"
+    >
       <h2 className="mt-6 text-left text-2xl font-semibold">Project Stats.</h2>
       <div className="items-between flex w-full flex-col justify-between gap-2">
         <div className="flex flex-row flex-wrap items-center gap-4 md:flex-nowrap md:gap-16">
@@ -29,7 +35,16 @@ export const Stats = ({ ...props }) => {
             <Title>
               <MdOutlinePersonOutline className="text-2xl" /> Owner
             </Title>
-            <Value>{props.owner.login}</Value>
+            <Value>
+              <a
+                href={props.owner.html_url}
+                target="_blank"
+                rel="noreferrer"
+                className="flex flex-row items-center hover:underline"
+              >
+                {props.owner.login} <BiLink />
+              </a>
+            </Value>
           </div>
           <div className="flex w-full flex-row items-center justify-between">
             <Title>
@@ -49,14 +64,14 @@ export const Stats = ({ ...props }) => {
         <div className="flex flex-row flex-wrap items-center gap-4 md:flex-nowrap md:gap-16">
           <div className="flex w-full flex-row items-center justify-between">
             <Title>
-              <VscIssues className="text-xl" />
+              <VscIssues className="text-2xl" />
               Opened issues
             </Title>
             <Value>{props.open_issues_count}</Value>
           </div>
           <div className="flex w-full flex-row items-center justify-between">
             <Title>
-              <GrLicense className="text-md" /> License
+              <FiKey className="text-2xl" /> License
             </Title>
             <Value>{props.license.name}</Value>
           </div>
@@ -69,6 +84,6 @@ export const Stats = ({ ...props }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
