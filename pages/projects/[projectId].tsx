@@ -16,9 +16,12 @@ const ProjectDetails = () => {
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
   const url = `/api/project/${projectId}`;
   const { data, error } = useSWR(projectId ? url : null, fetcher);
+  const repoURL =
+    'https://api.github.com/repos/' +
+    data?.results?.githubRepository?.slice(19);
+  const { data: repoData } = useSWR(repoURL, fetcher);
   const { results: projectData } = data || {};
-
-  if (!data) {
+  if (!data && !repoData) {
     return (
       <div className="flex h-screen items-center justify-center">
         <Lottie animationData={Loader} />
@@ -83,7 +86,7 @@ const ProjectDetails = () => {
               />
             )}
           </div>
-          <Stats />
+          {repoData && <Stats {...repoData} />}
         </div>
       </div>
     </SharedLayout>

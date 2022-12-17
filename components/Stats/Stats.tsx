@@ -19,7 +19,7 @@ const Value = ({ ...props }) => {
   );
 };
 
-export const Stats = () => {
+export const Stats = ({ ...props }) => {
   return (
     <div className="flex flex-col gap-4">
       <h2 className="mt-6 text-left text-2xl font-semibold">Project Stats.</h2>
@@ -27,45 +27,45 @@ export const Stats = () => {
         <div className="flex flex-row flex-wrap items-center gap-4 md:flex-nowrap md:gap-16">
           <div className="flex w-full flex-row items-center justify-between">
             <Title>
-              <MdOutlinePersonOutline /> Owner
+              <MdOutlinePersonOutline className="text-2xl" /> Owner
             </Title>
-            <Value>Rohit Dasu</Value>
+            <Value>{props.owner.login}</Value>
           </div>
           <div className="flex w-full flex-row items-center justify-between">
             <Title>
-              <BiGitRepoForked />
+              <BiGitRepoForked className="text-2xl" />
               Forks
             </Title>
-            <Value>48</Value>
+            <Value>{props.forks_count}</Value>
           </div>
           <div className="flex w-full flex-row items-center justify-between">
             <Title>
-              <MdStarOutline />
+              <MdStarOutline className="text-2xl" />
               Stars
             </Title>
-            <Value>61</Value>
+            <Value>{props.stargazers_count}</Value>
           </div>
         </div>
         <div className="flex flex-row flex-wrap items-center gap-4 md:flex-nowrap md:gap-16">
           <div className="flex w-full flex-row items-center justify-between">
             <Title>
-              <VscIssues />
+              <VscIssues className="text-xl" />
               Opened issues
             </Title>
-            <Value>10</Value>
+            <Value>{props.open_issues_count}</Value>
           </div>
           <div className="flex w-full flex-row items-center justify-between">
             <Title>
-              <GrLicense /> License
+              <GrLicense className="text-md" /> License
             </Title>
-            <Value>MIT</Value>
+            <Value>{props.license.name}</Value>
           </div>
           <div className="flex w-full flex-row items-center justify-between">
             <Title>
-              <BiCode />
+              <BiCode className="text-2xl" />
               Language
             </Title>
-            <Value>Typescript</Value>
+            <Value>{props.language}</Value>
           </div>
         </div>
       </div>
