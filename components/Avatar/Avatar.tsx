@@ -42,7 +42,7 @@ export function Avatar() {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute right-0 top-[64px] z-50 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-700">
+            <Menu.Items className="absolute right-0 top-[64px] z-50 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800">
               <div className="w-full px-1 py-1 ">
                 <Menu.Item>
                   <Link href="/user/profile">

@@ -14,7 +14,7 @@ export const Guide = () => {
             <motion.li
               whileHover={{ scale: 1.1 }}
               key={title}
-              className="relative flex w-[100%] max-w-[30rem] flex-col items-center gap-2 rounded-md bg-gray-100 p-5 text-center hover:bg-gray-200 dark:bg-[#2b2b2b] hover:dark:bg-gray-600"
+              className="relative flex w-[100%] max-w-[30rem] flex-col items-center gap-2 rounded-md bg-slate-100 p-5 text-center shadow-lg hover:bg-slate-200 dark:bg-slate-800 hover:dark:bg-gray-900"
             >
               <div className="flex flex-col items-center gap-2">
                 <Icon className="text-2xl" />

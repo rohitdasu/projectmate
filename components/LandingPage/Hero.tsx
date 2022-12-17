@@ -69,7 +69,7 @@ export const Hero = () => {
               onClick={handleRoute}
               className={`text-md w-full rounded-md bg-slate-100 py-3 px-6 font-semibold text-gray-600 hover:opacity-75 focus:ring dark:bg-slate-800 dark:text-gray-200 md:w-auto md:text-lg ${
                 session &&
-                '!bg-orange-100 !text-orange-500 ring-orange-800 dark:bg-[#2c1c0f] dark:text-orange-400'
+                '!bg-orange-100 !text-orange-500 ring-orange-800 dark:!bg-[#2c1c0f] dark:!text-orange-400'
               }`}
             >
               <span className="flex items-center justify-center gap-3">
