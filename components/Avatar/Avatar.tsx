@@ -16,6 +16,7 @@ export function Avatar() {
         <Menu as="div" className="relative hidden text-left md:inline-block">
           <Menu.Button>
             <motion.div
+              layout
               whileTap={{ scale: 0.9 }}
               className="flex items-center hover:opacity-80"
             >

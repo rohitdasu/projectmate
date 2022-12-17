@@ -1,6 +1,5 @@
 import { ProjectProps } from './Project.interface';
 import { AiOutlineUser } from 'react-icons/ai';
-import { useSession } from 'next-auth/react';
 import { Tags } from '@/components/Tags';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
