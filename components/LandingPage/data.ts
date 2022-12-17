@@ -8,12 +8,12 @@ import portfolio_image from './assets/portfolio.jpg';
 
 export const guide_steps = [
   {
-    title: 'join us',
-    desc: 'you can easily sign up in 30 seconds using your social accounts',
+    title: 'register',
+    desc: 'you can easily sign up in 10 seconds using your social accounts',
     Icon: AiOutlineUsergroupAdd,
   },
   {
-    title: 'exploration',
+    title: 'explore',
     desc: 'ready for an adventure ? start browsing the projects section',
     Icon: FiSearch,
   },
@@ -23,8 +23,8 @@ export const guide_steps = [
     Icon: AiOutlineLaptop,
   },
   {
-    title: 'contribution',
-    desc: 'now that you picked up a project, you can start contributing to it',
+    title: 'contribute',
+    desc: 'you can start contributing or get contributors for your project',
     Icon: HiOutlineCode,
   },
 ];

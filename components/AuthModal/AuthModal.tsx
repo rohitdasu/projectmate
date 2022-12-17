@@ -55,7 +55,7 @@ export const AuthModal = ({ title }: IAuthData) => {
                   </Dialog.Title>
                   <div className="flex w-full flex-col items-center justify-center space-y-6 px-0 md:px-12">
                     <button
-                      className="flex w-full items-center justify-between rounded-lg border border-color-1 py-2 px-3 focus:ring"
+                      className="flex w-full items-center justify-between rounded-lg border border-gray-400 py-2 px-3 hover:opacity-50 focus:outline"
                       onClick={() => {
                         popupCenter('/auth/github', 'Sign In With Github');
                         dispatch(closeModal());
@@ -82,7 +82,7 @@ export const AuthModal = ({ title }: IAuthData) => {
                     </button>
 
                     <button
-                      className="flex w-full items-center justify-between rounded-lg border border-color-1 py-2 px-3 focus:ring"
+                      className="flex w-full items-center justify-between rounded-lg border border-gray-400 py-2 px-3 hover:opacity-50 focus:outline"
                       onClick={() => {
                         popupCenter('/auth/google', 'Sign In With Google');
                         dispatch(closeModal());
