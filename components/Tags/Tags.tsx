@@ -1,6 +1,7 @@
 import { TagsProps } from './Tags.interface';
 import { useMemo } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
+import { motion } from 'framer-motion';
 
 export const Tags = ({
   tags,
@@ -32,25 +33,26 @@ export const Tags = ({
     <div className={`flex ${className}`}>
       {tagsToShow.map((tag: string, i: number) => {
         return (
-          <span
+          <motion.span
+            layout
             key={i}
             onClick={
               removeTagHandler
                 ? (event) => removeTagHandler(event, i)
                 : undefined
             }
-            className="group flex w-max cursor-pointer flex-wrap items-center rounded-full bg-background-2 bg-orange-100 px-3 py-1 text-orange-500 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400"
+            className="group flex w-max cursor-pointer flex-wrap items-center rounded-full bg-background-2 !bg-orange-100 px-3 py-1 !text-orange-500 focus:ring dark:!bg-[#2c1c0f] dark:!text-orange-400"
           >
             <>
               {tag}
               {removeTagHandler && <AiFillCloseCircle className="ml-2" />}
             </>
-          </span>
+          </motion.span>
         );
       })}
       {(maximumTagsToShow || maximumCharactersToShow) &&
         tags.length - tagsToShow.length > 0 && (
-          <span className="group flex w-max cursor-pointer flex-wrap items-center rounded-full bg-background-2 bg-orange-100 px-2 py-1 text-orange-500 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400">
+          <span className="group flex w-max cursor-pointer flex-wrap items-center rounded-full bg-background-2 !bg-orange-100 px-2 py-1 !text-orange-500 focus:ring dark:!bg-[#2c1c0f] dark:!text-orange-400">
             +{tags.length - tagsToShow.length}
           </span>
         )}

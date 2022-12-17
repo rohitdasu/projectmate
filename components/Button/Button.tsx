@@ -20,8 +20,6 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
 }) => (
   <motion.button
     whileTap={haveAnimation ? { scale: 0.9 } : ''}
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
     onClick={onClick}
     type={type}
     layout

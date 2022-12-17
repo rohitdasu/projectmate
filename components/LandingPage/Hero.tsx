@@ -65,8 +65,6 @@ export const Hero = () => {
           {session !== undefined && (
             <motion.button
               whileTap={{ scale: 0.9 }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
               layout
               onClick={handleRoute}
               className={`text-md w-full rounded-md bg-slate-100 py-3 px-6 font-semibold text-gray-600 hover:opacity-75 focus:ring dark:bg-slate-800 dark:text-gray-200 md:w-auto md:text-lg ${
