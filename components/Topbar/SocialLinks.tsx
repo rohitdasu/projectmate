@@ -8,6 +8,7 @@ export const SocialLinks = () => {
     <div className="hidden gap-2 md:flex">
       {socialLinks.map(({ Icon, title, anchorTagProps, url }) => (
         <motion.a
+          layout
           key={title}
           {...anchorTagProps}
           href={url}

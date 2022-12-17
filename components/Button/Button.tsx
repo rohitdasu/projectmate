@@ -20,8 +20,11 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
 }) => (
   <motion.button
     whileTap={haveAnimation ? { scale: 0.9 } : ''}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
     onClick={onClick}
     type={type}
+    layout
     className={`items-center rounded-md  bg-orange-100 text-orange-500 ring-orange-800 hover:opacity-75 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400 ${className} ${
       isDisabled && 'cursor-default bg-opacity-40 opacity-60'
     }`}

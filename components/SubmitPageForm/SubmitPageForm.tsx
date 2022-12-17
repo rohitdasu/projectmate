@@ -132,7 +132,9 @@ export const SubmitPageForm = () => {
   return (
     <div className="mx-auto w-full px-4 lg:px-0">
       <form className="form-container mx-auto flex w-full flex-col space-y-6">
-        <h1 className="mb-4 text-left text-3xl font-semibold">Add Project</h1>
+        <h1 className="mb-4 text-left text-3xl font-semibold">
+          Submit Project
+        </h1>
         <Controller
           name="projectName"
           control={control}
