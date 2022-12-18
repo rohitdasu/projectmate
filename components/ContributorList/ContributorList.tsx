@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { ContributorProps } from './ContributorList.interface';
 import { motion } from 'framer-motion';
 
