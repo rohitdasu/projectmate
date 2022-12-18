@@ -6,7 +6,6 @@ import { Logo } from './Logo';
 import { Avatar } from '../Avatar';
 import { SocialLinks } from './SocialLinks';
 import { LoginButton } from './LoginButton';
-import { Button } from '../Button';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { toastMessage, messageType } from '../../shared';

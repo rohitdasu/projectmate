@@ -55,7 +55,7 @@ export const ProjectsList: React.FC = () => {
     return <div className="m-auto my-5 text-lg">Failed to load projects</div>;
 
   return (
-    <ul className="container m-auto max-w-screen-xl auto-rows-auto gap-5 md:grid md:grid-cols-2 md:p-5 lg:grid-cols-3 xl:grid-cols-4">
+    <ul className="container m-auto mt-2 max-w-screen-xl auto-rows-auto gap-5 md:grid md:grid-cols-2 md:p-5 lg:grid-cols-3 xl:grid-cols-4">
       {!data ? (
         skeletonProjectsToLoad.map((randomKey) => (
           <ProjectSkeleton key={randomKey} />
