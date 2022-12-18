@@ -34,7 +34,7 @@ export const benefits_data = [
     image_src: learning_image,
     image_alt: 'programmer looking at his monitor',
     title: 'Learning from and within the community',
-    desc: '  Working in an open source environment makes the developers part of the global open source community. It allows them to use the work andknowledge of others by using open source libraries or by checking other publicly available code for logics that the developer wants to implement.',
+    desc: '  Working in an open source environment makes the developers part of the global open source community. It allows them to use the work and knowledge of others by using open source libraries or by checking other publicly available code for logics that the developer wants to implement.',
   },
 
   {

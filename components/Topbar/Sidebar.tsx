@@ -13,6 +13,10 @@ import { HiOutlineLogout } from 'react-icons/hi';
 import { signOut, useSession } from 'next-auth/react';
 import { MdPostAdd } from 'react-icons/md';
 import { messageType, toastMessage } from 'shared';
+import { useAppDispatch } from '../../app/hooks';
+import { openModal } from '@/store/slices/sliceModal';
+import { Button } from '@/components/Button';
+import { GiClick } from 'react-icons/gi';
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -34,6 +38,9 @@ export const Sidebar = () => {
       toastMessage('Please login/register first', messageType.error);
     }
   };
+
+  const dispatch = useAppDispatch();
+  const handleModal = () => dispatch(openModal());
 
   const RenderNavigation: React.FC<{ routes: IRoute[] }> = ({ routes }) => {
     return (
@@ -120,6 +127,15 @@ export const Sidebar = () => {
                 Submit project
                 <MdPostAdd className="text-2xl" />
               </button>
+              {session === null && (
+                <button
+                  onClick={handleModal}
+                  className="flex w-full items-center justify-between gap-2 p-5 text-lg uppercase"
+                >
+                  Login
+                  <GiClick className="text-2xl" />
+                </button>
+              )}
             </motion.div>
           </>
         )}
