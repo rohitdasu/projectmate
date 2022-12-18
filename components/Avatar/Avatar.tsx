@@ -46,15 +46,13 @@ export function Avatar() {
               <div className="w-full px-1 py-1 ">
                 <Menu.Item>
                   <Link href="/user/profile">
-                    <a>
-                      <motion.button
-                        whileTap={{ scale: 0.9 }}
-                        className="group flex w-full items-center rounded-md px-2 py-2 text-left transition-all hover:bg-primary-color hover:text-white"
-                      >
-                        <MdOutlineAccountCircle className="mr-2 text-xl" />
-                        Profile
-                      </motion.button>
-                    </a>
+                    <motion.button
+                      whileTap={{ scale: 0.9 }}
+                      className="group flex w-full items-center rounded-md px-2 py-2 text-left transition-all hover:bg-primary-color hover:text-white"
+                    >
+                      <MdOutlineAccountCircle className="mr-2 text-xl" />
+                      Profile
+                    </motion.button>
                   </Link>
                 </Menu.Item>
                 <Menu.Item>
