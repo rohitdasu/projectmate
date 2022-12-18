@@ -31,13 +31,12 @@ export const Topbar = () => {
         </div>
         <div className="flex items-center gap-2">
           {router.pathname !== SUBMIT_PAGE && router.pathname !== '/' && (
-            <Button
-              className="hidden px-5 py-3 md:block"
+            <button
+              className="hidden h-[2.939rem] w-[160px] rounded-md !bg-transparent text-gray-500 shadow-border-shadow transition-all hover:border-2 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 md:block"
               onClick={gotoSubmitPage}
-              isDisabled={false}
             >
               Submit Project
-            </Button>
+            </button>
           )}
           <ThemeToggler />
           <SocialLinks />

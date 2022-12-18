@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const Title = ({ ...props }) => {
   return (
-    <p className="text-md flex flex-row items-center gap-2 font-medium text-gray-600 dark:text-gray-300">
+    <p className="text-md flex flex-row items-center gap-2 font-medium text-slate-600 dark:text-slate-300">
       {props.children}
     </p>
   );
@@ -14,7 +14,7 @@ const Title = ({ ...props }) => {
 
 const Value = ({ ...props }) => {
   return (
-    <span className="rounded-md p-2 text-orange-500 dark:text-orange-300">
+    <span className="rounded-md p-2 text-slate-900 dark:text-slate-400">
       {props.children}
     </span>
   );
@@ -26,9 +26,9 @@ export const Stats = ({ ...props }) => {
       layout
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="flex flex-col gap-4"
+      className="mt-6 flex flex-col gap-4 rounded-lg bg-slate-100 p-4 dark:bg-slate-800 md:p-8"
     >
-      <h2 className="mt-6 text-left text-2xl font-semibold">Project Stats.</h2>
+      <h2 className="text-left text-2xl font-semibold">Project Stats.</h2>
       <div className="items-between flex w-full flex-col justify-between gap-2">
         <div className="flex flex-row flex-wrap items-center gap-4 md:flex-nowrap md:gap-16">
           <div className="flex w-full flex-row items-center justify-between">

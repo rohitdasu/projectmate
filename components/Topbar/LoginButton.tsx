@@ -10,13 +10,9 @@ export const LoginButton = () => {
   const handleModal = () => dispatch(openModal());
 
   return (
-    <div className="flex hidden w-full flex-col items-center justify-between gap-4 md:block md:w-auto md:flex-row lg:block">
+    <div className="hidden md:block">
       {session === null && (
-        <Button
-          onClick={handleModal}
-          isDisabled={false}
-          className="text-md w-full py-3 px-6 font-semibold md:w-auto md:text-lg"
-        >
+        <Button onClick={handleModal} isDisabled={false} className="py-3 px-6">
           <span className="flex items-center justify-center gap-3">Login</span>
         </Button>
       )}
