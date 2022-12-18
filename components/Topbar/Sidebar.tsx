@@ -128,16 +128,13 @@ export const Sidebar = () => {
                 <MdPostAdd className="text-2xl" />
               </button>
               {session === null && (
-                <Button
+                <button
                   onClick={handleModal}
-                  isDisabled={false}
-                  className="text-md w-full py-3 px-6 font-semibold md:w-auto md:text-lg"
+                  className="flex w-full items-center justify-between gap-2 p-5 text-lg uppercase"
                 >
-                  <span className="flex items-center justify-between gap-3">
-                    Login
-                    <GiClick className="text-2xl" />
-                  </span>
-                </Button>
+                  Login
+                  <GiClick className="text-2xl" />
+                </button>
               )}
             </motion.div>
           </>
