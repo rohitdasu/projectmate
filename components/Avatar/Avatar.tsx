@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
 import { Menu, Transition } from '@headlessui/react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { signOut, useSession } from 'next-auth/react';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { MdOutlineAccountCircle, MdArrowDropDown } from 'react-icons/md';
