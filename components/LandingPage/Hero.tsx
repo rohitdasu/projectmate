@@ -26,12 +26,12 @@ export const Hero = () => {
   return (
     <header className="m-auto my-20 px-4 lg:flex lg:items-center lg:justify-between">
       <AuthModal title={'Continue with your social accounts'} />
-      <div className="flex flex-col items-center gap-10 text-center lg:items-start lg:text-left">
+      <div className="flex flex-col items-center gap-10 lg:items-start">
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           layout
-          className="text-4xl font-bold"
+          className="text-left text-2xl font-bold md:text-4xl"
         >
           Start Contributing to{' '}
           <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 bg-clip-text text-transparent dark:from-orange-500 dark:via-orange-700 dark:to-orange-500">
@@ -43,7 +43,7 @@ export const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           layout
-          className="max-w-[50rem] font-light  dark:text-gray-300 md:text-xl"
+          className="text-md max-w-[50rem] text-justify font-light dark:text-gray-300 md:text-xl"
         >
           ProjectMate helps you to find awesome open source projects based on
           the skills you have. You can also find new contributors for your open
@@ -67,9 +67,9 @@ export const Hero = () => {
               whileTap={{ scale: 0.9 }}
               layout
               onClick={handleRoute}
-              className={`text-md w-full rounded-md bg-slate-100 py-3 px-6 font-semibold text-gray-600 hover:opacity-75 focus:ring dark:bg-slate-800 dark:text-gray-200 md:w-auto md:text-lg ${
+              className={`text-md w-full rounded-md border-2 border-slate-200 py-3 px-6 font-semibold text-gray-800 opacity-75 transition-all hover:opacity-100 focus:ring dark:border-slate-600 dark:text-gray-100 md:w-auto md:text-lg ${
                 session &&
-                '!bg-orange-100 !text-orange-500 ring-orange-800 dark:!bg-[#2c1c0f] dark:!text-orange-400'
+                'border-0 !bg-orange-100 !text-orange-500 ring-orange-800 dark:!bg-[#2c1c0f] dark:!text-orange-400'
               }`}
             >
               <span className="flex items-center justify-center gap-3">
