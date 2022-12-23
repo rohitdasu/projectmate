@@ -7,6 +7,8 @@ import {
   Hero,
 } from '@/components/LandingPage/';
 
+import { BackToTop } from '@/components/BackToTopButton';
+
 const Home: NextPage = () => {
   return (
     <SharedLayout title="Home" hasContainer>
