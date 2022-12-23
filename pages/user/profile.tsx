@@ -43,7 +43,7 @@ const Profile: NextPage = () => {
     <SharedLayout title="Profile" hasContainer>
       <div className="m-auto mb-16 flex w-full flex-col px-4 py-5">
         <h1 className="text-xl font-semibold dark:text-[#a6a6a6] sm:text-[30px]">
-          <span>Welcome back, </span>
+          <span>Welcome, </span>
           <span className="mr-2 whitespace-nowrap  text-[#ED8728] dark:text-white">
             {session?.user && session.user.name}
           </span>

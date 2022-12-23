@@ -33,10 +33,10 @@ const ProjectDetails = () => {
     return <div className="m-auto my-5 text-lg">Failed to load projects</div>;
 
   return (
-    <SharedLayout title="Project description" hasContainer>
+    <SharedLayout title={projectData?.title.toUpperCase()} hasContainer>
       <div className="flex w-full">
         <div className="container m-auto mb-10 flex flex-col p-4">
-          <h1 className="py-2 text-4xl font-semibold">
+          <h1 className="py-2 text-2xl font-semibold md:text-4xl">
             {projectData?.title.toUpperCase()}
           </h1>
           <div className="mt-6 flex flex-row items-center justify-between">
