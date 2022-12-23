@@ -26,6 +26,7 @@ export const Stats = ({ ...props }) => {
       layout
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       className="mt-6 flex flex-col gap-4 rounded-lg bg-slate-100 p-4 dark:bg-slate-800 md:p-8"
     >
       <h2 className="text-left text-2xl font-semibold">Project Stats.</h2>
@@ -40,7 +41,7 @@ export const Stats = ({ ...props }) => {
                 href={props.owner.html_url}
                 target="_blank"
                 rel="noreferrer"
-                className="flex flex-row items-center hover:underline"
+                className="flex flex-row items-center transition-all hover:underline"
               >
                 {props.owner.login} <BiLink />
               </a>
