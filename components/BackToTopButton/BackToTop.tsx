@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import React from 'react';
 import { FaArrowUp } from 'react-icons/fa';
 
 export const BackToTop = () => {
@@ -10,13 +11,14 @@ export const BackToTop = () => {
   };
 
   return (
-    <div className="fixed bottom-0 right-0 z-50 m-5 text-orange-500 dark:text-orange-200">
-      <button
-        className="mx-auto rounded-full border border-orange-500 bg-orange-100 p-4 font-semibold hover:bg-[rgba(0,0,0,0.1)] dark:border-orange-200 dark:bg-[rgba(255,255,255,0.1)]"
+    <div className="fixed bottom-0 right-0 z-50 m-5">
+      <motion.button
+        whileTap={{ scale: 0.7 }}
+        className="mx-auto rounded-full border border-slate-600 bg-transparent p-4 font-semibold shadow-lg backdrop-blur-lg dark:border-slate-100"
         onClick={handleClick}
       >
-        <FaArrowUp className="2-xl" />
-      </button>
+        <FaArrowUp className="text-xl text-slate-600 dark:text-slate-100" />
+      </motion.button>
     </div>
   );
 };
