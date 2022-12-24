@@ -3,7 +3,6 @@ import { FaArrowUp } from 'react-icons/fa';
 
 export const BackToTop = () => {
   const handleClick = () => {
-    console.log('clicked');
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
