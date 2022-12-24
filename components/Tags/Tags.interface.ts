@@ -9,3 +9,12 @@ export type TagsProps = {
   removeTagHandler?: RemoveTagFc;
   className?: string;
 };
+
+export type OnTagClick = (event: MouseEvent, tagTitle: string) => void;
+
+export type TagProps = {
+  title: string;
+  onClick?: OnTagClick;
+  onClose?: OnTagClick;
+  className?: string;
+};
