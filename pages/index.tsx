@@ -17,6 +17,7 @@ const Home: NextPage = () => {
         <Guide />
         <BenefitsContainer />
         <About />
+        <BackToTop />
       </div>
     </SharedLayout>
   );

@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
 import { Topbar } from '../Topbar/Topbar';
-import { BackToTop } from '../BackToTopButton/BackToTop';
 
 interface IProps {
   children: React.ReactNode;
@@ -28,7 +27,6 @@ export const SharedLayout: React.FC<IProps> = ({
       <main className={(hasContainer && 'm-auto max-w-screen-xl') || ''}>
         {children}
       </main>
-      <BackToTop />
       {!hideFooter && (
         <footer className="z-100 sticky top-[100%] border-t px-5 py-10 text-center dark:border-gray-800">
           This project is published under{' '}
