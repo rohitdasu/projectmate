@@ -4,7 +4,7 @@ import { guide_steps as data } from './data';
 
 export const Guide = () => {
   return (
-    <div className="py-28 px-4">
+    <div>
       <h2 className="text-center text-2xl font-bold md:text-3xl">
         How it Works ?
       </h2>

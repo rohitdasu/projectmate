@@ -24,7 +24,7 @@ export const Hero = () => {
   };
 
   return (
-    <header className="m-auto my-20 px-4 lg:flex lg:items-center lg:justify-between">
+    <header className="flex flex-row items-center justify-between">
       <AuthModal title={'Continue with your social accounts'} />
       <div className="flex flex-col items-center gap-10 lg:items-start">
         <motion.h1

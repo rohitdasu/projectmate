@@ -1,0 +1,22 @@
+import axios from 'axios';
+import useSWR from 'swr';
+import { ContributorList } from '../ContributorList';
+
+export const Thanks = () => {
+  const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+
+  const { data } = useSWR(
+    'https://api.github.com/repos/rohitdasu/projectmate/contributors',
+    fetcher
+  );
+  return (
+    <div className="flex flex-col items-center justify-center space-y-4">
+      <h2 className="text-2xl font-bold md:text-3xl">
+        Thanks to our contributors
+      </h2>
+      <div className="text-center">
+        <ContributorList contributors={data} />
+      </div>
+    </div>
+  );
+};
