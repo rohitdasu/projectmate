@@ -41,7 +41,7 @@ export const Tags = ({
                 ? (event) => removeTagHandler(event, i)
                 : undefined
             }
-            className="group flex w-max cursor-pointer flex-wrap items-center rounded-full bg-background-2 !bg-orange-100 px-3 py-1 !text-orange-500 focus:ring dark:!bg-[#2c1c0f] dark:!text-orange-400"
+            className="group flex w-max cursor-pointer flex-wrap items-center rounded-full bg-background-2 !bg-slate-100 px-3 py-1 !text-slate-800 focus:ring dark:!bg-slate-900 dark:!text-slate-200"
           >
             <>
               {tag}
@@ -52,7 +52,7 @@ export const Tags = ({
       })}
       {(maximumTagsToShow || maximumCharactersToShow) &&
         tags.length - tagsToShow.length > 0 && (
-          <span className="group flex w-max cursor-pointer flex-wrap items-center rounded-full bg-background-2 !bg-orange-100 px-2 py-1 !text-orange-500 focus:ring dark:!bg-[#2c1c0f] dark:!text-orange-400">
+          <span className="group flex w-max cursor-pointer flex-wrap items-center rounded-full bg-background-2 !bg-slate-100 px-2 py-1 !text-slate-800 focus:ring dark:!bg-slate-900 dark:!text-slate-200">
             +{tags.length - tagsToShow.length}
           </span>
         )}

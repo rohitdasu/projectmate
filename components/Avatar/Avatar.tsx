@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
 import { Menu, Transition } from '@headlessui/react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { signOut, useSession } from 'next-auth/react';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { MdOutlineAccountCircle, MdArrowDropDown } from 'react-icons/md';
@@ -42,25 +42,23 @@ export function Avatar() {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute right-0 top-[64px] z-50 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800">
+            <Menu.Items className="absolute right-0 top-[64px] z-50 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-slate-100 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800">
               <div className="w-full px-1 py-1 ">
                 <Menu.Item>
                   <Link href="/user/profile">
-                    <a>
-                      <motion.button
-                        whileTap={{ scale: 0.9 }}
-                        className="group flex w-full items-center rounded-md px-2 py-2 text-left transition-all hover:bg-primary-color hover:text-white"
-                      >
-                        <MdOutlineAccountCircle className="mr-2 text-xl" />
-                        Profile
-                      </motion.button>
-                    </a>
+                    <motion.button
+                      whileTap={{ scale: 0.9 }}
+                      className="group flex w-full items-center rounded-md px-2 py-2 text-left opacity-75 transition-all hover:bg-primary-color hover:text-white hover:opacity-100"
+                    >
+                      <MdOutlineAccountCircle className="mr-2 text-xl" />
+                      Profile
+                    </motion.button>
                   </Link>
                 </Menu.Item>
                 <Menu.Item>
                   <motion.button
                     whileTap={{ scale: 0.9 }}
-                    className="group flex w-full items-center rounded-md px-2 py-2 text-left transition-all hover:bg-primary-color hover:text-white"
+                    className="group flex w-full items-center rounded-md px-2 py-2 text-left opacity-75 transition-all hover:bg-primary-color hover:text-white hover:opacity-100"
                     onClick={() => signOut({ redirect: false })}
                   >
                     <HiOutlineLogout className="mr-2 text-xl" /> Logout

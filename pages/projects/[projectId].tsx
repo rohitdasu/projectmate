@@ -1,7 +1,6 @@
 import { SharedLayout } from '@/components/Layouts';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { useRouter } from 'next/router';
-import { BsBoxArrowUpRight } from 'react-icons/bs';
 import axios from 'axios';
 import useSWR from 'swr';
 import Lottie from 'lottie-react';
@@ -9,6 +8,7 @@ import Loader from '../../public/loading.json';
 import { Tags } from '@/components/Tags';
 import { motion } from 'framer-motion';
 import { Stats } from '@/components/Stats';
+import { BiLink } from 'react-icons/bi';
 
 const ProjectDetails = () => {
   const router = useRouter();
@@ -33,10 +33,10 @@ const ProjectDetails = () => {
     return <div className="m-auto my-5 text-lg">Failed to load projects</div>;
 
   return (
-    <SharedLayout title="Project description" hasContainer>
+    <SharedLayout title={projectData?.title.toUpperCase()} hasContainer>
       <div className="flex w-full">
         <div className="container m-auto mb-10 flex flex-col p-4">
-          <h1 className="py-2 text-4xl font-semibold">
+          <h1 className="py-2 text-2xl font-semibold md:text-4xl">
             {projectData?.title.toUpperCase()}
           </h1>
           <div className="mt-6 flex flex-row items-center justify-between">
@@ -51,12 +51,14 @@ const ProjectDetails = () => {
                 width={40}
                 className="rounded-full"
               />
-              <h2 className="text-lg font-semibold">
-                {projectData?.author.name}
-              </h2>
-              <span className="text-[12px] text-gray-400">
-                {new Date(projectData?.createdAt).toLocaleDateString()}
-              </span>
+              <div>
+                <h2 className="text-lg font-semibold">
+                  {projectData?.author.name}
+                </h2>
+                <p className="text-[12px] text-gray-400">
+                  {new Date(projectData?.createdAt).toLocaleDateString()}
+                </p>
+              </div>
             </div>
             <motion.a
               layout
@@ -64,10 +66,10 @@ const ProjectDetails = () => {
               href={projectData?.githubRepository}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex w-max items-center space-x-4 rounded-full bg-orange-100 px-4 py-2 text-lg text-orange-500 ring-orange-800 hover:cursor-pointer hover:opacity-75 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400"
+              className="flex items-center space-x-1 text-lg text-gray-800 hover:cursor-pointer hover:text-blue-600 hover:underline dark:text-gray-400 dark:hover:text-blue-300"
             >
-              <span className="">Contribute</span>{' '}
-              <BsBoxArrowUpRight className="" />
+              <span className="">Contribute</span>
+              <BiLink />
             </motion.a>
           </div>
           <div className="my-6 flex flex-col break-words">

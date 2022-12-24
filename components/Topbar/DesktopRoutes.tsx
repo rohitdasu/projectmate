@@ -13,16 +13,15 @@ export const DesktopRoutes = () => {
 
         return (
           <li key={title}>
-            <Link href={url}>
-              <a
-                className={`flex cursor-pointer items-center gap-1 hover:text-primary-1 ${
-                  isCurrent && 'text-primary-1'
-                }`}
-                {...anchorTagProps}
-              >
-                <Icon />
-                {title}
-              </a>
+            <Link
+              href={url}
+              className={`flex cursor-pointer items-center gap-1 text-gray-700 transition-all hover:!text-primary-1 dark:text-gray-400 ${
+                isCurrent && '!text-primary-1'
+              }`}
+              {...anchorTagProps}
+            >
+              <Icon />
+              {title}
             </Link>
           </li>
         );
