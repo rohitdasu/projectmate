@@ -7,6 +7,7 @@ import {
   Thanks,
   JoinUs,
 } from '@/components/LandingPage/';
+import { BackToTop } from '@/components/BackToTopButton';
 
 const Home: NextPage = () => {
   return (
@@ -17,6 +18,7 @@ const Home: NextPage = () => {
         <BenefitsContainer />
         <JoinUs />
         <Thanks />
+        <BackToTop />
       </div>
     </SharedLayout>
   );
