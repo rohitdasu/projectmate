@@ -37,9 +37,7 @@ export const Tags = ({
           <Tag
             title={tag}
             key={i}
-            onClose={
-              areTagClosable ? (e) => removeTagHandler?.(e, i) : undefined
-            }
+            onClose={areTagClosable ? (e) => removeTagHandler(e, i) : undefined}
           />
         );
       })}
