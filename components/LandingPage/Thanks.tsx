@@ -14,7 +14,7 @@ export const Thanks = () => {
       <h2 className="mb-20 text-center text-2xl font-bold md:text-3xl">
         Thanks to our contributors
       </h2>
-      <div className="text-center">
+      <div className="flex flex-row flex-wrap items-center justify-between md:justify-center">
         <ContributorList contributors={data} />
       </div>
     </div>
