@@ -10,8 +10,8 @@ export const Thanks = () => {
     fetcher
   );
   return (
-    <div className="flex flex-col items-center justify-center space-y-4">
-      <h2 className="text-2xl font-bold md:text-3xl">
+    <div className="flex flex-col items-center justify-center">
+      <h2 className="mb-20 text-center text-2xl font-bold md:text-3xl">
         Thanks to our contributors
       </h2>
       <div className="text-center">

@@ -33,7 +33,7 @@ export const Project = ({
               {author}
             </span>
           </h2>
-          <p className="h-[80px] text-sm line-clamp-4">{description}</p>
+          <p className="h-20 text-sm line-clamp-4">{description}</p>
           <div className="flex flex-col gap-5">
             <div className="flex space-x-2 pb-2 md:pb-0">
               <Tags

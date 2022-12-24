@@ -46,7 +46,7 @@ export const Benefit: React.FC<IProps> = ({
 export const BenefitsContainer = () => {
   return (
     <div>
-      <h2 className="mb-[5rem] text-center text-2xl font-bold md:text-3xl">
+      <h2 className="mb-20 text-center text-2xl font-bold md:text-3xl">
         What are the Benefits ?
       </h2>
       <ul className="flex flex-col gap-28">
