@@ -1,7 +1,6 @@
 import { TagsProps } from './Tags.interface';
 import { useMemo } from 'react';
-import { AiFillCloseCircle } from 'react-icons/ai';
-import { motion } from 'framer-motion';
+import { Tag } from './Tag';
 
 export const Tags = ({
   tags,
@@ -29,32 +28,24 @@ export const Tags = ({
     return tempArray;
   }, [maximumCharactersToShow, maximumTagsToShow, tags]);
 
+  const areTagClosable = !!removeTagHandler;
+
   return (
     <div className={`flex ${className}`}>
       {tagsToShow.map((tag: string, i: number) => {
         return (
-          <motion.span
-            layout
+          <Tag
+            title={tag}
             key={i}
-            onClick={
-              removeTagHandler
-                ? (event) => removeTagHandler(event, i)
-                : undefined
+            onClose={
+              areTagClosable ? (e) => removeTagHandler?.(e, i) : undefined
             }
-            className="group flex w-max cursor-pointer flex-wrap items-center rounded-full bg-background-2 !bg-slate-100 px-3 py-1 !text-slate-800 focus:ring dark:!bg-slate-900 dark:!text-slate-200"
-          >
-            <>
-              {tag}
-              {removeTagHandler && <AiFillCloseCircle className="ml-2" />}
-            </>
-          </motion.span>
+          />
         );
       })}
       {(maximumTagsToShow || maximumCharactersToShow) &&
         tags.length - tagsToShow.length > 0 && (
-          <span className="group flex w-max cursor-pointer flex-wrap items-center rounded-full bg-background-2 !bg-slate-100 px-2 py-1 !text-slate-800 focus:ring dark:!bg-slate-900 dark:!text-slate-200">
-            +{tags.length - tagsToShow.length}
-          </span>
+          <Tag title={`+${tags.length - tagsToShow.length}`} />
         )}
     </div>
   );
