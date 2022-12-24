@@ -16,7 +16,7 @@ export const JoinUs = () => {
             key={title}
             {...anchorTagProps}
             href={url}
-            className="flex items-center justify-center text-5xl"
+            className="flex items-center justify-center text-5xl text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
           >
             {<Icon />}
           </motion.a>

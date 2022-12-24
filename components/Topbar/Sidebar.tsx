@@ -15,7 +15,6 @@ import { MdPostAdd } from 'react-icons/md';
 import { messageType, toastMessage } from 'shared';
 import { useAppDispatch } from '../../app/hooks';
 import { openModal } from '@/store/slices/sliceModal';
-import { Button } from '@/components/Button';
 import { GiClick } from 'react-icons/gi';
 
 export const Sidebar = () => {
@@ -107,7 +106,7 @@ export const Sidebar = () => {
               </div>
 
               {<RenderNavigation routes={appRoutes} />}
-              {<RenderNavigation routes={socialLinks} />}
+              {/* {<RenderNavigation routes={socialLinks} />} */}
 
               {session && (
                 <button
