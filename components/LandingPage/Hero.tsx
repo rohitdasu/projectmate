@@ -1,4 +1,3 @@
-import { AuthModal } from '@/components/AuthModal';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useAppDispatch } from '../../app/hooks';
@@ -25,7 +24,6 @@ export const Hero = () => {
 
   return (
     <header className="flex flex-row items-center justify-between">
-      <AuthModal title={'Continue with your social accounts'} />
       <div className="flex flex-col items-center gap-10 lg:items-start">
         <motion.h1
           initial={{ opacity: 0 }}
