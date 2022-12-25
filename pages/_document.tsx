@@ -43,11 +43,6 @@ export default class MyDocument extends Document {
               })(window,document,'script','dataLayer','GTM-KSS8T4M');`,
             }}
           />
-          <script
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6408815682994127"
-            crossOrigin="anonymous"
-          ></script>
         </Head>
         <body className="bg-background-1">
           <noscript>
