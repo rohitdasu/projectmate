@@ -13,6 +13,9 @@ import { HiOutlineLogout } from 'react-icons/hi';
 import { signOut, useSession } from 'next-auth/react';
 import { MdPostAdd } from 'react-icons/md';
 import { messageType, toastMessage } from 'shared';
+import { useAppDispatch } from '../../app/hooks';
+import { openModal } from '@/store/slices/sliceModal';
+import { GiClick } from 'react-icons/gi';
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -35,6 +38,9 @@ export const Sidebar = () => {
     }
   };
 
+  const dispatch = useAppDispatch();
+  const handleModal = () => dispatch(openModal());
+
   const RenderNavigation: React.FC<{ routes: IRoute[] }> = ({ routes }) => {
     return (
       <ul className="w-full overflow-auto">
@@ -44,16 +50,17 @@ export const Sidebar = () => {
 
           return (
             <motion.li whileTap={{ scale: 0.9 }} key={title}>
-              <Link href={url}>
-                <a
-                  {...anchorTagProps}
-                  className={`flex items-center justify-between gap-2 p-5 text-lg uppercase ${
-                    isCurrent && 'bg-background-2'
-                  }`}
-                >
+              <Link
+                href={url}
+                {...anchorTagProps}
+                className={`flex items-center justify-between gap-2 p-5 text-lg uppercase ${
+                  isCurrent && 'bg-background-2'
+                }`}
+              >
+                <>
                   {title}
                   <Icon className="text-2xl" />
-                </a>
+                </>
               </Link>
             </motion.li>
           );
@@ -99,7 +106,7 @@ export const Sidebar = () => {
               </div>
 
               {<RenderNavigation routes={appRoutes} />}
-              {<RenderNavigation routes={socialLinks} />}
+              {/* {<RenderNavigation routes={socialLinks} />} */}
 
               {session && (
                 <button
@@ -120,6 +127,15 @@ export const Sidebar = () => {
                 Submit project
                 <MdPostAdd className="text-2xl" />
               </button>
+              {session === null && (
+                <button
+                  onClick={handleModal}
+                  className="flex w-full items-center justify-between gap-2 p-5 text-lg uppercase"
+                >
+                  Login
+                  <GiClick className="text-2xl" />
+                </button>
+              )}
             </motion.div>
           </>
         )}

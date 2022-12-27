@@ -4,6 +4,7 @@ import useSWRInfinite from 'swr/infinite';
 import { Project } from './Project';
 import { ProjectSkeleton } from './ProjectSkeleton';
 import axios from 'axios';
+import { BackToTop } from '../BackToTopButton';
 
 interface IProject extends ProjectData {
   author: {
@@ -55,32 +56,35 @@ export const ProjectsList: React.FC = () => {
     return <div className="m-auto my-5 text-lg">Failed to load projects</div>;
 
   return (
-    <ul className="container m-auto max-w-screen-xl auto-rows-auto gap-5 md:grid md:grid-cols-2 md:p-5 lg:grid-cols-3 xl:grid-cols-4">
-      {!data ? (
-        skeletonProjectsToLoad.map((randomKey) => (
-          <ProjectSkeleton key={randomKey} />
-        ))
-      ) : (
-        <>
-          {paginatedPosts?.map((project: IProject, i: number) => (
-            <Project
-              key={i}
-              id={project.id}
-              description={project.description}
-              title={project.title}
-              tags={project.tags}
-              author={project.author.name}
-            />
-          ))}
-        </>
-      )}
-      {data && isLoadingMore && isNotReachEnd ? (
-        skeletonProjectsToLoad.map((randomKey) => (
-          <ProjectSkeleton key={randomKey} />
-        ))
-      ) : (
-        <></>
-      )}
-    </ul>
+    <>
+      <ul className="container m-auto max-w-screen-xl auto-rows-auto gap-5 md:grid md:grid-cols-2 md:p-5 lg:grid-cols-3 xl:grid-cols-4">
+        {!data ? (
+          skeletonProjectsToLoad.map((randomKey) => (
+            <ProjectSkeleton key={randomKey} />
+          ))
+        ) : (
+          <>
+            {paginatedPosts?.map((project: IProject, i: number) => (
+              <Project
+                key={i}
+                id={project.id}
+                description={project.description}
+                title={project.title}
+                tags={project.tags}
+                author={project.author.name}
+              />
+            ))}
+          </>
+        )}
+        {data && isLoadingMore && isNotReachEnd ? (
+          skeletonProjectsToLoad.map((randomKey) => (
+            <ProjectSkeleton key={randomKey} />
+          ))
+        ) : (
+          <></>
+        )}
+      </ul>
+      <BackToTop />
+    </>
   );
 };

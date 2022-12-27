@@ -1,18 +1,16 @@
 import React from 'react';
 import {
-  Search,
+  // Search,
   ProjectsList,
-  AuthModal,
   SharedLayout,
 } from '../../components';
 const Projects = () => {
   return (
     <SharedLayout title="Projects" hideFooter>
       <div className="flex flex-col">
-        <AuthModal title={'Continue with your social accounts'} />
-        <div className="sticky top-0 z-10 backdrop-blur-3xl">
+        {/* <div className="sticky top-0 z-10 bg-yellow-400 backdrop-blur-3xl">
           <Search />
-        </div>
+        </div> */}
         <ProjectsList />
       </div>
     </SharedLayout>

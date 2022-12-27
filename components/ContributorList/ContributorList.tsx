@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { ContributorProps } from './ContributorList.interface';
 import { motion } from 'framer-motion';
 
@@ -10,7 +10,7 @@ export const ContributorList = ({ contributors }: ContributorProps) => {
         contributors.length > 0 &&
         contributors.map((contributor, index) => (
           <motion.a
-            whileHover={{ scale: 2.5 }}
+            whileHover={{ scale: 1.2 }}
             key={index}
             href={contributor.html_url}
             target="_blank"
@@ -21,8 +21,8 @@ export const ContributorList = ({ contributors }: ContributorProps) => {
             <Image
               src={contributor.avatar_url}
               alt={contributor.html_url.split('/')[3]}
-              width={30}
-              height={30}
+              width={64}
+              height={64}
               className="rounded-full bg-black"
             />
           </motion.a>
