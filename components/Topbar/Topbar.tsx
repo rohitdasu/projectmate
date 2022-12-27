@@ -4,18 +4,19 @@ import { DesktopRoutes } from './DesktopRoutes';
 import { Sidebar } from './Sidebar';
 import { Logo } from './Logo';
 import { Avatar } from '../Avatar';
-import { SocialLinks } from './SocialLinks';
 import { LoginButton } from './LoginButton';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import { toastMessage, messageType } from '../../shared';
+import { openModal } from '@/store/slices/sliceModal';
+import { useAppDispatch } from '../../app/hooks';
 
 export const Topbar = () => {
+  const dispatch = useAppDispatch();
   const { data: session } = useSession();
   const router = useRouter();
   const gotoSubmitPage = () => {
     if (!session) {
-      toastMessage('Please login/register first', messageType.error);
+      dispatch(openModal());
     } else {
       router.push('/projects/submit');
     }

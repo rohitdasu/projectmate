@@ -12,7 +12,6 @@ import { SidebarAvatar } from '@/components/Avatar';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { signOut, useSession } from 'next-auth/react';
 import { MdPostAdd } from 'react-icons/md';
-import { messageType, toastMessage } from 'shared';
 import { useAppDispatch } from '../../app/hooks';
 import { openModal } from '@/store/slices/sliceModal';
 import { GiClick } from 'react-icons/gi';
@@ -29,16 +28,16 @@ export const Sidebar = () => {
   useOnClickOutside(ref, closeSidebar);
 
   const socialLinks = getSocialLinks(true);
+  const dispatch = useAppDispatch();
 
   const gotoSubmitPage = () => {
     if (session) {
       router.push('/projects/submit');
     } else {
-      toastMessage('Please login/register first', messageType.error);
+      dispatch(openModal());
     }
   };
 
-  const dispatch = useAppDispatch();
   const handleModal = () => dispatch(openModal());
 
   const RenderNavigation: React.FC<{ routes: IRoute[] }> = ({ routes }) => {
