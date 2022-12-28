@@ -3,6 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { closeModal } from '@/store/slices/sliceModal';
 import { IAuthData } from './Auth.interface';
+import { motion } from 'framer-motion';
 
 export const AuthModal = ({ title }: IAuthData) => {
   const isOpen = useAppSelector((state) => state.modal.modal);
@@ -25,7 +26,7 @@ export const AuthModal = ({ title }: IAuthData) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -39,7 +40,7 @@ export const AuthModal = ({ title }: IAuthData) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="flex w-full max-w-md transform flex-col items-center justify-center gap-8 overflow-hidden rounded-2xl border border-color-border-1 bg-background-1 px-6 pt-6 pb-12 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="flex w-full max-w-md transform flex-col items-center justify-center gap-8 overflow-hidden rounded-2xl border-[0.1px] bg-slate-100 px-6 pt-6 pb-12 text-left align-middle shadow-xl transition-all dark:bg-slate-900">
                   <span
                     className={`flex w-full items-center justify-center font-mono  text-2xl font-bold uppercase text-gray-900 text-foreground-1 md:space-x-2`}
                   >
@@ -54,8 +55,9 @@ export const AuthModal = ({ title }: IAuthData) => {
                     {title}
                   </Dialog.Title>
                   <div className="flex w-full flex-col items-center justify-center space-y-6 px-0 md:px-12">
-                    <button
-                      className="flex w-full items-center justify-between rounded-lg border border-gray-400 py-2 px-3 hover:opacity-50 focus:outline"
+                    <motion.button
+                      whileTap={{ scale: 0.95 }}
+                      className="flex w-full items-center justify-between rounded-lg border border-gray-400 py-2 px-3 hover:opacity-50"
                       onClick={() => {
                         popupCenter('/auth/github', 'Sign In With Github');
                         dispatch(closeModal());
@@ -67,7 +69,7 @@ export const AuthModal = ({ title }: IAuthData) => {
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        className="fill-filler-1"
+                        className="fill-slate-900 dark:fill-slate-100"
                       >
                         <path
                           fillRule="evenodd"
@@ -79,10 +81,11 @@ export const AuthModal = ({ title }: IAuthData) => {
                         Continue with Github
                       </span>
                       <span></span>
-                    </button>
+                    </motion.button>
 
-                    <button
-                      className="flex w-full items-center justify-between rounded-lg border border-gray-400 py-2 px-3 hover:opacity-50 focus:outline"
+                    <motion.button
+                      whileTap={{ scale: 0.95 }}
+                      className="flex w-full items-center justify-between rounded-lg border border-gray-400 py-2 px-3 hover:opacity-50"
                       onClick={() => {
                         popupCenter('/auth/google', 'Sign In With Google');
                         dispatch(closeModal());
@@ -115,7 +118,7 @@ export const AuthModal = ({ title }: IAuthData) => {
                         Continue with Google
                       </span>
                       <span></span>
-                    </button>
+                    </motion.button>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

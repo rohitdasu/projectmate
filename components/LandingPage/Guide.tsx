@@ -14,17 +14,16 @@ export const Guide = () => {
           const { title, desc, Icon } = item;
           return (
             <motion.li
-              whileHover={{ scale: 1.1 }}
               key={title}
-              className="relative flex w-[100%] max-w-[30rem] flex-col items-center gap-2 rounded-md bg-slate-100 p-5 text-center shadow-lg hover:bg-slate-200 dark:bg-slate-800 hover:dark:bg-gray-900"
+              className="relative flex w-[100%] max-w-[30rem] flex-col items-center gap-2 rounded-md bg-slate-100 p-5 text-center shadow-md dark:bg-slate-800"
             >
               <div className="flex flex-col items-center gap-2">
                 <Icon className="text-2xl" />
-                <h2 className="text-md font-semibold uppercase text-gray-700 dark:text-gray-300 md:text-lg">
+                <h2 className="text-md font-semibold uppercase text-gray-800 dark:text-gray-300 md:text-lg">
                   {title}
                 </h2>
               </div>
-              <p className="md:text-md text-sm font-light text-gray-700 dark:text-gray-300">
+              <p className="md:text-md text-sm font-light text-gray-800 dark:text-gray-300">
                 {desc}
               </p>
             </motion.li>

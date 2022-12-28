@@ -22,6 +22,7 @@ export const Project = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
       className="w-full p-2 shadow-lg md:p-0"
     >
       <div className="flex h-full flex-col items-center overflow-hidden rounded-md text-foreground-1 shadow-border-shadow">
