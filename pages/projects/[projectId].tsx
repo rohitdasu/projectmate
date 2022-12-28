@@ -9,6 +9,7 @@ import { Tags } from '@/components/Tags';
 import { motion } from 'framer-motion';
 import { Stats } from '@/components/Stats';
 import { BiLink } from 'react-icons/bi';
+import { RiArrowGoBackFill } from 'react-icons/ri';
 
 const ProjectDetails = () => {
   const router = useRouter();
@@ -42,6 +43,18 @@ const ProjectDetails = () => {
         className="flex w-full"
       >
         <div className="container m-auto mb-10 flex flex-col p-4">
+          <div className="mb-4">
+            <motion.button
+              onClick={() => router.push('/projects')}
+              whileTap={{ scale: 0.95 }}
+              className="flex flex-row items-center justify-center gap-1 rounded-md border border-gray-800 px-3 py-2 shadow-md focus:ring dark:border-gray-300"
+            >
+              <RiArrowGoBackFill className="text-xl" />
+              <span className="text-md block font-normal uppercase leading-4">
+                back
+              </span>
+            </motion.button>
+          </div>
           <h1 className="py-2 text-2xl font-semibold md:text-4xl">
             {projectData?.title.toUpperCase()}
           </h1>

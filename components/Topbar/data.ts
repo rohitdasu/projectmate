@@ -1,5 +1,5 @@
-import { MdRoofing } from 'react-icons/md';
-import { IoCodeSlash } from 'react-icons/io5';
+// import { MdRoofing } from 'react-icons/md';
+import { IoCodeSlash, IoPersonOutline } from 'react-icons/io5';
 import { FiFeather } from 'react-icons/fi';
 import { FaDiscord, FaGithub, FaTwitter } from 'react-icons/fa';
 import { TbBrandGithub, TbBrandDiscord, TbBrandTwitter } from 'react-icons/tb';
@@ -14,6 +14,7 @@ export interface IRoute {
   title: string;
   url: string;
   Icon: IconType;
+  protectedRoute?: boolean;
   anchorTagProps?: AnchorTagPropsType;
 }
 
@@ -27,6 +28,12 @@ export const appRoutes: IRoute[] = [
     title: 'projects',
     url: '/projects',
     Icon: IoCodeSlash,
+  },
+  {
+    title: 'profile',
+    url: '/user/profile',
+    Icon: IoPersonOutline,
+    protectedRoute: true,
   },
   {
     title: 'blog',

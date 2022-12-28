@@ -1,16 +1,20 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { appRoutes } from './data';
+import { useSession } from 'next-auth/react';
 
 export const DesktopRoutes = () => {
+  const { data: session } = useSession();
   const { pathname } = useRouter();
 
   return (
     <ul className="hidden gap-5 uppercase md:flex">
       {appRoutes.map((route) => {
-        const { title, url, Icon, anchorTagProps } = route;
+        const { title, url, Icon, anchorTagProps, protectedRoute } = route;
         const isCurrent = pathname === url || pathname.includes(title);
-
+        if (protectedRoute && !session) {
+          return <></>;
+        }
         return (
           <li key={title}>
             <Link
