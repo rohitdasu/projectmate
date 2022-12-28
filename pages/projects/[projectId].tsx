@@ -34,7 +34,13 @@ const ProjectDetails = () => {
 
   return (
     <SharedLayout title={projectData?.title.toUpperCase()} hasContainer>
-      <div className="flex w-full">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        exit={{ opacity: 0 }}
+        className="flex w-full"
+      >
         <div className="container m-auto mb-10 flex flex-col p-4">
           <h1 className="py-2 text-2xl font-semibold md:text-4xl">
             {projectData?.title.toUpperCase()}
@@ -90,7 +96,7 @@ const ProjectDetails = () => {
           </div>
           {repoData && <Stats {...repoData} />}
         </div>
-      </div>
+      </motion.div>
     </SharedLayout>
   );
 };
