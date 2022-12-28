@@ -1,7 +1,7 @@
 import React from 'react';
-import { TypographyProps } from './Typography.interface';
+import { TypographyProps, TextElementType } from './Typography.interface';
 
-export const Typography = <C extends React.ElementType = 'span'>({
+export const Typography = <C extends TextElementType = 'span'>({
   as,
   children,
   ...restProps
