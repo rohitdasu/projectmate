@@ -1,6 +1,7 @@
 import Image from 'next/legacy/image';
 import { benefits_data } from './data';
 import type { StaticImageData } from 'next/legacy/image';
+import { Typography } from '@/components/Typography';
 
 interface IProps {
   title: string;
@@ -32,12 +33,24 @@ export const Benefit: React.FC<IProps> = ({
         />
       </div>
       <div className="flex max-w-[30rem] flex-col gap-10 text-center lg:max-w-[100%] lg:text-left">
-        <h2 className="text-left text-2xl font-bold text-gray-800 dark:text-gray-300 md:text-3xl">
+        <Typography
+          as="h2"
+          align="left"
+          fontSize="2xl"
+          fontWeight="bold"
+          className="text-gray-800 dark:text-gray-300 md:text-3xl"
+        >
           {title}
-        </h2>
-        <p className="text-md text-justify font-light text-gray-800 dark:text-gray-300 md:text-left md:text-lg">
+        </Typography>
+        <Typography
+          as="p"
+          align="justify"
+          fontSize="base"
+          fontWeight="light"
+          className="text-gray-800 dark:text-gray-300 md:text-left md:text-lg"
+        >
           {desc}
-        </p>
+        </Typography>
       </div>
     </li>
   );
@@ -46,9 +59,15 @@ export const Benefit: React.FC<IProps> = ({
 export const BenefitsContainer = () => {
   return (
     <div>
-      <h2 className="mb-20 text-center text-2xl font-bold md:text-3xl">
+      <Typography
+        as="h2"
+        align="center"
+        fontSize="2xl"
+        fontWeight="bold"
+        className="mb-20 md:text-3xl"
+      >
         What are the Benefits ?
-      </h2>
+      </Typography>
       <ul className="flex flex-col gap-28">
         {benefits_data.map((item) => {
           return <Benefit key={item.title} {...item} />;

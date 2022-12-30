@@ -16,10 +16,12 @@ export const Typography = <C extends TextElementType = 'span'>({
   ...restProps
 }: TypographyProps<C>) => {
   const Component = as || 'span';
+  const style = align ? { style: { textAlign: align } } : {};
   return (
     <Component
       className={`${className} ${FontWeights[fontWeight]} ${FontSizes[fontSize]}`}
       {...restProps}
+      {...style}
     >
       {children}
     </Component>
