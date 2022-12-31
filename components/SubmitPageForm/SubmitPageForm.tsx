@@ -132,106 +132,110 @@ export const SubmitPageForm = () => {
   return (
     <div className="mx-auto w-full px-4 lg:px-0">
       <form className="form-container mx-auto flex w-full flex-col space-y-6">
-        <h1 className="mb-4 text-left text-3xl font-semibold">
-          Submit Project
-        </h1>
-        <Controller
-          name="projectName"
-          control={control}
-          defaultValue=""
-          render={({ field, fieldState }) => {
-            return (
-              <Input
-                {...field}
-                placeholder="Enter your project name"
-                error={fieldState.error}
-                label="Project Name"
-                required
-              />
-            );
-          }}
-        />
-        <Controller
-          name="repositoryLink"
-          control={control}
-          defaultValue=""
-          render={({ field, fieldState }) => {
-            return (
-              <Input
-                {...field}
-                placeholder="Enter your repository URL"
-                error={fieldState.error}
-                label="Repository URL"
-                required
-              />
-            );
-          }}
-        />
-        <Controller
-          name="projectDescription"
-          control={control}
-          defaultValue=""
-          render={({ field, fieldState }) => {
-            return (
-              <Input
-                {...field}
-                placeholder="Enter your project description"
-                error={fieldState.error}
-                value={field.value}
-                label="Description"
-                required
-              />
-            );
-          }}
-        />
-        <Controller
-          name="tags"
-          control={control}
-          render={({ field, fieldState }) => {
-            return (
-              <>
-                <Input
-                  {...field}
-                  placeholder="Enter your project tags"
-                  onChange={(e) => setTagInput(e.target.value)}
-                  error={fieldState.error}
-                  label="Tags"
-                  value={tagInput}
-                  onKeyDown={(e) => onTagAddition(e, field)}
-                  required
-                  hintMessage="Note: only 5 tags are allowed"
-                />
-                {tags && tags.length > 0 && (
+        <div className="flex justify-center">
+          <div className="block max-w-xl p-6">
+            <h1 className="mb-4 text-left text-3xl font-semibold">
+              Submit Project
+            </h1>
+            <Controller
+              name="projectName"
+              control={control}
+              defaultValue=""
+              render={({ field, fieldState }) => {
+                return (
+                  <Input
+                    {...field}
+                    placeholder="Enter your project name"
+                    error={fieldState.error}
+                    label="Project Name"
+                    required
+                  />
+                );
+              }}
+            />
+            <Controller
+              name="repositoryLink"
+              control={control}
+              defaultValue=""
+              render={({ field, fieldState }) => {
+                return (
+                  <Input
+                    {...field}
+                    placeholder="Enter your repository URL"
+                    error={fieldState.error}
+                    label="Repository URL"
+                    required
+                  />
+                );
+              }}
+            />
+            <Controller
+              name="projectDescription"
+              control={control}
+              defaultValue=""
+              render={({ field, fieldState }) => {
+                return (
+                  <Input
+                    {...field}
+                    placeholder="Enter your project description"
+                    error={fieldState.error}
+                    value={field.value}
+                    label="Description"
+                    required
+                  />
+                );
+              }}
+            />
+            <Controller
+              name="tags"
+              control={control}
+              render={({ field, fieldState }) => {
+                return (
                   <>
-                    <div className="flex flex-wrap gap-2">
-                      {tags && tags.length > 0 && (
-                        <Tags
-                          className="gap-2 uppercase"
-                          tags={tags}
-                          removeTagHandler={removeTag}
-                        />
-                      )}
-                    </div>
+                    <Input
+                      {...field}
+                      placeholder="Enter your project tags"
+                      onChange={(e) => setTagInput(e.target.value)}
+                      error={fieldState.error}
+                      label="Tags"
+                      value={tagInput}
+                      onKeyDown={(e) => onTagAddition(e, field)}
+                      required
+                      hintMessage="Note: only 5 tags are allowed"
+                    />
+                    {tags && tags.length > 0 && (
+                      <>
+                        <div className="flex flex-wrap gap-2">
+                          {tags && tags.length > 0 && (
+                            <Tags
+                              className="gap-2 uppercase"
+                              tags={tags}
+                              removeTagHandler={removeTag}
+                            />
+                          )}
+                        </div>
+                      </>
+                    )}
                   </>
-                )}
-              </>
-            );
-          }}
-        />
-        <Controller
-          name="content"
-          control={control}
-          render={({ field }) => {
-            return (
-              <RichTextEditor
-                {...field}
-                label={'Content'}
-                value={contentInput}
-                onChange={(value) => onContentChange(value, field)}
-              />
-            );
-          }}
-        />
+                );
+              }}
+            />
+            <Controller
+              name="content"
+              control={control}
+              render={({ field }) => {
+                return (
+                  <RichTextEditor
+                    {...field}
+                    label={'Content'}
+                    value={contentInput}
+                    onChange={(value) => onContentChange(value, field)}
+                  />
+                );
+              }}
+            />
+          </div>
+        </div>
       </form>
       <div className="my-4 w-full">
         <Button
