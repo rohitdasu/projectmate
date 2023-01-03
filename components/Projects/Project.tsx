@@ -4,6 +4,7 @@ import { Tags } from '@/components/Tags';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { Button } from '@/components/Button';
+import { Typography } from '@/components/Typography';
 
 export const Project = ({
   id,
@@ -34,7 +35,9 @@ export const Project = ({
               {author}
             </span>
           </h2>
-          <p className="h-20 text-sm line-clamp-4">{description}</p>
+          <Typography as="p" fontSize="sm" className="h-20 line-clamp-4">
+            {description}
+          </Typography>
           <div className="flex flex-col gap-5">
             <div className="flex space-x-2 pb-2 md:pb-0">
               <Tags

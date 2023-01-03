@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 import { guide_steps as data } from './data';
+import { Typography } from '@/components/Typography';
 
 export const Guide = () => {
   return (
@@ -23,9 +24,14 @@ export const Guide = () => {
                   {title}
                 </h2>
               </div>
-              <p className="md:text-md text-sm font-light text-gray-800 dark:text-gray-300">
+              <Typography
+                as="p"
+                fontSize="sm"
+                fontWeight="light"
+                className="md:text-md text-gray-800 dark:text-gray-300"
+              >
                 {desc}
-              </p>
+              </Typography>
             </motion.li>
           );
         })}

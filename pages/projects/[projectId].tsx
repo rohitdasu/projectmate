@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import { Stats } from '@/components/Stats';
 import { BiLink } from 'react-icons/bi';
 import { RiArrowGoBackFill } from 'react-icons/ri';
+import { Typography } from '@/components/Typography';
 
 const ProjectDetails = () => {
   const router = useRouter();
@@ -78,9 +79,9 @@ const ProjectDetails = () => {
                 <h2 className="text-lg font-semibold">
                   {projectData?.author?.name}
                 </h2>
-                <p className="text-[12px] text-gray-400">
+                <Typography as="p" fontSize="xs" className="text-gray-400">
                   {new Date(projectData?.createdAt).toLocaleDateString()}
-                </p>
+                </Typography>
               </div>
             </div>
             <motion.a

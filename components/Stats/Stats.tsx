@@ -7,12 +7,18 @@ import { motion } from 'framer-motion';
 import { IoClipboardOutline } from 'react-icons/io5';
 import { messageType, toastMessage } from 'shared';
 import { SlGlobe, SlPeople } from 'react-icons/sl';
+import { Typography } from '@/components/Typography';
 
 const Title = ({ ...props }) => {
   return (
-    <p className="text-md flex flex-row items-center gap-2 font-medium text-slate-600 dark:text-slate-300">
+    <Typography
+      as="p"
+      fontSize="base"
+      fontWeight="medium"
+      className="flex flex-row items-center gap-2 text-slate-600 dark:text-slate-300"
+    >
       {props?.children}
-    </p>
+    </Typography>
   );
 };
 
