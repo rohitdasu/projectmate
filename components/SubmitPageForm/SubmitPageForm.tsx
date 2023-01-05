@@ -11,7 +11,6 @@ import Lottie from 'lottie-react';
 import Loader from '../../public/loading.json';
 import axios from 'axios';
 import { Input } from '@/components/Form/Input';
-import { RichTextEditor } from '@/components/Form/RichTextEditor';
 import { schema } from './schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toastMessage, messageType } from '../../shared';
@@ -36,7 +35,6 @@ export const SubmitPageForm = () => {
   const tags = watch('tags');
   const [loading, setLoading] = useState<boolean>(false);
   const [tagInput, setTagInput] = useState<string>('');
-  const [contentInput, setContentInput] = useState<string>('');
 
   const { status, data: session } = useSession({
     required: true,
@@ -54,7 +52,6 @@ export const SubmitPageForm = () => {
   }
 
   const resetFormData = () => {
-    setContentInput('');
     reset();
   };
 
@@ -67,7 +64,7 @@ export const SubmitPageForm = () => {
         {
           title: data.projectName,
           description: data.projectDescription,
-          content: data.content || '',
+          content: '',
           githubRepository: data.repositoryLink,
           tags: data.tags,
           coverImg:
@@ -119,14 +116,6 @@ export const SubmitPageForm = () => {
       'tags',
       tags.filter((element: string, i: number) => i !== index)
     );
-  };
-
-  const onContentChange = (
-    contentValue: string,
-    field: ControllerRenderProps<FormInputs, 'content'>
-  ) => {
-    field.onChange(contentValue);
-    setContentInput(contentValue);
   };
 
   return (
@@ -215,20 +204,6 @@ export const SubmitPageForm = () => {
                   </>
                 )}
               </>
-            );
-          }}
-        />
-        <Controller
-          name="content"
-          control={control}
-          render={({ field }) => {
-            return (
-              <RichTextEditor
-                {...field}
-                label={'Content'}
-                value={contentInput}
-                onChange={(value) => onContentChange(value, field)}
-              />
             );
           }}
         />
