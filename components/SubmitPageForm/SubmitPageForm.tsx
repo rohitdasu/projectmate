@@ -11,7 +11,6 @@ import Lottie from 'lottie-react';
 import Loader from '../../public/loading.json';
 import axios from 'axios';
 import { Input } from '@/components/Form/Input';
-import { RichTextEditor } from '@/components/Form/RichTextEditor';
 import { schema } from './schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toastMessage, messageType } from '../../shared';
@@ -36,7 +35,6 @@ export const SubmitPageForm = () => {
   const tags = watch('tags');
   const [loading, setLoading] = useState<boolean>(false);
   const [tagInput, setTagInput] = useState<string>('');
-  const [contentInput, setContentInput] = useState<string>('');
 
   const { status, data: session } = useSession({
     required: true,
@@ -54,7 +52,6 @@ export const SubmitPageForm = () => {
   }
 
   const resetFormData = () => {
-    setContentInput('');
     reset();
   };
 
@@ -67,7 +64,7 @@ export const SubmitPageForm = () => {
         {
           title: data.projectName,
           description: data.projectDescription,
-          content: data.content || '',
+          content: '',
           githubRepository: data.repositoryLink,
           tags: data.tags,
           coverImg:
@@ -119,14 +116,6 @@ export const SubmitPageForm = () => {
       'tags',
       tags.filter((element: string, i: number) => i !== index)
     );
-  };
-
-  const onContentChange = (
-    contentValue: string,
-    field: ControllerRenderProps<FormInputs, 'content'>
-  ) => {
-    field.onChange(contentValue);
-    setContentInput(contentValue);
   };
 
   return (
@@ -217,29 +206,26 @@ export const SubmitPageForm = () => {
                       </>
                     )}
                   </>
-                );
-              }}
-            />
-            <Controller
-              name="content"
-              control={control}
-              render={({ field }) => {
-                return (
-                  <RichTextEditor
-                    {...field}
-                    label={'Content'}
-                    value={contentInput}
-                    onChange={(value) => onContentChange(value, field)}
-                  />
-                );
-              }}
-            />
-          </form>
-          <div className="my-4 w-full">
-            <Button
-              isDisabled={loading}
-              onClick={handleSubmit(onSubmit)}
-              className="float-right mt-4 flex flex-row gap-4 px-8 py-2"
+                )}
+              </>
+            );
+          }}
+        />
+      </form>
+      <div className="my-4 w-full">
+        <Button
+          isDisabled={loading}
+          onClick={handleSubmit(onSubmit)}
+          className="float-right mt-4 flex flex-row gap-4 px-8 py-2"
+        >
+          Submit
+          {loading && (
+            <svg
+              aria-hidden="true"
+              className="h-4 w-4 animate-spin fill-primary-color text-gray-200"
+              viewBox="0 0 100 101"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
               Submit
               {loading && (
