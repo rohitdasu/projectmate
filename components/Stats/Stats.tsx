@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 const Title = ({ ...props }) => {
   return (
     <p className="text-md flex flex-row items-center gap-2 font-medium text-slate-600 dark:text-slate-300">
-      {props.children}
+      {props?.children}
     </p>
   );
 };
@@ -15,7 +15,7 @@ const Title = ({ ...props }) => {
 const Value = ({ ...props }) => {
   return (
     <span className="rounded-md p-2 text-slate-900 dark:text-slate-400">
-      {props.children}
+      {props?.children}
     </span>
   );
 };
@@ -38,12 +38,12 @@ export const Stats = ({ ...props }) => {
             </Title>
             <Value>
               <a
-                href={props.owner.html_url}
+                href={props?.owner?.html_url}
                 target="_blank"
                 rel="noreferrer"
                 className="flex flex-row items-center transition-all hover:underline"
               >
-                {props.owner.login} <BiLink />
+                {props?.owner?.login} <BiLink />
               </a>
             </Value>
           </div>
@@ -52,14 +52,14 @@ export const Stats = ({ ...props }) => {
               <BiGitRepoForked className="text-2xl" />
               Forks
             </Title>
-            <Value>{props.forks_count}</Value>
+            <Value>{props?.forks_count}</Value>
           </div>
           <div className="flex w-full flex-row items-center justify-between">
             <Title>
               <MdStarOutline className="text-2xl" />
               Stars
             </Title>
-            <Value>{props.stargazers_count}</Value>
+            <Value>{props?.stargazers_count}</Value>
           </div>
         </div>
         <div className="flex flex-row flex-wrap items-center gap-4 md:flex-nowrap md:gap-16">
@@ -68,20 +68,20 @@ export const Stats = ({ ...props }) => {
               <VscIssues className="text-2xl" />
               Opened issues
             </Title>
-            <Value>{props.open_issues_count}</Value>
+            <Value>{props?.open_issues_count}</Value>
           </div>
           <div className="flex w-full flex-row items-center justify-between">
             <Title>
               <FiKey className="text-2xl" /> License
             </Title>
-            <Value>{props.license.name}</Value>
+            <Value>{props?.license?.name ?? 'NO LICENSE'}</Value>
           </div>
           <div className="flex w-full flex-row items-center justify-between">
             <Title>
               <BiCode className="text-2xl" />
               Language
             </Title>
-            <Value>{props.language}</Value>
+            <Value>{props?.language}</Value>
           </div>
         </div>
       </div>
