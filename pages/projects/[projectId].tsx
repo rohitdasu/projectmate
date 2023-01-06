@@ -20,7 +20,7 @@ const ProjectDetails = () => {
   const repoURL =
     'https://api.github.com/repos/' +
     data?.results?.githubRepository?.slice(19);
-  const { data: repoData } = useSWR(repoURL, fetcher);
+  const { data: repoData, error: repoError } = useSWR(repoURL, fetcher);
   const { results: projectData } = data || {};
   if (!data && !repoData) {
     return (
@@ -30,8 +30,12 @@ const ProjectDetails = () => {
     );
   }
 
-  if (error)
-    return <div className="m-auto my-5 text-lg">Failed to load projects</div>;
+  if (error || repoError)
+    return (
+      <div className="m-auto my-5 flex h-screen items-center justify-center">
+        <p className="text-lg">Failed to load project</p>
+      </div>
+    );
 
   return (
     <SharedLayout title={projectData?.title.toUpperCase()} hasContainer>
@@ -62,8 +66,8 @@ const ProjectDetails = () => {
             <div className="flex flex-row items-center gap-5">
               <Image
                 src={
-                  projectData?.author.image ||
-                  `https://avatars.dicebear.com/api/initials/${projectData?.author.name}.png?backgroundColorLevel=800&fontSize=40`
+                  projectData?.author?.image ||
+                  `https://avatars.dicebear.com/api/initials/${projectData?.author?.name}.png?backgroundColorLevel=800&fontSize=40`
                 }
                 alt="user-photo"
                 height={40}
@@ -72,7 +76,7 @@ const ProjectDetails = () => {
               />
               <div>
                 <h2 className="text-lg font-semibold">
-                  {projectData?.author.name}
+                  {projectData?.author?.name}
                 </h2>
                 <p className="text-[12px] text-gray-400">
                   {new Date(projectData?.createdAt).toLocaleDateString()}
@@ -103,7 +107,7 @@ const ProjectDetails = () => {
             {projectData && (
               <Tags
                 className="mt-5 mb-7 flex-wrap gap-3 text-[15px]"
-                tags={projectData.tags}
+                tags={projectData?.tags}
               />
             )}
           </div>
