@@ -9,6 +9,7 @@ import axios from 'axios';
 import useSWR from 'swr';
 import animation from '../../public/no-data.json';
 import errorAnimation from '../../public/error.json';
+import { Typography } from '@/components/Typography';
 
 const Profile: NextPage = () => {
   const { status, data: session } = useSession({
@@ -39,16 +40,25 @@ const Profile: NextPage = () => {
   return (
     <SharedLayout title="Profile" hasContainer>
       <div className="m-auto mb-16 flex w-full flex-col px-4 py-5">
-        <h1 className="text-xl font-semibold dark:text-[#a6a6a6] sm:text-[30px]">
+        <Typography
+          as="h1"
+          fontSize="xl"
+          fontWeight="semibold"
+          className="dark:text-[#a6a6a6] sm:text-[30px]"
+        >
           <span>Welcome, </span>
           <span className="mr-2 whitespace-nowrap  text-[#ED8728] dark:text-white">
             {session?.user && session.user.name}
           </span>
           🎉
-        </h1>
-        <h2 className="pt-10 font-semibold dark:text-[#a6a6a6] sm:text-lg">
+        </Typography>
+        <Typography
+          as="h2"
+          fontWeight="semibold"
+          className="pt-10 dark:text-[#a6a6a6] sm:text-lg"
+        >
           Your Projects
-        </h2>
+        </Typography>
         <ul className="grid auto-rows-auto gap-5 pt-5 dark:text-[#B7C2D1] sm:grid sm:grid-cols-2 lg:grid-cols-3">
           {projects &&
             projects.length > 0 &&

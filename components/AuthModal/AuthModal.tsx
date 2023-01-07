@@ -4,6 +4,7 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { closeModal } from '@/store/slices/sliceModal';
 import { IAuthData } from './Auth.interface';
 import { motion } from 'framer-motion';
+import { Typography } from '@/components/Typography';
 
 export const AuthModal = ({ title }: IAuthData) => {
   const isOpen = useAppSelector((state) => state.modal.modal);
@@ -44,9 +45,9 @@ export const AuthModal = ({ title }: IAuthData) => {
                   <span
                     className={`flex w-full items-center justify-center font-mono  text-2xl font-bold uppercase text-gray-900 text-foreground-1 md:space-x-2`}
                   >
-                    <p>
+                    <Typography as="p" fontSize="2xl" fontWeight="bold">
                       project<span className="text-primary-color">mate</span>
-                    </p>
+                    </Typography>
                   </span>
                   <Dialog.Title
                     as="h2"

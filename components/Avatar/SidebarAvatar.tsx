@@ -1,6 +1,7 @@
 import Image from 'next/legacy/image';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import { Typography } from '@/components/Typography';
 
 export function SidebarAvatar() {
   const { data: session } = useSession();
@@ -26,10 +27,16 @@ export function SidebarAvatar() {
             </div>
           </div>
           <div className="flex flex-col">
-            <p className="truncate text-sm">{user?.name}</p>
-            <p className="truncate text-xs text-black/60  dark:text-white/75">
+            <Typography as="p" fontSize="sm" className="truncate">
+              {user?.name}
+            </Typography>
+            <Typography
+              as="p"
+              fontSize="xs"
+              className="truncate text-black/60  dark:text-white/75"
+            >
               {user?.email}
-            </p>
+            </Typography>
           </div>
         </div>
       </>

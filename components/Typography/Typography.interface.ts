@@ -46,5 +46,5 @@ export type TypographyProps<C extends TextElementType> = {
   fontSize?: FontSizesUnion;
   fontWeight?: FontWeightsUnion;
   children: ReactNode;
-  className: string;
+  className?: string;
 } & ComponentPropsWithoutRef<C>;
