@@ -91,7 +91,7 @@ const ProjectDetails = () => {
               rel="noopener noreferrer"
               className="flex items-center space-x-1 text-lg text-gray-800 hover:cursor-pointer hover:text-blue-600 hover:underline dark:text-gray-400 dark:hover:text-blue-300"
             >
-              <span className="">Contribute</span>
+              <span className="">View Repo</span>
               <BiLink />
             </motion.a>
           </div>
