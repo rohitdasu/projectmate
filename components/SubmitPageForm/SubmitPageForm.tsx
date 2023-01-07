@@ -192,10 +192,10 @@ export const SubmitPageForm = () => {
                 />
                 {tags && tags.length > 0 && (
                   <>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex items-center gap-2">
                       {tags && tags.length > 0 && (
                         <Tags
-                          className="gap-2 uppercase"
+                          className="flex-wrap gap-2 uppercase"
                           tags={tags}
                           removeTagHandler={removeTag}
                         />

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { AiFillCloseCircle } from 'react-icons/ai';
+import { RxCross1 } from 'react-icons/rx';
 import { TagProps } from './Tags.interface';
 
 export const Tag = ({ title, className, onClick, onClose }: TagProps) => {
@@ -15,7 +15,7 @@ export const Tag = ({ title, className, onClick, onClose }: TagProps) => {
       <>
         {title}
         {onClose && (
-          <AiFillCloseCircle
+          <RxCross1
             className="ml-2 cursor-pointer"
             onClick={(e) => onClose(e, title)}
           />

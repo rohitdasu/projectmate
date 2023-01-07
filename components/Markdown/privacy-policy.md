@@ -84,9 +84,7 @@ We may also collect information that Your browser sends whenever You visit our S
 The Company allows You to create an account and log in to use the Service through the following Third-party Social Media Services:
 
 - Google
-- Facebook
-- Twitter
-- LinkedIn
+- Github
 
 If You decide to register through or otherwise grant us access to a Third-Party Social Media Service, We may collect Personal data that is already associated with Your Third-Party Social Media Service's account, such as Your name, Your email address, Your activities or Your contact list associated with that account.
 
