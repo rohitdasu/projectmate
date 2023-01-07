@@ -32,10 +32,7 @@ const Profile: NextPage = () => {
   }
 
   const style = {
-    height: 300,
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
+    height: 240,
     width: '100%',
   };
 
@@ -60,7 +57,9 @@ const Profile: NextPage = () => {
             })}
         </ul>
         {projects && projects.length === 0 && (
-          <Lottie animationData={animation} style={style} />
+          <div className="flex h-[calc(100vh-244px)] items-center justify-center">
+            <Lottie animationData={animation} style={style} />
+          </div>
         )}
         {error && <Lottie animationData={errorAnimation} style={style} />}
         {/*
