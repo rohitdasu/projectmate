@@ -16,6 +16,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toastMessage, messageType } from '../../shared';
 import { Button } from '@/components/Button';
 import { Tags, RemoveTagFc } from '@/components/Tags';
+import { Typography } from '../Typography';
 
 type FormInputs = {
   tags: string[];
@@ -121,9 +122,15 @@ export const SubmitPageForm = () => {
   return (
     <div className="mx-auto w-full px-4 lg:px-0">
       <form className="form-container mx-auto flex w-full flex-col space-y-6">
-        <h1 className="mb-4 text-left text-3xl font-semibold">
+        <Typography
+          as="h1"
+          align="left"
+          fontSize="3xl"
+          fontWeight="semibold"
+          className="mb-4"
+        >
           Submit Project
-        </h1>
+        </Typography>
         <Controller
           name="projectName"
           control={control}
