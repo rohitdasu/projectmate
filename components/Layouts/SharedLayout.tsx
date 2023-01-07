@@ -36,9 +36,6 @@ export const SharedLayout: React.FC<IProps> = ({
             <li>
               <Link href="/privacy-policy">Privacy Policy</Link>
             </li>
-            <li>
-              <Link href="/">Terms and Conditions</Link>
-            </li>
           </ul>{' '}
           This project is published under{' '}
           <a
