@@ -1,7 +1,7 @@
 import { FiMenu } from 'react-icons/fi';
 import { useRef, useState } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
-import { appRoutes, IRoute, getSocialLinks } from './data';
+import { appRoutes, IRoute } from './data';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -27,7 +27,6 @@ export const Sidebar = () => {
 
   useOnClickOutside(ref, closeSidebar);
 
-  const socialLinks = getSocialLinks(true);
   const dispatch = useAppDispatch();
 
   const gotoSubmitPage = () => {
