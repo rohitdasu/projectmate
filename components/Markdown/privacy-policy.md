@@ -248,4 +248,4 @@ If you have any questions about this Privacy Policy, You can contact us:
 
 
 
-- By visiting this page on our website: [https://discord.com/invite/FQtyMWFZQ9](https://discord.com/invite/FQtyMWFZQ9)
+- By visiting our discord server: [discord](https://discord.com/invite/FQtyMWFZQ9)

@@ -32,7 +32,7 @@ export const SharedLayout: React.FC<IProps> = ({
       <AuthModal title={'Continue with your social accounts'} />
       {!hideFooter && (
         <footer className="z-100 sticky top-[100%] border-t px-5 py-10 text-center dark:border-gray-800">
-          <ul className="my-4 flex items-center justify-center gap-8">
+          <ul className="my-4 flex flex-col items-center justify-center gap-2 md:flex-row md:gap-8">
             <li>
               <Link href="/privacy-policy">Privacy Policy</Link>
             </li>

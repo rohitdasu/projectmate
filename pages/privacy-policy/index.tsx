@@ -1,3 +1,4 @@
+import { BackToTop } from '@/components/BackToTopButton';
 import { Markdown } from '@/components/Markdown';
 import { motion } from 'framer-motion';
 import type { NextPage } from 'next';
@@ -12,7 +13,7 @@ const Privacypolicy: NextPage = (content: any) => {
         <title>{`Projectmate | Privacy Policy`}</title>
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
-      <div className="mx-4 my-6 max-w-3xl md:m-auto md:my-16">
+      <div className="mx-4 w-full py-6 md:mx-auto md:w-1/2 md:py-16">
         <Link href="/">
           <motion.button
             whileTap={{ scale: 0.9 }}
@@ -21,17 +22,20 @@ const Privacypolicy: NextPage = (content: any) => {
             <AiOutlineHome className="text-xl" />
           </motion.button>
         </Link>
-        <Markdown content={content.content} />
+        <Markdown content={content.data} />
+        <BackToTop />
       </div>
     </>
   );
 };
 
-Privacypolicy.getInitialProps = async () => {
+export const getServerSideProps = async () => {
   const content = await require('../../components/Markdown/privacy-policy.md');
   const data = content.default;
   return {
-    content: data,
+    props: {
+      data,
+    },
   };
 };
 
