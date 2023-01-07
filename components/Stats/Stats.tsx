@@ -1,8 +1,12 @@
 import { BiGitRepoForked, BiCode, BiLink } from 'react-icons/bi';
-import { MdOutlinePersonOutline, MdStarOutline } from 'react-icons/md';
+import { MdStarOutline } from 'react-icons/md';
+import { RxPerson } from 'react-icons/rx';
 import { VscIssues } from 'react-icons/vsc';
 import { FiKey } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import { IoClipboardOutline } from 'react-icons/io5';
+import { messageType, toastMessage } from 'shared';
+import { SlGlobe, SlPeople } from 'react-icons/sl';
 
 const Title = ({ ...props }) => {
   return (
@@ -21,6 +25,11 @@ const Value = ({ ...props }) => {
 };
 
 export const Stats = ({ ...props }) => {
+  const copyText = (text: string) => {
+    if (!navigator.clipboard) return;
+    navigator?.clipboard?.writeText(text);
+    toastMessage('copied successfully!', messageType.success);
+  };
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -31,10 +40,10 @@ export const Stats = ({ ...props }) => {
     >
       <h2 className="text-left text-2xl font-semibold">Project Stats.</h2>
       <div className="items-between flex w-full flex-col justify-between gap-2">
-        <div className="flex flex-row flex-wrap items-center gap-4 md:flex-nowrap md:gap-16">
+        <div className="flex flex-row flex-wrap items-center gap-4 lg:flex-nowrap lg:gap-16">
           <div className="flex w-full flex-row items-center justify-between">
             <Title>
-              <MdOutlinePersonOutline className="text-2xl" /> Owner
+              <RxPerson className="text-2xl" /> Owner
             </Title>
             <Value>
               <a
@@ -62,7 +71,7 @@ export const Stats = ({ ...props }) => {
             <Value>{props?.stargazers_count}</Value>
           </div>
         </div>
-        <div className="flex flex-row flex-wrap items-center gap-4 md:flex-nowrap md:gap-16">
+        <div className="flex flex-row flex-wrap items-center gap-4 lg:flex-nowrap lg:gap-16">
           <div className="flex w-full flex-row items-center justify-between">
             <Title>
               <VscIssues className="text-2xl" />
@@ -74,7 +83,20 @@ export const Stats = ({ ...props }) => {
             <Title>
               <FiKey className="text-2xl" /> License
             </Title>
-            <Value>{props?.license?.name ?? 'NO LICENSE'}</Value>
+            <Value>
+              {props?.license?.name ? (
+                <a
+                  href={props?.license?.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex flex-row items-center transition-all hover:underline"
+                >
+                  {props?.license?.name} <BiLink />
+                </a>
+              ) : (
+                'NO LICENSE'
+              )}
+            </Value>
           </div>
           <div className="flex w-full flex-row items-center justify-between">
             <Title>
@@ -82,6 +104,45 @@ export const Stats = ({ ...props }) => {
               Language
             </Title>
             <Value>{props?.language}</Value>
+          </div>
+        </div>
+        <div className="flex flex-row flex-wrap items-center gap-4 lg:flex-nowrap lg:gap-16">
+          <div className="flex w-full flex-row items-center justify-between">
+            <Title>
+              <SlGlobe className="text-2xl" />
+              Demo
+            </Title>
+            <Value>
+              <a
+                href={props?.homepage}
+                target="_blank"
+                rel="noreferrer"
+                className="flex flex-row items-center transition-all hover:underline"
+              >
+                {props?.homepage} <BiLink />
+              </a>
+            </Value>
+          </div>
+          <div className="flex w-full flex-row items-center justify-between">
+            <Title>
+              <SlPeople className="text-2xl" />
+              Subscribers
+            </Title>
+            <Value>{props?.subscribers_count}</Value>
+          </div>
+          <div className="flex w-full flex-row items-center justify-between">
+            <Title>
+              <BiLink className="text-2xl" />
+              Clone SSH
+            </Title>
+            <Value>
+              <div
+                onClick={() => copyText(props?.ssh_url)}
+                className="flex cursor-pointer flex-row items-center gap-1"
+              >
+                copy <IoClipboardOutline />
+              </div>
+            </Value>
           </div>
         </div>
       </div>
