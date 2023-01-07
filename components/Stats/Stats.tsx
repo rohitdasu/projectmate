@@ -103,7 +103,7 @@ export const Stats = ({ ...props }) => {
               <BiCode className="text-2xl" />
               Language
             </Title>
-            <Value>{props?.language}</Value>
+            <Value>{props?.language || 'NOT FOUND'}</Value>
           </div>
         </div>
         <div className="flex flex-row flex-wrap items-center gap-4 lg:flex-nowrap lg:gap-16">
@@ -113,14 +113,18 @@ export const Stats = ({ ...props }) => {
               Demo
             </Title>
             <Value>
-              <a
-                href={props?.homepage}
-                target="_blank"
-                rel="noreferrer"
-                className="flex flex-row items-center transition-all hover:underline"
-              >
-                {props?.homepage} <BiLink />
-              </a>
+              {props?.homepage ? (
+                <a
+                  href={props?.homepage}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex flex-row items-center transition-all hover:underline"
+                >
+                  {props?.homepage} <BiLink />
+                </a>
+              ) : (
+                'NOT FOUND'
+              )}
             </Value>
           </div>
           <div className="flex w-full flex-row items-center justify-between">
