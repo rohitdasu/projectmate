@@ -6,7 +6,7 @@ import {
 } from '../../components';
 const Projects = () => {
   return (
-    <SharedLayout title="Projects" hideFooter>
+    <SharedLayout title="Projects">
       <div className="flex flex-col">
         {/* <div className="sticky top-0 z-10 bg-yellow-400 backdrop-blur-3xl">
           <Search />

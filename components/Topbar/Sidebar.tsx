@@ -44,9 +44,11 @@ export const Sidebar = () => {
     return (
       <ul className="w-full overflow-auto">
         {routes.map((route) => {
-          const { Icon, anchorTagProps, title, url } = route;
+          const { Icon, anchorTagProps, title, url, protectedRoute } = route;
           const isCurrent = pathname === url || pathname.includes(title);
-
+          if (protectedRoute && !session) {
+            return <></>;
+          }
           return (
             <motion.li whileTap={{ scale: 0.9 }} key={title}>
               <Link

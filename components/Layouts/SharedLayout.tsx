@@ -13,7 +13,7 @@ interface IProps {
 export const SharedLayout: React.FC<IProps> = ({
   children,
   title,
-  hideFooter,
+  hideFooter = true,
   hasContainer,
 }) => {
   const year = new Date().getFullYear();
