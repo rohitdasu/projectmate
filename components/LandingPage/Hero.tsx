@@ -8,6 +8,7 @@ import Lottie from 'lottie-react';
 import animation from './lotties/hero.json';
 import { Button } from '@/components/Button';
 import { motion } from 'framer-motion';
+import { Typography } from '@/components/Typography';
 
 export const Hero = () => {
   const router = useRouter();
@@ -25,28 +26,44 @@ export const Hero = () => {
   return (
     <header className="flex flex-row items-center justify-between">
       <div className="flex flex-col items-center gap-10 lg:items-start">
-        <motion.h1
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} layout>
+          <Typography
+            as="h1"
+            align="left"
+            fontSize="2xl"
+            fontWeight="bold"
+            className="md:text-4xl"
+          >
+            Start Contributing to{' '}
+            <Typography
+              as="span"
+              fontSize="2xl"
+              fontWeight="bold"
+              className="bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 bg-clip-text text-transparent dark:from-orange-500 dark:via-orange-700 dark:to-orange-500 md:text-4xl"
+            >
+              Open Source
+            </Typography>{' '}
+            Projects
+          </Typography>
+        </motion.div>
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           layout
-          className="text-left text-2xl font-bold md:text-4xl"
+          className="max-w-[50rem]"
         >
-          Start Contributing to{' '}
-          <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 bg-clip-text text-transparent dark:from-orange-500 dark:via-orange-700 dark:to-orange-500">
-            Open Source
-          </span>{' '}
-          Projects
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          layout
-          className="text-md max-w-[50rem] text-justify font-light dark:text-gray-300 md:text-xl"
-        >
-          ProjectMate helps you to find awesome open source projects based on
-          the skills you have. You can also find new contributors for your open
-          source project by sharing it on ProjectMate !
-        </motion.p>
+          <Typography
+            as="p"
+            fontSize="base"
+            fontWeight="light"
+            align="justify"
+            className="dark:text-gray-300 md:text-xl"
+          >
+            ProjectMate helps you to find awesome open source projects based on
+            the skills you have. You can also find new contributors for your
+            open source project by sharing it on ProjectMate !
+          </Typography>
+        </motion.div>
         <div className="flex w-full flex-col items-center justify-between gap-4 md:w-auto md:flex-row">
           {session === null && (
             <Button

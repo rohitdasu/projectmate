@@ -26,6 +26,7 @@ export const Guide = () => {
               </div>
               <Typography
                 as="p"
+                align="center"
                 fontSize="sm"
                 fontWeight="light"
                 className="md:text-md text-gray-800 dark:text-gray-300"
