@@ -44,7 +44,9 @@ export const Stats = ({ ...props }) => {
       exit={{ opacity: 0 }}
       className="mt-6 flex flex-col gap-4 rounded-lg bg-slate-100 p-4 dark:bg-slate-800 md:p-8"
     >
-      <h2 className="text-left text-2xl font-semibold">Project Stats.</h2>
+      <Typography as="h2" align="left" fontSize="2xl" fontWeight="semibold">
+        Project Stats.
+      </Typography>
       <div className="items-between flex w-full flex-col justify-between gap-2">
         <div className="flex flex-row flex-wrap items-center gap-4 lg:flex-nowrap lg:gap-16">
           <div className="flex w-full flex-row items-center justify-between">

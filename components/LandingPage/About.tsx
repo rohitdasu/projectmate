@@ -15,9 +15,15 @@ export const About = () => {
   return (
     <div className="py-28 lg:px-4">
       <div className="flex flex-col items-center gap-5 rounded-lg bg-slate-100 py-6 px-4 dark:bg-slate-800 dark:text-slate-300 md:rounded-lg lg:p-12">
-        <h2 className="text-center text-2xl font-bold uppercase text-gray-800 dark:text-gray-300 md:text-3xl">
+        <Typography
+          as="h2"
+          align="center"
+          fontSize="2xl"
+          fontWeight="bold"
+          className="text-gray-800 dark:text-gray-300 md:text-3xl"
+        >
           about us
-        </h2>
+        </Typography>
         <Typography
           as="p"
           align="justify"
