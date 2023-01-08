@@ -15,8 +15,10 @@ import { MdPostAdd } from 'react-icons/md';
 import { useAppDispatch } from '../../app/hooks';
 import { openModal } from '@/store/slices/sliceModal';
 import { GiClick } from 'react-icons/gi';
+import { useTheme } from 'next-themes';
 
 export const Sidebar = () => {
+  const { theme } = useTheme();
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const { pathname } = router;
@@ -136,6 +138,20 @@ export const Sidebar = () => {
                   <GiClick className="text-2xl" />
                 </button>
               )}
+              <a
+                href="https://www.producthunt.com/products/projectmate/reviews?utm_source=badge-product_review&utm_medium=badge&utm_souce=badge-projectmate"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-2 flex w-full items-center justify-center"
+              >
+                <img
+                  src={`https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=516791&theme=${theme}`}
+                  alt="Projectmate - Connecting&#0032;open&#0045;source&#0032;collaborators&#0032;and&#0032;maintainers | Product Hunt"
+                  style={{ width: '250px', height: '54px' }}
+                  width="250"
+                  height="54"
+                />
+              </a>
             </motion.div>
           </>
         )}

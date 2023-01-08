@@ -14,6 +14,7 @@ module.exports = {
       'avatars.githubusercontent.com',
       'lh3.googleusercontent.com',
       'avatars.dicebear.com',
+      'api.producthunt.com',
     ],
   },
 };
