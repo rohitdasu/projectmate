@@ -153,7 +153,7 @@ export const Sidebar = () => {
                 />
               </a>
               <a
-                href="https://www.buymeacoffee.com/"
+                href="https://www.buymeacoffee.com/rohit.dasu"
                 target="_blank"
                 rel="noreferrer"
                 className="mx-auto mt-4"

@@ -33,7 +33,7 @@ export const Topbar = () => {
         </div>
         <div className="flex items-center gap-2">
           <a
-            href="https://www.buymeacoffee.com/"
+            href="https://www.buymeacoffee.com/rohit.dasu"
             target="_blank"
             rel="noreferrer"
             className="hidden md:block"
