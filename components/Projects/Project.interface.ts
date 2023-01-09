@@ -4,4 +4,6 @@ export type ProjectProps = {
   description: string;
   tags: string[];
   author: string | null;
+  liked: boolean;
+  likesCount: number;
 };

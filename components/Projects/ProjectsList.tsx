@@ -72,6 +72,8 @@ export const ProjectsList: React.FC = () => {
                 title={project.title}
                 tags={project.tags}
                 author={project.author.name}
+                liked={project.liked}
+                likesCount={project.likesCount}
               />
             ))}
           </>
