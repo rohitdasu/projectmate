@@ -1,7 +1,8 @@
-import { Project } from '@prisma/client';
+import { Project, User } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { errorResponse, successResponse } from '@/lib/httpResponse';
 import { prisma } from '@/lib/prisma';
+import { getServerAuthSession } from '@/lib/getServerAuthSession';
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,7 +12,24 @@ export default async function handler(
     case 'GET':
       const { postId } = req.query;
       try {
-        const data = await getPostById(postId?.toString());
+        const session = await getServerAuthSession({ req, res });
+        let reqUser: User | null = null;
+        if (session) {
+          reqUser = await prisma.user.findFirst({
+            where: {
+              name: session.user?.name,
+            },
+          });
+          if (!reqUser) {
+            return errorResponse({
+              res,
+              message: 'Request User is not found',
+              statusCode: 404,
+              success: false,
+            });
+          }
+        }
+        const data = await getPostById(reqUser, postId?.toString());
         if (!data) {
           return successResponse({
             res,
@@ -55,7 +73,7 @@ export default async function handler(
   }
 }
 
-async function getPostById(id?: string) {
+export async function getPostById(reqUser: User | null, id?: string) {
   try {
     if (!id) {
       return false;
@@ -69,6 +87,16 @@ async function getPostById(id?: string) {
         author: true,
       },
     });
+    if (reqUser && data) {
+      const like = await prisma.like.findFirst({
+        where: {
+          AND: [{ userId: reqUser.id }, { projectId: data.id }],
+        },
+      });
+      if (like) {
+        data.liked = true;
+      }
+    }
     return data;
   } catch (error) {
     throw error;

@@ -12,7 +12,7 @@ datasource db {
 
 model Account {
   id                String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId            String
+  userId            String  @db.ObjectId
   type              String
   provider          String
   providerAccountId String
@@ -32,9 +32,9 @@ model Account {
 model Session {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
   sessionToken String   @unique
-  userId       String
-  expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String   @db.ObjectId
+  expires      DateTime
 }
 
 model User {
@@ -47,6 +47,7 @@ model User {
   sessions      Session[]
   project       Project[]
   comment       Comment[]
+  likes            Like[]
 }
 
 model VerificationToken {
@@ -71,6 +72,9 @@ model Project {
   comment          Comment[]
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
+  liked            Boolean   @default(false)
+  likesCount       Int       @default(0)
+  likes            Like[]  
 }
 
 model Comment {
@@ -82,4 +86,15 @@ model Comment {
   projectId   String   @db.ObjectId
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Like {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String   @db.ObjectId
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId   String   @db.ObjectId
+  createdAt   DateTime @default(now())
+
+  @@unique([userId, projectId])
 }
