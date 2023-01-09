@@ -32,6 +32,17 @@ export const Topbar = () => {
           {router.pathname !== '/' && <DesktopRoutes />}
         </div>
         <div className="flex items-center gap-2">
+          <a
+            href="https://www.buymeacoffee.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="hidden md:block"
+          >
+            <img
+              src={`https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png`}
+              alt="Buy Me A Coffee"
+            />
+          </a>
           {router.pathname !== SUBMIT_PAGE && router.pathname !== '/' && (
             <button
               className="hidden h-[2.939rem] w-40 rounded-md !bg-transparent text-gray-500 shadow-border-shadow transition-all hover:border-2 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 md:block"

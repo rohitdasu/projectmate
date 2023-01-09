@@ -152,6 +152,17 @@ export const Sidebar = () => {
                   height="54"
                 />
               </a>
+              <a
+                href="https://www.buymeacoffee.com/"
+                target="_blank"
+                rel="noreferrer"
+                className="mx-auto mt-4"
+              >
+                <img
+                  src={`https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png`}
+                  alt="Buy Me A Coffee"
+                />
+              </a>
             </motion.div>
           </>
         )}
