@@ -41,6 +41,7 @@ export const Topbar = () => {
             <img
               src={`https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png`}
               alt="Buy Me A Coffee"
+              style={{ height: '54px' }}
             />
           </a>
           {router.pathname !== SUBMIT_PAGE && router.pathname !== '/' && (

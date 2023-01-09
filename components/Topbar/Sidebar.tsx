@@ -156,11 +156,12 @@ export const Sidebar = () => {
                 href="https://www.buymeacoffee.com/rohit.dasu"
                 target="_blank"
                 rel="noreferrer"
-                className="mx-auto mt-4"
+                className=" mt-4 flex w-full items-center justify-center"
               >
                 <img
                   src={`https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png`}
                   alt="Buy Me A Coffee"
+                  style={{ width: '250px', height: '54px' }}
                 />
               </a>
             </motion.div>
