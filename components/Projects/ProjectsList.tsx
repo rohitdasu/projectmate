@@ -10,6 +10,8 @@ interface IProject extends ProjectData {
   author: {
     name: string;
   };
+  liked: boolean;
+  likesCount: number;
 }
 
 export const ProjectsList: React.FC = () => {
