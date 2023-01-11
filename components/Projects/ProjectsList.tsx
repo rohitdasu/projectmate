@@ -1,10 +1,11 @@
 import { Project as ProjectData } from '@prisma/client';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import { Project } from './Project';
 import { ProjectSkeleton } from './ProjectSkeleton';
 import axios from 'axios';
 import { BackToTop } from '../BackToTopButton';
+import { ProjectsListProps } from './ProjectsList.interface';
 
 interface IProject extends ProjectData {
   author: {
@@ -12,7 +13,7 @@ interface IProject extends ProjectData {
   };
 }
 
-export const ProjectsList: React.FC = () => {
+export const ProjectsList: React.FC<ProjectsListProps> = ({ selectedTags }) => {
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
   const getKey = (pageIndex: number, previousPageData: IProject[]) => {
@@ -28,14 +29,17 @@ export const ProjectsList: React.FC = () => {
     return `/api/project?cursorId=${cursorId}`;
   };
 
-  const { data, size, setSize, error } = useSWRInfinite(getKey, fetcher);
+  const { data, size, setSize, error } = useSWRInfinite<IProject[]>(
+    getKey,
+    fetcher
+  );
 
   // Generate array of specified length with random key value
   const skeletonProjectsToLoad = Array.from({ length: 10 }, () =>
     (Math.random() + 1).toString(36).substring(7)
   );
 
-  const paginatedPosts = data?.flat();
+  const paginatedProjects = data?.flat();
 
   const isLoadingMore = data && typeof data[size - 1] === 'undefined';
   const isNotReachEnd = data && data[data.length - 1].length;
@@ -52,6 +56,19 @@ export const ProjectsList: React.FC = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, [isNotReachEnd, setSize, size]);
 
+  const filteredProjects = useMemo(() => {
+    if (!paginatedProjects?.length) {
+      return [];
+    }
+    if (!selectedTags?.length) {
+      return paginatedProjects;
+    }
+
+    return paginatedProjects.filter((project) =>
+      selectedTags.some((tag) => project.tags.includes(tag))
+    );
+  }, [paginatedProjects, selectedTags]);
+
   if (error)
     return <div className="m-auto my-5 text-lg">Failed to load projects</div>;
 
@@ -64,7 +81,7 @@ export const ProjectsList: React.FC = () => {
           ))
         ) : (
           <>
-            {paginatedPosts?.map((project: IProject, i: number) => (
+            {filteredProjects.map((project: IProject, i: number) => (
               <Project
                 key={i}
                 id={project.id}
