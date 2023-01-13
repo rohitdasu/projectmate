@@ -1,6 +1,7 @@
 import axios from 'axios';
 import useSWR from 'swr';
 import { ContributorList } from '../ContributorList';
+import { Typography } from '@/components/Typography';
 
 export const Thanks = () => {
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
@@ -11,9 +12,15 @@ export const Thanks = () => {
   );
   return (
     <div className="flex flex-col items-center justify-center">
-      <h2 className="mb-20 text-center text-2xl font-bold md:text-3xl">
+      <Typography
+        as="h2"
+        align="center"
+        fontSize="2xl"
+        fontWeight="bold"
+        className="mb-20 md:text-3xl"
+      >
         Thanks to our contributors
-      </h2>
+      </Typography>
       <div className="flex flex-row flex-wrap items-center justify-between md:justify-center">
         <ContributorList contributors={data} />
       </div>

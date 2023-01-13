@@ -11,12 +11,12 @@ import Lottie from 'lottie-react';
 import Loader from '../../public/loading.json';
 import axios from 'axios';
 import { Input } from '@/components/Form/Input';
-import { RichTextEditor } from '@/components/Form/RichTextEditor';
 import { schema } from './schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toastMessage, messageType } from '../../shared';
 import { Button } from '@/components/Button';
 import { Tags, RemoveTagFc } from '@/components/Tags';
+import { Typography } from '../Typography';
 
 type FormInputs = {
   tags: string[];
@@ -36,7 +36,6 @@ export const SubmitPageForm = () => {
   const tags = watch('tags');
   const [loading, setLoading] = useState<boolean>(false);
   const [tagInput, setTagInput] = useState<string>('');
-  const [contentInput, setContentInput] = useState<string>('');
 
   const { status, data: session } = useSession({
     required: true,
@@ -54,7 +53,6 @@ export const SubmitPageForm = () => {
   }
 
   const resetFormData = () => {
-    setContentInput('');
     reset();
   };
 
@@ -67,7 +65,7 @@ export const SubmitPageForm = () => {
         {
           title: data.projectName,
           description: data.projectDescription,
-          content: data.content || '',
+          content: '',
           githubRepository: data.repositoryLink,
           tags: data.tags,
           coverImg:
@@ -121,20 +119,18 @@ export const SubmitPageForm = () => {
     );
   };
 
-  const onContentChange = (
-    contentValue: string,
-    field: ControllerRenderProps<FormInputs, 'content'>
-  ) => {
-    field.onChange(contentValue);
-    setContentInput(contentValue);
-  };
-
   return (
     <div className="mx-auto w-full px-4 lg:px-0">
       <form className="form-container mx-auto flex w-full flex-col space-y-6">
-        <h1 className="mb-4 text-left text-3xl font-semibold">
+        <Typography
+          as="h1"
+          align="left"
+          fontSize="3xl"
+          fontWeight="semibold"
+          className="mb-4"
+        >
           Submit Project
-        </h1>
+        </Typography>
         <Controller
           name="projectName"
           control={control}
@@ -203,10 +199,10 @@ export const SubmitPageForm = () => {
                 />
                 {tags && tags.length > 0 && (
                   <>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex items-center gap-2">
                       {tags && tags.length > 0 && (
                         <Tags
-                          className="gap-2 uppercase"
+                          className="flex-wrap gap-2 uppercase"
                           tags={tags}
                           removeTagHandler={removeTag}
                         />
@@ -215,20 +211,6 @@ export const SubmitPageForm = () => {
                   </>
                 )}
               </>
-            );
-          }}
-        />
-        <Controller
-          name="content"
-          control={control}
-          render={({ field }) => {
-            return (
-              <RichTextEditor
-                {...field}
-                label={'Content'}
-                value={contentInput}
-                onChange={(value) => onContentChange(value, field)}
-              />
             );
           }}
         />

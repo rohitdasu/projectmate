@@ -7,7 +7,7 @@ Find people who have the same vision as you do and contribute for building amazi
 
 ## Demo
 
-Check out the web app: [https://project-mate.vercel.app](https://project-mate.vercel.app)
+Check out the web app: [https://projectmate.net](https://projectmate.net)
 
 ## Connect with us
 

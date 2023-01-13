@@ -1,14 +1,20 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 import { getSocialLinks } from './data';
+import { Typography } from '@/components/Typography';
 
 export const JoinUs = () => {
   const socialLinks = getSocialLinks();
   return (
     <div className="flex flex-col items-center justify-center rounded-full p-8">
-      <h2 className="mb-20 text-2xl font-bold uppercase md:text-3xl">
+      <Typography
+        as="h2"
+        fontSize="2xl"
+        fontWeight="bold"
+        className="mb-20 uppercase md:text-3xl"
+      >
         join us
-      </h2>
+      </Typography>
       <div className="flex flex-row items-center justify-center space-x-16">
         {socialLinks.map(({ Icon, title, anchorTagProps, url }) => (
           <motion.a

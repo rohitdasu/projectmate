@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import { Stats } from '@/components/Stats';
 import { BiLink } from 'react-icons/bi';
 import { RiArrowGoBackFill } from 'react-icons/ri';
+import { Typography } from '@/components/Typography';
 
 const ProjectDetails = () => {
   const router = useRouter();
@@ -20,7 +21,7 @@ const ProjectDetails = () => {
   const repoURL =
     'https://api.github.com/repos/' +
     data?.results?.githubRepository?.slice(19);
-  const { data: repoData } = useSWR(repoURL, fetcher);
+  const { data: repoData, error: repoError } = useSWR(repoURL, fetcher);
   const { results: projectData } = data || {};
   if (!data && !repoData) {
     return (
@@ -30,8 +31,12 @@ const ProjectDetails = () => {
     );
   }
 
-  if (error)
-    return <div className="m-auto my-5 text-lg">Failed to load projects</div>;
+  if (error || repoError)
+    return (
+      <div className="m-auto my-5 flex h-screen items-center justify-center">
+        <p className="text-lg">Failed to load project</p>
+      </div>
+    );
 
   return (
     <SharedLayout title={projectData?.title.toUpperCase()} hasContainer>
@@ -55,15 +60,20 @@ const ProjectDetails = () => {
               </span>
             </motion.button>
           </div>
-          <h1 className="py-2 text-2xl font-semibold md:text-4xl">
+          <Typography
+            as="h1"
+            fontSize="2xl"
+            fontWeight="semibold"
+            className="py-2 md:text-4xl"
+          >
             {projectData?.title.toUpperCase()}
-          </h1>
+          </Typography>
           <div className="mt-6 flex flex-row items-center justify-between">
             <div className="flex flex-row items-center gap-5">
               <Image
                 src={
-                  projectData?.author.image ||
-                  `https://avatars.dicebear.com/api/initials/${projectData?.author.name}.png?backgroundColorLevel=800&fontSize=40`
+                  projectData?.author?.image ||
+                  `https://avatars.dicebear.com/api/initials/${projectData?.author?.name}.png?backgroundColorLevel=800&fontSize=40`
                 }
                 alt="user-photo"
                 height={40}
@@ -71,12 +81,17 @@ const ProjectDetails = () => {
                 className="rounded-full"
               />
               <div>
-                <h2 className="text-lg font-semibold">
-                  {projectData?.author.name}
-                </h2>
-                <p className="text-[12px] text-gray-400">
+                <Typography
+                  as="h2"
+                  fontSize="lg"
+                  fontWeight="semibold"
+                  className="text-lg font-semibold"
+                >
+                  {projectData?.author?.name}
+                </Typography>
+                <Typography as="p" fontSize="xs" className="text-gray-400">
                   {new Date(projectData?.createdAt).toLocaleDateString()}
-                </p>
+                </Typography>
               </div>
             </div>
             <motion.a
@@ -87,23 +102,33 @@ const ProjectDetails = () => {
               rel="noopener noreferrer"
               className="flex items-center space-x-1 text-lg text-gray-800 hover:cursor-pointer hover:text-blue-600 hover:underline dark:text-gray-400 dark:hover:text-blue-300"
             >
-              <span className="">Contribute</span>
+              <span className="">View Repo</span>
               <BiLink />
             </motion.a>
           </div>
           <div className="my-6 flex flex-col break-words">
-            <h3 className="text-lg leading-8 text-gray-800 dark:text-gray-300">
+            <Typography
+              as="h3"
+              fontSize="lg"
+              className="leading-8 text-gray-800 dark:text-gray-300"
+            >
               {projectData?.description}
-            </h3>
+            </Typography>
           </div>
           <div>
-            <h2 className="mt-6 text-left text-2xl font-semibold">
+            <Typography
+              as="h2"
+              align="left"
+              fontSize="2xl"
+              fontWeight="semibold"
+              className="mt-6"
+            >
               Technology stack
-            </h2>
+            </Typography>
             {projectData && (
               <Tags
                 className="mt-5 mb-7 flex-wrap gap-3 text-[15px]"
-                tags={projectData.tags}
+                tags={projectData?.tags}
               />
             )}
           </div>

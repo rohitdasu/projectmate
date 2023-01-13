@@ -1,3 +1,4 @@
+import { Typography } from '@/components/Typography';
 import dynamic from 'next/dynamic';
 import React from 'react';
 import { FieldError } from 'react-hook-form';
@@ -57,9 +58,15 @@ function MyEditor(
         onChange={onChange}
       />
       {hintMessage && (
-        <p className="text-sm italic text-gray-500">{hintMessage}</p>
+        <Typography as="p" fontSize="sm" className="italic text-gray-500">
+          {hintMessage}
+        </Typography>
       )}
-      {error && <p className="text-xs text-red-500">{error?.message}</p>}
+      {error && (
+        <Typography as="p" fontSize="xs" className="text-red-500">
+          {error?.message}
+        </Typography>
+      )}
     </div>
   );
 }
