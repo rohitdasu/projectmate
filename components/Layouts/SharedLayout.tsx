@@ -36,14 +36,6 @@ export const SharedLayout: React.FC<IProps> = ({
       {!hideFooter && (
         <footer className="z-100 sticky top-[100%] border-t px-5 py-10 text-center dark:border-gray-800">
           <div className="flex flex-col items-center justify-center rounded-full p-5">
-            <Typography
-              as="h2"
-              fontSize="2xl"
-              fontWeight="bold"
-              className="mb-10 uppercase"
-            >
-              join us
-            </Typography>
             <div className="flex flex-row items-center justify-center space-x-16">
               {socialLinks.map(({ Icon, title, anchorTagProps, url }) => (
                 <motion.a
@@ -51,14 +43,13 @@ export const SharedLayout: React.FC<IProps> = ({
                   key={title}
                   {...anchorTagProps}
                   href={url}
-                  className="flex items-center justify-center text-5xl text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
+                  className="flex items-center justify-center text-3xl text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
                 >
                   {<Icon />}
                 </motion.a>
               ))}
             </div>
           </div>
-          <br />
           <ul className="my-4 flex flex-col items-center justify-center gap-2 md:flex-row md:gap-8">
             <li>
               <Link href="/privacy-policy">Privacy Policy</Link>

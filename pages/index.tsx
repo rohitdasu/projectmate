@@ -5,7 +5,6 @@ import {
   Guide,
   Hero,
   Thanks,
-  JoinUs,
 } from '@/components/LandingPage/';
 import { BackToTop } from '@/components/BackToTopButton';
 
