@@ -9,6 +9,7 @@ import { prisma } from '@/lib/prisma';
 import bodyValidator from '@/lib/bodyValidator';
 import { postSchema } from '@/schema/index';
 import { getServerAuthSession } from '@/lib/getServerAuthSession';
+import type { User } from '@prisma/client';
 
 export default async function handler(
   req: NextApiRequest,
@@ -19,9 +20,27 @@ export default async function handler(
       const { limit, cursorId } = req.query;
       const projectLimit: number = Number(limit) || 10;
       try {
+        const session = await getServerAuthSession({ req, res });
+        let reqUser: User | null = null;
+        if (session) {
+          reqUser = await prisma.user.findFirst({
+            where: {
+              name: session.user?.name,
+            },
+          });
+          if (!reqUser) {
+            return errorResponse({
+              res,
+              message: 'Request User is not found',
+              statusCode: 404,
+              success: false,
+            });
+          }
+        }
         const data = await getAllProject({
           limit: projectLimit,
           cursorId: cursorId ? cursorId.toString() : undefined,
+          reqUser: reqUser,
         });
         return res.json(data);
       } catch (error) {
@@ -95,8 +114,12 @@ export default async function handler(
   }
 }
 
-async function getAllProject(args: { limit: number; cursorId?: string }) {
-  const { limit, cursorId } = args;
+async function getAllProject(args: {
+  limit: number;
+  reqUser: User | null;
+  cursorId?: string;
+}) {
+  const { limit, cursorId, reqUser } = args;
   try {
     let data: Project[];
 
@@ -124,6 +147,19 @@ async function getAllProject(args: { limit: number; cursorId?: string }) {
         include: includeOption,
         orderBy: { createdAt: 'desc' },
       });
+    }
+
+    if (reqUser) {
+      for (const project of data) {
+        const like = await prisma.like.findFirst({
+          where: {
+            AND: [{ userId: reqUser.id }, { projectId: project.id }],
+          },
+        });
+        if (like) {
+          project.liked = true;
+        }
+      }
     }
 
     return data;

@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import { ProjectProps } from './Project.interface';
-import { AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineUser, AiFillLike, AiOutlineLike } from 'react-icons/ai';
 import { Tags } from '@/components/Tags';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { Button } from '@/components/Button';
 import { Typography } from '@/components/Typography';
+import axios from 'axios';
+import { messageType, toastMessage } from 'shared';
+import { useSession } from 'next-auth/react';
 
 export const Project = ({
   id,
@@ -12,11 +16,66 @@ export const Project = ({
   description,
   tags,
   author,
+  liked,
+  likesCount,
 }: ProjectProps) => {
+  const [likedState, setLikedState] = useState(liked);
+  const [likesCountState, setLikesCountState] = useState(likesCount);
+  const session = useSession();
   const router = useRouter();
   const handleContributeClick = () => {
     router.push(`/projects/${id}`);
   };
+
+  const onLike = async () => {
+    try {
+      await axios.post(`/api/project/${id}/like`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      setLikedState(true);
+      setLikesCountState((prevState) => prevState + 1);
+    } catch (e) {
+      toastMessage(e.message, messageType.error);
+    }
+  };
+
+  const onUnlike = async () => {
+    try {
+      await axios.delete(`/api/project/${id}/like`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      setLikedState(false);
+      setLikesCountState((prevState) => prevState - 1);
+    } catch (e) {
+      toastMessage(e.message, messageType.error);
+    }
+  };
+
+  const handleLikeClick = async () => {
+    if (!likedState) {
+      await onLike();
+    }
+    if (likedState) {
+      await onUnlike();
+    }
+  };
+
+  let likeIcon = <AiOutlineLike />;
+  if (session.status === 'authenticated' && likedState) {
+    likeIcon = <AiFillLike />;
+  }
+
+  let likesCountElement: JSX.Element | null = null;
+
+  if (likesCountState > 0) {
+    likesCountElement = (
+      <span className="text-orange pr-1">{likesCountState}</span>
+    );
+  }
 
   return (
     <motion.li
@@ -52,13 +111,24 @@ export const Project = ({
                 className="flex-wrap gap-1 text-sm font-medium"
               />
             </div>
-            <Button
-              onClick={handleContributeClick}
-              isDisabled={false}
-              className="mt-2 px-2 py-1.5 font-bold sm:my-0"
-            >
-              <span>Contribute</span>
-            </Button>
+            <div className="flex gap-3">
+              <Button
+                onClick={handleLikeClick}
+                isDisabled={false}
+                className="mt-2 flex items-center px-2 py-1 font-bold sm:my-0"
+              >
+                {likeIcon}
+                <span className="px-2">Like</span>
+                {likesCountElement}
+              </Button>
+              <Button
+                onClick={handleContributeClick}
+                isDisabled={false}
+                className="mt-2 grow px-2 py-1.5 font-bold sm:my-0"
+              >
+                <span>Contribute</span>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

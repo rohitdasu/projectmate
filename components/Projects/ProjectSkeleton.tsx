@@ -23,6 +23,9 @@ export const ProjectSkeleton = () => (
             <div className="h-7 w-12 rounded-full bg-gray-200 px-2 py-1 dark:bg-gray-700" />
             <div className="h-7 w-12 rounded-full bg-gray-200 px-2 py-1 dark:bg-gray-700" />
           </div>
+        </div>
+        <div className="flex gap-3">
+          <div className="mt-2 h-8 w-24 rounded-md bg-gray-200 px-2 py-1.5 dark:bg-gray-700 sm:my-0" />
           <div className="mt-2 h-8 w-full rounded-md bg-gray-200 px-2 py-1.5 dark:bg-gray-700 sm:my-0" />
         </div>
       </div>

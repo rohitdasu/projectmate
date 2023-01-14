@@ -211,6 +211,92 @@ const projectData = [
   },
 ];
 
+const janesProjectsData = [
+  {
+    title: 'Test 1',
+    description:
+      'This project will acts a a medium in between contributors and maintainers of different project where everyone can come together and work in open source with more ease.',
+    content: '',
+    githubRepository: 'https://github.com/remix-run/react-router',
+    coverImg: 'https://miro.medium.com/max/1400/1*htbUdWgFQ3a94PMEvBr_hQ.png',
+    tags: ['react', 'node', 'mongodb'],
+  },
+  {
+    title: 'Test 2',
+    description:
+      'This project will acts a a medium in between contributors and maintainers of different project where everyone can come together and work in open source with more ease.',
+    content: '',
+    githubRepository:
+      'https://github.com/trending#:~:text=Star-,malwaredllc%20/%20byob,-An%20open%2Dsource',
+    coverImg: 'https://miro.medium.com/max/1400/1*htbUdWgFQ3a94PMEvBr_hQ.png',
+
+    tags: ['react', 'node', 'mongodb'],
+  },
+  {
+    title: 'Test 3',
+    description:
+      'This project will acts a a medium in between contributors and maintainers of different project where everyone can come together and work in open source with more ease.',
+    content: '',
+    githubRepository:
+      'https://github.com/trending#:~:text=Star-,malwaredllc%20/%20byob,-An%20open%2Dsource',
+    coverImg: 'https://miro.medium.com/max/1400/1*htbUdWgFQ3a94PMEvBr_hQ.png',
+
+    tags: ['react', 'node', 'mongodb'],
+  },
+  {
+    title: 'Test 4',
+    description:
+      'This project will acts a a medium in between contributors and maintainers of different project where everyone can come together and work in open source with more ease.',
+    content: '',
+    githubRepository: 'https://github.com/ethereum/ethereum-org-website',
+    coverImg: 'https://miro.medium.com/max/1400/1*htbUdWgFQ3a94PMEvBr_hQ.png',
+    tags: ['react', 'node', 'mongodb'],
+  },
+];
+
+const bobsProjectsData = [
+  {
+    title: 'Test 5',
+    description:
+      'This project will acts a a medium in between contributors and maintainers of different project where everyone can come together and work in open source with more ease.',
+    content: '',
+    githubRepository: 'https://github.com/remix-run/react-router',
+    coverImg: 'https://miro.medium.com/max/1400/1*htbUdWgFQ3a94PMEvBr_hQ.png',
+    tags: ['react', 'node', 'mongodb'],
+  },
+  {
+    title: 'Very long test title',
+    description:
+      'This project will acts a a medium in between contributors and maintainers of different project where everyone can come together and work in open source with more ease.',
+    content: '',
+    githubRepository:
+      'https://github.com/trending#:~:text=Star-,malwaredllc%20/%20byob,-An%20open%2Dsource',
+    coverImg: 'https://miro.medium.com/max/1400/1*htbUdWgFQ3a94PMEvBr_hQ.png',
+
+    tags: ['react', 'node', 'mongodb'],
+  },
+  {
+    title: 'Test 6',
+    description:
+      'This project will acts a a medium in between contributors and maintainers of different project where everyone can come together and work in open source with more ease.',
+    content: '',
+    githubRepository:
+      'https://github.com/trending#:~:text=Star-,malwaredllc%20/%20byob,-An%20open%2Dsource',
+    coverImg: 'https://miro.medium.com/max/1400/1*htbUdWgFQ3a94PMEvBr_hQ.png',
+
+    tags: ['react', 'node', 'mongodb'],
+  },
+  {
+    title: 'Test 7',
+    description:
+      'This project will acts a a medium in between contributors and maintainers of different project where everyone can come together and work in open source with more ease.',
+    content: '',
+    githubRepository: 'https://github.com/ethereum/ethereum-org-website',
+    coverImg: 'https://miro.medium.com/max/1400/1*htbUdWgFQ3a94PMEvBr_hQ.png',
+    tags: ['react', 'node', 'mongodb'],
+  },
+];
+
 async function main() {
   await prisma.$connect();
   await prisma.user.upsert({
@@ -225,6 +311,36 @@ async function main() {
       emailVerified: null,
       project: {
         create: projectData,
+      },
+    },
+  });
+  await prisma.user.upsert({
+    where: {
+      email: 'janedoe@test.com',
+    },
+    update: {},
+    create: {
+      email: 'janedoe@test.com',
+      name: 'Jane Doe',
+      image: null,
+      emailVerified: null,
+      project: {
+        create: janesProjectsData,
+      },
+    },
+  });
+  await prisma.user.upsert({
+    where: {
+      email: 'bobdoe@test.com',
+    },
+    update: {},
+    create: {
+      email: 'bobdoe@test.com',
+      name: 'Bob Doe',
+      image: null,
+      emailVerified: null,
+      project: {
+        create: bobsProjectsData,
       },
     },
   });
