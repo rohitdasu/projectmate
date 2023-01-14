@@ -16,7 +16,6 @@ const Home: NextPage = () => {
         <Hero />
         <Guide />
         <BenefitsContainer />
-        <JoinUs />
         <Thanks />
       </div>
       <BackToTop />
