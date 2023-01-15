@@ -5,7 +5,6 @@ import {
   Guide,
   Hero,
   Thanks,
-  JoinUs,
 } from '@/components/LandingPage/';
 import { BackToTop } from '@/components/BackToTopButton';
 
@@ -16,7 +15,6 @@ const Home: NextPage = () => {
         <Hero />
         <Guide />
         <BenefitsContainer />
-        <JoinUs />
         <Thanks />
       </div>
       <BackToTop />
