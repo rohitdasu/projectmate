@@ -16,6 +16,8 @@ import { useAppDispatch } from '../../app/hooks';
 import { openModal } from '@/store/slices/sliceModal';
 import { GiClick } from 'react-icons/gi';
 import { useTheme } from 'next-themes';
+import { ProductHunt } from '../ProductHunt';
+import { BuyMeACoffee } from '../BuyMeACoffee';
 
 export const Sidebar = () => {
   const { theme } = useTheme();
@@ -138,32 +140,8 @@ export const Sidebar = () => {
                   <GiClick className="text-2xl" />
                 </button>
               )}
-              <a
-                href="https://www.producthunt.com/products/projectmate/reviews?utm_source=badge-product_review&utm_medium=badge&utm_souce=badge-projectmate"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-2 flex w-full items-center justify-center"
-              >
-                <img
-                  src={`https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=516791&theme=${theme}`}
-                  alt="Projectmate - Connecting&#0032;open&#0045;source&#0032;collaborators&#0032;and&#0032;maintainers | Product Hunt"
-                  style={{ width: '250px', height: '54px' }}
-                  width="250"
-                  height="54"
-                />
-              </a>
-              <a
-                href="https://www.buymeacoffee.com/rohit.dasu"
-                target="_blank"
-                rel="noreferrer"
-                className=" mt-4 flex w-full items-center justify-center"
-              >
-                <img
-                  src={`https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png`}
-                  alt="Buy Me A Coffee"
-                  style={{ width: '250px', height: '54px' }}
-                />
-              </a>
+              <ProductHunt isMobile />
+              <BuyMeACoffee isMobile />
             </motion.div>
           </>
         )}

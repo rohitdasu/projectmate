@@ -9,10 +9,10 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { openModal } from '@/store/slices/sliceModal';
 import { useAppDispatch } from '../../app/hooks';
-import { useTheme } from 'next-themes';
+import { BuyMeACoffee } from '../BuyMeACoffee';
+import { ProductHunt } from '../ProductHunt';
 
 export const Topbar = () => {
-  const { theme } = useTheme();
   const dispatch = useAppDispatch();
   const { data: session } = useSession();
   const router = useRouter();
@@ -32,20 +32,7 @@ export const Topbar = () => {
           {router.pathname !== '/' && <DesktopRoutes />}
         </div>
         <div className="flex items-center gap-2">
-          {router.pathname === '/' && (
-            <a
-              href="https://www.buymeacoffee.com/rohit.dasu"
-              target="_blank"
-              rel="noreferrer"
-              className="hidden md:block"
-            >
-              <img
-                src={`https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png`}
-                alt="Buy Me A Coffee"
-                style={{ height: '48px' }}
-              />
-            </a>
-          )}
+          {router.pathname === '/' && <BuyMeACoffee />}
           {router.pathname !== SUBMIT_PAGE && router.pathname !== '/' && (
             <button
               className="hidden h-[2.939rem] w-40 rounded-md !bg-transparent text-gray-500 shadow-border-shadow transition-all hover:border-2 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 md:block"
@@ -54,22 +41,7 @@ export const Topbar = () => {
               Submit Project
             </button>
           )}
-          {router.pathname === '/' && (
-            <a
-              href="https://www.producthunt.com/products/projectmate/reviews?utm_source=badge-product_review&utm_medium=badge&utm_souce=badge-projectmate"
-              target="_blank"
-              rel="noreferrer"
-              className="hidden md:block"
-            >
-              <img
-                src={`https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=516791&theme=${theme}`}
-                alt="Projectmate - Connecting&#0032;open&#0045;source&#0032;collaborators&#0032;and&#0032;maintainers | Product Hunt"
-                style={{ width: '250px', height: '54px' }}
-                width="250"
-                height="54"
-              />
-            </a>
-          )}
+          {router.pathname === '/' && <ProductHunt />}
           <ThemeToggler />
           {/* <SocialLinks /> */}
           <LoginButton />
