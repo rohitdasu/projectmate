@@ -5,6 +5,8 @@ import { Project } from './Project';
 import { ProjectSkeleton } from './ProjectSkeleton';
 import axios from 'axios';
 import { BackToTop } from '../BackToTopButton';
+import { useSession } from 'next-auth/react';
+import { messageType, toastMessage } from 'shared';
 
 interface IProject extends ProjectData {
   author: {
@@ -13,6 +15,7 @@ interface IProject extends ProjectData {
 }
 
 export const ProjectsList: React.FC = () => {
+  const { status } = useSession();
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
   const getKey = (pageIndex: number, previousPageData: IProject[]) => {
@@ -28,7 +31,36 @@ export const ProjectsList: React.FC = () => {
     return `/api/project?cursorId=${cursorId}`;
   };
 
-  const { data, size, setSize, error } = useSWRInfinite(getKey, fetcher);
+  const { data, size, setSize, error, mutate } = useSWRInfinite(
+    getKey,
+    fetcher
+  );
+
+  const likeProject = async (projectId: string) => {
+    try {
+      await axios.post(`/api/project/${projectId}/like`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      mutate();
+    } catch (e) {
+      toastMessage(e.message, messageType.error);
+    }
+  };
+
+  const unlikeProject = async (projectId: string) => {
+    try {
+      await axios.delete(`/api/project/${projectId}/like`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      mutate();
+    } catch (e) {
+      toastMessage(e.message, messageType.error);
+    }
+  };
 
   // Generate array of specified length with random key value
   const skeletonProjectsToLoad = Array.from({ length: 10 }, () =>
@@ -39,7 +71,12 @@ export const ProjectsList: React.FC = () => {
 
   const isLoadingMore = data && typeof data[size - 1] === 'undefined';
   const isNotReachEnd = data && data[data.length - 1].length;
-
+  useEffect(() => {
+    if (status === 'authenticated' || status === 'unauthenticated') {
+      // Invalidate project list, when the logged in status changed to make sure that the `project.liked` property is up to date
+      mutate();
+    }
+  }, [mutate, status]);
   useEffect(() => {
     const onScroll = function () {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
@@ -74,6 +111,8 @@ export const ProjectsList: React.FC = () => {
                 author={project.author.name}
                 liked={project.liked}
                 likesCount={project.likesCount}
+                likeProject={likeProject}
+                unlikeProject={unlikeProject}
               />
             ))}
           </>

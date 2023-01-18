@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ProjectProps } from './Project.interface';
 import { AiOutlineUser, AiFillLike, AiOutlineLike } from 'react-icons/ai';
 import { Tags } from '@/components/Tags';
@@ -6,9 +5,6 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { Button } from '@/components/Button';
 import { Typography } from '@/components/Typography';
-import axios from 'axios';
-import { messageType, toastMessage } from 'shared';
-import { useSession } from 'next-auth/react';
 
 export const Project = ({
   id,
@@ -18,65 +14,32 @@ export const Project = ({
   author,
   liked,
   likesCount,
+  likeProject,
+  unlikeProject,
 }: ProjectProps) => {
-  const [likedState, setLikedState] = useState(liked);
-  const [likesCountState, setLikesCountState] = useState(likesCount);
-  const session = useSession();
   const router = useRouter();
   const handleContributeClick = () => {
     router.push(`/projects/${id}`);
   };
 
-  const onLike = async () => {
-    try {
-      await axios.post(`/api/project/${id}/like`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      setLikedState(true);
-      setLikesCountState((prevState) => prevState + 1);
-    } catch (e) {
-      toastMessage(e.message, messageType.error);
-    }
-  };
-
-  const onUnlike = async () => {
-    try {
-      await axios.delete(`/api/project/${id}/like`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      setLikedState(false);
-      setLikesCountState((prevState) => prevState - 1);
-    } catch (e) {
-      toastMessage(e.message, messageType.error);
-    }
-  };
-
   const handleLikeClick = async () => {
-    if (!likedState) {
-      await onLike();
-    }
-    if (likedState) {
-      await onUnlike();
+    if (!liked) {
+      await likeProject(id);
+    } else {
+      await unlikeProject(id);
     }
   };
 
   let likeIcon = <AiOutlineLike />;
-  if (session.status === 'authenticated' && likedState) {
+  if (liked) {
     likeIcon = <AiFillLike />;
   }
 
   let likesCountElement: JSX.Element | null = null;
 
-  if (likesCountState > 0) {
-    likesCountElement = (
-      <span className="text-orange pr-1">{likesCountState}</span>
-    );
+  if (likesCount > 0) {
+    likesCountElement = <span className="text-orange pr-1">{likesCount}</span>;
   }
-
   return (
     <motion.li
       initial={{ opacity: 0 }}
