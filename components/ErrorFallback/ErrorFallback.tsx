@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Button } from '../Button';
 
 interface ErrorFallbackProps {
@@ -24,14 +25,24 @@ export const ErrorFallback = ({
       process.env.APP_STAGING === 'true' ? (
         <pre className="mt-5 bg-white py-3 px-5">{error.message}</pre>
       ) : null}
-      <Button
-        onClick={resetErrorBoundary}
-        isDisabled={false}
-        haveAnimation
-        className="mt-7 py-3 px-8"
-      >
-        Try again
-      </Button>
+
+      <div className="mt-8 flex items-center gap-10">
+        <Button
+          onClick={resetErrorBoundary}
+          isDisabled={false}
+          haveAnimation
+          className="bg-[#9b1c1c] py-3 px-8 text-[#fff] dark:bg-[#9b1c1c] dark:text-[#fff]"
+        >
+          Try again
+        </Button>
+
+        <Link
+          href="/"
+          className="rounded-md bg-[#2c1c0f] py-3 px-6 text-base text-orange-500 transition-all hover:opacity-75 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400"
+        >
+          Go back home
+        </Link>
+      </div>
     </div>
   );
 };
