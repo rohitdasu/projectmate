@@ -1,12 +1,12 @@
-import type { NextPage } from 'next';
-import { SharedLayout } from '@/components/Layouts/SharedLayout';
+import { BackToTop } from '@/components/BackToTopButton';
 import {
   BenefitsContainer,
   Guide,
   Hero,
   Thanks,
 } from '@/components/LandingPage/';
-import { BackToTop } from '@/components/BackToTopButton';
+import { SharedLayout } from '@/components/Layouts/SharedLayout';
+import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
   return (
