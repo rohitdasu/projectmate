@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import useSWR from 'swr';
 import Lottie from 'lottie-react';
-import Loader from '../../public/loading.json';
+import Loader from '../../public/animations/loading.json';
 import { Tags } from '@/components/Tags';
 import { motion } from 'framer-motion';
 import { Stats } from '@/components/Stats';

@@ -1,3 +1,5 @@
+import { Project as ProjectData } from '@prisma/client';
+
 export type ProjectProps = {
   id: string;
   title: string;
@@ -5,3 +7,9 @@ export type ProjectProps = {
   tags: string[];
   author: string | null;
 };
+
+export interface IProject extends ProjectData {
+  author: {
+    name: string;
+  };
+}

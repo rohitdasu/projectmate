@@ -3,7 +3,6 @@ import React from 'react';
 import { AuthModal } from '@/components/AuthModal';
 import { Topbar } from '../Topbar/Topbar';
 import Link from 'next/link';
-import { Typography } from '../Typography';
 import { motion } from 'framer-motion';
 import { getSocialLinks } from '../Topbar/data';
 

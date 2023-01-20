@@ -43,7 +43,6 @@ export const Topbar = () => {
           )}
           {router.pathname === '/' && <ProductHunt />}
           <ThemeToggler />
-          {/* <SocialLinks /> */}
           <LoginButton />
           <Sidebar />
           <Avatar />

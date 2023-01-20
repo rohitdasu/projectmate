@@ -2,12 +2,11 @@ import { AiOutlineUsergroupAdd } from 'react-icons/ai';
 import { FiSearch } from 'react-icons/fi';
 import { AiOutlineLaptop } from 'react-icons/ai';
 import { HiOutlineCode } from 'react-icons/hi';
-
-import sharing from './assets/sharing_knowledge.jpg';
-import reputation from './assets/build_reputation.jpg';
-import collaborate from './assets/collaboration.jpg';
-import visibility from './assets/visibility.jpg';
-import opensource from './assets/opensource.jpg';
+import sharing from '../../public/images/sharing_knowledge.jpg';
+import reputation from '../../public/images/build_reputation.jpg';
+import collaborate from '../../public/images/collaboration.jpg';
+import visibility from '../../public/images/visibility.jpg';
+import opensource from '../../public/images/opensource.jpg';
 import { FaDiscord, FaGithub, FaTwitter } from 'react-icons/fa';
 
 export const guide_steps = [

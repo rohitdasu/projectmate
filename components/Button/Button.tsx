@@ -1,14 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
-export type ButtonProps = {
-  type?: 'button' | 'submit';
-  onClick: () => void;
-  isDisabled: boolean;
-  haveAnimation?: boolean;
-  className?: string;
-  children: React.ReactNode;
-};
+import { ButtonProps } from './Button.interface';
 
 export const Button: React.FunctionComponent<ButtonProps> = ({
   type = 'button',

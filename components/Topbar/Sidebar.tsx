@@ -8,19 +8,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { framer_sidebar_background, framer_sidebar_panel } from './framer';
 import { BiArrowBack } from 'react-icons/bi';
 import { Logo } from './Logo';
-import { SidebarAvatar } from '@/components/Avatar';
+import { ProfileCard } from '@/components/Avatar';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { signOut, useSession } from 'next-auth/react';
 import { MdPostAdd } from 'react-icons/md';
 import { useAppDispatch } from '../../app/hooks';
 import { openModal } from '@/store/slices/sliceModal';
 import { GiClick } from 'react-icons/gi';
-import { useTheme } from 'next-themes';
 import { ProductHunt } from '../ProductHunt';
 import { BuyMeACoffee } from '../BuyMeACoffee';
 
 export const Sidebar = () => {
-  const { theme } = useTheme();
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const { pathname } = router;
@@ -106,7 +104,7 @@ export const Sidebar = () => {
                     <BiArrowBack />
                   </motion.button>
                 </div>
-                <SidebarAvatar />
+                <ProfileCard />
               </div>
 
               {<RenderNavigation routes={appRoutes} />}

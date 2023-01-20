@@ -5,7 +5,7 @@ import { openModal } from '@/store/slices/sliceModal';
 import { GiClick } from 'react-icons/gi';
 import { MdDashboardCustomize } from 'react-icons/md';
 import Lottie from 'lottie-react';
-import animation from './lotties/hero.json';
+import animation from '../../public/animations/hero.json';
 import { Button } from '@/components/Button';
 import { motion } from 'framer-motion';
 import { Typography } from '@/components/Typography';

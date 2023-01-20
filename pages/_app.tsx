@@ -1,5 +1,5 @@
 import { ErrorFallback } from '@/components/ErrorFallback';
-import { AppToaster } from '@/components/Toster';
+import { AppToaster } from '@/components/Toaster';
 import { cache } from '@emotion/css';
 import { CacheProvider } from '@emotion/react';
 import { SessionProvider } from 'next-auth/react';

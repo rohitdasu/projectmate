@@ -7,6 +7,9 @@ import { HiOutlineLogout } from 'react-icons/hi';
 import { MdArrowDropDown } from 'react-icons/md';
 import { IoPersonOutline } from 'react-icons/io5';
 import { motion } from 'framer-motion';
+import { getImageUrl } from './Avatar.common';
+import { User } from '@prisma/client';
+
 export function Avatar() {
   const { data: session } = useSession();
 
@@ -23,10 +26,7 @@ export function Avatar() {
             >
               <div className="relative my-[0.67rem] h-[47px] w-[47px] overflow-hidden rounded-full shadow-border-shadow">
                 <Image
-                  src={
-                    user?.image ||
-                    `https://avatars.dicebear.com/api/initials/${user?.name}.png?backgroundColorLevel=800&fontSize=40`
-                  }
+                  src={getImageUrl(user as User)}
                   layout="fill"
                   alt={user?.name || 'avatar'}
                 />

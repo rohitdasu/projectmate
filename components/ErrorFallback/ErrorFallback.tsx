@@ -1,10 +1,6 @@
 import Link from 'next/link';
 import { Button } from '../Button';
-
-interface ErrorFallbackProps {
-  error: Error;
-  resetErrorBoundary: () => void;
-}
+import { ErrorFallbackProps } from './ErrorFallback.interface';
 
 export const ErrorFallback = ({
   error,
