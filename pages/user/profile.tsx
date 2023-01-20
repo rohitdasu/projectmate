@@ -4,11 +4,11 @@ import { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
 import Router from 'next/router';
 import Lottie from 'lottie-react';
-import Loader from '@/../public/loading.json';
+import Loader from 'public/animations/loading.json';
 import axios from 'axios';
 import useSWR from 'swr';
-import animation from '../../public/no-data.json';
-import errorAnimation from '../../public/error.json';
+import animation from '../../public/animations/no-data.json';
+import errorAnimation from '../../public/animations/error.json';
 import { Typography } from '@/components/Typography';
 
 const Profile: NextPage = () => {

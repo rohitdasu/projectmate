@@ -8,7 +8,7 @@ import {
 import { useSession } from 'next-auth/react';
 import Router from 'next/router';
 import Lottie from 'lottie-react';
-import Loader from '../../public/loading.json';
+import Loader from '../../public/animations/loading.json';
 import axios from 'axios';
 import { Input } from '@/components/Form/Input';
 import { schema } from './schema';
@@ -17,15 +17,7 @@ import { toastMessage, messageType } from '../../shared';
 import { Button } from '@/components/Button';
 import { Tags, RemoveTagFc } from '@/components/Tags';
 import { Typography } from '../Typography';
-
-type FormInputs = {
-  tags: string[];
-  projectName: string;
-  repositoryLink: string;
-  projectDescription: string;
-  coverImage: string | null;
-  content: string | null;
-};
+import { FormInputs } from './SubmitPageForm.interface';
 
 export const SubmitPageForm = () => {
   const { handleSubmit, setValue, watch, control, reset } = useForm<FormInputs>(

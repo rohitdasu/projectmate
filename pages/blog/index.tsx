@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import Lottie from 'lottie-react';
-import comingSoonAnimation from '@/../public/comingSoon.json';
+import comingSoonAnimation from 'public/animations/comingSoon.json';
 import { motion } from 'framer-motion';
 
 const Blog: NextPage = () => {

@@ -1,16 +1,10 @@
-import { Project as ProjectData } from '@prisma/client';
 import { useEffect } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import { Project } from './Project';
 import { ProjectSkeleton } from './ProjectSkeleton';
 import axios from 'axios';
 import { BackToTop } from '../BackToTopButton';
-
-interface IProject extends ProjectData {
-  author: {
-    name: string;
-  };
-}
+import { IProject } from './Project.interface';
 
 export const ProjectsList: React.FC = () => {
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
