@@ -14,7 +14,7 @@ export const Project: FC<IProject> = ({ title }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="flex w-full flex-row items-center justify-between rounded-lg bg-slate-100 p-4 shadow-border-shadow dark:bg-slate-800"
+      className="flex w-full flex-row items-center justify-between rounded-lg bg-slate-200 p-4 text-gray-900 shadow-border-shadow dark:bg-slate-800 dark:text-gray-100"
     >
       <Typography
         as="p"

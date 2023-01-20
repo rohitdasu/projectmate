@@ -28,12 +28,14 @@ export const SharedLayout: React.FC<IProps> = ({
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
       <Topbar />
-      <main className={(hasContainer && 'm-auto max-w-screen-xl') || ''}>
-        {children}
+      <main className="bg-gray-100 dark:bg-gray-900">
+        <div className={(hasContainer && 'm-auto max-w-screen-xl') || ''}>
+          {children}
+        </div>
       </main>
       <AuthModal title={'Continue with your social accounts'} />
       {!hideFooter && (
-        <footer className="z-100 sticky top-[100%] border-t px-5 py-10 text-center dark:border-gray-800">
+        <footer className="z-100 sticky top-[100%] border-t border-gray-300 bg-gray-100 px-5 py-10 text-center dark:border-gray-800 dark:bg-gray-900">
           <div className="flex flex-col items-center justify-center rounded-full p-5">
             <div className="flex flex-row items-center justify-center space-x-16">
               {socialLinks.map(({ Icon, title, anchorTagProps, url }) => (

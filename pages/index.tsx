@@ -11,7 +11,7 @@ import type { NextPage } from 'next';
 const Home: NextPage = () => {
   return (
     <SharedLayout title="Home" hasContainer hideFooter={false}>
-      <div className="mt-16 mb-24 flex flex-col space-y-32 px-4">
+      <div className="flex flex-col space-y-32 px-4 pb-24 pt-16 md:pt-24">
         <Hero />
         <Guide />
         <BenefitsContainer />

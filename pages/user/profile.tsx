@@ -39,7 +39,7 @@ const Profile: NextPage = () => {
 
   return (
     <SharedLayout title="Profile" hasContainer>
-      <div className="m-auto mb-16 flex w-full flex-col px-4 py-5">
+      <div className="m-auto flex w-full flex-col px-4 py-6 pb-16">
         <Typography
           as="h1"
           fontSize="xl"

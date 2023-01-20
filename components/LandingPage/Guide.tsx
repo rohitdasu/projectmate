@@ -22,7 +22,7 @@ export const Guide = () => {
           return (
             <motion.li
               key={title}
-              className="relative flex w-[100%] max-w-[30rem] flex-col items-center gap-2 rounded-md bg-slate-100 p-5 text-center shadow-md dark:bg-slate-800"
+              className="relative flex w-[100%] max-w-[30rem] flex-col items-center gap-2 rounded-md bg-slate-200 p-5 text-center shadow-md dark:bg-slate-800"
             >
               <div className="flex flex-col items-center gap-2">
                 <Icon className="text-2xl" />
