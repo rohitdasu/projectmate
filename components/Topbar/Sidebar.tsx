@@ -16,7 +16,6 @@ import { useAppDispatch } from '../../app/hooks';
 import { openModal } from '@/store/slices/sliceModal';
 import { GiClick } from 'react-icons/gi';
 import { ProductHunt } from '../ProductHunt';
-import { BuyMeACoffee } from '../BuyMeACoffee';
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -108,7 +107,6 @@ export const Sidebar = () => {
               </div>
 
               {<RenderNavigation routes={appRoutes} />}
-              {/* {<RenderNavigation routes={socialLinks} />} */}
 
               {session && (
                 <button
@@ -139,7 +137,6 @@ export const Sidebar = () => {
                 </button>
               )}
               <ProductHunt isMobile />
-              <BuyMeACoffee isMobile />
             </motion.div>
           </>
         )}
