@@ -9,7 +9,6 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { openModal } from '@/store/slices/sliceModal';
 import { useAppDispatch } from '../../app/hooks';
-import { BuyMeACoffee } from '../BuyMeACoffee';
 import { ProductHunt } from '../ProductHunt';
 
 export const Topbar = () => {
@@ -32,7 +31,6 @@ export const Topbar = () => {
           {router.pathname !== '/' && <DesktopRoutes />}
         </div>
         <div className="flex items-center gap-2">
-          {router.pathname === '/' && <BuyMeACoffee />}
           {router.pathname !== SUBMIT_PAGE && router.pathname !== '/' && (
             <button
               className="hidden h-[2.939rem] w-40 rounded-md !bg-transparent text-gray-500 shadow-border-shadow transition-all hover:border-2 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 md:block"
