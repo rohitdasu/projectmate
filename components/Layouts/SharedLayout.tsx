@@ -22,13 +22,13 @@ export const SharedLayout: React.FC<IProps> = ({
   const year = new Date().getFullYear();
   const socialLinks = getSocialLinks();
   return (
-    <>
+    <div className="flex min-h-screen w-full flex-col">
       <Head>
         <title>{`Projectmate | ${title}`}</title>
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
       <Topbar />
-      <main className="bg-gray-100 dark:bg-gray-900">
+      <main className="flex-1 bg-gray-100 dark:bg-gray-900">
         <div className={(hasContainer && 'm-auto max-w-screen-xl') || ''}>
           {children}
         </div>
@@ -68,6 +68,6 @@ export const SharedLayout: React.FC<IProps> = ({
           © {year}
         </footer>
       )}
-    </>
+    </div>
   );
 };
