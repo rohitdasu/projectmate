@@ -12,9 +12,12 @@ const Blog: NextPage = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
         exit={{ opacity: 0 }}
-        className="flex h-[calc(100vh-5.46rem)] items-center justify-center"
+        className="flex items-center justify-center"
       >
-        <Lottie className="h-full w-full" animationData={comingSoonAnimation} />
+        <Lottie
+          className="w-full md:w-[50%]"
+          animationData={comingSoonAnimation}
+        />
       </motion.div>
     </SharedLayout>
   );

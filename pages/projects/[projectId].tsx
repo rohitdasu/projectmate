@@ -89,7 +89,11 @@ const ProjectDetails = () => {
                 >
                   {projectData?.author?.name}
                 </Typography>
-                <Typography as="p" fontSize="xs" className="text-gray-400">
+                <Typography
+                  as="p"
+                  fontSize="xs"
+                  className="text-gray-600 dark:text-gray-300"
+                >
                   {new Date(projectData?.createdAt).toLocaleDateString()}
                 </Typography>
               </div>
@@ -100,7 +104,7 @@ const ProjectDetails = () => {
               href={projectData?.githubRepository}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-1 text-lg text-gray-800 hover:cursor-pointer hover:text-blue-600 hover:underline dark:text-gray-400 dark:hover:text-blue-300"
+              className="flex items-center space-x-1 text-lg text-gray-800 hover:cursor-pointer hover:text-blue-600 hover:underline dark:text-gray-300 dark:hover:text-blue-300"
             >
               <span className="">View Repo</span>
               <BiLink />

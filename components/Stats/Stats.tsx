@@ -42,7 +42,7 @@ export const Stats = ({ ...props }) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
       exit={{ opacity: 0 }}
-      className="mt-6 flex flex-col gap-4 rounded-lg bg-slate-100 p-4 dark:bg-slate-800 md:p-8"
+      className="mt-6 flex flex-col gap-4 rounded-lg bg-slate-200 p-4 dark:bg-slate-800 md:p-8"
     >
       <Typography as="h2" align="left" fontSize="2xl" fontWeight="semibold">
         Project Stats.

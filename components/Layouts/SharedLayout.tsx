@@ -53,19 +53,19 @@ export const SharedLayout: React.FC<IProps> = ({
           </div>
           <ul className="my-4 flex flex-col items-center justify-center gap-2 md:flex-row md:gap-8">
             <li>
-              <Link href="/privacy-policy">Privacy Policy</Link>
+              <Link href="/privacy-policy" className="text-md font-extralight">
+                Privacy Policy
+              </Link>
             </li>
-          </ul>{' '}
-          This project is published under{' '}
+          </ul>
           <a
-            className="font-bold underline"
+            className="font-semibold underline"
             href="https://github.com/rohitdasu/projectmate/blob/main/LICENSE"
             target="_blank"
             rel="noreferrer"
           >
-            MIT License
-          </a>{' '}
-          © {year}
+            MIT License {year}
+          </a>
         </footer>
       )}
     </div>
