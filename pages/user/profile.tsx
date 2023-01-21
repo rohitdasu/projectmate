@@ -46,8 +46,8 @@ const Profile: NextPage = () => {
           fontWeight="semibold"
           className="dark:text-[#a6a6a6] sm:text-[30px]"
         >
-          <span>Welcome, </span>
-          <span className="mr-2 whitespace-nowrap  text-[#ED8728] dark:text-white">
+          <span className="text-gray-900 dark:text-gray-100">Hi, </span>
+          <span className="mr-2 whitespace-nowrap text-primary-1">
             {session?.user && session.user.name}
           </span>
           🎉
@@ -55,7 +55,7 @@ const Profile: NextPage = () => {
         <Typography
           as="h2"
           fontWeight="semibold"
-          className="pt-10 dark:text-[#a6a6a6] sm:text-lg"
+          className="pt-10 font-medium text-gray-900 dark:text-gray-100 sm:text-lg"
         >
           Your Projects
         </Typography>
