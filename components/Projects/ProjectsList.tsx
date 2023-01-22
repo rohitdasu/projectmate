@@ -1,18 +1,12 @@
-import { Project as ProjectData } from '@prisma/client';
 import { useEffect } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import { Project } from './Project';
 import { ProjectSkeleton } from './ProjectSkeleton';
 import axios from 'axios';
 import { BackToTop } from '../BackToTopButton';
+import { IProject } from './Project.interface';
 import { useSession } from 'next-auth/react';
 import { messageType, toastMessage } from 'shared';
-
-interface IProject extends ProjectData {
-  author: {
-    name: string;
-  };
-}
 
 export const ProjectsList: React.FC = () => {
   const { status } = useSession();

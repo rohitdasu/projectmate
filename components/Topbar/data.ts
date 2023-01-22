@@ -19,11 +19,6 @@ export interface IRoute {
 }
 
 export const appRoutes: IRoute[] = [
-  // {
-  //   title: 'home',
-  //   url: '/',
-  //   Icon: MdRoofing,
-  // },
   {
     title: 'projects',
     url: '/projects',

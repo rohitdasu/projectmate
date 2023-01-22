@@ -5,7 +5,7 @@ import { openModal } from '@/store/slices/sliceModal';
 import { GiClick } from 'react-icons/gi';
 import { MdDashboardCustomize } from 'react-icons/md';
 import Lottie from 'lottie-react';
-import animation from './lotties/hero.json';
+import animation from '../../public/animations/hero.json';
 import { Button } from '@/components/Button';
 import { motion } from 'framer-motion';
 import { Typography } from '@/components/Typography';
@@ -13,7 +13,7 @@ import { Typography } from '@/components/Typography';
 export const Hero = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   const handleModal = () => dispatch(openModal());
   const handleRoute = () => router.push('/projects');
@@ -64,12 +64,15 @@ export const Hero = () => {
             open source project by sharing it on ProjectMate !
           </Typography>
         </motion.div>
-        <div className="flex w-full flex-col items-center justify-between gap-4 md:w-auto md:flex-row">
+        <motion.div
+          layout
+          className="flex w-full flex-col items-center justify-between gap-4 md:w-auto md:flex-row"
+        >
           {session === null && (
             <Button
               onClick={handleModal}
               isDisabled={false}
-              className="text-md w-full py-3 px-6 font-semibold md:w-auto md:text-lg"
+              className="text-md w-full py-3 px-6 font-semibold shadow-lg md:w-auto md:text-lg"
             >
               <span className="flex items-center justify-center gap-3">
                 Login / Register
@@ -82,7 +85,7 @@ export const Hero = () => {
               whileTap={{ scale: 0.9 }}
               layout
               onClick={handleRoute}
-              className={`text-md w-full rounded-md border-2 border-slate-200 py-3 px-6 font-semibold text-gray-800 opacity-75 transition-all hover:opacity-100 focus:ring dark:border-slate-600 dark:text-gray-100 md:w-auto md:text-lg ${
+              className={`text-md w-full rounded-md border-2 border-gray-200 py-3 px-6 font-semibold text-gray-900 opacity-75 shadow-lg transition-all hover:opacity-100 focus:ring dark:border-gray-600 dark:text-gray-100 md:w-auto md:text-lg ${
                 session &&
                 'border-0 !bg-orange-100 !text-orange-500 ring-orange-800 dark:!bg-[#2c1c0f] dark:!text-orange-400'
               }`}
@@ -93,7 +96,21 @@ export const Hero = () => {
               </span>
             </motion.button>
           )}
-        </div>
+          {status === 'loading' && (
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              layout
+              className={`text-md w-full rounded-md border-2 border-gray-200 py-3 px-6 font-semibold text-gray-900 opacity-75 transition-all hover:opacity-100 focus:ring dark:border-gray-600 dark:text-gray-100 md:w-auto md:text-lg ${
+                session &&
+                'border-0 !bg-orange-100 !text-orange-500 ring-orange-800 dark:!bg-[#2c1c0f] dark:!text-orange-400'
+              }`}
+            >
+              <span className="flex animate-pulse items-center justify-center gap-3">
+                Loading...
+              </span>
+            </motion.button>
+          )}
+        </motion.div>
       </div>
       <div className="-mr-10 hidden lg:block">
         <Lottie animationData={animation} style={style} />

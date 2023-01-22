@@ -1,3 +1,5 @@
+import { Project as ProjectData } from '@prisma/client';
+
 export type ProjectProps = {
   id: string;
   title: string;
@@ -9,3 +11,9 @@ export type ProjectProps = {
   likeProject: (projectId: string) => Promise<void>;
   unlikeProject: (projectId: string) => Promise<void>;
 };
+
+export interface IProject extends ProjectData {
+  author: {
+    name: string;
+  };
+}

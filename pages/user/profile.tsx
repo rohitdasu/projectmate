@@ -4,11 +4,11 @@ import { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
 import Router from 'next/router';
 import Lottie from 'lottie-react';
-import Loader from '@/../public/loading.json';
+import Loader from 'public/animations/loading.json';
 import axios from 'axios';
 import useSWR from 'swr';
-import animation from '../../public/no-data.json';
-import errorAnimation from '../../public/error.json';
+import animation from '../../public/animations/no-data.json';
+import errorAnimation from '../../public/animations/error.json';
 import { Typography } from '@/components/Typography';
 
 const Profile: NextPage = () => {
@@ -39,15 +39,15 @@ const Profile: NextPage = () => {
 
   return (
     <SharedLayout title="Profile" hasContainer>
-      <div className="m-auto mb-16 flex w-full flex-col px-4 py-5">
+      <div className="m-auto flex w-full flex-col px-4 py-6 pb-16">
         <Typography
           as="h1"
           fontSize="xl"
           fontWeight="semibold"
           className="dark:text-[#a6a6a6] sm:text-[30px]"
         >
-          <span>Welcome, </span>
-          <span className="mr-2 whitespace-nowrap  text-[#ED8728] dark:text-white">
+          <span className="text-gray-900 dark:text-gray-100">Hi, </span>
+          <span className="mr-2 whitespace-nowrap text-primary-1">
             {session?.user && session.user.name}
           </span>
           🎉
@@ -55,7 +55,7 @@ const Profile: NextPage = () => {
         <Typography
           as="h2"
           fontWeight="semibold"
-          className="pt-10 dark:text-[#a6a6a6] sm:text-lg"
+          className="pt-10 font-medium text-gray-900 dark:text-gray-100 sm:text-lg"
         >
           Your Projects
         </Typography>

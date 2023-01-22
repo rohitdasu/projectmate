@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import Lottie from 'lottie-react';
-import comingSoonAnimation from '@/../public/comingSoon.json';
+import comingSoonAnimation from 'public/animations/comingSoon.json';
 import { motion } from 'framer-motion';
 
 const Blog: NextPage = () => {
@@ -12,9 +12,12 @@ const Blog: NextPage = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
         exit={{ opacity: 0 }}
-        className="flex h-[calc(100vh-5.46rem)] items-center justify-center"
+        className="flex items-center justify-center"
       >
-        <Lottie className="h-full w-full" animationData={comingSoonAnimation} />
+        <Lottie
+          className="w-full md:w-[50%]"
+          animationData={comingSoonAnimation}
+        />
       </motion.div>
     </SharedLayout>
   );

@@ -42,27 +42,31 @@ export const Project = ({
   }
   return (
     <motion.li
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
-      className="w-full p-2 shadow-lg md:p-0"
+      className="m-2 bg-white shadow-lg dark:border-4 dark:border-slate-800 dark:bg-slate-900 md:m-auto md:w-full"
     >
-      <div className="flex h-full flex-col items-center overflow-hidden rounded-md text-foreground-1 shadow-border-shadow">
+      <div className="flex h-full flex-col items-center overflow-hidden rounded-md">
         <div className="flex w-full grow flex-col gap-5 p-4 pt-4">
           <Typography
             as="h2"
             fontSize="xl"
             fontWeight="semibold"
-            className="min-w-[0] flex-1 flex-col gap-2 truncate"
+            className="min-w-[0] flex-1 flex-col gap-2 truncate text-gray-900 dark:text-gray-100"
           >
             {title}
-            <span className="flex items-center gap-1 text-sm font-light ">
+            <span className="flex items-center gap-1 text-sm font-light text-gray-900 dark:text-gray-100">
               <AiOutlineUser />
               {author}
             </span>
           </Typography>
-          <Typography as="p" fontSize="sm" className="h-20 line-clamp-4">
+          <Typography
+            as="p"
+            fontSize="sm"
+            className="h-20 text-gray-900 line-clamp-4 dark:text-gray-100"
+          >
             {description}
           </Typography>
           <div className="flex flex-col gap-5">
@@ -87,7 +91,7 @@ export const Project = ({
               <Button
                 onClick={handleContributeClick}
                 isDisabled={false}
-                className="mt-2 grow px-2 py-1.5 font-bold sm:my-0"
+                className="mt-2 grow px-2 py-1.5 font-bold hover:animate-pulse sm:my-0"
               >
                 <span>Contribute</span>
               </Button>
