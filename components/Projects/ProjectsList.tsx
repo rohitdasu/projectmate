@@ -6,7 +6,6 @@ import axios from 'axios';
 import { BackToTop } from '../BackToTopButton';
 import { IProject } from './Project.interface';
 import { useSession } from 'next-auth/react';
-import { messageType, toastMessage } from 'shared';
 
 export const ProjectsList: React.FC = () => {
   const { status } = useSession();
@@ -29,32 +28,6 @@ export const ProjectsList: React.FC = () => {
     getKey,
     fetcher
   );
-
-  const likeProject = async (projectId: string) => {
-    try {
-      await axios.post(`/api/project/${projectId}/like`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      mutate();
-    } catch (e) {
-      toastMessage(e.message, messageType.error);
-    }
-  };
-
-  const unlikeProject = async (projectId: string) => {
-    try {
-      await axios.delete(`/api/project/${projectId}/like`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      mutate();
-    } catch (e) {
-      toastMessage(e.message, messageType.error);
-    }
-  };
 
   // Generate array of specified length with random key value
   const skeletonProjectsToLoad = Array.from({ length: 10 }, () =>
@@ -105,8 +78,7 @@ export const ProjectsList: React.FC = () => {
                 author={project.author.name}
                 liked={project.liked}
                 likesCount={project.likesCount}
-                likeProject={likeProject}
-                unlikeProject={unlikeProject}
+                mutate={mutate}
               />
             ))}
           </>

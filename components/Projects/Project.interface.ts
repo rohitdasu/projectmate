@@ -1,4 +1,5 @@
 import { Project as ProjectData } from '@prisma/client';
+import { KeyedMutator } from 'swr';
 
 export type ProjectProps = {
   id: string;
@@ -8,8 +9,7 @@ export type ProjectProps = {
   author: string | null;
   liked: boolean;
   likesCount: number;
-  likeProject: (projectId: string) => Promise<void>;
-  unlikeProject: (projectId: string) => Promise<void>;
+  mutate: KeyedMutator<IProject[]>;
 };
 
 export interface IProject extends ProjectData {

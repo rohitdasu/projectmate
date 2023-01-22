@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { ProjectProps } from './Project.interface';
 import { AiOutlineUser, AiFillLike, AiOutlineLike } from 'react-icons/ai';
 import { Tags } from '@/components/Tags';
@@ -5,6 +6,9 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { Button } from '@/components/Button';
 import { Typography } from '@/components/Typography';
+import { useSession } from 'next-auth/react';
+import { messageType, toastMessage } from 'shared';
+import axios from 'axios';
 
 export const Project = ({
   id,
@@ -14,31 +18,86 @@ export const Project = ({
   author,
   liked,
   likesCount,
-  likeProject,
-  unlikeProject,
+  mutate,
 }: ProjectProps) => {
+  const session = useSession();
+  const [likedState, setLiked] = useState(false);
+  const [likesCountState, setLikesCount] = useState(0);
+  const isYou = author === session.data?.user?.name;
   const router = useRouter();
   const handleContributeClick = () => {
     router.push(`/projects/${id}`);
   };
+  useEffect(() => {
+    setLiked(liked);
+    setLikesCount(likesCount);
+  }, [liked, likesCount, setLiked, setLikesCount]);
+
+  const likeProject = async (prevLiked: boolean, prevLikesCount: number) => {
+    try {
+      await axios.post(`/api/project/${id}/like`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    } catch (e) {
+      toastMessage(e.message, messageType.error);
+      setLiked(prevLiked);
+      setLikesCount(prevLikesCount);
+    } finally {
+      mutate();
+    }
+  };
+
+  const unlikeProject = async (prevLiked: boolean, prevLikesCount: number) => {
+    try {
+      await axios.delete(`/api/project/${id}/like`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    } catch (e) {
+      toastMessage(e.message, messageType.error);
+      setLiked(prevLiked);
+      setLikesCount(prevLikesCount);
+    } finally {
+      mutate();
+    }
+  };
 
   const handleLikeClick = async () => {
-    if (!liked) {
-      await likeProject(id);
+    if (session.status !== 'authenticated') {
+      toastMessage('Please login to like projects!', messageType.error);
+      return;
+    }
+    if (isYou) {
+      toastMessage('You cannot like your own project!', messageType.error);
+      return;
+    }
+    const prevLiked = likedState;
+    const prevLikesCount = likesCountState;
+    if (likedState) {
+      setLiked(false);
+      setLikesCount((prevState) => prevState - 1);
+      unlikeProject(prevLiked, prevLikesCount);
     } else {
-      await unlikeProject(id);
+      setLiked(true);
+      setLikesCount((prevState) => prevState + 1);
+      likeProject(prevLiked, prevLikesCount);
     }
   };
 
   let likeIcon = <AiOutlineLike />;
-  if (liked) {
+  if (likedState) {
     likeIcon = <AiFillLike />;
   }
 
   let likesCountElement: JSX.Element | null = null;
 
-  if (likesCount > 0) {
-    likesCountElement = <span className="text-orange pr-1">{likesCount}</span>;
+  if (likesCountState > 0) {
+    likesCountElement = (
+      <span className="text-orange pr-1">{likesCountState}</span>
+    );
   }
   return (
     <motion.li
@@ -82,7 +141,7 @@ export const Project = ({
               <Button
                 onClick={handleLikeClick}
                 isDisabled={false}
-                className="mt-2 flex items-center px-2 py-1 font-bold sm:my-0"
+                className="mt-2 flex items-center px-2 py-1 font-bold hover:animate-pulse sm:my-0"
               >
                 {likeIcon}
                 <span className="px-2">Like</span>
