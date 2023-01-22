@@ -10,7 +10,7 @@ import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
   return (
-    <SharedLayout title="Home" hasContainer hideFooter={false}>
+    <SharedLayout title="Find your project mate online" hasContainer showFooter>
       <div className="flex flex-col space-y-32 px-4 pb-24 pt-16 md:pt-24">
         <Hero />
         <Guide />

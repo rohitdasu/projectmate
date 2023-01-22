@@ -59,9 +59,10 @@ export const Hero = () => {
             align="justify"
             className="dark:text-gray-300 md:text-xl"
           >
-            ProjectMate helps you to find awesome open source projects based on
-            the skills you have. You can also find new contributors for your
-            open source project by sharing it on ProjectMate !
+            Projectmate is a platform that connects open-source enthusiasts with
+            repository owners and maintainers looking for contributors. With
+            Projectmate, you can browse through a variety of open-source
+            projects and find one that aligns with your skills.
           </Typography>
         </motion.div>
         <motion.div

@@ -10,7 +10,7 @@ export const Person = ({ id, name, profilePicture }: PersonType) => {
     // TODO: goto user's profile and show projects related to that user
   };
   return (
-    <div className="flex w-full flex-row items-center justify-center gap-8 rounded-lg bg-gray-200 px-16 py-4 dark:bg-gray-800 md:w-72 md:px-2">
+    <div className="min-h-30 flex w-full flex-row items-center justify-center gap-8 rounded-lg bg-gray-200 px-16 py-4 dark:bg-gray-800 md:w-72 md:px-2">
       <div className="flex items-center gap-4">
         <Image
           src={getImageUrl({ image: profilePicture } as User)}
