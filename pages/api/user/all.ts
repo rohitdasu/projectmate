@@ -2,21 +2,11 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '@/lib/prisma';
 import { User } from '@prisma/client';
 import { errorResponse, successResponse } from '@/lib/httpResponse';
-import { getServerAuthSession } from '@/lib/getServerAuthSession';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const session = await getServerAuthSession({ req, res });
-  if (!session) {
-    return errorResponse({
-      res,
-      message: 'Unauthorized',
-      statusCode: 401,
-      success: false,
-    });
-  }
   switch (req.method) {
     case 'GET':
       try {
@@ -50,7 +40,13 @@ export default async function handler(
 async function getUsers() {
   try {
     const data: User[] = await prisma.user.findMany();
-    return data;
+    return data.map((user) => {
+      return {
+        id: user.id,
+        name: user.name,
+        profilePicture: user.image,
+      };
+    });
   } catch (error) {
     throw error;
   }
