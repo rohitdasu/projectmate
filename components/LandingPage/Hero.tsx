@@ -72,7 +72,7 @@ export const Hero = () => {
             <Button
               onClick={handleModal}
               isDisabled={false}
-              className="text-md w-full py-3 px-6 font-semibold md:w-auto md:text-lg"
+              className="text-md w-full py-3 px-6 font-semibold shadow-lg md:w-auto md:text-lg"
             >
               <span className="flex items-center justify-center gap-3">
                 Login / Register
@@ -85,7 +85,7 @@ export const Hero = () => {
               whileTap={{ scale: 0.9 }}
               layout
               onClick={handleRoute}
-              className={`text-md w-full rounded-md border-2 border-gray-200 py-3 px-6 font-semibold text-gray-900 opacity-75 transition-all hover:opacity-100 focus:ring dark:border-gray-600 dark:text-gray-100 md:w-auto md:text-lg ${
+              className={`text-md w-full rounded-md border-2 border-gray-200 py-3 px-6 font-semibold text-gray-900 opacity-75 shadow-lg transition-all hover:opacity-100 focus:ring dark:border-gray-600 dark:text-gray-100 md:w-auto md:text-lg ${
                 session &&
                 'border-0 !bg-orange-100 !text-orange-500 ring-orange-800 dark:!bg-[#2c1c0f] dark:!text-orange-400'
               }`}
