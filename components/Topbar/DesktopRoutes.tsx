@@ -13,10 +13,10 @@ export const DesktopRoutes = () => {
         const { title, url, Icon, anchorTagProps, protectedRoute } = route;
         const isCurrent = pathname === url || pathname.includes(title);
         if (protectedRoute && !session) {
-          return <></>;
+          return null;
         }
         return (
-          <li key={title}>
+          <li key={title + url + new Date()}>
             <Link
               href={url}
               className={`flex cursor-pointer items-center gap-1 text-gray-700 transition-all hover:!text-primary-1 dark:text-gray-400 ${

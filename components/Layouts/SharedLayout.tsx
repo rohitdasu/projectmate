@@ -5,18 +5,12 @@ import { Topbar } from '../Topbar/Topbar';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { getSocialLinks } from '../Topbar/data';
+import { ISharedLayout } from './Layouts.interface';
 
-interface IProps {
-  children: React.ReactNode;
-  title: string;
-  hideFooter?: boolean;
-  hasContainer?: boolean;
-}
-
-export const SharedLayout: React.FC<IProps> = ({
+export const SharedLayout: React.FC<ISharedLayout> = ({
   children,
   title,
-  hideFooter = true,
+  showFooter = false,
   hasContainer,
 }) => {
   const year = new Date().getFullYear();
@@ -34,7 +28,7 @@ export const SharedLayout: React.FC<IProps> = ({
         </div>
       </main>
       <AuthModal title={'Continue with your social accounts'} />
-      {!hideFooter && (
+      {showFooter && (
         <footer className="z-100 sticky top-[100%] border-t border-gray-300 bg-gray-100 px-5 py-10 text-center dark:border-gray-800 dark:bg-gray-900">
           <div className="flex flex-col items-center justify-center rounded-full p-5">
             <div className="flex flex-row items-center justify-center space-x-16">

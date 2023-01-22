@@ -59,9 +59,10 @@ export const Hero = () => {
             align="justify"
             className="dark:text-gray-300 md:text-xl"
           >
-            ProjectMate helps you to find awesome open source projects based on
-            the skills you have. You can also find new contributors for your
-            open source project by sharing it on ProjectMate !
+            Projectmate is a platform that connects open-source enthusiasts with
+            repository owners and maintainers looking for contributors. With
+            Projectmate, you can browse through a variety of open-source
+            projects and find one that aligns with your skills.
           </Typography>
         </motion.div>
         <motion.div
@@ -85,7 +86,7 @@ export const Hero = () => {
               whileTap={{ scale: 0.9 }}
               layout
               onClick={handleRoute}
-              className={`text-md w-full rounded-md border-2 border-gray-200 py-3 px-6 font-semibold text-gray-900 opacity-75 shadow-lg transition-all hover:opacity-100 focus:ring dark:border-gray-600 dark:text-gray-100 md:w-auto md:text-lg ${
+              className={`text-md w-full rounded-md bg-slate-200 py-3 px-6 font-semibold text-gray-900 opacity-75 shadow transition-all hover:opacity-100 focus:ring dark:bg-gray-700 dark:text-gray-100 md:w-auto md:text-lg ${
                 session &&
                 'border-0 !bg-orange-100 !text-orange-500 ring-orange-800 dark:!bg-[#2c1c0f] dark:!text-orange-400'
               }`}

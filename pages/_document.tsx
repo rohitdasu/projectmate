@@ -34,6 +34,47 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <meta
+            name="description"
+            content="Projectmate is a platform that connects open-source enthusiasts with repository owners and maintainers looking for contributors."
+          />
+          <meta
+            name="keywords"
+            content="opensource, github, reactjs, nextjs, technology"
+          />
+          <meta name="robots" content="index,follow" />
+          <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta name="language" content="English" />
+          <meta name="revisit-after" content="2 days" />
+          <meta name="author" content="Rohit Dasu" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://www.projectmate.net/" />
+          <meta
+            property="og:title"
+            content="Start Contributing to Open Source Projects"
+          />
+          <meta
+            property="og:description"
+            content="Projectmate is a platform that connects open-source enthusiasts with repository owners and maintainers looking for contributors."
+          />
+          <meta
+            property="og:image"
+            content="https://user-images.githubusercontent.com/48400770/190438248-fc0f3e42-c6d3-4d07-bcba-10e7fece4bc2.png"
+          />
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta property="twitter:url" content="https://www.projectmate.net/" />
+          <meta
+            property="twitter:title"
+            content="Start Contributing to Open Source Projects"
+          />
+          <meta
+            property="twitter:description"
+            content="Projectmate is a platform that connects open-source enthusiasts with repository owners and maintainers looking for contributors."
+          />
+          <meta
+            property="twitter:image"
+            content="https://user-images.githubusercontent.com/48400770/190438248-fc0f3e42-c6d3-4d07-bcba-10e7fece4bc2.png"
+          />
           <script
             dangerouslySetInnerHTML={{
               __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
