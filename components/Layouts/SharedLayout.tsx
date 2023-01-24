@@ -47,7 +47,10 @@ export const SharedLayout: React.FC<ISharedLayout> = ({
           </div>
           <ul className="my-4 flex flex-col items-center justify-center gap-2 md:flex-row md:gap-8">
             <li>
-              <Link href="/privacy-policy" className="text-md font-extralight">
+              <Link
+                href="/privacy-policy"
+                className="text-base font-extralight"
+              >
                 Privacy Policy
               </Link>
             </li>

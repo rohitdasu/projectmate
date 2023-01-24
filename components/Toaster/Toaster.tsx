@@ -23,7 +23,7 @@ export const AppToaster = () => {
               <label
                 role="status"
                 aria-live="polite"
-                className={`text-md pl-2 ${isDark ? 'text-white' : ''}`}
+                className={`pl-2 text-base ${isDark ? 'text-white' : ''}`}
               >
                 {resolveValue(t.message, t)}
               </label>
