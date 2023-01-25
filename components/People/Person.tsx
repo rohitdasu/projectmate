@@ -4,13 +4,19 @@ import Image from 'next/legacy/image';
 import { getImageUrl } from '../Avatar/Avatar.common';
 import { User } from '@prisma/client';
 import { Typography } from '../Typography';
+import { motion } from 'framer-motion';
 export const Person = ({ id, name, profilePicture }: PersonType) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const gotoProfile = (id: string) => {
     // TODO: goto user's profile and show projects related to that user
   };
   return (
-    <div className="flex w-[calc(50%-1rem)] rounded-lg border border-gray-300 bg-gray-100 px-2 py-2 transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-800 md:w-[177px] md:py-4">
+    <motion.div
+      layout
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="flex w-[calc(50%-1rem)] rounded-lg border border-gray-300 bg-gray-100 px-2 py-2 transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-800 md:w-[177px] md:py-4"
+    >
       <div className="flex w-full flex-col items-center justify-center gap-3">
         <Image
           src={getImageUrl({ image: profilePicture } as User)}
@@ -24,6 +30,6 @@ export const Person = ({ id, name, profilePicture }: PersonType) => {
           View profile
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
