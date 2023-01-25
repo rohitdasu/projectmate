@@ -10,6 +10,7 @@ import useSWR from 'swr';
 import animation from '../../public/animations/no-data.json';
 import errorAnimation from '../../public/animations/error.json';
 import { Typography } from '@/components/Typography';
+import { ProfileHeader } from '@/components/Profile/ProfileHeader';
 
 const Profile: NextPage = () => {
   const { status, data: session } = useSession({
@@ -40,18 +41,7 @@ const Profile: NextPage = () => {
   return (
     <SharedLayout title="Profile" hasContainer>
       <div className="m-auto flex w-full flex-col px-4 py-6 pb-16">
-        <Typography
-          as="h1"
-          fontSize="xl"
-          fontWeight="semibold"
-          className="dark:text-[#a6a6a6] sm:text-[30px]"
-        >
-          <span className="text-gray-900 dark:text-gray-100">Hi, </span>
-          <span className="mr-2 whitespace-nowrap text-primary-1">
-            {session?.user && session.user.name}
-          </span>
-          🎉
-        </Typography>
+        <ProfileHeader />
         <Typography
           as="h2"
           fontWeight="semibold"

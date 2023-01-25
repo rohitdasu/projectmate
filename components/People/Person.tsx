@@ -3,15 +3,21 @@ import { Person as PersonType } from './People.interface';
 import Image from 'next/legacy/image';
 import { getImageUrl } from '../Avatar/Avatar.common';
 import { User } from '@prisma/client';
-import { FaExternalLinkAlt } from 'react-icons/fa';
+import { Typography } from '../Typography';
+import { motion } from 'framer-motion';
 export const Person = ({ id, name, profilePicture }: PersonType) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const gotoProfile = (id: string) => {
     // TODO: goto user's profile and show projects related to that user
   };
   return (
-    <div className="min-h-30 flex w-full flex-row items-center justify-center gap-8 rounded-lg bg-gray-200 px-16 py-4 dark:bg-gray-800 md:w-72 md:px-2">
-      <div className="flex items-center gap-4">
+    <motion.div
+      layout
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="flex w-[calc(50%-1rem)] rounded-lg border border-gray-300 bg-gray-100 px-2 py-2 transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-800 md:w-[177px] md:py-4"
+    >
+      <div className="flex w-full flex-col items-center justify-center gap-3">
         <Image
           src={getImageUrl({ image: profilePicture } as User)}
           height={'80'}
@@ -19,12 +25,11 @@ export const Person = ({ id, name, profilePicture }: PersonType) => {
           alt={name}
           className="rounded-full"
         />
-        <span>{name.split(' ')[0]}</span>
+        <Typography>{name.split(' ')[0]}</Typography>
+        <button className="flex w-full cursor-not-allowed flex-row items-center justify-center rounded-full border border-gray-400 py-1 px-3 text-sm text-gray-900 transition-all hover:bg-orange-200 hover:text-orange-800 dark:border-gray-600 dark:text-gray-100 hover:dark:bg-orange-500 md:text-base">
+          View profile
+        </button>
       </div>
-      <FaExternalLinkAlt
-        onClick={() => gotoProfile(id)}
-        className="text-lg transition-all hover:cursor-not-allowed hover:text-primary-color"
-      />
-    </div>
+    </motion.div>
   );
 };

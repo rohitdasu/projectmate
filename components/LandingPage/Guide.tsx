@@ -39,7 +39,7 @@ export const Guide = () => {
                 align="center"
                 fontSize="sm"
                 fontWeight="light"
-                className="md:text-md text-gray-800 dark:text-gray-300"
+                className="text-gray-800 dark:text-gray-300 md:text-base"
               >
                 {desc}
               </Typography>

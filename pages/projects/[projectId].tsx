@@ -55,7 +55,7 @@ const ProjectDetails = () => {
               className="flex flex-row items-center justify-center gap-1 rounded-md border border-gray-800 px-3 py-2 shadow-md focus:ring dark:border-gray-300"
             >
               <RiArrowGoBackFill className="text-xl" />
-              <span className="text-md block font-normal uppercase leading-4">
+              <span className="block text-base font-normal uppercase leading-4">
                 back
               </span>
             </motion.button>
