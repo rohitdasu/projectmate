@@ -1,4 +1,3 @@
-import { Like } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 import {
   errorResponse,
@@ -71,7 +70,7 @@ export default async function handler(
             success: false,
           });
         }
-        const data: Like = await likeProject(
+        const { project: data } = await likeProject(
           reqUser.id.toString(),
           project.id.toString()
         );
@@ -152,7 +151,7 @@ export default async function handler(
             success: false,
           });
         }
-        const data = await unlikeProject(
+        const { project: data } = await unlikeProject(
           reqUser.id.toString(),
           project.id.toString()
         );
@@ -189,7 +188,7 @@ export default async function handler(
 
 async function likeProject(userId: string, postId: string) {
   try {
-    const [data] = await prisma.$transaction([
+    const [like, project] = await prisma.$transaction([
       prisma.like.create({
         data: {
           userId: userId,
@@ -205,9 +204,12 @@ async function likeProject(userId: string, postId: string) {
             increment: 1,
           },
         },
+        include: {
+          author: true,
+        },
       }),
     ]);
-    return data;
+    return { like, project };
   } catch (error) {
     throw error;
   }
@@ -215,7 +217,7 @@ async function likeProject(userId: string, postId: string) {
 
 async function unlikeProject(userId: string, postId: string) {
   try {
-    const [data] = await prisma.$transaction([
+    const [like, project] = await prisma.$transaction([
       prisma.like.delete({
         where: {
           userId_projectId: {
@@ -233,9 +235,12 @@ async function unlikeProject(userId: string, postId: string) {
             decrement: 1,
           },
         },
+        include: {
+          author: true,
+        },
       }),
     ]);
-    return data;
+    return { like, project };
   } catch (error) {
     throw error;
   }
