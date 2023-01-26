@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import { Project } from './Project';
 import { ProjectSkeleton } from './ProjectSkeleton';
@@ -9,6 +9,8 @@ import { useSession } from 'next-auth/react';
 
 export const ProjectsList: React.FC = () => {
   const { status } = useSession();
+  const [projects, setProjects] = useState<IProject[]>([]);
+
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
   const getKey = (pageIndex: number, previousPageData: IProject[]) => {
@@ -24,7 +26,7 @@ export const ProjectsList: React.FC = () => {
     return `/api/project?cursorId=${cursorId}`;
   };
 
-  const { data, size, setSize, error, mutate } = useSWRInfinite(
+  const { data, size, setSize, error, mutate } = useSWRInfinite<IProject>(
     getKey,
     fetcher
   );
@@ -34,21 +36,31 @@ export const ProjectsList: React.FC = () => {
     (Math.random() + 1).toString(36).substring(7)
   );
 
-  const paginatedPosts = data?.flat();
-
   const isLoadingMore = data && typeof data[size - 1] === 'undefined';
   const isNotReachEnd = data && data[data.length - 1].length;
+
   useEffect(() => {
-    if (status === 'authenticated' || status === 'unauthenticated') {
-      // Invalidate project list, when the logged in status changed to make sure that the `project.liked` property is up to date
-      mutate();
-    }
+    const authCheck = async () => {
+      if (status === 'authenticated' || status === 'unauthenticated') {
+        // Invalidate project list, when the logged in status changed to make sure that the `project.liked` property is up to date
+        setProjects([]);
+        const data = await mutate();
+        if (data) {
+          setProjects(data.flat());
+        }
+      }
+    };
+    authCheck();
   }, [mutate, status]);
+
   useEffect(() => {
-    const onScroll = function () {
+    const onScroll = async function () {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
         if (isNotReachEnd) {
-          setSize(size + 1);
+          const data = await setSize(size + 1);
+          if (data) {
+            setProjects(data.flat());
+          }
         }
       }
     };
@@ -62,13 +74,13 @@ export const ProjectsList: React.FC = () => {
   return (
     <>
       <ul className="container m-auto max-w-screen-xl auto-rows-auto gap-5 md:grid md:grid-cols-2 md:p-5 lg:grid-cols-3 xl:grid-cols-4">
-        {!data ? (
+        {projects?.length === 0 ? (
           skeletonProjectsToLoad.map((randomKey) => (
             <ProjectSkeleton key={randomKey} />
           ))
         ) : (
           <>
-            {paginatedPosts?.map((project: IProject, i: number) => (
+            {projects.map((project: IProject, i: number) => (
               <Project
                 key={i}
                 id={project.id}
@@ -78,12 +90,11 @@ export const ProjectsList: React.FC = () => {
                 author={project.author.name}
                 liked={project.liked}
                 likesCount={project.likesCount}
-                mutate={mutate}
               />
             ))}
           </>
         )}
-        {data && isLoadingMore && isNotReachEnd ? (
+        {isLoadingMore && isNotReachEnd ? (
           skeletonProjectsToLoad.map((randomKey) => (
             <ProjectSkeleton key={randomKey} />
           ))

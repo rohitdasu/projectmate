@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ProjectProps } from './Project.interface';
 import { AiOutlineUser, AiFillLike, AiOutlineLike } from 'react-icons/ai';
 import { Tags } from '@/components/Tags';
@@ -18,51 +18,33 @@ export const Project = ({
   author,
   liked,
   likesCount,
-  mutate,
 }: ProjectProps) => {
   const session = useSession();
-  const [likedState, setLiked] = useState(false);
-  const [likesCountState, setLikesCount] = useState(0);
-  const isYou = author === session.data?.user?.name;
+  const [likedState, setLiked] = useState(liked);
+  const [likesCountState, setLikesCount] = useState(likesCount);
+  const [likeBtnIsDisabled, setLikeBtnIsDisabled] = useState(false);
+
+  const isOwnedByUser = author === session.data?.user?.name;
+
   const router = useRouter();
   const handleContributeClick = () => {
     router.push(`/projects/${id}`);
   };
-  useEffect(() => {
-    setLiked(liked);
-    setLikesCount(likesCount);
-  }, [liked, likesCount, setLiked, setLikesCount]);
 
-  const likeProject = async (prevLiked: boolean, prevLikesCount: number) => {
-    try {
-      await axios.post(`/api/project/${id}/like`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    } catch (e) {
-      toastMessage(e.message, messageType.error);
-      setLiked(prevLiked);
-      setLikesCount(prevLikesCount);
-    } finally {
-      mutate();
-    }
+  const likeProject = async () => {
+    await axios.post(`/api/project/${id}/like`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   };
 
-  const unlikeProject = async (prevLiked: boolean, prevLikesCount: number) => {
-    try {
-      await axios.delete(`/api/project/${id}/like`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    } catch (e) {
-      toastMessage(e.message, messageType.error);
-      setLiked(prevLiked);
-      setLikesCount(prevLikesCount);
-    } finally {
-      mutate();
-    }
+  const unlikeProject = async () => {
+    await axios.delete(`/api/project/${id}/like`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   };
 
   const handleLikeClick = async () => {
@@ -70,20 +52,29 @@ export const Project = ({
       toastMessage('Please login to like projects!', messageType.error);
       return;
     }
-    if (isYou) {
+    if (isOwnedByUser) {
       toastMessage('You cannot like your own project!', messageType.error);
       return;
     }
     const prevLiked = likedState;
     const prevLikesCount = likesCountState;
-    if (likedState) {
-      setLiked(false);
-      setLikesCount((prevState) => prevState - 1);
-      unlikeProject(prevLiked, prevLikesCount);
-    } else {
-      setLiked(true);
-      setLikesCount((prevState) => prevState + 1);
-      likeProject(prevLiked, prevLikesCount);
+    setLikeBtnIsDisabled(true);
+    try {
+      if (likedState) {
+        setLiked(false);
+        setLikesCount((prevState) => prevState - 1);
+        await unlikeProject();
+      } else {
+        setLiked(true);
+        setLikesCount((prevState) => prevState + 1);
+        await likeProject();
+      }
+    } catch (e) {
+      toastMessage(e.message, messageType.error);
+      setLiked(prevLiked);
+      setLikesCount(prevLikesCount);
+    } finally {
+      setLikeBtnIsDisabled(false);
     }
   };
 
@@ -140,7 +131,7 @@ export const Project = ({
             <div className="flex gap-3">
               <Button
                 onClick={handleLikeClick}
-                isDisabled={false}
+                isDisabled={likeBtnIsDisabled ? true : false}
                 className="mt-2 flex items-center px-2 py-1 font-bold hover:animate-pulse sm:my-0"
               >
                 {likeIcon}
