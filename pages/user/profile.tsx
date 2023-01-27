@@ -24,6 +24,7 @@ const Profile: NextPage = () => {
   const url = `/api/user/project`;
   const { data, error } = useSWR(url, fetcher);
   const { results: projects } = data || [];
+  console.log(projects);
 
   if (status === 'loading' || !data) {
     return (
@@ -52,9 +53,24 @@ const Profile: NextPage = () => {
         <ul className="grid auto-rows-auto gap-5 pt-5 dark:text-[#B7C2D1] sm:grid sm:grid-cols-2 lg:grid-cols-3">
           {projects &&
             projects.length > 0 &&
-            projects.map((item: { id: string; title: string }) => {
-              return <Project key={item.id} title={item.title} id={item.id} />;
-            })}
+            projects.map(
+              (item: {
+                id: string;
+                title: string;
+                description: string;
+                tags: Array<string>;
+              }) => {
+                return (
+                  <Project
+                    key={item.id}
+                    title={item.title}
+                    id={item.id}
+                    description={item.description}
+                    tags={item.tags}
+                  />
+                );
+              }
+            )}
         </ul>
         {projects && projects.length === 0 && (
           <div className="flex h-[calc(100vh-244px)] items-center justify-center">
@@ -62,28 +78,6 @@ const Profile: NextPage = () => {
           </div>
         )}
         {error && <Lottie animationData={errorAnimation} style={style} />}
-        {/*
-        will do this part when we have bookmarks section in our BE
-         <h2 className="pt-10 font-semibold dark:text-[#a6a6a6] sm:text-lg">
-          Bookmarks
-        </h2>
-        <div className="grid auto-rows-auto gap-5 pt-5 dark:text-[#B7C2D1] sm:grid sm:grid-cols-2 lg:grid-cols-3">
-          <div className="relative h-96 w-full rounded-lg shadow-border-shadow dark:bg-[#232931] sm:max-w-2xl">
-            <button className="absolute top-5 right-4 p-3 transition-all hover:opacity-70">
-              <BsFillBookmarkDashFill />
-            </button>
-          </div>
-          <div className="relative h-96 w-full rounded-lg shadow-border-shadow dark:bg-[#232931] sm:max-w-2xl">
-            <button className="absolute top-5 right-4 p-3 transition-all hover:opacity-70">
-              <BsFillBookmarkDashFill />
-            </button>
-          </div>
-          <div className="relative h-96 w-full rounded-lg shadow-border-shadow dark:bg-[#232931] sm:max-w-2xl">
-            <button className="absolute top-5 right-4 p-3 transition-all hover:opacity-70">
-              <BsFillBookmarkDashFill />
-            </button>
-          </div>
-        </div> */}
       </div>
     </SharedLayout>
   );
