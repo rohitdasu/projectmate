@@ -1,20 +1,21 @@
 import { FiMenu } from 'react-icons/fi';
 import { useRef, useState } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
-import { appRoutes, IRoute, getSocialLinks } from './data';
+import { appRoutes, IRoute } from './data';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { framer_sidebar_background, framer_sidebar_panel } from './framer';
 import { BiArrowBack } from 'react-icons/bi';
 import { Logo } from './Logo';
-import { SidebarAvatar } from '@/components/Avatar';
+import { ProfileCard } from '@/components/Avatar';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { signOut, useSession } from 'next-auth/react';
 import { MdPostAdd } from 'react-icons/md';
 import { useAppDispatch } from '../../app/hooks';
 import { openModal } from '@/store/slices/sliceModal';
 import { GiClick } from 'react-icons/gi';
+import { ProductHunt } from '../ProductHunt';
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -27,7 +28,6 @@ export const Sidebar = () => {
 
   useOnClickOutside(ref, closeSidebar);
 
-  const socialLinks = getSocialLinks(true);
   const dispatch = useAppDispatch();
 
   const gotoSubmitPage = () => {
@@ -44,9 +44,11 @@ export const Sidebar = () => {
     return (
       <ul className="w-full overflow-auto">
         {routes.map((route) => {
-          const { Icon, anchorTagProps, title, url } = route;
+          const { Icon, anchorTagProps, title, url, protectedRoute } = route;
           const isCurrent = pathname === url || pathname.includes(title);
-
+          if (protectedRoute && !session) {
+            return <></>;
+          }
           return (
             <motion.li whileTap={{ scale: 0.9 }} key={title}>
               <Link
@@ -72,7 +74,7 @@ export const Sidebar = () => {
     <>
       <motion.button
         whileTap={{ scale: 0.8 }}
-        className="flex overflow-hidden rounded-md p-[0.67rem] text-[1.6rem] shadow-border-shadow md:hidden"
+        className="flex overflow-hidden rounded-md p-[0.67rem] text-[1.6rem] shadow-border-shadow lg:hidden"
         onClick={() => setOpen(true)}
       >
         <FiMenu />
@@ -82,12 +84,12 @@ export const Sidebar = () => {
           <>
             <motion.div
               {...framer_sidebar_background}
-              className="fixed top-0 bottom-0 left-0 right-0 z-20 bg-[rgba(0,0,0,0.5)] backdrop-blur-sm md:hidden"
+              className="fixed top-0 bottom-0 left-0 right-0 z-20 bg-[rgba(0,0,0,0.5)] backdrop-blur-sm lg:hidden"
             ></motion.div>
 
             <motion.div
               {...framer_sidebar_panel}
-              className="fixed left-0 top-0 bottom-0 z-30 flex h-screen w-[100%] max-w-[19rem] flex-col bg-background-1 md:hidden"
+              className="fixed left-0 top-0 bottom-0 z-30 flex h-screen w-[100%] max-w-[19rem] flex-col bg-background-1 lg:hidden"
               ref={ref}
             >
               <div className="border-b-[1px] border-gray-1 p-5">
@@ -101,11 +103,10 @@ export const Sidebar = () => {
                     <BiArrowBack />
                   </motion.button>
                 </div>
-                <SidebarAvatar />
+                <ProfileCard />
               </div>
 
               {<RenderNavigation routes={appRoutes} />}
-              {/* {<RenderNavigation routes={socialLinks} />} */}
 
               {session && (
                 <button
@@ -135,6 +136,7 @@ export const Sidebar = () => {
                   <GiClick className="text-2xl" />
                 </button>
               )}
+              <ProductHunt isMobile />
             </motion.div>
           </>
         )}

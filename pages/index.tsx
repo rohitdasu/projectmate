@@ -1,22 +1,20 @@
-import type { NextPage } from 'next';
-import { SharedLayout } from '@/components/Layouts/SharedLayout';
+import { BackToTop } from '@/components/BackToTopButton';
 import {
   BenefitsContainer,
   Guide,
   Hero,
   Thanks,
-  JoinUs,
 } from '@/components/LandingPage/';
-import { BackToTop } from '@/components/BackToTopButton';
+import { SharedLayout } from '@/components/Layouts/SharedLayout';
+import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
   return (
-    <SharedLayout title="Home" hasContainer>
-      <div className="mt-16 mb-24 flex flex-col space-y-32 px-4">
+    <SharedLayout title="Find your project mate online" hasContainer showFooter>
+      <div className="flex flex-col space-y-32 px-4 pb-24 pt-16 md:pt-24">
         <Hero />
         <Guide />
         <BenefitsContainer />
-        <JoinUs />
         <Thanks />
       </div>
       <BackToTop />

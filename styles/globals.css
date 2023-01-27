@@ -74,30 +74,6 @@ body {
   /* Firefox */
 }
 
-.file-uploader {
-  height: 100% !important;
-  width: 100% !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  max-width: unset !important;
-}
-
-.file-uploader > div {
-  text-align: center !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.file-uploader > svg {
-  display: none !important;
-}
-
-.file-uploader-error {
-  --tw-border-opacity: 1;
-  border-color: rgb(240 82 82 / var(--tw-border-opacity)) !important;
-}
-
 .cover-container span {
   color: rgb(240 82 82 / var(--tw-border-opacity)) !important;
 }
@@ -108,32 +84,4 @@ body {
   --tw-shadow-colored: var(--boxshadow-1);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
-}
-
-.ql-toolbar {
-  border: 1px solid rgb(107 114 128) !important;
-}
-
-.ql-container {
-  border: none !important;
-}
-
-.ql-toolbar {
-  border-radius: 6px 6px 0 0;
-  border-bottom: none !important;
-  background-color: white !important;
-}
-
-.ql-editor {
-  border: 1px solid rgb(107 114 128);
-  border-radius: 0 0 6px 6px;
-  padding: 12px 8px !important;
-}
-
-.ql-editor:focus {
-  border: 2px solid rgb(37 99 235);
-}
-
-.file-types {
-  overflow: initial !important;
 }

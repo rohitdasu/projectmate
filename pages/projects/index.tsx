@@ -28,7 +28,7 @@ const Projects = ({
   };
 
   return (
-    <SharedLayout title="Projects" hideFooter>
+    <SharedLayout title="Projects">
       <div className="flex flex-col">
         <div className="container m-auto flex max-w-screen-xl flex-col gap-y-4 md:px-5">
           <div className="flex items-center gap-x-2">

@@ -1,15 +1,6 @@
-import React, { InputHTMLAttributes, LegacyRef } from 'react';
-import { FieldError } from 'react-hook-form';
-
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  name: string;
-  placeholder: string | undefined;
-  error: FieldError | undefined;
-  required?: boolean;
-  hintMessage?: string;
-  value: string | undefined;
-  label: string;
-}
+import { Typography } from '@/components/Typography';
+import React, { LegacyRef } from 'react';
+import { InputProps } from './Input.interface';
 
 function MyInput(
   {
@@ -45,9 +36,15 @@ function MyInput(
         aria-invalid={error ? 'true' : 'false'}
       />
       {hintMessage && (
-        <p className="text-sm italic text-gray-500">{hintMessage}</p>
+        <Typography as="p" fontSize="sm" className="italic text-gray-500">
+          {hintMessage}
+        </Typography>
       )}
-      {error && <p className="text-xs text-red-500">{error?.message}</p>}
+      {error && (
+        <Typography as="p" fontSize="xs" className="text-xs text-red-500">
+          {error?.message}
+        </Typography>
+      )}
     </div>
   );
 }

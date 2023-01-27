@@ -1,4 +1,4 @@
-# PROJECTMATE - find your project mate online
+# PROJECTMATE - find your project mate online <a href="https://www.buymeacoffee.com/rohit.dasu" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important; width: 150px !important; align-items:center; box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;"></a>
 
 ![PROJECTMATE find your project mate online](https://user-images.githubusercontent.com/48400770/190438248-fc0f3e42-c6d3-4d07-bcba-10e7fece4bc2.png)
 
@@ -7,7 +7,7 @@ Find people who have the same vision as you do and contribute for building amazi
 
 ## Demo
 
-Check out the web app: [https://project-mate.vercel.app](https://project-mate.vercel.app)
+Check out the web app: [https://projectmate.net](https://projectmate.net)
 
 ## Connect with us
 
@@ -52,19 +52,19 @@ As a community, we always encourage people to share their thoughts and ideas. Do
 
 5. Install all the dependencies
    ```sh
-   npm install
+   yarn
    ```
 6. Synchronize your Prisma schema with your database schema
    ```sh
-   npx prisma db push
+   yarn prisma db push
    ```
 7. Insert required data to your database
    ```sh
-   npx prisma db seed
+   yarn prisma db seed
    ```
 8. Start the application development server
    ```sh
-   npm run dev
+   yarn run dev
    ```
 
 ## Contributing Guidelines

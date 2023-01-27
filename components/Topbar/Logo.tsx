@@ -6,7 +6,7 @@ export const Logo = () => {
     <Link href="/">
       <motion.span
         whileTap={{ scale: 0.9 }}
-        className="flex cursor-pointer items-center font-mono text-2xl font-semibold uppercase text-foreground-1 md:space-x-2"
+        className="flex cursor-pointer items-center font-mono text-2xl font-semibold uppercase hover:animate-pulse md:space-x-2"
       >
         <p>
           project<span className="text-primary-color">mate</span>

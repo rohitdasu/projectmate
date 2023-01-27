@@ -151,21 +151,6 @@ async function addProject(args: {
     email,
   } = args;
   try {
-    console.log({
-      data: {
-        title,
-        description,
-        content,
-        githubRepository,
-        tags,
-        coverImg,
-        author: {
-          connect: {
-            email: email,
-          },
-        },
-      },
-    });
     const data = await prisma.project.create({
       data: {
         title,
