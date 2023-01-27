@@ -74,7 +74,7 @@ export const Sidebar = () => {
     <>
       <motion.button
         whileTap={{ scale: 0.8 }}
-        className="flex overflow-hidden rounded-md p-[0.67rem] text-[1.6rem] shadow-border-shadow md:hidden"
+        className="flex overflow-hidden rounded-md p-[0.67rem] text-[1.6rem] shadow-border-shadow lg:hidden"
         onClick={() => setOpen(true)}
       >
         <FiMenu />
@@ -84,12 +84,12 @@ export const Sidebar = () => {
           <>
             <motion.div
               {...framer_sidebar_background}
-              className="fixed top-0 bottom-0 left-0 right-0 z-20 bg-[rgba(0,0,0,0.5)] backdrop-blur-sm md:hidden"
+              className="fixed top-0 bottom-0 left-0 right-0 z-20 bg-[rgba(0,0,0,0.5)] backdrop-blur-sm lg:hidden"
             ></motion.div>
 
             <motion.div
               {...framer_sidebar_panel}
-              className="fixed left-0 top-0 bottom-0 z-30 flex h-screen w-[100%] max-w-[19rem] flex-col bg-background-1 md:hidden"
+              className="fixed left-0 top-0 bottom-0 z-30 flex h-screen w-[100%] max-w-[19rem] flex-col bg-background-1 lg:hidden"
               ref={ref}
             >
               <div className="border-b-[1px] border-gray-1 p-5">

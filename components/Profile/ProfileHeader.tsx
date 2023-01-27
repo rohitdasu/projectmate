@@ -21,7 +21,7 @@ export const ProfileHeader = () => {
 
   return (
     <div className="relative mb-16 flex flex-col">
-      <div className="relative h-40 rounded-md md:h-60">
+      <div className="relative h-40 rounded-lg md:h-72">
         <Particles
           className="h-full"
           id="tsparticles"
