@@ -29,20 +29,22 @@ const Projects = ({
 
   return (
     <SharedLayout title="Projects">
-      <div className="flex flex-col">
-        <div className="container m-auto flex max-w-screen-xl flex-col gap-y-4 md:px-5">
-          <div className="flex items-center gap-x-2">
+      <div className="mt-4 flex flex-col">
+        <div className="container m-auto mb-2 flex max-w-screen-xl flex-col gap-y-4 px-2 md:px-5">
+          <div className="flex flex-col items-start gap-x-2 gap-y-2 md:flex-row md:items-center">
             <h4>Filter by tags:</h4>
             <MultiSelectInput
               onEnterClick={onEnterClick}
               suggestions={filteredAvailableTags}
-              inputClassName="flex-1 w-full items-center rounded-md border-2 border-gray-200 bg-transparent p-1 outline-none focus:border-blue-600 focus:ring-blue-600"
+              inputClassName="w-full md:w-44 items-center rounded-md border-2 border-gray-200 bg-transparent p-1 outline-none focus:border-blue-600 focus:ring-blue-600"
+              errorMessage="The inserted Tag does not exists"
             />
           </div>
           <Tags
             tags={selectedTags}
             removeTagHandler={onDeleteTag}
-            className="gap-2"
+            className="flex-wrap gap-2"
+            tagClassName="bg-slate-200 text-sm font-medium"
           />
         </div>
         <ProjectsList selectedTags={selectedTags} />
