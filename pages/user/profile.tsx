@@ -38,19 +38,23 @@ const Profile: NextPage = () => {
     width: '100%',
   };
 
+  const UserBio = () => {
+    return (
+      <div className="flex w-full flex-col items-center justify-center">
+        <Typography as="p" fontSize="base">
+          User Bio Details
+        </Typography>
+      </div>
+    );
+  };
+
   return (
     <SharedLayout title="Profile" hasContainer>
       <div className="m-auto flex w-full flex-col px-4 py-6 pb-16">
         <ProfileHeader />
         <div className="flex w-full flex-col lg:flex-row">
-          <div className="top-5 mt-12 mr-5 flex h-96 w-full animate-pulse flex-row justify-center rounded-lg bg-gray-300 p-3 backdrop-blur-sm dark:bg-gray-700 lg:sticky lg:w-[25%]">
-            <Typography
-              fontWeight="bold"
-              fontSize="base"
-              className="text-black dark:text-white"
-            >
-              User bio data will be shown here
-            </Typography>
+          <div className="top-5 mt-12 mr-5 flex h-96 w-full flex-row justify-center rounded-lg bg-gray-200 p-3 backdrop-blur-sm dark:bg-gray-700 lg:sticky lg:w-[25%]">
+            <UserBio />
           </div>
           <div className="w-full lg:w-[75%]">
             <Typography
@@ -69,6 +73,7 @@ const Profile: NextPage = () => {
                     title: string;
                     description: string;
                     tags: Array<string>;
+                    createdAt: string;
                   }) => {
                     return (
                       <Project
@@ -77,6 +82,7 @@ const Profile: NextPage = () => {
                         id={item.id}
                         description={item.description}
                         tags={item.tags}
+                        createdAt={item.createdAt}
                       />
                     );
                   }
