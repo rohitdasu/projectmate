@@ -127,6 +127,7 @@ async function getAllProject(args: {
       author: {
         select: {
           name: true,
+          email: true,
         },
       },
     };

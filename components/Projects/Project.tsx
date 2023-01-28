@@ -26,7 +26,7 @@ export const Project = ({
   const [likesCountState, setLikesCount] = useState(likesCount);
   const [likeBtnIsDisabled, setLikeBtnIsDisabled] = useState(false);
 
-  const isOwnedByUser = author === session.data?.user?.name;
+  const isOwnedByUser = author.email === session.data?.user?.email;
 
   const router = useRouter();
   const handleContributeClick = () => {
@@ -113,7 +113,7 @@ export const Project = ({
               {title}
               <span className="flex items-center gap-1 text-sm font-light text-gray-900 dark:text-gray-100">
                 <AiOutlineUser />
-                {author}
+                {author.name}
               </span>
             </Typography>
             <div className="flex flex-row items-center gap-1 text-gray-500 dark:text-gray-400">

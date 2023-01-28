@@ -5,7 +5,10 @@ export type ProjectProps = {
   title: string;
   description: string;
   tags: string[];
-  author: string | null;
+  author: {
+    name: string;
+    email: string;
+  };
   liked: boolean;
   likesCount: number;
   createdAt: Date;
@@ -15,5 +18,6 @@ export interface IProject extends ProjectData {
   length: number;
   author: {
     name: string;
+    email: string;
   };
 }

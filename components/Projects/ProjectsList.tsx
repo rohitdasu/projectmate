@@ -11,6 +11,7 @@ import { useSession } from 'next-auth/react';
 interface IProject extends ProjectData {
   author: {
     name: string;
+    email: string;
   };
 }
 
@@ -106,7 +107,7 @@ export const ProjectsList: React.FC<ProjectsListProps> = ({ selectedTags }) => {
                 description={project.description}
                 title={project.title}
                 tags={project.tags}
-                author={project.author.name}
+                author={project.author}
                 liked={project.liked}
                 likesCount={project.likesCount}
                 createdAt={project.createdAt}
