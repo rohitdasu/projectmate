@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ProjectProps } from './Project.interface';
 import { AiOutlineUser, AiFillLike, AiOutlineLike } from 'react-icons/ai';
 import { Tags } from '@/components/Tags';
@@ -27,6 +27,12 @@ export const Project = ({
   const [likeBtnIsDisabled, setLikeBtnIsDisabled] = useState(false);
 
   const isOwnedByUser = author.email === session.data?.user?.email;
+
+  useEffect(() => {
+    if (session.status === 'unauthenticated') {
+      setLikeBtnIsDisabled(true);
+    }
+  }, [session.status]);
 
   const router = useRouter();
   const handleContributeClick = () => {
