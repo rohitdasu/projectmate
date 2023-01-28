@@ -1,13 +1,20 @@
-import { useEffect, useState } from 'react';
+import { Project as ProjectData } from '@prisma/client';
+import { useEffect, useState, useMemo } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import { Project } from './Project';
 import { ProjectSkeleton } from './ProjectSkeleton';
 import axios from 'axios';
 import { BackToTop } from '../BackToTopButton';
-import { IProject } from './Project.interface';
+import { ProjectsListProps } from './ProjectsList.interface';
 import { useSession } from 'next-auth/react';
 
-export const ProjectsList: React.FC = () => {
+interface IProject extends ProjectData {
+  author: {
+    name: string;
+  };
+}
+
+export const ProjectsList: React.FC<ProjectsListProps> = ({ selectedTags }) => {
   const { status } = useSession();
   const [projects, setProjects] = useState<IProject[]>([]);
 
@@ -26,7 +33,7 @@ export const ProjectsList: React.FC = () => {
     return `/api/project?cursorId=${cursorId}`;
   };
 
-  const { data, size, setSize, error, mutate } = useSWRInfinite<IProject>(
+  const { data, size, setSize, error, mutate } = useSWRInfinite<IProject[]>(
     getKey,
     fetcher
   );
@@ -68,6 +75,18 @@ export const ProjectsList: React.FC = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, [isNotReachEnd, setSize, size]);
 
+  const filteredProjects = useMemo(() => {
+    if (!projects?.length) {
+      return [];
+    }
+    if (!selectedTags?.length) {
+      return projects;
+    }
+    return projects.filter((project) =>
+      selectedTags.some((tag) => project.tags.includes(tag))
+    );
+  }, [projects, selectedTags]);
+
   if (error)
     return <div className="m-auto my-5 text-lg">Failed to load projects</div>;
 
@@ -80,7 +99,7 @@ export const ProjectsList: React.FC = () => {
           ))
         ) : (
           <>
-            {projects.map((project: IProject, i: number) => (
+            {filteredProjects.map((project: IProject, i: number) => (
               <Project
                 key={i}
                 id={project.id}
@@ -90,6 +109,7 @@ export const ProjectsList: React.FC = () => {
                 author={project.author.name}
                 liked={project.liked}
                 likesCount={project.likesCount}
+                createdAt={project.createdAt}
               />
             ))}
           </>

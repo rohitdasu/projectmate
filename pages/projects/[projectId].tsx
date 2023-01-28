@@ -50,7 +50,7 @@ const ProjectDetails = () => {
         <div className="container m-auto mb-10 flex flex-col p-4">
           <div className="mb-4">
             <motion.button
-              onClick={() => router.push('/projects')}
+              onClick={() => router.back()}
               whileTap={{ scale: 0.95 }}
               className="flex flex-row items-center justify-center gap-1 rounded-md border border-gray-800 px-3 py-2 shadow-md focus:ring dark:border-gray-300"
             >

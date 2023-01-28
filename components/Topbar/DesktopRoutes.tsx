@@ -8,7 +8,7 @@ export const DesktopRoutes = () => {
   const { pathname } = useRouter();
 
   return (
-    <ul className="hidden gap-5 uppercase md:flex">
+    <ul className="hidden gap-5 uppercase lg:flex">
       {appRoutes.map((route) => {
         const { title, url, Icon, anchorTagProps, protectedRoute } = route;
         const isCurrent = pathname === url || pathname.includes(title);

@@ -52,6 +52,11 @@ export default async function handler(
 async function getProject(session: Session) {
   try {
     const data: Project[] = await prisma.project.findMany({
+      orderBy: [
+        {
+          createdAt: 'desc',
+        },
+      ],
       where: { author: { email: session.user?.email } },
     });
     return data;

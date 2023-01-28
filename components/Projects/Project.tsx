@@ -9,6 +9,7 @@ import { Typography } from '@/components/Typography';
 import { useSession } from 'next-auth/react';
 import { messageType, toastMessage } from 'shared';
 import axios from 'axios';
+import moment from 'moment';
 
 export const Project = ({
   id,
@@ -18,6 +19,7 @@ export const Project = ({
   author,
   liked,
   likesCount,
+  createdAt,
 }: ProjectProps) => {
   const session = useSession();
   const [likedState, setLiked] = useState(liked);
@@ -95,23 +97,34 @@ export const Project = ({
       initial={{ opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0 }}
+      layout
       transition={{ duration: 1 }}
-      className="m-2 bg-white shadow-lg dark:border-4 dark:border-slate-800 dark:bg-slate-900 md:m-auto md:w-full"
+      className="m-2 rounded-lg bg-white shadow-lg dark:border-4 dark:border-slate-800 dark:bg-slate-900 md:m-auto md:w-full"
     >
       <div className="flex h-full flex-col items-center overflow-hidden rounded-md">
         <div className="flex w-full grow flex-col gap-5 p-4 pt-4">
-          <Typography
-            as="h2"
-            fontSize="xl"
-            fontWeight="semibold"
-            className="min-w-[0] flex-1 flex-col gap-2 truncate text-gray-900 dark:text-gray-100"
-          >
-            {title}
-            <span className="flex items-center gap-1 text-sm font-light text-gray-900 dark:text-gray-100">
-              <AiOutlineUser />
-              {author}
-            </span>
-          </Typography>
+          <div className="flex flex-row items-start justify-between">
+            <Typography
+              as="h2"
+              fontSize="xl"
+              fontWeight="semibold"
+              className="min-w-[0] flex-1 flex-col gap-2 truncate text-gray-900 dark:text-gray-100"
+            >
+              {title}
+              <span className="flex items-center gap-1 text-sm font-light text-gray-900 dark:text-gray-100">
+                <AiOutlineUser />
+                {author}
+              </span>
+            </Typography>
+            <div className="flex flex-row items-center gap-1 text-gray-500 dark:text-gray-400">
+              <Typography as="span" fontSize="3xl">
+                ·
+              </Typography>
+              <Typography as="p" fontSize="sm" fontWeight="light">
+                {moment(createdAt).fromNow()}
+              </Typography>
+            </div>
+          </div>
           <Typography
             as="p"
             fontSize="sm"

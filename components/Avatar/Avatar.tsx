@@ -17,7 +17,7 @@ export function Avatar() {
     const { user } = session;
     return (
       <>
-        <Menu as="div" className="relative hidden text-left md:inline-block">
+        <Menu as="div" className="relative hidden text-left lg:inline-block">
           <Menu.Button>
             <motion.div
               layout

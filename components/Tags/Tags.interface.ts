@@ -8,6 +8,7 @@ export type TagsProps = {
   maximumCharactersToShow?: number;
   removeTagHandler?: RemoveTagFc;
   className?: string;
+  tagClassName?: string;
 };
 
 export type OnTagClick = (event: MouseEvent, tagTitle: string) => void;
