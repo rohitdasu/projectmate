@@ -82,14 +82,14 @@ const Profile: NextPage = () => {
                   }
                 )}
             </ul>
+            {projects && projects.length === 0 && (
+              <div className="flex h-96 w-full items-center justify-center rounded-md border border-gray-300 dark:border-gray-700">
+                <Lottie animationData={animation} style={style} />
+              </div>
+            )}
+            {error && <Lottie animationData={errorAnimation} style={style} />}
           </div>
         </div>
-        {projects && projects.length === 0 && (
-          <div className="flex h-[calc(100vh-244px)] items-center justify-center">
-            <Lottie animationData={animation} style={style} />
-          </div>
-        )}
-        {error && <Lottie animationData={errorAnimation} style={style} />}
       </div>
     </SharedLayout>
   );
