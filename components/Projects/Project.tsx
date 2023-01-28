@@ -23,6 +23,7 @@ export const Project = ({
       initial={{ opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0 }}
+      layout
       transition={{ duration: 1 }}
       className="m-2 rounded-lg bg-white shadow-lg dark:border-4 dark:border-slate-800 dark:bg-slate-900 md:m-auto md:w-full"
     >

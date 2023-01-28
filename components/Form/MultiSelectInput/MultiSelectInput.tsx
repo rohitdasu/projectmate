@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { KeyboardEventHandler } from 'react';
 import { messageType, toastMessage } from 'shared';
 import toast from 'react-hot-toast';
+import classNames from 'classnames';
 
 interface MultiSelectInputProps {
   suggestions: string[];
@@ -44,14 +45,11 @@ const MultiSelectInput = ({
       <input
         ref={inputRef}
         list="tags"
-        className={
-          inputClassName +
-          ` ${
-            isError
-              ? '!focus:border-red-500 !focus:ring-red-500 !border-red-500'
-              : ''
-          }`
-        }
+        className={classNames(
+          inputClassName,
+          isError &&
+            'dark:!focus:border-red-700 !focus:border-red-500 !border-red-500 dark:!border-red-700'
+        )}
         onKeyDown={_onEnterClick}
       />
       <datalist id="tags">

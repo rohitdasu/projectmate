@@ -36,7 +36,7 @@ const Projects = ({
             <MultiSelectInput
               onEnterClick={onEnterClick}
               suggestions={filteredAvailableTags}
-              inputClassName="w-full md:w-44 items-center rounded-md border-2 border-gray-200 bg-transparent p-1 outline-none focus:border-blue-600 focus:ring-blue-600"
+              inputClassName="w-full md:w-52 items-center rounded-md border-2 border-gray-300 dark:border-gray-700 bg-transparent px-3 py-1 outline-none"
               errorMessage="The inserted Tag does not exists"
             />
           </div>
