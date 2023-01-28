@@ -89,6 +89,7 @@ export const ProjectsList: React.FC<ProjectsListProps> = ({ selectedTags }) => {
                 title={project.title}
                 tags={project.tags}
                 author={project.author.name}
+                createdAt={project.createdAt}
               />
             ))}
           </>
