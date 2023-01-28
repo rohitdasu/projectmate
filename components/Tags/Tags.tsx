@@ -8,6 +8,7 @@ export const Tags = ({
   maximumCharactersToShow,
   removeTagHandler,
   className,
+  tagClassName,
 }: TagsProps) => {
   const tagsToShow = useMemo(() => {
     let tempArray = tags;
@@ -38,6 +39,7 @@ export const Tags = ({
             title={tag}
             key={i}
             onClose={areTagClosable ? (e) => removeTagHandler(e, i) : undefined}
+            className={tagClassName}
           />
         );
       })}
