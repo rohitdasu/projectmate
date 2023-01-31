@@ -5,7 +5,7 @@ import { Person } from './Person';
 export const People = (data: IPeople) => {
   const { data: pupil } = data;
   return (
-    <div className="mx-4 flex flex-row flex-wrap items-center justify-between gap-4 md:mx-1 md:justify-around">
+    <div className="mx-4 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6">
       {pupil?.map((person) => {
         return (
           <Person key={person.id + person.name + new Date()} {...person} />
