@@ -17,7 +17,7 @@ export const Person = ({ id, name, profilePicture }: PersonType) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
       exit={{ opacity: 0 }}
-      className="flex w-[calc(50%-1rem)] rounded-lg border border-gray-300 bg-white p-2 transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-800 md:w-[calc(30%-1rem)] lg:w-[177px] lg:p-4"
+      className="w-full rounded-lg border border-gray-300 bg-white p-2 transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-800 lg:p-4"
     >
       <div className="flex w-full flex-col items-center justify-center gap-3">
         <Image
