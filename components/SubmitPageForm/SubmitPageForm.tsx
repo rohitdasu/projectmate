@@ -18,6 +18,7 @@ import { Button } from '@/components/Button';
 import { Tags, RemoveTagFc } from '@/components/Tags';
 import { Typography } from '../Typography';
 import { FormInputs } from './SubmitPageForm.interface';
+import { motion } from 'framer-motion';
 
 export const SubmitPageForm = () => {
   const { handleSubmit, setValue, watch, control, reset } = useForm<FormInputs>(
@@ -113,7 +114,7 @@ export const SubmitPageForm = () => {
 
   return (
     <div className="mx-auto w-full px-4 lg:px-0">
-      <form className="form-container mx-auto flex w-full flex-col space-y-6">
+      <form className="form-container mx-auto flex w-full flex-col space-y-4">
         <Typography
           as="h1"
           align="left"
@@ -123,91 +124,125 @@ export const SubmitPageForm = () => {
         >
           Submit Project
         </Typography>
-        <Controller
-          name="projectName"
-          control={control}
-          defaultValue=""
-          render={({ field, fieldState }) => {
-            return (
-              <Input
-                {...field}
-                placeholder="Enter your project name"
-                error={fieldState.error}
-                label="Project Name"
-                required
-              />
-            );
-          }}
-        />
-        <Controller
-          name="repositoryLink"
-          control={control}
-          defaultValue=""
-          render={({ field, fieldState }) => {
-            return (
-              <Input
-                {...field}
-                placeholder="Enter your repository URL"
-                error={fieldState.error}
-                label="Repository URL"
-                required
-              />
-            );
-          }}
-        />
-        <Controller
-          name="projectDescription"
-          control={control}
-          defaultValue=""
-          render={({ field, fieldState }) => {
-            return (
-              <Input
-                {...field}
-                placeholder="Enter your project description"
-                error={fieldState.error}
-                value={field.value}
-                label="Description"
-                required
-              />
-            );
-          }}
-        />
-        <Controller
-          name="tags"
-          control={control}
-          render={({ field, fieldState }) => {
-            return (
-              <>
+        <motion.div
+          initial={{ scale: 0.9 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.2, delay: 0 }}
+          exit={{ opacity: 0 }}
+        >
+          <Controller
+            name="projectName"
+            control={control}
+            defaultValue=""
+            render={({ field, fieldState }) => {
+              return (
                 <Input
                   {...field}
-                  placeholder="Enter your project tags"
-                  onChange={(e) => setTagInput(e.target.value)}
+                  placeholder="Enter your project name"
                   error={fieldState.error}
-                  label="Tags"
-                  value={tagInput}
-                  onKeyDown={(e) => onTagAddition(e, field)}
+                  label="Project Name"
                   required
-                  hintMessage="Note: only 5 tags are allowed"
                 />
-                {tags && tags.length > 0 && (
-                  <>
-                    <div className="flex items-center gap-2">
-                      {tags && tags.length > 0 && (
-                        <Tags
-                          className="flex-wrap gap-2 uppercase"
-                          tags={tags}
-                          removeTagHandler={removeTag}
-                        />
-                      )}
-                    </div>
-                  </>
-                )}
-              </>
-            );
-          }}
-        />
+              );
+            }}
+          />
+        </motion.div>
+        <motion.div
+          initial={{ scale: 0.9 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.2, delay: 0.1 }}
+          exit={{ opacity: 0 }}
+        >
+          <Controller
+            name="repositoryLink"
+            control={control}
+            defaultValue=""
+            render={({ field, fieldState }) => {
+              return (
+                <Input
+                  {...field}
+                  placeholder="Enter your repository URL"
+                  error={fieldState.error}
+                  label="Repository URL"
+                  required
+                />
+              );
+            }}
+          />
+        </motion.div>
+        <motion.div
+          initial={{ scale: 0.9 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.2, delay: 0.2 }}
+          exit={{ opacity: 0 }}
+        >
+          <Controller
+            name="projectDescription"
+            control={control}
+            defaultValue=""
+            render={({ field, fieldState }) => {
+              return (
+                <Input
+                  {...field}
+                  placeholder="Enter your project description"
+                  error={fieldState.error}
+                  value={field.value}
+                  label="Description"
+                  required
+                />
+              );
+            }}
+          />
+        </motion.div>
+        <motion.div
+          initial={{ scale: 0.9 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.2, delay: 0.3 }}
+          exit={{ opacity: 0 }}
+        >
+          <Controller
+            name="tags"
+            control={control}
+            render={({ field, fieldState }) => {
+              return (
+                <>
+                  <Input
+                    {...field}
+                    placeholder="Enter your project tags"
+                    onChange={(e) => setTagInput(e.target.value)}
+                    error={fieldState.error}
+                    label="Tags"
+                    value={tagInput}
+                    onKeyDown={(e) => onTagAddition(e, field)}
+                    required
+                    hintMessage="Note: type a tag and press enter to add"
+                  />
+                  {tags && tags.length > 0 && (
+                    <>
+                      <div className="flex items-center gap-2">
+                        {tags && tags.length > 0 && (
+                          <Tags
+                            className="flex-wrap gap-2 uppercase"
+                            tags={tags}
+                            removeTagHandler={removeTag}
+                          />
+                        )}
+                      </div>
+                    </>
+                  )}
+                </>
+              );
+            }}
+          />
+        </motion.div>
       </form>
-      <div className="my-4 w-full">
+      <motion.div
+        initial={{ scale: 0.9 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.2, delay: 0.4 }}
+        exit={{ opacity: 0 }}
+        className="my-4 w-full"
+      >
         <Button
           isDisabled={loading}
           onClick={handleSubmit(onSubmit)}
@@ -233,7 +268,7 @@ export const SubmitPageForm = () => {
             </svg>
           )}
         </Button>
-      </div>
+      </motion.div>
     </div>
   );
 };
