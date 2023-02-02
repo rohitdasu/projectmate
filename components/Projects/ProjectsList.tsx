@@ -81,9 +81,9 @@ export const ProjectsList: React.FC<ProjectsListProps> = ({ selectedTags }) => {
           ))
         ) : (
           <>
-            {filteredProjects.map((project: IProject, i: number) => (
+            {filteredProjects.map((project: IProject) => (
               <Project
-                key={i}
+                key={project.id}
                 id={project.id}
                 description={project.description}
                 title={project.title}
