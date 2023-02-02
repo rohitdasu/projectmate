@@ -246,7 +246,7 @@ export const SubmitPageForm = () => {
         <Button
           isDisabled={loading}
           onClick={handleSubmit(onSubmit)}
-          className="float-right mt-4 flex flex-row gap-4 px-8 py-2"
+          className="float-right flex flex-row gap-4 px-8 py-2"
         >
           Submit
           {loading && (

@@ -13,7 +13,7 @@ export const Guide = () => {
         fontWeight="bold"
         className="md:text-3xl"
       >
-        How it Works ?
+        How to Use ?
       </Typography>
       <ul className="relative mt-20 flex flex-col items-center gap-[3rem] lg:flex-row lg:items-stretch lg:gap-[3rem]">
         {data.map((item) => {

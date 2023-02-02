@@ -17,7 +17,7 @@ export const Thanks = () => {
         align="center"
         fontSize="2xl"
         fontWeight="bold"
-        className="pb-20 md:text-3xl"
+        className="pb-12 md:text-3xl"
       >
         Thanks to our contributors
       </Typography>

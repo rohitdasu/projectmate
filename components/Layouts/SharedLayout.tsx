@@ -49,14 +49,14 @@ export const SharedLayout: React.FC<ISharedLayout> = ({
             <li>
               <Link
                 href="/privacy-policy"
-                className="text-base font-extralight"
+                className="text-base font-extralight hover:underline"
               >
                 Privacy Policy
               </Link>
             </li>
           </ul>
           <a
-            className="font-semibold underline"
+            className="font-semibold hover:underline"
             href="https://github.com/rohitdasu/projectmate/blob/main/LICENSE"
             target="_blank"
             rel="noreferrer"
