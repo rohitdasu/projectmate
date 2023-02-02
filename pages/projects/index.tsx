@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
 import { ProjectsList, SharedLayout } from '../../components';
-import { prisma } from '@/lib/prisma';
-import { InferGetServerSidePropsType } from 'next';
 import MultiSelectInput from '@/components/Form/MultiSelectInput/MultiSelectInput';
 import { useMemo } from 'react';
 import { RemoveTagFc, Tags } from '@/components/Tags';
+import useSWR from 'swr';
+import axios from 'axios';
 
-const Projects = ({
-  availableTags,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Projects = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
+  const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+  const url = `/api/tags`;
+  const { data: availableTags, error } = useSWR(url, fetcher);
   const filteredAvailableTags = useMemo(() => {
-    return availableTags.filter((tag) => !selectedTags.includes(tag));
-  }, [availableTags, selectedTags]);
+    if (availableTags?.results && !error) {
+      return availableTags.results.filter(
+        (tag: string) => !selectedTags.includes(tag)
+      );
+    }
+    return [];
+  }, [availableTags, selectedTags, error]);
 
   const onEnterClick = (value: string) => {
     setSelectedTags((prev) => [...prev, value]);
@@ -54,17 +60,3 @@ const Projects = ({
 };
 
 export default Projects;
-
-export async function getServerSideProps() {
-  const allProjects = await prisma.project.findMany();
-  const allTags = new Set<string>();
-  allProjects.forEach((project) =>
-    project.tags.forEach((tag) => allTags.add(tag))
-  );
-
-  return {
-    props: {
-      availableTags: Array.from(allTags),
-    },
-  };
-}
