@@ -22,14 +22,14 @@ export const SharedLayout: React.FC<ISharedLayout> = ({
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
       <Topbar />
-      <main className="flex-1 bg-gray-100 dark:bg-gray-900">
+      <main className="flex-1 bg-gray-900">
         <div className={(hasContainer && 'm-auto max-w-screen-xl') || ''}>
           {children}
         </div>
       </main>
       <AuthModal title={'Continue with your social accounts'} />
       {showFooter && (
-        <footer className="z-100 sticky top-[100%] border-t border-gray-300 bg-gray-100 px-5 py-10 text-center dark:border-gray-800 dark:bg-gray-900">
+        <footer className="z-100 sticky top-[100%] border-t border-gray-800 bg-gray-900 px-5 py-10 text-center">
           <div className="flex flex-col items-center justify-center rounded-full p-5">
             <div className="flex flex-row items-center justify-center space-x-16">
               {socialLinks.map(({ Icon, title, anchorTagProps, url }) => (
@@ -38,7 +38,7 @@ export const SharedLayout: React.FC<ISharedLayout> = ({
                   key={title}
                   {...anchorTagProps}
                   href={url}
-                  className="flex items-center justify-center text-3xl text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
+                  className="flex items-center justify-center text-3xl text-slate-400 hover:text-slate-100"
                 >
                   {<Icon />}
                 </motion.a>

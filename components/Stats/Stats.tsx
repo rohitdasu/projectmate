@@ -15,7 +15,7 @@ const Title = ({ ...props }) => {
       as="p"
       fontSize="base"
       fontWeight="medium"
-      className="flex flex-row items-center gap-2 text-slate-600 dark:text-slate-300"
+      className="flex flex-row items-center gap-2 text-slate-300"
     >
       {props?.children}
     </Typography>
@@ -24,9 +24,7 @@ const Title = ({ ...props }) => {
 
 const Value = ({ ...props }) => {
   return (
-    <span className="rounded-md p-2 text-slate-900 dark:text-slate-400">
-      {props?.children}
-    </span>
+    <span className="rounded-md p-2 text-slate-400">{props?.children}</span>
   );
 };
 
@@ -42,7 +40,7 @@ export const Stats = ({ ...props }) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
       exit={{ opacity: 0 }}
-      className="mt-6 flex flex-col gap-4 rounded-lg bg-slate-200 p-4 dark:bg-slate-800 md:p-8"
+      className="mt-6 flex flex-col gap-4 rounded-lg bg-slate-800 p-4 md:p-8"
     >
       <Typography as="h2" align="left" fontSize="2xl" fontWeight="semibold">
         Project Stats.

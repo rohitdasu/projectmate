@@ -1,10 +1,7 @@
 import React from 'react';
 import { resolveValue, Toaster, ToastBar } from 'react-hot-toast';
-import { useIsDarkTheme } from '../ThemeToggler/utils';
 
 export const AppToaster = () => {
-  const isDark = useIsDarkTheme();
-
   return (
     <Toaster position="top-center" toastOptions={{ className: 'app-toaster' }}>
       {(t) => (
@@ -23,7 +20,7 @@ export const AppToaster = () => {
               <label
                 role="status"
                 aria-live="polite"
-                className={`pl-2 text-base ${isDark ? 'text-white' : ''}`}
+                className={`pl-2 text-white`}
               >
                 {resolveValue(t.message, t)}
               </label>

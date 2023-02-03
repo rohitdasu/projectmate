@@ -14,13 +14,13 @@ export const About = () => {
 
   return (
     <div className="py-28 lg:px-4">
-      <div className="flex flex-col items-center gap-5 rounded-lg bg-slate-100 py-6 px-4 dark:bg-slate-800 dark:text-slate-300 md:rounded-lg lg:p-12">
+      <div className="flex flex-col items-center gap-5 rounded-lg bg-slate-800 py-6 px-4 text-slate-300 md:rounded-lg lg:p-12">
         <Typography
           as="h2"
           align="center"
           fontSize="2xl"
           fontWeight="bold"
-          className="text-gray-800 dark:text-gray-300 md:text-3xl"
+          className="text-gray-300 md:text-3xl"
         >
           about us
         </Typography>
@@ -29,7 +29,7 @@ export const About = () => {
           align="justify"
           fontSize="base"
           fontWeight="light"
-          className="m-auto text-gray-800 dark:text-gray-300 md:text-lg"
+          className="m-auto text-gray-300 md:text-lg"
         >
           ProjectMate is a platform built by passionate developers in order to
           make OpenSource accessible for everyone around the world. If this
@@ -42,7 +42,7 @@ export const About = () => {
           fontSize="base"
           align="center"
           fontWeight="bold"
-          className="text-gray-800 dark:text-gray-300 md:text-lg"
+          className="text-gray-300 md:text-lg"
         >
           Shout-out to our contributors 🎉
         </Typography>

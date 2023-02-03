@@ -27,14 +27,14 @@ export const ErrorFallback = ({
           onClick={resetErrorBoundary}
           isDisabled={false}
           haveAnimation
-          className="bg-[#9b1c1c] py-3 px-8 text-[#fff] dark:bg-[#9b1c1c] dark:text-[#fff]"
+          className="bg-[#9b1c1c] py-3 px-8 text-[#fff]"
         >
           Try again
         </Button>
 
         <Link
           href="/"
-          className="rounded-md bg-[#2c1c0f] py-3 px-6 text-base text-orange-500 transition-all hover:opacity-75 focus:ring dark:bg-[#2c1c0f] dark:text-orange-400"
+          className="rounded-md bg-[#2c1c0f] py-3 px-6 text-orange-400 transition-all hover:opacity-75 focus:ring"
         >
           Go back home
         </Link>

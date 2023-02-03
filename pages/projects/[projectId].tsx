@@ -52,7 +52,7 @@ const ProjectDetails = () => {
             <motion.button
               onClick={() => router.back()}
               whileTap={{ scale: 0.95 }}
-              className="flex flex-row items-center justify-center gap-1 rounded-md border border-gray-800 px-3 py-2 shadow-md focus:ring dark:border-gray-300"
+              className="flex flex-row items-center justify-center gap-1 rounded-md border border-gray-300 px-3 py-2 shadow-md focus:ring"
             >
               <RiArrowGoBackFill className="text-xl" />
               <span className="block text-base font-normal uppercase leading-4">
@@ -89,11 +89,7 @@ const ProjectDetails = () => {
                 >
                   {projectData?.author?.name}
                 </Typography>
-                <Typography
-                  as="p"
-                  fontSize="xs"
-                  className="text-gray-600 dark:text-gray-300"
-                >
+                <Typography as="p" fontSize="xs" className="text-gray-300">
                   {new Date(projectData?.createdAt).toLocaleDateString()}
                 </Typography>
               </div>
@@ -104,7 +100,7 @@ const ProjectDetails = () => {
               href={projectData?.githubRepository}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-1 text-lg text-gray-800 hover:cursor-pointer hover:text-blue-600 hover:underline dark:text-gray-300 dark:hover:text-blue-300"
+              className="flex items-center space-x-1 text-lg text-gray-300 hover:cursor-pointer hover:text-blue-300 hover:underline"
             >
               <span className="">View Repo</span>
               <BiLink />
@@ -114,7 +110,7 @@ const ProjectDetails = () => {
             <Typography
               as="h3"
               fontSize="lg"
-              className="leading-8 text-gray-800 dark:text-gray-300"
+              className="leading-8 text-gray-300"
             >
               {projectData?.description}
             </Typography>

@@ -21,7 +21,7 @@ export const Guide = () => {
           return (
             <motion.li
               key={title}
-              className="relative flex w-[100%] max-w-[30rem] flex-col items-center gap-2 rounded-md bg-slate-200 p-5 text-center shadow-md dark:bg-slate-800"
+              className="relative flex w-[100%] max-w-[30rem] flex-col items-center gap-2 rounded-md bg-slate-800 p-5 text-center shadow-md"
             >
               <div className="flex flex-col items-center gap-2">
                 <Icon className="text-2xl" />
@@ -29,7 +29,7 @@ export const Guide = () => {
                   as="h2"
                   fontSize="base"
                   fontWeight="semibold"
-                  className="uppercase text-gray-800 dark:text-gray-300 md:text-lg"
+                  className="uppercase text-gray-300 md:text-lg"
                 >
                   {title}
                 </Typography>
@@ -39,7 +39,7 @@ export const Guide = () => {
                 align="center"
                 fontSize="sm"
                 fontWeight="light"
-                className="text-gray-800 dark:text-gray-300 md:text-base"
+                className="text-gray-300 md:text-base"
               >
                 {desc}
               </Typography>

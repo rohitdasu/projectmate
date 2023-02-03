@@ -28,9 +28,9 @@ const All: NextPage = () => {
           as="h1"
           fontSize="xl"
           fontWeight="semibold"
-          className="dark:text-[#a6a6a6] sm:text-[30px]"
+          className="text-[#a6a6a6] sm:text-[30px]"
         >
-          <span className="text-gray-900 dark:text-gray-100">Mates</span>
+          <span className="text-gray-100">Mates</span>
         </Typography>
       </div>
       <div className="mb-8">
