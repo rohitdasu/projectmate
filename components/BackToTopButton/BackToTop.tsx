@@ -36,10 +36,10 @@ export const BackToTop = () => {
           transition={{ duration: 0.3 }}
           exit={{ opacity: 0 }}
           whileTap={{ scale: 0.7 }}
-          className="mx-auto animate-bounce rounded-full border border-slate-600 bg-transparent p-4 font-semibold shadow-lg backdrop-blur-lg dark:border-slate-100"
+          className="mx-auto animate-bounce rounded-full border border-slate-100 bg-transparent p-4 font-semibold shadow-lg backdrop-blur-lg"
           onClick={handleClick}
         >
-          <FaArrowUp className="text-xl text-slate-600 dark:text-slate-100" />
+          <FaArrowUp className="text-xl text-slate-100" />
         </motion.button>
       )}
     </div>

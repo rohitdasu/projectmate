@@ -51,7 +51,7 @@ export const ProfileHeader = () => {
           as="h1"
           fontSize="xl"
           fontWeight="semibold"
-          className="dark:text-gray-100 sm:text-3xl"
+          className="text-gray-100 sm:text-3xl"
         >
           {session?.user && session.user.name}
         </Typography>

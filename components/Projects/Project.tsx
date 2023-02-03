@@ -27,7 +27,7 @@ export const Project = ({
       exit={{ opacity: 0 }}
       layout
       transition={{ duration: 1 }}
-      className="m-2 rounded-lg bg-white shadow-lg dark:border-4 dark:border-slate-800 dark:bg-slate-900 md:m-auto md:w-full"
+      className="m-2 rounded-lg border-4 border-slate-800 bg-slate-900 shadow-lg md:m-auto md:w-full"
     >
       <div className="flex h-full flex-col items-center overflow-hidden rounded-md">
         <div className="flex w-full grow flex-col gap-5 p-4 pt-4">
@@ -36,15 +36,15 @@ export const Project = ({
               as="h2"
               fontSize="xl"
               fontWeight="semibold"
-              className="min-w-[0] flex-1 flex-col gap-2 truncate text-gray-900 dark:text-gray-100"
+              className="min-w-[0] flex-1 flex-col gap-2 truncate text-gray-100"
             >
               {title}
-              <span className="flex items-center gap-1 text-sm font-light text-gray-900 dark:text-gray-100">
+              <span className="flex items-center gap-1 text-sm font-light text-gray-100">
                 <AiOutlineUser />
                 {author}
               </span>
             </Typography>
-            <div className="flex flex-row items-center gap-1 text-gray-500 dark:text-gray-400">
+            <div className="flex flex-row items-center gap-1 text-gray-400">
               <Typography as="span" fontSize="3xl">
                 ·
               </Typography>
@@ -56,7 +56,7 @@ export const Project = ({
           <Typography
             as="p"
             fontSize="sm"
-            className="h-20 text-gray-900 line-clamp-4 dark:text-gray-100"
+            className="h-20 text-gray-100 line-clamp-4"
           >
             {description}
           </Typography>

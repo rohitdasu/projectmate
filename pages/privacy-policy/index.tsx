@@ -19,7 +19,7 @@ const Privacypolicy: NextPage = (content: any) => {
             whileTap={{ scale: 0.9 }}
             className="rounded-md border-2 px-3 py-2"
           >
-            <AiOutlineHome className="text-xl text-gray-500 dark:text-gray-100" />
+            <AiOutlineHome className="text-xl text-gray-100" />
           </motion.button>
         </Link>
         <Markdown content={content.data} />

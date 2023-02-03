@@ -16,7 +16,7 @@ export const FloatingMenu = ({
       <li
         onClick={toggleMenu}
         style={{ marginTop: `${spacing}px` }}
-        className={`relative grid place-items-center rounded-full bg-orange-300 p-3 focus:ring dark:bg-[#2c1c0f] lg:cursor-pointer`}
+        className={`relative grid place-items-center rounded-full bg-[#2c1c0f] p-3 focus:ring lg:cursor-pointer`}
       >
         <div
           className={`transition ease-in-out 
@@ -29,7 +29,7 @@ export const FloatingMenu = ({
         <li
           key={index}
           style={{ marginTop: `${spacing}px` }}
-          className={`relative z-0 grid translate-y-full place-items-center rounded-full  bg-orange-300 p-3 transition ease-in-out focus:ring dark:bg-[#2c1c0f] lg:cursor-pointer
+          className={`relative z-0 grid translate-y-full place-items-center rounded-full bg-[#2c1c0f] p-3 transition ease-in-out focus:ring lg:cursor-pointer
           ${isOpen ? 'translate-y-0 scale-100' : 'scale-0'}
           duration-${slideSpeed}`}
         >

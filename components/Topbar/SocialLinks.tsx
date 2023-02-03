@@ -13,7 +13,7 @@ export const SocialLinks = () => {
           {...anchorTagProps}
           href={url}
           whileTap={{ scale: 0.8 }}
-          className="flex h-[2.939rem] w-[2.939rem] items-center justify-center overflow-hidden rounded-md border-solid text-[1.6rem] !text-gray-500 shadow-border-shadow transition-all hover:border-2 hover:!text-gray-900 dark:!text-gray-400 hover:dark:!text-gray-100"
+          className="flex h-[2.939rem] w-[2.939rem] items-center justify-center overflow-hidden rounded-md border-solid text-[1.6rem] !text-gray-400 shadow-border-shadow transition-all hover:border-2 hover:!text-gray-100"
         >
           {<Icon />}
         </motion.a>

@@ -28,11 +28,7 @@ export function ProfileCard() {
           <Typography as="p" fontSize="sm" className="truncate">
             {user?.name}
           </Typography>
-          <Typography
-            as="p"
-            fontSize="xs"
-            className="truncate text-black/60  dark:text-white/75"
-          >
+          <Typography as="p" fontSize="xs" className="truncate text-white/75">
             {user?.email}
           </Typography>
         </div>

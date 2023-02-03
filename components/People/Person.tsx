@@ -17,7 +17,7 @@ export const Person = ({ id, name, profilePicture }: PersonType) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
       exit={{ opacity: 0 }}
-      className="w-full rounded-lg border border-gray-300 bg-white p-2 transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-800 lg:p-4"
+      className="w-full rounded-lg border border-gray-700 bg-gray-800 p-2 transition-all hover:shadow-md lg:p-4"
     >
       <div className="flex w-full flex-col items-center justify-center gap-3">
         <Image
@@ -28,7 +28,7 @@ export const Person = ({ id, name, profilePicture }: PersonType) => {
           className="rounded-full"
         />
         <Typography>{name.split(' ')[0]}</Typography>
-        <button className="flex w-full cursor-not-allowed flex-row items-center justify-center rounded-full border border-gray-400 py-1 px-2 text-sm text-gray-900 transition-all hover:bg-orange-200 hover:text-orange-800 dark:border-gray-600 dark:text-gray-100 hover:dark:bg-orange-500 md:text-base">
+        <button className="flex w-full cursor-not-allowed flex-row items-center justify-center rounded-full border border-gray-400 border-gray-600 py-1 px-2 text-sm text-gray-100 transition-all hover:bg-orange-500 md:text-base">
           View profile
         </button>
       </div>

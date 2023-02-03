@@ -47,8 +47,7 @@ const MultiSelectInput = ({
         list="tags"
         className={classNames(
           inputClassName,
-          isError &&
-            'dark:!focus:border-red-700 !focus:border-red-500 !border-red-500 dark:!border-red-700'
+          isError && '!focus:border-red-700 !border-red-700'
         )}
         onKeyDown={_onEnterClick}
       />

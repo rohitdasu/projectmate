@@ -38,7 +38,7 @@ export const Benefit: React.FC<IProps> = ({
           align="left"
           fontSize="2xl"
           fontWeight="bold"
-          className="text-gray-800 dark:text-gray-300 md:text-3xl"
+          className="text-gray-300 md:text-3xl"
         >
           {title}
         </Typography>
@@ -47,7 +47,7 @@ export const Benefit: React.FC<IProps> = ({
           align="justify"
           fontSize="base"
           fontWeight="light"
-          className="text-gray-800 dark:text-gray-300 md:text-left md:text-lg"
+          className="text-gray-300 md:text-left md:text-lg"
         >
           {desc}
         </Typography>
