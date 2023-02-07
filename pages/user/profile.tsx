@@ -11,6 +11,7 @@ import animation from '../../public/animations/no-data.json';
 import errorAnimation from '../../public/animations/error.json';
 import { Typography } from '@/components/Typography';
 import { ProfileHeader } from '@/components/Profile/ProfileHeader';
+import { Tag } from '@/components/Tags/Tag';
 
 const Profile: NextPage = () => {
   const { status } = useSession({
@@ -40,10 +41,78 @@ const Profile: NextPage = () => {
 
   const UserBio = () => {
     return (
-      <div className="flex w-full flex-col items-center justify-center">
-        <Typography as="p" fontSize="base">
-          User Bio Details
-        </Typography>
+      <div className="flex w-full flex-col justify-between gap-3 p-4">
+        <div className="flex flex-col">
+          <Typography
+            as="p"
+            fontSize="xl"
+            fontWeight="medium"
+            className="text-gray-100 sm:text-base"
+          >
+            Title
+          </Typography>
+          <Typography
+            as="p"
+            fontSize="sm"
+            fontWeight="light"
+            className="text-gray-300 sm:text-base"
+          >
+            Senior software engineer
+          </Typography>
+        </div>
+        <div className="flex flex-col">
+          <Typography
+            as="p"
+            fontSize="xl"
+            fontWeight="medium"
+            className="text-gray-100 sm:text-base"
+          >
+            Description
+          </Typography>
+          <Typography
+            as="p"
+            fontSize="sm"
+            fontWeight="light"
+            className="text-gray-300 line-clamp-4 sm:text-base"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec
+            tincidunt magna. Fusce pretium consequat sapien quis blandit.
+            Aliquam a augue dignissim, rutrum felis et, dictum turpis.
+          </Typography>
+        </div>
+        <div className="flex flex-col">
+          <Typography
+            as="p"
+            fontSize="xl"
+            fontWeight="medium"
+            className="text-gray-100 sm:text-base"
+          >
+            Skills
+          </Typography>
+          <div className="flex flex-row flex-wrap gap-2 py-2">
+            <Tag title="Golang" className="!bg-slate-500" />
+            <Tag title="Typescript" className="!bg-slate-500" />
+            <Tag title="Typescript" className="!bg-slate-500" />
+          </div>
+        </div>
+        <div className="flex flex-row">
+          <Typography
+            as="p"
+            fontSize="xl"
+            fontWeight="medium"
+            className="text-gray-100 sm:text-base"
+          >
+            Projects number:
+          </Typography>
+          <Typography
+            as="span"
+            fontSize="xl"
+            fontWeight="medium"
+            className="mx-1 text-gray-100 sm:text-base"
+          >
+            5
+          </Typography>
+        </div>
       </div>
     );
   };
@@ -53,7 +122,7 @@ const Profile: NextPage = () => {
       <div className="m-auto flex w-full flex-col px-4 py-6 pb-16">
         <ProfileHeader />
         <div className="flex w-full flex-col lg:flex-row">
-          <div className="top-5 mt-12 mr-5 flex h-96 w-full flex-row justify-center rounded-lg bg-gray-700 p-3 backdrop-blur-sm lg:sticky lg:w-[25%]">
+          <div className="top-5 mt-12 mr-5 h-min w-full rounded-lg border border-gray-700 bg-slate-800 backdrop-blur-sm lg:sticky lg:w-[25%]">
             <UserBio />
           </div>
           <div className="w-full lg:w-[75%]">
