@@ -27,7 +27,7 @@ export const Person = ({ id, name, profilePicture }: PersonType) => {
           alt={name}
           className="rounded-full"
         />
-        <Typography>{name.split(' ')[0]}</Typography>
+        <Typography>{name.trim().split(' ')[0]}</Typography>
         <button className="flex w-full cursor-not-allowed flex-row items-center justify-center rounded-full border border-gray-400 border-gray-600 py-1 px-2 text-sm text-gray-100 transition-all hover:bg-orange-500 md:text-base">
           View profile
         </button>
