@@ -2,24 +2,36 @@ import React, { useState } from 'react';
 import { Typography } from '@/components/Typography';
 import { Tags } from '@/components/Tags';
 import { motion } from 'framer-motion';
+import { EditProfileModal } from './EditProfileModal';
 
 export const UserBio = () => {
   const [isDescriptionClamped, setIsDescriptionClamped] = useState(true);
+  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
 
-  const temporarySkills = [
-    'Backend',
-    'Web Development',
-    'Data Structures And Algorithms',
-  ];
+  const temporaryProfileData = {
+    title: 'Senior software engineer',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec tincidunt magna. Fusce pretium consequat sapien quis blandit. Aliquam a augue dignissim, rutrum felis et, dictum turpis.',
+    skills: ['Backend', 'Web Development', 'Data Structures And Algorithms'],
+    numberOfProjects: 4,
+  };
+
+  const openEditProfileModal = () => {
+    setIsEditProfileModalOpen(true);
+  };
+
+  const closeEditorProfilModal = () => {
+    setIsEditProfileModalOpen(false);
+  };
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.3 }}
       layout
-      className="flex w-full flex-col justify-between gap-3 p-4"
+      className="flex w-full flex-col justify-between gap-4 p-4"
     >
       <div className="flex flex-col">
         <Typography
@@ -36,7 +48,7 @@ export const UserBio = () => {
           fontWeight="light"
           className="text-gray-300 sm:text-base"
         >
-          Senior software engineer
+          {temporaryProfileData.title}
         </Typography>
       </div>
       <div className="flex flex-col">
@@ -58,9 +70,7 @@ export const UserBio = () => {
           }
           `}
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec
-          tincidunt magna. Fusce pretium consequat sapien quis blandit. Aliquam
-          a augue dignissim, rutrum felis et, dictum turpis.
+          {temporaryProfileData.description}
         </Typography>
       </div>
       <div className="flex flex-col">
@@ -73,7 +83,7 @@ export const UserBio = () => {
           Skills
         </Typography>
         <Tags
-          tags={temporarySkills}
+          tags={temporaryProfileData.skills}
           className="flex-wrap gap-2"
           tagClassName="bg-slate-500"
         />
@@ -91,11 +101,25 @@ export const UserBio = () => {
           as="span"
           fontSize="xl"
           fontWeight="medium"
-          className="mx-1 text-gray-100 sm:text-base"
+          className={`mx-2  sm:text-base ${
+            temporaryProfileData.numberOfProjects === 0
+              ? 'text-red-500'
+              : 'text-gray-100'
+          }`}
         >
-          5
+          {temporaryProfileData.numberOfProjects}
         </Typography>
       </div>
+      <button
+        onClick={openEditProfileModal}
+        className="flex max-w-sm flex-1 cursor-pointer flex-row items-center justify-center gap-2 rounded-md bg-gray-700 px-2 py-1 text-gray-300 transition-all hover:opacity-70 md:px-3 md:py-2"
+      >
+        Edit profile
+      </button>
+      <EditProfileModal
+        isOpen={isEditProfileModalOpen}
+        closeModal={closeEditorProfilModal}
+      />
     </motion.div>
   );
 };
