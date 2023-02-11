@@ -11,6 +11,7 @@ import Lottie from 'lottie-react';
 import Loader from '../../public/animations/loading.json';
 import axios from 'axios';
 import { Input } from '@/components/Form/Input';
+import { Textarea } from '@/components/Form/Textarea';
 import { schema } from './schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toastMessage, messageType } from '../../shared';
@@ -182,10 +183,11 @@ export const SubmitPageForm = () => {
             defaultValue=""
             render={({ field, fieldState }) => {
               return (
-                <Input
+                <Textarea
                   {...field}
                   placeholder="Enter your project description"
                   error={fieldState.error}
+                  rows={2}
                   value={field.value}
                   label="Description"
                   required
