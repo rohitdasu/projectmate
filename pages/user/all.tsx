@@ -2,6 +2,7 @@ import { SharedLayout } from '@/components/Layouts/SharedLayout';
 import { NextPage } from 'next';
 import { Typography } from '@/components/Typography';
 import { People } from '@/components/People';
+import { BackToTop } from '@/components/BackToTopButton';
 import axios from 'axios';
 import useSWR from 'swr';
 import Loader from 'public/animations/loading.json';
@@ -36,6 +37,7 @@ const All: NextPage = () => {
       <div className="mb-8">
         <People data={users} />
       </div>
+      <BackToTop />
     </SharedLayout>
   );
 };
