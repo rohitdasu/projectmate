@@ -9,7 +9,7 @@ export const ErrorFallback = ({
   return (
     <div
       role="alert"
-      className="absolute top-1/2 left-1/2 flex max-w-[70ch] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-md bg-red-200 py-6 px-10 text-red-800"
+      className="absolute top-1/2 left-1/2 flex w-11/12 max-w-2xl -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-md bg-red-200 py-6 px-4 text-red-800 sm:px-10"
     >
       <h2 className="text-3xl font-bold">Oops!</h2>
       <p className="pt-4 text-center text-sm leading-6">
@@ -19,10 +19,12 @@ export const ErrorFallback = ({
       </p>
       {process.env.NODE_ENV === 'development' ||
       process.env.APP_STAGING === 'true' ? (
-        <pre className="mt-5 bg-white py-3 px-5">{error.message}</pre>
+        <pre className="mt-5 whitespace-pre-line bg-white py-3 px-5">
+          {error.message}
+        </pre>
       ) : null}
 
-      <div className="mt-8 flex items-center gap-10">
+      <div className="mt-8 flex flex-col items-center gap-5 sm:flex-row sm:gap-10">
         <Button
           onClick={resetErrorBoundary}
           isDisabled={false}
