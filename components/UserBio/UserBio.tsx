@@ -118,7 +118,6 @@ export const UserBio: React.FC<UserDetails> = ({
         currentTitle={title}
         currentDescription={description}
         currentSkills={skills}
-        currentNumberOfProjects={numberOfProjects}
       />
     </motion.div>
   );
