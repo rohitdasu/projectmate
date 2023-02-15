@@ -3,24 +3,22 @@ import { Typography } from '@/components/Typography';
 import { Tags } from '@/components/Tags';
 import { motion } from 'framer-motion';
 import { EditProfileModal } from './EditProfileModal';
+import { UserDetails } from './UserBio.interface';
 
-export const UserBio = () => {
+export const UserBio: React.FC<UserDetails> = ({
+  title,
+  description,
+  skills,
+  numberOfProjects,
+}) => {
   const [isDescriptionClamped, setIsDescriptionClamped] = useState(true);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
-
-  const temporaryProfileData = {
-    title: 'Senior software engineer',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec tincidunt magna. Fusce pretium consequat sapien quis blandit. Aliquam a augue dignissim, rutrum felis et, dictum turpis.',
-    skills: ['Backend', 'Web Development', 'Data Structures And Algorithms'],
-    numberOfProjects: 4,
-  };
 
   const openEditProfileModal = () => {
     setIsEditProfileModalOpen(true);
   };
 
-  const closeEditorProfilModal = () => {
+  const closeEditorProfileModal = () => {
     setIsEditProfileModalOpen(false);
   };
 
@@ -48,7 +46,7 @@ export const UserBio = () => {
           fontWeight="light"
           className="text-gray-300 sm:text-base"
         >
-          {temporaryProfileData.title}
+          {title}
         </Typography>
       </div>
       <div className="flex flex-col">
@@ -70,7 +68,7 @@ export const UserBio = () => {
           }
           `}
         >
-          {temporaryProfileData.description}
+          {description}
         </Typography>
       </div>
       <div className="flex flex-col">
@@ -83,7 +81,7 @@ export const UserBio = () => {
           Skills
         </Typography>
         <Tags
-          tags={temporaryProfileData.skills}
+          tags={skills}
           className="flex-wrap gap-2"
           tagClassName="bg-slate-500"
         />
@@ -102,12 +100,10 @@ export const UserBio = () => {
           fontSize="xl"
           fontWeight="medium"
           className={`mx-2  sm:text-base ${
-            temporaryProfileData.numberOfProjects === 0
-              ? 'text-red-500'
-              : 'text-gray-100'
+            numberOfProjects === 0 ? 'text-red-500' : 'text-gray-100'
           }`}
         >
-          {temporaryProfileData.numberOfProjects}
+          {numberOfProjects}
         </Typography>
       </div>
       <button
@@ -118,7 +114,11 @@ export const UserBio = () => {
       </button>
       <EditProfileModal
         isOpen={isEditProfileModalOpen}
-        closeModal={closeEditorProfilModal}
+        closeModal={closeEditorProfileModal}
+        currentTitle={title}
+        currentDescription={description}
+        currentSkills={skills}
+        currentNumberOfProjects={numberOfProjects}
       />
     </motion.div>
   );
