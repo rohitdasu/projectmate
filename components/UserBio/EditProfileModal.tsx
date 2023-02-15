@@ -12,6 +12,8 @@ import { Input } from '../Form';
 import { EditableUserDetails } from './UserBio.interface';
 import { Button } from '@/components/Button';
 import { Textarea } from '@/components/Form/Textarea';
+import { toastMessage, messageType } from 'shared';
+import { Tags, RemoveTagFc } from '@/components/Tags';
 
 export const EditProfileModal: React.FC<EditProfileModalProps> = ({
   isOpen,
@@ -20,9 +22,7 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
   currentDescription,
   currentSkills,
 }) => {
-  console.log(currentTitle);
-
-  const { handleSubmit, setValue, reset, control } =
+  const { handleSubmit, setValue, watch, control } =
     useForm<EditableUserDetails>({
       defaultValues: {
         title: currentTitle,
@@ -30,13 +30,48 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
         skills: currentSkills,
       },
     });
+
+  const skills = watch('skills');
   const [isEditShowed, setIsEditShowed] = useState({
     title: false,
     description: false,
   });
 
+  const [skillsInput, setSkillsInput] = useState<string>('');
+
   const onSubmit: SubmitHandler<EditableUserDetails> = (data) => {
     console.log(data);
+  };
+  const onTagAddition = (
+    e: React.KeyboardEvent,
+    field: ControllerRenderProps<EditableUserDetails, 'skills'>
+  ) => {
+    if (e.key !== 'Enter') return;
+    const value = (e.target as HTMLInputElement).value;
+    if (!value.trim()) return;
+    if (value.length > 15) {
+      toastMessage(
+        "tag length shouldn't exceed 15 characters",
+        messageType.error
+      );
+      return;
+    }
+    if (skills && skills.length == 4) {
+      toastMessage('total number of tags should be 4', messageType.error);
+      return;
+    }
+    const d = skills;
+    field.onChange(d && d.length > 0 ? [...skills, value] : [value]);
+    setSkillsInput('');
+    e.preventDefault();
+  };
+
+  const removeTag: RemoveTagFc = (event, index) => {
+    event.preventDefault();
+    setValue(
+      'skills',
+      skills.filter((element: string, i: number) => i !== index)
+    );
   };
 
   return (
@@ -54,7 +89,7 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
           <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm" />
         </Transition.Child>
         <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4 text-center">
+          <div className="flex min-h-full items-center justify-center p-3 text-center">
             <Transition.Child
               as={React.Fragment}
               enter="ease-out duration-300"
@@ -165,6 +200,40 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
                       </div>
                     </div>
                   )}
+                  <Controller
+                    name="skills"
+                    control={control}
+                    render={({ field, fieldState }) => {
+                      return (
+                        <>
+                          <Input
+                            {...field}
+                            placeholder="Enter your project tags"
+                            onChange={(e) => setSkillsInput(e.target.value)}
+                            error={fieldState.error}
+                            label="Add skills"
+                            value={skillsInput}
+                            onKeyDown={(e) => onTagAddition(e, field)}
+                            required
+                            hintMessage="Note: type a tag and press enter to add"
+                          />
+                          {skills && skills.length > 0 && (
+                            <>
+                              <div className="flex items-center gap-2">
+                                {skills && skills.length > 0 && (
+                                  <Tags
+                                    className="flex-wrap gap-2 uppercase"
+                                    tags={skills}
+                                    removeTagHandler={removeTag}
+                                  />
+                                )}
+                              </div>
+                            </>
+                          )}
+                        </>
+                      );
+                    }}
+                  />
                   <Button
                     type="submit"
                     isDisabled={false}
