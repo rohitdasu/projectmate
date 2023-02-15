@@ -11,6 +11,7 @@ import { Typography } from '@/components/Typography';
 import { Input } from '../Form';
 import { EditableUserDetails } from './UserBio.interface';
 import { Button } from '@/components/Button';
+import { Textarea } from '@/components/Form/Textarea';
 
 export const EditProfileModal: React.FC<EditProfileModalProps> = ({
   isOpen,
@@ -125,10 +126,12 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
                       defaultValue=""
                       render={({ field, fieldState }) => {
                         return (
-                          <Input
+                          <Textarea
                             {...field}
                             placeholder=""
                             error={fieldState.error}
+                            rows={3}
+                            value={field.value}
                             label="Description"
                             required
                           />
@@ -144,7 +147,7 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
                         <Typography
                           as="p"
                           fontSize="base"
-                          className="px-1 text-gray-300"
+                          className="px-1 text-gray-300 line-clamp-2"
                         >
                           {currentDescription}
                         </Typography>
