@@ -5,12 +5,4 @@ export type UserDetails = {
   numberOfProjects: number;
 };
 
-export type EditProfileModalProps = {
-  isOpen: boolean;
-  closeModal: () => void;
-  currentTitle: string;
-  currentDescription: string;
-  currentSkills: string[];
-};
-
 export type EditableUserDetails = Omit<UserDetails, 'numberOfProjects'>;

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Typography } from '@/components/Typography';
 import { Tags } from '@/components/Tags';
 import { motion } from 'framer-motion';
-import { EditProfileModal } from './EditProfileModal';
 import { UserDetails } from './UserBio.interface';
+import { useRouter } from 'next/router';
 
 export const UserBio: React.FC<UserDetails> = ({
   title,
@@ -12,16 +12,7 @@ export const UserBio: React.FC<UserDetails> = ({
   numberOfProjects,
 }) => {
   const [isDescriptionClamped, setIsDescriptionClamped] = useState(true);
-  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
-
-  const openEditProfileModal = () => {
-    setIsEditProfileModalOpen(true);
-  };
-
-  const closeEditorProfileModal = () => {
-    setIsEditProfileModalOpen(false);
-  };
-
+  const router = useRouter();
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -107,18 +98,13 @@ export const UserBio: React.FC<UserDetails> = ({
         </Typography>
       </div>
       <button
-        onClick={openEditProfileModal}
+        onClick={() => {
+          router.push('edit-profile');
+        }}
         className="flex max-w-sm flex-1 cursor-pointer flex-row items-center justify-center gap-2 rounded-md bg-gray-700 px-2 py-1 text-gray-300 transition-all hover:opacity-70 md:px-3 md:py-2"
       >
         Edit profile
       </button>
-      <EditProfileModal
-        isOpen={isEditProfileModalOpen}
-        closeModal={closeEditorProfileModal}
-        currentTitle={title}
-        currentDescription={description}
-        currentSkills={skills}
-      />
     </motion.div>
   );
 };
