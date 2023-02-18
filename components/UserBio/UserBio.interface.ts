@@ -4,5 +4,3 @@ export type UserDetails = {
   skills: string[];
   numberOfProjects: number;
 };
-
-export type EditableUserDetails = Omit<UserDetails, 'numberOfProjects'>;
