@@ -43,6 +43,9 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  title         String?
+  description   String?
+  skills        String[]
   accounts      Account[]
   sessions      Session[]
   project       Project[]

@@ -19,6 +19,8 @@ import { Textarea } from '@/components/Form/Textarea';
 import { toastMessage, messageType } from 'shared';
 import { Tags, RemoveTagFc } from '@/components/Tags';
 import { EditableUserDetails } from '@/components/UserBio';
+import useSwr from 'swr';
+import axios from 'axios';
 
 export type EditProfileProps = {
   currentTitle: string;
@@ -31,6 +33,10 @@ const EditProfile: NextPage<EditProfileProps> = ({
   currentDescription,
   currentSkills,
 }) => {
+  const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+  const { data } = useSwr('/api/user/details', fetcher);
+  console.log(data);
+
   const { handleSubmit, setValue, watch, control } =
     useForm<EditableUserDetails>({
       defaultValues: {
