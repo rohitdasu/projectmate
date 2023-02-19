@@ -13,9 +13,10 @@ import { EditProfileForm } from '@/components/EditProfileForm';
 const EditProfile = () => {
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
   const { data, error } = useSwr('/api/user/details', fetcher);
-  const { currentTitle, currentDescription, currentSkills } = data || {};
+  const {
+    results: { currentTitle, currentDescription, currentSkills },
+  } = data || {};
 
-  // console.log(currentTitle);
   const { status } = useSession({
     required: true,
     onUnauthenticated() {

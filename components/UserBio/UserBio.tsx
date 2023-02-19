@@ -1,18 +1,63 @@
 import React, { useState } from 'react';
+import Lottie from 'lottie-react';
+import Loader from '../../public/animations/loading.json';
+import errorAnimation from '../../public/animations/error.json';
 import { Typography } from '@/components/Typography';
 import { Tags } from '@/components/Tags';
 import { motion } from 'framer-motion';
 import { UserDetails } from './UserBio.interface';
 import { useRouter } from 'next/router';
+import useSWR from 'swr';
+import axios from 'axios';
 
-export const UserBio: React.FC<UserDetails> = ({
-  title,
-  description,
-  skills,
-  numberOfProjects,
-}) => {
-  const [isDescriptionClamped, setIsDescriptionClamped] = useState(true);
+export const UserBio: React.FC<UserDetails> = () => {
   const router = useRouter();
+  const [isDescriptionClamped, setIsDescriptionClamped] = useState(true);
+  const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+  const url = `/api/user/details`;
+  const { data, isLoading, error } = useSWR(url, fetcher);
+
+  const {
+    results: { title = undefined, description = undefined, skills = [] } = {},
+  } = data || {};
+  const numberOfProjects = data?.results?._count?.project;
+
+  if (isLoading || !data) {
+    return (
+      <div className="m-auto flex items-center justify-center">
+        <Lottie animationData={Loader} />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="m-auto flex flex-col items-center justify-center gap-8 p-8">
+        <Lottie className="w-32" animationData={errorAnimation} />
+        <Typography as="p" align="center">
+          Could not load profile data <br /> Please try again.
+        </Typography>
+      </div>
+    );
+  }
+  if (!title || !description || skills.length === 0) {
+    return (
+      <div className="m-auto flex flex-col items-center justify-center gap-8 p-8">
+        <Typography as="p" align="center">
+          It looks like your profile informations are empty
+        </Typography>
+        <button
+          onClick={() => {
+            router.push('edit-profile');
+          }}
+          className="flex max-w-sm flex-1 cursor-pointer flex-row items-center justify-center gap-2 rounded-md bg-gray-700 px-2 py-1 text-gray-300 transition-all hover:opacity-70 md:px-3 md:py-2"
+        >
+          Edit profile
+        </button>
+      </div>
+    );
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
