@@ -5,12 +5,11 @@ import errorAnimation from '../../public/animations/error.json';
 import { Typography } from '@/components/Typography';
 import { Tags } from '@/components/Tags';
 import { motion } from 'framer-motion';
-import { UserDetails } from './UserBio.interface';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import axios from 'axios';
 
-export const UserBio: React.FC<UserDetails> = () => {
+export const UserBio: React.FC = () => {
   const router = useRouter();
   const [isDescriptionClamped, setIsDescriptionClamped] = useState(true);
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);

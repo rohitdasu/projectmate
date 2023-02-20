@@ -34,14 +34,6 @@ const Profile: NextPage = () => {
     );
   }
 
-  const temporaryUserDetails = {
-    title: 'Senior software engineer',
-    description:
-      'A Software Engineer is an IT professional who designs, develops and maintains computer software at a company.',
-    skills: ['Web Development', 'Backend', 'Spring'],
-    numberOfProjects: 0,
-  };
-
   const style = {
     height: 240,
     width: '100%',
@@ -53,7 +45,7 @@ const Profile: NextPage = () => {
         <ProfileHeader />
         <div className="flex w-full flex-col lg:flex-row">
           <div className="top-5 mt-12 mr-5 h-min w-full rounded-lg border border-gray-700 bg-slate-800 backdrop-blur-sm lg:sticky lg:w-[25%]">
-            <UserBio {...temporaryUserDetails} />
+            <UserBio />
           </div>
           <div className="w-full lg:w-[75%]">
             <Typography
