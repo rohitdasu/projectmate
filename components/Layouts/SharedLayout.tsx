@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { getSocialLinks } from '../Topbar/data';
 import { ISharedLayout } from './Layouts.interface';
+import { Tooltip } from '../Tooltip';
 
 export const SharedLayout: React.FC<ISharedLayout> = ({
   children,
@@ -40,7 +41,9 @@ export const SharedLayout: React.FC<ISharedLayout> = ({
                   href={url}
                   className="flex items-center justify-center text-3xl text-slate-400 hover:text-slate-100"
                 >
-                  {<Icon />}
+                  <Tooltip text={title} direction="top">
+                    {<Icon />}
+                  </Tooltip>
                 </motion.a>
               ))}
             </div>
