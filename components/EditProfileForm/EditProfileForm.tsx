@@ -19,6 +19,7 @@ import {
 } from '@/components/EditProfileForm/EditProfileForm.interface';
 import { schema } from './schema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
 
 export const EditProfileForm: React.FC<EditProfileFormProps> = ({
   currentTitle,
@@ -31,7 +32,8 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({
   });
 
   const [skillsInput, setSkillsInput] = useState<string>('');
-  const { handleSubmit, setValue, watch, control } =
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { handleSubmit, setValue, reset, watch, control } =
     useForm<EditableUserDetails>({
       defaultValues: {
         title: currentTitle || '',
@@ -43,8 +45,44 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({
 
   const skills = watch('skills');
 
-  const onSubmit: SubmitHandler<EditableUserDetails> = (data) => {
-    // console.log(data);
+  const MAX_NUMBER_OF_TAGS = 4;
+  const USER_DETAILS_URL = '/api/user/details';
+
+  const resetFormData = () => {
+    reset();
+  };
+
+  const onSubmit: SubmitHandler<EditableUserDetails> = async ({
+    title,
+    description,
+    skills,
+  }) => {
+    if (isLoading) return;
+
+    try {
+      setIsLoading(true);
+      await axios.post(
+        USER_DETAILS_URL,
+        {
+          title: title,
+          description: description,
+          skills: skills,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      setIsLoading(false);
+      toastMessage(
+        'Profile information edited successfully',
+        messageType.success
+      );
+    } catch (error) {
+      setIsLoading(false);
+      toastMessage(error.message, messageType.error);
+    }
   };
   const onTagAddition = (
     e: React.KeyboardEvent,
@@ -60,8 +98,11 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({
       );
       return;
     }
-    if (skills && skills.length == 4) {
-      toastMessage('total number of tags should be 4', messageType.error);
+    if (skills && skills.length == MAX_NUMBER_OF_TAGS) {
+      toastMessage(
+        `total number of tags should be ${MAX_NUMBER_OF_TAGS}`,
+        messageType.error
+      );
       return;
     }
     const d = skills;

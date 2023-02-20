@@ -1,9 +1,15 @@
 import { getServerAuthSession } from '@/lib/getServerAuthSession';
-import { errorResponse, successResponse } from '@/lib/httpResponse';
+import {
+  errorResponse,
+  successResponse,
+  validationResponse,
+} from '@/lib/httpResponse';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Session } from 'next-auth';
 import { prisma } from '@/lib/prisma';
 import { Prisma } from '@prisma/client';
+import bodyValidator from '@/lib/bodyValidator';
+import { userDetailsSchema } from '@/schema/userDetailsSchema';
 
 export default async function handler(
   req: NextApiRequest,
@@ -31,6 +37,28 @@ export default async function handler(
           success: true,
         });
       } catch (error) {
+        return errorResponse({
+          res,
+          message: 'Internal Error',
+          statusCode: 500,
+          success: false,
+        });
+      }
+    case 'POST':
+      try {
+        const validatedBody = await bodyValidator(req, userDetailsSchema);
+        const { title, description, skills } = validatedBody;
+        const data = await updateUserDetails(
+          { title, description, skills },
+          session
+        );
+      } catch (error) {
+        if (error === 'ZodError') {
+          return validationResponse({
+            res,
+            error,
+          });
+        }
         return errorResponse({
           res,
           message: 'Internal Error',
@@ -69,4 +97,14 @@ async function getUserDetails(session: Session) {
   } catch (error) {
     throw error;
   }
+}
+
+type EditableUserDetails = {
+  title: string;
+  description: string;
+  skills: string[];
+};
+
+async function updateUserDetails(args: EditableUserDetails, session: Session) {
+  const { title, description, skills } = args;
 }

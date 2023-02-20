@@ -5,7 +5,7 @@ export const schema = z.object({
     .string()
     .min(1, 'Title is required')
     .min(2, 'Title name should be at least 2 characters long')
-    .max(20, 'Title should not be greater than 40 characters'),
+    .max(40, 'Title should not be greater than 40 characters'),
   description: z
     .string()
     .min(1, 'Description is required')
