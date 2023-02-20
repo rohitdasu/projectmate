@@ -107,4 +107,5 @@ type EditableUserDetails = {
 
 async function updateUserDetails(args: EditableUserDetails, session: Session) {
   const { title, description, skills } = args;
+  return undefined;
 }
