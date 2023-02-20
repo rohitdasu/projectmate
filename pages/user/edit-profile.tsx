@@ -13,9 +13,10 @@ import { EditProfileForm } from '@/components/EditProfileForm';
 const EditProfile = () => {
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
   const { data, error } = useSwr('/api/user/details', fetcher);
-  const { currentTitle, currentDescription, currentSkills } = data || {};
+  const {
+    results: { title = undefined, description = undefined, skills = [] } = {},
+  } = data || {};
 
-  console.log(data);
   const { status } = useSession({
     required: true,
     onUnauthenticated() {
@@ -54,9 +55,9 @@ const EditProfile = () => {
         className="m-auto mb-12 flex flex-col space-y-4 rounded-lg pt-4 md:max-w-xl md:p-6"
       >
         <EditProfileForm
-          currentTitle={currentTitle}
-          currentDescription={currentDescription}
-          currentSkills={currentSkills}
+          currentTitle={title}
+          currentDescription={description}
+          currentSkills={skills}
         />
       </motion.div>
     </SharedLayout>

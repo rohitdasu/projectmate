@@ -17,6 +17,8 @@ import {
   EditableUserDetails,
   EditProfileFormProps,
 } from '@/components/EditProfileForm/EditProfileForm.interface';
+import { schema } from './schema';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 export const EditProfileForm: React.FC<EditProfileFormProps> = ({
   currentTitle,
@@ -36,6 +38,7 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({
         description: currentDescription || '',
         skills: currentSkills || [],
       },
+      resolver: zodResolver(schema),
     });
 
   const skills = watch('skills');

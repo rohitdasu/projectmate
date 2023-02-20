@@ -42,9 +42,32 @@ export const UserBio: React.FC<UserDetails> = () => {
   }
   if (!title || !description || skills.length === 0) {
     return (
-      <div className="m-auto flex flex-col items-center justify-center gap-8 p-8">
-        <Typography as="p" align="center">
-          It looks like your profile informations are empty
+      <div className="m-auto flex flex-col items-center justify-center gap-5 p-8">
+        <Typography as="p" fontSize="xl" fontWeight="bold">
+          Profile information
+        </Typography>
+        <div className="flex flex-row">
+          <Typography
+            as="p"
+            fontSize="xl"
+            fontWeight="medium"
+            className="text-gray-100 sm:text-base"
+          >
+            Projects number:
+          </Typography>
+          <Typography
+            as="span"
+            fontSize="xl"
+            fontWeight="medium"
+            className={`mx-2  sm:text-base ${
+              numberOfProjects === 0 ? 'text-red-500' : 'text-gray-100'
+            }`}
+          >
+            {numberOfProjects}
+          </Typography>
+        </div>
+        <Typography as="p" align="left">
+          Add rest profile data
         </Typography>
         <button
           onClick={() => {
@@ -67,6 +90,9 @@ export const UserBio: React.FC<UserDetails> = () => {
       layout
       className="flex w-full flex-col justify-between gap-4 p-4"
     >
+      <Typography as="p" fontSize="xl" fontWeight="bold">
+        Profile information
+      </Typography>
       <div className="flex flex-col">
         <Typography
           as="p"
