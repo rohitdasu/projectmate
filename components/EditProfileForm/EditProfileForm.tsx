@@ -33,7 +33,7 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({
 
   const [skillsInput, setSkillsInput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { handleSubmit, setValue, reset, watch, control } =
+  const { handleSubmit, setValue, watch, control } =
     useForm<EditableUserDetails>({
       defaultValues: {
         title: currentTitle || '',
@@ -47,10 +47,6 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({
 
   const MAX_NUMBER_OF_TAGS = 4;
   const USER_DETAILS_URL = '/api/user/details';
-
-  const resetFormData = () => {
-    reset();
-  };
 
   const onSubmit: SubmitHandler<EditableUserDetails> = async ({
     title,

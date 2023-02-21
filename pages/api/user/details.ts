@@ -7,7 +7,7 @@ import {
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Session } from 'next-auth';
 import { prisma } from '@/lib/prisma';
-import { Prisma, User } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 import bodyValidator from '@/lib/bodyValidator';
 import { userDetailsSchema } from '@/schema/userDetailsSchema';
 
@@ -48,6 +48,13 @@ export default async function handler(
       try {
         const validatedBody = await bodyValidator(req, userDetailsSchema);
         const data = await updateUserDetails(validatedBody, session);
+        return successResponse({
+          res,
+          message: '',
+          results: data,
+          statusCode: 201,
+          success: true,
+        });
       } catch (error) {
         if (error === 'ZodError') {
           return validationResponse({
