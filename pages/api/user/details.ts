@@ -7,7 +7,7 @@ import {
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Session } from 'next-auth';
 import { prisma } from '@/lib/prisma';
-import { Prisma } from '@prisma/client';
+import { Prisma, User } from '@prisma/client';
 import bodyValidator from '@/lib/bodyValidator';
 import { userDetailsSchema } from '@/schema/userDetailsSchema';
 
@@ -47,11 +47,7 @@ export default async function handler(
     case 'POST':
       try {
         const validatedBody = await bodyValidator(req, userDetailsSchema);
-        const { title, description, skills } = validatedBody;
-        const data = await updateUserDetails(
-          { title, description, skills },
-          session
-        );
+        const data = await updateUserDetails(validatedBody, session);
       } catch (error) {
         if (error === 'ZodError') {
           return validationResponse({
@@ -107,5 +103,17 @@ type EditableUserDetails = {
 
 async function updateUserDetails(args: EditableUserDetails, session: Session) {
   const { title, description, skills } = args;
-  return undefined;
+  try {
+    const data = await prisma.user.update({
+      where: { email: session.user?.email },
+      data: {
+        title: title,
+        description: description,
+        skills: skills,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
 }
