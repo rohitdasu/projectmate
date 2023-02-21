@@ -105,7 +105,7 @@ async function updateUserDetails(args: EditableUserDetails, session: Session) {
   const { title, description, skills } = args;
   try {
     const data = await prisma.user.update({
-      where: { email: session.user?.email },
+      where: { email: session.user?.email || undefined },
       data: {
         title: title,
         description: description,
