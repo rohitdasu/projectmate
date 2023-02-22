@@ -21,7 +21,7 @@ export const Thanks = () => {
       >
         Thanks to our contributors
       </Typography>
-      <div className="flex flex-row flex-wrap items-center justify-between md:justify-center">
+      <div className="grid grid-cols-3 gap-2 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12">
         <ContributorList contributors={data} />
       </div>
     </div>
