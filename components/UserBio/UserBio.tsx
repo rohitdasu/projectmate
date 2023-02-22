@@ -39,46 +39,6 @@ export const UserBio: React.FC = () => {
       </div>
     );
   }
-  if (!title || !description || skills.length === 0) {
-    return (
-      <div className="m-auto flex flex-col items-center justify-center gap-5 p-8">
-        <Typography as="p" fontSize="xl" fontWeight="bold">
-          Profile information
-        </Typography>
-        <div className="flex flex-row">
-          <Typography
-            as="p"
-            fontSize="xl"
-            fontWeight="medium"
-            className="text-gray-100 sm:text-base"
-          >
-            Projects number:
-          </Typography>
-          <Typography
-            as="span"
-            fontSize="xl"
-            fontWeight="medium"
-            className={`mx-2  sm:text-base ${
-              numberOfProjects === 0 ? 'text-red-500' : 'text-gray-100'
-            }`}
-          >
-            {numberOfProjects}
-          </Typography>
-        </div>
-        <Typography as="p" align="left">
-          Add rest profile data
-        </Typography>
-        <button
-          onClick={() => {
-            router.push('edit-profile');
-          }}
-          className="flex max-w-sm flex-1 cursor-pointer flex-row items-center justify-center gap-2 rounded-md bg-gray-700 px-2 py-1 text-gray-300 transition-all hover:opacity-70 md:px-3 md:py-2"
-        >
-          Edit profile
-        </button>
-      </div>
-    );
-  }
 
   return (
     <motion.div
@@ -99,7 +59,7 @@ export const UserBio: React.FC = () => {
           fontWeight="medium"
           className="text-gray-100 sm:text-base"
         >
-          Title
+          Title:
         </Typography>
         <Typography
           as="p"
@@ -107,7 +67,7 @@ export const UserBio: React.FC = () => {
           fontWeight="light"
           className="text-gray-300 sm:text-base"
         >
-          {title}
+          {title ? title : '-'}
         </Typography>
       </div>
       <div className="flex flex-col">
@@ -117,7 +77,7 @@ export const UserBio: React.FC = () => {
           fontWeight="medium"
           className="text-gray-100 sm:text-base"
         >
-          Description
+          Description:
         </Typography>
         <Typography
           as="p"
@@ -129,7 +89,7 @@ export const UserBio: React.FC = () => {
           }
           `}
         >
-          {description}
+          {description ? description : '-'}
         </Typography>
       </div>
       <div className="flex flex-col">
@@ -139,13 +99,24 @@ export const UserBio: React.FC = () => {
           fontWeight="medium"
           className="text-gray-100 sm:text-base"
         >
-          Skills
+          Skills:
         </Typography>
-        <Tags
-          tags={skills}
-          className="flex-wrap gap-2"
-          tagClassName="bg-slate-500"
-        />
+        {skills.length ? (
+          <Tags
+            tags={skills}
+            className="flex-wrap gap-2"
+            tagClassName="bg-slate-500"
+          />
+        ) : (
+          <Typography
+            as="p"
+            fontSize="sm"
+            fontWeight="light"
+            className="text-gray-100 sm:text-base"
+          >
+            -
+          </Typography>
+        )}
       </div>
       <div className="flex flex-row">
         <Typography
