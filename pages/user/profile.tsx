@@ -11,6 +11,7 @@ import animation from '../../public/animations/no-data.json';
 import errorAnimation from '../../public/animations/error.json';
 import { Typography } from '@/components/Typography';
 import { ProfileHeader } from '@/components/Profile/ProfileHeader';
+import { UserBio } from '@/components/UserBio';
 
 const Profile: NextPage = () => {
   const { status } = useSession({
@@ -38,22 +39,12 @@ const Profile: NextPage = () => {
     width: '100%',
   };
 
-  const UserBio = () => {
-    return (
-      <div className="flex w-full flex-col items-center justify-center">
-        <Typography as="p" fontSize="base">
-          User Bio Details
-        </Typography>
-      </div>
-    );
-  };
-
   return (
     <SharedLayout title="Profile" hasContainer>
       <div className="m-auto flex w-full flex-col px-4 py-6 pb-16">
         <ProfileHeader />
         <div className="flex w-full flex-col lg:flex-row">
-          <div className="top-5 mt-12 mr-5 flex h-96 w-full flex-row justify-center rounded-lg bg-gray-700 p-3 backdrop-blur-sm lg:sticky lg:w-[25%]">
+          <div className="top-5 mt-12 mr-5 h-min w-full rounded-lg border border-gray-700 bg-slate-800 backdrop-blur-sm lg:sticky lg:w-[25%]">
             <UserBio />
           </div>
           <div className="w-full lg:w-[75%]">
