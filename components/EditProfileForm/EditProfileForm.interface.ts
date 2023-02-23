@@ -5,7 +5,7 @@ export type EditableUserDetails = {
 };
 
 export type EditProfileFormProps = {
-  currentTitle: string | undefined;
-  currentDescription: string | undefined;
-  currentSkills?: string[] | undefined;
+  currentTitle?: string;
+  currentDescription?: string;
+  currentSkills?: string[];
 };
