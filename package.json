@@ -24,7 +24,7 @@
     "dotenv": "^16.0.3",
     "flowbite": "^1.6.3",
     "flowbite-react": "^0.3.8",
-    "framer-motion": "^7.10.3",
+    "framer-motion": "^9.1.7",
     "lottie-react": "^2.4.0",
     "moment": "^2.29.4",
     "next": "^13.2.1",
