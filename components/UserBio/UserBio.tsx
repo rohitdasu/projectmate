@@ -105,7 +105,7 @@ export const UserBio: React.FC = () => {
           <Tags
             tags={skills}
             className="flex-wrap gap-2"
-            tagClassName="bg-slate-500"
+            tagClassName="!bg-slate-500"
           />
         ) : (
           <Typography
