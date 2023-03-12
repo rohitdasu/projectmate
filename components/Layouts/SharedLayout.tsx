@@ -32,21 +32,25 @@ export const SharedLayout: React.FC<ISharedLayout> = ({
       {showFooter && (
         <footer className="z-100 sticky top-[100%] border-t border-gray-800 bg-gray-900 px-5 py-10 text-center">
           <div className="flex flex-col items-center justify-center rounded-full p-5">
-            <div className="flex flex-row items-center justify-center space-x-16">
+            <ul className="flex flex-row items-center justify-center space-x-16">
               {socialLinks.map(({ Icon, title, anchorTagProps, url }) => (
-                <motion.a
-                  whileHover={{ scale: 1.2 }}
-                  key={title}
-                  {...anchorTagProps}
-                  href={url}
-                  className="flex items-center justify-center text-3xl text-slate-400 hover:text-slate-100"
-                >
-                  <Tooltip text={title} direction="top">
-                    {<Icon />}
-                  </Tooltip>
-                </motion.a>
+                <li key={title} className="flex items-center justify-center">
+                  <motion.a
+                    whileHover={{ scale: 1.2 }}
+                    {...anchorTagProps}
+                    href={url}
+                    className="flex items-center justify-center text-3xl text-slate-400 hover:text-slate-100"
+                  >
+                    <span className="sr-only">
+                      Projectmate on {title.toLowerCase()}
+                    </span>
+                    <Tooltip text={title} direction="top">
+                      {<Icon />}
+                    </Tooltip>
+                  </motion.a>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
           <ul className="my-4 flex flex-col items-center justify-center gap-2 md:flex-row md:gap-8">
             <li>

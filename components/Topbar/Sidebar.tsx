@@ -76,7 +76,9 @@ export const Sidebar = () => {
         whileTap={{ scale: 0.8 }}
         className="flex overflow-hidden rounded-md p-[0.67rem] text-[1.6rem] shadow-border-shadow lg:hidden"
         onClick={() => setOpen(true)}
+        aria-expanded={open}
       >
+        <span className="sr-only">Menu</span>
         <FiMenu />
       </motion.button>
       <AnimatePresence initial={false} mode="wait">
