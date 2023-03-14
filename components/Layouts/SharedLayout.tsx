@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { AuthModal } from '@/components/AuthModal';
 import { Topbar } from '../Topbar/Topbar';
@@ -16,6 +17,7 @@ export const SharedLayout: React.FC<ISharedLayout> = ({
 }) => {
   const year = new Date().getFullYear();
   const socialLinks = getSocialLinks();
+  const { pathname } = useRouter();
   return (
     <div className="flex min-h-screen w-full flex-col">
       <Head>
@@ -23,7 +25,11 @@ export const SharedLayout: React.FC<ISharedLayout> = ({
         <link rel="icon" href="/dark-logo.svg" />
       </Head>
       <Topbar />
-      <main className="flex-1 bg-gray-900">
+      <main
+        className={`flex-1 bg-gray-900 ${
+          pathname === '/404' && 'flex flex-col'
+        }`}
+      >
         <div className={(hasContainer && 'm-auto max-w-screen-xl') || ''}>
           {children}
         </div>
