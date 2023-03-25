@@ -32,7 +32,7 @@ export const Tags = ({
   const areTagClosable = !!removeTagHandler;
 
   return (
-    <div className={`flex ${className}`}>
+    <ul className={`flex ${className}`}>
       {tagsToShow.map((tag: string, i: number) => {
         return (
           <Tag
@@ -47,6 +47,6 @@ export const Tags = ({
         tags.length - tagsToShow.length > 0 && (
           <Tag title={`+${tags.length - tagsToShow.length}`} />
         )}
-    </div>
+    </ul>
   );
 };

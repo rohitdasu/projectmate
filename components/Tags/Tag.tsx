@@ -5,7 +5,7 @@ import { TagProps } from './Tags.interface';
 export const Tag = ({ title, className, onClick, onClose }: TagProps) => {
   const isClickable = !!onClick;
   return (
-    <motion.div
+    <motion.li
       layout
       onClick={isClickable ? (e) => onClick(e, title) : undefined}
       className={`flex w-max ${
@@ -21,6 +21,6 @@ export const Tag = ({ title, className, onClick, onClose }: TagProps) => {
           />
         )}
       </>
-    </motion.div>
+    </motion.li>
   );
 };

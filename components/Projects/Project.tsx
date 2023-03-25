@@ -31,7 +31,7 @@ export const Project = ({
     >
       <div className="flex h-full flex-col items-center overflow-hidden rounded-md">
         <div className="flex w-full grow flex-col gap-5 p-4 pt-4">
-          <div className="flex flex-row items-start justify-between">
+          <header className="flex flex-row items-start justify-between">
             <Typography
               as="h2"
               fontSize="xl"
@@ -45,14 +45,16 @@ export const Project = ({
               </span>
             </Typography>
             <div className="flex flex-row items-center gap-1 text-gray-400">
-              <Typography as="span" fontSize="3xl">
+              <Typography as="span" fontSize="3xl" aria-hidden="true">
                 ·
               </Typography>
               <Typography as="p" fontSize="sm" fontWeight="light">
-                {moment(createdAt).fromNow()}
+                <time dateTime={createdAt.toString()}>
+                  {moment(createdAt).fromNow()}
+                </time>
               </Typography>
             </div>
-          </div>
+          </header>
           <Typography
             as="p"
             fontSize="sm"
