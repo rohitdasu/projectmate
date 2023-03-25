@@ -98,7 +98,7 @@ export const Hero = () => {
             </motion.button>
           )}
           {status === 'loading' && (
-            <motion.button
+            <motion.div
               whileTap={{ scale: 0.9 }}
               layout
               className={`w-full rounded-md border-2 border-gray-600 py-3 px-6 font-semibold text-gray-100 opacity-75 transition-all hover:opacity-100 focus:ring md:w-auto md:text-lg ${
@@ -109,7 +109,7 @@ export const Hero = () => {
               <span className="flex animate-pulse items-center justify-center gap-3">
                 Loading...
               </span>
-            </motion.button>
+            </motion.div>
           )}
         </motion.div>
       </div>
