@@ -60,62 +60,68 @@ const ProjectDetails = () => {
               </span>
             </motion.button>
           </div>
-          <Typography
-            as="h1"
-            fontSize="2xl"
-            fontWeight="semibold"
-            className="py-2 md:text-4xl"
-          >
-            {projectData?.title.toUpperCase()}
-          </Typography>
-          <div className="mt-6 flex flex-row items-center justify-between">
-            <div className="flex flex-row items-center gap-5">
-              <Image
-                src={
-                  projectData?.author?.image ||
-                  `https://avatars.dicebear.com/api/initials/${projectData?.author?.name}.png?backgroundColorLevel=800&fontSize=40`
-                }
-                alt="user-photo"
-                height={40}
-                width={40}
-                className="rounded-full"
-              />
-              <div>
-                <Typography
-                  as="h2"
-                  fontSize="lg"
-                  fontWeight="semibold"
-                  className="text-lg font-semibold"
-                >
-                  {projectData?.author?.name}
-                </Typography>
-                <Typography as="p" fontSize="xs" className="text-gray-300">
-                  {new Date(projectData?.createdAt).toLocaleDateString()}
-                </Typography>
-              </div>
-            </div>
-            <motion.a
-              layout
-              whileTap={{ scale: 0.9 }}
-              href={projectData?.githubRepository}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-1 text-lg text-gray-300 hover:cursor-pointer hover:text-blue-300 hover:underline"
-            >
-              <span className="">View Repo</span>
-              <BiLink />
-            </motion.a>
-          </div>
-          <div className="my-6 flex flex-col break-words">
+          <header>
             <Typography
-              as="h3"
-              fontSize="lg"
-              className="leading-8 text-gray-300"
+              as="h1"
+              fontSize="2xl"
+              fontWeight="semibold"
+              className="py-2 md:text-4xl"
             >
-              {projectData?.description}
+              {projectData?.title.toUpperCase()}
             </Typography>
-          </div>
-          <div>
+          </header>
+          <section>
+            <div className="mt-6 flex flex-row items-center justify-between">
+              <div className="flex flex-row items-center gap-5">
+                <figure>
+                  <Image
+                    src={
+                      projectData?.author?.image ||
+                      `https://avatars.dicebear.com/api/initials/${projectData?.author?.name}.png?backgroundColorLevel=800&fontSize=40`
+                    }
+                    alt="user-photo"
+                    height={40}
+                    width={40}
+                    className="rounded-full"
+                  />
+                </figure>
+                <div>
+                  <Typography
+                    as="h2"
+                    fontSize="lg"
+                    fontWeight="semibold"
+                    className="text-lg font-semibold"
+                  >
+                    {projectData?.author?.name}
+                  </Typography>
+                  <Typography as="p" fontSize="xs" className="text-gray-300">
+                    {new Date(projectData?.createdAt).toLocaleDateString()}
+                  </Typography>
+                </div>
+              </div>
+              <motion.a
+                layout
+                whileTap={{ scale: 0.9 }}
+                href={projectData?.githubRepository}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-1 text-lg text-gray-300 hover:cursor-pointer hover:text-blue-300 hover:underline"
+              >
+                <span className="">View Repo</span>
+                <BiLink />
+              </motion.a>
+            </div>
+            <div className="my-6 flex flex-col break-words">
+              <Typography
+                as="p"
+                fontSize="lg"
+                className="leading-8 text-gray-300"
+              >
+                {projectData?.description}
+              </Typography>
+            </div>
+          </section>
+          <section>
             <Typography
               as="h2"
               align="left"
@@ -131,7 +137,7 @@ const ProjectDetails = () => {
                 tags={projectData?.tags}
               />
             )}
-          </div>
+          </section>
           {repoData && <Stats {...repoData} />}
         </div>
       </motion.div>
