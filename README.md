@@ -1,4 +1,9 @@
-# PROJECTMATE - find your project mate online <a href="https://www.buymeacoffee.com/rohit.dasu" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important; width: 150px !important; align-items:center; box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;"></a>
+<div align="center">
+  <h1>PROJECTMATE - Find your project mate online</h1>
+  <a href="https://www.buymeacoffee.com/rohit.dasu" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important; width: 150px !important; box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;"></a>
+</div>
+
+<br>
 
 ![PROJECTMATE find your project mate online](https://user-images.githubusercontent.com/48400770/190438248-fc0f3e42-c6d3-4d07-bcba-10e7fece4bc2.png)
 
@@ -6,23 +11,30 @@ A web app where you can find contributors for your open-source project or as an 
 Find people who have the same vision as you do and contribute for building amazing products.
 
 ## Demo
-
-Check out the web app: [https://projectmate.net](https://projectmate.net)
+<a href="https://www.projectmate.net/" target="_blank">
+   <img src="https://user-images.githubusercontent.com/67530432/230128284-5199a093-0573-4454-8950-8ada75b075e8.png" alt="landing" width="100%" height="auto" />
+</a>
+<br>
+<br>
+Check out the web app 🌏 : https://www.projectmate.net/ 
 
 ## Connect with us
 
 As a community, we always encourage people to share their thoughts and ideas. Do you want to talk to us? Join our Discord server by clicking the badge below.
 
-[![DISCORD - Join](https://img.shields.io/badge/DISCORD-Join-2ea44f?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FQtyMWFZQ9)
-[![FIGMA - View](https://img.shields.io/badge/Figma-View-2ea44f?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/3v3ckbS8o24Me4L93so4js/projectmate)
+[![DISCORD - Join](https://img.shields.io/badge/DISCORD-Join-cc4400?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FQtyMWFZQ9)
+
+Here's our Figma design:
+
+[![FIGMA - View](https://img.shields.io/badge/Figma-View-cc4400?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/3v3ckbS8o24Me4L93so4js/projectmate)
 
 ## Tech stack
 
-![Next.js](https://img.shields.io/badge/Next.js-305FCB?style=for-the-badge&logo=next.js&logoColor=white)
-![tailwind css](https://img.shields.io/badge/tailwind_css-305FCB?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-305FCB?style=for-the-badge&logo=mongodb&logoColor=white)
-![Prisma](https://img.shields.io/badge/Prisma-305FCB?style=for-the-badge&logo=prisma&logoColor=white)
-![Figma](https://img.shields.io/badge/Figma-305FCB?style=for-the-badge&logo=figma&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-cc4400?style=for-the-badge&logo=next.js&logoColor=white)
+![tailwind css](https://img.shields.io/badge/tailwind_css-cc4400?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-cc4400?style=for-the-badge&logo=mongodb&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-cc4400?style=for-the-badge&logo=prisma&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-cc4400?style=for-the-badge&logo=figma&logoColor=white)
 
 1. Frontend - **Next.js**
 2. CSS Framework - **Tailwind CSS**
@@ -31,55 +43,56 @@ As a community, we always encourage people to share their thoughts and ideas. Do
 
 ## Installation steps
 
-1. Fork the project
+1. Fork the project 🔧
 
-2. Clone the project by running
+2. Clone the project by running the following command on the terminal 🔽
    ```sh
    git clone https://github.com/<your-github-username>/projectmate.git
    ```
-3. Go into the project directory
+3. Go into the project directory 🔽
    ```sh
    cd projectmate
    ```
-4. Create an `.env` file from the `.env.template` file (copy everything in the `.env.template` file and put it in the `.env` file with appropriate values).
+4. Create an `.env` file from the `.env.template` file (copy everything in the `.env.template` file and put it in the `.env` file with appropriate values) 📄
 
    - `MONGODB_URI` is the `connection string` which you'll get from mongodb [for reference](https://www.mongodb.com/docs/manual/reference/connection-string/).
    - `NEXTAUTH_SECRET` Just pass any `random string` or you can quickly create a good value on the command line via this `openssl command`.
-
+   <br>
+   
    ```sh
    openssl rand -base64 32
    ```
 
-5. Install all the dependencies
+5. Install all the dependencies ✅
    ```sh
    yarn
    ```
-6. Synchronize your Prisma schema with your database schema
+6. Synchronize your Prisma schema with your database schema 🗃
    ```sh
    yarn prisma db push
    ```
-7. Insert required data to your database
+7. Insert required data to your database ✅
    ```sh
    yarn prisma db seed
    ```
-8. Start the application development server
+8. Start the application development server 🚀
    ```sh
    yarn run dev
    ```
 
-## Contributing Guidelines
+## Contributing Guidelines 📜
 
 Any contributions you make are truly appreciated, go to our [CONTRIBUTING.md](https://github.com/rohitdasu/projectmate/blob/main/CONTRIBUTING.md) file for more information.
 
-## Code of Conduct
+## Code of Conduct 📜
 
 View [CODE_OF_CONDUCT.md](https://github.com/rohitdasu/projectmate/blob/main/CODE_OF_CONDUCT.md)
 
-## License
+## License 📃
 
 projectmate is licensed under the MIT License - see the [LICENSE](https://github.com/rohitdasu/projectmate/blob/main/LICENSE) file for details.
 
-## Thanks to all Contributors
+## Thanks to all Contributors ✨
 
 <a href="https://github.com/rohitdasu/projectmate/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=rohitdasu/projectmate" />
