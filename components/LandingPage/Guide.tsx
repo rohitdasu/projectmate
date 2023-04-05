@@ -5,7 +5,7 @@ import { Typography } from '@/components/Typography';
 
 export const Guide = () => {
   return (
-    <div>
+    <section>
       <Typography
         as="h2"
         align="center"
@@ -24,9 +24,9 @@ export const Guide = () => {
               className="relative flex w-[100%] max-w-[30rem] flex-col items-center gap-2 rounded-md bg-slate-800 p-5 text-center shadow-md"
             >
               <div className="flex flex-col items-center gap-2">
-                <Icon className="text-2xl" />
+                <Icon className="text-2xl" aria-hidden="true" />
                 <Typography
-                  as="h2"
+                  as="h3"
                   fontSize="base"
                   fontWeight="semibold"
                   className="uppercase text-gray-300 md:text-lg"
@@ -47,6 +47,6 @@ export const Guide = () => {
           );
         })}
       </ul>
-    </div>
+    </section>
   );
 };

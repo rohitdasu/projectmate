@@ -24,17 +24,17 @@ export const Benefit: React.FC<IProps> = ({
         reverse && 'lg:flex-row-reverse'
       }`}
     >
-      <div className="flex h-[400px] w-[100%] overflow-hidden rounded-md lg:min-w-[30rem]">
+      <figure className="flex h-[400px] w-[100%] overflow-hidden rounded-md lg:min-w-[30rem]">
         <Image
           src={image_src}
           placeholder="blur"
           alt={image_alt}
           objectFit="cover"
         />
-      </div>
+      </figure>
       <div className="flex max-w-[30rem] flex-col gap-10 text-center lg:max-w-[100%] lg:text-left">
         <Typography
-          as="h2"
+          as="h3"
           align="left"
           fontSize="2xl"
           fontWeight="bold"
@@ -58,7 +58,7 @@ export const Benefit: React.FC<IProps> = ({
 
 export const BenefitsContainer = () => {
   return (
-    <div>
+    <section>
       <Typography
         as="h2"
         align="center"
@@ -73,6 +73,6 @@ export const BenefitsContainer = () => {
           return <Benefit key={item.title} {...item} />;
         })}
       </ul>
-    </div>
+    </section>
   );
 };

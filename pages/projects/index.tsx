@@ -35,17 +35,24 @@ const Projects = () => {
 
   return (
     <SharedLayout title="Projects">
-      <div className="mt-4 flex flex-col">
+      <section className="mt-4 flex flex-col">
+        <header className="sr-only">
+          <h1>Projects</h1>
+        </header>
         <div className="container m-auto mb-2 flex max-w-screen-xl flex-col gap-y-4 px-2 md:px-5">
-          <div className="flex flex-col items-start gap-x-2 gap-y-2 md:flex-row md:items-center">
-            <h4>Filter by tags:</h4>
+          <form
+            className="flex flex-col items-start gap-x-2 gap-y-2 md:flex-row md:items-center"
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <label htmlFor="filterTags">Filter by tags:</label>
             <MultiSelectInput
               onEnterClick={onEnterClick}
               suggestions={filteredAvailableTags}
               inputClassName="w-full md:w-52 items-center rounded-md border-2 border-gray-700 bg-transparent px-3 py-1 outline-none"
               errorMessage="The inserted Tag does not exists"
+              id="filterTags"
             />
-          </div>
+          </form>
           <Tags
             tags={selectedTags}
             removeTagHandler={onDeleteTag}
@@ -54,7 +61,7 @@ const Projects = () => {
           />
         </div>
         <ProjectsList selectedTags={selectedTags} />
-      </div>
+      </section>
     </SharedLayout>
   );
 };

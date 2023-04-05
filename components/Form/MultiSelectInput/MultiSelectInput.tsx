@@ -9,6 +9,7 @@ interface MultiSelectInputProps {
   onEnterClick: (value: string) => void;
   inputClassName?: string;
   errorMessage?: string;
+  id: string;
 }
 
 const MultiSelectInput = ({
@@ -16,6 +17,7 @@ const MultiSelectInput = ({
   onEnterClick,
   inputClassName,
   errorMessage,
+  id,
 }: MultiSelectInputProps) => {
   const [isError, setIsError] = useState(false);
 
@@ -43,6 +45,7 @@ const MultiSelectInput = ({
   return (
     <>
       <input
+        id={id}
         ref={inputRef}
         list="tags"
         className={classNames(

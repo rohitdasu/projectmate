@@ -11,7 +11,7 @@ export const Thanks = () => {
     fetcher
   );
   return (
-    <div className="flex flex-col items-center justify-center">
+    <section className="flex flex-col items-center justify-center">
       <Typography
         as="h2"
         align="center"
@@ -21,9 +21,9 @@ export const Thanks = () => {
       >
         Thanks to our contributors
       </Typography>
-      <div className="grid grid-cols-3 gap-2 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12">
+      <ul className="grid grid-cols-3 gap-2 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12">
         <ContributorList contributors={data} />
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 };
