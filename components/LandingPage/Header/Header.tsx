@@ -10,7 +10,7 @@ const Logo = () => {
 
 export const Header = () => {
   return (
-    <nav className="mx-auto flex h-20 w-full max-w-screen-xl flex-row items-center justify-between px-4 lg:px-0">
+    <nav className="mx-auto flex h-20 w-full max-w-screen-xl flex-row items-center justify-between px-4">
       <Logo />
     </nav>
   );
