@@ -29,11 +29,18 @@ export const Project: FC<IProject> = ({
   };
   //delteProject function is responsible to call the delete API when the yes button is clicked in the popup
   async function deleteProject(id: string) {
+    const yesButton = document.getElementById('yesButton');
+    if (yesButton) {
+      yesButton.classList.add('cursor-not-allowed');
+    }
     const url = `/api/user/project?projectId=${id}`;
     const result = await axios
       .delete(`/api/user/project?projectId=${id}`)
       .then((res) => res.data)
       .catch((error) => error.message);
+    if (yesButton) {
+      yesButton.classList.remove('cursor-not-allowed');
+    }
     closeModal();
     //once the delete operation has been performed the profile page has to be updated with new list of projects so handleDelete is a props passed by the parent component which let the parent component knows that a project has been deleted so that parent component can update the state
     handleDelete(id);
@@ -71,6 +78,7 @@ export const Project: FC<IProject> = ({
           </h2>
           <div className="item-center flex flex-row justify-center gap-2 md:gap-3">
             <button
+              id="yesButton"
               className="flex flex-row items-center justify-center gap-2 rounded-md bg-green-900 p-3 px-2 py-1 text-red-100 transition-all hover:opacity-70 md:px-3 md:py-2"
               onClick={() => deleteProject(id)}
             >
