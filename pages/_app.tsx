@@ -1,7 +1,5 @@
 import { ErrorFallback } from '@/components/ErrorFallback';
 import { AppToaster } from '@/components/Toaster';
-import { cache } from '@emotion/css';
-import { CacheProvider } from '@emotion/react';
 import { SessionProvider } from 'next-auth/react';
 import { AppProps } from 'next/app';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -17,10 +15,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     >
       <SessionProvider session={pageProps.session}>
         <Provider store={store}>
-          <CacheProvider value={cache}>
-            <Component {...pageProps} />
-            <AppToaster />
-          </CacheProvider>
+          <Component {...pageProps} />
+          <AppToaster />
         </Provider>
       </SessionProvider>
     </ErrorBoundary>

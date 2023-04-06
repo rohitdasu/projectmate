@@ -1,35 +1,8 @@
 /* eslint-disable @next/next/next-script-for-ga */
 import React from 'react';
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-  DocumentInitialProps,
-} from 'next/document';
-import { extractCritical } from '@emotion/server';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 export default class MyDocument extends Document {
-  static async getInitialProps(
-    ctx: DocumentContext
-  ): Promise<DocumentInitialProps> {
-    const initialProps = await Document.getInitialProps(ctx);
-    const critical = extractCritical(initialProps.html);
-    initialProps.html = critical.html;
-    initialProps.styles = (
-      <React.Fragment>
-        {initialProps.styles}
-        <style
-          data-emotion-css={critical.ids.join(' ')}
-          dangerouslySetInnerHTML={{ __html: critical.css }}
-        />
-      </React.Fragment>
-    );
-
-    return initialProps;
-  }
-
   render() {
     return (
       <Html lang="en">
@@ -84,7 +57,7 @@ export default class MyDocument extends Document {
               })(window,document,'script','dataLayer','GTM-KSS8T4M');`,
             }}
           />
-          <script
+          {/* <script
             data-name="BMC-Widget"
             data-cfasync="false"
             src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
@@ -92,11 +65,11 @@ export default class MyDocument extends Document {
             data-description="Support me on Buy me a coffee!"
             data-message=""
             data-color="#FF813F"
-            data-position="left"
-            data-x_margin="22"
-            data-y_margin="22"
+            data-position="left center"
+            data-x_margin="78"
+            data-y_margin="78"
             defer
-          />
+          /> */}
         </Head>
         <body className="bg-background-1">
           <noscript>

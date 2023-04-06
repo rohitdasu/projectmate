@@ -11,9 +11,12 @@ module.exports = {
     fontFamily: {
       sans: ["'Poppins', sans-serif"],
       mono: ['Alegreya Sans SC'],
+      lato: ['Lato'],
     },
     extend: {
       colors: {
+        'secondary-background': 'rgba(217, 217, 217, 0.07)',
+
         'primary-color': 'var(--primary-color)',
         'dark-color': 'var(--dark-color)',
         'dark-mode': 'var(--dark-mode)',

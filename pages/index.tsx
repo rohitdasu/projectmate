@@ -1,23 +1,22 @@
-import { BackToTop } from '@/components/BackToTopButton';
-import {
-  BenefitsContainer,
-  Guide,
-  Hero,
-  Thanks,
-} from '@/components/LandingPage/';
-import { SharedLayout } from '@/components/Layouts/SharedLayout';
+import React from 'react';
 import type { NextPage } from 'next';
+import { SharedLayout } from '@/components/SharedLayout';
+import { HeroComponent } from '@/components/LandingPage/HeroComponent';
+import { BenefitsComponent } from '@/components/LandingPage/BenefitsComponent';
+import { SuccessStoryComponent } from '@/components/LandingPage/SuccessStoryComponent';
+import { ActionComponent } from '@/components/LandingPage/ActionComponent';
+import { TeamsComponent } from '@/components/LandingPage/TeamsComponent';
 
 const Home: NextPage = () => {
   return (
-    <SharedLayout title="Find your project mate online" hasContainer showFooter>
-      <div className="flex flex-col space-y-32 px-4 pb-24 pt-16 md:pt-24">
-        <Hero />
-        <Guide />
-        <BenefitsContainer />
-        <Thanks />
-      </div>
-      <BackToTop />
+    <SharedLayout title="Home" hasContainer={false}>
+      <>
+        <HeroComponent />
+        <BenefitsComponent />
+        <SuccessStoryComponent />
+        <ActionComponent />
+        <TeamsComponent />
+      </>
     </SharedLayout>
   );
 };

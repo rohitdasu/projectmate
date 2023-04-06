@@ -1,0 +1,1 @@
+export { TeamsComponent } from './TeamsComponent';
