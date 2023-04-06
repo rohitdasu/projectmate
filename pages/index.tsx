@@ -9,7 +9,7 @@ import { TeamsComponent } from '@/components/LandingPage/TeamsComponent';
 
 const Home: NextPage = () => {
   return (
-    <SharedLayout title="Home" hasContainer={false}>
+    <SharedLayout title="Home" hasContainer={false} showFooter>
       <>
         <HeroComponent />
         <BenefitsComponent />

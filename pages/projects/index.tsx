@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { ProjectsList, SharedLayout } from '../../components';
+import { ProjectsList } from '@/components';
 import MultiSelectInput from '@/components/Form/MultiSelectInput/MultiSelectInput';
 import { useMemo } from 'react';
 import { RemoveTagFc, Tags } from '@/components/Tags';
 import useSWR from 'swr';
 import axios from 'axios';
+import { SharedLayout } from '@/components/SharedLayout';
 
 const Projects = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);

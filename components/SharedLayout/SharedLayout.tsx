@@ -23,7 +23,7 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
           {children}
         </div>
       </main>
-      <Footer />
+      {showFooter && <Footer />}
     </div>
   );
 };
