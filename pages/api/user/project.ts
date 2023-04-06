@@ -38,7 +38,26 @@ export default async function handler(
           success: false,
         });
       }
-
+    //delete api has been created to delete a user project
+    case 'DELETE':
+      const { projectId } = req.query;
+      try {
+        const data = await deleteProject(projectId?.toString());
+        return successResponse({
+          res,
+          message: 'Succesfully Deleted',
+          results: data,
+          statusCode: 200,
+          success: true,
+        });
+      } catch (error) {
+        return errorResponse({
+          res,
+          message: 'Internal Error',
+          statusCode: 500,
+          success: false,
+        });
+      }
     default:
       return errorResponse({
         res,
@@ -48,7 +67,16 @@ export default async function handler(
       });
   }
 }
-
+async function deleteProject(projectId?: string) {
+  try {
+    const data: Project | null = await prisma.project.delete({
+      where: { id: projectId },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
 async function getProject(session: Session) {
   try {
     const data: Project[] = await prisma.project.findMany({

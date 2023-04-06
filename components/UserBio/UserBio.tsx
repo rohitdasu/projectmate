@@ -8,8 +8,12 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import axios from 'axios';
+type MyProps = {
+  projectNumbers: number;
+};
 
-export const UserBio: React.FC = () => {
+export const UserBio: React.FC<MyProps> = ({ projectNumbers }) => {
+  // here we are using projectNumbers as the props which is passed by the parent so that whenever parent component updates its state the Child Component UserBio also gets re-rendered with the new number of projects
   const router = useRouter();
   const [isDescriptionClamped, setIsDescriptionClamped] = useState(true);
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
@@ -132,10 +136,10 @@ export const UserBio: React.FC = () => {
           fontSize="xl"
           fontWeight="medium"
           className={`mx-2  sm:text-base ${
-            numberOfProjects === 0 ? 'text-red-500' : 'text-gray-100'
+            projectNumbers === 0 ? 'text-red-500' : 'text-gray-100'
           }`}
         >
-          {numberOfProjects}
+          {projectNumbers}
         </Typography>
       </div>
       <button

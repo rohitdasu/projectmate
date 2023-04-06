@@ -12,6 +12,7 @@ import errorAnimation from '../../public/animations/error.json';
 import { Typography } from '@/components/Typography';
 import { ProfileHeader } from '@/components/Profile/ProfileHeader';
 import { UserBio } from '@/components/UserBio';
+import { useState, useEffect } from 'react';
 
 const Profile: NextPage = () => {
   const { status } = useSession({
@@ -20,11 +21,27 @@ const Profile: NextPage = () => {
       Router.push('/');
     },
   });
-
+  //here we are using projects as the state of the functional component which stores all the projects on the user profile as an array so we can update the profile page easily, once a project is deleted
+  const [projects, setProjects] = useState([]);
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
   const url = `/api/user/project`;
   const { data, error } = useSWR(url, fetcher);
-  const { results: projects } = data || [];
+  // useEffect hook is used for data variable as whenever the useSWR hook calls the API if the data has been changed then that profile page should also get changed and projects state should also get updated
+  useEffect(() => {
+    if (data) {
+      if (data.results !== projects) setProjects(data.results);
+    }
+  }, [data]);
+  //handleDelete function has been created to update the projects state by removing the project which has been deleted and rerendering the profile page
+  const handleDelete = (projectId: string) => {
+    if (projects.length) {
+      setProjects((projects) =>
+        projects.filter((project) => {
+          return project['id'] !== projectId;
+        })
+      );
+    }
+  };
 
   if (status === 'loading' || !data) {
     return (
@@ -45,7 +62,8 @@ const Profile: NextPage = () => {
         <ProfileHeader />
         <div className="flex w-full flex-col lg:flex-row">
           <div className="top-5 mt-12 mr-5 h-min w-full rounded-lg border border-gray-700 bg-slate-800 backdrop-blur-sm lg:sticky lg:w-[25%]">
-            <UserBio />
+            {/*projectNumbers is passed as a prop to UserBio so that this child component gets re-rendered when the profile page is updated */}
+            <UserBio projectNumbers={projects.length} />
           </div>
           <div className="w-full lg:w-[75%]">
             <Typography
@@ -68,11 +86,12 @@ const Profile: NextPage = () => {
                   }) => {
                     return (
                       <Project
+                        handleDelete={handleDelete}
                         key={item.id}
                         title={item.title}
                         id={item.id}
-                        description={item.description}
                         tags={item.tags}
+                        description={item.description}
                         createdAt={item.createdAt}
                       />
                     );
