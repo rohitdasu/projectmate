@@ -6,12 +6,12 @@ export const BenefitsComponent = () => {
   return (
     <div className="bg-secondary-background py-16 px-4 lg:px-0">
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8">
-        <h2 className="text-center text-2xl text-gray-200 md:text-left lg:text-4xl">
+        <h2 className="text-center text-xl text-gray-200 md:text-left lg:text-4xl">
           What are the benefits?
         </h2>
-        <p className="w-full text-center text-lg text-gray-400 md:w-2/3 md:text-left lg:w-1/2">
+        <p className="w-full text-center text-base text-gray-400 md:w-2/3 md:text-left lg:w-1/2">
           From connecting with like-minded developers to finding new projects,
-          see how projectmate can benefit you{' '}
+          see how projectmate can benefit you
         </p>
         <ul className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-4 lg:grid-cols-4 lg:gap-8">
           {benefits.map((benefit) => {

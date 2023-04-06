@@ -7,8 +7,10 @@ export const Benefit: FC<BenefitType> = ({ description, title }) => {
       <div className="flex h-10 w-10 flex-row items-center justify-center rounded-full bg-gray-300 font-medium text-gray-900">
         <FaStarOfLife className="text-xs" />
       </div>
-      <p className="text-center text-lg text-gray-200 md:text-left">{title}</p>
-      <p className="text-center text-base text-gray-400 md:text-left">
+      <p className="text-center text-base text-gray-200 md:text-left">
+        {title}
+      </p>
+      <p className="text-center text-sm text-gray-400 md:text-left">
         {description}
       </p>
     </li>
