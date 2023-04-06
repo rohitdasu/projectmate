@@ -24,7 +24,7 @@ export function Avatar() {
               whileTap={{ scale: 0.9 }}
               className="flex items-center hover:opacity-80"
             >
-              <div className="relative my-[0.67rem] h-[47px] w-[47px] overflow-hidden rounded-full shadow-border-shadow">
+              <div className="shadow-border-shadow relative my-[0.67rem] h-[47px] w-[47px] overflow-hidden rounded-full">
                 <Image
                   src={getImageUrl(user as User)}
                   layout="fill"

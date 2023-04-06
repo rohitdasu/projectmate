@@ -16,7 +16,7 @@ export function ProfileCard() {
         className="mt-2 flex w-full items-center"
       >
         <div className="mr-3">
-          <div className="relative h-16 w-16 overflow-hidden rounded-full shadow-border-shadow">
+          <div className="shadow-border-shadow relative h-16 w-16 overflow-hidden rounded-full">
             <Image
               src={getImageUrl(user as User)}
               layout="fill"

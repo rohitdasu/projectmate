@@ -34,7 +34,7 @@ export const Topbar = () => {
           {router.pathname !== SUBMIT_PAGE &&
             !MOBILE_ROUTES.includes(router.pathname) && (
               <button
-                className="hidden h-[2.939rem] w-40 rounded-md border-white !bg-transparent text-gray-400 shadow-border-shadow transition-all hover:border-2 hover:text-gray-100 lg:block"
+                className="shadow-border-shadow hidden h-[2.939rem] w-40 rounded-md border-white !bg-transparent text-gray-400 transition-all hover:border-2 hover:text-gray-100 lg:block"
                 onClick={gotoSubmitPage}
               >
                 Submit Project

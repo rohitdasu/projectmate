@@ -30,7 +30,7 @@ export const Project: FC<IProject> = ({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
-      className="flex w-full flex-col items-start justify-between gap-4 rounded-lg border border-gray-700 bg-slate-800 p-2 text-gray-100 shadow-border-shadow transition-all hover:shadow-md md:p-4"
+      className="shadow-border-shadow flex w-full flex-col items-start justify-between gap-4 rounded-lg border border-gray-700 bg-slate-800 p-2 text-gray-100 transition-all hover:shadow-md md:p-4"
     >
       <div className="flex w-full flex-row items-center justify-between">
         <Typography

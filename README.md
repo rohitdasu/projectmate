@@ -12,12 +12,13 @@ A web app where you can find contributors for your open-source project or as an 
 Find people who have the same vision as you do and contribute for building amazing products.
 
 ## Demo
+
 <a href="https://www.projectmate.net/" target="_blank">
    <img src="https://user-images.githubusercontent.com/67530432/230128284-5199a093-0573-4454-8950-8ada75b075e8.png" alt="landing" width="100%" height="auto" />
 </a>
 <br>
 <br>
-Check out the web app 🌏 : https://www.projectmate.net/ 
+Check out the web app 🌏 : https://www.projectmate.net/
 
 ## Connect with us
 
@@ -58,8 +59,8 @@ Here's our Figma design:
 
    - `MONGODB_URI` is the `connection string` which you'll get from mongodb [for reference](https://www.mongodb.com/docs/manual/reference/connection-string/).
    - `NEXTAUTH_SECRET` Just pass any `random string` or you can quickly create a good value on the command line via this `openssl command`.
-   <br>
-   
+     <br>
+
    ```sh
    openssl rand -base64 32
    ```

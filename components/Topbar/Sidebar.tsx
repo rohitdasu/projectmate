@@ -74,7 +74,7 @@ export const Sidebar = () => {
     <>
       <motion.button
         whileTap={{ scale: 0.8 }}
-        className="flex overflow-hidden rounded-md p-[0.67rem] text-[1.6rem] shadow-border-shadow lg:hidden"
+        className="shadow-border-shadow flex overflow-hidden rounded-md p-[0.67rem] text-[1.6rem] lg:hidden"
         onClick={() => setOpen(true)}
         aria-expanded={open}
       >
@@ -91,15 +91,15 @@ export const Sidebar = () => {
 
             <motion.div
               {...framer_sidebar_panel}
-              className="fixed left-0 top-0 bottom-0 z-30 flex h-screen w-[100%] max-w-[19rem] flex-col bg-background-1 lg:hidden"
+              className="bg-background-1 fixed left-0 top-0 bottom-0 z-30 flex h-screen w-[100%] max-w-[19rem] flex-col lg:hidden"
               ref={ref}
             >
-              <div className="border-b-[1px] border-gray-1 p-5">
+              <div className="border-gray-1 border-b-[1px] p-5">
                 <div className="flex items-center justify-between">
                   <Logo />
                   <motion.button
                     whileTap={{ scale: 0.8 }}
-                    className="flex overflow-hidden rounded-md p-[0.67rem] shadow-border-shadow"
+                    className="shadow-border-shadow flex overflow-hidden rounded-md p-[0.67rem]"
                     onClick={closeSidebar}
                   >
                     <BiArrowBack />
