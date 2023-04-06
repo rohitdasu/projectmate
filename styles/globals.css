@@ -1,78 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Shantell+Sans:wght@400;500;600;700&display=swap');
-
-:root {
-  --primary-background: linear-gradient(
-    112.65deg,
-    #2b3036 5.78%,
-    #001c48 92.19%
-  );
-
-  --primary-color: #ff7100;
-  --dark-color: #000000b2;
-  --secondary-color: #2854eecc;
-  --dark-mode: #1c2128;
-  --box-color: #1f242b;
-
-  --clr-background-1: #0c0e11;
-  --clr-background-2: #1b2c43;
-  --clr-foreground-1: #ffffff;
-
-  --border-color-1: #4e4e4e;
-  --clr-filler-1: #656565;
-  --clr-border-1: #4e4e4e;
-
-  --clr-primary-1: #ff7100;
-
-  --clr-gray-1: #374151;
-
-  --boxshadow-1: hsl(212, 19%, 17%) 0px 0px 0px 1px;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
-  color: var(--clr-foreground-1);
-}
-
-#__next {
-  min-height: 100vh;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.active {
-  @apply border-b-[3px] border-b-secondary-color;
+:root {
+  --primary-background: radial-gradient(
+    75.7% 75.7% at 50% 24.3%,
+    rgba(0, 8, 75, 0) 0%,
+    rgba(17, 22, 70, 0.52) 0%,
+    rgba(8, 11, 34, 0.769977) 58.33%,
+    #000000 100%
+  );
+  --secondary-background: rgba(217, 217, 217, 0.07);
+
+  --primary-color: #17a24a;
 }
 
-.hover-overlay {
-  @apply rounded-full bg-gray-500;
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-.scroll-hide::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.scroll-hide {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-}
-
-.cover-container span {
-  color: rgb(240 82 82 / var(--tw-border-opacity)) !important;
-}
-
-.app-toaster {
-  background-color: var(--clr-background-1) !important;
-  --tw-shadow: var(--boxshadow-1);
-  --tw-shadow-colored: var(--boxshadow-1);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+body {
+  font-family: 'Inter';
+  overflow-x: hidden;
+  color: #ffffff;
 }

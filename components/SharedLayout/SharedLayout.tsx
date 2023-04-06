@@ -12,10 +12,7 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
   hasContainer = true,
 }) => {
   return (
-    <div
-      className="flex min-h-screen w-full flex-col"
-      style={{ backgroundImage: 'var(--primary-background)' }}
-    >
+    <div className="flex min-h-screen w-full flex-col">
       <Head>
         <title>{`${title} | Projectmate`}</title>
         <link rel="icon" href="/dark-logo.svg" />

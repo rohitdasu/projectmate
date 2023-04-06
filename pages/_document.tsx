@@ -57,21 +57,23 @@ export default class MyDocument extends Document {
               })(window,document,'script','dataLayer','GTM-KSS8T4M');`,
             }}
           />
-          {/* <script
-            data-name="BMC-Widget"
-            data-cfasync="false"
-            src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-            data-id="rohit.dasu"
-            data-description="Support me on Buy me a coffee!"
-            data-message=""
-            data-color="#FF813F"
-            data-position="left center"
-            data-x_margin="78"
-            data-y_margin="78"
-            defer
-          /> */}
+          {/* fonts */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="anonymous"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Lato:wght@100;300;400;700;900&display=swap"
+            rel="stylesheet"
+          />
+          {/* /fonts */}
         </Head>
-        <body className="bg-background-1">
+        <body
+          className="bg-gray-900"
+          style={{ backgroundImage: 'var(--primary-background)' }}
+        >
           <noscript>
             <iframe
               src="https://www.googletagmanager.com/ns.html?id=GTM-KSS8T4M"

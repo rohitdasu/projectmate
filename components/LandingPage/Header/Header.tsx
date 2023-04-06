@@ -2,8 +2,8 @@ import React from 'react';
 
 const Logo = () => {
   return (
-    <h1 className="font-lato text-xl uppercase md:text-2xl">
-      project<span className="text-green-400">mate</span>
+    <h1 className="font-lato text-xl font-medium uppercase md:text-2xl">
+      project<span className="text-primary-color">mate</span>
     </h1>
   );
 };

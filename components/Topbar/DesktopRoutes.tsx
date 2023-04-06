@@ -19,8 +19,8 @@ export const DesktopRoutes = () => {
           <li key={title + url + new Date()}>
             <Link
               href={url}
-              className={`flex cursor-pointer items-center gap-1 text-gray-400 transition-all hover:!text-primary-1 ${
-                isCurrent && '!text-primary-1'
+              className={`flex cursor-pointer items-center gap-1 text-gray-400 transition-all hover:!text-primary-color ${
+                isCurrent && '!text-primary-color'
               }`}
               {...anchorTagProps}
             >

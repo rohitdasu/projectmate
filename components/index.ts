@@ -3,7 +3,6 @@ export * from './Avatar';
 export * from './BackToTopButton';
 export * from './Button';
 export * from './BuyMeACoffee';
-export * from './ContributorList';
 export * from './ErrorFallback';
 export * from './FloatingButtonMenu';
 export * from './Form';
