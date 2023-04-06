@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { SharedLayoutProps } from './SharedLayout.interface';
-import classNames from 'classNames';
+import classNames from 'classnames';
 import Head from 'next/head';
 import { Header } from '@/components/LandingPage/Header';
 import { Footer } from '@/components/LandingPage/Footer';
