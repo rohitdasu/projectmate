@@ -42,7 +42,7 @@ const Profile: NextPage = () => {
   };
 
   return (
-    <SharedLayout title="Profile" hasContainer>
+    <SharedLayout title="Profile">
       <div className="m-auto flex w-full flex-col px-4 py-6 pb-16">
         <ProfileHeader />
         <div className="flex w-full flex-col lg:flex-row">

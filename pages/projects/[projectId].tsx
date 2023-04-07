@@ -36,7 +36,7 @@ const ProjectDetails = () => {
     );
 
   return (
-    <SharedLayout title={projectData?.title.toUpperCase()} hasContainer>
+    <SharedLayout title={projectData?.title.toUpperCase()}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

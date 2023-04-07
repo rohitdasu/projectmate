@@ -9,7 +9,7 @@ import {
 } from '@/components';
 import Image from 'next/legacy/image';
 import moment from 'moment';
-import { AiOutlineClockCircle, AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineClockCircle } from 'react-icons/ai';
 import { IoIosShareAlt } from 'react-icons/io';
 import { ProjectProps } from './Project.interface';
 import { FaEye } from 'react-icons/fa';
@@ -33,12 +33,12 @@ export const Project = ({
 
   return (
     <motion.li
-      initial={{ opacity: 0, scale: 0.98 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       layout
       transition={{ duration: 1 }}
-      className="rounded-lg border border-gray-800 bg-gray-900 shadow-lg md:m-auto md:w-full"
+      className="border border-gray-800 bg-gray-900 shadow-lg md:m-auto md:w-full"
     >
       <div className="flex h-full flex-col items-center overflow-hidden rounded-md">
         <div className="flex w-full grow flex-col justify-center gap-5 p-4 pt-4">

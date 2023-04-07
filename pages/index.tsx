@@ -1,30 +1,33 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import {
-  SharedLayout,
   HeroComponent,
   BenefitsComponent,
   SuccessStoryComponent,
   ActionComponent,
-  TeamsComponent,
+  ContributorsComponent,
+  Header,
+  Footer,
 } from '@/components';
+import Head from 'next/head';
 
 const Home: NextPage = () => {
   return (
-    <SharedLayout
-      title="Home"
-      hasContainer={false}
-      showFooter
-      showAddButton={false}
-    >
-      <>
+    <>
+      <Head>
+        <title>Home | Projectmate</title>
+        <link rel="icon" href="/logo.svg" />
+      </Head>
+      <Header />
+      <main>
         <HeroComponent />
         <BenefitsComponent />
         <SuccessStoryComponent />
         <ActionComponent />
-        <TeamsComponent />
-      </>
-    </SharedLayout>
+        <ContributorsComponent />
+      </main>
+      <Footer />
+    </>
   );
 };
 

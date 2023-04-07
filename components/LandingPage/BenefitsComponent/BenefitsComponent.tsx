@@ -4,7 +4,7 @@ import { Benefit } from './Benefit';
 
 export const BenefitsComponent = () => {
   return (
-    <div className="bg-secondary-background py-16 px-4">
+    <section className="bg-secondary-background py-16 px-4">
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8">
         <h2 className="text-center text-xl text-gray-200 md:text-left lg:text-4xl">
           What are the benefits?
@@ -19,6 +19,6 @@ export const BenefitsComponent = () => {
           })}
         </ul>
       </div>
-    </div>
+    </section>
   );
 };

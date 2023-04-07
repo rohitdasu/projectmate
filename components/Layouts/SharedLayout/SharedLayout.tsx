@@ -1,15 +1,10 @@
 import React, { FC } from 'react';
 import { SharedLayoutProps } from './SharedLayout.interface';
-import classNames from 'classnames';
 import Head from 'next/head';
-import { Header, Footer } from '@/components';
 
 export const SharedLayout: FC<SharedLayoutProps> = ({
-  children,
   title = '',
-  showFooter = false,
-  hasContainer = true,
-  showAddButton = true,
+  children,
 }) => {
   return (
     <div className="flex min-h-screen w-full flex-col">
@@ -17,13 +12,9 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
         <title>{`${title} | Projectmate`}</title>
         <link rel="icon" href="/logo.svg" />
       </Head>
-      <Header showAddButton={showAddButton} />
-      <main className="flex-1">
-        <div className={classNames(hasContainer && 'm-auto max-w-screen-xl')}>
-          {children}
-        </div>
+      <main className="flex min-h-screen flex-col items-center justify-center">
+        {children}
       </main>
-      {showFooter && <Footer />}
     </div>
   );
 };

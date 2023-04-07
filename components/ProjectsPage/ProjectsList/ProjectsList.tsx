@@ -1,12 +1,14 @@
 import { useEffect, useMemo } from 'react';
 import useSWRInfinite from 'swr/infinite';
-import { Project } from './Project';
-import { ProjectSkeleton } from './ProjectSkeleton';
+import { Project } from '../Project/Project';
+import { ProjectSkeleton } from '../ProjectSkeleton';
 import axios from 'axios';
-import { ProjectsListProps } from './ProjectsList.interface';
-import { IProject } from './Project.interface';
+import { IProject } from '../Project/Project.interface';
+import { useAppSelector } from '@/hooks';
+import { selectTags } from '@/store/slices/sliceFilter';
 
-export const ProjectsList: React.FC<ProjectsListProps> = ({ selectedTags }) => {
+export const ProjectsList = () => {
+  const { selectedTags } = useAppSelector(selectTags);
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
   const getKey = (pageIndex: number, previousPageData: IProject[]) => {
@@ -67,7 +69,7 @@ export const ProjectsList: React.FC<ProjectsListProps> = ({ selectedTags }) => {
 
   return (
     <>
-      <ul className="grid h-full grid-cols-1 items-start gap-4 lg:grid-cols-2">
+      <ul className="h-full w-full">
         {!data ? (
           skeletonProjectsToLoad.map((randomKey) => (
             <ProjectSkeleton key={randomKey} />
@@ -87,6 +89,11 @@ export const ProjectsList: React.FC<ProjectsListProps> = ({ selectedTags }) => {
               />
             ))}
           </>
+        )}
+        {filteredProjects.length === 0 && (
+          <div className="flex h-screen items-center justify-center text-xl">
+            No Data
+          </div>
         )}
         {data && isLoadingMore && isNotReachEnd ? (
           skeletonProjectsToLoad.map((randomKey) => (

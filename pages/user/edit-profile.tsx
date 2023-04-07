@@ -32,7 +32,7 @@ const EditProfile = () => {
 
   if (error) {
     return (
-      <SharedLayout title="Submit Project" hasContainer>
+      <SharedLayout title="Submit Project">
         <div className="m-auto flex w-80 max-w-full flex-col gap-5">
           <Lottie animationData={errorAnimation} />
           <Typography as="p" align="center">
@@ -44,7 +44,7 @@ const EditProfile = () => {
   }
 
   return (
-    <SharedLayout title="Submit Project" hasContainer>
+    <SharedLayout title="Submit Project">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

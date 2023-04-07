@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const NotFound: NextPage = () => {
   return (
-    <SharedLayout title="Find your project mate online" hasContainer>
+    <SharedLayout title="Find your project mate online">
       <div className="text-center">
         <p className="mb-3 text-7xl">
           4<span className="text-6xl text-primary-color">0</span>4

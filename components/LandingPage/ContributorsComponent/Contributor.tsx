@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import Image from 'next/legacy/image';
-import { Contributor as ContributorType } from './TeamsComponent.interface';
+import { Contributor as ContributorType } from './ContributorsComponent.interface';
 export const Contributor: FC<ContributorType> = (contributor) => {
   return (
     <a
@@ -14,8 +14,8 @@ export const Contributor: FC<ContributorType> = (contributor) => {
         <Image
           src={contributor.avatar_url}
           alt={contributor.login}
-          width={70}
-          height={70}
+          width={56}
+          height={56}
           className="h-full w-full rounded-full bg-black"
         />
       </li>

@@ -4,4 +4,4 @@ export * from './Footer';
 export * from './Header';
 export * from './HeroComponent';
 export * from './SuccessStoryComponent';
-export * from './TeamsComponent';
+export * from './ContributorsComponent';

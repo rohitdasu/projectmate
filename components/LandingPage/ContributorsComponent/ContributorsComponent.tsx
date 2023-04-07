@@ -1,8 +1,8 @@
 import React from 'react';
-import { Contributor as ContributorType } from './TeamsComponent.interface';
+import { Contributor as ContributorType } from './ContributorsComponent.interface';
 import { Contributor } from './Contributor';
 
-export const TeamsComponent = () => {
+export const ContributorsComponent = () => {
   const url = `https://api.github.com/repos/rohitdasu/projectmate/contributors`;
   const [data, setData] = React.useState([]);
   async function loadContributors() {

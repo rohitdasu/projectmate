@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import modalReducer from './slices/sliceModal';
+import filterReducer from './slices/sliceFilter';
 
 export const store = configureStore({
   reducer: {
     modal: modalReducer,
+    filter: filterReducer,
   },
 });
 

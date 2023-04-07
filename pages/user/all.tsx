@@ -20,7 +20,7 @@ const All: NextPage = () => {
   }
 
   return (
-    <SharedLayout title="Profile" hasContainer>
+    <SharedLayout title="Profile">
       <>
         <div className="m-auto flex w-full flex-col px-4 pt-6 pb-8">
           <Typography

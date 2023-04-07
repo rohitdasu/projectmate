@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const HeroComponent = () => {
   return (
-    <div className="flex h-[calc(100vh-80px)] flex-row items-center justify-center px-4 lg:px-0">
+    <section className="flex h-[calc(100vh-80px)] flex-row items-center justify-center px-4 lg:px-0">
       <div className="flex flex-col gap-8">
         <h1 className="mx-auto max-w-5xl text-justify text-xl font-semibold text-gray-200 md:text-center md:text-3xl md:!leading-[1.25] lg:text-5xl">
           <span className="text-primary-color">Supercharge</span> your
@@ -22,6 +22,6 @@ export const HeroComponent = () => {
           </button>
         </Link>
       </div>
-    </div>
+    </section>
   );
 };

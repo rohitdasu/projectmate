@@ -1,1 +1,0 @@
-export { TeamsComponent } from './TeamsComponent';
