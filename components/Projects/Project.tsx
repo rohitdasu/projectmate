@@ -1,9 +1,18 @@
-import { ProjectProps } from './Project.interface';
-import { AiOutlineUser } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { Tags, Button, Typography } from '@/components';
+import {
+  Tags,
+  Button,
+  Typography,
+  toastMessage,
+  messageType,
+} from '@/components';
+import Image from 'next/legacy/image';
 import moment from 'moment';
+import { AiOutlineClockCircle, AiOutlineUser } from 'react-icons/ai';
+import { IoIosShareAlt } from 'react-icons/io';
+import { ProjectProps } from './Project.interface';
+import { FaEye } from 'react-icons/fa';
 
 export const Project = ({
   id,
@@ -12,10 +21,14 @@ export const Project = ({
   tags,
   author,
   createdAt,
+  authorImage,
 }: ProjectProps) => {
   const router = useRouter();
   const handleContributeClick = () => {
     router.push(`/projects/${id}`);
+  };
+  const handleShare = () => {
+    toastMessage('Share feature is disabled', messageType.error);
   };
 
   return (
@@ -25,10 +38,10 @@ export const Project = ({
       exit={{ opacity: 0 }}
       layout
       transition={{ duration: 1 }}
-      className="m-2 rounded-lg border-4 border-slate-800 bg-slate-900 shadow-lg md:m-auto md:w-full"
+      className="rounded-lg border border-gray-800 bg-gray-900 shadow-lg md:m-auto md:w-full"
     >
       <div className="flex h-full flex-col items-center overflow-hidden rounded-md">
-        <div className="flex w-full grow flex-col gap-5 p-4 pt-4">
+        <div className="flex w-full grow flex-col justify-center gap-5 p-4 pt-4">
           <header className="flex flex-row items-start justify-between">
             <Typography
               as="h2"
@@ -37,15 +50,22 @@ export const Project = ({
               className="min-w-[0] flex-1 flex-col gap-2 truncate text-gray-100"
             >
               {title}
-              <span className="flex items-center gap-1 text-sm font-light text-gray-100">
-                <AiOutlineUser />
-                {author}
-              </span>
+              <div className="flex items-center gap-1 text-sm font-light text-gray-100">
+                <Image
+                  src={
+                    authorImage ||
+                    `https://avatars.dicebear.com/api/initials/${author}.png?backgroundColorLevel=800&fontSize=40`
+                  }
+                  alt="user-photo"
+                  height={24}
+                  width={24}
+                  className="rounded-full"
+                />
+                <span>{author}</span>
+              </div>
             </Typography>
             <div className="flex flex-row items-center gap-1 text-gray-400">
-              <Typography as="span" fontSize="3xl" aria-hidden="true">
-                ·
-              </Typography>
+              <AiOutlineClockCircle />
               <Typography as="p" fontSize="sm" fontWeight="light">
                 <time dateTime={createdAt.toString()}>
                   {moment(createdAt).fromNow()}
@@ -69,12 +89,23 @@ export const Project = ({
                 className="flex-wrap gap-1 text-sm font-medium"
               />
             </div>
+          </div>
+          <div className="flex w-full flex-row items-center justify-center gap-2">
             <Button
               onClick={handleContributeClick}
               isDisabled={false}
-              className="mt-2 px-2 py-1.5 font-bold hover:animate-pulse sm:my-0"
+              className="mt-2 flex flex-1 flex-row items-center justify-center gap-2 px-2 py-1.5 font-bold hover:animate-pulse sm:my-0"
             >
-              <span>Contribute</span>
+              <FaEye />
+              <span>View</span>
+            </Button>
+            <Button
+              onClick={handleShare}
+              isDisabled={false}
+              className="mt-2 flex flex-row items-center justify-center gap-2 border border-gray-600 !bg-transparent px-2 py-1.5 font-bold hover:animate-pulse focus:ring-0 sm:my-0"
+            >
+              <IoIosShareAlt />
+              <span>Share</span>
             </Button>
           </div>
         </div>

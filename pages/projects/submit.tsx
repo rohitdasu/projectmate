@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const SubmitProject = () => {
   return (
-    <SharedLayout title="Submit Project" hasContainer>
+    <SharedLayout title="Submit Project" hasContainer showAddButton={false}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

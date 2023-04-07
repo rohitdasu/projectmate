@@ -1,16 +1,10 @@
-import { Project as ProjectData } from '@prisma/client';
 import { useEffect, useMemo } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import { Project } from './Project';
 import { ProjectSkeleton } from './ProjectSkeleton';
 import axios from 'axios';
 import { ProjectsListProps } from './ProjectsList.interface';
-
-interface IProject extends ProjectData {
-  author: {
-    name: string;
-  };
-}
+import { IProject } from './Project.interface';
 
 export const ProjectsList: React.FC<ProjectsListProps> = ({ selectedTags }) => {
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
@@ -73,7 +67,7 @@ export const ProjectsList: React.FC<ProjectsListProps> = ({ selectedTags }) => {
 
   return (
     <>
-      <ul className="container m-auto max-w-screen-xl auto-rows-auto gap-5 md:grid md:grid-cols-2 md:p-5 lg:grid-cols-3 xl:grid-cols-4">
+      <ul className="grid h-full grid-cols-1 items-start gap-4 lg:grid-cols-2">
         {!data ? (
           skeletonProjectsToLoad.map((randomKey) => (
             <ProjectSkeleton key={randomKey} />
@@ -88,6 +82,7 @@ export const ProjectsList: React.FC<ProjectsListProps> = ({ selectedTags }) => {
                 title={project.title}
                 tags={project.tags}
                 author={project.author.name}
+                authorImage={project.author.image}
                 createdAt={project.createdAt}
               />
             ))}

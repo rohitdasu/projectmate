@@ -9,6 +9,7 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
   title = '',
   showFooter = false,
   hasContainer = true,
+  showAddButton = true,
 }) => {
   return (
     <div className="flex min-h-screen w-full flex-col">
@@ -16,7 +17,7 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
         <title>{`${title} | Projectmate`}</title>
         <link rel="icon" href="/logo.svg" />
       </Head>
-      <Header />
+      <Header showAddButton={showAddButton} />
       <main className="flex-1">
         <div className={classNames(hasContainer && 'm-auto max-w-screen-xl')}>
           {children}

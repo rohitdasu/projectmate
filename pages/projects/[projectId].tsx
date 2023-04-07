@@ -102,9 +102,9 @@ const ProjectDetails = () => {
                 href={projectData?.githubRepository}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-1 text-lg text-gray-300 hover:cursor-pointer hover:text-blue-300 hover:underline"
+                className="flex items-center space-x-1 text-lg text-primary-color hover:cursor-pointer hover:underline"
               >
-                <span className="">View Repo</span>
+                View Repo
                 <BiLink />
               </motion.a>
             </div>

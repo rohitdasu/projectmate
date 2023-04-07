@@ -39,20 +39,20 @@ const Projects = () => {
 
   return (
     <SharedLayout title="Projects">
-      <section className="mt-4 flex flex-col">
+      <section className="relative my-4 flex w-full flex-col gap-4 px-4 lg:flex-row">
         <header className="sr-only">
           <h1>Projects</h1>
         </header>
-        <div className="container m-auto mb-2 flex max-w-screen-xl flex-col gap-y-4 px-2 md:px-5">
+        <div className="relative top-4 h-auto flex-1 lg:sticky lg:h-96">
           <form
-            className="flex flex-col items-start gap-x-2 gap-y-2 md:flex-row md:items-center"
+            className="flex flex-col items-start gap-x-2 gap-y-2"
             onSubmit={(e) => e.preventDefault()}
           >
             <label htmlFor="filterTags">Filter by tags:</label>
             <MultiSelectInput
               onEnterClick={onEnterClick}
               suggestions={filteredAvailableTags}
-              inputClassName="w-full md:w-52 items-center rounded-md border-2 border-gray-700 bg-transparent px-3 py-1 outline-none"
+              inputClassName="w-full md:w-80 items-center rounded-md border border-gray-700 bg-transparent px-3 py-1 outline-none"
               errorMessage="The inserted Tag does not exists"
               id="filterTags"
             />
@@ -60,7 +60,7 @@ const Projects = () => {
           <Tags
             tags={selectedTags}
             removeTagHandler={onDeleteTag}
-            className="flex-wrap gap-2"
+            className="my-2 flex-wrap gap-2"
             tagClassName="bg-slate-200 text-sm font-medium"
           />
         </div>

@@ -2,17 +2,19 @@ import React from 'react';
 import { useAppDispatch } from '@/hooks';
 import { openModal } from '@/store/slices/sliceModal';
 import { useSession } from 'next-auth/react';
-import { toastMessage, messageType, AuthModal } from '@/components';
+import { AuthModal } from '@/components';
+import { useRouter } from 'next/router';
 
 export const ActionComponent = () => {
   const { data: session } = useSession();
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const handleModal = () => dispatch(openModal());
   const join = () => {
     if (session === null) {
       handleModal();
     } else {
-      toastMessage('explore projects', messageType.success);
+      router.replace('/projects');
     }
   };
   return (

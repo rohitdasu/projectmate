@@ -6,11 +6,13 @@ export type ProjectProps = {
   description: string;
   tags: string[];
   author: string | null;
+  authorImage: string | null;
   createdAt: Date;
 };
 
 export interface IProject extends ProjectData {
   author: {
     name: string;
+    image: string;
   };
 }

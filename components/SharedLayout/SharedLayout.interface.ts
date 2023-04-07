@@ -3,4 +3,5 @@ export interface SharedLayoutProps {
   showFooter?: boolean;
   title: string;
   hasContainer?: boolean;
+  showAddButton?: boolean;
 }

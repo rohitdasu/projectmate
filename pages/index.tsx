@@ -11,7 +11,12 @@ import {
 
 const Home: NextPage = () => {
   return (
-    <SharedLayout title="Home" hasContainer={false} showFooter>
+    <SharedLayout
+      title="Home"
+      hasContainer={false}
+      showFooter
+      showAddButton={false}
+    >
       <>
         <HeroComponent />
         <BenefitsComponent />
