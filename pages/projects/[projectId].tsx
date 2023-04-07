@@ -1,4 +1,4 @@
-import { SharedLayout } from '@/components/Layouts';
+import { SharedLayout } from '@/components/SharedLayout';
 import Image from 'next/legacy/image';
 import { useRouter } from 'next/router';
 import axios from 'axios';

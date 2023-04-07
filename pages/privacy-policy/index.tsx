@@ -1,4 +1,3 @@
-import { BackToTop } from '@/components/BackToTopButton';
 import { Markdown } from '@/components/Markdown';
 import { motion } from 'framer-motion';
 import type { NextPage } from 'next';
@@ -23,7 +22,6 @@ const Privacypolicy: NextPage = (content: any) => {
           </motion.button>
         </Link>
         <Markdown content={content.data} />
-        <BackToTop />
       </div>
     </>
   );

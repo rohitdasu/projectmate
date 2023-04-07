@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { SharedLayout } from '@/components/Layouts/SharedLayout';
+import { SharedLayout } from '@/components/SharedLayout';
 import Link from 'next/link';
 
 const NotFound: NextPage = () => {

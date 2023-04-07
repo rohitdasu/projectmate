@@ -8,7 +8,7 @@ export const ActionComponent = () => {
           Join the ranks of 150+ talented developers who have already signed up
           for projectmate.net
         </p>
-        <button className="rounded-md bg-green-50 py-2 px-4 text-sm font-medium text-green-900 hover:bg-green-200 md:text-base lg:py-3 lg:px-8">
+        <button className="rounded-md bg-green-50 py-2 px-4 text-sm font-medium text-green-900 hover:bg-green-200 md:text-base lg:py-3 lg:px-6">
           Sign Up
         </button>
       </div>

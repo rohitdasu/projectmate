@@ -1,10 +1,13 @@
+import Link from 'next/link';
 import React from 'react';
 
 const Logo = () => {
   return (
-    <h1 className="font-lato text-xl font-medium uppercase md:text-2xl">
-      project<span className="text-primary-color">mate</span>
-    </h1>
+    <Link href="/">
+      <h1 className="font-lato text-xl font-medium uppercase md:text-2xl">
+        project<span className="text-primary-color">mate</span>
+      </h1>
+    </Link>
   );
 };
 

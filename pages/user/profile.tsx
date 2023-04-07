@@ -1,4 +1,4 @@
-import { SharedLayout } from '@/components/Layouts/SharedLayout';
+import { SharedLayout } from '@/components/SharedLayout';
 import { Project } from '@/components/Profile/Project';
 import { NextPage } from 'next';
 import { useSession } from 'next-auth/react';

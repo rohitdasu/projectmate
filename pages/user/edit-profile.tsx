@@ -1,4 +1,4 @@
-import { SharedLayout } from '@/components/Layouts';
+import { SharedLayout } from '@/components/SharedLayout';
 import { useSession } from 'next-auth/react';
 import Router from 'next/router';
 import Lottie from 'lottie-react';

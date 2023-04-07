@@ -4,7 +4,6 @@ import useSWRInfinite from 'swr/infinite';
 import { Project } from './Project';
 import { ProjectSkeleton } from './ProjectSkeleton';
 import axios from 'axios';
-import { BackToTop } from '../BackToTopButton';
 import { ProjectsListProps } from './ProjectsList.interface';
 
 interface IProject extends ProjectData {
@@ -102,7 +101,6 @@ export const ProjectsList: React.FC<ProjectsListProps> = ({ selectedTags }) => {
           <></>
         )}
       </ul>
-      <BackToTop />
     </>
   );
 };
