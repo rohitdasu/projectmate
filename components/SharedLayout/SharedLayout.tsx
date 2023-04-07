@@ -14,7 +14,7 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
     <div className="flex min-h-screen w-full flex-col">
       <Head>
         <title>{`${title} | Projectmate`}</title>
-        <link rel="icon" href="/dark-logo.svg" />
+        <link rel="icon" href="/logo.svg" />
       </Head>
       <Header />
       <main className="flex-1">

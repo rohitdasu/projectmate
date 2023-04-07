@@ -10,7 +10,7 @@ const Privacypolicy: NextPage = (content: any) => {
     <>
       <Head>
         <title>{`Projectmate | Privacy Policy`}</title>
-        <link rel="icon" href="/dark-logo.svg" />
+        <link rel="icon" href="/logo.svg" />
       </Head>
       <div className="mx-4 w-full py-6 md:mx-auto md:w-1/2 md:py-16">
         <Link href="/">
