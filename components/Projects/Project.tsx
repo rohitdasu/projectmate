@@ -1,10 +1,8 @@
 import { ProjectProps } from './Project.interface';
 import { AiOutlineUser } from 'react-icons/ai';
-import { Tags } from '@/components/Tags';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { Button } from '@/components/Button';
-import { Typography } from '@/components/Typography';
+import { Tags, Button, Typography } from '@/components';
 import moment from 'moment';
 
 export const Project = ({

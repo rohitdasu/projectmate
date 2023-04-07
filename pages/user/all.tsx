@@ -1,7 +1,5 @@
-import { SharedLayout } from '@/components/SharedLayout';
 import { NextPage } from 'next';
-import { Typography } from '@/components/Typography';
-import { People } from '@/components/People';
+import { Typography, People, SharedLayout } from '@/components';
 import axios from 'axios';
 import useSWR from 'swr';
 import Loader from 'public/animations/loading.json';

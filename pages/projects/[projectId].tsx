@@ -1,16 +1,13 @@
-import { SharedLayout } from '@/components/SharedLayout';
-import Image from 'next/legacy/image';
 import { useRouter } from 'next/router';
+import { SharedLayout, Tags, Stats, Typography } from '@/components';
+import Image from 'next/legacy/image';
 import axios from 'axios';
 import useSWR from 'swr';
 import Lottie from 'lottie-react';
-import Loader from '../../public/animations/loading.json';
-import { Tags } from '@/components/Tags';
+import Loader from '@/public/animations/loading.json';
 import { motion } from 'framer-motion';
-import { Stats } from '@/components/Stats';
 import { BiLink } from 'react-icons/bi';
 import { RiArrowGoBackFill } from 'react-icons/ri';
-import { Typography } from '@/components/Typography';
 
 const ProjectDetails = () => {
   const router = useRouter();

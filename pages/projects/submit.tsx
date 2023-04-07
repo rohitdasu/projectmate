@@ -1,6 +1,5 @@
 import React from 'react';
-import { SharedLayout } from '@/components/SharedLayout';
-import { SubmitPageForm } from '@/components/SubmitPageForm';
+import { SharedLayout, SubmitPageForm } from '@/components';
 import { motion } from 'framer-motion';
 
 const SubmitProject = () => {

@@ -1,7 +1,7 @@
 import Image from 'next/legacy/image';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import { Typography } from '@/components/Typography';
+import { Typography } from '@/components';
 import { getImageUrl } from './Avatar.common';
 import { User } from '@prisma/client';
 

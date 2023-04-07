@@ -1,9 +1,9 @@
 import React from 'react';
 import { Person as PersonType } from './People.interface';
 import Image from 'next/legacy/image';
-import { getImageUrl } from '../Avatar/Avatar.common';
+import { getImageUrl } from '@/components/Avatar/Avatar.common';
+import { Typography } from '@/components';
 import { User } from '@prisma/client';
-import { Typography } from '../Typography';
 import { motion } from 'framer-motion';
 export const Person = ({ id, name, profilePicture }: PersonType) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

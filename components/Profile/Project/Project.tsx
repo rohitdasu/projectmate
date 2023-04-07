@@ -1,4 +1,4 @@
-import { Typography } from '@/components/Typography';
+import { Typography } from '@/components';
 import { motion } from 'framer-motion';
 import React, { FC } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';

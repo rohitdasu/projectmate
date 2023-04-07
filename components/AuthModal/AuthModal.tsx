@@ -1,21 +1,21 @@
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { closeModal } from '@/store/slices/sliceModal';
+import { useAppSelector, useAppDispatch } from '@/hooks';
+import { closeModal, selectModal } from '@/store/slices/sliceModal';
 import { IAuthData } from './Auth.interface';
 import { motion } from 'framer-motion';
-import { Typography } from '@/components/Typography';
+import { Typography } from '@/components';
 
 export const AuthModal = ({ title }: IAuthData) => {
-  const isOpen = useAppSelector((state) => state.modal.modal);
+  const { modal } = useAppSelector(selectModal);
   const dispatch = useAppDispatch();
 
   return (
     <>
-      <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={modal} as={Fragment}>
         <Dialog
           as="div"
-          className="relative z-[999]"
+          className="relative z-50"
           onClose={() => dispatch(closeModal())}
         >
           <Transition.Child

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import {
   useForm,
   SubmitHandler,
@@ -7,20 +8,21 @@ import {
 } from 'react-hook-form';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Typography } from '@/components/Typography';
-import { Input } from '@/components/Form';
-import { Button } from '@/components/Button';
-import { Textarea } from '@/components/Form/Textarea';
-import { toastMessage, messageType } from 'shared';
-import { Tags, RemoveTagFc } from '@/components/Tags';
 import {
+  Typography,
+  Input,
+  Button,
+  Textarea,
+  toastMessage,
+  messageType,
+  Tags,
+  RemoveTagFc,
   EditableUserDetails,
   EditProfileFormProps,
-} from '@/components/EditProfileForm/EditProfileForm.interface';
+} from '@/components';
 import { schema } from './schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 
 export const EditProfileForm: React.FC<EditProfileFormProps> = ({
   currentTitle,

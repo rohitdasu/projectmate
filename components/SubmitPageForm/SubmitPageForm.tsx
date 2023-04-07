@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
+import Router from 'next/router';
+import { useSession } from 'next-auth/react';
 import {
   useForm,
   SubmitHandler,
   Controller,
   ControllerRenderProps,
 } from 'react-hook-form';
-import { useSession } from 'next-auth/react';
-import Router from 'next/router';
 import Lottie from 'lottie-react';
-import Loader from '../../public/animations/loading.json';
+import Loader from '@/public/animations/loading.json';
 import axios from 'axios';
-import { Input } from '@/components/Form/Input';
-import { Textarea } from '@/components/Form/Textarea';
+import {
+  Tags,
+  RemoveTagFc,
+  Input,
+  Textarea,
+  toastMessage,
+  messageType,
+  Typography,
+  Button,
+} from '@/components';
 import { schema } from './schema';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { toastMessage, messageType } from '../../shared';
-import { Button } from '@/components/Button';
-import { Tags, RemoveTagFc } from '@/components/Tags';
-import { Typography } from '../Typography';
 import { FormInputs } from './SubmitPageForm.interface';
 import { motion } from 'framer-motion';
 

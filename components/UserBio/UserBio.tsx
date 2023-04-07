@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import Lottie from 'lottie-react';
-import Loader from '../../public/animations/loading.json';
-import errorAnimation from '../../public/animations/error.json';
-import { Typography } from '@/components/Typography';
-import { Tags } from '@/components/Tags';
+import Loader from '@/public/animations/loading.json';
+import errorAnimation from '@/public/animations/error.json';
+import { Typography, Tags } from '@/components';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';

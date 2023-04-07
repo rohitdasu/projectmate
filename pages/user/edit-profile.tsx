@@ -1,14 +1,12 @@
-import { SharedLayout } from '@/components/SharedLayout';
 import { useSession } from 'next-auth/react';
 import Router from 'next/router';
-import Lottie from 'lottie-react';
+import { SharedLayout, EditProfileForm, Typography } from '@/components';
 import Loader from 'public/animations/loading.json';
-import errorAnimation from '../../public/animations/error.json';
+import Lottie from 'lottie-react';
+import errorAnimation from '@/public/animations/error.json';
 import { motion } from 'framer-motion';
-import { Typography } from '@/components/Typography';
 import useSwr from 'swr';
 import axios from 'axios';
-import { EditProfileForm } from '@/components/EditProfileForm';
 
 const EditProfile = () => {
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);

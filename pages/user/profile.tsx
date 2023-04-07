@@ -1,5 +1,3 @@
-import { SharedLayout } from '@/components/SharedLayout';
-import { Project } from '@/components/Profile/Project';
 import { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
 import Router from 'next/router';
@@ -7,11 +5,15 @@ import Lottie from 'lottie-react';
 import Loader from 'public/animations/loading.json';
 import axios from 'axios';
 import useSWR from 'swr';
-import animation from '../../public/animations/no-data.json';
-import errorAnimation from '../../public/animations/error.json';
-import { Typography } from '@/components/Typography';
-import { ProfileHeader } from '@/components/Profile/ProfileHeader';
-import { UserBio } from '@/components/UserBio';
+import animation from '@/public/animations/no-data.json';
+import errorAnimation from '@/public/animations/error.json';
+import {
+  SharedLayout,
+  Project,
+  Typography,
+  UserBio,
+  ProfileHeader,
+} from '@/components';
 
 const Profile: NextPage = () => {
   const { status } = useSession({

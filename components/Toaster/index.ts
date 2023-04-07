@@ -1,1 +1,1 @@
-export * from './Toaster';
+export { AppToaster as Toaster, toastMessage, messageType } from './Toaster';

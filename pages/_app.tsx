@@ -1,11 +1,10 @@
-import { ErrorFallback } from '@/components/ErrorFallback';
-import { AppToaster } from '@/components/Toaster';
-import { SessionProvider } from 'next-auth/react';
 import { AppProps } from 'next/app';
+import { ErrorFallback, Toaster } from '@/components';
+import { SessionProvider } from 'next-auth/react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Provider } from 'react-redux';
-import { store } from '../store';
-import '../styles/globals.css';
+import { store } from '@/store';
+import '@/styles/globals.css';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -16,7 +15,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <SessionProvider session={pageProps.session}>
         <Provider store={store}>
           <Component {...pageProps} />
-          <AppToaster />
+          <Toaster />
         </Provider>
       </SessionProvider>
     </ErrorBoundary>

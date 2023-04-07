@@ -1,9 +1,9 @@
-import { Markdown } from '@/components/Markdown';
-import { motion } from 'framer-motion';
-import type { NextPage } from 'next';
+import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import React from 'react';
+import type { NextPage } from 'next';
+import { Markdown } from '@/components';
+import { motion } from 'framer-motion';
 import { AiOutlineHome } from 'react-icons/ai';
 const Privacypolicy: NextPage = (content: any) => {
   return (
@@ -28,7 +28,7 @@ const Privacypolicy: NextPage = (content: any) => {
 };
 
 export const getServerSideProps = async () => {
-  const content = await require('../../components/Markdown/privacy-policy.md');
+  const content = await require('@/components');
   const data = content.default;
   return {
     props: {

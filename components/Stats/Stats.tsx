@@ -5,9 +5,8 @@ import { VscIssues } from 'react-icons/vsc';
 import { FiKey } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { IoClipboardOutline } from 'react-icons/io5';
-import { messageType, toastMessage } from 'shared';
+import { messageType, toastMessage, Typography } from '@/components';
 import { SlGlobe, SlPeople } from 'react-icons/sl';
-import { Typography } from '@/components/Typography';
 
 const Title = ({ ...props }) => {
   return (

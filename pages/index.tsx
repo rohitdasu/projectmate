@@ -1,11 +1,13 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import { SharedLayout } from '@/components/SharedLayout';
-import { HeroComponent } from '@/components/LandingPage/HeroComponent';
-import { BenefitsComponent } from '@/components/LandingPage/BenefitsComponent';
-import { SuccessStoryComponent } from '@/components/LandingPage/SuccessStoryComponent';
-import { ActionComponent } from '@/components/LandingPage/ActionComponent';
-import { TeamsComponent } from '@/components/LandingPage/TeamsComponent';
+import {
+  SharedLayout,
+  HeroComponent,
+  BenefitsComponent,
+  SuccessStoryComponent,
+  ActionComponent,
+  TeamsComponent,
+} from '@/components';
 
 const Home: NextPage = () => {
   return (

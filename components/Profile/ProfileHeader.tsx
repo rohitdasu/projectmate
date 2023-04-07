@@ -1,12 +1,12 @@
 import React from 'react';
 import Image from 'next/legacy/image';
-import { getImageUrl } from '../Avatar/Avatar.common';
+import { getImageUrl } from '@/components/Avatar/Avatar.common';
 import { useSession } from 'next-auth/react';
 import { User } from '@prisma/client';
-import { Typography } from '../Typography';
+import { Typography } from '@/components';
 import Particles from 'react-particles';
 import { loadLinksPreset } from 'tsparticles-preset-links';
-import { useWindowSize } from 'app/hooks';
+import { useWindowSize } from '@/hooks';
 
 export const ProfileHeader = () => {
   const { data: session } = useSession();
