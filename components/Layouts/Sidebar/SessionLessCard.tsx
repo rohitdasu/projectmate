@@ -17,7 +17,7 @@ export const SessionLessCard = () => {
           setLoginMessage('Login with your account to add project');
           dispatch(openModal());
         }}
-        className="mt-2 flex h-9 cursor-pointer flex-row items-center gap-4 border-primary-color text-gray-400 transition-all hover:border-r-2 hover:text-gray-200"
+        className="mt-2 flex h-9 cursor-pointer flex-row items-center gap-4 text-gray-400 transition-all hover:text-gray-200"
       >
         <RiPlayListAddFill size={24} />
         <span className="text-lg">Add project</span>
@@ -27,7 +27,7 @@ export const SessionLessCard = () => {
           setLoginMessage(message);
           dispatch(openModal());
         }}
-        className="flex h-9 cursor-pointer flex-row items-center gap-4 border-primary-color text-gray-400 transition-all hover:border-r-2 hover:text-gray-200"
+        className="flex h-9 cursor-pointer flex-row items-center gap-4 text-gray-400 transition-all hover:text-gray-200"
       >
         <IoMdLogIn size={24} />
         <span className="text-lg">Login</span>
