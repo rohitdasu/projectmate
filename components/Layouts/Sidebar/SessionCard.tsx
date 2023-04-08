@@ -15,7 +15,7 @@ export const ProfileCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
     <li className="h-9">
       <Link
         href="/user/profile"
-        className="flex flex-row items-center gap-2 border-primary-color hover:border-r-2"
+        className="flex flex-row items-center gap-2 border-primary-color"
       >
         <Image
           src={
@@ -43,16 +43,16 @@ export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
 }) => {
   return (
     <>
-      <ProfileCard name={name} email={email} image={image} />
+      {/* <ProfileCard name={name} email={email} image={image} /> */}
       <Link href="/projects/submit">
-        <li className="mt-2 flex h-9 cursor-pointer flex-row items-center gap-4 border-primary-color text-gray-400 transition-all hover:border-r-2 hover:text-gray-200">
+        <li className="mt-2 flex h-9 cursor-pointer flex-row items-center gap-4 border-primary-color text-gray-400 transition-all">
           <RiPlayListAddFill size={24} />
           <span className="text-lg">Add project</span>
         </li>
       </Link>
       <li
         onClick={() => signOut({ redirect: false })}
-        className="mt-2 flex h-9 cursor-pointer flex-row items-center gap-4 border-primary-color text-gray-400 transition-all hover:border-r-2 hover:text-gray-200"
+        className="mt-2 flex h-9 cursor-pointer flex-row items-center gap-4 border-primary-color text-gray-400 transition-all"
       >
         <FaPowerOff size={24} />
         <span className="text-lg">Logout</span>

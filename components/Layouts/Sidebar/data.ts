@@ -9,7 +9,7 @@ export const NavRoutes = [
     id: '2',
     title: 'Mates',
     icon: 'FaUserFriends',
-    link: '/user/all',
+    link: '/not-yet-created',
   },
   {
     id: '3',

@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/router';
 import {
   Tags,
   Button,
@@ -25,12 +24,8 @@ export const Project = ({
   authorImage,
   githubRepository,
 }: ProjectProps) => {
-  const router = useRouter();
-  const handleViewStatsClick = () => {
-    router.push(`/projects/${id}`);
-  };
-  const handleShare = () => {
-    toastMessage('Share feature is disabled', messageType.error);
+  const handleFeature404 = () => {
+    toastMessage('feature is disabled', messageType.error);
   };
   const handleContributeClick = () => {
     if (githubRepository) {
@@ -54,10 +49,10 @@ export const Project = ({
               as="h2"
               fontSize="xl"
               fontWeight="bold"
-              className="flex flex-col gap-2 truncate text-gray-100"
+              className="flex flex-col gap-4 truncate text-gray-100"
             >
               {title}
-              <div className="flex items-center gap-2 text-base font-bold text-gray-400">
+              <div className="flex items-center gap-2 text-base font-bold text-gray-100 opacity-70">
                 <Image
                   src={
                     authorImage ||
@@ -87,8 +82,6 @@ export const Project = ({
             <div className="flex space-x-2 pb-2 md:pb-0">
               <Tags
                 tags={tags}
-                maximumTagsToShow={5}
-                maximumCharactersToShow={20}
                 className="flex-wrap gap-1 text-sm font-medium"
               />
             </div>
@@ -96,12 +89,12 @@ export const Project = ({
           <div className="flex w-full flex-row items-center justify-between gap-2">
             <div className="flex flex-row items-center gap-2">
               <Button
-                onClick={handleViewStatsClick}
+                onClick={handleFeature404}
                 isDisabled={false}
                 className="flex flex-row items-center justify-center gap-2 bg-transparent px-2 py-1.5 font-bold !text-gray-200 focus:ring-0 sm:my-0"
               >
                 <IoStatsChartSharp />
-                <span>View Stats</span>
+                <span className="text-sm md:text-base">Stats</span>
               </Button>
               <Button
                 onClick={handleContributeClick}
@@ -109,16 +102,16 @@ export const Project = ({
                 className="flex flex-row items-center justify-center gap-2 bg-transparent px-2 py-1.5 font-bold !text-gray-200 focus:ring-0 sm:my-0"
               >
                 <FaHandshake />
-                <span>Contribute</span>
+                <span className="text-sm md:text-base">Contribute</span>
               </Button>
             </div>
             <Button
-              onClick={handleShare}
+              onClick={handleFeature404}
               isDisabled={false}
               className="flex flex-row items-center justify-center gap-2 bg-transparent px-2 py-1.5 font-bold !text-gray-200 hover:text-primary-color focus:ring-0 sm:my-0"
             >
               <IoIosShareAlt />
-              <span>Share</span>
+              <span className="text-sm md:text-base">Share</span>
             </Button>
           </div>
         </div>

@@ -1,20 +1,19 @@
 import React from 'react';
-import { SharedLayout, SubmitPageForm } from '@/components';
-import { motion } from 'framer-motion';
+import { Header, SubmitPageForm } from '@/components';
+import Head from 'next/head';
 
 const SubmitProject = () => {
   return (
-    <SharedLayout title="Submit Project">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-        exit={{ opacity: 0 }}
-        className="m-auto mb-12 flex w-full flex-col space-y-4 overflow-hidden rounded-lg pt-4 md:max-w-xl md:p-6"
-      >
+    <>
+      <Head>
+        <title>Add Project | Projectmate</title>
+        <link rel="icon" href="/logo.svg" />
+      </Head>
+      <Header />
+      <div className="mx-auto flex h-[calc(100vh-80px)] w-full max-w-screen-sm flex-col">
         <SubmitPageForm />
-      </motion.div>
-    </SharedLayout>
+      </div>
+    </>
   );
 };
 

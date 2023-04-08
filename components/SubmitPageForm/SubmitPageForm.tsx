@@ -17,23 +17,22 @@ import {
   Textarea,
   toastMessage,
   messageType,
-  Typography,
   Button,
 } from '@/components';
 import { schema } from './schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormInputs } from './SubmitPageForm.interface';
-import { motion } from 'framer-motion';
 
 export const SubmitPageForm = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [tagInput, setTagInput] = useState<string>('');
+
   const { handleSubmit, setValue, watch, control, reset } = useForm<FormInputs>(
     {
       resolver: zodResolver(schema),
     }
   );
   const tags = watch('tags');
-  const [loading, setLoading] = useState<boolean>(false);
-  const [tagInput, setTagInput] = useState<string>('');
 
   const { status, data: session } = useSession({
     required: true,
@@ -118,23 +117,9 @@ export const SubmitPageForm = () => {
   };
 
   return (
-    <div className="mx-auto w-full px-4 lg:px-0">
-      <form className="form-container mx-auto flex w-full flex-col space-y-4">
-        <Typography
-          as="h1"
-          align="left"
-          fontSize="3xl"
-          fontWeight="semibold"
-          className="mb-4"
-        >
-          Submit Project
-        </Typography>
-        <motion.div
-          initial={{ scale: 0.9 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.2, delay: 0 }}
-          exit={{ opacity: 0 }}
-        >
+    <div className="w-full">
+      <form className="flex flex-col space-y-4">
+        <div>
           <Controller
             name="projectName"
             control={control}
@@ -151,13 +136,8 @@ export const SubmitPageForm = () => {
               );
             }}
           />
-        </motion.div>
-        <motion.div
-          initial={{ scale: 0.9 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.2, delay: 0.1 }}
-          exit={{ opacity: 0 }}
-        >
+        </div>
+        <div>
           <Controller
             name="repositoryLink"
             control={control}
@@ -174,13 +154,8 @@ export const SubmitPageForm = () => {
               );
             }}
           />
-        </motion.div>
-        <motion.div
-          initial={{ scale: 0.9 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.2, delay: 0.2 }}
-          exit={{ opacity: 0 }}
-        >
+        </div>
+        <div>
           <Controller
             name="projectDescription"
             control={control}
@@ -199,13 +174,8 @@ export const SubmitPageForm = () => {
               );
             }}
           />
-        </motion.div>
-        <motion.div
-          initial={{ scale: 0.9 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.2, delay: 0.3 }}
-          exit={{ opacity: 0 }}
-        >
+        </div>
+        <div>
           <Controller
             name="tags"
             control={control}
@@ -240,15 +210,9 @@ export const SubmitPageForm = () => {
               );
             }}
           />
-        </motion.div>
+        </div>
       </form>
-      <motion.div
-        initial={{ scale: 0.9 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.2, delay: 0.4 }}
-        exit={{ opacity: 0 }}
-        className="my-4 w-full"
-      >
+      <div className="my-4 w-full">
         <Button
           isDisabled={loading}
           onClick={handleSubmit(onSubmit)}
@@ -274,7 +238,7 @@ export const SubmitPageForm = () => {
             </svg>
           )}
         </Button>
-      </motion.div>
+      </div>
     </div>
   );
 };

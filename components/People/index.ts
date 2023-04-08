@@ -1,1 +1,0 @@
-export { People } from './People';
