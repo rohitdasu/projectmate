@@ -86,6 +86,7 @@ export const ProjectsList = () => {
                 author={project.author.name}
                 authorImage={project.author.image}
                 createdAt={project.createdAt}
+                githubRepository={project.githubRepository}
               />
             ))}
           </>
