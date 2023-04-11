@@ -24,7 +24,7 @@ export const Benefit: React.FC<IProps> = ({
         reverse && 'lg:flex-row-reverse'
       }`}
     >
-      <figure className="flex h-[400px] w-[100%] overflow-hidden rounded-md lg:min-w-[30rem]">
+      <figure className="flex h-[400px] w-[100%] justify-center overflow-hidden rounded-md lg:min-w-[30rem]">
         <Image
           src={image_src}
           placeholder="blur"
