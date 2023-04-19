@@ -18,6 +18,5 @@ export const postSchema = z.object({
   }),
 
   coverImg: z.string().url().optional(),
-
   tags: z.array(z.string()).min(1).max(5),
 });
