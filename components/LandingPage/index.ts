@@ -1,5 +1,7 @@
-export { Hero } from './Hero';
-export { Guide } from './Guide';
-export { About } from './About';
-export { Thanks } from './Thanks';
-export { Benefit, BenefitsContainer } from './Benefit';
+export * from './ActionComponent';
+export * from './BenefitsComponent';
+export * from './Footer';
+export * from './Header';
+export * from './HeroComponent';
+export * from './SuccessStoryComponent';
+export * from './ContributorsComponent';

@@ -1,0 +1,1 @@
+export { BenefitsComponent } from './BenefitsComponent';

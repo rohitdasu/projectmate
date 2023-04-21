@@ -17,7 +17,8 @@
     "useUnknownInCatchVariables": false,
     "baseUrl": ".",
     "paths": {
-      "@/schema/*": ["./interfaces/schema/*"],
+      "@/*": ["./*"],
+      "@/schema/*": ["./schema/*"],
       "@/lib/*": ["./lib/*"],
       "@/components/*": ["./components/*"],
       "@/store/*": ["./store/*"]

@@ -1,24 +1,33 @@
-import { BackToTop } from '@/components/BackToTopButton';
-import {
-  BenefitsContainer,
-  Guide,
-  Hero,
-  Thanks,
-} from '@/components/LandingPage/';
-import { SharedLayout } from '@/components/Layouts/SharedLayout';
+import React from 'react';
 import type { NextPage } from 'next';
+import {
+  HeroComponent,
+  BenefitsComponent,
+  SuccessStoryComponent,
+  ActionComponent,
+  ContributorsComponent,
+  Header,
+  Footer,
+} from '@/components';
+import Head from 'next/head';
 
 const Home: NextPage = () => {
   return (
-    <SharedLayout title="Find your project mate online" hasContainer showFooter>
-      <div className="flex flex-col space-y-32 px-4 pb-24 pt-16 md:pt-24">
-        <Hero />
-        <Guide />
-        <BenefitsContainer />
-        <Thanks />
-      </div>
-      <BackToTop />
-    </SharedLayout>
+    <>
+      <Head>
+        <title>Home | Projectmate</title>
+        <link rel="icon" href="/logo.svg" />
+      </Head>
+      <Header />
+      <main>
+        <HeroComponent />
+        <BenefitsComponent />
+        <SuccessStoryComponent />
+        <ActionComponent />
+        <ContributorsComponent />
+      </main>
+      <Footer />
+    </>
   );
 };
 

@@ -1,1 +1,2 @@
-export * from './SharedLayout';
+export { SharedLayout } from './SharedLayout';
+export { Sidebar } from './Sidebar';

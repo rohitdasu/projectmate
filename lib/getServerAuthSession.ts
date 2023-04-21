@@ -3,7 +3,7 @@ import { unstable_getServerSession } from 'next-auth';
 import {
   ProductionAuthOptions,
   DevAuthOptions,
-} from '../pages/api/auth/[...nextauth]';
+} from '@/pages/api/auth/[...nextauth]';
 
 export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext['req'];

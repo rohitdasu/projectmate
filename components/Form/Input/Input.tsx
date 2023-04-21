@@ -1,4 +1,4 @@
-import { Typography } from '@/components/Typography';
+import { Typography } from '@/components';
 import React, { LegacyRef } from 'react';
 import { InputProps } from './Input.interface';
 
