@@ -20,7 +20,7 @@ export const SessionLessCard = () => {
         className="mt-2 flex h-9 cursor-pointer flex-row items-center gap-4 text-gray-400 transition-all hover:text-gray-200"
       >
         <RiPlayListAddFill size={24} />
-        <span className="text-lg">Add project</span>
+        <span className="hidden text-lg lg:block">Add project</span>
       </li>
       <li
         onClick={() => {
@@ -30,7 +30,7 @@ export const SessionLessCard = () => {
         className="flex h-9 cursor-pointer flex-row items-center gap-4 text-gray-400 transition-all hover:text-gray-200"
       >
         <IoMdLogIn size={24} />
-        <span className="text-lg">Login</span>
+        <span className="hidden text-lg lg:block">Login</span>
       </li>
     </>
   );
