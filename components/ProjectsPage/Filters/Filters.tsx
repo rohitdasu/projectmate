@@ -46,7 +46,7 @@ export const Filters = () => {
         <label htmlFor="filterTags">Search projects</label>
         <input
           type="text"
-          className="w-full items-center rounded-md border border-gray-700 bg-gray-800 px-3 py-1 placeholder-opacity-40 outline-none md:w-80"
+          className="w-full items-center rounded-md border border-gray-700 bg-gray-800 p-3 placeholder-opacity-40 outline-none md:w-80"
           placeholder="type a project name"
         />
       </form>

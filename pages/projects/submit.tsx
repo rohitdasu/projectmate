@@ -9,7 +9,7 @@ const SubmitProject = () => {
         <title>Add Project | Projectmate</title>
         <link rel="icon" href="/logo.svg" />
       </Head>
-      <Header />
+      <Header homeRoute="/projects" />
       <div className="mx-auto flex h-[calc(100vh-80px)] w-full max-w-screen-sm flex-col">
         <SubmitPageForm />
       </div>

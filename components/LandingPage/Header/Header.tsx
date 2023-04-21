@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Link from 'next/link';
 
-export const Logo = () => {
+interface LogoProps {
+  route: string;
+}
+
+export const Logo: FC<LogoProps> = ({ route }) => {
   return (
-    <Link href="/">
+    <Link href={route}>
       <h1 className="font-lato text-xl font-medium uppercase md:text-2xl">
         project<span className="text-primary-color">mate</span>
       </h1>
@@ -11,10 +15,14 @@ export const Logo = () => {
   );
 };
 
-export const Header = () => {
+interface HeaderProps {
+  homeRoute?: string;
+}
+
+export const Header: FC<HeaderProps> = ({ homeRoute = '/' }) => {
   return (
     <nav className="mx-auto flex h-20 w-full max-w-screen-xl flex-row items-center justify-between px-4">
-      <Logo />
+      <Logo route={homeRoute} />
     </nav>
   );
 };
