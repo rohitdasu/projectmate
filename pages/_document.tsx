@@ -9,7 +9,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta
             name="description"
-            content="Projectmate is a platform that connects open-source enthusiasts with repository owners and maintainers looking for contributors."
+            content="Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 150 registered users who are already making a difference"
           />
           <meta
             name="keywords"
@@ -24,29 +24,29 @@ export default class MyDocument extends Document {
           <meta property="og:url" content="https://www.projectmate.net/" />
           <meta
             property="og:title"
-            content="Start Contributing to Open Source Projects"
+            content="Supercharge your open-source contributions with projectmate.net"
           />
           <meta
             property="og:description"
-            content="Projectmate is a platform that connects open-source enthusiasts with repository owners and maintainers looking for contributors."
+            content="Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 150 registered users who are already making a difference"
           />
           <meta
             property="og:image"
-            content="https://user-images.githubusercontent.com/48400770/190438248-fc0f3e42-c6d3-4d07-bcba-10e7fece4bc2.png"
+            content="https://user-images.githubusercontent.com/48400770/233674059-211646c9-920a-4104-9303-a2b0994041a4.png"
           />
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://www.projectmate.net/" />
           <meta
             property="twitter:title"
-            content="Start Contributing to Open Source Projects"
+            content="Supercharge your open-source contributions with projectmate.net"
           />
           <meta
             property="twitter:description"
-            content="Projectmate is a platform that connects open-source enthusiasts with repository owners and maintainers looking for contributors."
+            content="Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 150 registered users who are already making a difference"
           />
           <meta
             property="twitter:image"
-            content="https://user-images.githubusercontent.com/48400770/190438248-fc0f3e42-c6d3-4d07-bcba-10e7fece4bc2.png"
+            content="https://user-images.githubusercontent.com/48400770/233674059-211646c9-920a-4104-9303-a2b0994041a4.png"
           />
           <script
             dangerouslySetInnerHTML={{
