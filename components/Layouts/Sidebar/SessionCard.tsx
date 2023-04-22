@@ -8,7 +8,7 @@ import { signOut } from 'next-auth/react';
 export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = () => {
   return (
     <>
-      <Link href="/projects/submit">
+      <Link href="/projects/add-project">
         <li className="mt-2 flex h-9 cursor-pointer flex-row items-center gap-4 border-primary-color text-gray-400 transition-all hover:text-gray-200">
           <RiPlayListAddFill size={24} />
           <span className="hidden text-lg lg:block">Add project</span>

@@ -20,3 +20,17 @@ body {
   overflow-x: hidden;
   color: #ffffff;
 }
+
+.react-tagsinput-input {
+  width: 100px;
+  background-color: #374151;
+  //box-shadow: none !important;
+  border-radius: 6px;
+  margin: 0;
+}
+
+.react-tagsinput-tag {
+  background-color: #047a55;
+  color: #f0fdf4;
+  border-color: #047a55;
+}

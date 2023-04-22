@@ -5,7 +5,7 @@ export * from './Form';
 export * from './LandingPage';
 export * from './ProductHunt';
 export * from './ProjectsPage/ProjectsList/ProjectsList';
-export * from './SubmitPageForm';
+export * from './AddProjectForm';
 export * from './Tags';
 export * from './Typography';
 export * from './Toaster';
