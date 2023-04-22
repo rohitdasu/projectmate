@@ -39,7 +39,7 @@ export const Sidebar = () => {
   const { pathname } = useRouter();
   return (
     <>
-      <div className="sticky left-0 top-4 flex h-screen w-1/4 flex-col border-gray-700 pl-4 pt-2">
+      <div className="sticky left-0 top-0 flex h-screen w-auto flex-col border-gray-700 pl-4 pt-6 lg:w-1/4">
         <Logo />
         <ul className="mt-16 flex w-full flex-col gap-4">
           {NavElements.map((nav) => {
