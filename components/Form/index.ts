@@ -1,4 +1,4 @@
-// export * from './Input';
-export * from './Textarea';
+export * from './Input';
 export * from './MultiSelectInput';
-export * from './NewInput';
+export * from './Textarea';
+export * from './InputError';
