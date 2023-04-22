@@ -12,6 +12,10 @@ export const project_name = {
       value: 100,
       message: '100 characters max',
     },
+    minLength: {
+      value: 3,
+      message: '3 characters minimum',
+    },
   },
 };
 
