@@ -9,12 +9,12 @@ export const NavRoutes = [
     id: '2',
     title: 'Mates',
     icon: 'FaUserFriends',
-    link: '/not-yet-created',
+    link: '/mates',
   },
   {
     id: '3',
     title: 'Posts',
     icon: 'FaNewspaper',
-    link: 'not-yet-created',
+    link: '/posts',
   },
 ];
