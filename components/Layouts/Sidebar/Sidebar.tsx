@@ -39,26 +39,26 @@ export const Sidebar = () => {
   const { pathname } = useRouter();
   return (
     <>
-      <div className="sticky left-0 top-0 flex h-screen w-auto flex-col border-gray-700 pl-4 pt-6 lg:w-1/4">
+      <div className="fixed inset-0 flex h-screen w-[11%] flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
         <Logo />
-        <ul className="mt-16 flex w-full flex-col gap-4">
+        <ul className="mt-16 flex flex-col items-center gap-4 md:items-start">
           {NavElements.map((nav) => {
             const isActive = pathname === nav.link;
             return (
               <Link key={nav.id} href={nav.link}>
                 <li
-                  className={`flex h-9 flex-row items-center gap-4 border-primary-color transition-all hover:border-r-2 hover:text-gray-200 ${
-                    isActive ? 'border-r-2 text-gray-200' : 'text-gray-400'
+                  className={`flex h-9 flex-row items-center gap-4 transition-all hover:text-gray-200 md:items-start ${
+                    isActive ? 'text-gray-200' : 'text-gray-500'
                   }`}
                 >
-                  <nav.icon size={24} className="mr-4 lg:mr-0" />
+                  <nav.icon size={24} className="lg:mr-0" />
                   <span className="hidden text-lg lg:block">{nav.name}</span>
                 </li>
               </Link>
             );
           })}
         </ul>
-        <ul className="mt-4 flex w-full flex-col gap-4 border-t border-gray-800 pt-4 transition-all">
+        <ul className="mt-4 flex w-full flex-col items-center gap-4 border-t border-gray-900 pt-4 transition-all md:items-start">
           {session ? (
             <SessionCard
               email={session.user?.email || ''}
