@@ -25,9 +25,9 @@ const Logo = () => {
       </h1>
       <Image
         src={'/logo.svg'}
-        height={28}
+        height={24}
         className="block lg:hidden"
-        width={28}
+        width={24}
         alt="logo"
       />
     </Link>
@@ -51,7 +51,7 @@ export const Sidebar = () => {
                     isActive ? 'text-gray-200' : 'text-gray-500'
                   }`}
                 >
-                  <nav.icon size={24} className="lg:mr-0" />
+                  <nav.icon size={20} />
                   <span className="hidden text-lg lg:block">{nav.name}</span>
                 </li>
               </Link>

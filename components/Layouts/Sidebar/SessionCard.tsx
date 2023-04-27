@@ -10,7 +10,7 @@ export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = () => {
     <>
       <Link href="/projects/add-project">
         <li className="mt-2 flex h-9 cursor-pointer flex-row items-center gap-4 border-primary-color text-gray-500 transition-all hover:text-gray-200">
-          <RiPlayListAddFill size={24} />
+          <RiPlayListAddFill size={20} />
           <span className="hidden text-lg lg:block">Add project</span>
         </li>
       </Link>
@@ -18,7 +18,7 @@ export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = () => {
         onClick={() => signOut({ redirect: false })}
         className="flex h-9 cursor-pointer flex-row items-center gap-4 border-primary-color text-gray-500 transition-all hover:text-gray-200"
       >
-        <FaPowerOff size={24} />
+        <FaPowerOff size={20} />
         <span className="hidden text-lg lg:block">Logout</span>
       </li>
     </>

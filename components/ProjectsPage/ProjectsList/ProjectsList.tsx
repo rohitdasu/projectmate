@@ -24,7 +24,7 @@ export const ProjectsList = () => {
     return `/api/project?cursorId=${cursorId}`;
   };
 
-  const { data, size, setSize, error } = useSWRInfinite<IProject[]>(
+  const { data, size, setSize, error, isLoading } = useSWRInfinite<IProject[]>(
     getKey,
     fetcher
   );
@@ -70,7 +70,7 @@ export const ProjectsList = () => {
   return (
     <>
       <ul className="h-full w-full">
-        {!data ? (
+        {isLoading ? (
           skeletonProjectsToLoad.map((randomKey) => (
             <ProjectSkeleton key={randomKey} />
           ))

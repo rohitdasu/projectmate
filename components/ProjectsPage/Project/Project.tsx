@@ -47,9 +47,8 @@ export const Project = ({
           <header className="flex flex-row items-start justify-between">
             <Typography
               as="h2"
-              fontSize="xl"
               fontWeight="bold"
-              className="flex flex-col gap-4 truncate text-gray-100"
+              className="flex flex-col gap-4 truncate text-base text-gray-100 md:text-xl"
             >
               {title}
               <div className="flex items-center gap-2 text-base font-bold text-gray-100 opacity-70">
@@ -63,7 +62,7 @@ export const Project = ({
                   width={40}
                   className="rounded-full"
                 />
-                <span>{author}</span>
+                <span className="text-sm md:text-lg">{author}</span>
               </div>
             </Typography>
             <div className="flex flex-row items-center gap-1 text-gray-400">

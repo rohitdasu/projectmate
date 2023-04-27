@@ -19,7 +19,7 @@ export const SessionLessCard = () => {
         }}
         className="mt-2 flex h-9 cursor-pointer flex-row items-center gap-4 text-gray-500 transition-all hover:text-gray-200"
       >
-        <RiPlayListAddFill size={24} />
+        <RiPlayListAddFill size={20} />
         <span className="hidden text-lg lg:block">Add project</span>
       </li>
       <li
@@ -29,7 +29,7 @@ export const SessionLessCard = () => {
         }}
         className="flex h-9 cursor-pointer flex-row items-center gap-4 text-gray-500 transition-all hover:text-gray-200"
       >
-        <IoMdLogIn size={24} />
+        <IoMdLogIn size={20} />
         <span className="hidden text-lg lg:block">Login</span>
       </li>
     </>
