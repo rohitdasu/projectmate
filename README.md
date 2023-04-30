@@ -2,7 +2,7 @@
   <h1>PROJECTMATE - Supercharge your open-source contributions</h1>
 </div>
 
-![COVER-PROJECTMATE](https://user-images.githubusercontent.com/48400770/233674059-211646c9-920a-4104-9303-a2b0994041a4.png)
+![COVER-PROJECTMATE](https://projectmate.net/og.jpg)
 
 Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 150 registered users who are already making a difference
 
