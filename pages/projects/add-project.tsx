@@ -12,8 +12,8 @@ const AddProject = () => {
         <link rel="icon" href="/logo.svg" />
       </Head>
       <Header homeRoute="/projects" />
-      <div className="mx-auto h-[calc(100vh-60px)] w-full max-w-screen-xl md:p-4">
-        <div className="overflow-hidden rounded-xl md:bg-[rgba(0,0,0,0.5)] xl:flex xl:items-center">
+      <div className="mx-auto min-h-screen w-full max-w-screen-xl pb-0">
+        <div className=" overflow-hidden  rounded-xl md:bg-[rgba(0,0,0,0.5)] xl:flex xl:items-center">
           <div className="flex w-full flex-col gap-4 md:p-10 xl:w-[50%]">
             <h2 className="px-4 text-xl text-gray-300 md:text-2xl">
               Add project
