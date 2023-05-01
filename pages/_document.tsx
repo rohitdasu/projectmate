@@ -64,10 +64,7 @@ export default class MyDocument extends Document {
           />
           {/* /fonts */}
         </Head>
-        <body
-          className="bg-gray-900"
-          style={{ backgroundImage: 'var(--primary-background)' }}
-        >
+        <body className="bg-slate-900">
           <noscript>
             <iframe
               src="https://www.googletagmanager.com/ns.html?id=GTM-KSS8T4M"
