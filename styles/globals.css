@@ -3,13 +3,6 @@
 @tailwind utilities;
 
 :root {
-  --primary-background: radial-gradient(
-    75.7% 75.7% at 50% 24.3%,
-    rgba(0, 8, 75, 0) 0%,
-    rgba(17, 22, 70, 0.52) 0%,
-    rgba(8, 11, 34, 0.769977) 58.33%,
-    #000000 100%
-  );
   --secondary-background: rgba(217, 217, 217, 0.07);
 
   --primary-color: #17a24a;
