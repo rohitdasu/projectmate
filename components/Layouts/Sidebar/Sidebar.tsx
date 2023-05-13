@@ -38,7 +38,7 @@ export const Sidebar = () => {
   const { data: session } = useSession();
   const { pathname } = useRouter();
   return (
-    <div className="flex h-screen w-full flex-col items-center px-2 pt-6 md:items-start md:px-8">
+    <div className="fixed flex h-screen w-full flex-col items-center px-2 pt-6 md:items-start md:px-8">
       <Logo />
       <ul className="mt-16 flex w-full flex-col items-center justify-center gap-4 md:items-start">
         {NavElements.map((nav) => {
