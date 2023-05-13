@@ -17,7 +17,7 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
       </Head>
       <div className="grid min-h-screen grid-cols-9 lg:grid-cols-4">
         {leftSidebar && (
-          <div>
+          <div className="grid-cols-1">
             <Sidebar />
           </div>
         )}
