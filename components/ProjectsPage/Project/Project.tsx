@@ -85,12 +85,12 @@ export const Project = ({
               />
             </div>
           </div>
-          <div className="flex w-full flex-row items-center justify-between gap-2">
-            <div className="flex flex-row items-center gap-2">
+          <div className="flex w-full flex-row items-center justify-between sm:gap-2">
+            <div className="flex flex-row items-center">
               <Button
                 onClick={handleFeature404}
                 isDisabled={false}
-                className="flex flex-row items-center justify-center gap-2 bg-transparent px-2 py-1.5 font-bold !text-gray-200 focus:ring-0 sm:my-0"
+                className="flex flex-row items-center justify-center gap-1 bg-transparent px-1.5 py-1.5 font-bold !text-gray-200 focus:ring-0 sm:my-0 sm:gap-2"
               >
                 <IoStatsChartSharp />
                 <span className="text-sm md:text-base">Stats</span>
@@ -98,7 +98,7 @@ export const Project = ({
               <Button
                 onClick={handleContributeClick}
                 isDisabled={false}
-                className="flex flex-row items-center justify-center gap-2 bg-transparent px-2 py-1.5 font-bold !text-gray-200 focus:ring-0 sm:my-0"
+                className="flex flex-row items-center justify-center gap-1 bg-transparent px-1.5 py-1.5 font-bold !text-gray-200 focus:ring-0 sm:my-0 sm:gap-2"
               >
                 <FaHandshake />
                 <span className="text-sm md:text-base">Contribute</span>
@@ -107,7 +107,7 @@ export const Project = ({
             <Button
               onClick={handleFeature404}
               isDisabled={false}
-              className="flex flex-row items-center justify-center gap-2 bg-transparent px-2 py-1.5 font-bold !text-gray-200 hover:text-primary-color focus:ring-0 sm:my-0"
+              className="flex flex-row items-center justify-center gap-1 bg-transparent px-1.5 py-1.5 font-bold !text-gray-200 hover:text-primary-color focus:ring-0 sm:my-0 sm:gap-2"
             >
               <IoIosShareAlt />
               <span className="text-sm md:text-base">Share</span>
