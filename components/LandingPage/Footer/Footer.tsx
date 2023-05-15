@@ -34,10 +34,10 @@ export const Footer = () => {
             );
           })}
         </ul>
-        <a href="#" className="text-base text-gray-500 hover:text-gray-400">
+        <a href="#" className="text-base text-gray-400 hover:text-gray-300">
           MIT License
         </a>
-        <Link href="#" className="text-base text-gray-500 hover:text-gray-400">
+        <Link href="#" className="text-base text-gray-400 hover:text-gray-300">
           Privacy Policy
         </Link>
       </div>
