@@ -47,11 +47,13 @@ export const Sidebar = () => {
             <Link key={nav.id} href={nav.link}>
               <li
                 className={`flex h-9 items-center justify-center gap-4 transition-all hover:text-gray-200 md:flex-row md:items-start ${
-                  isActive ? 'text-gray-200' : 'text-gray-500'
+                  isActive ? 'text-gray-200' : 'text-gray-400'
                 }`}
               >
                 <nav.icon size={20} />
-                <span className="hidden text-lg lg:block">{nav.name}</span>
+                <span className="hidden text-lg text-gray-400 hover:text-gray-300 lg:block ">
+                  {nav.name}
+                </span>
               </li>
             </Link>
           );
