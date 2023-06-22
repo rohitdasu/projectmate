@@ -5,13 +5,11 @@ export const HeroComponent = () => {
   return (
     <section className="flex h-[calc(100vh-80px)] flex-row items-center justify-center px-4 lg:px-0">
       <div className="flex flex-col items-center gap-8">
-        <h1 className="mx-auto max-w-5xl text-justify text-xl font-semibold text-gray-200 md:text-center md:text-3xl md:!leading-[1.25] lg:text-5xl">
+        <h1 className="mx-auto max-w-5xl text-center text-3xl font-semibold text-gray-200 md:text-5xl md:!leading-[1.25] lg:text-6xl">
           <span className="text-primary-color">Supercharge</span> your
-          open-source contributions with{' '}
-          <span className="text-primary-color">projectmate</span>
-          .net
+          open-source contributions
         </h1>
-        <p className="mx-auto max-w-3xl text-justify text-lg font-medium text-gray-400 md:text-center md:text-lg lg:text-xl">
+        <p className="mx-auto max-w-3xl text-center text-base font-medium text-gray-400 md:text-lg lg:text-xl">
           Discover open-source projects, connect with experienced maintainers,
           and collaborate with a community of passionate contributors. Join over
           150 registered users who are already making a difference

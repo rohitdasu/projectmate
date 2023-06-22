@@ -8,7 +8,14 @@ export const SuccessStoryComponent = () => {
       </p>
       <p className="text-base text-gray-300 md:text-xl lg:text-2xl">
         Our app ranks <span className="text-primary-color">#12</span> on{' '}
-        <span className="text-primary-color">ProductHunt</span> 🎉
+        <a
+          href="https://www.producthunt.com/products/projectmate#projectmate"
+          target="_blank"
+          className="text-primary-color underline"
+        >
+          ProductHunt
+        </a>{' '}
+        🎉
       </p>
     </section>
   );
