@@ -1,19 +1,17 @@
 import React from 'react';
 import { Contributor as ContributorType } from './ContributorsComponent.interface';
 import { Contributor } from './Contributor';
+import useSWR from 'swr';
+import { fetcher } from '@/lib/fetcher';
 
 export const ContributorsComponent = () => {
   const url = `https://api.github.com/repos/rohitdasu/projectmate/contributors`;
-  const [data, setData] = React.useState([]);
-  async function loadContributors() {
-    const response = await fetch(url);
-    const jsonData = await response.json();
-    setData(jsonData);
+  const { data, error } = useSWR(url, fetcher);
+
+  if (error) {
+    return <></>;
   }
 
-  React.useEffect(() => {
-    loadContributors();
-  }, []);
   return (
     <section className="py-16 px-4">
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8">

@@ -2,14 +2,13 @@ import { useEffect, useMemo } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import { Project } from '../Project/Project';
 import { ProjectSkeleton } from '../ProjectSkeleton';
-import axios from 'axios';
 import { IProject } from '../Project/Project.interface';
 import { useAppSelector } from '@/hooks';
 import { selectTags } from '@/store/slices/sliceFilter';
+import { fetcher } from '@/lib/fetcher';
 
 export const ProjectsList = () => {
   const { selectedTags } = useAppSelector(selectTags);
-  const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
   const getKey = (pageIndex: number, previousPageData: IProject[]) => {
     let cursorId = '';
