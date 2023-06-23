@@ -2,8 +2,6 @@ import React from 'react';
 import { AuthModal } from '@/components';
 import { useAppDispatch } from '@/hooks';
 import { openModal } from '@/store/slices/sliceModal';
-import { IoMdLogIn } from 'react-icons/io';
-import { RiPlayListAddFill } from 'react-icons/ri';
 
 export const SessionLessCard = () => {
   const dispatch = useAppDispatch();
@@ -17,9 +15,8 @@ export const SessionLessCard = () => {
           setLoginMessage('Login with your account to add project');
           dispatch(openModal());
         }}
-        className="mt-2 flex h-9 cursor-pointer flex-row items-center gap-4 text-gray-500 transition-all hover:text-gray-200"
+        className="mt-2 h-9 cursor-pointer text-gray-500 transition-all hover:text-gray-200"
       >
-        <RiPlayListAddFill size={20} />
         <span className="hidden text-lg text-gray-400 hover:text-gray-300 lg:block ">
           Add project
         </span>
@@ -29,10 +26,9 @@ export const SessionLessCard = () => {
           setLoginMessage(message);
           dispatch(openModal());
         }}
-        className="flex h-9 cursor-pointer flex-row items-center gap-4 text-gray-500 transition-all hover:text-gray-200"
+        className="h-9 cursor-pointer text-gray-500 transition-all hover:text-gray-200"
       >
-        <IoMdLogIn size={20} />
-        <span className="hidden text-lg text-gray-400 hover:text-gray-300 lg:block ">
+        <span className="hidden text-lg text-green-400 transition-colors hover:text-green-500 lg:block ">
           Login
         </span>
       </li>
