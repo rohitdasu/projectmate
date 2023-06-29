@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import { Project } from '../Project/Project';
 import { ProjectSkeleton } from '../ProjectSkeleton';
@@ -6,9 +6,19 @@ import { IProject } from '../Project/Project.interface';
 import { useAppSelector } from '@/hooks';
 import { selectTags } from '@/store/slices/sliceFilter';
 import { fetcher } from '@/lib/fetcher';
+import { ShareModal } from '@/components/ShareModal';
 
 export const ProjectsList = () => {
   const { selectedTags } = useAppSelector(selectTags);
+  const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
+  const [shareProjectText, setShareProjectText] = useState<string>('');
+
+  const openShareModal = (text: string) => {
+    setIsShareModalOpen(true);
+    setShareProjectText(text);
+    console.log(text);
+  };
+  const closeShareModal = () => setIsShareModalOpen(false);
 
   const getKey = (pageIndex: number, previousPageData: IProject[]) => {
     let cursorId = '';
@@ -86,6 +96,7 @@ export const ProjectsList = () => {
                 authorImage={project.author.image}
                 createdAt={project.createdAt}
                 githubRepository={project.githubRepository}
+                openShareModal={openShareModal}
               />
             ))}
           </>
@@ -103,6 +114,11 @@ export const ProjectsList = () => {
           <></>
         )}
       </ul>
+      <ShareModal
+        isOpen={isShareModalOpen}
+        closeModal={closeShareModal}
+        textToShare={shareProjectText}
+      />
     </>
   );
 };

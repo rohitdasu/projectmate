@@ -23,6 +23,7 @@ export const Project = ({
   createdAt,
   authorImage,
   githubRepository,
+  openShareModal,
 }: ProjectProps) => {
   const handleFeature404 = () => {
     toastMessage('feature is disabled', messageType.error);
@@ -105,7 +106,7 @@ export const Project = ({
               </Button>
             </div>
             <Button
-              onClick={handleFeature404}
+              onClick={() => openShareModal(title)}
               isDisabled={false}
               className="flex flex-row items-center justify-center gap-1 bg-transparent px-1.5 py-1.5 font-bold !text-gray-200 hover:text-primary-color focus:ring-0 sm:my-0 sm:gap-2"
             >
