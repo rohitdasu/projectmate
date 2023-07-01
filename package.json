@@ -37,6 +37,7 @@
     "react-icons": "^4.7.1",
     "react-markdown": "^8.0.5",
     "react-redux": "^8.0.5",
+    "react-share": "^4.4.1",
     "react-tagsinput": "^3.20.1",
     "swr": "^2.0.3",
     "ts-node": "^10.9.1",
