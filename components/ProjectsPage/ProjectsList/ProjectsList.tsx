@@ -6,17 +6,23 @@ import { IProject } from '../Project/Project.interface';
 import { useAppSelector } from '@/hooks';
 import { selectTags } from '@/store/slices/sliceFilter';
 import { fetcher } from '@/lib/fetcher';
-import { ShareModal } from '@/components/ShareModal';
+import { ShareModal, ShareProjectData } from '@/components/ShareModal';
 
 export const ProjectsList = () => {
   const { selectedTags } = useAppSelector(selectTags);
   const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
-  const [shareProjectText, setShareProjectText] = useState<string>('');
+  const [shareProjectData, setShareProjectData] = useState({
+    projectTitle: '',
+    projectUrl: '',
+  });
 
-  const openShareModal = (text: string) => {
+  const openShareModal = (title: string, url: string) => {
     setIsShareModalOpen(true);
-    setShareProjectText(text);
-    console.log(text);
+    setShareProjectData({
+      projectTitle: title,
+      projectUrl: url,
+    });
+    console.log(title, url);
   };
   const closeShareModal = () => setIsShareModalOpen(false);
 
@@ -117,7 +123,7 @@ export const ProjectsList = () => {
       <ShareModal
         isOpen={isShareModalOpen}
         closeModal={closeShareModal}
-        textToShare={shareProjectText}
+        shareProjectData={shareProjectData}
       />
     </>
   );

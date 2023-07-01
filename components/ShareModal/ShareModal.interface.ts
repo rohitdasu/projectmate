@@ -1,5 +1,10 @@
+export type ShareProjectData = {
+  projectTitle: string;
+  projectUrl: string;
+};
+
 export type ShareModalProps = {
   isOpen: boolean;
   closeModal: () => void;
-  textToShare: string;
+  shareProjectData: ShareProjectData;
 };

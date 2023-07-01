@@ -7,8 +7,9 @@ import { IoClose } from 'react-icons/io5';
 export const ShareModal: React.FC<ShareModalProps> = ({
   isOpen,
   closeModal,
-  textToShare,
+  shareProjectData,
 }) => {
+  console.log(shareProjectData);
   return (
     <>
       {isOpen && (
