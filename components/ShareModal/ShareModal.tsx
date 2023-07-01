@@ -15,6 +15,8 @@ import {
   LinkedinShareButton,
   LinkedinIcon,
 } from 'react-share';
+import { useCopyToClipboard } from 'usehooks-ts';
+import { toastMessage, messageType } from '@/components';
 
 export const ShareModal: React.FC<ShareModalProps> = ({
   isOpen,
@@ -22,6 +24,17 @@ export const ShareModal: React.FC<ShareModalProps> = ({
   shareProjectData,
 }) => {
   const { projectTitle, projectUrl } = shareProjectData;
+  const [, copy] = useCopyToClipboard();
+
+  const copyToClipboard = (url: string) => {
+    const isCopied = copy(url);
+    if (!isCopied) {
+      toastMessage('Copying error', messageType.error);
+      return;
+    }
+    toastMessage('Copied to clipboard!', messageType.success);
+  };
+
   return (
     <>
       {isOpen && (
@@ -95,7 +108,10 @@ export const ShareModal: React.FC<ShareModalProps> = ({
                           {projectUrl}
                         </Typography>
                       </div>
-                      <button className="rounded-lg bg-primary-color px-3">
+                      <button
+                        onClick={() => copyToClipboard(projectUrl)}
+                        className="rounded-lg bg-primary-color px-3"
+                      >
                         Copy
                       </button>
                     </div>
