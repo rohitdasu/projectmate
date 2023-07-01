@@ -11,7 +11,7 @@ import { ShareModal, ShareProjectData } from '@/components/ShareModal';
 export const ProjectsList = () => {
   const { selectedTags } = useAppSelector(selectTags);
   const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
-  const [shareProjectData, setShareProjectData] = useState({
+  const [shareProjectData, setShareProjectData] = useState<ShareProjectData>({
     projectTitle: '',
     projectUrl: '',
   });
@@ -22,7 +22,6 @@ export const ProjectsList = () => {
       projectTitle: title,
       projectUrl: url,
     });
-    console.log(title, url);
   };
   const closeShareModal = () => setIsShareModalOpen(false);
 
