@@ -8,7 +8,8 @@ export type ProjectProps = {
   author: string | null;
   authorImage: string | null;
   createdAt: Date;
-  githubRepository: string | null;
+  githubRepository: string;
+  openShareModal: (text: string, url: string) => void;
 };
 
 export interface IProject extends ProjectData {
