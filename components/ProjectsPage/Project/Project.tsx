@@ -27,7 +27,6 @@ export const Project: React.FC<ProjectProps> = memo(
     githubRepository,
     openShareModal,
   }) => {
-    console.log('rerender');
     const handleFeature404 = () => {
       toastMessage('feature is disabled', messageType.error);
     };
