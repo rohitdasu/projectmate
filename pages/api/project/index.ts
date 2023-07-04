@@ -17,7 +17,7 @@ export default async function handler(
   switch (req.method) {
     case 'GET':
       const { limit, cursorId } = req.query;
-      const projectLimit: number = Number(limit) || 10;
+      const projectLimit: number = Number(limit) || 4;
       try {
         const data = await getAllProject({
           limit: projectLimit,

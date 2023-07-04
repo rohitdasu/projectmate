@@ -13,8 +13,9 @@ import { IoIosShareAlt } from 'react-icons/io';
 import { ProjectProps } from './Project.interface';
 import { FaHandshake } from 'react-icons/fa';
 import { IoStatsChartSharp } from 'react-icons/io5';
+import { memo } from 'react';
 
-export const Project = ({
+export const Project: React.FC<ProjectProps> = ({
   id,
   title,
   description,
@@ -24,7 +25,8 @@ export const Project = ({
   authorImage,
   githubRepository,
   openShareModal,
-}: ProjectProps) => {
+}) => {
+  console.log('rerender');
   const handleFeature404 = () => {
     toastMessage('feature is disabled', messageType.error);
   };
@@ -119,3 +121,5 @@ export const Project = ({
     </motion.li>
   );
 };
+
+Project.displayName = 'Project';
