@@ -121,5 +121,3 @@ export const Project: React.FC<ProjectProps> = ({
     </motion.li>
   );
 };
-
-Project.displayName = 'Project';
