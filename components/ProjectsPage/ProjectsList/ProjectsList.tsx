@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import { Project } from '../Project/Project';
 import { ProjectSkeleton } from '../ProjectSkeleton';
@@ -16,14 +16,14 @@ export const ProjectsList = () => {
     projectUrl: '',
   });
 
-  const openShareModal = (title: string, url: string) => {
+  const openShareModal = useCallback((title: string, url: string) => {
     setIsShareModalOpen(true);
     setShareProjectData({
       projectTitle: title,
       projectUrl: url,
     });
-  };
-  const closeShareModal = () => setIsShareModalOpen(false);
+  }, []);
+  const closeShareModal = useCallback(() => setIsShareModalOpen(false), []);
 
   const getKey = (pageIndex: number, previousPageData: IProject[]) => {
     let cursorId = '';
@@ -44,8 +44,10 @@ export const ProjectsList = () => {
   );
 
   // Generate array of specified length with random key value
-  const skeletonProjectsToLoad = Array.from({ length: 10 }, () =>
-    (Math.random() + 1).toString(36).substring(7)
+  const numberOfSKeletonPost = 4;
+  const skeletonProjectsToLoad = Array.from(
+    { length: numberOfSKeletonPost },
+    () => (Math.random() + 1).toString(36).substring(7)
   );
 
   const paginatedProjects = data?.flat();
@@ -54,7 +56,7 @@ export const ProjectsList = () => {
   const isNotReachEnd = data && data[data.length - 1].length;
 
   useEffect(() => {
-    const onScroll = function () {
+    const onScroll = () => {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
         if (isNotReachEnd) {
           setSize(size + 1);
