@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { Typography } from '@/components';
 import { useRouter } from 'next/router';
 
-export const AuthModal = ({ title }: IAuthData) => {
+export const AuthModal: FC<AuthModalProps> = ({ title }) => {
   const { modal } = useAppSelector(selectModal);
   const dispatch = useAppDispatch();
   const { asPath } = useRouter();
