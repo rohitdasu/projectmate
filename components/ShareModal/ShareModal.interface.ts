@@ -1,10 +1,10 @@
-export type ShareProjectData = {
+export interface ShareProjectData {
   projectTitle: string;
   projectUrl: string;
-};
+}
 
-export type ShareModalProps = {
+export interface ShareModalProps {
   isOpen: boolean;
   closeModal: () => void;
   shareProjectData: ShareProjectData;
-};
+}

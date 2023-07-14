@@ -1,17 +1,14 @@
-import { ReactElement, FC } from 'react';
+import { PropsWithChildren, FC } from 'react';
 import { TooltipBox } from './TooltipBox';
+import { TooltipProps } from './Tooltip.interface';
 
-export const Tooltip: FC<{
-  children: ReactElement;
-  text: string;
-  direction?: 'top' | 'bottom' | 'left' | 'right';
-}> = (props) => {
-  const { children, text, direction } = props;
-
-  return (
-    <div className="group relative">
-      {children}
-      <TooltipBox text={text} direction={direction} />
-    </div>
-  );
-};
+export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
+  children,
+  text,
+  direction,
+}) => (
+  <div className="group relative">
+    {children}
+    <TooltipBox text={text} direction={direction} />
+  </div>
+);

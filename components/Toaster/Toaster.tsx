@@ -1,4 +1,3 @@
-import React from 'react';
 import { resolveValue, Toaster, ToastBar, toast } from 'react-hot-toast';
 
 export enum messageType {

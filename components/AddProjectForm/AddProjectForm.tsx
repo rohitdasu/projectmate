@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import Router from 'next/router';
 import { useForm, Controller, FormProvider } from 'react-hook-form';
 import { useSession } from 'next-auth/react';
@@ -11,7 +11,7 @@ import 'react-tagsinput/react-tagsinput.css';
 import axios from 'axios';
 
 export const AddProjectForm = () => {
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = useState(false);
   const methods = useForm();
 
   const { status, data: session } = useSession({

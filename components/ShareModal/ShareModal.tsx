@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment, FC } from 'react';
 import { ShareModalProps } from './ShareModal.interface';
 import { Transition, Dialog } from '@headlessui/react';
 import { Typography } from '@/components/Typography';
@@ -18,7 +18,7 @@ import {
 import { useCopyToClipboard } from 'usehooks-ts';
 import { toastMessage, messageType } from '@/components';
 
-export const ShareModal: React.FC<ShareModalProps> = ({
+export const ShareModal: FC<ShareModalProps> = ({
   isOpen,
   closeModal,
   shareProjectData,

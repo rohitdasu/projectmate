@@ -1,8 +1,8 @@
-import React from 'react';
+import { FC } from 'react';
 import { motion } from 'framer-motion';
 import { ButtonProps } from './Button.interface';
 
-export const Button: React.FunctionComponent<ButtonProps> = ({
+export const Button: FC<ButtonProps> = ({
   type = 'button',
   onClick,
   isDisabled,

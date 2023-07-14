@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 import * as SiIcon from 'react-icons/si';
 import { icons } from './data';

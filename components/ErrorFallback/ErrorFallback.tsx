@@ -1,11 +1,12 @@
+import { FC } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components';
 import { ErrorFallbackProps } from './ErrorFallback.interface';
 
-export const ErrorFallback = ({
+export const ErrorFallback: FC<ErrorFallbackProps> = ({
   error,
   resetErrorBoundary,
-}: ErrorFallbackProps) => {
+}) => {
   return (
     <div
       role="alert"

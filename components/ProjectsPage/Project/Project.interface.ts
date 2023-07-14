@@ -1,6 +1,6 @@
 import { Project as ProjectData } from '@prisma/client';
 
-export type ProjectProps = {
+export interface ProjectProps {
   id: string;
   title: string;
   description: string;
@@ -10,7 +10,7 @@ export type ProjectProps = {
   createdAt: Date;
   githubRepository: string;
   openShareModal: (text: string, url: string) => void;
-};
+}
 
 export interface IProject extends ProjectData {
   author: {

@@ -2,18 +2,17 @@ import { MouseEvent } from 'react';
 
 export type RemoveTagFc = (event: MouseEvent, index: number) => void;
 
-export type TagsProps = {
+export interface TagsProps {
   tags: string[];
   removeTagHandler?: RemoveTagFc;
   className?: string;
   tagClassName?: string;
-};
+}
 
-export type OnTagClick = (event: MouseEvent, tagTitle: string) => void;
-
-export type TagProps = {
+export type OnTagClickFc = (event: MouseEvent, tagTitle: string) => void;
+export interface TagProps {
   title: string;
-  onClick?: OnTagClick;
-  onClose?: OnTagClick;
+  onClick?: OnTagClickFc;
+  onClose?: OnTagClickFc;
   className?: string;
-};
+}
