@@ -1,7 +1,7 @@
 import { Fragment, FC } from 'react';
 import { ShareModalProps } from './ShareModal.interface';
 import { Transition, Dialog } from '@headlessui/react';
-import { Typography } from '@/components/Typography';
+import { Typography } from '@/components/Common/Typography';
 import { IoClose } from 'react-icons/io5';
 import {
   EmailShareButton,
