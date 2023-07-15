@@ -78,9 +78,9 @@ export const AddProjectForm = () => {
             defaultValue={[]}
             rules={{ required: 'required' }}
             render={({ field }) => (
-              <div className="flex flex-col gap-2">
+              <div className="flex w-full flex-col gap-2">
                 <TagsInput
-                  className="w-full rounded-md border border-gray-900 bg-gray-800 p-2"
+                  className="w-full rounded-md border-2 border-gray-900 bg-gray-800 p-4 font-medium placeholder:opacity-50 focus:border-blue-500 focus:outline-none"
                   value={field.value}
                   maxTags={5}
                   onlyUnique={true}
@@ -99,7 +99,7 @@ export const AddProjectForm = () => {
           <Input {...description} />
           <button
             onClick={onSubmit}
-            className="rounded-md bg-green-600 p-3 uppercase transition-all hover:bg-green-700"
+            className="rounded-md bg-emerald-700 p-3 uppercase transition-all hover:bg-emerald-800"
           >
             {loading && <BiLoaderCircle className="animate-spin text-2xl" />}
             {!loading && <span>submit</span>}

@@ -24,7 +24,7 @@ export const Input: FC<InputProps> = ({
         <textarea
           id={id}
           className={cn(
-            'w-full rounded-md border border-gray-900 bg-gray-800 p-4 font-medium placeholder:opacity-50',
+            'w-full rounded-md border-2 border-gray-900 bg-gray-800 p-4 font-medium placeholder:opacity-50 focus:border-blue-500 focus:outline-none',
             'max-h-[20rem] min-h-[10rem] resize-y'
           )}
           placeholder={placeholder}
@@ -34,7 +34,7 @@ export const Input: FC<InputProps> = ({
         <input
           id={id}
           type={type}
-          className="w-full rounded-md border border-gray-900 bg-gray-800 p-4 font-medium placeholder:opacity-50"
+          className="w-full rounded-md border-2 border-gray-900 bg-gray-800 p-4 font-medium placeholder:opacity-50 focus:border-blue-500 focus:outline-none"
           placeholder={placeholder}
           autoComplete="off"
           spellCheck={false}
