@@ -99,7 +99,7 @@ export const AddProjectForm = () => {
           <Input {...description} />
           <button
             onClick={onSubmit}
-            className="rounded-md bg-emerald-700 p-3 uppercase transition-all hover:bg-emerald-800"
+            className="flex justify-center rounded-md bg-emerald-700 p-3 uppercase transition-all hover:bg-emerald-800"
           >
             {loading && <BiLoaderCircle className="animate-spin text-2xl" />}
             {!loading && <span>submit</span>}
