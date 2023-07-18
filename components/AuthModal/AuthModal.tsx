@@ -1,13 +1,13 @@
-import { Fragment, useEffect, useRef } from 'react';
+import { Fragment, useEffect, useRef, FC } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { useAppSelector, useAppDispatch } from '@/hooks';
 import { closeModal, selectModal } from '@/store/slices/sliceModal';
-import { IAuthData } from './Auth.interface';
+import { AuthModalProps } from './Auth.interface';
 import { motion } from 'framer-motion';
 import { Typography } from '@/components';
 import { useRouter } from 'next/router';
 
-export const AuthModal = ({ title }: IAuthData) => {
+export const AuthModal: FC<AuthModalProps> = ({ title }) => {
   const { modal } = useAppSelector(selectModal);
   const dispatch = useAppDispatch();
   const { asPath } = useRouter();

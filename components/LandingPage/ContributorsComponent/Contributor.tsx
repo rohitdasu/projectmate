@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import Image from 'next/legacy/image';
-import { Contributor as ContributorType } from './ContributorsComponent.interface';
-export const Contributor: FC<ContributorType> = (contributor) => {
+import { Contributor as ContributorProps } from './ContributorsComponent.interface';
+export const Contributor: FC<ContributorProps> = (contributor) => {
   return (
     <a
       key={contributor.id}

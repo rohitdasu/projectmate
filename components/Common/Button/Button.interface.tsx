@@ -1,8 +1,8 @@
-export type ButtonProps = {
+export interface ButtonProps {
   type?: 'button' | 'submit';
   onClick: () => void;
   isDisabled: boolean;
   haveAnimation?: boolean;
   className?: string;
   children: React.ReactNode;
-};
+}

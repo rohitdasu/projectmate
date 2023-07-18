@@ -1,3 +1,3 @@
-export interface IProductHunt {
+export interface ProductHuntProps {
   isMobile?: boolean;
 }

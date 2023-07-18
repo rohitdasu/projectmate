@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { AuthModal } from '@/components';
 import { useAppDispatch } from '@/hooks';
 import { openModal } from '@/store/slices/sliceModal';
@@ -6,7 +6,7 @@ import { openModal } from '@/store/slices/sliceModal';
 export const SessionLessCard = () => {
   const dispatch = useAppDispatch();
   const message = 'Continue with your social account';
-  const [loginMessage, setLoginMessage] = React.useState(message);
+  const [loginMessage, setLoginMessage] = useState(message);
   return (
     <>
       <AuthModal title={loginMessage} />

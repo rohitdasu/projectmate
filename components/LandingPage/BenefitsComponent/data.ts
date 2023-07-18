@@ -1,6 +1,6 @@
-import { Benefit } from './Benefit.interface';
+import { BenefitProps } from './Benefit.interface';
 
-export const benefits: Benefit[] = [
+export const benefits: BenefitProps[] = [
   {
     id: '1',
     title: 'Add Projects',

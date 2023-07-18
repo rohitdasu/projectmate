@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { SharedLayoutProps } from './SharedLayout.interface';
 import Head from 'next/head';
 import { Sidebar } from '../Sidebar';

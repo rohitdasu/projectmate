@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAppDispatch } from '@/hooks';
 import { openModal } from '@/store/slices/sliceModal';
 import { useSession } from 'next-auth/react';

@@ -1,13 +1,13 @@
-import React from 'react';
+import { FC } from 'react';
 import { TagsProps } from './Tags.interface';
 import { Tag } from './Tag';
 
-export const Tags = ({
+export const Tags: FC<TagsProps> = ({
   tags,
   removeTagHandler,
   className,
   tagClassName,
-}: TagsProps) => {
+}) => {
   const areTagClosable = !!removeTagHandler;
 
   return (

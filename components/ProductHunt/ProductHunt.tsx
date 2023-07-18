@@ -1,8 +1,9 @@
-import React from 'react';
+import { useState, useEffect, FC } from 'react';
+import { ProductHuntProps } from './ProductHunt.interface';
 
-export const ProductHunt = ({ isMobile = false }) => {
-  const [loaded, setLoaded] = React.useState(false);
-  React.useEffect(() => {
+export const ProductHunt: FC<ProductHuntProps> = ({ isMobile = false }) => {
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
     setLoaded(true);
   }, []);
 

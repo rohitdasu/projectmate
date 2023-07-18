@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const SuccessStoryComponent = () => {
   return (
     <section className="mx-auto flex max-w-screen-xl flex-col items-center gap-6 py-16 px-4">

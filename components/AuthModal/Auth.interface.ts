@@ -1,3 +1,3 @@
-export type IAuthData = {
+export interface AuthModalProps {
   title: string;
-};
+}

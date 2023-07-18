@@ -1,11 +1,7 @@
 import { FC } from 'react';
+import { TooltipBoxProps } from './Tooltip.interface';
 
-export const TooltipBox: FC<{
-  text: string;
-  direction?: 'top' | 'bottom' | 'left' | 'right';
-}> = (props) => {
-  const { text, direction } = props;
-
+export const TooltipBox: FC<TooltipBoxProps> = ({ text, direction }) => {
   const directionStyles = [
     'invisible absolute z-[1000] h-max w-max max-w-[15rem] rounded-md border-2 border-gray-600 bg-gray-600 p-2 text-center text-xs leading-relaxed text-white group-hover:visible',
   ];

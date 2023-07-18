@@ -3,8 +3,8 @@ export type ShareProjectData = {
   projectUrl: string;
 };
 
-export type ShareModalProps = {
+export interface ShareModalProps {
   isOpen: boolean;
   closeModal: () => void;
   shareProjectData: ShareProjectData;
-};
+}

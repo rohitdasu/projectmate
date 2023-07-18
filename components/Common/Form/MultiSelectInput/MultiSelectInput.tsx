@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, FC } from 'react';
 import { KeyboardEventHandler } from 'react';
 import { messageType, toastMessage } from '@/components';
 import toast from 'react-hot-toast';
@@ -12,13 +12,13 @@ interface MultiSelectInputProps {
   id: string;
 }
 
-export const MultiSelectInput = ({
+export const MultiSelectInput: FC<MultiSelectInputProps> = ({
   suggestions,
   onEnterClick,
   inputClassName,
   errorMessage,
   id,
-}: MultiSelectInputProps) => {
+}) => {
   const [isError, setIsError] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
