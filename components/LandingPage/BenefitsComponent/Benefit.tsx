@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Benefit as BenefitProps } from './Benefit.interface';
+import { BenefitProps } from './Benefit.interface';
 import { FaStarOfLife } from 'react-icons/fa';
 export const Benefit: FC<BenefitProps> = ({ description, title }) => {
   return (
