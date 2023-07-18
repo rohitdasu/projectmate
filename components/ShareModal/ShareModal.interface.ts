@@ -1,7 +1,7 @@
-export interface ShareProjectData {
+export type ShareProjectData = {
   projectTitle: string;
   projectUrl: string;
-}
+};
 
 export interface ShareModalProps {
   isOpen: boolean;
