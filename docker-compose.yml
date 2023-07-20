@@ -11,9 +11,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
       MONGO_INITDB_DATABASE: projectmate
-      # MONGO_INITDB_USER: mongodb
-      # MONGO_INITDB_PWD: mongodb
-      MONGO_REPLICA_HOST: localhost
+      MONGO_REPLICA_HOST: mongo
       MONGO_REPLICA_PORT: 27017
     ports:
       - "27017:27017"
@@ -21,7 +19,6 @@ services:
     command: mongod --quiet --logpath /dev/null 
     networks:
       projectmate-network:
-        ipv4_address: 10.10.0.2
 
   web:
     build:
@@ -37,13 +34,8 @@ services:
       - 3000:3000
     networks:
       projectmate-network:
-        ipv4_address: 10.10.0.3
     depends_on:
       - mongo
 networks:
   projectmate-network:
     driver: bridge
-    ipam:
-      config:
-        - subnet: 10.10.0.0/16
-          gateway: 10.10.0.1
