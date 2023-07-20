@@ -26,16 +26,15 @@ services:
       dockerfile: ./docker/web/Dockerfile
     container_name: web
     restart: always
-    volumes:
-      - ./:/app
-      - /app/node_modules
-      - /app/.next
     ports:
       - 3000:3000
     networks:
       projectmate-network:
     depends_on:
       - mongo
+    volumes:
+      - ./:/app
+      - /app/node_modules
 networks:
   projectmate-network:
     driver: bridge
