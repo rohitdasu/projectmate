@@ -33,8 +33,10 @@ services:
     depends_on:
       - mongo
     volumes:
-      - ./:/app
-      - /app/node_modules
+      - ./:/usr/src/app
+    environment:
+      NODE_ENV: development
+    command: sh -c "rsync -arv /usr/src/cache/node_modules/. /usr/src/app/node_modules/ && yarn dev"
 networks:
   projectmate-network:
     driver: bridge
