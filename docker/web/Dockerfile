@@ -5,17 +5,18 @@ FROM node:18.12.0
 RUN apt-get update -y
 RUN apt-get install -y rsync
 
-# Switch to node user
-USER node
-
 # use directory for app
 WORKDIR /usr/src/cache
 
-# Copy dependencies files
+# Copy dependencies and prisma files
 COPY package.json yarn.lock ./
+COPY prisma ./prisma/
 
 # Install dependencies
 RUN yarn install --frozen-lockfile
+
+# Initialize prisma
+RUN npx prisma generate
 
 # Change workdir to main app folder
 WORKDIR /usr/src/app
