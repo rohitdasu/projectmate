@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/mongo_rs/Dockerfile
-    container_name: mongo
+    container_name: projectmate_mongo
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
@@ -24,7 +24,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/web/Dockerfile
-    container_name: web
+    container_name: projectmate_web
     restart: always
     ports:
       - 3000:3000
