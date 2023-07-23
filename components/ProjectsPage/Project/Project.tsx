@@ -32,7 +32,7 @@ export const Project: React.FC<ProjectProps> = memo(
     };
     const handleContributeClick = () => {
       if (githubRepository) {
-        window.open(githubRepository, '_blank');
+        window.open(`${githubRepository}/?ref=projectmate.net`, '_blank');
       }
     };
 
