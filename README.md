@@ -132,20 +132,24 @@ Figma design:
 > ```
 > If you want to stop containers just run:
 > ```sh
->   docker compose stop
+> docker compose stop
 > ```
 > Or if you want to stop and remove containers, networks:
 > ```sh
->   docker compose down
+> docker compose down
 > ```
 
 <br>
 
-> **_NOTE:_**  If you want to add new package with `yarn add` or pulled branch with changes to package.json you need to rebuild and start container container using:
+> **_NOTE:_**  If you want to add new package, you must use
+>  ```sh
+>   docker compose exec web yarn add [package]
+>  ```
+>  Then (also if you pulled branch with changes to package.json) rebuild containers:
 >  ```sh
 >   docker compose up --build -d
 >  ```
-> Also you cannot perform `yarn build` from your local machine - you need to use:
+> You cannot perform `yarn build` from your local machine - you need to use:
 >  ```sh
 >   docker compose exec web yarn build
 >  ```
