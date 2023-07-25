@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/mongo_rs/Dockerfile
-    container_name: projectmate_mongo
+    container_name: mongo
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
@@ -24,7 +24,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/web/Dockerfile
-    container_name: projectmate_web
+    container_name: web
     restart: always
     ports:
       - 3000:3000
@@ -34,8 +34,6 @@ services:
       - mongo
     volumes:
       - ./:/usr/src/app
-    environment:
-      NODE_ENV: development
     command: sh -c "rsync -arv /usr/src/cache/node_modules/. /usr/src/app/node_modules/ && yarn dev"
 networks:
   projectmate-network:
