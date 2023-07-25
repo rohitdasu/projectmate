@@ -126,7 +126,7 @@ Figma design:
    ```sh
    docker compose exec web yarn prisma db seed
    ```
-At this stage app should be available at localhost:300
+At this stage app should be available at localhost:3000
 <br>
 > **_NOTE:_**  If you want to add new package with `yarn add` or pulled branch with changes to package.json you need to rebuild and start container container using
 >  ```sh
