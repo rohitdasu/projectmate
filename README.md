@@ -126,13 +126,26 @@ Figma design:
    ```sh
    docker compose exec web yarn prisma db seed
    ```
-At this stage app should be available at localhost:3000
+> You can access logs from web or mongo container by docker compose logs e.g:
+> ```sh
+> docker compose logs web -f
+> ```
+> If you want to stop containers just run:
+> ```sh
+>   docker compose stop
+> ```
+> Or if you want to stop and remove containers, networks:
+> ```sh
+>   docker compose down
+> ```
+
 <br>
-> **_NOTE:_**  If you want to add new package with `yarn add` or pulled branch with changes to package.json you need to rebuild and start container container using
+
+> **_NOTE:_**  If you want to add new package with `yarn add` or pulled branch with changes to package.json you need to rebuild and start container container using:
 >  ```sh
 >   docker compose up --build -d
 >  ```
-> Also  you cannot perform `yarn build` from your local machine - you need to use
+> Also you cannot perform `yarn build` from your local machine - you need to use:
 >  ```sh
 >   docker compose exec web yarn build
 >  ```
