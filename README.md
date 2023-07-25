@@ -91,6 +91,8 @@ Figma design:
 <br>
 
 ### Installation using docker
+> **_NOTE:_** Docker set up is highly recommended mainly on linux systems due to possible performance issues on other platforms.
+
 1. Fork the project 🔧
 
 2. Clone the project by running the following command on the terminal 🔽
