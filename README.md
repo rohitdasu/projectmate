@@ -48,6 +48,7 @@ Figma design:
 > Before getting into it, make sure you have [yarn](https://yarnpkg.com/) and [prisma](https://prisma.io) installed.
 
 <br>
+###  Standard installation
 
 1. Fork the project 🔧
 
@@ -85,6 +86,59 @@ Figma design:
    ```sh
    yarn run dev
    ```
+<br>
+
+### Installation using docker
+1. Fork the project 🔧
+
+2. Clone the project by running the following command on the terminal 🔽
+   ```sh
+   git clone https://github.com/<your-github-username>/projectmate.git
+   ```
+3. Go into the project directory 🔽
+   ```sh
+   cd projectmate
+   ```
+4. Create an `.env` file from the `.env.template` file (copy everything in the `.env.template` file and put it in the `.env` file with appropriate values) 📄
+
+   - `MONGODB_URI` is the `connection string`, in this case your connection string should look exactly like this `mongodb://root:root@mongo:27017/projectmate?authSource=admin`
+   - `NEXTAUTH_SECRET` Just pass any `random string` or you can quickly create a good value on the command line via this `openssl command`.
+     <br>
+
+   ```sh
+   openssl rand -base64 32
+   ```
+5. Build docker containers 🔽
+<br>
+   ```sh
+   docker compose build
+   ```
+6.  Start containers in a background 🔽
+<br>
+   ```sh
+   docker compose up -d
+   ```
+7. Synchronize your Prisma schema with your database schema 🗃
+<br>
+   ```sh
+   docker compose exec web yarn prisma db push
+   ```
+8. Insert required data to your database ✅
+<br>
+   ```sh
+   docker compose exec web yarn prisma db seed
+   ```
+At this stage app should be available at localhost:300
+<br>
+> **_NOTE:_**  If you want to add new package with `yarn add ` or pulled branch with changes to package.json you need to rebuild and start container container using
+>  ```sh
+   docker compose up --build -d
+   ```
+> Also  you cannot perform `yarn build` from your local machine - you need to use
+>  ```sh
+   docker compose exec web yarn build
+   ```
+
 
 ## Contributing Guidelines 📜
 
