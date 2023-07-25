@@ -110,28 +110,24 @@ Figma design:
    openssl rand -base64 32
    ```
 5. Build docker containers 🔽
-<br>
    ```sh
    docker compose build
    ```
 6.  Start containers in a background 🔽
-<br>
-	   ```sh
-	docker compose up -d
-	```
+    ```sh
+    docker compose up -d
+    ```
 7. Synchronize your Prisma schema with your database schema 🗃
-<br>
    ```sh
    docker compose exec web yarn prisma db push
    ```
 8. Insert required data to your database ✅
-<br>
    ```sh
    docker compose exec web yarn prisma db seed
    ```
 At this stage app should be available at localhost:300
 <br>
-> **_NOTE:_**  If you want to add new package with `yarn add ` or pulled branch with changes to package.json you need to rebuild and start container container using
+> **_NOTE:_**  If you want to add new package with `yarn add` or pulled branch with changes to package.json you need to rebuild and start container container using
 >  ```sh
 >   docker compose up --build -d
 >  ```
