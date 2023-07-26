@@ -1,0 +1,40 @@
+version: '3.2'
+
+services:
+  mongo:
+    build:
+      context: .
+      dockerfile: ./docker/mongo_rs/Dockerfile
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: projectmate
+      MONGO_REPLICA_HOST: mongo
+      MONGO_REPLICA_PORT: 27017
+    ports:
+      - "27017:27017"
+    
+    command: mongod --quiet --logpath /dev/null 
+    networks:
+      projectmate-network:
+
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/web/Dockerfile
+    container_name: web
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      projectmate-network:
+    depends_on:
+      - mongo
+    volumes:
+      - ./:/usr/src/app
+    command: sh -c "rsync -arv /usr/src/cache/node_modules/. /usr/src/app/node_modules/ && yarn dev"
+networks:
+  projectmate-network:
+    driver: bridge
