@@ -1,21 +1,22 @@
+import { SiDiscord, SiGithub, SiTwitter } from 'react-icons/si';
 import { Icon } from './Footer.interface';
 
 export const icons: Icon[] = [
   {
     id: '1',
-    name: 'SiGithub',
+    logo: <SiGithub size={24} />,
     color: '#ffffff',
     link: 'https://github.com/rohitdasu/projectmate',
   },
   {
     id: '2',
-    name: 'SiTwitter',
+    logo: <SiTwitter size={24} />,
     color: '#ffffff',
     link: 'https://twitter.com/projectmateHQ',
   },
   {
     id: '3',
-    name: 'SiDiscord',
+    logo: <SiDiscord size={24} />,
     color: '#ffffff',
     link: 'https://discord.com/invite/FQtyMWFZQ9',
   },
