@@ -1,13 +1,11 @@
 import Link from 'next/link';
-import * as SiIcon from 'react-icons/si';
 import { icons } from './data';
 
 const Icons = icons.map((social) => {
   return {
     id: social.id,
-    icon: SiIcon[social.name as keyof typeof SiIcon],
+    icon: social.logo,
     link: social.link,
-    name: social.name,
   };
 });
 
@@ -24,10 +22,9 @@ export const Footer = () => {
                   target="_blank"
                   referrerPolicy="no-referrer"
                 >
-                  <social.icon
-                    className="text-gray-400 hover:text-gray-300"
-                    size={24}
-                  />
+                  <div className="text-gray-400 hover:text-gray-300">
+                    {social.icon}
+                  </div>
                 </a>
               </li>
             );

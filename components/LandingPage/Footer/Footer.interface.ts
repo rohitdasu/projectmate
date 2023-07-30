@@ -1,6 +1,8 @@
+import { ReactNode } from 'react';
+
 export type Icon = {
   id: string;
-  name: string;
+  logo: ReactNode;
   color: string;
   link: string;
 };

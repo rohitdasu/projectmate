@@ -1,8 +1,7 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
-import * as FaIcon from 'react-icons/fa';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { SessionCard } from './SessionCard';
 import { SessionLessCard } from './SessionLessCard';
 import { NavRoutes } from './data';
@@ -10,7 +9,7 @@ import { NavRoutes } from './data';
 const NavElements = NavRoutes.map((nav) => {
   return {
     id: nav.id,
-    icon: FaIcon[nav.icon as keyof typeof FaIcon],
+    icon: nav.icon,
     link: nav.link,
     name: nav.title,
   };
@@ -49,7 +48,7 @@ export const Sidebar = () => {
                   isActive ? 'text-gray-200' : 'text-gray-400'
                 }`}
               >
-                <nav.icon size={20} />
+                {nav.icon}
                 <span className="hidden text-lg text-gray-400 hover:text-gray-300 lg:block ">
                   {nav.name}
                 </span>
