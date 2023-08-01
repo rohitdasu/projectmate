@@ -20,7 +20,10 @@ export const ActionComponent = () => {
       <AuthModal title="Continue with your social account" />
       <div
         className="relative mx-auto flex max-w-screen-xl flex-col items-center gap-10 overflow-hidden bg-cover bg-no-repeat"
-        style={{ backgroundImage: "url('/checks.png')" }}
+        style={{
+          backgroundImage: "url('/checks.png')",
+          backgroundPosition: 'center',
+        }}
       >
         <p className="w-full text-center text-base leading-[1.25] text-green-50 md:w-3/4 lg:w-2/3 lg:text-3xl">
           Join the ranks of 150+ talented developers who have already signed up

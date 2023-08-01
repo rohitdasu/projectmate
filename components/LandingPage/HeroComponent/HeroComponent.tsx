@@ -5,7 +5,10 @@ export const HeroComponent = () => {
     <section className="flex h-[calc(100vh-80px)] flex-row items-center justify-center px-4 lg:px-0">
       <div
         className="relative flex flex-col items-center gap-8 overflow-hidden bg-cover bg-no-repeat"
-        style={{ backgroundImage: "url('/checks.png')" }}
+        style={{
+          backgroundImage: "url('/checks.png')",
+          backgroundPosition: 'center',
+        }}
       >
         <h1 className="mx-auto max-w-5xl text-center text-3xl font-semibold text-gray-200 md:text-5xl md:!leading-[1.25] lg:text-6xl">
           <span className="text-primary-color">Supercharge</span> your
