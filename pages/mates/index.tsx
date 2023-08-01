@@ -1,6 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import { SharedLayout } from '@/components';
+import { SharedLayout } from '@/components/Layouts';
 
 const Mates: NextPage = () => {
   return (

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import { Button } from '@/components';
+import { Button } from '@/components/Common/Button';
 import { ErrorFallbackProps } from './ErrorFallback.interface';
 
 export const ErrorFallback: FC<ErrorFallbackProps> = ({

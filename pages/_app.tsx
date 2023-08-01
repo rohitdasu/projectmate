@@ -1,5 +1,6 @@
 import { AppProps } from 'next/app';
-import { ErrorFallback, Toaster } from '@/components';
+import { ErrorFallback } from '@/components/ErrorFallback';
+import { Toaster } from '@/components/Toaster';
 import { SessionProvider } from 'next-auth/react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Provider } from 'react-redux';
