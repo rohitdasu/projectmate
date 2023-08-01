@@ -43,7 +43,7 @@ export const Project: React.FC<ProjectProps> = memo(
         exit={{ opacity: 0 }}
         layout
         transition={{ duration: 1 }}
-        className="border border-gray-800 bg-gray-900 shadow-lg md:m-auto md:w-full"
+        className="border-[0.1px] border-gray-700 md:m-auto md:w-full"
       >
         <div className="flex h-full flex-col items-center overflow-hidden rounded-md">
           <div className="flex w-full grow flex-col justify-center gap-5 p-4 pt-4">
@@ -51,9 +51,19 @@ export const Project: React.FC<ProjectProps> = memo(
               <Typography
                 as="h2"
                 fontWeight="bold"
-                className="flex flex-col gap-4 truncate text-base text-gray-100 md:text-xl"
+                className="flex w-full flex-col gap-4 truncate text-base text-gray-100 md:text-xl"
               >
-                {title}
+                <div className="flex w-full flex-row items-center justify-between">
+                  {title}
+                  <div className="flex flex-row items-center gap-1 text-gray-400">
+                    <AiOutlineClockCircle />
+                    <Typography as="p" fontSize="sm" fontWeight="light">
+                      <time dateTime={createdAt.toString()}>
+                        {moment(createdAt).fromNow()}
+                      </time>
+                    </Typography>
+                  </div>
+                </div>
                 <div className="flex items-center gap-2 text-base font-bold text-gray-100 opacity-70">
                   <Image
                     src={
@@ -68,14 +78,6 @@ export const Project: React.FC<ProjectProps> = memo(
                   <span className="text-sm md:text-lg">{author}</span>
                 </div>
               </Typography>
-              <div className="flex flex-row items-center gap-1 text-gray-400">
-                <AiOutlineClockCircle />
-                <Typography as="p" fontSize="sm" fontWeight="light">
-                  <time dateTime={createdAt.toString()}>
-                    {moment(createdAt).fromNow()}
-                  </time>
-                </Typography>
-              </div>
             </header>
             <Typography as="p" fontSize="sm" className="text-gray-200">
               {description}

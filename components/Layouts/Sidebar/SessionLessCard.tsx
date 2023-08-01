@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { AuthModal } from '@/components';
 import { useAppDispatch } from '@/hooks';
 import { openModal } from '@/store/slices/sliceModal';
+import { IoLogIn } from 'react-icons/io5';
 
 export const SessionLessCard = () => {
   const dispatch = useAppDispatch();
@@ -28,7 +29,8 @@ export const SessionLessCard = () => {
         }}
         className="h-9 cursor-pointer text-gray-500 transition-all hover:text-gray-200"
       >
-        <span className="hidden text-lg text-green-400 transition-colors hover:text-green-500 lg:block ">
+        <IoLogIn size={27} className="block lg:hidden" />
+        <span className="hidden text-lg text-green-400 transition-colors hover:text-green-500 lg:block">
           Login
         </span>
       </li>

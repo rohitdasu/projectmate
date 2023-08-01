@@ -64,7 +64,7 @@ export default class MyDocument extends Document {
           />
           {/* /fonts */}
         </Head>
-        <body className="bg-slate-900">
+        <body className="bg-primary-background">
           <noscript>
             <iframe
               src="https://www.googletagmanager.com/ns.html?id=GTM-KSS8T4M"
@@ -73,7 +73,6 @@ export default class MyDocument extends Document {
               style={{ display: 'none', visibility: 'hidden' }}
             ></iframe>
           </noscript>
-
           <Main />
           <NextScript />
         </body>

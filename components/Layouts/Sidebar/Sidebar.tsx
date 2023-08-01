@@ -33,7 +33,7 @@ const Logo = () => {
 };
 
 export const Sidebar = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const { pathname } = useRouter();
   return (
     <div className="fixed inset-0 flex h-screen w-[11%] flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
@@ -57,15 +57,17 @@ export const Sidebar = () => {
           );
         })}
       </ul>
-      <ul className="mt-4 flex w-full flex-col items-center gap-4 border-t border-gray-900 pt-4 transition-all md:items-start">
-        {session ? (
+      <ul className="mt-4 flex w-full flex-col items-center gap-4 border-t border-gray-800 pt-4 transition-all md:items-start">
+        {status === 'authenticated' ? (
           <SessionCard
             email={session.user?.email || ''}
             name={session.user?.name || ''}
             image={session.user?.image || ''}
           />
-        ) : (
+        ) : status === 'unauthenticated' ? (
           <SessionLessCard />
+        ) : (
+          <div>Loading..</div>
         )}
       </ul>
     </div>
