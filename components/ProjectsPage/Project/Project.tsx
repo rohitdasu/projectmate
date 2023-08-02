@@ -1,11 +1,8 @@
 import { motion } from 'framer-motion';
-import {
-  Tags,
-  Button,
-  Typography,
-  toastMessage,
-  messageType,
-} from '@/components';
+import { Tags } from '@/components/Tags';
+import { Button } from '@/components/Common/Button';
+import { Typography } from '@/components/Common/Typography';
+import { toastMessage, messageType } from '@/components/Toaster';
 import Image from 'next/legacy/image';
 import moment from 'moment';
 import { AiOutlineClockCircle } from 'react-icons/ai';
