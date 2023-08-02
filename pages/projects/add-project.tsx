@@ -1,5 +1,6 @@
 import React from 'react';
-import { Header, AddProjectForm } from '@/components';
+import { Header } from '@/components/LandingPage';
+import { AddProjectForm } from '@/components/AddProjectForm';
 import Head from 'next/head';
 import Image from 'next/image';
 import IMAGE from '@/assets/scribble.svg';
