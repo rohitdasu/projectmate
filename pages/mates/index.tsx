@@ -1,6 +1,7 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import { SharedLayout } from '@/components';
+import { MatesList } from '@/components/MatesList';
+import { SharedLayout } from '@/components/Layouts';
 
 const Mates: NextPage = () => {
   return (
@@ -9,7 +10,7 @@ const Mates: NextPage = () => {
         <h1>Mates</h1>
       </header>
       <SharedLayout title="Mates">
-        <div className="flex h-screen items-center">coming soon...</div>
+        <MatesList />
       </SharedLayout>
     </>
   );
