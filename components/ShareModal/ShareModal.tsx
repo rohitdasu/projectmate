@@ -16,7 +16,7 @@ import {
   LinkedinIcon,
 } from 'react-share';
 import { useCopyToClipboard } from 'usehooks-ts';
-import { toastMessage, messageType } from '@/components';
+import { toastMessage, messageType } from '@/components/Toaster';
 
 export const ShareModal: FC<ShareModalProps> = ({
   isOpen,

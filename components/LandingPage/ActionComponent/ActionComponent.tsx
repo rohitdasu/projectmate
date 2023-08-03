@@ -1,7 +1,7 @@
 import { useAppDispatch } from '@/hooks';
 import { openModal } from '@/store/slices/sliceModal';
 import { useSession } from 'next-auth/react';
-import { AuthModal } from '@/components';
+import { AuthModal } from '@/components/AuthModal';
 import { useRouter } from 'next/router';
 
 export const ActionComponent = () => {

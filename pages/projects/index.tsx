@@ -1,5 +1,6 @@
 import React from 'react';
-import { ProjectsList, SharedLayout } from '@/components';
+import { ProjectsList } from '@/components/ProjectsPage/ProjectsList';
+import { SharedLayout } from '@/components/Layouts';
 
 const Projects = () => {
   return (

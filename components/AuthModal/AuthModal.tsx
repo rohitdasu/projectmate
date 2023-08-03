@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from '@/hooks';
 import { closeModal, selectModal } from '@/store/slices/sliceModal';
 import { AuthModalProps } from './Auth.interface';
 import { motion } from 'framer-motion';
-import { Typography } from '@/components';
+import { Typography } from '@/components/Common/Typography';
 import { useRouter } from 'next/router';
 
 export const AuthModal: FC<AuthModalProps> = ({ title }) => {

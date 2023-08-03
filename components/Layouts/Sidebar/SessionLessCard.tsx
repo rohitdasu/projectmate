@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AuthModal } from '@/components';
+import { AuthModal } from '@/components/AuthModal';
 import { useAppDispatch } from '@/hooks';
 import { openModal } from '@/store/slices/sliceModal';
 import { IoLogIn } from 'react-icons/io5';
