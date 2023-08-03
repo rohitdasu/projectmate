@@ -1,15 +1,15 @@
 import { ModalState, ModalType } from './types';
 import { createContext } from 'react';
 
-const initialModalsState: ModalState = {
+export const initialModalsState: ModalState = {
   shareModal: { isOpen: false },
   authModal: { isOpen: false },
 };
 
-export const ModalContext = createContext<{
+export const ModalsContext = createContext<{
   state: ModalState;
-  openModal: (modal: ModalType) => null;
-  closeModal: (modal: ModalType) => null;
+  openModal: (modal: ModalType) => void;
+  closeModal: (modal: ModalType) => void;
 }>({
   state: initialModalsState,
   openModal: () => null,
