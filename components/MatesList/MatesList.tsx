@@ -5,10 +5,14 @@ import { fetcher } from '@/lib/fetcher';
 
 export const MatesList = () => {
   const url = `/api/user/all`;
-  const { data, error } = useSWR(url, fetcher);
+  const { data, error, isLoading } = useSWR(url, fetcher);
 
   if (error) {
     return <div className="m-auto my-5 text-lg">Failed to load mates</div>;
+  }
+
+  if (isLoading) {
+    return <div className="m-auto my-5 text-lg">Loading...</div>;
   }
 
   return (
