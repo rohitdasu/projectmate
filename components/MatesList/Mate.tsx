@@ -1,7 +1,17 @@
 import { FC } from 'react';
 import Image from 'next/legacy/image';
 import { MateProps } from './Mate.interface';
+
+const getProfilePictureSrc = (mate: MateProps) => {
+  return (
+    mate.profilePicture ||
+    `https://avatars.dicebear.com/api/initials/${mate.name}.png?backgroundColorLevel=800&fontSize=40`
+  );
+};
+
 export const Mate: FC<MateProps> = (mate) => {
+  const profilePictureSrc = getProfilePictureSrc(mate);
+
   return (
     <div>
       <li
@@ -9,10 +19,7 @@ export const Mate: FC<MateProps> = (mate) => {
         key={mate.id}
       >
         <Image
-          src={
-            mate.profilePicture ||
-            `https://avatars.dicebear.com/api/initials/${mate.name}.png?backgroundColorLevel=800&fontSize=40`
-          }
+          src={profilePictureSrc}
           alt="user-photo"
           width={60}
           height={60}
