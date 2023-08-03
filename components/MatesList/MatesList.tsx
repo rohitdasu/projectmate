@@ -4,7 +4,7 @@ import useSWR from 'swr';
 import { fetcher } from '@/lib/fetcher';
 
 export const MatesList = () => {
-  const url = `https://www.projectmate.net/api/user/all`;
+  const url = `/api/user/all`;
   const { data, error } = useSWR(url, fetcher);
 
   if (error) {
