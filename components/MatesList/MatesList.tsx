@@ -14,9 +14,6 @@ export const MatesList = () => {
   return (
     <section className="py-16 px-2">
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8">
-        <p className="text-center text-xl text-gray-200 md:text-3xl lg:text-4xl">
-          Mates
-        </p>
         <ul className="grid grid-cols-3 gap-8 md:grid-cols-4 lg:grid-cols-5">
           {data &&
             data.results.map((mate: any) => {
