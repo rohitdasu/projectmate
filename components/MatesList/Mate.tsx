@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Image from 'next/legacy/image';
-import { IMate } from './Mate.interface';
-export const Mate: FC<IMate> = (mate) => {
+import { MateProps } from './Mate.interface';
+export const Mate: FC<MateProps> = (mate) => {
   return (
     <div>
       <li
