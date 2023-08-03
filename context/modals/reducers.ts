@@ -8,13 +8,18 @@ export const modalsReducer = (
     case 'OPEN_MODAL':
       return {
         ...state,
-        [action.modal]: { isOpen: true },
+        [action.modal]: { ...state[action.modal], isOpen: true },
       };
 
     case 'CLOSE_MODAL':
       return {
         ...state,
-        [action.modal]: { isOpen: false },
+        [action.modal]: { ...state[action.modal], isOpen: false },
+      };
+    case 'SET_SHARE_DATA':
+      return {
+        ...state,
+        shareModal: { isOpen: state.shareModal.isOpen, shareData: action.data },
       };
     default:
       return state;

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import { Project } from '../Project/Project';
 import { ProjectSkeleton } from '../ProjectSkeleton';
@@ -6,24 +6,31 @@ import { IProject } from '../Project/Project.interface';
 import { useAppSelector } from '@/hooks';
 import { selectTags } from '@/store/slices/sliceFilter';
 import { fetcher } from '@/lib/fetcher';
-import { ShareModal, ShareProjectData } from '@/components/ShareModal';
+import { ShareModal } from '@/components/ShareModal';
+import { useModals } from '@/hooks/useModals';
 
 export const ProjectsList = () => {
   const { selectedTags } = useAppSelector(selectTags);
-  const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
-  const [shareProjectData, setShareProjectData] = useState<ShareProjectData>({
-    projectTitle: '',
-    projectUrl: '',
-  });
 
-  const openShareModal = useCallback((title: string, url: string) => {
-    setIsShareModalOpen(true);
-    setShareProjectData({
-      projectTitle: title,
-      projectUrl: url,
-    });
-  }, []);
-  const closeShareModal = useCallback(() => setIsShareModalOpen(false), []);
+  const {
+    state: modalsState,
+    openModal,
+    closeModal,
+    setShareData,
+  } = useModals();
+
+  const { isOpen: isShareModalOpen, shareData } = modalsState.shareModal;
+
+  const openShareModal = useCallback(
+    (title: string, url: string) => {
+      setShareData({
+        projectTitle: title,
+        projectUrl: url,
+      });
+      openModal('shareModal');
+    },
+    [openModal, setShareData]
+  );
 
   const getKey = (pageIndex: number, previousPageData: IProject[]) => {
     let cursorId = '';
@@ -123,8 +130,8 @@ export const ProjectsList = () => {
       </ul>
       <ShareModal
         isOpen={isShareModalOpen}
-        closeModal={closeShareModal}
-        shareProjectData={shareProjectData}
+        closeModal={() => closeModal('shareModal')}
+        shareProjectData={shareData}
       />
     </>
   );

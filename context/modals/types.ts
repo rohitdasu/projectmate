@@ -1,7 +1,13 @@
-export type ModalType = 'ShareModal' | 'AuthModal';
+export type ModalType = 'shareModal' | 'authModal';
+
+export type ShareData = {
+  projectTitle: string;
+  projectUrl: string;
+};
 
 export type ShareModalState = {
   isOpen: boolean;
+  shareData: ShareData;
 };
 
 export type AuthModalState = {
@@ -15,4 +21,5 @@ export type ModalState = {
 
 export type ModalsAction =
   | { type: 'OPEN_MODAL'; modal: ModalType }
-  | { type: 'CLOSE_MODAL'; modal: ModalType };
+  | { type: 'CLOSE_MODAL'; modal: ModalType }
+  | { type: 'SET_SHARE_DATA'; data: ShareData };
