@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { ModalsContext } from '@/context/modals/ModalsContext';
+import { AuthModalContext } from '@/context/AuthModal/AuthModalContext';
 
-export const useModals = () => {
-  const context = useContext(ModalsContext);
+export const useAuthModal = () => {
+  const context = useContext(AuthModalContext);
 
   if (!context) {
     throw new Error('useModals needs to be used within a ModalsProvider');
