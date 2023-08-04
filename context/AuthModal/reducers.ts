@@ -1,6 +1,6 @@
 import { AuthModalState, AuthModalActions } from './types';
 
-export const modalsReducer = (
+export const authModalReducer = (
   state: AuthModalState,
   action: AuthModalActions
 ): AuthModalState => {
