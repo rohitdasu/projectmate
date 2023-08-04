@@ -5,7 +5,7 @@ export const useAuthModal = () => {
   const context = useContext(AuthModalContext);
 
   if (!context) {
-    throw new Error('useModals needs to be used within a ModalsProvider');
+    throw new Error('useAuthModal needs to be used within a AuthModalProvider');
   }
 
   return context;
