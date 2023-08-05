@@ -6,7 +6,6 @@ import { MdLogout } from 'react-icons/md';
 import Image from 'next/legacy/image';
 
 export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
-  email,
   name,
   image,
 }) => {
@@ -40,13 +39,13 @@ export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
         onClick={toggleDropdown}
         className="relative h-9 w-full cursor-pointer text-gray-400 transition-all hover:text-gray-300"
       >
-        <div className="block lg:hidden">
+        <div className="block flex justify-center lg:hidden">
           <Image
             src={image as string}
             alt="user-photo"
             width={30}
             height={30}
-            className="h-full w-full rounded-full bg-black"
+            className="mx-auto h-full w-full rounded-full bg-black"
           />
         </div>
         <span className="relative hidden text-lg transition-colors lg:block ">
