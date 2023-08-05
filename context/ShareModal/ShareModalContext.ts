@@ -4,9 +4,8 @@ import { ShareModalState, ShareModalData } from './types';
 export const ShareModalContext = createContext<
   | {
       state: ShareModalState;
-      openModal: () => void;
+      openModal: (data: ShareModalData) => void;
       closeModal: () => void;
-      setModalData: (data: ShareModalData) => void;
     }
   | undefined
 >(undefined);

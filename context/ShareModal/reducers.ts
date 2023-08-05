@@ -7,18 +7,13 @@ export const shareModalReducer = (
   switch (action.type) {
     case 'OPEN_MODAL':
       return {
-        ...state,
+        data: action.data,
         isOpen: true,
       };
     case 'CLOSE_MODAL':
       return {
         ...state,
         isOpen: false,
-      };
-    case 'SET_MODAL_DATA':
-      return {
-        ...state,
-        data: action.data,
       };
     default:
       return state;

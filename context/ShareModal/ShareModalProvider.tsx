@@ -17,17 +17,13 @@ export const ShareModalProvider: FC<PropsWithChildren> = ({ children }) => {
     initialShareModalState
   );
 
-  const openModal = () => dispatch({ type: 'OPEN_MODAL' });
+  const openModal = (data: ShareModalData) =>
+    dispatch({ type: 'OPEN_MODAL', data });
 
   const closeModal = () => dispatch({ type: 'CLOSE_MODAL' });
 
-  const setModalData = (data: ShareModalData) =>
-    dispatch({ type: 'SET_MODAL_DATA', data });
-
   return (
-    <ShareModalContext.Provider
-      value={{ state, openModal, closeModal, setModalData }}
-    >
+    <ShareModalContext.Provider value={{ state, openModal, closeModal }}>
       {children}
     </ShareModalContext.Provider>
   );
