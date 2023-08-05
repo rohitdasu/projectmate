@@ -90,7 +90,7 @@ export const Sidebar = () => {
             <MdAdd size={45} color={'white'} />
           </div>
           <button
-            className={`hidden rounded-2xl bg-green-600 py-2 px-4 text-base text-gray-200 hover:text-white lg:block`}
+            className={`hidden rounded-2xl bg-green-600 py-2 px-8 text-base text-gray-200 hover:text-white lg:block`}
           >
             Add project
           </button>
