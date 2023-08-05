@@ -72,9 +72,9 @@ export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
                 className="flex items-center justify-center"
                 onClick={() => signOut({ redirect: false })}
               >
-                <IoLogOut size={28} className="block lg:hidden" />
-                <span className="text-grey hidden gap-3 px-4 text-right text-lg transition-colors hover:text-red-500 lg:flex ">
-                  <MdLogout size={28} />
+                <IoLogOut size={26} className="block lg:hidden" />
+                <span className="text-grey hidden items-center gap-3 px-4 text-right text-lg transition-colors hover:text-red-500 lg:flex ">
+                  <MdLogout size={26} />
                   Logout
                 </span>
               </li>
