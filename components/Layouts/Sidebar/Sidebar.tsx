@@ -84,9 +84,11 @@ export const Sidebar = () => {
         <AuthModal title={loginMessage} />
         <li
           onClick={handleAddProject}
-          className="h-9 cursor-pointer text-gray-500 transition-all hover:text-gray-200"
+          className="flex h-9 cursor-pointer items-center text-gray-500 transition-all hover:text-gray-200"
         >
-          <MdAdd size={28} color={'green'} className="block lg:hidden" />
+          <div className="block rounded-full bg-green-600 p-0.5 lg:hidden">
+            <MdAdd size={20} color={'white'} />
+          </div>
           <button
             className={`hidden rounded-2xl bg-green-600 py-2 px-4 text-base text-gray-200 hover:text-white lg:block`}
           >
