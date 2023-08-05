@@ -5,6 +5,11 @@ import { useRouter } from 'next/router';
 import { SessionCard } from './SessionCard';
 import { SessionLessCard } from './SessionLessCard';
 import { NavRoutes } from './data';
+import { MdPlaylistAdd } from 'react-icons/md';
+import { useAppDispatch } from '@/hooks';
+import { useEffect, useState } from 'react';
+import { openModal } from '@/store/slices/sliceModal';
+import { AuthModal } from '@/components/AuthModal';
 
 const NavElements = NavRoutes.map((nav) => {
   return {
@@ -34,13 +39,33 @@ const Logo = () => {
 
 export const Sidebar = () => {
   const { data: session, status } = useSession();
-  const { pathname } = useRouter();
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const message = 'Continue with your social account';
+  const [loginMessage, setLoginMessage] = useState(message);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    status === 'authenticated'
+  );
+
+  useEffect(() => {
+    setIsAuthenticated(status === 'authenticated');
+  }, [status]);
+
+  const handleAddProject = () => {
+    if (isAuthenticated) {
+      router.push('/projects/add-project');
+    } else {
+      setLoginMessage('Login with your account to add project');
+      dispatch(openModal());
+    }
+  };
+
   return (
     <div className="fixed inset-0 flex h-screen w-[11%] flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
       <Logo />
       <ul className="mt-16 flex w-full flex-col items-center justify-center gap-4 md:items-start">
         {NavElements.map((nav) => {
-          const isActive = pathname === nav.link;
+          const isActive = router.pathname === nav.link;
           return (
             <Link key={nav.id} href={nav.link}>
               <li
@@ -56,13 +81,33 @@ export const Sidebar = () => {
             </Link>
           );
         })}
+        <AuthModal title={loginMessage} />
+        <li
+          onClick={handleAddProject}
+          className="h-9 cursor-pointer text-gray-500 transition-all hover:text-gray-200"
+        >
+          <MdPlaylistAdd
+            size={28}
+            color={isAuthenticated ? 'green' : ''}
+            className="block lg:hidden"
+          />
+          <button
+            className={`hidden rounded-2xl ${
+              isAuthenticated ? 'bg-green-600' : 'bg-gray-500'
+            } py-2 px-4 text-lg text-gray-200 hover:text-${
+              isAuthenticated ? 'white' : 'gray-50'
+            } lg:block `}
+          >
+            Add project
+          </button>
+        </li>
       </ul>
-      <ul className="mt-4 flex w-full flex-col items-center gap-4 border-t border-gray-800 pt-4 transition-all md:items-start">
-        {status === 'authenticated' ? (
+      <ul className="absolute bottom-2 mt-4 flex w-3/4 flex-col items-center gap-4 border-t border-gray-800 pt-4 transition-all md:items-start">
+        {isAuthenticated ? (
           <SessionCard
-            email={session.user?.email || ''}
-            name={session.user?.name || ''}
-            image={session.user?.image || ''}
+            email={session?.user?.email || ''}
+            name={session?.user?.name || ''}
+            image={session?.user?.image || ''}
           />
         ) : status === 'unauthenticated' ? (
           <SessionLessCard />
