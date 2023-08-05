@@ -1,4 +1,4 @@
-import { FC, ReactNode, useReducer } from 'react';
+import { FC, PropsWithChildren, useReducer } from 'react';
 import { AuthModalContext } from './AuthModalContext';
 import { authModalReducer } from './reducers';
 import { AuthModalState } from './types';
@@ -7,9 +7,7 @@ const initialAuthModalState: AuthModalState = {
   isOpen: false,
 };
 
-export const AuthModalProvider: FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const AuthModalProvider: FC<PropsWithChildren> = ({ children }) => {
   const [state, dispatch] = useReducer(authModalReducer, initialAuthModalState);
 
   const openModal = () => dispatch({ type: 'OPEN_MODAL' });

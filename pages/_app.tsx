@@ -6,7 +6,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Provider } from 'react-redux';
 import { store } from '@/store';
 import '@/styles/globals.css';
-import { AuthModalProvider } from '@/context/AuthModal/AuthModalProvider';
+import { AppContextProvider } from '@/context/AppContextProvider';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,12 +15,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       onReset={() => typeof window !== undefined && window.location.reload()}
     >
       <SessionProvider session={pageProps.session}>
-        <AuthModalProvider>
+        <AppContextProvider>
           <Provider store={store}>
             <Component {...pageProps} />
             <Toaster />
           </Provider>
-        </AuthModalProvider>
+        </AppContextProvider>
       </SessionProvider>
     </ErrorBoundary>
   );

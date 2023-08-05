@@ -1,4 +1,4 @@
-import { FC, ReactNode, useReducer } from 'react';
+import { FC, PropsWithChildren, useReducer } from 'react';
 import { ShareModalData, ShareModalState } from './types';
 import { ShareModalContext } from './ShareModalContext';
 import { shareModalReducer } from './reducers';
@@ -11,9 +11,7 @@ const initialShareModalState: ShareModalState = {
   },
 };
 
-export const ShareModalProvider: FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const ShareModalProvider: FC<PropsWithChildren> = ({ children }) => {
   const [state, dispatch] = useReducer(
     shareModalReducer,
     initialShareModalState
