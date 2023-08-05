@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { SessionCard } from './SessionCard';
 import { SessionLessCard } from './SessionLessCard';
 import { NavRoutes } from './data';
-import { MdPlaylistAdd } from 'react-icons/md';
+import { MdAdd } from 'react-icons/md';
 import { useAppDispatch } from '@/hooks';
 import { useEffect, useState } from 'react';
 import { openModal } from '@/store/slices/sliceModal';
@@ -86,17 +86,9 @@ export const Sidebar = () => {
           onClick={handleAddProject}
           className="h-9 cursor-pointer text-gray-500 transition-all hover:text-gray-200"
         >
-          <MdPlaylistAdd
-            size={28}
-            color={isAuthenticated ? 'green' : ''}
-            className="block lg:hidden"
-          />
+          <MdAdd size={28} color={'green'} className="block lg:hidden" />
           <button
-            className={`hidden rounded-2xl ${
-              isAuthenticated ? 'bg-green-600' : 'bg-gray-500'
-            } py-2 px-4 text-lg text-gray-200 hover:text-${
-              isAuthenticated ? 'white' : 'gray-50'
-            } lg:block `}
+            className={`hidden rounded-2xl bg-green-600 py-2 px-4 text-base text-gray-200 hover:text-white lg:block`}
           >
             Add project
           </button>
