@@ -47,7 +47,7 @@ export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
         onClick={toggleDropdown}
         className="relative h-9 w-full cursor-pointer text-gray-400 transition-all hover:text-gray-300"
       >
-        <div className="block flex justify-center lg:hidden">
+        <div className="flex justify-center lg:hidden">
           <Image
             src={profilePictureSrc}
             alt="user-photo"
@@ -56,7 +56,7 @@ export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
             className="mx-auto h-full w-full rounded-full bg-black"
           />
         </div>
-        <span className="relative hidden text-lg transition-colors lg:block ">
+        <span className="relative hidden text-lg transition-colors lg:block">
           <div className="flex flex-row items-center justify-start gap-3">
             <Image
               src={profilePictureSrc}
@@ -80,7 +80,7 @@ export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
                 onClick={() => signOut({ redirect: false })}
               >
                 <IoLogOut size={25} className="block lg:hidden" />
-                <span className="text-grey hidden items-center gap-3 px-4 text-right text-lg transition-colors hover:text-red-500 lg:flex ">
+                <span className="text-grey hidden items-center gap-3 px-4 text-right text-lg transition-colors hover:text-red-500 lg:flex">
                   <MdLogout size={22} />
                   Logout
                 </span>
