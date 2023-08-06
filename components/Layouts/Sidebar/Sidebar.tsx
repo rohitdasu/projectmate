@@ -7,7 +7,7 @@ import { SessionLessCard } from './SessionLessCard';
 import { NavRoutes } from './data';
 import { MdAdd } from 'react-icons/md';
 import { useAppDispatch } from '@/hooks';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { openModal } from '@/store/slices/sliceModal';
 import { AuthModal } from '@/components/AuthModal';
 
@@ -43,16 +43,9 @@ export const Sidebar = () => {
   const dispatch = useAppDispatch();
   const message = 'Continue with your social account';
   const [loginMessage, setLoginMessage] = useState(message);
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    status === 'authenticated'
-  );
-
-  useEffect(() => {
-    setIsAuthenticated(status === 'authenticated');
-  }, [status]);
 
   const handleAddProject = () => {
-    if (isAuthenticated) {
+    if (status === 'authenticated') {
       router.push('/projects/add-project');
     } else {
       setLoginMessage('Login with your account to add project');
@@ -74,7 +67,7 @@ export const Sidebar = () => {
                 }`}
               >
                 {nav.icon}
-                <span className="hidden text-lg text-gray-400 hover:text-gray-300 lg:block ">
+                <span className="hidden text-lg text-gray-400 hover:text-gray-300 lg:block">
                   {nav.name}
                 </span>
               </li>
@@ -97,7 +90,7 @@ export const Sidebar = () => {
         </li>
       </ul>
       <ul className="absolute bottom-2 mt-4 flex w-3/4 flex-col items-center gap-4 border-t border-gray-800 pt-4 transition-all md:items-start">
-        {isAuthenticated ? (
+        {status === 'authenticated' ? (
           <SessionCard
             email={session?.user?.email || ''}
             name={session?.user?.name || ''}
