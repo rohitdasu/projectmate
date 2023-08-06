@@ -5,12 +5,20 @@ import { IoLogOut } from 'react-icons/io5';
 import { MdLogout } from 'react-icons/md';
 import Image from 'next/legacy/image';
 
+const getProfilePictureSrc = (name: string, image: string | null) => {
+  return (
+    image ||
+    `https://avatars.dicebear.com/api/initials/${name}.png?backgroundColorLevel=800&fontSize=40`
+  );
+};
+
 export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
   name,
   image,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const profilePictureSrc = getProfilePictureSrc(name as string, image);
 
   const toggleDropdown = () => {
     setIsDropdownOpen((prevState) => !prevState);
@@ -41,7 +49,7 @@ export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
       >
         <div className="block flex justify-center lg:hidden">
           <Image
-            src={image as string}
+            src={profilePictureSrc}
             alt="user-photo"
             width={30}
             height={30}
@@ -51,7 +59,7 @@ export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
         <span className="relative hidden text-lg transition-colors lg:block ">
           <div className="flex flex-row items-center justify-start gap-3">
             <Image
-              src={image as string}
+              src={profilePictureSrc}
               alt="user-photo"
               width={30}
               height={30}
