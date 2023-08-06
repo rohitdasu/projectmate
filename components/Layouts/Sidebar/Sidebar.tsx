@@ -61,7 +61,7 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="fixed inset-0 flex h-screen w-[11%] flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
+    <div className="fixed inset-0 z-10 flex h-screen w-[11%] flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
       <Logo />
       <ul className="mt-16 flex w-full flex-col items-center justify-center gap-4 md:items-start">
         {NavElements.map((nav) => {
@@ -86,7 +86,7 @@ export const Sidebar = () => {
           onClick={handleAddProject}
           className="flex h-9 cursor-pointer items-center text-gray-500 transition-all hover:text-gray-200"
         >
-          <div className="fixed bottom-5 right-5 block rounded-full bg-green-600 p-2 lg:hidden">
+          <div className="fixed bottom-5 right-5 block cursor-pointer rounded-full bg-green-600 p-2	lg:hidden">
             <MdAdd size={45} color={'white'} />
           </div>
           <button
