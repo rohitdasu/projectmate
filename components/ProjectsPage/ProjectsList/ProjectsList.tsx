@@ -3,14 +3,12 @@ import useSWRInfinite from 'swr/infinite';
 import { Project } from '../Project/Project';
 import { ProjectSkeleton } from '../ProjectSkeleton';
 import { IProject } from '../Project/Project.interface';
-import { useAppSelector } from '@/hooks';
-import { selectTags } from '@/store/slices/sliceFilter';
 import { fetcher } from '@/lib/fetcher';
 import { useShareModal } from '@/hooks/useShareModal';
 import { ShareModal } from '@/components/ShareModal';
 
 export const ProjectsList = () => {
-  const { selectedTags } = useAppSelector(selectTags);
+  const selectedTags: string[] = useMemo(() => [], []);
   const { openModal: openShareModal } = useShareModal();
 
   const getKey = (pageIndex: number, previousPageData: IProject[]) => {
