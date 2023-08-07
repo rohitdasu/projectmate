@@ -1,16 +1,17 @@
-import { useAppDispatch } from '@/hooks';
-import { openModal } from '@/store/slices/sliceModal';
 import { useSession } from 'next-auth/react';
 import { AuthModal } from '@/components/AuthModal';
 import { useRouter } from 'next/router';
+import { useAuthModal } from '@/hooks/useAuthModal';
 
 export const ActionComponent = () => {
   const { status } = useSession();
   const router = useRouter();
-  const dispatch = useAppDispatch();
+
+  const { openModal } = useAuthModal();
+
   const join = () => {
     if (status === 'unauthenticated') {
-      dispatch(openModal());
+      openModal();
     } else {
       router.replace('/projects');
     }

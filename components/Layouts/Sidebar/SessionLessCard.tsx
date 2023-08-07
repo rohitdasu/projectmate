@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { AuthModal } from '@/components/AuthModal';
-import { useAppDispatch } from '@/hooks';
-import { openModal } from '@/store/slices/sliceModal';
 import { IoLogIn } from 'react-icons/io5';
 import { MdPlaylistAdd } from 'react-icons/md';
+import { useAuthModal } from '@/hooks/useAuthModal';
 
 export const SessionLessCard = () => {
-  const dispatch = useAppDispatch();
+  const { openModal } = useAuthModal();
   const message = 'Continue with your social account';
   const [loginMessage, setLoginMessage] = useState(message);
   return (
@@ -15,7 +14,7 @@ export const SessionLessCard = () => {
       <li
         onClick={() => {
           setLoginMessage('Login with your account to add project');
-          dispatch(openModal());
+          openModal();
         }}
         className="mt-2 h-9 cursor-pointer text-gray-500 transition-all hover:text-gray-200"
       >
@@ -27,7 +26,7 @@ export const SessionLessCard = () => {
       <li
         onClick={() => {
           setLoginMessage(message);
-          dispatch(openModal());
+          openModal();
         }}
         className="h-9 cursor-pointer text-gray-500 transition-all hover:text-gray-200"
       >
