@@ -9,5 +9,5 @@ export type ShareModalState = {
 };
 
 export type ShareModalActions =
-  | { type: 'OPEN_MODAL', data: ShareModalData }
+  | { type: 'OPEN_MODAL'; data: ShareModalData }
   | { type: 'CLOSE_MODAL' };

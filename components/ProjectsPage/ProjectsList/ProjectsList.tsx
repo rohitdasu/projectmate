@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import { Project } from '../Project/Project';
 import { ProjectSkeleton } from '../ProjectSkeleton';
@@ -6,24 +6,12 @@ import { IProject } from '../Project/Project.interface';
 import { useAppSelector } from '@/hooks';
 import { selectTags } from '@/store/slices/sliceFilter';
 import { fetcher } from '@/lib/fetcher';
-import { ShareModal, ShareProjectData } from '@/components/ShareModal';
+import { useShareModal } from '@/hooks/useShareModal';
+import { ShareModal } from '@/components/ShareModal';
 
 export const ProjectsList = () => {
   const { selectedTags } = useAppSelector(selectTags);
-  const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
-  const [shareProjectData, setShareProjectData] = useState<ShareProjectData>({
-    projectTitle: '',
-    projectUrl: '',
-  });
-
-  const openShareModal = useCallback((title: string, url: string) => {
-    setIsShareModalOpen(true);
-    setShareProjectData({
-      projectTitle: title,
-      projectUrl: url,
-    });
-  }, []);
-  const closeShareModal = useCallback(() => setIsShareModalOpen(false), []);
+  const { openModal: openShareModal } = useShareModal();
 
   const getKey = (pageIndex: number, previousPageData: IProject[]) => {
     let cursorId = '';
@@ -121,11 +109,7 @@ export const ProjectsList = () => {
           <></>
         )}
       </ul>
-      <ShareModal
-        isOpen={isShareModalOpen}
-        closeModal={closeShareModal}
-        shareProjectData={shareProjectData}
-      />
+      <ShareModal />
     </>
   );
 };
