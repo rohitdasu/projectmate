@@ -6,10 +6,9 @@ import { SessionCard } from './SessionCard';
 import { SessionLessCard } from './SessionLessCard';
 import { NavRoutes } from './data';
 import { MdAdd } from 'react-icons/md';
-import { useAppDispatch } from '@/hooks';
 import { useState } from 'react';
-import { openModal } from '@/store/slices/sliceModal';
 import { AuthModal } from '@/components/AuthModal';
+import { useAuthModal } from '@/hooks/useAuthModal';
 
 const NavElements = NavRoutes.map((nav) => {
   return {
@@ -40,7 +39,7 @@ const Logo = () => {
 export const Sidebar = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const dispatch = useAppDispatch();
+  const { openModal } = useAuthModal();
   const message = 'Continue with your social account';
   const [loginMessage, setLoginMessage] = useState(message);
 
@@ -49,7 +48,7 @@ export const Sidebar = () => {
       router.push('/projects/add-project');
     } else {
       setLoginMessage('Login with your account to add project');
-      dispatch(openModal());
+      openModal();
     }
   };
 
