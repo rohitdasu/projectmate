@@ -3,9 +3,8 @@ import { ErrorFallback } from '@/components/ErrorFallback';
 import { Toaster } from '@/components/Toaster';
 import { SessionProvider } from 'next-auth/react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Provider } from 'react-redux';
-import { store } from '@/store';
 import '@/styles/globals.css';
+import { AppContextProvider } from '@/context/AppContextProvider';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -14,10 +13,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       onReset={() => typeof window !== undefined && window.location.reload()}
     >
       <SessionProvider session={pageProps.session}>
-        <Provider store={store}>
+        <AppContextProvider>
           <Component {...pageProps} />
           <Toaster />
-        </Provider>
+        </AppContextProvider>
       </SessionProvider>
     </ErrorBoundary>
   );

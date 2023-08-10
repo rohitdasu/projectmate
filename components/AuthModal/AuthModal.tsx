@@ -1,16 +1,18 @@
 import { Fragment, useEffect, useRef, FC } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { useAppSelector, useAppDispatch } from '@/hooks';
-import { closeModal, selectModal } from '@/store/slices/sliceModal';
 import { AuthModalProps } from './Auth.interface';
 import { motion } from 'framer-motion';
 import { Typography } from '@/components/Common/Typography';
 import { useRouter } from 'next/router';
+import { useAuthModal } from '@/hooks/useAuthModal';
 
 export const AuthModal: FC<AuthModalProps> = ({ title }) => {
-  const { modal } = useAppSelector(selectModal);
-  const dispatch = useAppDispatch();
   const { asPath } = useRouter();
+
+  const {
+    state: { isOpen },
+    closeModal,
+  } = useAuthModal();
 
   const usePreviousRoute = () => {
     const ref = useRef<string | null>(null);
@@ -25,19 +27,19 @@ export const AuthModal: FC<AuthModalProps> = ({ title }) => {
   const prevRoute = usePreviousRoute();
 
   useEffect(() => {
-    if (prevRoute !== asPath && modal) {
-      dispatch(closeModal());
+    if (prevRoute !== asPath && isOpen) {
+      closeModal();
     }
-  }, [asPath, modal, dispatch, prevRoute]);
+  }, [asPath, isOpen, closeModal, prevRoute]);
 
   return (
     <>
-      {modal && (
-        <Transition appear show={modal} as={Fragment}>
+      {isOpen && (
+        <Transition appear show={isOpen} as={Fragment}>
           <Dialog
             as="div"
             className="relative z-50"
-            onClose={() => dispatch(closeModal())}
+            onClose={() => closeModal()}
           >
             <Transition.Child
               as={Fragment}
@@ -83,7 +85,7 @@ export const AuthModal: FC<AuthModalProps> = ({ title }) => {
                         className="flex w-full items-center justify-between rounded-lg border border-gray-400 py-2 px-3 hover:opacity-50"
                         onClick={() => {
                           popupCenter('/auth/github', 'Sign In With Github');
-                          dispatch(closeModal());
+                          closeModal();
                         }}
                       >
                         <svg
@@ -111,7 +113,7 @@ export const AuthModal: FC<AuthModalProps> = ({ title }) => {
                         className="flex w-full items-center justify-between rounded-lg border border-gray-400 py-2 px-3 hover:opacity-50"
                         onClick={() => {
                           popupCenter('/auth/google', 'Sign In With Google');
-                          dispatch(closeModal());
+                          closeModal();
                         }}
                       >
                         <svg

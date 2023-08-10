@@ -1,4 +1,5 @@
 import { Project as ProjectData } from '@prisma/client';
+import { ShareModalData } from '@/context/ShareModal/types';
 
 export interface ProjectProps {
   id: string;
@@ -9,7 +10,7 @@ export interface ProjectProps {
   authorImage: string | null;
   createdAt: Date;
   githubRepository: string;
-  openShareModal: (text: string, url: string) => void;
+  openShareModal: (data: ShareModalData) => void;
 }
 
 export interface IProject extends ProjectData {

@@ -1,5 +1,4 @@
 import { Fragment, FC } from 'react';
-import { ShareModalProps } from './ShareModal.interface';
 import { Transition, Dialog } from '@headlessui/react';
 import { Typography } from '@/components/Common/Typography';
 import { IoClose } from 'react-icons/io5';
@@ -17,13 +16,14 @@ import {
 } from 'react-share';
 import { useCopyToClipboard } from 'usehooks-ts';
 import { toastMessage, messageType } from '@/components/Toaster';
+import { useShareModal } from '@/hooks/useShareModal';
 
-export const ShareModal: FC<ShareModalProps> = ({
-  isOpen,
-  closeModal,
-  shareProjectData,
-}) => {
-  const { projectTitle, projectUrl } = shareProjectData;
+export const ShareModal: FC = () => {
+  const {
+    state: { isOpen, data },
+    closeModal,
+  } = useShareModal();
+  const { url, title } = data;
   const [, copy] = useCopyToClipboard();
 
   const copyToClipboard = (url: string) => {
@@ -78,21 +78,21 @@ export const ShareModal: FC<ShareModalProps> = ({
                       </button>
                     </div>
                     <div className="flex flex-row flex-wrap gap-4">
-                      <EmailShareButton subject={projectTitle} url={projectUrl}>
+                      <EmailShareButton subject={title} url={url}>
                         <EmailIcon size={40} round />
                       </EmailShareButton>
-                      <FacebookShareButton url={projectUrl}>
+                      <FacebookShareButton url={url}>
                         <FacebookIcon size={40} round />
                       </FacebookShareButton>
-                      <TwitterShareButton url={projectUrl}>
+                      <TwitterShareButton url={url}>
                         <TwitterIcon size={40} round />
                       </TwitterShareButton>
-                      <WhatsappShareButton url={projectUrl}>
+                      <WhatsappShareButton url={url}>
                         <WhatsappIcon size={40} round />
                       </WhatsappShareButton>
                       <LinkedinShareButton
-                        url={projectUrl}
-                        title={projectTitle}
+                        url={url}
+                        title={title}
                         source="Projectmate.net"
                       >
                         <LinkedinIcon size={40} round />
@@ -105,11 +105,11 @@ export const ShareModal: FC<ShareModalProps> = ({
                           className="block truncate"
                           fontSize="sm"
                         >
-                          {projectUrl}
+                          {url}
                         </Typography>
                       </div>
                       <button
-                        onClick={() => copyToClipboard(projectUrl)}
+                        onClick={() => copyToClipboard(url)}
                         className="rounded-lg bg-primary-color px-3"
                       >
                         Copy
