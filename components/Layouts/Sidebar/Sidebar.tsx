@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -60,14 +59,22 @@ export const Sidebar = () => {
         {NavElements.map((nav) => {
           const isActive = router.pathname === nav.link;
 
-          let spanNameTag =( <span className={`hidden text-lg text-gray-400 hover:text-gray-300 lg:block`}>
-          {nav.name}
-        </span>);
+          let spanNameTag = (
+            <span
+              className={`hidden text-lg text-gray-400 hover:text-gray-300 lg:block`}
+            >
+              {nav.name}
+            </span>
+          );
 
-          if(isActive){
-            spanNameTag = (<span className={`hidden text-lg text-gray-200 hover:text-gray-300 lg:block`}>
-            {nav.name}
-          </span> );
+          if (isActive) {
+            spanNameTag = (
+              <span
+                className={`hidden text-lg text-gray-200 hover:text-gray-300 lg:block`}
+              >
+                {nav.name}
+              </span>
+            );
           }
           return (
             <Link key={nav.id} href={nav.link}>
@@ -79,7 +86,6 @@ export const Sidebar = () => {
                 {nav.icon}
 
                 {spanNameTag}
-                
               </li>
             </Link>
           );
