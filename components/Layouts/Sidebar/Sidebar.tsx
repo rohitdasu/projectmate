@@ -58,6 +58,24 @@ export const Sidebar = () => {
       <ul className="mt-16 flex w-full flex-col items-center justify-center gap-4 md:items-start">
         {NavElements.map((nav) => {
           const isActive = router.pathname === nav.link;
+
+          let spanNameTag = (
+            <span
+              className={`hidden text-lg text-gray-400 hover:text-gray-300 lg:block`}
+            >
+              {nav.name}
+            </span>
+          );
+
+          if (isActive) {
+            spanNameTag = (
+              <span
+                className={`hidden text-lg text-gray-200 hover:text-gray-300 lg:block`}
+              >
+                {nav.name}
+              </span>
+            );
+          }
           return (
             <Link key={nav.id} href={nav.link}>
               <li
@@ -66,9 +84,8 @@ export const Sidebar = () => {
                 }`}
               >
                 {nav.icon}
-                <span className="hidden text-lg text-gray-400 hover:text-gray-300 lg:block">
-                  {nav.name}
-                </span>
+
+                {spanNameTag}
               </li>
             </Link>
           );

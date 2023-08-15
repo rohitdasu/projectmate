@@ -20,7 +20,7 @@ export const SessionLessCard = () => {
       >
         <IoLogIn size={27} className="block lg:hidden" />
         <span className="hidden items-center gap-4 text-lg lg:flex">
-          <MdLogin size={25} />
+          <MdLogin size={20} />
           Login
         </span>
       </li>
