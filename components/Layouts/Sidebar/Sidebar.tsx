@@ -95,7 +95,7 @@ export const Sidebar = () => {
           onClick={handleAddProject}
           className="flex h-9 cursor-pointer items-center text-gray-500 transition-all hover:text-gray-200"
         >
-          <div className="fixed bottom-5 right-5 block cursor-pointer rounded-full bg-green-600 p-2	lg:hidden">
+          <div className="fixed bottom-7 right-5 block cursor-pointer rounded-full bg-green-600 p-2	lg:hidden">
             <MdAdd size={45} color={'white'} />
           </div>
           <button
