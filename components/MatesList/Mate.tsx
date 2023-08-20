@@ -25,7 +25,9 @@ export const Mate: FC<MateProps> = (mate) => {
           height={60}
           className="h-full w-full rounded-full bg-black"
         />
-        <span className="md:text-md text-center text-sm">{mate.name}</span>
+        <span className="md:text-md w-20 truncate text-center text-sm md:w-auto">
+          {mate.name.split(' ')[0]}
+        </span>
       </li>
     </div>
   );

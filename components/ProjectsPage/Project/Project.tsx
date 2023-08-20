@@ -51,7 +51,7 @@ export const Project: React.FC<ProjectProps> = memo(
                 className="flex w-full flex-col gap-4 truncate text-base text-gray-100 md:text-xl"
               >
                 <div className="flex w-full flex-row items-center justify-between">
-                  {title}
+                  <p className="w-40 truncate md:w-auto">{title}</p>
                   <div className="flex flex-row items-center gap-1 text-gray-400">
                     <AiOutlineClockCircle />
                     <Typography as="p" fontSize="sm" fontWeight="light">
