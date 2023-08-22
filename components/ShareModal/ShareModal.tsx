@@ -84,6 +84,7 @@ export const ShareModal: FC = () => {
                       <FacebookShareButton url={url}>
                         <FacebookIcon size={40} round />
                       </FacebookShareButton>
+                      {/* <FontAwesomeIcon icon="fa-brands fa-x-twitter" /> */}
                       <TwitterShareButton url={url}>
                         <TwitterIcon size={40} round />
                       </TwitterShareButton>
