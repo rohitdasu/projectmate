@@ -8,7 +8,6 @@ import {
   FacebookShareButton,
   FacebookIcon,
   TwitterShareButton,
-  TwitterIcon,
   WhatsappShareButton,
   WhatsappIcon,
   LinkedinShareButton,
@@ -17,6 +16,21 @@ import {
 import { useCopyToClipboard } from 'usehooks-ts';
 import { toastMessage, messageType } from '@/components/Toaster';
 import { useShareModal } from '@/hooks/useShareModal';
+
+const XTwitter = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="38"
+    width="38"
+    viewBox="0 0 256 256"
+  >
+    <circle cx="128" cy="128" r="127" fill="#ffffff"></circle>
+    <path
+      className="translate-y-14 translate-x-14"
+      d="M109.462 13.5h19.856L85.95 63.056 136.969 130.5H97.031L65.728 89.606 29.954 130.5H10.069L56.447 77.485 7.538 13.5H48.488L76.753 50.878 109.462 13.5zM102.488 118.631h10.997L42.497 24.75h-11.812L102.488 118.631z"
+    />
+  </svg>
+);
 
 export const ShareModal: FC = () => {
   const {
@@ -85,7 +99,7 @@ export const ShareModal: FC = () => {
                         <FacebookIcon size={40} round />
                       </FacebookShareButton>
                       <TwitterShareButton url={url}>
-                        <TwitterIcon size={40} round />
+                        <XTwitter />
                       </TwitterShareButton>
                       <WhatsappShareButton url={url}>
                         <WhatsappIcon size={40} round />

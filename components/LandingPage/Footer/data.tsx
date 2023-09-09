@@ -9,7 +9,7 @@ export const icons: Icon[] = [
   },
   {
     id: '2',
-    name: 'Twitter',
+    name: '𝕏(Twitter)',
     color: '#ffffff',
     link: 'https://twitter.com/projectmateHQ',
   },
