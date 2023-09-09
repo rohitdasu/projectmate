@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --secondary-background: #142E4E;
+  --secondary-background: #142e4e;
 
   --primary-color: #17a24a;
 
-  --primary-background: #0F2239;
+  --primary-background: #0f2239;
 }
 
 body {
@@ -29,7 +29,6 @@ body {
   font-weight: 500;
 }
 
-
 .react-tagsinput-input::placeholder {
   opacity: 0.5;
 }
@@ -39,10 +38,20 @@ body {
   outline: none;
 }
 
-
 .react-tagsinput-tag {
   background-color: #047a55;
   color: #f0fdf4;
   border-color: #047a55;
   margin-bottom: 0;
+}
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

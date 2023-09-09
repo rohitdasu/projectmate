@@ -6,9 +6,12 @@ import { SessionCard } from './SessionCard';
 import { SessionLessCard } from './SessionLessCard';
 import { NavRoutes } from './data';
 import { MdAdd } from 'react-icons/md';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AuthModal } from '@/components/AuthModal';
 import { useAuthModal } from '@/hooks/useAuthModal';
+import { Drawer } from 'vaul';
+import { AddProjectForm } from '@/components/AddProjectForm';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 const NavElements = NavRoutes.map((nav) => {
   return {
@@ -39,18 +42,23 @@ const Logo = () => {
 export const Sidebar = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const [isClicked, setIsClicked] = useState(false);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
   const { openModal } = useAuthModal();
   const message = 'Continue with your social account';
   const [loginMessage, setLoginMessage] = useState(message);
 
   const handleAddProject = () => {
-    if (status === 'authenticated') {
-      router.push('/projects/add-project');
-    } else {
-      setLoginMessage('Login with your account to add project');
-      openModal();
-    }
+    setLoginMessage('Login with your account to add project');
+    openModal();
   };
+
+  useEffect(() => {
+    if (isClicked) {
+      closeBtnRef.current?.click();
+      setIsClicked(false);
+    }
+  }, [isClicked]);
 
   return (
     <div className="fixed inset-0 z-10 flex h-screen w-[11%] flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
@@ -91,18 +99,65 @@ export const Sidebar = () => {
           );
         })}
         <AuthModal title={loginMessage} />
-        <li
-          onClick={handleAddProject}
-          className="flex h-9 cursor-pointer items-center text-gray-500 transition-all hover:text-gray-200"
-        >
-          <div className="fixed bottom-7 right-5 block cursor-pointer rounded-full bg-green-600 p-2	lg:hidden">
-            <MdAdd size={45} color={'white'} />
+        <li className="flex h-9 cursor-pointer items-center text-gray-500 transition-all hover:text-gray-200">
+          <div className="fixed bottom-5 right-5 block cursor-pointer rounded-full bg-green-600 p-2	lg:hidden">
+            {status === 'authenticated' ? (
+              <Drawer.Root shouldScaleBackground>
+                <Drawer.Trigger>
+                  <MdAdd size={45} color={'white'} className="inline-block" />
+                </Drawer.Trigger>
+                <Drawer.Portal>
+                  <Drawer.Overlay className="fixed inset-0 z-30 bg-black/60" />
+                  <Drawer.Content className="fixed bottom-8 left-0 right-0 z-40 mt-24 flex h-[60%] flex-col rounded-t-[10px] bg-[rgba(0,0,0,0.8)]">
+                    <div className="mx-auto mt-4 mb-2 h-2.5 w-12 flex-shrink-0 rounded-full bg-gray-900" />
+                    <div className="scrollbar-hide w-full overflow-auto pb-8">
+                      <AddProjectForm setIsClicked={setIsClicked} />
+                    </div>
+                    <Drawer.Close ref={closeBtnRef}>
+                      <AiOutlineCloseCircle className="hidden" />
+                    </Drawer.Close>
+                  </Drawer.Content>
+                </Drawer.Portal>
+              </Drawer.Root>
+            ) : (
+              <button
+                onClick={handleAddProject}
+                className={`hidden rounded-2xl bg-green-600 py-2 px-8 text-base text-gray-200 hover:text-white lg:block`}
+              >
+                Add project
+              </button>
+            )}
           </div>
-          <button
-            className={`hidden rounded-2xl bg-green-600 py-2 px-8 text-base text-gray-200 hover:text-white lg:block`}
-          >
-            Add project
-          </button>
+        </li>
+        <li className="flex h-9 cursor-pointer items-center text-gray-500 transition-all hover:text-gray-200">
+          {status === 'authenticated' ? (
+            <Drawer.Root shouldScaleBackground>
+              <Drawer.Trigger
+                className={`hidden rounded-2xl bg-green-600 py-2 px-8 text-base text-gray-200 hover:text-white lg:block`}
+              >
+                Add project
+              </Drawer.Trigger>
+              <Drawer.Portal>
+                <Drawer.Overlay className="fixed inset-0 z-30 bg-black/60" />
+                <Drawer.Content className="fixed -bottom-8 left-0 right-0 z-50 mt-24 flex h-2/3 flex-col rounded-t-[10px] bg-[rgba(0,0,0,0.8)]">
+                  <div className="mx-auto mt-4 mb-2 h-2.5 w-12 flex-shrink-0 rounded-full bg-gray-900" />
+                  <div className="scrollbar-hide w-full overflow-auto pb-8">
+                    <AddProjectForm setIsClicked={setIsClicked} />
+                  </div>
+                  <Drawer.Close ref={closeBtnRef}>
+                    <AiOutlineCloseCircle className="hidden" />
+                  </Drawer.Close>
+                </Drawer.Content>
+              </Drawer.Portal>
+            </Drawer.Root>
+          ) : (
+            <button
+              onClick={handleAddProject}
+              className={`hidden rounded-2xl bg-green-600 py-2 px-8 text-base text-gray-200 hover:text-white lg:block`}
+            >
+              Add project
+            </button>
+          )}
         </li>
       </ul>
       <ul className="absolute bottom-2 mt-4 flex w-3/4 flex-col items-center gap-4 border-t border-gray-800 pt-4 transition-all md:items-start">

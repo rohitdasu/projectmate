@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import Router from 'next/router';
 import { useForm, Controller, FormProvider } from 'react-hook-form';
 import { useSession } from 'next-auth/react';
@@ -10,10 +10,17 @@ import { BiLoaderCircle } from 'react-icons/bi';
 import TagsInput from 'react-tagsinput';
 import 'react-tagsinput/react-tagsinput.css';
 import axios from 'axios';
+import { useFetchPaginatedData } from '@/hooks/useFetchHook';
 
-export const AddProjectForm = () => {
+interface AddProjectProps {
+  setIsClicked: Dispatch<SetStateAction<boolean>>;
+}
+
+export const AddProjectForm = ({ setIsClicked }: AddProjectProps) => {
   const [loading, setLoading] = useState(false);
   const methods = useForm();
+
+  const { mutate } = useFetchPaginatedData('/api/project');
 
   const { status, data: session } = useSession({
     required: true,
@@ -55,6 +62,8 @@ export const AddProjectForm = () => {
       );
       toastMessage('project added successfully', messageType.success);
       resetFormData();
+      mutate();
+      setIsClicked(true);
     } catch (e) {
       toastMessage(
         e?.response?.data?.error?.issues[0]?.message,
@@ -66,7 +75,7 @@ export const AddProjectForm = () => {
   });
 
   return (
-    <div className="w-full px-4 pb-6">
+    <div className="mx-auto w-full px-4 pb-6 md:w-2/3 lg:w-1/2">
       <FormProvider {...methods}>
         <form
           onSubmit={(e) => e.preventDefault()}
