@@ -26,7 +26,7 @@ const XTwitter = () => (
   >
     <circle cx="128" cy="128" r="127" fill="#ffffff"></circle>
     <path
-      className="translate-y-14 translate-x-14"
+      className="translate-x-14 translate-y-14"
       d="M109.462 13.5h19.856L85.95 63.056 136.969 130.5H97.031L65.728 89.606 29.954 130.5H10.069L56.447 77.485 7.538 13.5H48.488L76.753 50.878 109.462 13.5zM102.488 118.631h10.997L42.497 24.75h-11.812L102.488 118.631z"
     />
   </svg>
@@ -77,7 +77,7 @@ export const ShareModal: FC = () => {
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
-                  <Dialog.Panel className="flex w-full max-w-md transform flex-col justify-center gap-7  overflow-hidden rounded-2xl border-[0.1px] bg-slate-900 px-6 pt-6 pb-12 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Panel className="flex w-full max-w-md transform flex-col justify-center gap-7  overflow-hidden rounded-2xl border-[0.1px] bg-slate-900 px-6 pb-12 pt-6 text-left align-middle shadow-xl transition-all">
                     <div className="  flex flex-row place-content-between">
                       <Typography
                         as="h1"
@@ -113,7 +113,7 @@ export const ShareModal: FC = () => {
                       </LinkedinShareButton>
                     </div>
                     <div className="flex flex-row gap-3">
-                      <div className="w-1/2 rounded-lg bg-gray-700 py-2 px-4">
+                      <div className="w-1/2 rounded-lg bg-gray-700 px-4 py-2">
                         <Typography
                           as="span"
                           className="block truncate"
@@ -124,7 +124,7 @@ export const ShareModal: FC = () => {
                       </div>
                       <button
                         onClick={() => copyToClipboard(url)}
-                        className="rounded-lg bg-primary-color px-3"
+                        className="bg-primary-color rounded-lg px-3"
                       >
                         Copy
                       </button>

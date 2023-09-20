@@ -75,7 +75,7 @@ export const AddProjectForm = ({ setIsClicked }: AddProjectProps) => {
   });
 
   return (
-    <div className="mx-auto w-full px-4 pb-6 md:w-2/3 lg:w-1/2">
+    <div className="mx-auto w-full px-4 pb-6">
       <FormProvider {...methods}>
         <form
           onSubmit={(e) => e.preventDefault()}

@@ -12,6 +12,15 @@ import { useAuthModal } from '@/hooks/useAuthModal';
 import { Drawer } from 'vaul';
 import { AddProjectForm } from '@/components/AddProjectForm';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 
 const NavElements = NavRoutes.map((nav) => {
   return {
@@ -25,7 +34,7 @@ const NavElements = NavRoutes.map((nav) => {
 const Logo = () => {
   return (
     <Link href="/">
-      <h1 className="hidden font-lato text-xl font-medium uppercase md:text-2xl lg:block">
+      <h1 className="font-lato hidden text-xl font-medium uppercase md:text-2xl lg:block">
         project<span className="text-primary-color">mate</span>
       </h1>
       <Image
@@ -109,7 +118,7 @@ export const Sidebar = () => {
                 <Drawer.Portal>
                   <Drawer.Overlay className="fixed inset-0 z-30 bg-black/60" />
                   <Drawer.Content className="fixed bottom-8 left-0 right-0 z-40 mt-24 flex h-[60%] flex-col rounded-t-[10px] bg-[rgba(0,0,0,0.8)]">
-                    <div className="mx-auto mt-4 mb-2 h-2.5 w-12 flex-shrink-0 rounded-full bg-gray-900" />
+                    <div className="mx-auto mb-2 mt-4 h-2.5 w-12 flex-shrink-0 rounded-full bg-gray-900" />
                     <div className="scrollbar-hide w-full overflow-auto pb-8">
                       <AddProjectForm setIsClicked={setIsClicked} />
                     </div>
@@ -122,7 +131,7 @@ export const Sidebar = () => {
             ) : (
               <button
                 onClick={handleAddProject}
-                className={`hidden rounded-2xl bg-green-600 py-2 px-8 text-base text-gray-200 hover:text-white lg:block`}
+                className={`hidden rounded-2xl bg-green-600 px-8 py-2 text-base text-gray-200 hover:text-white lg:block`}
               >
                 Add project
               </button>
@@ -131,29 +140,24 @@ export const Sidebar = () => {
         </li>
         <li className="flex h-9 cursor-pointer items-center text-gray-500 transition-all hover:text-gray-200">
           {status === 'authenticated' ? (
-            <Drawer.Root shouldScaleBackground>
-              <Drawer.Trigger
-                className={`hidden rounded-2xl bg-green-600 py-2 px-8 text-base text-gray-200 hover:text-white lg:block`}
+            <Dialog>
+              <DialogTrigger
+                className={`hidden rounded-2xl bg-green-600 px-8 py-2 text-base text-gray-200 hover:text-white lg:block`}
               >
                 Add project
-              </Drawer.Trigger>
-              <Drawer.Portal>
-                <Drawer.Overlay className="fixed inset-0 z-30 bg-black/60" />
-                <Drawer.Content className="fixed -bottom-8 left-0 right-0 z-50 mt-24 flex h-2/3 flex-col rounded-t-[10px] bg-[rgba(0,0,0,0.8)]">
-                  <div className="mx-auto mt-4 mb-2 h-2.5 w-12 flex-shrink-0 rounded-full bg-gray-900" />
-                  <div className="scrollbar-hide w-full overflow-auto pb-8">
-                    <AddProjectForm setIsClicked={setIsClicked} />
-                  </div>
-                  <Drawer.Close ref={closeBtnRef}>
-                    <AiOutlineCloseCircle className="hidden" />
-                  </Drawer.Close>
-                </Drawer.Content>
-              </Drawer.Portal>
-            </Drawer.Root>
+              </DialogTrigger>
+              <DialogContent className="max-w-2xl">
+                <DialogHeader>
+                  <DialogTitle>Add Project</DialogTitle>
+                </DialogHeader>
+                <AddProjectForm setIsClicked={setIsClicked} />
+                <DialogClose ref={closeBtnRef}></DialogClose>
+              </DialogContent>
+            </Dialog>
           ) : (
             <button
               onClick={handleAddProject}
-              className={`hidden rounded-2xl bg-green-600 py-2 px-8 text-base text-gray-200 hover:text-white lg:block`}
+              className={`hidden rounded-2xl bg-green-600 px-8 py-2 text-base text-gray-200 hover:text-white lg:block`}
             >
               Add project
             </button>

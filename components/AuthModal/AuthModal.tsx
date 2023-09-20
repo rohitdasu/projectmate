@@ -64,9 +64,9 @@ export const AuthModal: FC<AuthModalProps> = ({ title }) => {
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
-                  <Dialog.Panel className="flex w-full max-w-md transform flex-col items-center justify-center gap-8 overflow-hidden rounded-2xl border-[0.1px] bg-slate-900 px-6 pt-6 pb-12 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Panel className="flex w-full max-w-md transform flex-col items-center justify-center gap-8 overflow-hidden rounded-2xl border-[0.1px] bg-slate-900 px-6 pb-12 pt-6 text-left align-middle shadow-xl transition-all">
                     <span
-                      className={`font-mono flex w-full items-center justify-center  text-2xl font-bold uppercase md:space-x-2`}
+                      className={`flex w-full items-center justify-center font-mono  text-2xl font-bold uppercase md:space-x-2`}
                     >
                       <Typography as="p" fontSize="2xl" fontWeight="bold">
                         <span className="text-white">project</span>
@@ -82,7 +82,7 @@ export const AuthModal: FC<AuthModalProps> = ({ title }) => {
                     <div className="flex w-full flex-col items-center justify-center space-y-6 px-0 md:px-12">
                       <motion.button
                         whileTap={{ scale: 0.95 }}
-                        className="flex w-full items-center justify-between rounded-lg border border-gray-400 py-2 px-3 hover:opacity-50"
+                        className="flex w-full items-center justify-between rounded-lg border border-gray-400 px-3 py-2 hover:opacity-50"
                         onClick={() => {
                           popupCenter('/auth/github', 'Sign In With Github');
                           closeModal();
@@ -110,7 +110,7 @@ export const AuthModal: FC<AuthModalProps> = ({ title }) => {
 
                       <motion.button
                         whileTap={{ scale: 0.95 }}
-                        className="flex w-full items-center justify-between rounded-lg border border-gray-400 py-2 px-3 hover:opacity-50"
+                        className="flex w-full items-center justify-between rounded-lg border border-gray-400 px-3 py-2 hover:opacity-50"
                         onClick={() => {
                           popupCenter('/auth/google', 'Sign In With Google');
                           closeModal();
