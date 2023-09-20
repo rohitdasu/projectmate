@@ -147,7 +147,7 @@ export const Sidebar = () => {
               </DialogTrigger>
               <DialogContent className="max-w-2xl">
                 <DialogHeader>
-                  <DialogTitle>Add Project</DialogTitle>
+                  <DialogTitle className="mb-6">Add Project</DialogTitle>
                 </DialogHeader>
                 <AddProjectForm setIsClicked={setIsClicked} />
                 <DialogClose ref={closeBtnRef}></DialogClose>
