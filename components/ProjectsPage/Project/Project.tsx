@@ -14,7 +14,6 @@ import { memo } from 'react';
 
 export const Project: React.FC<ProjectProps> = memo(
   ({
-    id,
     title,
     description,
     tags,
@@ -109,7 +108,7 @@ export const Project: React.FC<ProjectProps> = memo(
               <Button
                 onClick={() => openShareModal({ title, url: githubRepository })}
                 isDisabled={false}
-                className="flex flex-row items-center justify-center gap-1 bg-transparent px-1.5 py-1.5 font-bold !text-gray-200 hover:text-primary-color focus:ring-0 sm:my-0 sm:gap-2"
+                className="hover:text-primary-color flex flex-row items-center justify-center gap-1 bg-transparent px-1.5 py-1.5 font-bold !text-gray-200 focus:ring-0 sm:my-0 sm:gap-2"
               >
                 <IoIosShareAlt />
                 <span className="text-sm md:text-base">Share</span>

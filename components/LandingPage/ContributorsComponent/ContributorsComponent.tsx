@@ -13,7 +13,7 @@ export const ContributorsComponent = () => {
   }
 
   return (
-    <section className="py-16 px-4">
+    <section className="px-4 py-16">
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8">
         <p className="text-xl text-gray-200 md:text-3xl lg:text-4xl">
           Contributors

@@ -10,7 +10,7 @@ export const ErrorFallback: FC<ErrorFallbackProps> = ({
   return (
     <div
       role="alert"
-      className="absolute top-1/2 left-1/2 flex w-11/12 max-w-2xl -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-md bg-red-200 py-6 px-4 text-red-800 sm:px-10"
+      className="absolute left-1/2 top-1/2 flex w-11/12 max-w-2xl -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-md bg-red-200 px-4 py-6 text-red-800 sm:px-10"
     >
       <h2 className="text-3xl font-bold">Oops!</h2>
       <p className="pt-4 text-center text-sm leading-6">
@@ -20,7 +20,7 @@ export const ErrorFallback: FC<ErrorFallbackProps> = ({
       </p>
       {process.env.NODE_ENV === 'development' ||
       process.env.APP_STAGING === 'true' ? (
-        <pre className="mt-5 whitespace-pre-line bg-white py-3 px-5">
+        <pre className="mt-5 whitespace-pre-line bg-white px-5 py-3">
           {error.message}
         </pre>
       ) : null}
@@ -30,14 +30,14 @@ export const ErrorFallback: FC<ErrorFallbackProps> = ({
           onClick={resetErrorBoundary}
           isDisabled={false}
           haveAnimation
-          className="bg-[#9b1c1c] py-3 px-8 text-[#fff]"
+          className="bg-[#9b1c1c] px-8 py-3 text-[#fff]"
         >
           Try again
         </Button>
 
         <Link
           href="/"
-          className="rounded-md bg-[#2c1c0f] py-3 px-6 text-orange-400 transition-all hover:opacity-75 focus:ring"
+          className="rounded-md bg-[#2c1c0f] px-6 py-3 text-orange-400 transition-all hover:opacity-75 focus:ring"
         >
           Go back home
         </Link>

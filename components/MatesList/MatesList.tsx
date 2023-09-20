@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { Mate } from './Mate';
 import useSWR from 'swr';
@@ -16,7 +17,7 @@ export const MatesList = () => {
   }
 
   return (
-    <section className="py-16 px-2">
+    <section className="px-2 py-16">
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8">
         <ul className="grid grid-cols-3 gap-8 md:grid-cols-4 lg:grid-cols-5">
           {data &&

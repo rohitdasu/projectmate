@@ -17,7 +17,7 @@ export const ActionComponent = () => {
     }
   };
   return (
-    <section className="bg-green-900 py-16 px-4 md:py-24">
+    <section className="bg-green-900 px-4 py-16 md:py-24">
       <AuthModal title="Continue with your social account" />
       <div
         className="relative mx-auto flex max-w-screen-xl flex-col items-center gap-10 overflow-hidden bg-cover bg-no-repeat"
@@ -32,7 +32,7 @@ export const ActionComponent = () => {
         <button
           onClick={join}
           disabled={status === 'loading'}
-          className="rounded-md bg-green-50 py-2 px-4 text-sm font-medium text-green-900 hover:bg-green-200 md:text-base lg:py-3 lg:px-6"
+          className="rounded-md bg-green-50 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 md:text-base lg:px-6 lg:py-3"
         >
           {status === 'unauthenticated'
             ? 'Sign Up'

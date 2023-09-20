@@ -20,7 +20,7 @@ export const HeroComponent = () => {
           150 registered users who are already making a difference
         </p>
         <Link href="/projects" className="text-center">
-          <button className="rounded-md bg-green-900 py-3 px-6 text-sm text-green-50 hover:opacity-90 md:text-base">
+          <button className="rounded-md bg-green-900 px-6 py-3 text-sm text-green-50 hover:opacity-90 md:text-base">
             Explore Projects
           </button>
         </Link>
