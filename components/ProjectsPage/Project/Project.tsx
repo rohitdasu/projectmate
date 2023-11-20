@@ -12,9 +12,10 @@ import { FaHandshake } from 'react-icons/fa';
 import { IoStatsChartSharp } from 'react-icons/io5';
 import { memo } from 'react';
 
+const INSIGHTS_WEBAPP = 'https://analyzemyrepo.com/analyze';
+
 export const Project: React.FC<ProjectProps> = memo(
   ({
-    id,
     title,
     description,
     tags,
@@ -24,9 +25,22 @@ export const Project: React.FC<ProjectProps> = memo(
     githubRepository,
     openShareModal,
   }) => {
-    const handleFeature404 = () => {
-      toastMessage('feature is disabled', messageType.error);
+    const extractAccountAndRepo = () => {
+      if (!githubRepository) return;
+
+      const regex = /^https:\/\/github\.com\/([^\/]+)\/([^\/]+)$/;
+
+      const match = githubRepository.match(regex);
+
+      if (match) {
+        const accountName = match[1];
+        const repoName = match[2];
+        window.open(`${INSIGHTS_WEBAPP}/${accountName}/${repoName}`, '_blank');
+      } else {
+        toastMessage('Something went wrong!', messageType.error);
+      }
     };
+
     const handleContributeClick = () => {
       if (githubRepository) {
         window.open(`${githubRepository}/?ref=projectmate.net`, '_blank');
@@ -90,7 +104,7 @@ export const Project: React.FC<ProjectProps> = memo(
             <div className="flex w-full flex-row items-center justify-between sm:gap-2">
               <div className="flex flex-row items-center">
                 <Button
-                  onClick={handleFeature404}
+                  onClick={extractAccountAndRepo}
                   isDisabled={false}
                   className="flex flex-row items-center justify-center gap-1 bg-transparent px-1.5 py-1.5 font-bold !text-gray-200 focus:ring-0 sm:my-0 sm:gap-2"
                 >
