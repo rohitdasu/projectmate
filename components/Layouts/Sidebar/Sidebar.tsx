@@ -9,6 +9,7 @@ import { MdAdd } from 'react-icons/md';
 import { useState } from 'react';
 import { AuthModal } from '@/components/AuthModal';
 import { useAuthModal } from '@/hooks/useAuthModal';
+import { Button } from '@/components/ui/button';
 
 const NavElements = NavRoutes.map((nav) => {
   return {
@@ -22,7 +23,7 @@ const NavElements = NavRoutes.map((nav) => {
 const Logo = () => {
   return (
     <Link href="/">
-      <h1 className="hidden font-lato text-xl font-medium uppercase md:text-2xl lg:block">
+      <h1 className="font-lato hidden text-xl font-medium uppercase md:text-2xl lg:block">
         project<span className="text-primary-color">mate</span>
       </h1>
       <Image
@@ -61,7 +62,7 @@ export const Sidebar = () => {
 
           let spanNameTag = (
             <span
-              className={`hidden text-lg text-gray-400 hover:text-gray-300 lg:block`}
+              className={`hidden text-lg text-gray-600 hover:text-gray-900 lg:block`}
             >
               {nav.name}
             </span>
@@ -69,9 +70,7 @@ export const Sidebar = () => {
 
           if (isActive) {
             spanNameTag = (
-              <span
-                className={`hidden text-lg text-gray-200 hover:text-gray-300 lg:block`}
-              >
+              <span className={`hidden text-lg text-gray-900 lg:block`}>
                 {nav.name}
               </span>
             );
@@ -79,8 +78,8 @@ export const Sidebar = () => {
           return (
             <Link key={nav.id} href={nav.link}>
               <li
-                className={`flex h-9 items-center justify-center gap-4 transition-all hover:text-gray-200 md:flex-row md:items-start ${
-                  isActive ? 'text-gray-200' : 'text-gray-400'
+                className={`flex h-9 items-center justify-center gap-4 transition-all hover:text-gray-900 md:flex-row md:items-start ${
+                  isActive ? 'text-gray-900' : 'text-gray-400'
                 }`}
               >
                 {nav.icon}
@@ -98,14 +97,10 @@ export const Sidebar = () => {
           <div className="fixed bottom-7 right-5 block cursor-pointer rounded-full bg-green-600 p-2	lg:hidden">
             <MdAdd size={45} color={'white'} />
           </div>
-          <button
-            className={`hidden rounded-2xl bg-green-600 py-2 px-8 text-base text-gray-200 hover:text-white lg:block`}
-          >
-            Add project
-          </button>
+          <Button size="lg">Add project</Button>
         </li>
       </ul>
-      <ul className="absolute bottom-2 mt-4 flex w-3/4 flex-col items-center gap-4 border-t border-gray-800 pt-4 transition-all md:items-start">
+      <ul className="absolute bottom-2 mt-4 flex w-3/4 flex-col items-center gap-4 border-t border-gray-200 pt-4 transition-all md:items-start">
         {status === 'authenticated' ? (
           <SessionCard
             email={session?.user?.email || ''}
