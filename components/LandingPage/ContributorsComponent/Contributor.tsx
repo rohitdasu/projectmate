@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import Image from 'next/legacy/image';
 import { Contributor as ContributorProps } from './ContributorsComponent.interface';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { AvatarImage } from '@radix-ui/react-avatar';
 export const Contributor: FC<ContributorProps> = (contributor) => {
   return (
     <a
@@ -10,15 +11,10 @@ export const Contributor: FC<ContributorProps> = (contributor) => {
       rel="noreferrer"
       title={contributor.login}
     >
-      <li className="flex items-center justify-center">
-        <Image
-          src={contributor.avatar_url}
-          alt={contributor.login}
-          width={56}
-          height={56}
-          className="h-full w-full rounded-full bg-black"
-        />
-      </li>
+      <Avatar>
+        <AvatarImage src={contributor.avatar_url}></AvatarImage>
+        <AvatarFallback>{contributor.login[0]}</AvatarFallback>
+      </Avatar>
     </a>
   );
 };
