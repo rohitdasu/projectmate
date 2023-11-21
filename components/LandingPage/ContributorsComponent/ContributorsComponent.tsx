@@ -18,7 +18,7 @@ export const ContributorsComponent = () => {
         <p className="text-xl text-gray-900 md:text-3xl lg:text-4xl">
           Contributors
         </p>
-        <ul className="grid grid-cols-3 gap-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12">
+        <ul className="grid grid-cols-4 gap-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12">
           {data?.map((contributor: ContributorType) => {
             return <Contributor key={contributor.id} {...contributor} />;
           })}

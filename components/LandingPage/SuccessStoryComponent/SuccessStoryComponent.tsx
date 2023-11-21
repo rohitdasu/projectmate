@@ -20,6 +20,17 @@ export const SuccessStoryComponent = () => {
         src="https://cards.producthunt.com/cards/posts/374078?v=1"
         width="500"
         height="405"
+        className="hidden md:block"
+        frameBorder={0}
+        scrolling="no"
+        allowFullScreen
+      ></iframe>
+      <iframe
+        style={{ border: 'none' }}
+        src="https://cards.producthunt.com/cards/posts/374078?v=1"
+        width="300"
+        height="405"
+        className="block md:hidden"
         frameBorder={0}
         scrolling="no"
         allowFullScreen
