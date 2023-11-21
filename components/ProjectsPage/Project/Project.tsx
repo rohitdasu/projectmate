@@ -51,7 +51,7 @@ export const Project: React.FC<ProjectProps> = memo(
         exit={{ opacity: 0 }}
         layout
         transition={{ duration: 1 }}
-        className="border-[0.1px] border-gray-700 md:m-auto md:w-full"
+        className="border border-gray-200 md:m-auto md:w-full"
       >
         <div className="flex h-full flex-col items-center overflow-hidden rounded-md">
           <div className="flex w-full grow flex-col justify-center gap-5 p-4 pt-4">
