@@ -15,7 +15,7 @@ export const ContributorsComponent = () => {
   return (
     <section className="py-16 px-4">
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8">
-        <p className="text-xl text-gray-200 md:text-3xl lg:text-4xl">
+        <p className="text-xl text-gray-900 md:text-3xl lg:text-4xl">
           Contributors
         </p>
         <ul className="grid grid-cols-3 gap-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12">

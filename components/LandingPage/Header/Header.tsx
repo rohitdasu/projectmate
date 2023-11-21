@@ -21,7 +21,7 @@ interface HeaderProps {
 
 export const Header: FC<HeaderProps> = ({ homeRoute = '/' }) => {
   return (
-    <nav className="mx-auto flex h-20 w-full max-w-screen-xl flex-row items-center justify-between px-4">
+    <nav className="mx-auto flex h-20 w-full max-w-screen-xl flex-row items-center justify-between px-4 md:px-0">
       <Logo route={homeRoute} />
     </nav>
   );
