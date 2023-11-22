@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { AuthModal } from '@/components/AuthModal';
-import { IoLogIn } from 'react-icons/io5';
 import { useAuthModal } from '@/hooks/useAuthModal';
-import { MdLogin } from 'react-icons/md';
+import { LogIn } from 'lucide-react';
 
 export const SessionLessCard = () => {
   const { openModal } = useAuthModal();
@@ -16,13 +15,12 @@ export const SessionLessCard = () => {
           setLoginMessage(message);
           openModal();
         }}
-        className="h-9 cursor-pointer text-gray-400 transition-all hover:text-gray-200"
+        className="h-9 cursor-pointer"
       >
-        <IoLogIn size={27} className="block lg:hidden" />
-        <span className="hidden items-center gap-4 text-lg lg:flex">
-          <MdLogin size={20} />
+        <section className="flex items-center gap-4">
+          <LogIn />
           Login
-        </span>
+        </section>
       </li>
     </>
   );

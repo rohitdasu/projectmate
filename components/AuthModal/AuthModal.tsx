@@ -1,6 +1,5 @@
 import { useEffect, useRef, FC } from 'react';
 import { AuthModalProps } from './Auth.interface';
-import { Typography } from '@/components/Common/Typography';
 import { useRouter } from 'next/router';
 import { useAuthModal } from '@/hooks/useAuthModal';
 import { FcGoogle } from 'react-icons/fc';
@@ -45,8 +44,12 @@ export const AuthModal: FC<AuthModalProps> = ({ title }) => {
       <Dialog open={isOpen} onOpenChange={closeModal}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>projectmate</DialogTitle>
-            <DialogDescription>{title}</DialogDescription>
+            <DialogTitle className="flex justify-center text-xl">
+              projectmate
+            </DialogTitle>
+            <DialogDescription className="flex justify-center">
+              {title}
+            </DialogDescription>
           </DialogHeader>
           <section className="flex flex-col items-center gap-4">
             <Button

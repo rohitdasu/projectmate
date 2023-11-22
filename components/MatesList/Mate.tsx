@@ -13,7 +13,7 @@ export const Mate: FC<MateProps> = (mate) => {
           <AvatarImage src={mate.profilePicture} />
           <AvatarFallback>{mate.name.split(' ')[0][0]}</AvatarFallback>
         </Avatar>
-        <span className="md:text-md w-20 truncate text-center text-sm md:w-auto">
+        <span className="w-20 truncate text-center text-sm md:w-auto">
           {mate.name.split(' ')[0]}
         </span>
       </li>

@@ -17,11 +17,11 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
       </Head>
       <div className="grid min-h-screen grid-cols-9 lg:grid-cols-4">
         {leftSidebar && (
-          <div className="grid-cols-1">
+          <div className="hidden lg:block lg:grid-cols-1">
             <Sidebar />
           </div>
         )}
-        <main className="col-span-8 mx-auto max-w-2xl lg:col-span-2">
+        <main className="col-span-9 mx-auto max-w-2xl lg:col-span-2">
           {children}
         </main>
         {rightSidebar && <div></div>}
