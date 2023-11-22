@@ -75,7 +75,13 @@ export const Project: React.FC<ProjectProps> = memo(
                 <div className="flex items-center gap-2 text-base font-bold text-gray-600">
                   <Avatar>
                     <AvatarImage src={authorImage || undefined}></AvatarImage>
-                    <AvatarFallback>404</AvatarFallback>
+                    <AvatarFallback>
+                      {author &&
+                        author
+                          .split(' ')
+                          .map((word) => word[0])
+                          .join('')}
+                    </AvatarFallback>
                   </Avatar>
                   <span className="text-sm md:text-lg">{author}</span>
                 </div>
