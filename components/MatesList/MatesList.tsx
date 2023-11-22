@@ -2,6 +2,8 @@ import React from 'react';
 import { Mate } from './Mate';
 import useSWR from 'swr';
 import { fetcher } from '@/lib/fetcher';
+import { Loader } from 'lucide-react';
+import { MateProps } from './Mate.interface';
 
 export const MatesList = () => {
   const url = `/api/user/all`;
@@ -12,7 +14,11 @@ export const MatesList = () => {
   }
 
   if (isLoading) {
-    return <div className="m-auto my-5 text-lg">Loading...</div>;
+    return (
+      <div className="m-auto my-5 text-lg">
+        <Loader className="animate-spin" />
+      </div>
+    );
   }
 
   return (
@@ -20,7 +26,7 @@ export const MatesList = () => {
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8">
         <ul className="grid grid-cols-3 gap-8 md:grid-cols-4 lg:grid-cols-5">
           {data &&
-            data.results.map((mate: any) => {
+            data.results.map((mate: MateProps) => {
               return <Mate key={mate.id} {...mate} />;
             })}
         </ul>
