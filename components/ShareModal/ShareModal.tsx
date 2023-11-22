@@ -71,7 +71,11 @@ export const ShareModal: FC = () => {
         <DialogFooter>
           <div className="flex w-full flex-row justify-center gap-3 md:justify-start">
             <div className="flex-1 rounded-lg bg-gray-200 py-2 px-4">
-              <Typography as="span" className="block truncate" fontSize="sm">
+              <Typography
+                as="span"
+                className="block w-40 truncate md:w-64"
+                fontSize="sm"
+              >
                 {url}
               </Typography>
             </div>
