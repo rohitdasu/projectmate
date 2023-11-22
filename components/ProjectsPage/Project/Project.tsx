@@ -109,7 +109,7 @@ export const Project: React.FC<ProjectProps> = memo(
                   onClick={extractAccountAndRepo}
                 >
                   <BarChart2 className="mr-1" />
-                  <span className="text-sm">Stats</span>
+                  <span>Stats</span>
                 </Button>
                 <Button
                   size={'sm'}
@@ -117,7 +117,7 @@ export const Project: React.FC<ProjectProps> = memo(
                   onClick={handleContributeClick}
                 >
                   <GitPullRequest className="mr-1" />
-                  <span className="text-sm">Contribute</span>
+                  <span>Contribute</span>
                 </Button>
               </div>
               <Button
@@ -126,7 +126,7 @@ export const Project: React.FC<ProjectProps> = memo(
                 variant={'ghost'}
               >
                 <Forward className="mr-1" />
-                <span className="text-sm">Share</span>
+                <span>Share</span>
               </Button>
             </div>
           </div>

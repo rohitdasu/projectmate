@@ -45,11 +45,7 @@ export const AuthModal: FC<AuthModalProps> = ({ title }) => {
       <Dialog open={isOpen} onOpenChange={closeModal}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>
-              <Typography as="p" fontSize="2xl" fontWeight="bold">
-                projectmate
-              </Typography>
-            </DialogTitle>
+            <DialogTitle>projectmate</DialogTitle>
             <DialogDescription>{title}</DialogDescription>
           </DialogHeader>
           <section className="flex flex-col items-center gap-4">
@@ -62,9 +58,7 @@ export const AuthModal: FC<AuthModalProps> = ({ title }) => {
               }}
             >
               <FaGithub className="mr-2" size={32} />
-              <span className="text-base font-light text-gray-900 lg:text-lg">
-                Continue with Github
-              </span>
+              <span>Continue with Github</span>
             </Button>
             <Button
               variant={'outline'}
@@ -75,9 +69,7 @@ export const AuthModal: FC<AuthModalProps> = ({ title }) => {
               }}
             >
               <FcGoogle className="mr-2" size={32} />
-              <span className="text-base font-light text-gray-900 lg:text-lg">
-                Continue with Google
-              </span>
+              <span>Continue with Google</span>
             </Button>
           </section>
         </DialogContent>

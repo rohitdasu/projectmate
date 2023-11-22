@@ -75,7 +75,9 @@ export const ShareModal: FC = () => {
                 {url}
               </Typography>
             </div>
-            <Button onClick={() => copyToClipboard(url)}>Copy</Button>
+            <Button size={'sm'} onClick={() => copyToClipboard(url)}>
+              Copy
+            </Button>
           </div>
         </DialogFooter>
       </DialogContent>
