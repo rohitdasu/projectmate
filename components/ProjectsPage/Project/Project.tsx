@@ -91,7 +91,7 @@ export const Project: React.FC<ProjectProps> = memo(
               {description}
             </Typography>
             <div className="flex flex-col gap-5">
-              <div className="flex space-x-2 pb-2 md:pb-0">
+              <div className="flex flex-wrap gap-2 pb-2 md:pb-0">
                 {tags.map((tag, idx) => {
                   return (
                     <Badge variant="secondary" key={idx}>
@@ -109,7 +109,7 @@ export const Project: React.FC<ProjectProps> = memo(
                   onClick={extractAccountAndRepo}
                 >
                   <BarChart2 className="mr-1" />
-                  <span>Stats</span>
+                  <span className="hidden md:block">Stats</span>
                 </Button>
                 <Button
                   size={'sm'}
@@ -117,7 +117,7 @@ export const Project: React.FC<ProjectProps> = memo(
                   onClick={handleContributeClick}
                 >
                   <GitPullRequest className="mr-1" />
-                  <span>Contribute</span>
+                  <span className="hidden md:block">Contribute</span>
                 </Button>
               </div>
               <Button
@@ -126,7 +126,7 @@ export const Project: React.FC<ProjectProps> = memo(
                 variant={'ghost'}
               >
                 <Forward className="mr-1" />
-                <span>Share</span>
+                <span className="hidden md:block">Share</span>
               </Button>
             </div>
           </div>

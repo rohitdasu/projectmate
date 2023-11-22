@@ -21,9 +21,11 @@ export const HeroComponent = () => {
           and collaborate with a community of passionate contributors. Join over
           150 registered users who are already making a difference
         </p>
-        <Link href="/projects" className="text-center">
-          <Button size={'lg'}>Explore Projects</Button>
-        </Link>
+        <Button size={'lg'} asChild>
+          <Link href="/projects" className="text-center">
+            Explore Projects
+          </Link>
+        </Button>
       </div>
       <ArrowDown className="animate-bounce" />
     </section>

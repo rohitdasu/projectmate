@@ -19,7 +19,7 @@ export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
     <li>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <section className="flex flex-row items-center justify-start gap-3">
+          <section className="flex cursor-pointer flex-row items-center justify-start gap-3">
             <Avatar>
               <AvatarImage src={image || undefined} />
               <AvatarFallback>{name && name[0]}</AvatarFallback>
