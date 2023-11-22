@@ -63,13 +63,16 @@ export const Project: React.FC<ProjectProps> = memo(
               >
                 <div className="flex w-full flex-row items-center justify-between">
                   <p className="w-40 truncate md:w-auto">{title}</p>
-                  <Typography as="p" fontSize="sm" fontWeight="normal">
-                    <section className="flex flex-row items-center text-gray-900">
-                      <History height={16} />
-                      <time dateTime={createdAt.toString()}>
-                        {moment(createdAt).fromNow()}
-                      </time>
-                    </section>
+                  <Typography
+                    as="p"
+                    fontSize="sm"
+                    fontWeight="normal"
+                    className="flex flex-row items-center text-gray-900"
+                  >
+                    <History height={16} />
+                    <time dateTime={createdAt.toString()}>
+                      {moment(createdAt).fromNow()}
+                    </time>
                   </Typography>
                 </div>
                 <div className="flex items-center gap-2 text-base font-bold text-gray-600">

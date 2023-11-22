@@ -51,5 +51,5 @@ export const description = {
       message: 'description must be at least 160 characters',
     },
   },
-  multiline: true,
+  multiline: 'true',
 };
