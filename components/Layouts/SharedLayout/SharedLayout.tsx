@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { SharedLayoutProps } from './SharedLayout.interface';
 import Head from 'next/head';
 import { Sidebar } from '../Sidebar';
+import { BottomBar } from '../BottomBar';
 
 export const SharedLayout: FC<SharedLayoutProps> = ({
   title = '',
@@ -15,16 +16,19 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
         <title>{`${title} | Projectmate`}</title>
         <link rel="icon" href="/logo.svg" />
       </Head>
-      <div className="grid min-h-screen grid-cols-9 lg:grid-cols-4">
+      <div className="grid min-h-screen grid-cols-4">
         {leftSidebar && (
-          <div className="grid-cols-1">
+          <div className="hidden grid-cols-1 lg:block">
             <Sidebar />
           </div>
         )}
-        <main className="col-span-8 mx-auto max-w-2xl lg:col-span-2">
+        <main className="col-span-4 mx-auto max-w-2xl lg:col-span-2">
           {children}
         </main>
         {rightSidebar && <div></div>}
+      </div>
+      <div className="sticky bottom-0 block h-14 w-full bg-gray-100 md:hidden">
+        <BottomBar />
       </div>
     </div>
   );

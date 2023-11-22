@@ -2,7 +2,7 @@
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-})
+});
 
 module.exports = withBundleAnalyzer({
   webpack: (config) => {
@@ -11,7 +11,7 @@ module.exports = withBundleAnalyzer({
       use: 'raw-loader',
     });
 
-    return (config);
+    return config;
   },
   reactStrictMode: true,
   images: {
@@ -23,4 +23,3 @@ module.exports = withBundleAnalyzer({
     ],
   },
 });
-

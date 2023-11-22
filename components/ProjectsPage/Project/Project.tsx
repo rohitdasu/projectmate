@@ -1,16 +1,13 @@
 import { motion } from 'framer-motion';
-import { Tags } from '@/components/Tags';
-import { Button } from '@/components/Common/Button';
 import { Typography } from '@/components/Common/Typography';
 import { toastMessage, messageType } from '@/components/Toaster';
-import Image from 'next/legacy/image';
-import moment from 'moment';
-import { AiOutlineClockCircle } from 'react-icons/ai';
-import { IoIosShareAlt } from 'react-icons/io';
 import { ProjectProps } from './Project.interface';
-import { FaHandshake } from 'react-icons/fa';
-import { IoStatsChartSharp } from 'react-icons/io5';
 import { memo } from 'react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { BarChart2, Forward, GitPullRequest, History } from 'lucide-react';
+import moment from 'moment';
 
 const INSIGHTS_WEBAPP = 'https://analyzemyrepo.com/analyze';
 
@@ -54,7 +51,7 @@ export const Project: React.FC<ProjectProps> = memo(
         exit={{ opacity: 0 }}
         layout
         transition={{ duration: 1 }}
-        className="border-[0.1px] border-gray-700 md:m-auto md:w-full"
+        className="border border-gray-200 md:m-auto md:w-full"
       >
         <div className="flex h-full flex-col items-center overflow-hidden rounded-md">
           <div className="flex w-full grow flex-col justify-center gap-5 p-4 pt-4">
@@ -62,71 +59,74 @@ export const Project: React.FC<ProjectProps> = memo(
               <Typography
                 as="h2"
                 fontWeight="bold"
-                className="flex w-full flex-col gap-4 truncate text-base text-gray-100 md:text-xl"
+                className="flex w-full flex-col gap-4 truncate text-base text-gray-900 md:text-xl"
               >
                 <div className="flex w-full flex-row items-center justify-between">
                   <p className="w-40 truncate md:w-auto">{title}</p>
-                  <div className="flex flex-row items-center gap-1 text-gray-400">
-                    <AiOutlineClockCircle />
-                    <Typography as="p" fontSize="sm" fontWeight="light">
+                  <Typography as="p" fontSize="sm" fontWeight="normal">
+                    <section className="flex flex-row items-center text-gray-900">
+                      <History height={16} />
                       <time dateTime={createdAt.toString()}>
                         {moment(createdAt).fromNow()}
                       </time>
-                    </Typography>
-                  </div>
+                    </section>
+                  </Typography>
                 </div>
-                <div className="flex items-center gap-2 text-base font-bold text-gray-100 opacity-70">
-                  <Image
-                    src={
-                      authorImage ||
-                      `https://avatars.dicebear.com/api/initials/${author}.png?backgroundColorLevel=800&fontSize=40`
-                    }
-                    alt="user-photo"
-                    height={40}
-                    width={40}
-                    className="rounded-full"
-                  />
+                <div className="flex items-center gap-2 text-base font-bold text-gray-600">
+                  <Avatar>
+                    <AvatarImage src={authorImage || undefined}></AvatarImage>
+                    <AvatarFallback>
+                      {author &&
+                        author
+                          .split(' ')
+                          .map((word) => word[0])
+                          .join('')}
+                    </AvatarFallback>
+                  </Avatar>
                   <span className="text-sm md:text-lg">{author}</span>
                 </div>
               </Typography>
             </header>
-            <Typography as="p" fontSize="sm" className="text-gray-200">
+            <Typography as="p" fontSize="sm" className="text-gray-600">
               {description}
             </Typography>
             <div className="flex flex-col gap-5">
-              <div className="flex space-x-2 pb-2 md:pb-0">
-                <Tags
-                  tags={tags}
-                  className="flex-wrap gap-1 text-sm font-medium"
-                />
+              <div className="flex flex-wrap gap-2 pb-2 md:pb-0">
+                {tags.map((tag, idx) => {
+                  return (
+                    <Badge variant="secondary" key={idx}>
+                      {tag}
+                    </Badge>
+                  );
+                })}
               </div>
             </div>
             <div className="flex w-full flex-row items-center justify-between sm:gap-2">
               <div className="flex flex-row items-center">
                 <Button
+                  size={'sm'}
+                  variant={'ghost'}
                   onClick={extractAccountAndRepo}
-                  isDisabled={false}
-                  className="flex flex-row items-center justify-center gap-1 bg-transparent px-1.5 py-1.5 font-bold !text-gray-200 focus:ring-0 sm:my-0 sm:gap-2"
                 >
-                  <IoStatsChartSharp />
-                  <span className="text-sm md:text-base">Stats</span>
+                  <BarChart2 className="mr-1" />
+                  <span className="hidden md:block">Stats</span>
                 </Button>
                 <Button
+                  size={'sm'}
+                  variant={'ghost'}
                   onClick={handleContributeClick}
-                  isDisabled={false}
-                  className="flex flex-row items-center justify-center gap-1 bg-transparent px-1.5 py-1.5 font-bold !text-gray-200 focus:ring-0 sm:my-0 sm:gap-2"
                 >
-                  <FaHandshake />
-                  <span className="text-sm md:text-base">Contribute</span>
+                  <GitPullRequest className="mr-1" />
+                  <span className="hidden md:block">Contribute</span>
                 </Button>
               </div>
               <Button
+                size={'sm'}
                 onClick={() => openShareModal({ title, url: githubRepository })}
-                isDisabled={false}
-                className="flex flex-row items-center justify-center gap-1 bg-transparent px-1.5 py-1.5 font-bold !text-gray-200 hover:text-primary-color focus:ring-0 sm:my-0 sm:gap-2"
+                variant={'ghost'}
               >
-                <IoIosShareAlt />
-                <span className="text-sm md:text-base">Share</span>
+                <Forward className="mr-1" />
+                <span className="hidden md:block">Share</span>
               </Button>
             </div>
           </div>

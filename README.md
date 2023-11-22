@@ -18,7 +18,7 @@ Check out the web app 🌏 : https://projectmate.net/
 
 ## Connect with us
 
-As a community, we always encourage people to share their thoughts and ideas. Do you want to talk to us? Join and Follow our Discord server and Twitter page ⬇️ 
+As a community, we always encourage people to share their thoughts and ideas. Do you want to talk to us? Join and Follow our Discord server and Twitter page ⬇️
 
 [![DISCORD - Join](https://img.shields.io/badge/DISCORD-Join-15a34a?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FQtyMWFZQ9)
 [![TWITTER - Join](https://img.shields.io/badge/TWITTER-Follow-15a34a?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/projectmateHQ)
@@ -43,7 +43,6 @@ Figma design:
 ## Installation steps
 
 ### Standard installation
-
 
 > Prerequisites
 >
@@ -91,6 +90,7 @@ Figma design:
 <br>
 
 ### Installation using docker
+
 > **_NOTE:_** Docker set up is highly recommended mainly on linux systems due to possible performance issues on other platforms.
 
 1. Fork the project 🔧
@@ -112,14 +112,15 @@ Figma design:
    ```sh
    openssl rand -base64 32
    ```
+
 5. Build docker containers 🔽
    ```sh
    docker compose build
    ```
-6.  Start containers in a background 🔽
-    ```sh
-    docker compose up -d
-    ```
+6. Start containers in a background 🔽
+   ```sh
+   docker compose up -d
+   ```
 7. Synchronize your Prisma schema with your database schema 🗃
    ```sh
    docker compose exec web yarn prisma db push
@@ -128,33 +129,43 @@ Figma design:
    ```sh
    docker compose exec web yarn prisma db seed
    ```
-> You can access logs from web or mongo container by docker compose logs e.g:
-> ```sh
-> docker compose logs web -f
-> ```
-> If you want to stop containers just run:
-> ```sh
-> docker compose stop
-> ```
-> Or if you want to stop and remove containers, networks:
-> ```sh
-> docker compose down
-> ```
+   > You can access logs from web or mongo container by docker compose logs e.g:
+   >
+   > ```sh
+   > docker compose logs web -f
+   > ```
+   >
+   > If you want to stop containers just run:
+   >
+   > ```sh
+   > docker compose stop
+   > ```
+   >
+   > Or if you want to stop and remove containers, networks:
+   >
+   > ```sh
+   > docker compose down
+   > ```
 
 <br>
 
-> **_NOTE:_**  If you want to add new package, you must use
->  ```sh
->   docker compose exec web yarn add [package]
->  ```
->  Then (also if you pulled branch with changes to package.json) rebuild containers:
->  ```sh
->   docker compose up --build -d
->  ```
+> **_NOTE:_** If you want to add new package, you must use
+>
+> ```sh
+>  docker compose exec web yarn add [package]
+> ```
+>
+> Then (also if you pulled branch with changes to package.json) rebuild containers:
+>
+> ```sh
+>  docker compose up --build -d
+> ```
+>
 > You cannot perform `yarn build` from your local machine - you need to use:
->  ```sh
->   docker compose exec web yarn build
->  ```
+>
+> ```sh
+>  docker compose exec web yarn build
+> ```
 
 ## Contributing Guidelines 📜
 
@@ -169,7 +180,6 @@ View [CODE_OF_CONDUCT.md](https://github.com/rohitdasu/projectmate/blob/main/COD
 <a href="https://github.com/rohitdasu/projectmate/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=rohitdasu/projectmate" />
 </a>
-
 
 ## Support ⭐
 

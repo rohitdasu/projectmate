@@ -7,7 +7,7 @@ const NotFound: NextPage = () => {
     <SharedLayout title="Find your project mate online">
       <div className="text-center">
         <p className="mb-3 text-7xl">
-          4<span className="text-6xl text-primary-color">0</span>4
+          4<span className="text-primary-color text-6xl">0</span>4
         </p>
         <p className="mb-6 px-2">
           Sorry! The page you are looking for does not exist.

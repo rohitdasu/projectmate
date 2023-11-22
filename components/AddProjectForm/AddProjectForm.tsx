@@ -10,6 +10,7 @@ import { BiLoaderCircle } from 'react-icons/bi';
 import TagsInput from 'react-tagsinput';
 import 'react-tagsinput/react-tagsinput.css';
 import axios from 'axios';
+import { Button } from '../ui/button';
 
 export const AddProjectForm = () => {
   const [loading, setLoading] = useState(false);
@@ -81,7 +82,7 @@ export const AddProjectForm = () => {
             render={({ field }) => (
               <div className="flex w-full flex-col gap-2">
                 <TagsInput
-                  className="w-full rounded-md border-2 border-gray-900 bg-gray-800 p-4 font-medium placeholder:opacity-50 focus:border-blue-500 focus:outline-none"
+                  className="w-full rounded-md border-2 border-gray-200 bg-gray-100 p-4 font-medium placeholder:opacity-50 focus:border-blue-500 focus:outline-none"
                   value={field.value}
                   maxTags={5}
                   onlyUnique={true}
@@ -98,13 +99,10 @@ export const AddProjectForm = () => {
             )}
           />
           <Input {...description} />
-          <button
-            onClick={onSubmit}
-            className="flex justify-center rounded-md bg-emerald-700 p-3 uppercase transition-all hover:bg-emerald-800"
-          >
+          <Button onClick={onSubmit}>
             {loading && <BiLoaderCircle className="animate-spin text-2xl" />}
             {!loading && <span>submit</span>}
-          </button>
+          </Button>
         </form>
       </FormProvider>
     </div>

@@ -1,8 +1,10 @@
+import { Button } from '@/components/ui/button';
+import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
 
 export const HeroComponent = () => {
   return (
-    <section className="flex h-[calc(100vh-80px)] flex-row items-center justify-center px-4 lg:px-0">
+    <section className="flex h-[calc(100vh-80px)] flex-col items-center justify-center gap-16 px-4 lg:px-0">
       <div
         className="relative flex flex-col items-center gap-8 overflow-hidden bg-cover bg-no-repeat"
         style={{
@@ -10,21 +12,22 @@ export const HeroComponent = () => {
           backgroundPosition: 'center',
         }}
       >
-        <h1 className="mx-auto max-w-5xl text-center text-3xl font-semibold text-gray-200 md:text-5xl md:!leading-[1.25] lg:text-6xl">
+        <h1 className="mx-auto max-w-5xl text-center text-3xl font-semibold text-gray-900 md:text-5xl md:!leading-[1.25] lg:text-6xl">
           <span className="text-primary-color">Supercharge</span> your
           open-source contributions
         </h1>
-        <p className="mx-auto max-w-3xl text-center text-base font-medium text-gray-400 md:text-lg lg:text-xl">
+        <p className="mx-auto max-w-3xl text-center text-base text-gray-900 md:text-lg lg:text-xl">
           Discover open-source projects, connect with experienced maintainers,
           and collaborate with a community of passionate contributors. Join over
           150 registered users who are already making a difference
         </p>
-        <Link href="/projects" className="text-center">
-          <button className="rounded-md bg-green-900 py-3 px-6 text-sm text-green-50 hover:opacity-90 md:text-base">
+        <Button size={'lg'} asChild>
+          <Link href="/projects" className="text-center">
             Explore Projects
-          </button>
-        </Link>
+          </Link>
+        </Button>
       </div>
+      <ArrowDown className="animate-bounce" />
     </section>
   );
 };
