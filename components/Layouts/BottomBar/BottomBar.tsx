@@ -7,15 +7,18 @@ import { useSession } from 'next-auth/react';
 import { AuthModal } from '@/components/AuthModal';
 import { useAuthModal } from '@/hooks/useAuthModal';
 import { NavRoutes } from '../Sidebar/data';
+import { useAddProjectModal } from '@/hooks/useAddProjectModal';
+import { AddProjectModal } from '@/components/AddProjectModal';
 
 export const BottomBar = () => {
   const message = 'Continue with your social account';
   const { openModal } = useAuthModal();
+  const { openModal: openAddProjectModal } = useAddProjectModal();
   const [loginMessage, setLoginMessage] = React.useState(message);
-  const { status } = useSession();
+  const { status, data } = useSession();
   const handleAddProject = () => {
     if (status === 'authenticated') {
-      router.push('/projects/add-project');
+      openAddProjectModal();
     } else {
       setLoginMessage('Login with your account to add project');
       openModal();
@@ -26,6 +29,7 @@ export const BottomBar = () => {
   return (
     <div className="h-full w-full">
       <AuthModal title={loginMessage} />
+      <AddProjectModal email={data?.user?.email} />
       <ul className="flex h-14 flex-row items-center justify-around">
         {NavRoutes.map((route) => {
           const isActive = route.link === router.pathname;
