@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import { Button } from '@/components/Common/Button';
 import { ErrorFallbackProps } from './ErrorFallback.interface';
+import { Button } from '../ui/button';
 
 export const ErrorFallback: FC<ErrorFallbackProps> = ({
   error,
@@ -28,8 +28,7 @@ export const ErrorFallback: FC<ErrorFallbackProps> = ({
       <div className="mt-8 flex flex-col items-center gap-5 sm:flex-row sm:gap-10">
         <Button
           onClick={resetErrorBoundary}
-          isDisabled={false}
-          haveAnimation
+          disabled={false}
           className="bg-[#9b1c1c] py-3 px-8 text-[#fff]"
         >
           Try again
