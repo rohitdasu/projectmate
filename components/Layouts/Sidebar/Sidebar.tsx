@@ -81,7 +81,7 @@ export const Sidebar = () => {
           );
         })}
         <AuthModal title={loginMessage} />
-        <AddProjectModal />
+        <AddProjectModal email={session?.user?.email} />
         <li onClick={handleAddProject}>
           <Button size="lg">Add project</Button>
         </li>

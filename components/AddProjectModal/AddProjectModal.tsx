@@ -24,12 +24,11 @@ import { messageType, toastMessage } from '@/components/Toaster';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '../ui/textarea';
 import { Badge } from '../ui/badge';
-import { useSession } from 'next-auth/react';
 import { Loader } from 'lucide-react';
 import * as z from 'zod';
 import axios from 'axios';
 
-export const AddProjectModal = () => {
+export const AddProjectModal = ({ email }: { email?: string | null }) => {
   const [tagArray, setTagArray] = React.useState<string[]>([]);
   const [loading, setLoading] = React.useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
@@ -39,13 +38,6 @@ export const AddProjectModal = () => {
       repositoryURL: '',
       tags: '',
       description: '',
-    },
-  });
-
-  const { status, data: session } = useSession({
-    required: true,
-    onUnauthenticated() {
-      closeModal();
     },
   });
 
@@ -60,7 +52,7 @@ export const AddProjectModal = () => {
           githubRepository: data.repositoryURL,
           tags: tagArray,
           content: '',
-          email: session?.user?.email,
+          email: email,
         },
         {
           headers: {
@@ -101,14 +93,6 @@ export const AddProjectModal = () => {
     handleTagsChange();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form.watch('tags')]);
-
-  if (status === 'loading') {
-    return (
-      <div className="flex items-center justify-center">
-        <Loader className="animate-spin" />
-      </div>
-    );
-  }
 
   return (
     <Dialog open={isOpen} onOpenChange={closeModal}>
