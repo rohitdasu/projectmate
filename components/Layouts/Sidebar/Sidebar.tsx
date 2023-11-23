@@ -10,6 +10,8 @@ import { useAuthModal } from '@/hooks/useAuthModal';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Loader } from 'lucide-react';
+import { AddProjectModal } from '@/components/AddProjectModal';
+import { useAddProjectModal } from '@/hooks/useAddProjectModal';
 
 const NavElements = NavRoutes.map((nav) => {
   return {
@@ -34,12 +36,13 @@ export const Sidebar = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
   const { openModal } = useAuthModal();
+  const { openModal: openAddProjectModal } = useAddProjectModal();
   const message = 'Continue with your social account';
   const [loginMessage, setLoginMessage] = useState(message);
 
   const handleAddProject = () => {
     if (status === 'authenticated') {
-      router.push('/projects/add-project');
+      openAddProjectModal();
     } else {
       setLoginMessage('Login with your account to add project');
       openModal();
@@ -78,6 +81,7 @@ export const Sidebar = () => {
           );
         })}
         <AuthModal title={loginMessage} />
+        <AddProjectModal />
         <li onClick={handleAddProject}>
           <Button size="lg">Add project</Button>
         </li>
