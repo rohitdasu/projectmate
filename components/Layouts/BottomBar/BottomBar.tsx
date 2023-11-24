@@ -54,10 +54,7 @@ export const BottomBar = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Avatar className="border-2 border-gray-700">
-                  <AvatarImage
-                    className="h-4 w-4"
-                    src={data?.user?.image || undefined}
-                  />
+                  <AvatarImage src={data?.user?.image || undefined} />
                   <AvatarFallback>
                     {data?.user?.name && data.user.name[0]}
                   </AvatarFallback>
