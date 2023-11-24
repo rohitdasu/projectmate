@@ -47,7 +47,6 @@
     "react-icons": "^4.7.1",
     "react-markdown": "^8.0.5",
     "react-share": "^4.4.1",
-    "react-tagsinput": "^3.20.1",
     "swr": "^2.0.3",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
