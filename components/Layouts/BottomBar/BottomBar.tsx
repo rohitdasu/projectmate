@@ -1,6 +1,5 @@
 import React from 'react';
 import { LogIn, PlusCircle } from 'lucide-react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Button } from '@/components/ui/button';
 import { signOut, useSession } from 'next-auth/react';
@@ -18,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import Link from 'next/link';
 
 export const BottomBar = () => {
   const message = 'Continue with your social account';
@@ -52,7 +52,7 @@ export const BottomBar = () => {
         {status === 'authenticated' && (
           <li>
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
+              <DropdownMenuTrigger asChild className="h-8 w-8">
                 <Avatar className="border-2 border-gray-700">
                   <AvatarImage src={data?.user?.image || undefined} />
                   <AvatarFallback>

@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
+    "seed": "npx prisma db seed",
     "prettier-fix": "prettier --write '**/*.{js,jsx,ts,tsx,css,md,json,html}'"
   },
   "dependencies": {

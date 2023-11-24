@@ -1,23 +1,22 @@
 import type { NextPage } from 'next';
 import { SharedLayout } from '@/components/Layouts';
 import Link from 'next/link';
+import { ShieldAlert } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const NotFound: NextPage = () => {
   return (
-    <SharedLayout title="Find your project mate online">
-      <div className="text-center">
-        <p className="mb-3 text-7xl">
-          4<span className="text-primary-color text-6xl">0</span>4
-        </p>
-        <p className="mb-6 px-2">
-          Sorry! The page you are looking for does not exist.
-        </p>
-        <Link
-          href="/"
-          className="mx-auto block w-full max-w-max rounded-md border-0 bg-green-900  py-3 px-6 font-semibold text-green-50 opacity-75 shadow transition-all hover:opacity-100 md:w-auto md:text-lg"
-        >
-          Back to homepage
-        </Link>
+    <SharedLayout title="Page not found">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-8">
+        <section className="flex flex-col items-center justify-center gap-4">
+          <ShieldAlert className="h-20 w-20 md:h-32 md:w-32" />
+          <p className="text-center text-base md:text-lg">
+            Sorry! The page you are looking for does not exist.
+          </p>
+        </section>
+        <Button asChild>
+          <Link href="/">Go Home</Link>
+        </Button>
       </div>
     </SharedLayout>
   );
