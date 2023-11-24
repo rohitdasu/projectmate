@@ -8,8 +8,8 @@ export const ProjectSkeleton = () => (
     className="animate-pulse border border-gray-200"
   >
     <div className="shadow-border-shadow flex h-full flex-col justify-center space-y-2 overflow-hidden rounded-md">
-      <div className="flex flex-col gap-5 p-4 pt-2">
-        <div className="flex justify-between space-y-2">
+      <div className="flex flex-col gap-5 p-4 pt-4">
+        <div className="flex justify-between">
           <div className="h-6 w-36 rounded-md bg-gray-700" />
           <div className="h-6 w-28 rounded-md bg-gray-700" />
         </div>
