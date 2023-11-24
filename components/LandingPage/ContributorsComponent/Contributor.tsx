@@ -7,8 +7,8 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from '@/components/ui/hover-card';
-import { MdVerified } from 'react-icons/md';
 import { Button } from '@/components/ui/button';
+import { ShieldCheck } from 'lucide-react';
 export const Contributor: FC<ContributorProps> = (contributor) => {
   return (
     <HoverCard>
@@ -25,9 +25,9 @@ export const Contributor: FC<ContributorProps> = (contributor) => {
             <AvatarImage src={contributor.avatar_url} />
             <AvatarFallback>{contributor.login[0]}</AvatarFallback>
           </Avatar>
-          <section className="flex flex-row items-center gap-1">
+          <section className="flex flex-row items-center">
             <p>{contributor.login}</p>
-            <MdVerified className="text-blue-500" />
+            <ShieldCheck fill="#3B81F6" className="text-white" />
           </section>
         </div>
         <div className="mt-2">

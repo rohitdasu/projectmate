@@ -9,7 +9,7 @@ import { AuthModal } from '@/components/AuthModal';
 import { useAuthModal } from '@/hooks/useAuthModal';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Loader } from 'lucide-react';
+import { Crown, Loader } from 'lucide-react';
 import { AddProjectModal } from '@/components/AddProjectModal';
 import { useAddProjectModal } from '@/hooks/useAddProjectModal';
 
@@ -83,7 +83,16 @@ export const Sidebar = () => {
         <AuthModal title={loginMessage} />
         <AddProjectModal email={session?.user?.email} />
         <li onClick={handleAddProject}>
-          <Button size="lg">Add project</Button>
+          <Button id="ap-btn" size="lg">
+            Add project
+          </Button>
+          <label
+            className="mt-2 inline-block text-sm text-gray-500"
+            htmlFor="ap-btn"
+          >
+            *add project to get gold crown
+            <Crown className="inline h-4 animate-wiggle text-orange-500" />
+          </label>
         </li>
       </ul>
       <ul className="absolute bottom-4 flex w-3/4 flex-col items-start gap-4 transition-all">

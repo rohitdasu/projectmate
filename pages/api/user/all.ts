@@ -39,14 +39,32 @@ export default async function handler(
 
 async function getUsers() {
   try {
-    const data: User[] = await prisma.user.findMany();
-    return data.map((user) => {
-      return {
-        id: user.id,
-        name: user.name,
-        profilePicture: user.image,
-      };
-    });
+    const users: User[] = await prisma.user.findMany();
+
+    const usersWithProjects = await Promise.all(
+      users.map(async (user) => {
+        const projects = await prisma.project.findMany({
+          where: { authorId: user.id },
+        });
+
+        const userProjects = projects.map((project) => project.title);
+
+        return {
+          id: user.id,
+          name: user.name,
+          profilePicture: user.image,
+          role: userProjects.length > 0 ? 'GS' : 'NS',
+          projects: userProjects,
+          numberOfProjects: userProjects.length,
+        };
+      })
+    );
+
+    const sortedUsers = usersWithProjects.sort(
+      (a, b) => b.numberOfProjects - a.numberOfProjects
+    );
+
+    return sortedUsers;
   } catch (error) {
     throw error;
   }

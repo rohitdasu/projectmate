@@ -1,5 +1,5 @@
 import React from 'react';
-import { LogIn, PlusCircle } from 'lucide-react';
+import { Loader, LogIn, PlusCircle } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { Button } from '@/components/ui/button';
 import { signOut, useSession } from 'next-auth/react';
@@ -77,6 +77,11 @@ export const BottomBar = () => {
         {status === 'unauthenticated' && (
           <li>
             <LogIn onClick={openModal} />
+          </li>
+        )}
+        {status === 'loading' && (
+          <li>
+            <Loader className="animate-spin" />
           </li>
         )}
       </ul>
