@@ -8,37 +8,37 @@ Discover open-source projects, connect with experienced maintainers, and collabo
 
 ## Demo
 
-<a href="https://www.projectmate.net/" target="_blank">
-   <img width="1440" alt="Screenshot 2023-04-21 at 7 59 29 PM" src="https://user-images.githubusercontent.com/48400770/233662090-85fc2db2-0d4e-498b-8cf1-946f0c5499e1.png">
-</a>
-<br>
-<br>
 
 Check out the web app 🌏 : https://projectmate.net/
+<br>
+<br>
+<a href="https://www.projectmate.net/" target="_blank">
+   <img width="1440" alt="LandingPage Screenshot" src="https://projectmate.net/landingpage-screenshot.png">
+</a>
 
 ## Connect with us
 
 As a community, we always encourage people to share their thoughts and ideas. Do you want to talk to us? Join and Follow our Discord server and Twitter page ⬇️
 
-[![DISCORD - Join](https://img.shields.io/badge/DISCORD-Join-15a34a?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FQtyMWFZQ9)
-[![TWITTER - Join](https://img.shields.io/badge/TWITTER-Follow-15a34a?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/projectmateHQ)
+[![DISCORD - Join](https://img.shields.io/badge/DISCORD-Join-f3f6f4?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FQtyMWFZQ9)
+[![TWITTER - Join](https://img.shields.io/badge/TWITTER-Follow-f3f6f4?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/projectmateHQ)
 
 Figma design:
 
-[![FIGMA - View](https://img.shields.io/badge/Figma-View-15a34a?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/3v3ckbS8o24Me4L93so4js/projectmate)
+[![FIGMA - View](https://img.shields.io/badge/Figma-View-f3f6f4?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/3v3ckbS8o24Me4L93so4js/projectmate)
 
 ## Tech stack
 
-![Next.js](https://img.shields.io/badge/Next.js-15a34a?style=for-the-badge&logo=next.js&logoColor=white)
-![tailwind css](https://img.shields.io/badge/tailwind_css-15a34a?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-15a34a?style=for-the-badge&logo=mongodb&logoColor=white)
-![Prisma](https://img.shields.io/badge/Prisma-15a34a?style=for-the-badge&logo=prisma&logoColor=white)
-![Figma](https://img.shields.io/badge/Figma-15a34a?style=for-the-badge&logo=figma&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-f3f6f4?style=for-the-badge&logo=next.js&logoColor=black)
+![tailwind css](https://img.shields.io/badge/tailwind_css-f3f6f4?style=for-the-badge&logo=tailwindcss&logoColor=black)
+![MongoDB](https://img.shields.io/badge/MongoDB-f3f6f4?style=for-the-badge&logo=mongodb&logoColor=black)
+![Prisma](https://img.shields.io/badge/Prisma-f3f6f4?style=for-the-badge&logo=prisma&logoColor=black)
+![Figma](https://img.shields.io/badge/Figma-f3f6f4?style=for-the-badge&logo=figma&logoColor=black)
 
 1. Frontend - **Next.js Client**
 2. CSS Framework - **Tailwind CSS**
 3. Backend - **NextJS APIs + Next Auth + MongoDB + Prisma ORM**
-4. Design & Prototype - Figma
+4. Design & Prototype - **Figma**
 
 ## Installation steps
 
