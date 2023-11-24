@@ -15,8 +15,8 @@ export const MatesList = () => {
 
   if (isLoading) {
     return (
-      <div className="m-auto my-5 text-lg">
-        <Loader className="animate-spin" />
+      <div className="flex h-full items-center justify-center">
+        <Loader className="h-10 w-10 animate-spin" />
       </div>
     );
   }
