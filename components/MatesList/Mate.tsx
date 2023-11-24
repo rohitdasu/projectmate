@@ -32,7 +32,7 @@ export const Mate: FC<MateProps> = (mate) => {
                       <Crown className="absolute right-0 -top-4 h-8 w-8 animate-wiggle text-orange-500" />
                     </TooltipTrigger>
                     <TooltipContent className="bg-yellow-400 text-yellow-900">
-                      Gold Crown
+                      Gold Crown Member
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
@@ -59,7 +59,7 @@ export const Mate: FC<MateProps> = (mate) => {
                         <Crown className="h-5 w-5 cursor-pointer text-orange-500" />
                       </TooltipTrigger>
                       <TooltipContent className="bg-yellow-400 text-yellow-900">
-                        <p>Gold Crown</p>
+                        <p>Gold Crown Member</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>

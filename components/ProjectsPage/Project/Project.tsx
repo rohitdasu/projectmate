@@ -58,7 +58,7 @@ export const Project: React.FC<ProjectProps> = memo(
             <header className="flex flex-row items-start justify-between">
               <Typography
                 as="h2"
-                fontWeight="bold"
+                fontWeight="semibold"
                 className="flex w-full flex-col gap-4 truncate text-base text-gray-900 md:text-xl"
               >
                 <div className="flex w-full flex-row items-center justify-between">
@@ -75,8 +75,8 @@ export const Project: React.FC<ProjectProps> = memo(
                     </time>
                   </Typography>
                 </div>
-                <div className="flex items-center gap-2 text-base font-bold text-gray-600">
-                  <Avatar>
+                <div className="flex items-center gap-2">
+                  <Avatar className="text-sm">
                     <AvatarImage src={authorImage || undefined}></AvatarImage>
                     <AvatarFallback>
                       {author &&
@@ -86,7 +86,9 @@ export const Project: React.FC<ProjectProps> = memo(
                           .join('')}
                     </AvatarFallback>
                   </Avatar>
-                  <span className="text-sm md:text-lg">{author}</span>
+                  <span className="text-sm text-gray-600 md:text-base">
+                    {author}
+                  </span>
                 </div>
               </Typography>
             </header>
