@@ -22,7 +22,7 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
             <Sidebar />
           </div>
         )}
-        <main className="col-span-4 mx-auto max-w-2xl lg:col-span-2">
+        <main className="col-span-4 mx-auto w-full max-w-2xl lg:col-span-2">
           {children}
         </main>
         {rightSidebar && <div></div>}
