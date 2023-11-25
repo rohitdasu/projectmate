@@ -27,7 +27,7 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
         </main>
         {rightSidebar && <div></div>}
       </div>
-      <div className="sticky bottom-0 block h-14 w-full bg-gray-100 md:hidden">
+      <div className="sticky bottom-0 block h-14 w-full border-t border-gray-200 bg-white md:hidden">
         <BottomBar />
       </div>
     </div>

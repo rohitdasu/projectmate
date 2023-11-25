@@ -43,8 +43,10 @@ export const BottomBar = () => {
           const isActive = route.link === router.pathname;
           return (
             <Link href={route.link} key={route.id}>
-              <li className={`${isActive ? 'text-gray-900' : 'text-gray-400'}`}>
-                {route.icon}
+              <li className={`${isActive && 'text-gray-900'}`}>
+                {React.cloneElement(route.icon, {
+                  fill: isActive ? '#B2B0AF' : 'white',
+                })}
               </li>
             </Link>
           );

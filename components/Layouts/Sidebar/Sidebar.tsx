@@ -1,3 +1,4 @@
+import React from 'react';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -71,10 +72,12 @@ export const Sidebar = () => {
             <Link key={nav.id} href={nav.link}>
               <li
                 className={`flex h-9 items-center justify-center gap-4 transition-all hover:text-gray-900 md:flex-row md:items-start ${
-                  isActive ? 'text-gray-900' : 'text-gray-400'
+                  isActive && 'text-gray-900'
                 }`}
               >
-                {nav.icon}
+                {React.cloneElement(nav.icon, {
+                  fill: isActive ? '#B2B0AF' : 'white',
+                })}
                 {spanNameTag}
               </li>
             </Link>
