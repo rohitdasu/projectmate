@@ -38,8 +38,8 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
         <link rel="icon" href="/logo.svg" />
       </Head>
       <nav
-        className={`sticky top-0 z-10 block border-b border-gray-200 bg-white transition-opacity md:hidden ${
-          isNavbarVisible ? 'opacity-100' : 'opacity-0'
+        className={`sticky top-0 z-10 block overflow-hidden border-b border-gray-200 bg-white transition-all md:hidden ${
+          isNavbarVisible ? 'h-14' : 'h-0'
         }`}
       >
         <TopNavbar />
