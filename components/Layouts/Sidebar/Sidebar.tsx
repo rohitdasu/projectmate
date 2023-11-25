@@ -98,13 +98,13 @@ export const Sidebar = () => {
           <Tooltip>
             <TooltipTrigger asChild>
               <p className="flex items-center text-sm text-gray-500">
-                <Info className="inline-block h-4 hover:text-blue-500" />
+                <Info className="inline-block h-4" />
                 Become a Gold Crown Member
                 <Crown className="inline-block h-4 animate-wiggle text-orange-500" />
               </p>
             </TooltipTrigger>
             <TooltipContent>
-              Add project for becoming a Gold Crown Member
+              Add project to become a Gold Crown Member
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
