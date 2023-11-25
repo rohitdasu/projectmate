@@ -10,9 +10,15 @@ import { AuthModal } from '@/components/AuthModal';
 import { useAuthModal } from '@/hooks/useAuthModal';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Crown, Loader } from 'lucide-react';
+import { Crown, Info, Loader } from 'lucide-react';
 import { AddProjectModal } from '@/components/AddProjectModal';
 import { useAddProjectModal } from '@/hooks/useAddProjectModal';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 const NavElements = NavRoutes.map((nav) => {
   return {
@@ -86,17 +92,22 @@ export const Sidebar = () => {
         <AuthModal title={loginMessage} />
         <AddProjectModal email={session?.user?.email} />
         <li onClick={handleAddProject}>
-          <Button id="ap-btn" size="lg">
-            Add project
-          </Button>
-          <label
-            className="mt-2 inline-block text-sm text-gray-500"
-            htmlFor="ap-btn"
-          >
-            *add project to get gold crown
-            <Crown className="inline h-4 animate-wiggle text-orange-500" />
-          </label>
+          <Button size="lg">Add project</Button>
         </li>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <p className="flex items-center text-sm text-gray-500">
+                <Info className="inline-block h-4 hover:text-blue-500" />
+                Become a Gold Crown Member
+                <Crown className="inline-block h-4 animate-wiggle text-orange-500" />
+              </p>
+            </TooltipTrigger>
+            <TooltipContent>
+              Add project for becoming a Gold Crown Member
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </ul>
       <ul className="absolute bottom-4 flex w-3/4 flex-col items-start gap-4 transition-all">
         <Separator />
