@@ -1,3 +1,3 @@
 export interface AuthModalProps {
-  title: string;
+  title?: string;
 }

@@ -9,20 +9,15 @@ import { ShareModal } from '@/components/ShareModal';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
-    >
-      <SessionProvider session={pageProps.session}>
+    <SessionProvider session={pageProps.session}>
+      <ThemeProvider attribute="class" enableSystem>
         <AppContextProvider>
           <Component {...pageProps} />
           <Toaster />
           <AuthModal title="" />
           <ShareModal />
         </AppContextProvider>
-      </SessionProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </SessionProvider>
   );
 }
