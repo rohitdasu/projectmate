@@ -70,7 +70,7 @@ export const ShareModal: FC = () => {
         </div>
         <DialogFooter>
           <div className="flex w-full flex-row justify-center gap-3 md:justify-start">
-            <div className="flex-1 rounded-lg bg-gray-200 py-2 px-4">
+            <div className="flex-1 rounded-lg bg-gray-200 py-2 px-4 dark:bg-gray-800">
               <Typography
                 as="span"
                 className="block w-40 truncate md:w-64"

@@ -20,7 +20,7 @@ export const Mate: FC<MateProps> = (mate) => {
       <Popover>
         <PopoverTrigger asChild className="cursor-pointer">
           <div className="text-center">
-            <section className="relative text-center">
+            <section className="relative flex flex-col items-center text-center">
               <Avatar className="h-16 w-16">
                 <AvatarImage src={mate.profilePicture} />
                 <AvatarFallback>{mate.name.split(' ')[0][0]}</AvatarFallback>
@@ -79,9 +79,13 @@ export const Mate: FC<MateProps> = (mate) => {
             </div>
           </section>
           <section className="mt-2 flex flex-wrap items-center gap-2">
-            <span className="text-sm text-gray-400">projects:</span>
+            <span className="text-sm text-gray-600 dark:text-gray-300">
+              Projects:
+            </span>
             {mate.projects.length === 0 ? (
-              <p className="text-sm text-gray-600">Not found</p>
+              <span className="text-sm text-gray-600 dark:text-gray-300">
+                Not found
+              </span>
             ) : (
               mate.projects.map((project: string, id: number) => {
                 return (

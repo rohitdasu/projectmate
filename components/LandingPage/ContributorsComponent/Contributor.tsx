@@ -19,7 +19,7 @@ export const Contributor: FC<ContributorProps> = (contributor) => {
         </Avatar>
       </HoverCardTrigger>
 
-      <HoverCardContent className="dark:bg-gray-900">
+      <HoverCardContent>
         <div className="flex flex-row items-center gap-2">
           <Avatar className="h-14 w-14">
             <AvatarImage src={contributor.avatar_url} />
