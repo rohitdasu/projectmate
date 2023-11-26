@@ -22,8 +22,8 @@ import {
 } from '@/components/ui/dialog';
 import { useCopyToClipboard } from 'usehooks-ts';
 import { useShareModal } from '@/hooks/useShareModal';
-import { Button } from '../ui/button';
-import { useToast } from '../ui/use-toast';
+import { Button } from '../../ui/button';
+import { useToast } from '../../ui/use-toast';
 
 export const ShareModal: FC = () => {
   const {

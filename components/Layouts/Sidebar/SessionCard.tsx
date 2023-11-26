@@ -10,15 +10,11 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { signOut } from 'next-auth/react';
-import { Button } from '@/components/ui/button';
-import { MoonIcon, SunIcon } from 'lucide-react';
-import { useTheme } from 'next-themes';
 
 export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
   name,
   image,
 }) => {
-  const { setTheme } = useTheme();
   return (
     <li className="flex w-full flex-row items-center justify-between">
       <DropdownMenu>
@@ -43,7 +39,7 @@ export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      <DropdownMenu>
+      {/* <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="secondary" size="icon">
             <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
@@ -62,7 +58,7 @@ export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
             System
           </DropdownMenuItem>
         </DropdownMenuContent>
-      </DropdownMenu>
+      </DropdownMenu> */}
     </li>
   );
 };

@@ -16,17 +16,17 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { useAddProjectModal } from '@/hooks/useAddProjectModal';
-import { Button } from '../ui/button';
+import { Button } from '../../ui/button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { formSchema } from './schema';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '../ui/textarea';
-import { Badge } from '../ui/badge';
+import { Textarea } from '../../ui/textarea';
+import { Badge } from '../../ui/badge';
 import { Loader } from 'lucide-react';
 import * as z from 'zod';
 import axios from 'axios';
-import { useToast } from '../ui/use-toast';
+import { useToast } from '../../ui/use-toast';
 
 export const AddProjectModal = ({ email }: { email?: string | null }) => {
   const [tagArray, setTagArray] = React.useState<string[]>([]);

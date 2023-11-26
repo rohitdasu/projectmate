@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import { MateProps } from './Mate.interface';
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
-import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+import { Avatar, AvatarFallback, AvatarImage } from '../../ui/avatar';
+import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
 import {
   Tooltip,
   TooltipProvider,
   TooltipTrigger,
   TooltipContent,
-} from '../ui/tooltip';
-import { Badge } from '../ui/badge';
+} from '../../ui/tooltip';
+import { Badge } from '../../ui/badge';
 import { BadgeCheck, Crown } from 'lucide-react';
 
 export const Mate: FC<MateProps> = (mate) => {

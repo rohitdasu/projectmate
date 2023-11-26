@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProjectsList } from '@/components/ProjectsPage/ProjectsList';
+import { ProjectsList } from '@/components/views/ProjectsPage/ProjectsList';
 import { SharedLayout } from '@/components/Layouts';
 
 const Projects = () => {

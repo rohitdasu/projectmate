@@ -9,7 +9,7 @@ import {
   ContributorsComponent,
   Header,
   Footer,
-} from '@/components/LandingPage';
+} from '@/components/views/LandingPage';
 
 const Home: NextPage = () => {
   return (

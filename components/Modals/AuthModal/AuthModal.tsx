@@ -11,7 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { Button } from '../ui/button';
+import { Button } from '../../ui/button';
 
 export const AuthModal: FC<AuthModalProps> = ({ title }) => {
   const { asPath } = useRouter();

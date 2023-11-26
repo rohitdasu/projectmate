@@ -6,7 +6,7 @@ import { signOut, useSession } from 'next-auth/react';
 import { useAuthModal } from '@/hooks/useAuthModal';
 import { NavRoutes } from '../Sidebar/data';
 import { useAddProjectModal } from '@/hooks/useAddProjectModal';
-import { AddProjectModal } from '@/components/AddProjectModal';
+import { AddProjectModal } from '@/components/Modals/AddProjectModal';
 import {
   DropdownMenu,
   DropdownMenuContent,

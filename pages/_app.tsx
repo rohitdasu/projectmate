@@ -4,8 +4,8 @@ import { SessionProvider } from 'next-auth/react';
 import '@/styles/globals.css';
 import { AppContextProvider } from '@/context/AppContextProvider';
 import { ThemeProvider } from '@/components/ThemeProvider/ThemeProvider';
-import { AuthModal } from '@/components/AuthModal';
-import { ShareModal } from '@/components/ShareModal';
+import { AuthModal } from '@/components/Modals/AuthModal';
+import { ShareModal } from '@/components/Modals/ShareModal';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
