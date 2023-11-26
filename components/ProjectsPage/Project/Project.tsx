@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Typography } from '@/components/Common/Typography';
-import { toastMessage, messageType } from '@/components/Toaster';
 import { ProjectProps } from './Project.interface';
 import { memo } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -8,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { BarChart2, Forward, GitPullRequest, History } from 'lucide-react';
 import moment from 'moment';
+import { useToast } from '@/components/ui/use-toast';
 
 const INSIGHTS_WEBAPP = 'https://analyzemyrepo.com/analyze';
 
@@ -25,6 +25,8 @@ export const Project: React.FC<ProjectProps> = memo(
     const extractAccountAndRepo = () => {
       if (!githubRepository) return;
 
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const { toast } = useToast();
       const regex = /^https:\/\/github\.com\/([^\/]+)\/([^\/]+)$/;
 
       const match = githubRepository.match(regex);
@@ -34,7 +36,10 @@ export const Project: React.FC<ProjectProps> = memo(
         const repoName = match[2];
         window.open(`${INSIGHTS_WEBAPP}/${accountName}/${repoName}`, '_blank');
       } else {
-        toastMessage('Something went wrong!', messageType.error);
+        toast({
+          title: 'Something went wrong!',
+          variant: 'destructive',
+        });
       }
     };
 

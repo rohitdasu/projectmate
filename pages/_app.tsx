@@ -1,5 +1,5 @@
 import { AppProps } from 'next/app';
-import { Toaster } from '@/components/Toaster';
+import { Toaster } from '@/components/ui/toaster';
 import { SessionProvider } from 'next-auth/react';
 import '@/styles/globals.css';
 import { AppContextProvider } from '@/context/AppContextProvider';

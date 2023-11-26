@@ -20,13 +20,13 @@ import { Button } from '../ui/button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { formSchema } from './schema';
-import { messageType, toastMessage } from '@/components/Toaster';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '../ui/textarea';
 import { Badge } from '../ui/badge';
 import { Loader } from 'lucide-react';
 import * as z from 'zod';
 import axios from 'axios';
+import { useToast } from '../ui/use-toast';
 
 export const AddProjectModal = ({ email }: { email?: string | null }) => {
   const [tagArray, setTagArray] = React.useState<string[]>([]);
@@ -41,6 +41,7 @@ export const AddProjectModal = ({ email }: { email?: string | null }) => {
     },
   });
 
+  const { toast } = useToast();
   async function onSubmit(data: z.infer<typeof formSchema>) {
     try {
       setLoading(true);
@@ -60,14 +61,19 @@ export const AddProjectModal = ({ email }: { email?: string | null }) => {
           },
         }
       );
-      toastMessage('project added successfully', messageType.success);
+      toast({
+        title: 'Success',
+        description: 'Project added successfully',
+        variant: 'default',
+      });
       form.reset();
       window.location.reload();
     } catch (e) {
-      toastMessage(
-        e?.response?.data?.error?.issues[0]?.message,
-        messageType.error
-      );
+      toast({
+        title: 'Failure',
+        description: e?.response?.data?.error?.issues[0]?.message,
+        variant: 'destructive',
+      });
     } finally {
       setLoading(false);
     }

@@ -21,25 +21,31 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { useCopyToClipboard } from 'usehooks-ts';
-import { toastMessage, messageType } from '@/components/Toaster';
 import { useShareModal } from '@/hooks/useShareModal';
 import { Button } from '../ui/button';
+import { useToast } from '../ui/use-toast';
 
 export const ShareModal: FC = () => {
   const {
     state: { isOpen, data },
     closeModal,
   } = useShareModal();
+  const { toast } = useToast();
   const { url, title } = data;
   const [, copy] = useCopyToClipboard();
 
   const copyToClipboard = (url: string) => {
     const isCopied = copy(url);
     if (!isCopied) {
-      toastMessage('Copying error', messageType.error);
+      toast({
+        title: 'Copying error',
+        variant: 'destructive',
+      });
       return;
     }
-    toastMessage('Copied to clipboard!', messageType.success);
+    toast({
+      title: 'Copied to clipboard',
+    });
   };
 
   return (
