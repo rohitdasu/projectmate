@@ -26,7 +26,7 @@ export const MatesList = () => {
   }
 
   return (
-    <section className="px-2 py-6">
+    <section className="px-2 py-6 md:py-12">
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8">
         <ul className="grid grid-cols-3 gap-8 md:grid-cols-4 lg:grid-cols-5">
           {data &&

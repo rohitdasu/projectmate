@@ -22,7 +22,7 @@ export const Footer = () => {
                   target="_blank"
                   referrerPolicy="no-referrer"
                 >
-                  <div className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300">
+                  <div className="text-xs text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 md:text-base">
                     {social.name}
                   </div>
                 </a>
@@ -33,13 +33,13 @@ export const Footer = () => {
         <a
           href="https://github.com/rohitdasu/projectmate/blob/main/LICENSE"
           target="_blank"
-          className="text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
+          className="text-xs text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 md:text-base"
         >
           MIT License
         </a>
         <Link
           href="#"
-          className="text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
+          className="text-xs text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 md:text-base"
         >
           Privacy Policy
         </Link>
