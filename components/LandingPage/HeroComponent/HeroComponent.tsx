@@ -12,11 +12,10 @@ export const HeroComponent = () => {
           backgroundPosition: 'center',
         }}
       >
-        <h1 className="mx-auto max-w-5xl text-center text-3xl font-semibold text-gray-900 md:text-5xl md:!leading-[1.25] lg:text-6xl">
-          <span className="text-primary-color">Supercharge</span> your
-          open-source contributions
+        <h1 className="mx-auto max-w-5xl text-center text-3xl font-semibold text-gray-900 dark:text-gray-300 md:text-5xl md:!leading-[1.25] lg:text-6xl">
+          Supercharge your open-source contributions
         </h1>
-        <p className="mx-auto max-w-3xl text-center text-base text-gray-900 md:text-lg lg:text-xl">
+        <p className="mx-auto max-w-3xl text-center text-base text-gray-900 dark:text-gray-300 md:text-lg lg:text-xl">
           Discover open-source projects, connect with experienced maintainers,
           and collaborate with a community of passionate contributors. Join over
           150 registered users who are already making a difference

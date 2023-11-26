@@ -5,7 +5,6 @@ import { ProjectSkeleton } from '../ProjectSkeleton';
 import { IProject } from '../Project/Project.interface';
 import { fetcher } from '@/lib/fetcher';
 import { useShareModal } from '@/hooks/useShareModal';
-import { ShareModal } from '@/components/ShareModal';
 
 export const ProjectsList = () => {
   const selectedTags: string[] = useMemo(() => [], []);
@@ -107,7 +106,6 @@ export const ProjectsList = () => {
           <></>
         )}
       </ul>
-      <ShareModal />
     </>
   );
 };

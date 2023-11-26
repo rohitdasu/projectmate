@@ -5,8 +5,6 @@ import { useRouter } from 'next/router';
 import { SessionCard } from './SessionCard';
 import { SessionLessCard } from './SessionLessCard';
 import { NavRoutes } from './data';
-import { useState } from 'react';
-import { AuthModal } from '@/components/AuthModal';
 import { useAuthModal } from '@/hooks/useAuthModal';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -44,14 +42,11 @@ export const Sidebar = () => {
   const router = useRouter();
   const { openModal } = useAuthModal();
   const { openModal: openAddProjectModal } = useAddProjectModal();
-  const message = 'Continue with your social account';
-  const [loginMessage, setLoginMessage] = useState(message);
 
   const handleAddProject = () => {
     if (status === 'authenticated') {
       openAddProjectModal();
     } else {
-      setLoginMessage('Login with your account to add project');
       openModal();
     }
   };
@@ -64,32 +59,35 @@ export const Sidebar = () => {
           const isActive = router.pathname === nav.link;
 
           let spanNameTag = (
-            <span className="hidden text-gray-600 hover:text-gray-900 lg:block">
+            <span className="hidden text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 lg:block">
               {nav.name}
             </span>
           );
 
           if (isActive) {
             spanNameTag = (
-              <span className="hidden text-gray-900 lg:block">{nav.name}</span>
+              <span className="hidden text-gray-900 dark:text-gray-300 lg:block">
+                {nav.name}
+              </span>
             );
           }
           return (
             <Link key={nav.id} href={nav.link}>
-              <li
-                className={`flex h-9 items-center justify-center gap-4 transition-all hover:text-gray-900 md:flex-row md:items-start ${
-                  isActive && 'text-gray-900'
-                }`}
-              >
-                {React.cloneElement(nav.icon, {
-                  fill: isActive ? '#B2B0AF' : 'white',
-                })}
-                {spanNameTag}
-              </li>
+              <div className="flex h-9 items-center justify-center gap-4  md:flex-row md:items-start">
+                <section
+                  className={`transition-all hover:text-gray-900 dark:hover:text-gray-300 ${
+                    isActive && 'text-gray-900 dark:text-gray-300'
+                  }`}
+                >
+                  {React.cloneElement(nav.icon, {
+                    strokeWidth: isActive ? 2 : 1,
+                  })}
+                </section>
+                <p>{spanNameTag}</p>
+              </div>
             </Link>
           );
         })}
-        <AuthModal title={loginMessage} />
         <AddProjectModal email={session?.user?.email} />
         <li onClick={handleAddProject}>
           <Button size="lg">Add project</Button>
@@ -97,13 +95,13 @@ export const Sidebar = () => {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <p className="flex items-center text-sm text-gray-500">
+              <p className="flex items-center text-sm text-gray-500 dark:text-gray-300">
                 <Info className="inline-block h-4" />
                 Become a Gold Crown Member
                 <Crown className="inline-block h-4 animate-wiggle text-orange-500" />
               </p>
             </TooltipTrigger>
-            <TooltipContent>
+            <TooltipContent className="dark:bg-gray-900">
               Add project to become a Gold Crown Member
             </TooltipContent>
           </Tooltip>

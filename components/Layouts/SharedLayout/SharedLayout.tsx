@@ -38,7 +38,7 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
         <link rel="icon" href="/logo.svg" />
       </Head>
       <nav
-        className={`sticky z-10 block overflow-hidden border-b border-gray-200 bg-white transition-all md:hidden ${
+        className={`sticky z-10 block overflow-hidden border-b border-gray-200 bg-white transition-all dark:border-gray-900 dark:bg-gray-800 md:hidden ${
           isNavbarVisible ? 'top-0' : '-top-14'
         }`}
       >
@@ -59,7 +59,7 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
         </main>
         {rightSidebar && <div></div>}
       </div>
-      <div className="sticky bottom-0 z-10 block h-14 w-full border-t border-gray-200 bg-white md:hidden">
+      <div className="sticky bottom-0 z-10 block h-14 w-full border-t border-gray-200 bg-white dark:border-gray-900 dark:bg-gray-800 md:hidden">
         <BottomBar />
       </div>
     </div>

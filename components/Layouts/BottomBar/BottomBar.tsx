@@ -3,7 +3,6 @@ import { Loader, LogIn, PlusCircle } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { Button } from '@/components/ui/button';
 import { signOut, useSession } from 'next-auth/react';
-import { AuthModal } from '@/components/AuthModal';
 import { useAuthModal } from '@/hooks/useAuthModal';
 import { NavRoutes } from '../Sidebar/data';
 import { useAddProjectModal } from '@/hooks/useAddProjectModal';
@@ -20,32 +19,28 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Link from 'next/link';
 
 export const BottomBar = () => {
-  const message = 'Continue with your social account';
   const { openModal } = useAuthModal();
   const { openModal: openAddProjectModal } = useAddProjectModal();
-  const [loginMessage, setLoginMessage] = React.useState(message);
   const { status, data } = useSession();
   const handleAddProject = () => {
     if (status === 'authenticated') {
       openAddProjectModal();
     } else {
-      setLoginMessage('Login with your account to add project');
       openModal();
     }
   };
   const router = useRouter();
   return (
     <div className="h-full w-full">
-      <AuthModal title={loginMessage} />
       <AddProjectModal email={data?.user?.email} />
       <ul className="flex h-14 flex-row items-center justify-around">
         {NavRoutes.map((route) => {
           const isActive = route.link === router.pathname;
           return (
             <Link href={route.link} key={route.id}>
-              <li className={`${isActive && 'text-gray-900'}`}>
+              <li className={`${isActive && ''}`}>
                 {React.cloneElement(route.icon, {
-                  fill: isActive ? '#B2B0AF' : 'white',
+                  strokeWidth: isActive ? 2 : 1,
                 })}
               </li>
             </Link>

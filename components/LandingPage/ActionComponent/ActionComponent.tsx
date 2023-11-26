@@ -1,5 +1,4 @@
 import { useSession } from 'next-auth/react';
-import { AuthModal } from '@/components/AuthModal';
 import { useRouter } from 'next/router';
 import { useAuthModal } from '@/hooks/useAuthModal';
 import { Button } from '@/components/ui/button';
@@ -18,8 +17,7 @@ export const ActionComponent = () => {
     }
   };
   return (
-    <section className="bg-gray-800 py-16 px-4 md:py-24">
-      <AuthModal title="Continue with your social account" />
+    <section className="bg-gray-800 py-16 px-4 dark:bg-black md:py-24">
       <div
         className="relative mx-auto flex max-w-screen-xl flex-col items-center gap-10 overflow-hidden bg-cover bg-no-repeat"
         style={{
@@ -27,7 +25,7 @@ export const ActionComponent = () => {
           backgroundPosition: 'center',
         }}
       >
-        <p className="w-full text-center text-base leading-[1.25] text-gray-50 md:w-3/4 lg:w-2/3 lg:text-3xl">
+        <p className="w-full text-center text-base leading-[1.25] text-gray-50 dark:text-gray-300 md:w-3/4 lg:w-2/3 lg:text-3xl">
           Join the ranks of 150+ talented developers who have already signed up
         </p>
         <Button

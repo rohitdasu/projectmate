@@ -51,7 +51,7 @@ export const Project: React.FC<ProjectProps> = memo(
         exit={{ opacity: 0 }}
         layout
         transition={{ duration: 1 }}
-        className="border border-gray-200 md:m-auto md:w-full"
+        className="border border-gray-200 dark:border-gray-800 md:m-auto md:w-full"
       >
         <div className="flex h-full flex-col items-center overflow-hidden rounded-md">
           <div className="flex w-full grow flex-col justify-center gap-5 p-4 pt-4">
@@ -62,12 +62,14 @@ export const Project: React.FC<ProjectProps> = memo(
                 className="flex w-full flex-col gap-4 truncate text-base text-gray-900 md:text-xl"
               >
                 <div className="flex w-full flex-row items-center justify-between">
-                  <p className="w-40 truncate md:w-auto">{title}</p>
+                  <p className="w-40 truncate dark:text-gray-300 md:w-auto">
+                    {title}
+                  </p>
                   <Typography
                     as="p"
                     fontSize="sm"
                     fontWeight="normal"
-                    className="flex flex-row items-center text-gray-900"
+                    className="flex flex-row items-center text-gray-900 dark:text-gray-300"
                   >
                     <History height={16} />
                     <time dateTime={createdAt.toString()}>
@@ -78,7 +80,7 @@ export const Project: React.FC<ProjectProps> = memo(
                 <div className="flex items-center gap-2">
                   <Avatar className="text-sm">
                     <AvatarImage src={authorImage || undefined}></AvatarImage>
-                    <AvatarFallback>
+                    <AvatarFallback className="dark:text-gray-300">
                       {author &&
                         author
                           .split(' ')
@@ -86,13 +88,17 @@ export const Project: React.FC<ProjectProps> = memo(
                           .join('')}
                     </AvatarFallback>
                   </Avatar>
-                  <span className="text-sm text-gray-600 md:text-base">
+                  <span className="text-sm text-gray-600 dark:text-gray-300 md:text-base">
                     {author}
                   </span>
                 </div>
               </Typography>
             </header>
-            <Typography as="p" fontSize="sm" className="text-gray-600">
+            <Typography
+              as="p"
+              fontSize="sm"
+              className="text-gray-600 dark:text-gray-300"
+            >
               {description}
             </Typography>
             <div className="flex flex-col gap-5">

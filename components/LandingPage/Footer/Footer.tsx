@@ -11,7 +11,7 @@ const Icons = icons.map((social) => {
 
 export const Footer = () => {
   return (
-    <div className="border-t border-gray-200 px-4">
+    <div className="border-t border-gray-200 px-4 dark:border-gray-800">
       <div className="mx-auto flex w-full max-w-screen-xl flex-col items-center justify-between gap-4 py-8 md:flex-row md:gap-0">
         <ul className="flex w-full flex-row items-center justify-between gap-4 md:w-auto lg:justify-center">
           {Icons.map((social) => {
@@ -22,7 +22,7 @@ export const Footer = () => {
                   target="_blank"
                   referrerPolicy="no-referrer"
                 >
-                  <div className="text-gray-600 hover:text-gray-900">
+                  <div className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300">
                     {social.name}
                   </div>
                 </a>
@@ -33,11 +33,14 @@ export const Footer = () => {
         <a
           href="https://github.com/rohitdasu/projectmate/blob/main/LICENSE"
           target="_blank"
-          className="text-base text-gray-600 hover:text-gray-900"
+          className="text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
         >
           MIT License
         </a>
-        <Link href="#" className="text-base text-gray-600 hover:text-gray-900">
+        <Link
+          href="#"
+          className="text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
+        >
           Privacy Policy
         </Link>
       </div>

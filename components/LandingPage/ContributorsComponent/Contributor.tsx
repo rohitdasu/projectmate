@@ -19,15 +19,15 @@ export const Contributor: FC<ContributorProps> = (contributor) => {
         </Avatar>
       </HoverCardTrigger>
 
-      <HoverCardContent>
+      <HoverCardContent className="dark:bg-gray-900">
         <div className="flex flex-row items-center gap-2">
           <Avatar className="h-14 w-14">
             <AvatarImage src={contributor.avatar_url} />
             <AvatarFallback>{contributor.login[0]}</AvatarFallback>
           </Avatar>
-          <section className="flex flex-row items-center">
-            <p>{contributor.login}</p>
-            <ShieldCheck fill="#3B81F6" className="text-white" />
+          <section className="flex flex-row items-center justify-start">
+            <p className="">{contributor.login}</p>
+            <ShieldCheck fill="#3B81F6" className="ml-1 text-white" />
           </section>
         </div>
         <div className="mt-2">
