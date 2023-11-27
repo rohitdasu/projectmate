@@ -42,6 +42,11 @@ export const AddProjectModal = ({ email }: { email?: string | null }) => {
   });
 
   const { toast } = useToast();
+  const {
+    state: { isOpen },
+    closeModal,
+    setKey,
+  } = useAddProjectModal();
   async function onSubmit(data: z.infer<typeof formSchema>) {
     try {
       setLoading(true);
@@ -67,7 +72,8 @@ export const AddProjectModal = ({ email }: { email?: string | null }) => {
         variant: 'default',
       });
       form.reset();
-      window.location.reload();
+      setKey(String(Math.random())); // it will refresh the projects list in projects page
+      closeModal();
     } catch (e) {
       toast({
         title: 'Failure',
@@ -78,11 +84,6 @@ export const AddProjectModal = ({ email }: { email?: string | null }) => {
       setLoading(false);
     }
   }
-
-  const {
-    state: { isOpen },
-    closeModal,
-  } = useAddProjectModal();
 
   const handleTagsChange = () => {
     const tagsFieldValue = form.watch('tags');
