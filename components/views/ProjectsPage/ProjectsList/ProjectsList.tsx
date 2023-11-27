@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import useSWRInfinite from 'swr/infinite';
-import { Project } from '../Project/Project';
+import { ProjectWrapper } from '../Project/Project';
 import { ProjectSkeleton } from '../ProjectSkeleton';
 import { IProject } from '../Project/Project.interface';
 import { fetcher } from '@/lib/fetcher';
@@ -78,7 +78,7 @@ export const ProjectsList = () => {
         ) : (
           <>
             {filteredProjects.map((project: IProject) => (
-              <Project
+              <ProjectWrapper
                 key={project.id}
                 id={project.id}
                 description={project.description}
