@@ -32,6 +32,7 @@ const NavElements = NavRoutes.map((nav) => {
     icon: nav.icon,
     link: nav.link,
     name: nav.title,
+    authGuard: nav.authGuard,
   };
 });
 
@@ -54,8 +55,10 @@ export const Sidebar = () => {
   const handleAddProject = () => {
     if (status === 'authenticated') {
       openAddProjectModal();
-    } else {
+    } else if (status === 'unauthenticated') {
       openModal();
+    } else {
+      return;
     }
   };
 
@@ -64,6 +67,9 @@ export const Sidebar = () => {
       <Logo />
       <ul className="mt-16 flex w-full flex-col items-center justify-center gap-4 md:items-start">
         {NavElements.map((nav) => {
+          if (nav.authGuard && status === 'unauthenticated') {
+            return;
+          }
           const isActive = router.pathname === nav.link;
 
           let spanNameTag = (
@@ -79,6 +85,7 @@ export const Sidebar = () => {
               </span>
             );
           }
+          // eslint-disable-next-line consistent-return
           return (
             <Link key={nav.id} href={nav.link}>
               <div className="flex h-9 items-center justify-center gap-4  md:flex-row md:items-start">
