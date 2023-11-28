@@ -12,10 +12,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <SessionProvider session={pageProps.session}>
       <ThemeProvider attribute="class" enableSystem>
         <AppContextProvider>
-          <Component {...pageProps} />
           <Toaster />
-          <AuthModal title="" />
+          <AuthModal />
           <ShareModal />
+          <Component {...pageProps} />
         </AppContextProvider>
       </ThemeProvider>
     </SessionProvider>

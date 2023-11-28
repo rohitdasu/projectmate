@@ -1,5 +1,4 @@
-import { useEffect, useRef, FC } from 'react';
-import { AuthModalProps } from './Auth.interface';
+import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useAuthModal } from '@/hooks/useAuthModal';
 import { FcGoogle } from 'react-icons/fc';
@@ -13,7 +12,7 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '../../ui/button';
 
-export const AuthModal: FC<AuthModalProps> = ({ title }) => {
+export const AuthModal = () => {
   const { asPath } = useRouter();
 
   const {
@@ -48,7 +47,7 @@ export const AuthModal: FC<AuthModalProps> = ({ title }) => {
               projectmate
             </DialogTitle>
             <DialogDescription className="flex justify-center">
-              {title}
+              Continue with your social accounts
             </DialogDescription>
           </DialogHeader>
           <section className="flex flex-col items-center gap-4">
