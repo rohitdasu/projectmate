@@ -5,6 +5,9 @@ export interface ProfilePageProps {
   profile: Session | null;
   projects?: ProjectDetails;
   details?: ProfileDetails;
+  isProjectsLoading: boolean;
+  isDetailsLoading: boolean;
+  isGoogleLoading: boolean;
 }
 
 type ProjectDetails = {

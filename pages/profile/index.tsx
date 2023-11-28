@@ -1,7 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import { SharedLayout } from '@/components/Layouts';
-import { Loader } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { ProfilePage } from '@/components/views/ProfilePage';
@@ -19,9 +18,14 @@ const Profile: NextPage = () => {
       router.push('/');
     },
   });
-
-  const { data: profileDetails } = useSWR(userDetailsUrl, fetcher);
-  const { data: projectDetails } = useSWR(userProjectsUrl, fetcher);
+  const { data: profileDetails, isLoading: isDetailsLoading } = useSWR(
+    userDetailsUrl,
+    fetcher
+  );
+  const { data: projectDetails, isLoading: isProjectsLoading } = useSWR(
+    userProjectsUrl,
+    fetcher
+  );
 
   return (
     <>
@@ -30,11 +34,13 @@ const Profile: NextPage = () => {
       </header>
       <SharedLayout title="Profile">
         <div className="flex h-full w-full flex-col items-center">
-          {status === 'loading' && <Loader className="animate-spin" />}
           <ProfilePage
             details={profileDetails}
             projects={projectDetails}
             profile={data}
+            isProjectsLoading={isProjectsLoading}
+            isDetailsLoading={isDetailsLoading}
+            isGoogleLoading={status === 'loading' ? true : false}
           />
         </div>
       </SharedLayout>

@@ -3,12 +3,25 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import React from 'react';
 import { ProfilePageProps } from './ProfilePage.interface';
+import { Loader } from 'lucide-react';
 
 export const ProfilePage = (profile: ProfilePageProps) => {
   const getFallbackName = () => {
     const userName = profile?.profile?.user?.name;
     return userName ? userName[0] : 'NA';
   };
+
+  if (
+    profile.isDetailsLoading ||
+    profile.isProjectsLoading ||
+    profile.isGoogleLoading
+  ) {
+    return (
+      <div className="flex h-full items-center justify-center">
+        <Loader className="h-10 w-10 animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full py-4 px-4 md:px-0 md:py-10">
