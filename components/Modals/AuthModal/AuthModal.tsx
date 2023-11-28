@@ -1,5 +1,3 @@
-import { useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
 import { useAuthModal } from '@/hooks/useAuthModal';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
@@ -13,30 +11,10 @@ import {
 import { Button } from '../../ui/button';
 
 export const AuthModal = () => {
-  const { asPath } = useRouter();
-
   const {
     state: { isOpen },
     closeModal,
   } = useAuthModal();
-
-  const usePreviousRoute = () => {
-    const ref = useRef<string | null>(null);
-
-    useEffect(() => {
-      ref.current = asPath;
-    }, []);
-
-    return ref.current;
-  };
-
-  const prevRoute = usePreviousRoute();
-
-  useEffect(() => {
-    if (prevRoute !== asPath && isOpen) {
-      closeModal();
-    }
-  }, [asPath, isOpen, closeModal, prevRoute]);
 
   return (
     <>
