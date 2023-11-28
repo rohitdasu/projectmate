@@ -102,7 +102,7 @@ async function getUserDetails(session: Session) {
   }
 }
 
-type EditableUserDetails = {
+export type EditableUserDetails = {
   title: string;
   description: string;
   skills: string[];

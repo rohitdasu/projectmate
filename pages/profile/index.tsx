@@ -5,6 +5,11 @@ import { Loader } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { ProfilePage } from '@/components/views/ProfilePage';
+import { fetcher } from '@/lib/fetcher';
+import useSWR from 'swr';
+
+const userDetailsUrl = `/api/user/details`;
+const userProjectsUrl = `/api/user/project`;
 
 const Profile: NextPage = () => {
   const router = useRouter();
@@ -15,6 +20,9 @@ const Profile: NextPage = () => {
     },
   });
 
+  const { data: profileDetails } = useSWR(userDetailsUrl, fetcher);
+  const { data: projectDetails } = useSWR(userProjectsUrl, fetcher);
+
   return (
     <>
       <header className="sr-only">
@@ -23,7 +31,11 @@ const Profile: NextPage = () => {
       <SharedLayout title="Profile">
         <div className="flex h-full w-full flex-col items-center">
           {status === 'loading' && <Loader className="animate-spin" />}
-          <ProfilePage profile={data} />
+          <ProfilePage
+            details={profileDetails}
+            projects={projectDetails}
+            profile={data}
+          />
         </div>
       </SharedLayout>
     </>
