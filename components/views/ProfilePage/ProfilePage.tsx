@@ -25,17 +25,21 @@ export const ProfilePage = (profile: ProfilePageProps) => {
   };
 
   // State to track the window width
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState<number | undefined>(
+    typeof window !== 'undefined' ? window.innerWidth : undefined
+  );
 
   // Update window width on resize
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    if (typeof window !== 'undefined') {
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
   }, []);
 
   // Determine the side based on window width
-  const sheetSide = windowWidth < 768 ? 'bottom' : 'right';
+  const sheetSide = windowWidth && windowWidth < 768 ? 'bottom' : 'right';
 
   if (
     profile.isDetailsLoading ||
