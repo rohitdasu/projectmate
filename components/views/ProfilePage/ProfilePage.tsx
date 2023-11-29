@@ -64,7 +64,9 @@ export const ProfilePage = (profile: ProfilePageProps) => {
         </Avatar>
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant={'outline'}>Edit profile</Button>
+            <Button variant={'outline'} disabled>
+              Edit profile
+            </Button>
           </SheetTrigger>
           <SheetContent side={sheetSide}>
             <SheetHeader>
