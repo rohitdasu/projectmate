@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { ProfilePage } from '@/components/views/ProfilePage';
 import { fetcher } from '@/lib/fetcher';
-import useSWR from 'swr';
+import useSWR, { mutate } from 'swr';
 
 const userDetailsUrl = `/api/user/details`;
 const userProjectsUrl = `/api/user/project`;
@@ -27,6 +27,12 @@ const Profile: NextPage = () => {
     fetcher
   );
 
+  const handleProfileEditSuccess = () => {
+    // Handle the profile edit success event
+    mutate(userDetailsUrl);
+    // You can perform any other actions or state updates here
+  };
+
   return (
     <>
       <header className="sr-only">
@@ -41,6 +47,7 @@ const Profile: NextPage = () => {
             isProjectsLoading={isProjectsLoading}
             isDetailsLoading={isDetailsLoading}
             isGoogleLoading={status === 'loading' ? true : false}
+            onProfileEditSuccess={handleProfileEditSuccess}
           />
         </div>
       </SharedLayout>

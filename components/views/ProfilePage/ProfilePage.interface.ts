@@ -8,6 +8,7 @@ export interface ProfilePageProps {
   isProjectsLoading: boolean;
   isDetailsLoading: boolean;
   isGoogleLoading: boolean;
+  onProfileEditSuccess: () => void;
 }
 
 type ProjectDetails = {

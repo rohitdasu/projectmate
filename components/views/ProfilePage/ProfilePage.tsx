@@ -3,23 +3,41 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ProfilePageProps } from './ProfilePage.interface';
-import { CrownIcon, Verified } from 'lucide-react';
+import { CrownIcon, Loader, Verified } from 'lucide-react';
 import { ProfilePageProject } from './ProfilePageProject';
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 } from '@/components/ui/sheet';
-import { Label } from '@/components/ui/label';
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { ProfileProjectSkeleton } from './ProfileProjectSkeleton';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { formSchema } from './schema';
+import { useToast } from '../../ui/use-toast';
+import * as z from 'zod';
+import axios from 'axios';
 
 export const ProfilePage = (profile: ProfilePageProps) => {
+  const [loading, setLoading] = useState(false);
+  const [isSheetOpen, setSheetOpen] = useState(false);
+  const { toast } = useToast();
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+  });
+
   const getFallbackName = () => {
     const userName = profile?.profile?.user?.name;
     return userName ? userName[0] : 'NA';
@@ -30,7 +48,9 @@ export const ProfilePage = (profile: ProfilePageProps) => {
     typeof window !== 'undefined' ? window.innerWidth : undefined
   );
 
-  // Update window width on resize
+  // Determine the side based on window width
+  const sheetSide = windowWidth && windowWidth < 768 ? 'bottom' : 'right';
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const handleResize = () => setWindowWidth(window.innerWidth);
@@ -39,9 +59,57 @@ export const ProfilePage = (profile: ProfilePageProps) => {
     }
     return undefined;
   }, []);
+  useEffect(() => {
+    form.reset({
+      title: profile.details?.results?.title || '',
+      description: profile.details?.results?.description || '',
+      skills: (profile.details?.results?.skills || []).join(', ') || '',
+    });
+  }, [
+    profile.details?.results?.title,
+    profile.details?.results?.description,
+    profile.details?.results?.skills,
+    form,
+  ]);
 
-  // Determine the side based on window width
-  const sheetSide = windowWidth && windowWidth < 768 ? 'bottom' : 'right';
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    try {
+      setLoading(true);
+      await axios.post(
+        '/api/user/details',
+        {
+          title: data.title,
+          description: data.description,
+          skills: data.skills.split(','),
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      toast({
+        title: 'Success',
+        description: 'Profile updated successfully',
+        variant: 'default',
+      });
+      form.reset();
+      toggleSheet();
+      profile.onProfileEditSuccess();
+    } catch (e) {
+      toast({
+        title: 'Failure',
+        description: e?.response?.data?.error?.issues[0]?.message,
+        variant: 'destructive',
+      });
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const toggleSheet = () => {
+    setSheetOpen(!isSheetOpen);
+  };
 
   return (
     <div className="w-full py-4 px-4 md:px-0 md:py-10">
@@ -56,40 +124,9 @@ export const ProfilePage = (profile: ProfilePageProps) => {
         ) : (
           <div className="h-16 w-16 animate-pulse rounded-lg bg-gray-700 md:h-24 md:w-24" />
         )}
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant={'outline'} disabled>
-              Edit profile
-            </Button>
-          </SheetTrigger>
-          <SheetContent side={sheetSide}>
-            <SheetHeader>
-              <SheetTitle>Edit profile</SheetTitle>
-              <SheetDescription>
-                Make changes to your profile here. Click save when you are done.
-              </SheetDescription>
-            </SheetHeader>
-            <div className="grid gap-4 py-4">
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="name" className="text-right">
-                  Name
-                </Label>
-                <Input id="name" value="Pedro Duarte" className="col-span-3" />
-              </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="username" className="text-right">
-                  Username
-                </Label>
-                <Input id="username" value="@peduarte" className="col-span-3" />
-              </div>
-            </div>
-            <SheetFooter>
-              <SheetClose asChild>
-                <Button type="submit">Save changes</Button>
-              </SheetClose>
-            </SheetFooter>
-          </SheetContent>
-        </Sheet>
+        <Button variant={'outline'} onClick={toggleSheet}>
+          Edit profile
+        </Button>
       </section>
       <section className="my-2">
         {!profile.isProjectsLoading && !profile.isGoogleLoading ? (
@@ -144,51 +181,145 @@ export const ProfilePage = (profile: ProfilePageProps) => {
           </>
         )}
       </section>
-      <div className="flex flex-row flex-wrap gap-2">
-        {profile.isDetailsLoading ? (
-          <>
-            <Badge className="h-5 w-20 animate-pulse bg-gray-700"></Badge>
-            <Badge className="h-5 w-16 animate-pulse bg-gray-700"></Badge>
-            <Badge className="h-5 w-24 animate-pulse bg-gray-700"></Badge>
-          </>
-        ) : (
-          <>
-            {profile.details?.results.skills ? (
-              profile.details.results.skills.map((skill, idx) => (
-                <Badge className="text-sm" variant={'secondary'} key={idx}>
-                  {skill}
-                </Badge>
-              ))
-            ) : (
-              <p className="text-lg opacity-80">Skills/Interests show here</p>
-            )}
-          </>
-        )}
-      </div>
-      <div className="my-6 grid grid-cols-1 gap-2 lg:grid-cols-2">
-        {profile.isProjectsLoading && (
-          <>
-            {Array.from({ length: 9 }).map((_, index) => (
-              <ProfileProjectSkeleton key={index} />
-            ))}
-          </>
-        )}
-        {!profile.isProjectsLoading && (
-          <>
-            {profile?.projects?.results?.length ? (
-              profile.projects.results.map((project, idx) => (
-                <ProfilePageProject
-                  title={project.title}
-                  description={project.description}
-                  key={idx}
-                />
-              ))
-            ) : (
-              <p className="text-lg opacity-80">No projects 💔</p>
-            )}
-          </>
-        )}
-      </div>
+      <section>
+        <div className="flex flex-row flex-wrap gap-2">
+          {profile.isDetailsLoading ? (
+            <>
+              <Badge className="h-5 w-20 animate-pulse bg-gray-700"></Badge>
+              <Badge className="h-5 w-16 animate-pulse bg-gray-700"></Badge>
+              <Badge className="h-5 w-24 animate-pulse bg-gray-700"></Badge>
+            </>
+          ) : (
+            <>
+              {profile.details?.results.skills ? (
+                profile.details.results.skills.map((skill, idx) => (
+                  <Badge className="text-xs" variant={'secondary'} key={idx}>
+                    {skill}
+                  </Badge>
+                ))
+              ) : (
+                <p className="text-lg opacity-80">Skills/Interests show here</p>
+              )}
+            </>
+          )}
+        </div>
+      </section>
+      <section>
+        <div className="my-6 grid grid-cols-1 gap-2 lg:grid-cols-2">
+          {profile.isProjectsLoading && (
+            <>
+              {Array.from({ length: 9 }).map((_, index) => (
+                <ProfileProjectSkeleton key={index} />
+              ))}
+            </>
+          )}
+          {!profile.isProjectsLoading && (
+            <>
+              {profile?.projects?.results?.length ? (
+                profile.projects.results.map((project, idx) => (
+                  <ProfilePageProject
+                    title={project.title}
+                    description={project.description}
+                    key={idx}
+                  />
+                ))
+              ) : (
+                <p className="text-lg opacity-80">No projects 💔</p>
+              )}
+            </>
+          )}
+        </div>
+      </section>
+      <section>
+        <Sheet open={isSheetOpen} onOpenChange={toggleSheet}>
+          <SheetContent side={sheetSide}>
+            <SheetHeader>
+              <SheetTitle>Edit profile</SheetTitle>
+              <SheetDescription>
+                Make changes to your profile here. Click save when you are done.
+              </SheetDescription>
+            </SheetHeader>
+            <div className="grid gap-4 py-4">
+              <Form key={profile.details?.results?.title} {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-4"
+                >
+                  <FormField
+                    control={form.control}
+                    name="title"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Title</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="ex: Software Engineer | Developer"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="description"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Description</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="ex: Hey there, I'm a software Engineer from IND"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="skills"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Skills / Interests</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="ex: React.js, Open-Source"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormDescription>comma-separated</FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  {form.watch('skills')?.length > 0 && (
+                    <section className="flex flex-row flex-wrap gap-1">
+                      {form
+                        .watch('skills')
+                        .split(',')
+                        .map((tag, idx) => (
+                          <Badge variant="secondary" key={idx}>
+                            {tag}
+                          </Badge>
+                        ))}
+                    </section>
+                  )}
+                  <Button
+                    disabled={loading}
+                    type="submit"
+                    className="float-right"
+                  >
+                    {loading && <Loader className="mr-2 animate-spin" />}
+                    Save changes
+                  </Button>
+                </form>
+              </Form>
+            </div>
+          </SheetContent>
+        </Sheet>
+      </section>
     </div>
   );
 };
