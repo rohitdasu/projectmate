@@ -1,16 +1,41 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ProfilePageProps } from './ProfilePage.interface';
 import { CrownIcon, Loader, Verified } from 'lucide-react';
 import { ProfilePageProject } from './ProfilePageProject';
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 
 export const ProfilePage = (profile: ProfilePageProps) => {
   const getFallbackName = () => {
     const userName = profile?.profile?.user?.name;
     return userName ? userName[0] : 'NA';
   };
+
+  // State to track the window width
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+
+  // Update window width on resize
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Determine the side based on window width
+  const sheetSide = windowWidth < 768 ? 'bottom' : 'right';
 
   if (
     profile.isDetailsLoading ||
@@ -33,7 +58,38 @@ export const ProfilePage = (profile: ProfilePageProps) => {
             {getFallbackName()}
           </AvatarFallback>
         </Avatar>
-        <Button disabled>Edit profile</Button>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant={'outline'}>Edit profile</Button>
+          </SheetTrigger>
+          <SheetContent side={sheetSide}>
+            <SheetHeader>
+              <SheetTitle>Edit profile</SheetTitle>
+              <SheetDescription>
+                Make changes to your profile here. Click save when you are done.
+              </SheetDescription>
+            </SheetHeader>
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="name" className="text-right">
+                  Name
+                </Label>
+                <Input id="name" value="Pedro Duarte" className="col-span-3" />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="username" className="text-right">
+                  Username
+                </Label>
+                <Input id="username" value="@peduarte" className="col-span-3" />
+              </div>
+            </div>
+            <SheetFooter>
+              <SheetClose asChild>
+                <Button type="submit">Save changes</Button>
+              </SheetClose>
+            </SheetFooter>
+          </SheetContent>
+        </Sheet>
       </section>
       <section className="my-2">
         <p className="flex items-center gap-2 text-base font-semibold md:text-xl">
