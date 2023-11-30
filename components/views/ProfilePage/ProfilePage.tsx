@@ -133,7 +133,7 @@ export const ProfilePage = (profile: ProfilePageProps) => {
           <div className="flex items-center gap-2 text-base font-semibold md:text-xl">
             <p>{profile.profile?.user?.name}</p>
             {profile?.projects?.results?.length &&
-            profile.projects.results.length < 0 ? (
+            profile.projects.results.length > 0 ? (
               <Badge className="bg-yellow-400 text-yellow-900 hover:bg-yellow-400/80">
                 <CrownIcon className="h-4" /> Gold Member
               </Badge>
