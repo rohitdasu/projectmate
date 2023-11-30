@@ -167,7 +167,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
               </p>
             ) : (
               <p className="text-base text-black opacity-80 dark:text-white md:text-lg">
-                Title, ex: Software Engineer | Frontend Developer
+                Title
               </p>
             )}
           </>
@@ -182,8 +182,8 @@ export const ProfilePage = (data: ProfilePageProps) => {
                 {data.profile?.results.description}
               </p>
             ) : (
-              <p className="text-sm text-gray-900 opacity-80 dark:text-gray-100 md:text-base">
-                Description, ex: Hey there, I am XYZ, a developer from XYYZEE.
+              <p className="text-sm text-gray-900 dark:text-gray-100 md:text-base">
+                Description
               </p>
             )}
           </>
@@ -206,7 +206,9 @@ export const ProfilePage = (data: ProfilePageProps) => {
                   </Badge>
                 ))
               ) : (
-                <p className="opacity-80">Skills/Interests show here</p>
+                <Badge className="text-xs" variant={'secondary'}>
+                  Skills/Interests
+                </Badge>
               )}
             </>
           )}
@@ -236,7 +238,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
                   />
                 ))
               ) : (
-                <p className="text-lg opacity-80">No projects 💔</p>
+                <p className="animate-pulse">No projects 💔</p>
               )}
             </>
           )}
