@@ -111,6 +111,7 @@ export type EditableUserDetails = {
   skills: string[];
   name?: string;
   image?: string;
+  username?: string;
 };
 
 async function updateUserDetails(args: EditableUserDetails, session: Session) {

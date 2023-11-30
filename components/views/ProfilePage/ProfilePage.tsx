@@ -138,7 +138,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
       </section>
       <section className="my-2">
         {!data.isProjectsLoading && !data.isProfileLoading ? (
-          <div className="flex items-center gap-2 text-base font-semibold md:text-xl">
+          <div className="flex flex-wrap items-center gap-2 text-base font-semibold md:text-xl">
             <p>{data.profile?.results?.name}</p>
             {data?.projects?.results?.length &&
             data.projects.results.length > 0 ? (
@@ -157,6 +157,11 @@ export const ProfilePage = (data: ProfilePageProps) => {
             <Badge className="h-5 w-36 bg-gray-700"></Badge>
           </section>
         )}
+        {data?.profile?.results?.username && (
+          <p className="my-1 text-sm text-black/50">
+            @{data.profile.results.username}
+          </p>
+        )}
         {data.isProfileLoading ? (
           <p className="mt-2 h-4 w-40 animate-pulse bg-gray-700" />
         ) : (
@@ -172,7 +177,6 @@ export const ProfilePage = (data: ProfilePageProps) => {
             )}
           </>
         )}
-
         {data.isProfileLoading ? (
           <p className="mt-2 h-4 w-64 animate-pulse bg-gray-700 md:w-80" />
         ) : (

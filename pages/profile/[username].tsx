@@ -35,9 +35,9 @@ const UserProfile = () => {
   return (
     <>
       <header className="sr-only">
-        <h1>Profile</h1>
+        <h1>Profile of {profileDetails?.results?.name}</h1>
       </header>
-      <SharedLayout title="Profile">
+      <SharedLayout title={profileDetails?.results?.name}>
         <div className="flex h-full w-full flex-col items-center overflow-hidden">
           <ProfilePage
             currentUser={currentUser}
