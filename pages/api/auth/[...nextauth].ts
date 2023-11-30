@@ -9,7 +9,19 @@ dotenv.config();
 
 export const ProductionAuthOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
-
+  events: {
+    async createUser(message) {
+      const updatedUser = {
+        id: message.user.id,
+        username: message.user.id,
+      };
+      await prisma.user.update({
+        where: { id: message.user.id },
+        data: updatedUser,
+      });
+      return Promise.resolve();
+    },
+  },
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID || '',

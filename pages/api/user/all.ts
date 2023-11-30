@@ -52,6 +52,10 @@ async function getUsers() {
         return {
           id: user.id,
           name: user.name,
+          title: user.title,
+          username: user.username,
+          skills: user.skills,
+          description: user.description,
           profilePicture: user.image,
           role: userProjects.length > 0 ? 'GS' : 'NS',
           projects: userProjects,

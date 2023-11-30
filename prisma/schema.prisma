@@ -38,9 +38,9 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  id            String       @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
-  email         String?   @unique
+  email         String?      @unique
   emailVerified DateTime?
   image         String?
   title         String?
@@ -50,6 +50,17 @@ model User {
   sessions      Session[]
   project       Project[]
   comment       Comment[]
+  username      String?
+  socialSites   SocialSites? @relation(fields: [socialSitesId], references: [id])
+  socialSitesId String?      @db.ObjectId
+}
+
+model SocialSites {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  github   String?
+  linkedin String?
+  twitter  String?
+  User     User[]
 }
 
 model VerificationToken {
@@ -70,6 +81,7 @@ model Project {
   content          String    @default("")
   githubRepository String
   coverImg         String?
+  liveUrl          String?
   tags             String[]
   comment          Comment[]
   createdAt        DateTime  @default(now())

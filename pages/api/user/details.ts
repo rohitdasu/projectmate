@@ -85,9 +85,12 @@ const UserDetails: Prisma.UserSelect = {
       project: true,
     },
   },
+  id: true,
   title: true,
   description: true,
   skills: true,
+  socialSites: true,
+  username: true,
 };
 
 async function getUserDetails(session: Session) {
