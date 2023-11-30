@@ -25,6 +25,8 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { useTheme } from 'next-themes';
+import { fetcher } from '@/lib/fetcher';
+import useSWR from 'swr';
 
 const NavElements = NavRoutes.map((nav) => {
   return {
@@ -33,6 +35,7 @@ const NavElements = NavRoutes.map((nav) => {
     link: nav.link,
     name: nav.title,
     authGuard: nav.authGuard,
+    addUsername: nav.addUsername,
   };
 });
 
@@ -46,7 +49,14 @@ const Logo = () => {
   );
 };
 
+const userDetailsUrl = `/api/user/details`;
+
 export const Sidebar = () => {
+  const { data: profileDetails, isLoading: isDetailsLoading } = useSWR(
+    userDetailsUrl,
+    fetcher
+  );
+
   const { data: session, status } = useSession();
   const router = useRouter();
   const { openModal } = useAuthModal();
@@ -66,11 +76,19 @@ export const Sidebar = () => {
     <div className="fixed inset-0 z-10 flex h-screen flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
       <Logo />
       <ul className="mt-16 flex w-full flex-col items-center justify-center gap-4 md:items-start">
+        {isDetailsLoading && (
+          <div>
+            <Loader className="animate-spin" />
+          </div>
+        )}
         {NavElements.map((nav) => {
           if (nav.authGuard && status === 'unauthenticated') {
             return;
           }
-          const isActive = router.pathname === nav.link;
+
+          const isActive =
+            router.pathname === nav.link ||
+            router.pathname === nav.link + '/[username]';
 
           let spanNameTag = (
             <span className="hidden text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 lg:block">
@@ -87,7 +105,14 @@ export const Sidebar = () => {
           }
           // eslint-disable-next-line consistent-return
           return (
-            <Link key={nav.id} href={nav.link}>
+            <Link
+              key={nav.id}
+              href={
+                nav.addUsername
+                  ? nav.link + '/' + profileDetails?.results?.username
+                  : nav.link
+              }
+            >
               <div className="flex h-9 items-center justify-center gap-4  md:flex-row md:items-start">
                 <section
                   className={`transition-all hover:text-gray-900 dark:hover:text-gray-300 ${

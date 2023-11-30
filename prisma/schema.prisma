@@ -50,7 +50,7 @@ model User {
   sessions      Session[]
   project       Project[]
   comment       Comment[]
-  username      String?
+  username      String?      @unique
   socialSites   SocialSites? @relation(fields: [socialSitesId], references: [id])
   socialSitesId String?      @db.ObjectId
 }

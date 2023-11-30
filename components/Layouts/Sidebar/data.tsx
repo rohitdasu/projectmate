@@ -21,6 +21,7 @@ export const NavRoutes = [
     icon: <User />,
     link: '/profile',
     authGuard: true,
+    addUsername: true,
   },
   {
     id: '4',

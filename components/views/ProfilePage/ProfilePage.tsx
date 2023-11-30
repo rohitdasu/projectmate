@@ -30,7 +30,7 @@ import { useToast } from '../../ui/use-toast';
 import * as z from 'zod';
 import axios from 'axios';
 
-export const ProfilePage = (profile: ProfilePageProps) => {
+export const ProfilePage = (data: ProfilePageProps) => {
   const [loading, setLoading] = useState(false);
   const [isSheetOpen, setSheetOpen] = useState(false);
   const { toast } = useToast();
@@ -39,7 +39,7 @@ export const ProfilePage = (profile: ProfilePageProps) => {
   });
 
   const getFallbackName = () => {
-    const userName = profile?.profile?.user?.name;
+    const userName = data.profile?.results.name;
     return userName ? userName[0] : 'NA';
   };
 
@@ -59,28 +59,29 @@ export const ProfilePage = (profile: ProfilePageProps) => {
     }
     return undefined;
   }, []);
+
   useEffect(() => {
     form.reset({
-      title: profile.details?.results?.title || '',
-      description: profile.details?.results?.description || '',
-      skills: (profile.details?.results?.skills || []).join(', ') || '',
+      title: data.profile?.results.title || '',
+      description: data.profile?.results.description || '',
+      skills: (data.profile?.results.skills || []).join(', ') || '',
     });
   }, [
-    profile.details?.results?.title,
-    profile.details?.results?.description,
-    profile.details?.results?.skills,
+    data.profile?.results.title,
+    data.profile?.results.description,
+    data.profile?.results.skills,
     form,
   ]);
 
-  async function onSubmit(data: z.infer<typeof formSchema>) {
+  async function onSubmit(value: z.infer<typeof formSchema>) {
     try {
       setLoading(true);
       await axios.post(
         '/api/user/details',
         {
-          title: data.title,
-          description: data.description,
-          skills: data.skills.split(','),
+          title: value.title,
+          description: value.description,
+          skills: value.skills.split(','),
         },
         {
           headers: {
@@ -95,7 +96,7 @@ export const ProfilePage = (profile: ProfilePageProps) => {
       });
       form.reset();
       toggleSheet();
-      profile.onProfileEditSuccess();
+      data.onProfileEditSuccess();
     } catch (e) {
       toast({
         title: 'Failure',
@@ -111,12 +112,17 @@ export const ProfilePage = (profile: ProfilePageProps) => {
     setSheetOpen(!isSheetOpen);
   };
 
+  const isCurrentUser =
+    !data.isCurrentUserLoading &&
+    !data.isProfileLoading &&
+    data.currentUser?.user?.image === data.profile?.results?.image;
+
   return (
     <div className="w-full py-4 px-4 md:px-0 md:py-10">
       <section className="flex flex-row items-center justify-between">
-        {!profile.isGoogleLoading ? (
+        {!data.isProfileLoading ? (
           <Avatar className="h-16 w-16 rounded-lg md:h-24 md:w-24">
-            <AvatarImage src={profile.profile?.user?.image || undefined} />
+            <AvatarImage src={data.profile?.results?.image || undefined} />
             <AvatarFallback className="rounded-lg text-xl md:text-4xl">
               {getFallbackName()}
             </AvatarFallback>
@@ -124,16 +130,18 @@ export const ProfilePage = (profile: ProfilePageProps) => {
         ) : (
           <div className="h-16 w-16 animate-pulse rounded-lg bg-gray-700 md:h-24 md:w-24" />
         )}
-        <Button variant={'outline'} onClick={toggleSheet}>
-          Edit profile
-        </Button>
+        {isCurrentUser && (
+          <Button variant={'outline'} onClick={toggleSheet}>
+            Edit profile
+          </Button>
+        )}
       </section>
       <section className="my-2">
-        {!profile.isProjectsLoading && !profile.isGoogleLoading ? (
+        {!data.isProjectsLoading && !data.isProfileLoading ? (
           <div className="flex items-center gap-2 text-base font-semibold md:text-xl">
-            <p>{profile.profile?.user?.name}</p>
-            {profile?.projects?.results?.length &&
-            profile.projects.results.length > 0 ? (
+            <p>{data.profile?.results?.name}</p>
+            {data?.projects?.results?.length &&
+            data.projects.results.length > 0 ? (
               <Badge className="bg-yellow-400 text-yellow-900 hover:bg-yellow-400/80">
                 <CrownIcon className="h-4" /> Gold Member
               </Badge>
@@ -149,13 +157,13 @@ export const ProfilePage = (profile: ProfilePageProps) => {
             <Badge className="h-5 w-36 bg-gray-700"></Badge>
           </section>
         )}
-        {profile.isDetailsLoading ? (
+        {data.isProfileLoading ? (
           <p className="mt-2 h-4 w-40 animate-pulse bg-gray-700" />
         ) : (
           <>
-            {profile.details?.results.title ? (
+            {data.profile?.results.title ? (
               <p className="text-base text-black dark:text-white md:text-lg">
-                {profile.details.results.title}
+                {data.profile?.results.title}
               </p>
             ) : (
               <p className="text-base text-black opacity-80 dark:text-white md:text-lg">
@@ -165,17 +173,17 @@ export const ProfilePage = (profile: ProfilePageProps) => {
           </>
         )}
 
-        {profile.isDetailsLoading ? (
+        {data.isProfileLoading ? (
           <p className="mt-2 h-4 w-64 animate-pulse bg-gray-700 md:w-80" />
         ) : (
           <>
-            {profile.details?.results.description ? (
+            {data.profile?.results.description ? (
               <p className="text-sm text-gray-900 dark:text-gray-100 md:text-base">
-                {profile.details.results.description}
+                {data.profile?.results.description}
               </p>
             ) : (
               <p className="text-sm text-gray-900 opacity-80 dark:text-gray-100 md:text-base">
-                Description, ex: Hey there, I am Rohit, a developer from India.
+                Description, ex: Hey there, I am XYZ, a developer from XYYZEE.
               </p>
             )}
           </>
@@ -183,7 +191,7 @@ export const ProfilePage = (profile: ProfilePageProps) => {
       </section>
       <section>
         <div className="flex flex-row flex-wrap gap-2">
-          {profile.isDetailsLoading ? (
+          {data.isProfileLoading ? (
             <>
               <Badge className="h-5 w-20 animate-pulse bg-gray-700"></Badge>
               <Badge className="h-5 w-16 animate-pulse bg-gray-700"></Badge>
@@ -191,14 +199,14 @@ export const ProfilePage = (profile: ProfilePageProps) => {
             </>
           ) : (
             <>
-              {profile.details?.results.skills ? (
-                profile.details.results.skills.map((skill, idx) => (
+              {data.profile?.results?.skills?.length > 0 ? (
+                data.profile?.results.skills.map((skill, idx) => (
                   <Badge className="text-xs" variant={'secondary'} key={idx}>
                     {skill}
                   </Badge>
                 ))
               ) : (
-                <p className="text-lg opacity-80">Skills/Interests show here</p>
+                <p className="opacity-80">Skills/Interests show here</p>
               )}
             </>
           )}
@@ -206,19 +214,23 @@ export const ProfilePage = (profile: ProfilePageProps) => {
       </section>
       <section>
         <div className="my-6 grid grid-cols-1 gap-2 lg:grid-cols-2">
-          {profile.isProjectsLoading && (
+          {data.isProjectsLoading && (
             <>
               {Array.from({ length: 9 }).map((_, index) => (
-                <ProfileProjectSkeleton key={index} />
+                <ProfileProjectSkeleton
+                  isCurrentUser={isCurrentUser}
+                  key={index}
+                />
               ))}
             </>
           )}
-          {!profile.isProjectsLoading && (
+          {!data.isProjectsLoading && (
             <>
-              {profile?.projects?.results?.length ? (
-                profile.projects.results.map((project, idx) => (
+              {data?.projects?.results?.length ? (
+                data.projects.results.map((project, idx) => (
                   <ProfilePageProject
                     title={project.title}
+                    isCurrentUser={isCurrentUser}
                     description={project.description}
                     key={idx}
                   />
@@ -240,7 +252,7 @@ export const ProfilePage = (profile: ProfilePageProps) => {
               </SheetDescription>
             </SheetHeader>
             <div className="grid gap-4 py-4">
-              <Form key={profile.details?.results?.title} {...form}>
+              <Form key={data.profile?.results?.title} {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
                   className="space-y-4"
