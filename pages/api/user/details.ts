@@ -140,8 +140,6 @@ async function updateUserDetails(args: EditableUserDetails, session: Session) {
       website: socialSites?.website || null,
     };
 
-    console.log(socialSites, 'logging');
-
     // If the user already has socialSites, update them; otherwise, create new ones
     if (existingUser.socialSites) {
       // Update existing socialSites
