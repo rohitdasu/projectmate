@@ -11,14 +11,16 @@ export const ProductionAuthOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   events: {
     async createUser(message) {
+      console.log(message, '====Message====');
       const updatedUser = {
         id: message.user.id,
         username: message.user.id,
       };
-      await prisma.user.update({
+      const response = await prisma.user.update({
         where: { id: message.user.id },
         data: updatedUser,
       });
+      console.log(response, '===== Response =====');
       return Promise.resolve();
     },
   },
