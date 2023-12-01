@@ -85,9 +85,12 @@ const UserDetails: Prisma.UserSelect = {
       project: true,
     },
   },
+  id: true,
   title: true,
   description: true,
   skills: true,
+  socialSites: true,
+  username: true,
 };
 
 async function getUserDetails(session: Session) {
@@ -106,12 +109,62 @@ export type EditableUserDetails = {
   title: string;
   description: string;
   skills: string[];
+  name?: string;
+  image?: string;
+  username?: string;
+  socialSites?: {
+    github?: string | null;
+    linkedin?: string | null;
+    twitter?: string | null;
+    website?: string | null;
+  };
 };
 
 async function updateUserDetails(args: EditableUserDetails, session: Session) {
-  const { title, description, skills } = args;
+  const { title, description, skills, socialSites } = args;
+
   try {
-    const data = await prisma.user.update({
+    const existingUser = await prisma.user.findUnique({
+      where: { email: session.user?.email || undefined },
+      include: { socialSites: true }, // Include socialSites in the query
+    });
+
+    if (!existingUser) {
+      throw new Error('User not found');
+    }
+
+    const socialSitesData = {
+      github: socialSites?.github || null,
+      linkedin: socialSites?.linkedin || null,
+      twitter: socialSites?.twitter || null,
+      website: socialSites?.website || null,
+    };
+
+    // If the user already has socialSites, update them; otherwise, create new ones
+    if (existingUser.socialSites) {
+      // Update existing socialSites
+      await prisma.socialSites.update({
+        where: { id: existingUser.socialSitesId || '' }, // Assuming socialSitesId is non-null
+        data: socialSitesData,
+      });
+    } else {
+      // Create new socialSites and link to the existing user
+      const createdSocialSites = await prisma.socialSites.create({
+        data: {
+          ...socialSitesData,
+          User: { connect: { id: existingUser.id } },
+        },
+      });
+
+      // Update the socialSitesId in the user record
+      await prisma.user.update({
+        where: { id: existingUser.id },
+        data: { socialSitesId: createdSocialSites.id },
+      });
+    }
+
+    // Update the user details
+    const updatedUser = await prisma.user.update({
       where: { email: session.user?.email || undefined },
       data: {
         title: title,
@@ -119,7 +172,8 @@ async function updateUserDetails(args: EditableUserDetails, session: Session) {
         skills: skills,
       },
     });
-    return data;
+
+    return updatedUser;
   } catch (error) {
     throw error;
   }

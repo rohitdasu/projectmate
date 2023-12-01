@@ -3,4 +3,6 @@ export interface SharedLayoutProps {
   title: string;
   leftSidebar?: boolean;
   rightSidebar?: boolean;
+  topBar?: boolean;
+  bottomBar?: boolean;
 }

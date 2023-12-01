@@ -5,4 +5,5 @@ export interface MateProps {
   numberOfProjects: number;
   role: string;
   projects: Array<string>;
+  username?: string;
 }

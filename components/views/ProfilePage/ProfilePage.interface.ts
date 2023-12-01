@@ -1,13 +1,13 @@
-import { EditableUserDetails } from '@/pages/api/user/details';
 import { Session } from 'next-auth';
+import { EditableUserDetails } from '@/pages/api/user/details';
 
 export interface ProfilePageProps {
-  profile: Session | null;
+  profile: ProfileDetails;
   projects?: ProjectDetails;
-  details?: ProfileDetails;
   isProjectsLoading: boolean;
-  isDetailsLoading: boolean;
-  isGoogleLoading: boolean;
+  isProfileLoading: boolean;
+  currentUser?: Session | null;
+  isCurrentUserLoading?: boolean;
   onProfileEditSuccess: () => void;
 }
 
@@ -30,4 +30,5 @@ type Project = {
   tags: Array<string>;
   title: string;
   updatedAt: string;
+  liveUrl: string;
 };

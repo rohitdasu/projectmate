@@ -10,6 +10,8 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
   children,
   leftSidebar = true,
   rightSidebar = false,
+  topBar = true,
+  bottomBar = true,
 }) => {
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
 
@@ -37,13 +39,15 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
         <title>{`${title} | Projectmate`}</title>
         <link rel="icon" href="/logo.svg" />
       </Head>
-      <nav
-        className={`sticky z-10 block overflow-hidden border-b border-gray-200 bg-white transition-all dark:border-gray-900 dark:bg-gray-800 md:hidden ${
-          isNavbarVisible ? 'top-0' : '-top-14'
-        }`}
-      >
-        <TopNavbar />
-      </nav>
+      {topBar && (
+        <nav
+          className={`sticky z-10 block overflow-hidden border-b border-gray-200 bg-white transition-all dark:border-gray-900 dark:bg-gray-800 md:hidden ${
+            isNavbarVisible ? 'top-0' : '-top-14'
+          }`}
+        >
+          <TopNavbar />
+        </nav>
+      )}
       <div className="grid min-h-screen grid-cols-4">
         {leftSidebar && (
           <div className="hidden grid-cols-1 lg:block">
@@ -59,9 +63,11 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
         </main>
         {rightSidebar && <div></div>}
       </div>
-      <div className="sticky bottom-0 z-10 block h-14 w-full border-t border-gray-200 bg-white dark:border-gray-900 dark:bg-gray-800 md:hidden">
-        <BottomBar />
-      </div>
+      {bottomBar && (
+        <div className="sticky bottom-0 z-10 block h-14 w-full border-t border-gray-200 bg-white dark:border-gray-900 dark:bg-gray-800 md:hidden">
+          <BottomBar />
+        </div>
+      )}
     </div>
   );
 };

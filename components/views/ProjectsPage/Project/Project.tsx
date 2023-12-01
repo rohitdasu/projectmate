@@ -5,7 +5,13 @@ import { memo } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { BarChart2, Forward, GitPullRequest, History } from 'lucide-react';
+import {
+  BarChart2,
+  Forward,
+  GitPullRequest,
+  Globe2,
+  History,
+} from 'lucide-react';
 import moment from 'moment';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -34,6 +40,7 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
       createdAt,
       authorImage,
       githubRepository,
+      liveUrl,
       openShareModal,
       handleToast,
     }) => {
@@ -59,6 +66,12 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
       const handleContributeClick = () => {
         if (githubRepository) {
           window.open(`${githubRepository}/?ref=projectmate.net`, '_blank');
+        }
+      };
+
+      const handleLiveClick = () => {
+        if (liveUrl) {
+          window.open(`${liveUrl}/?ref=projectmate.net`, '_blank');
         }
       };
 
@@ -148,6 +161,16 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                     <GitPullRequest className="mr-1" />
                     <span className="hidden md:block">Contribute</span>
                   </Button>
+                  {liveUrl && (
+                    <Button
+                      size={'sm'}
+                      variant={'ghost'}
+                      onClick={handleLiveClick}
+                    >
+                      <Globe2 className="mr-1" />
+                      <span className="hidden md:block">Live</span>
+                    </Button>
+                  )}
                 </div>
                 <Button
                   size={'sm'}

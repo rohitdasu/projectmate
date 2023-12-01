@@ -53,6 +53,7 @@ export default async function handler(
           tags,
           coverImg,
           email,
+          liveUrl,
         } = validatedBody;
         const data = await addProject({
           title,
@@ -62,6 +63,7 @@ export default async function handler(
           tags,
           coverImg,
           email,
+          liveUrl,
         });
         return successResponse({
           res,
@@ -141,6 +143,7 @@ async function addProject(args: {
   tags: string[];
   coverImg: string;
   email: string;
+  liveUrl: string;
 }) {
   const {
     title,
@@ -150,6 +153,7 @@ async function addProject(args: {
     tags,
     coverImg,
     email,
+    liveUrl,
   } = args;
   try {
     const data = await prisma.project.create({
@@ -160,6 +164,7 @@ async function addProject(args: {
         githubRepository,
         tags,
         coverImg,
+        liveUrl,
         author: {
           connect: {
             email: email,

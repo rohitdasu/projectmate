@@ -1,38 +1,28 @@
-import { User } from '@prisma/client';
-import { NextApiRequest, NextApiResponse } from 'next';
 import { errorResponse, successResponse } from '@/lib/httpResponse';
+import { Project } from '@prisma/client';
+import { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '@/lib/prisma';
-import { getServerAuthSession } from '@/lib/getServerAuthSession';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const session = await getServerAuthSession({ req, res });
-  if (!session) {
-    return errorResponse({
-      res,
-      message: 'Unauthorized',
-      statusCode: 401,
-      success: false,
-    });
-  }
   switch (req.method) {
     case 'GET':
-      const { userId } = req.query;
-
       try {
-        const data = await getUsersById(userId?.toString());
-        if (!data) {
-          return successResponse({
+        const { username } = req.query;
+
+        // Check if the username parameter is provided
+        if (!username) {
+          return errorResponse({
             res,
-            message: "User doesn't exist",
-            results: data,
-            statusCode: 200,
+            message: 'Bad Request - Missing username parameter',
+            statusCode: 400,
             success: false,
           });
         }
 
+        const data = await getProjectsByUsername(username as string);
         return successResponse({
           res,
           message: '',
@@ -59,20 +49,19 @@ export default async function handler(
   }
 }
 
-async function getUsersById(id?: string) {
+async function getProjectsByUsername(username: string) {
   try {
-    if (!id) {
-      return null;
-    }
-
-    const data: User | null = await prisma.user.findFirst({
-      where: {
-        id,
-      },
-      include: {
-        project: true,
-      },
+    const data: Project[] = await prisma.project.findMany({
+      orderBy: [
+        {
+          createdAt: 'desc',
+        },
+      ],
+      where: { author: { username: { equals: username } } },
     });
+    if (!data) {
+      throw new Error('User not found');
+    }
     return data;
   } catch (error) {
     throw error;

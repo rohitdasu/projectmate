@@ -7,7 +7,7 @@ import { SessionLessCard } from './SessionLessCard';
 import { NavRoutes } from './data';
 import { useAuthModal } from '@/hooks/useAuthModal';
 import { Separator } from '@/components/ui/separator';
-import { Crown, Info, Loader } from 'lucide-react';
+import { Verified, Info, Loader } from 'lucide-react';
 import { AddProjectModal } from '@/components/Modals/AddProjectModal';
 import { useAddProjectModal } from '@/hooks/useAddProjectModal';
 import { Button } from '@/components/ui/button';
@@ -25,6 +25,8 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { useTheme } from 'next-themes';
+import { fetcher } from '@/lib/fetcher';
+import useSWR from 'swr';
 
 const NavElements = NavRoutes.map((nav) => {
   return {
@@ -33,6 +35,7 @@ const NavElements = NavRoutes.map((nav) => {
     link: nav.link,
     name: nav.title,
     authGuard: nav.authGuard,
+    addUsername: nav.addUsername,
   };
 });
 
@@ -46,7 +49,14 @@ const Logo = () => {
   );
 };
 
+const userDetailsUrl = `/api/user/details`;
+
 export const Sidebar = () => {
+  const { data: profileDetails, isLoading: isDetailsLoading } = useSWR(
+    userDetailsUrl,
+    fetcher
+  );
+
   const { data: session, status } = useSession();
   const router = useRouter();
   const { openModal } = useAuthModal();
@@ -62,6 +72,12 @@ export const Sidebar = () => {
     }
   };
 
+  const handleNavLink = (nav: { link: string; addUsername?: boolean }) => {
+    return nav.addUsername
+      ? nav.link + '/' + profileDetails?.results?.username
+      : nav.link;
+  };
+
   return (
     <div className="fixed inset-0 z-10 flex h-screen flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
       <Logo />
@@ -70,7 +86,10 @@ export const Sidebar = () => {
           if (nav.authGuard && status === 'unauthenticated') {
             return;
           }
-          const isActive = router.pathname === nav.link;
+
+          const isActive =
+            router.pathname === nav.link ||
+            router.pathname === nav.link + '/[username]';
 
           let spanNameTag = (
             <span className="hidden text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 lg:block">
@@ -87,7 +106,7 @@ export const Sidebar = () => {
           }
           // eslint-disable-next-line consistent-return
           return (
-            <Link key={nav.id} href={nav.link}>
+            <Link key={nav.id} href={handleNavLink(nav)}>
               <div className="flex h-9 items-center justify-center gap-4  md:flex-row md:items-start">
                 <section
                   className={`transition-all hover:text-gray-900 dark:hover:text-gray-300 ${
@@ -113,7 +132,10 @@ export const Sidebar = () => {
               <p className="flex items-center text-sm text-gray-500 dark:text-gray-300">
                 <Info className="inline-block h-4" />
                 Become a Gold Member
-                <Crown className="inline-block h-4 animate-wiggle text-orange-500" />
+                <Verified
+                  fill="#F87315"
+                  className="inline-block h-5 animate-wiggle text-white"
+                />
               </p>
             </TooltipTrigger>
             <TooltipContent className="dark:bg-gray-900">

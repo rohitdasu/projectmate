@@ -16,7 +16,7 @@ export const postSchema = z.object({
   githubRepository: z.string({
     required_error: 'githubRepository is required',
   }),
-
+  liveUrl: z.string().optional(),
   coverImg: z.string().url().optional(),
   tags: z.array(z.string()).min(1).max(5),
 });

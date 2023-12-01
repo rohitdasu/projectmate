@@ -10,6 +10,7 @@ export interface ProjectProps {
   authorImage: string | null;
   createdAt: Date;
   githubRepository: string;
+  liveUrl: string | null;
   openShareModal: (data: ShareModalData) => void;
 }
 

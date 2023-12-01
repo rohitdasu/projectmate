@@ -88,6 +88,7 @@ export const ProjectsList = () => {
                 authorImage={project.author.image}
                 createdAt={project.createdAt}
                 githubRepository={project.githubRepository}
+                liveUrl={project.liveUrl}
                 openShareModal={openShareModal}
               />
             ))}
