@@ -159,13 +159,13 @@ export const ProfilePage = (data: ProfilePageProps) => {
                 {data.profile?.results?.name}{' '}
                 {data?.projects?.results?.length &&
                 data.projects.results.length > 0 ? (
-                  <section className="text-white">
+                  <span className="text-white">
                     <Verified fill="#F87315" className="h-5 text-white" />
-                  </section>
+                  </span>
                 ) : (
-                  <section className="text-white">
+                  <span className="text-white">
                     <Verified fill="#3B81F6" className="h-5" />
-                  </section>
+                  </span>
                 )}
               </p>
               {data?.profile?.results?.username && (

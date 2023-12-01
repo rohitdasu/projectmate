@@ -1,5 +1,5 @@
 import React from 'react';
-import { Loader, PlusCircle } from 'lucide-react';
+import { PlusCircle } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { Button } from '@/components/ui/button';
 import { useSession } from 'next-auth/react';
@@ -15,10 +15,7 @@ const userDetailsUrl = `/api/user/details`;
 
 export const BottomBar = () => {
   const { openModal } = useAuthModal();
-  const { data: profileDetails, isLoading: isDetailsLoading } = useSWR(
-    userDetailsUrl,
-    fetcher
-  );
+  const { data: profileDetails } = useSWR(userDetailsUrl, fetcher);
   const { openModal: openAddProjectModal } = useAddProjectModal();
   const { status, data } = useSession();
   const handleAddProject = () => {
@@ -40,11 +37,6 @@ export const BottomBar = () => {
     <div className="h-full w-full">
       <AddProjectModal email={data?.user?.email} />
       <ul className="flex h-14 flex-row items-center justify-around">
-        {isDetailsLoading && (
-          <div>
-            <Loader className="animate-spin" />
-          </div>
-        )}
         {NavRoutes.map((route) => {
           const isActive =
             router.pathname === route.link ||
