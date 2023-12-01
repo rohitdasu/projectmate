@@ -11,18 +11,15 @@ export const ProductionAuthOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   events: {
     async createUser(message) {
-      console.log(message, '====Message====');
       const userId = message.user.id;
 
       try {
-        const updatedUser = await prisma.user.update({
+        await prisma.user.update({
           where: { id: userId },
           data: {
             username: message.user.id,
           },
         });
-
-        console.log('Username updated successfully:', updatedUser);
       } catch (error) {
         console.error('Error updating username:', error);
       }
