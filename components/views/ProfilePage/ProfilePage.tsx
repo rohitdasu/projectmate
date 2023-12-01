@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ProfilePageProps } from './ProfilePage.interface';
-import { CrownIcon, Loader, Verified } from 'lucide-react';
+import { Verified, Loader } from 'lucide-react';
 import { ProfilePageProject } from './ProfilePageProject';
 import {
   Sheet,
@@ -151,31 +151,38 @@ export const ProfilePage = (data: ProfilePageProps) => {
           </Button>
         )}
       </section>
-      <section className="my-2">
+      <section className="my-2 flex flex-col items-start gap-2">
         {!data.isProjectsLoading && !data.isProfileLoading ? (
-          <div className="flex flex-wrap items-center gap-2 text-base font-semibold md:text-xl">
-            <p>{data.profile?.results?.name}</p>
-            {data?.projects?.results?.length &&
-            data.projects.results.length > 0 ? (
-              <Badge className="bg-yellow-400 text-yellow-900 hover:bg-yellow-400/80">
-                <CrownIcon className="h-4" /> Gold Member
-              </Badge>
-            ) : (
-              <Badge className="bg-blue-500 text-white hover:bg-blue-500/80">
-                <Verified className="h-4" /> Verified Member
-              </Badge>
-            )}
+          <div className="text-base font-semibold md:text-xl">
+            <section className="flex flex-col">
+              <p className="flex items-center gap-1">
+                {data.profile?.results?.name}{' '}
+                {data?.projects?.results?.length &&
+                data.projects.results.length > 0 ? (
+                  <section className="text-white">
+                    <Verified fill="#F87315" className="h-5 text-white" />
+                  </section>
+                ) : (
+                  <section className="text-white">
+                    <Verified fill="#3B81F6" className="h-5" />
+                  </section>
+                )}
+              </p>
+              {data?.profile?.results?.username && (
+                <p className="text-sm text-black/50 dark:text-white/60">
+                  @{data.profile.results.username}
+                </p>
+              )}
+            </section>
           </div>
         ) : (
-          <section className="flex animate-pulse items-center gap-2">
-            <p className="h-5 w-28 bg-gray-700" />
-            <Badge className="h-5 w-36 bg-gray-700"></Badge>
+          <section>
+            <section className="flex animate-pulse items-center gap-2">
+              <p className="h-5 w-28 bg-gray-700" />
+              <div className="h-5 w-5 rounded-full bg-gray-700" />
+            </section>
+            <p className="mt-1 h-5 w-40 bg-gray-700" />
           </section>
-        )}
-        {data?.profile?.results?.username && (
-          <p className="my-1 text-sm text-black/50 dark:text-white/60">
-            @{data.profile.results.username}
-          </p>
         )}
         {data.isProfileLoading ? (
           <p className="mt-2 h-4 w-40 animate-pulse bg-gray-700" />
@@ -186,9 +193,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
                 {data.profile?.results.title}
               </p>
             ) : (
-              <p className="text-base text-black opacity-80 dark:text-white md:text-lg">
-                Title
-              </p>
+              <></>
             )}
           </>
         )}
@@ -201,103 +206,105 @@ export const ProfilePage = (data: ProfilePageProps) => {
                 {data.profile?.results.description}
               </p>
             ) : (
-              <p className="text-sm text-gray-900 dark:text-gray-100 md:text-base">
-                Description
-              </p>
+              <></>
             )}
           </>
         )}
-      </section>
-      <section>
         <div className="flex flex-row flex-wrap gap-2">
           {data.isProfileLoading ? (
-            <>
-              <Badge className="h-5 w-20 animate-pulse bg-gray-700"></Badge>
-              <Badge className="h-5 w-16 animate-pulse bg-gray-700"></Badge>
-              <Badge className="h-5 w-24 animate-pulse bg-gray-700"></Badge>
-            </>
+            <section className="flex flex-col gap-2">
+              <section className="flex flex-row gap-2">
+                <Badge className="h-5 w-20 animate-pulse bg-gray-700"></Badge>
+                <Badge className="h-5 w-16 animate-pulse bg-gray-700"></Badge>
+                <Badge className="h-5 w-24 animate-pulse bg-gray-700"></Badge>
+              </section>
+              <section className="flex flex-row gap-2">
+                <div className="h-5 w-20 animate-pulse bg-gray-700"></div>
+                <div className="h-5 w-16 animate-pulse bg-gray-700"></div>
+                <div className="h-5 w-24 animate-pulse bg-gray-700"></div>
+                <div className="h-5 w-24 animate-pulse bg-gray-700"></div>
+              </section>
+            </section>
           ) : (
             <>
               {data.profile?.results?.skills?.length > 0 ? (
                 data.profile?.results.skills.map((skill, idx) => (
-                  <Badge className="text-xs" variant={'secondary'} key={idx}>
+                  <Badge className="text-sm" variant={'secondary'} key={idx}>
                     {skill}
                   </Badge>
                 ))
               ) : (
-                <Badge className="text-xs" variant={'secondary'}>
-                  Skills/Interests
-                </Badge>
+                <></>
               )}
             </>
           )}
         </div>
+        {((!data.isProfileLoading && socialSites?.github) ||
+          socialSites?.linkedin ||
+          socialSites?.twitter ||
+          socialSites?.website) && (
+          <section className="">
+            <ul className="flex flex-wrap items-center gap-1">
+              {!data.isProfileLoading && socialSites?.github && (
+                <li>
+                  <Button asChild variant={'ghost'} size={'sm'}>
+                    <Link
+                      target="_blank"
+                      className="flex items-center gap-2"
+                      href={socialSites?.github || '#'}
+                    >
+                      <FaGithub className="text-blue-500" />
+                      <span>GitHub</span>
+                    </Link>
+                  </Button>
+                </li>
+              )}
+              {!data.isProfileLoading && socialSites?.linkedin && (
+                <li>
+                  <Button asChild variant={'ghost'} size={'sm'}>
+                    <Link
+                      target="_blank"
+                      className="flex items-center gap-2"
+                      href={socialSites?.linkedin || '#'}
+                    >
+                      <FaLinkedin className="text-blue-500" />
+                      <span>LinkedIn</span>
+                    </Link>
+                  </Button>
+                </li>
+              )}
+              {!data.isProfileLoading && socialSites?.twitter && (
+                <li>
+                  <Button asChild variant={'ghost'} size={'sm'}>
+                    <Link
+                      target="_blank"
+                      className="flex items-center gap-2"
+                      href={socialSites?.twitter || '#'}
+                    >
+                      <FaTwitter className="text-blue-500" />
+                      <span>Twitter</span>
+                    </Link>
+                  </Button>
+                </li>
+              )}
+              {!data.isProfileLoading && socialSites?.website && (
+                <li>
+                  <Button asChild variant={'ghost'} size={'sm'}>
+                    <Link
+                      target="_blank"
+                      className="flex items-center gap-2"
+                      href={socialSites?.website || '#'}
+                    >
+                      <FaGlobeAsia className="text-blue-500" />
+                      <span>Website</span>
+                    </Link>
+                  </Button>
+                </li>
+              )}
+            </ul>
+          </section>
+        )}
       </section>
-      {((!data.isProfileLoading && socialSites?.github) ||
-        socialSites?.linkedin ||
-        socialSites?.twitter ||
-        socialSites?.website) && (
-        <section className="my-4">
-          <ul className="flex flex-wrap items-center gap-1">
-            {!data.isProfileLoading && socialSites?.github && (
-              <li>
-                <Button asChild variant={'ghost'} size={'sm'}>
-                  <Link
-                    target="_blank"
-                    className="flex items-center gap-2"
-                    href={socialSites?.github || '#'}
-                  >
-                    <FaGithub className="text-black dark:text-white" />
-                    <span>GitHub</span>
-                  </Link>
-                </Button>
-              </li>
-            )}
-            {!data.isProfileLoading && socialSites?.linkedin && (
-              <li>
-                <Button asChild variant={'ghost'} size={'sm'}>
-                  <Link
-                    target="_blank"
-                    className="flex items-center gap-2"
-                    href={socialSites?.linkedin || '#'}
-                  >
-                    <FaLinkedin className="text-blue-500" />
-                    <span>LinkedIn</span>
-                  </Link>
-                </Button>
-              </li>
-            )}
-            {!data.isProfileLoading && socialSites?.twitter && (
-              <li>
-                <Button asChild variant={'ghost'} size={'sm'}>
-                  <Link
-                    target="_blank"
-                    className="flex items-center gap-2"
-                    href={socialSites?.twitter || '#'}
-                  >
-                    <FaTwitter className="text-blue-500" />
-                    <span>Twitter</span>
-                  </Link>
-                </Button>
-              </li>
-            )}
-            {!data.isProfileLoading && socialSites?.website && (
-              <li>
-                <Button asChild variant={'ghost'} size={'sm'}>
-                  <Link
-                    target="_blank"
-                    className="flex items-center gap-2"
-                    href={socialSites?.website || '#'}
-                  >
-                    <FaGlobeAsia className="text-blue-500" />
-                    <span>Website</span>
-                  </Link>
-                </Button>
-              </li>
-            )}
-          </ul>
-        </section>
-      )}
       <section>
         <div className="my-6 grid grid-cols-1 gap-2 lg:grid-cols-2">
           {data.isProjectsLoading && (
@@ -324,7 +331,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
                   />
                 ))
               ) : (
-                <p className="animate-pulse">No projects 💔</p>
+                <></>
               )}
             </>
           )}

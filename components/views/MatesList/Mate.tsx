@@ -7,7 +7,7 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from '../../ui/tooltip';
-import { Crown } from 'lucide-react';
+import { Verified } from 'lucide-react';
 import Link from 'next/link';
 
 export const Mate: FC<MateProps> = (mate) => {
@@ -27,7 +27,10 @@ export const Mate: FC<MateProps> = (mate) => {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Crown className="absolute right-0 -top-4 h-8 w-8 animate-wiggle text-orange-500" />
+                    <Verified
+                      fill="#F87315"
+                      className="absolute right-0 -top-3 h-8 w-8 animate-wiggle text-white"
+                    />
                   </TooltipTrigger>
                   <TooltipContent className="bg-yellow-400 text-yellow-900">
                     Gold Member

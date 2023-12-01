@@ -7,7 +7,7 @@ import { SessionLessCard } from './SessionLessCard';
 import { NavRoutes } from './data';
 import { useAuthModal } from '@/hooks/useAuthModal';
 import { Separator } from '@/components/ui/separator';
-import { Crown, Info, Loader } from 'lucide-react';
+import { Verified, Info, Loader } from 'lucide-react';
 import { AddProjectModal } from '@/components/Modals/AddProjectModal';
 import { useAddProjectModal } from '@/hooks/useAddProjectModal';
 import { Button } from '@/components/ui/button';
@@ -132,7 +132,10 @@ export const Sidebar = () => {
               <p className="flex items-center text-sm text-gray-500 dark:text-gray-300">
                 <Info className="inline-block h-4" />
                 Become a Gold Member
-                <Crown className="inline-block h-4 animate-wiggle text-orange-500" />
+                <Verified
+                  fill="#F87315"
+                  className="inline-block h-5 animate-wiggle text-white"
+                />
               </p>
             </TooltipTrigger>
             <TooltipContent className="dark:bg-gray-900">

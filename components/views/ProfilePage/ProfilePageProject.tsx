@@ -37,7 +37,7 @@ export const ProfilePageProject = ({
               className="flex items-center gap-1"
               target="_blank"
             >
-              <Github />
+              <Github className="h-5" />
               <span className="hidden md:block">Github</span>
             </Link>
           </Button>
@@ -48,7 +48,7 @@ export const ProfilePageProject = ({
                 className="flex items-center gap-1"
                 target="_blank"
               >
-                <Globe2 />
+                <Globe2 className="h-5" />
                 <span className="hidden md:block">Live</span>
               </Link>
             </Button>
@@ -59,7 +59,7 @@ export const ProfilePageProject = ({
             variant={'ghost'}
             size={'sm'}
           >
-            <Edit />
+            <Edit className="h-5" />
             <span className="hidden md:block">Edit</span>
           </Button>
         </CardFooter>

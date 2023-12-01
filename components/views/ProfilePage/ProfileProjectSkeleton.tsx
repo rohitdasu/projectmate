@@ -22,6 +22,7 @@ export const ProfileProjectSkeleton = ({
         <div className="mt-4 flex gap-2">
           <div className="h-10 w-20 rounded-md bg-gray-700"></div>
           <div className="h-10 w-16 rounded-md bg-gray-700"></div>
+          <div className="h-10 w-16 rounded-md bg-gray-700"></div>
         </div>
       )}
     </div>
