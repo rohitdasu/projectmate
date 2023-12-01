@@ -9,4 +9,5 @@ export const formSchema = z.object({
     }),
   tags: z.string().min(1).max(160),
   description: z.string().min(160).max(500),
+  liveUrl: z.string().optional(),
 });

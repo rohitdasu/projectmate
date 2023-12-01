@@ -30,4 +30,5 @@ type Project = {
   tags: Array<string>;
   title: string;
   updatedAt: string;
+  liveUrl: string;
 };

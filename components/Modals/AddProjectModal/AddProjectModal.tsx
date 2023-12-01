@@ -38,6 +38,7 @@ export const AddProjectModal = ({ email }: { email?: string | null }) => {
       repositoryURL: '',
       tags: '',
       description: '',
+      liveUrl: '',
     },
   });
 
@@ -59,6 +60,7 @@ export const AddProjectModal = ({ email }: { email?: string | null }) => {
           tags: tagArray,
           content: '',
           email: email,
+          liveUrl: data.liveUrl,
         },
         {
           headers: {
@@ -135,6 +137,22 @@ export const AddProjectModal = ({ email }: { email?: string | null }) => {
                     <FormControl>
                       <Input
                         placeholder="Enter your github repository URL"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="liveUrl"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Live URL (optional)</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Enter live URL of the project"
                         {...field}
                       />
                     </FormControl>

@@ -158,7 +158,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
           </section>
         )}
         {data?.profile?.results?.username && (
-          <p className="my-1 text-sm text-black/50">
+          <p className="my-1 text-sm text-black/50 dark:text-white/60">
             @{data.profile.results.username}
           </p>
         )}
@@ -236,6 +236,8 @@ export const ProfilePage = (data: ProfilePageProps) => {
                 data.projects.results.map((project, idx) => (
                   <ProfilePageProject
                     title={project.title}
+                    githubRepository={project.githubRepository}
+                    liveUrl={project.liveUrl}
                     isCurrentUser={isCurrentUser}
                     description={project.description}
                     key={idx}
