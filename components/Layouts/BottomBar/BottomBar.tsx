@@ -29,6 +29,13 @@ export const BottomBar = () => {
     }
   };
   const router = useRouter();
+
+  const handleNavLink = (nav: { link: string; addUsername?: boolean }) => {
+    return nav.addUsername
+      ? nav.link + '/' + profileDetails?.results?.username
+      : nav.link;
+  };
+
   return (
     <div className="h-full w-full">
       <AddProjectModal email={data?.user?.email} />
@@ -47,14 +54,7 @@ export const BottomBar = () => {
           }
           // eslint-disable-next-line consistent-return
           return (
-            <Link
-              href={
-                route.addUsername
-                  ? route.link + '/' + profileDetails?.results?.username
-                  : route.link
-              }
-              key={route.id}
-            >
+            <Link href={handleNavLink(route)} key={route.id}>
               <li className={`${isActive && ''}`}>
                 {React.cloneElement(route.icon, {
                   strokeWidth: isActive ? 2 : 1,

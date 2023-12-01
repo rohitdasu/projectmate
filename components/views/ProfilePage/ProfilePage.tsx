@@ -29,6 +29,8 @@ import { formSchema } from './schema';
 import { useToast } from '../../ui/use-toast';
 import * as z from 'zod';
 import axios from 'axios';
+import Link from 'next/link';
+import { FaGithub, FaGlobeAsia, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 export const ProfilePage = (data: ProfilePageProps) => {
   const [loading, setLoading] = useState(false);
@@ -65,11 +67,16 @@ export const ProfilePage = (data: ProfilePageProps) => {
       title: data.profile?.results.title || '',
       description: data.profile?.results.description || '',
       skills: (data.profile?.results.skills || []).join(', ') || '',
+      github: data.profile?.results.socialSites?.github || '',
+      linkedin: data.profile?.results.socialSites?.linkedin || '',
+      twitter: data.profile?.results.socialSites?.twitter || '',
+      website: data.profile?.results.socialSites?.website || '',
     });
   }, [
     data.profile?.results.title,
     data.profile?.results.description,
     data.profile?.results.skills,
+    data.profile?.results.socialSites,
     form,
   ]);
 
@@ -82,6 +89,12 @@ export const ProfilePage = (data: ProfilePageProps) => {
           title: value.title,
           description: value.description,
           skills: value.skills.split(','),
+          socialSites: {
+            github: value.github || '',
+            linkedin: value.linkedin || '',
+            twitter: value.twitter || '',
+            website: value.website || '',
+          },
         },
         {
           headers: {
@@ -116,6 +129,8 @@ export const ProfilePage = (data: ProfilePageProps) => {
     !data.isCurrentUserLoading &&
     !data.isProfileLoading &&
     data.currentUser?.user?.image === data.profile?.results?.image;
+
+  const socialSites = data?.profile?.results?.socialSites;
 
   return (
     <div className="w-full py-4 px-4 md:px-0 md:py-10">
@@ -218,6 +233,71 @@ export const ProfilePage = (data: ProfilePageProps) => {
           )}
         </div>
       </section>
+      {((!data.isProfileLoading && socialSites?.github) ||
+        socialSites?.linkedin ||
+        socialSites?.twitter ||
+        socialSites?.website) && (
+        <section className="my-4">
+          <ul className="flex flex-wrap items-center gap-1">
+            {!data.isProfileLoading && socialSites?.github && (
+              <li>
+                <Button asChild variant={'ghost'} size={'sm'}>
+                  <Link
+                    target="_blank"
+                    className="flex items-center gap-2"
+                    href={socialSites?.github || '#'}
+                  >
+                    <FaGithub className="text-black dark:text-white" />
+                    <span>GitHub</span>
+                  </Link>
+                </Button>
+              </li>
+            )}
+            {!data.isProfileLoading && socialSites?.linkedin && (
+              <li>
+                <Button asChild variant={'ghost'} size={'sm'}>
+                  <Link
+                    target="_blank"
+                    className="flex items-center gap-2"
+                    href={socialSites?.linkedin || '#'}
+                  >
+                    <FaLinkedin className="text-blue-500" />
+                    <span>LinkedIn</span>
+                  </Link>
+                </Button>
+              </li>
+            )}
+            {!data.isProfileLoading && socialSites?.twitter && (
+              <li>
+                <Button asChild variant={'ghost'} size={'sm'}>
+                  <Link
+                    target="_blank"
+                    className="flex items-center gap-2"
+                    href={socialSites?.twitter || '#'}
+                  >
+                    <FaTwitter className="text-blue-500" />
+                    <span>Twitter</span>
+                  </Link>
+                </Button>
+              </li>
+            )}
+            {!data.isProfileLoading && socialSites?.website && (
+              <li>
+                <Button asChild variant={'ghost'} size={'sm'}>
+                  <Link
+                    target="_blank"
+                    className="flex items-center gap-2"
+                    href={socialSites?.website || '#'}
+                  >
+                    <FaGlobeAsia className="text-blue-500" />
+                    <span>Website</span>
+                  </Link>
+                </Button>
+              </li>
+            )}
+          </ul>
+        </section>
+      )}
       <section>
         <div className="my-6 grid grid-cols-1 gap-2 lg:grid-cols-2">
           {data.isProjectsLoading && (
@@ -252,7 +332,10 @@ export const ProfilePage = (data: ProfilePageProps) => {
       </section>
       <section>
         <Sheet open={isSheetOpen} onOpenChange={toggleSheet}>
-          <SheetContent side={sheetSide}>
+          <SheetContent
+            side={sheetSide}
+            className="max-h-screen overflow-y-auto"
+          >
             <SheetHeader>
               <SheetTitle>Edit profile</SheetTitle>
               <SheetDescription>
@@ -326,6 +409,70 @@ export const ProfilePage = (data: ProfilePageProps) => {
                         ))}
                     </section>
                   )}
+                  <FormField
+                    control={form.control}
+                    name="github"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>GitHub</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="htpps://github.com/@username"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="linkedin"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>LinkedIn</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="https://linkedin.com/in/@username"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="twitter"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Twitter</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="https://twitter.com/@username"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="website"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Website</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="https://rohitdasu.dev"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                   <Button
                     disabled={loading}
                     type="submit"

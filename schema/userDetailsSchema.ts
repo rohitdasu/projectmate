@@ -8,4 +8,12 @@ export const userDetailsSchema = z.object({
     .min(1),
   description: z.string({ required_error: 'Description is required' }).min(3),
   skills: z.array(z.string()).min(1).max(4),
+  socialSites: z
+    .object({
+      github: z.string().nullable(),
+      linkedin: z.string().nullable(),
+      twitter: z.string().nullable(),
+      website: z.string().nullable(),
+    })
+    .optional(),
 });

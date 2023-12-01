@@ -60,6 +60,7 @@ model SocialSites {
   github   String?
   linkedin String?
   twitter  String?
+  website  String?
   User     User[]
 }
 

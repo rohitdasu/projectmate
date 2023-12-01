@@ -31,7 +31,7 @@ export const ProfilePageProject = ({
       </CardHeader>
       {isCurrentUser && (
         <CardFooter className="flex flex-row items-center gap-2">
-          <Button asChild variant={'secondary'}>
+          <Button asChild variant={'secondary'} size={'sm'}>
             <Link
               href={githubRepository}
               className="flex items-center gap-1"
@@ -42,7 +42,7 @@ export const ProfilePageProject = ({
             </Link>
           </Button>
           {liveUrl && (
-            <Button asChild variant={'outline'}>
+            <Button asChild variant={'outline'} size={'sm'}>
               <Link
                 href={liveUrl}
                 className="flex items-center gap-1"
@@ -57,6 +57,7 @@ export const ProfilePageProject = ({
             className="flex items-center gap-1"
             disabled
             variant={'ghost'}
+            size={'sm'}
           >
             <Edit />
             <span className="hidden md:block">Edit</span>

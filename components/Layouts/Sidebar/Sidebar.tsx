@@ -72,15 +72,16 @@ export const Sidebar = () => {
     }
   };
 
+  const handleNavLink = (nav: { link: string; addUsername?: boolean }) => {
+    return nav.addUsername
+      ? nav.link + '/' + profileDetails?.results?.username
+      : nav.link;
+  };
+
   return (
     <div className="fixed inset-0 z-10 flex h-screen flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
       <Logo />
       <ul className="mt-16 flex w-full flex-col items-center justify-center gap-4 md:items-start">
-        {isDetailsLoading && (
-          <div>
-            <Loader className="animate-spin" />
-          </div>
-        )}
         {NavElements.map((nav) => {
           if (nav.authGuard && status === 'unauthenticated') {
             return;
@@ -105,14 +106,7 @@ export const Sidebar = () => {
           }
           // eslint-disable-next-line consistent-return
           return (
-            <Link
-              key={nav.id}
-              href={
-                nav.addUsername
-                  ? nav.link + '/' + profileDetails?.results?.username
-                  : nav.link
-              }
-            >
+            <Link key={nav.id} href={handleNavLink(nav)}>
               <div className="flex h-9 items-center justify-center gap-4  md:flex-row md:items-start">
                 <section
                   className={`transition-all hover:text-gray-900 dark:hover:text-gray-300 ${
