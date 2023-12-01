@@ -12,15 +12,21 @@ export const ProductionAuthOptions: NextAuthOptions = {
   events: {
     async createUser(message) {
       console.log(message, '====Message====');
-      const updatedUser = {
-        id: message.user.id,
-        username: message.user.id,
-      };
-      const response = await prisma.user.update({
-        where: { id: message.user.id },
-        data: updatedUser,
-      });
-      console.log(response, '===== Response =====');
+      const userId = message.user.id;
+
+      try {
+        const updatedUser = await prisma.user.update({
+          where: { id: userId },
+          data: {
+            username: message.user.id,
+          },
+        });
+
+        console.log('Username updated successfully:', updatedUser);
+      } catch (error) {
+        console.error('Error updating username:', error);
+      }
+
       return Promise.resolve();
     },
   },
