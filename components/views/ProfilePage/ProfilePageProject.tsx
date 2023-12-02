@@ -29,30 +29,31 @@ export const ProfilePageProject = ({
         <CardTitle className="text-base md:text-xl">{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
-      {isCurrentUser && (
-        <CardFooter className="flex flex-row items-center gap-2">
-          <Button asChild variant={'secondary'} size={'sm'}>
+
+      <CardFooter className="flex flex-row items-center gap-2">
+        <Button asChild variant={'secondary'} size={'sm'}>
+          <Link
+            href={githubRepository}
+            className="flex items-center gap-1"
+            target="_blank"
+          >
+            <Github className="h-5" />
+            <span className="hidden md:block">Github</span>
+          </Link>
+        </Button>
+        {liveUrl && (
+          <Button asChild variant={'outline'} size={'sm'}>
             <Link
-              href={githubRepository}
+              href={liveUrl}
               className="flex items-center gap-1"
               target="_blank"
             >
-              <Github className="h-5" />
-              <span className="hidden md:block">Github</span>
+              <Globe2 className="h-5" />
+              <span className="hidden md:block">Live</span>
             </Link>
           </Button>
-          {liveUrl && (
-            <Button asChild variant={'outline'} size={'sm'}>
-              <Link
-                href={liveUrl}
-                className="flex items-center gap-1"
-                target="_blank"
-              >
-                <Globe2 className="h-5" />
-                <span className="hidden md:block">Live</span>
-              </Link>
-            </Button>
-          )}
+        )}
+        {isCurrentUser && (
           <Button
             className="flex items-center gap-1"
             disabled
@@ -62,8 +63,8 @@ export const ProfilePageProject = ({
             <Edit className="h-5" />
             <span className="hidden md:block">Edit</span>
           </Button>
-        </CardFooter>
-      )}
+        )}
+      </CardFooter>
     </Card>
   );
 };

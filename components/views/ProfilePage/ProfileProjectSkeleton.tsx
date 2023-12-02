@@ -18,13 +18,13 @@ export const ProfileProjectSkeleton = ({
           <p className="h-3 w-3/4 bg-gray-700" />
         </div>
       </div>
-      {isCurrentUser && (
-        <div className="mt-4 flex gap-2">
-          <div className="h-10 w-20 rounded-md bg-gray-700"></div>
+      <div className="mt-4 flex gap-2">
+        <div className="h-10 w-20 rounded-md bg-gray-700"></div>
+        <div className="h-10 w-16 rounded-md bg-gray-700"></div>
+        {isCurrentUser && (
           <div className="h-10 w-16 rounded-md bg-gray-700"></div>
-          <div className="h-10 w-16 rounded-md bg-gray-700"></div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
