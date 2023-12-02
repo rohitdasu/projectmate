@@ -8,6 +8,7 @@ export interface ProfilePageProps {
   isProfileLoading: boolean;
   currentUser?: Session | null;
   isCurrentUserLoading?: boolean;
+  error?: boolean;
   onProfileEditSuccess: () => void;
 }
 

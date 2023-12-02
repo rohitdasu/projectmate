@@ -135,14 +135,15 @@ export const ProfilePage = (data: ProfilePageProps) => {
   return (
     <div className="w-full py-4 px-4 md:px-0 md:py-10">
       <section className="flex flex-row items-center justify-between">
-        {!data.isProfileLoading ? (
+        {!data.isProfileLoading && data.profile && (
           <Avatar className="h-16 w-16 rounded-lg md:h-24 md:w-24">
             <AvatarImage src={data.profile?.results?.image || undefined} />
             <AvatarFallback className="rounded-lg text-xl md:text-4xl">
               {getFallbackName()}
             </AvatarFallback>
           </Avatar>
-        ) : (
+        )}
+        {data.isProfileLoading && (
           <div className="h-16 w-16 animate-pulse rounded-lg bg-gray-700 md:h-24 md:w-24" />
         )}
         {isCurrentUser && (
@@ -156,13 +157,15 @@ export const ProfilePage = (data: ProfilePageProps) => {
           <div className="text-base font-semibold md:text-xl">
             <section className="flex flex-col">
               <p className="flex items-center gap-1">
-                {data.profile?.results?.name}{' '}
-                {data?.projects?.results?.length &&
-                data.projects.results.length > 0 ? (
-                  <span className="text-white">
-                    <Verified fill="#F87315" className="h-5 text-white" />
-                  </span>
-                ) : (
+                <span>{data.profile?.results?.name}</span>{' '}
+                {!data.error &&
+                  data.projects &&
+                  data.projects?.results?.length > 0 && (
+                    <span className="text-white">
+                      <Verified fill="#F87315" className="h-5 text-white" />
+                    </span>
+                  )}
+                {!data.error && !data.projects?.results?.length && (
                   <span className="text-white">
                     <Verified fill="#3B81F6" className="h-5" />
                   </span>
