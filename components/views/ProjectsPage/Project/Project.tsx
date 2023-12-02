@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import moment from 'moment';
 import { useToast } from '@/components/ui/use-toast';
+import Link from 'next/link';
 
 const INSIGHTS_WEBAPP = 'https://analyzemyrepo.com/analyze';
 
@@ -39,6 +40,7 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
       author,
       createdAt,
       authorImage,
+      username,
       githubRepository,
       liveUrl,
       openShareModal,
@@ -108,20 +110,27 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                       </time>
                     </Typography>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Avatar className="text-sm">
-                      <AvatarImage src={authorImage || undefined}></AvatarImage>
-                      <AvatarFallback className="dark:text-gray-300">
-                        {author &&
-                          author
-                            .split(' ')
-                            .map((word) => word[0])
-                            .join('')}
-                      </AvatarFallback>
-                    </Avatar>
-                    <span className="text-sm text-gray-600 dark:text-gray-300 md:text-base">
-                      {author}
-                    </span>
+                  <div>
+                    <Link
+                      className="flex max-w-fit items-center gap-2"
+                      href={`/profile/${username}`}
+                    >
+                      <Avatar className="text-sm">
+                        <AvatarImage
+                          src={authorImage || undefined}
+                        ></AvatarImage>
+                        <AvatarFallback className="dark:text-gray-300">
+                          {author &&
+                            author
+                              .split(' ')
+                              .map((word) => word[0])
+                              .join('')}
+                        </AvatarFallback>
+                      </Avatar>
+                      <span className="text-sm text-gray-600 dark:text-gray-300 md:text-base">
+                        {author}
+                      </span>
+                    </Link>
                   </div>
                 </Typography>
               </header>

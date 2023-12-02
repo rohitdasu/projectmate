@@ -11,6 +11,7 @@ export interface ProjectProps {
   createdAt: Date;
   githubRepository: string;
   liveUrl: string | null;
+  username: string;
   openShareModal: (data: ShareModalData) => void;
 }
 
@@ -18,5 +19,6 @@ export interface IProject extends ProjectData {
   author: {
     name: string;
     image: string;
+    username: string;
   };
 }

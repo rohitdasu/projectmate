@@ -85,6 +85,7 @@ export const ProjectsList = () => {
                 title={project.title}
                 tags={project.tags}
                 author={project.author.name}
+                username={project.author.username}
                 authorImage={project.author.image}
                 createdAt={project.createdAt}
                 githubRepository={project.githubRepository}

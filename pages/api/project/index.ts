@@ -107,6 +107,7 @@ async function getAllProject(args: { limit: number; cursorId?: string }) {
         select: {
           name: true,
           image: true,
+          username: true,
         },
       },
     };
