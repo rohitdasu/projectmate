@@ -9,7 +9,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta
             name="description"
-            content="Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 150 registered users who are already making a difference"
+            content="Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 200+ registered users who are already making a difference"
           />
           <meta
             name="keywords"
@@ -28,7 +28,7 @@ export default class MyDocument extends Document {
           />
           <meta
             property="og:description"
-            content="Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 150 registered users who are already making a difference"
+            content="Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 200+ registered users who are already making a difference"
           />
           <meta property="og:image" content="/og.jpg" />
           <meta property="twitter:card" content="summary_large_image" />
@@ -39,7 +39,7 @@ export default class MyDocument extends Document {
           />
           <meta
             property="twitter:description"
-            content="Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 150 registered users who are already making a difference"
+            content="Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 200+ registered users who are already making a difference"
           />
           <meta property="twitter:image" content="/og.jpg" />
           <script

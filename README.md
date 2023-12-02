@@ -4,7 +4,7 @@
 
 ![COVER-PROJECTMATE](https://projectmate.net/og.png)
 
-Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 150 registered users who are already making a difference
+Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 200+ registered users who are already making a difference
 
 ## Demo
 

@@ -26,7 +26,7 @@ export const ActionComponent = () => {
         }}
       >
         <p className="w-full text-center text-base leading-[1.25] text-gray-50 dark:text-gray-300 md:w-3/4 lg:w-2/3 lg:text-3xl">
-          Join the ranks of 150+ talented developers who have already signed up
+          Join the ranks of 200+ talented developers who have already signed up
         </p>
         <Button
           size={'lg'}

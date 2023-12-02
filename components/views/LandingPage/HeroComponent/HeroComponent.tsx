@@ -18,7 +18,7 @@ export const HeroComponent = () => {
         <p className="mx-auto max-w-3xl text-center text-base text-gray-900 dark:text-gray-300 md:text-lg lg:text-xl">
           Discover open-source projects, connect with experienced maintainers,
           and collaborate with a community of passionate contributors. Join over
-          150 registered users who are already making a difference
+          200+ registered users who are already making a difference
         </p>
         <Button size={'lg'} asChild>
           <Link href="/projects" className="text-center">
