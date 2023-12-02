@@ -9,6 +9,8 @@ import {
 } from '@/components/ui/hover-card';
 import { Button } from '@/components/ui/button';
 import { ShieldCheck } from 'lucide-react';
+import Link from 'next/link';
+
 export const Contributor: FC<ContributorProps> = (contributor) => {
   return (
     <HoverCard>
@@ -31,15 +33,16 @@ export const Contributor: FC<ContributorProps> = (contributor) => {
           </section>
         </div>
         <div className="mt-2">
-          <a
-            key={contributor.id}
-            href={contributor.html_url}
-            target="_blank"
-            rel="noreferrer"
-            title={contributor.login}
-          >
-            <Button variant={'outline'}>View Profile</Button>
-          </a>
+          <Button variant={'outline'} asChild>
+            <Link
+              key={contributor.id}
+              href={contributor.html_url}
+              target="_blank"
+              title={contributor.login}
+            >
+              View Profile
+            </Link>
+          </Button>
         </div>
       </HoverCardContent>
     </HoverCard>

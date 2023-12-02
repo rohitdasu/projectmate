@@ -17,29 +17,29 @@ export const Footer = () => {
           {Icons.map((social) => {
             return (
               <li key={social.id} className="">
-                <a
+                <Link
                   href={social.link}
                   target="_blank"
                   referrerPolicy="no-referrer"
                 >
-                  <div className="text-xs text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 md:text-base">
+                  <div className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 md:text-base">
                     {social.name}
                   </div>
-                </a>
+                </Link>
               </li>
             );
           })}
         </ul>
-        <a
+        <Link
           href="https://github.com/rohitdasu/projectmate/blob/main/LICENSE"
           target="_blank"
-          className="text-xs text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 md:text-base"
+          className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 md:text-base"
         >
           MIT License
-        </a>
+        </Link>
         <Link
           href="#"
-          className="text-xs text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 md:text-base"
+          className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 md:text-base"
         >
           Privacy Policy
         </Link>

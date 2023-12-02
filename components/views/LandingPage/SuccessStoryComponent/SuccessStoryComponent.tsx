@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FaProductHunt } from 'react-icons/fa';
 
 export const SuccessStoryComponent = () => {
@@ -8,12 +9,12 @@ export const SuccessStoryComponent = () => {
       </p>
       <p className="flex items-center text-base text-gray-900 dark:text-gray-300 md:text-xl lg:text-2xl">
         Our app ranks #12 on
-        <a
+        <Link
           href="https://www.producthunt.com/products/projectmate#projectmate"
           target="_blank"
         >
           <FaProductHunt className="ml-2 text-orange-600" />
-        </a>
+        </Link>
       </p>
       <iframe
         style={{ border: 'none' }}
