@@ -1,32 +1,33 @@
 import { BenefitProps } from './Benefit.interface';
-import { PlusCircle, Compass, HeartHandshake, BarChart4 } from 'lucide-react';
+import { Globe, Code, Users, BarChart4, UserPlus } from 'lucide-react';
 
 export const benefits: BenefitProps[] = [
   {
     id: '1',
-    title: 'Add Projects',
-    description: 'Boost your project’s visibility by adding it to our platform',
-    icon: PlusCircle,
+    title: 'Showcase GitHub Repositories',
+    description:
+      'Highlight your open-source projects from GitHub for increased visibility',
+    icon: Code,
   },
   {
     id: '2',
-    title: 'Discover Relevant Projects',
+    title: 'Enhanced Repository Statistics',
     description:
-      'Find open-source projects in your tech stack and contribute to the community',
-    icon: Compass,
+      'Explore detailed statistics and insights for all listed projects to determine which ones align best with your interests and contributions',
+    icon: BarChart4,
   },
   {
     id: '3',
-    title: 'Connect With Contributors',
+    title: 'Portfolio Website',
     description:
-      'Collaborate with like-minded contributors by exploring profiles of registered users',
-    icon: HeartHandshake,
+      'Create a personalized profile to showcase your projects, skills, and social links and utilize your public profile as a portfolio website to showcase your work and attract opportunities',
+    icon: Globe,
   },
   {
     id: '4',
-    title: 'Grow Your Audience',
+    title: 'Connect with Contributors',
     description:
-      'Reach a wider audience and attract potential contributors by showcasing your projects to a community with daily unique visitors of 50+',
-    icon: BarChart4,
+      'Discover and connect with like-minded contributors through the Mates page',
+    icon: Users,
   },
 ];
