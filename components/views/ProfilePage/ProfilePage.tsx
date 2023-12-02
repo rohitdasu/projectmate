@@ -181,11 +181,11 @@ export const ProfilePage = (data: ProfilePageProps) => {
               <p className="h-5 w-28 bg-gray-700" />
               <div className="h-5 w-5 rounded-full bg-gray-700" />
             </section>
-            <p className="mt-1 h-5 w-40 bg-gray-700" />
+            <p className="mt-1 h-4 w-40 animate-pulse bg-gray-700" />
           </section>
         )}
         {data.isProfileLoading ? (
-          <p className="mt-2 h-4 w-40 animate-pulse bg-gray-700" />
+          <p className="mt-2 h-6 w-60 animate-pulse bg-gray-700" />
         ) : (
           <>
             {data.profile?.results.title ? (
@@ -213,12 +213,12 @@ export const ProfilePage = (data: ProfilePageProps) => {
         <div className="flex flex-row flex-wrap gap-2">
           {data.isProfileLoading ? (
             <section className="flex flex-col gap-2">
-              <section className="flex flex-row gap-2">
-                <Badge className="h-5 w-20 animate-pulse bg-gray-700"></Badge>
-                <Badge className="h-5 w-16 animate-pulse bg-gray-700"></Badge>
-                <Badge className="h-5 w-24 animate-pulse bg-gray-700"></Badge>
+              <section className="flex flex-row flex-wrap gap-2">
+                <Badge className="h-6 w-20 animate-pulse bg-gray-700"></Badge>
+                <Badge className="h-6 w-16 animate-pulse bg-gray-700"></Badge>
+                <Badge className="h-6 w-24 animate-pulse bg-gray-700"></Badge>
               </section>
-              <section className="flex flex-row gap-2">
+              <section className="flex flex-row flex-wrap gap-2">
                 <div className="h-5 w-20 animate-pulse bg-gray-700"></div>
                 <div className="h-5 w-16 animate-pulse bg-gray-700"></div>
                 <div className="h-5 w-24 animate-pulse bg-gray-700"></div>
