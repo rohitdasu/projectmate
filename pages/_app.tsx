@@ -9,6 +9,7 @@ import { ShareModal } from '@/components/Modals/ShareModal';
 import { fetcher } from '@/lib/fetcher';
 import useSWR from 'swr';
 import { AppDataContext } from '@/context/Common/CommonContext';
+import { Loader } from 'lucide-react';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const userDetailsUrl = `/api/user/details`;
@@ -31,7 +32,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <Toaster />
             <AuthModal />
             <ShareModal />
-            {!isDetailsLoading && <Component {...pageProps} />}
+            {!isDetailsLoading ? (
+              <Component {...pageProps} />
+            ) : (
+              <div className="flex h-screen w-screen items-center justify-center">
+                <Loader className="h-10 w-10 animate-spin md:h-20 md:w-20" />
+              </div>
+            )}
           </AppDataContext.Provider>
         </AppContextProvider>
       </ThemeProvider>

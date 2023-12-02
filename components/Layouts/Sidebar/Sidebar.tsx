@@ -77,52 +77,46 @@ export const Sidebar = () => {
     <div className="fixed inset-0 z-10 flex h-screen flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
       <Logo />
       <ul className="mt-16 flex w-full flex-col items-center justify-center gap-4 md:items-start">
-        {data.isDetailsLoading && (
-          <div>
-            <Loader className="animate-spin" />
-          </div>
-        )}
-        {!data.isDetailsLoading &&
-          NavElements.map((nav) => {
-            if (nav.authGuard && status === 'unauthenticated') {
-              return;
-            }
+        {NavElements.map((nav) => {
+          if (nav.authGuard && status === 'unauthenticated') {
+            return;
+          }
 
-            const isActive =
-              router.pathname === nav.link ||
-              router.pathname === nav.link + '/[username]';
+          const isActive =
+            router.pathname === nav.link ||
+            router.pathname === nav.link + '/[username]';
 
-            let spanNameTag = (
-              <span className="hidden text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 lg:block">
+          let spanNameTag = (
+            <span className="hidden text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 lg:block">
+              {nav.name}
+            </span>
+          );
+
+          if (isActive) {
+            spanNameTag = (
+              <span className="hidden text-gray-900 dark:text-gray-300 lg:block">
                 {nav.name}
               </span>
             );
-
-            if (isActive) {
-              spanNameTag = (
-                <span className="hidden text-gray-900 dark:text-gray-300 lg:block">
-                  {nav.name}
-                </span>
-              );
-            }
-            // eslint-disable-next-line consistent-return
-            return (
-              <Link key={nav.id} href={handleNavLink(nav)}>
-                <div className="flex h-9 items-center justify-center gap-4  md:flex-row md:items-start">
-                  <section
-                    className={`transition-all hover:text-gray-900 dark:hover:text-gray-300 ${
-                      isActive && 'text-gray-900 dark:text-gray-300'
-                    }`}
-                  >
-                    {React.cloneElement(nav.icon, {
-                      strokeWidth: isActive ? 2 : 1,
-                    })}
-                  </section>
-                  <p>{spanNameTag}</p>
-                </div>
-              </Link>
-            );
-          })}
+          }
+          // eslint-disable-next-line consistent-return
+          return (
+            <Link key={nav.id} href={handleNavLink(nav)}>
+              <div className="flex h-9 items-center justify-center gap-4  md:flex-row md:items-start">
+                <section
+                  className={`transition-all hover:text-gray-900 dark:hover:text-gray-300 ${
+                    isActive && 'text-gray-900 dark:text-gray-300'
+                  }`}
+                >
+                  {React.cloneElement(nav.icon, {
+                    strokeWidth: isActive ? 2 : 1,
+                  })}
+                </section>
+                <p>{spanNameTag}</p>
+              </div>
+            </Link>
+          );
+        })}
         <AddProjectModal email={session?.user?.email} />
         <li onClick={handleAddProject}>
           <Button size="lg">Add project</Button>
