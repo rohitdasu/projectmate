@@ -58,16 +58,18 @@ const UserProfile = () => {
               </div>
             </div>
           )}
-          <ProfilePage
-            currentUser={currentUser}
-            isCurrentUserLoading={isCurrentUserLoading === 'loading'}
-            projects={projectDetails}
-            profile={profileDetails}
-            error={isProfileError || isProjectsError}
-            isProjectsLoading={isProjectsLoading}
-            isProfileLoading={isDetailsLoading}
-            onProfileEditSuccess={handleProfileEditSuccess}
-          />
+          {!isProfileError && !isProjectsError && (
+            <ProfilePage
+              currentUser={currentUser}
+              isCurrentUserLoading={isCurrentUserLoading === 'loading'}
+              projects={projectDetails}
+              profile={profileDetails}
+              error={isProfileError || isProjectsError}
+              isProjectsLoading={isProjectsLoading}
+              isProfileLoading={isDetailsLoading}
+              onProfileEditSuccess={handleProfileEditSuccess}
+            />
+          )}
         </div>
       </SharedLayout>
     </>
