@@ -28,9 +28,11 @@ export const BottomBar = () => {
   const router = useRouter();
 
   const handleNavLink = (nav: { link: string; addUsername?: boolean }) => {
-    return nav.addUsername
-      ? nav.link + '/' + profileDetails?.results?.username
-      : nav.link;
+    if (nav.addUsername && profileDetails?.results?.username) {
+      return `${nav.link}/${profileDetails.results.username}`;
+    } else {
+      return nav.link;
+    }
   };
 
   return (
