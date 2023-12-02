@@ -25,8 +25,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { useTheme } from 'next-themes';
-import { fetcher } from '@/lib/fetcher';
-import useSWR from 'swr';
+import { useAppData } from '@/context/Common/CommonContext';
 
 const NavElements = NavRoutes.map((nav) => {
   return {
@@ -49,15 +48,8 @@ const Logo = () => {
   );
 };
 
-const userDetailsUrl = `/api/user/details`;
-
 export const Sidebar = () => {
-  const { data: profileDetails, isLoading: isDetailsLoading } = useSWR(
-    userDetailsUrl,
-    fetcher,
-    { errorRetryCount: 0 }
-  );
-
+  const data = useAppData();
   const { data: session, status } = useSession();
   const router = useRouter();
   const { openModal } = useAuthModal();
@@ -74,8 +66,8 @@ export const Sidebar = () => {
   };
 
   const handleNavLink = (nav: { link: string; addUsername?: boolean }) => {
-    if (nav.addUsername && profileDetails?.results?.username) {
-      return `${nav.link}/${profileDetails.results.username}`;
+    if (nav.addUsername && data.profileDetails?.results?.username) {
+      return `${nav.link}/${data.profileDetails.results.username}`;
     } else {
       return nav.link;
     }
@@ -85,12 +77,12 @@ export const Sidebar = () => {
     <div className="fixed inset-0 z-10 flex h-screen flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
       <Logo />
       <ul className="mt-16 flex w-full flex-col items-center justify-center gap-4 md:items-start">
-        {isDetailsLoading && (
+        {data.isDetailsLoading && (
           <div>
             <Loader className="animate-spin" />
           </div>
         )}
-        {!isDetailsLoading &&
+        {!data.isDetailsLoading &&
           NavElements.map((nav) => {
             if (nav.authGuard && status === 'unauthenticated') {
               return;

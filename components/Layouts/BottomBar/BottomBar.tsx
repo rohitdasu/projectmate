@@ -8,18 +8,11 @@ import { NavRoutes } from '../Sidebar/data';
 import { useAddProjectModal } from '@/hooks/useAddProjectModal';
 import { AddProjectModal } from '@/components/Modals/AddProjectModal';
 import Link from 'next/link';
-import { fetcher } from '@/lib/fetcher';
-import useSWR from 'swr';
-
-const userDetailsUrl = `/api/user/details`;
+import { useAppData } from '@/context/Common/CommonContext';
 
 export const BottomBar = () => {
   const { openModal } = useAuthModal();
-  const { data: profileDetails, isLoading: isDetailsLoading } = useSWR(
-    userDetailsUrl,
-    fetcher,
-    { errorRetryCount: 0 }
-  );
+  const profile = useAppData();
   const { openModal: openAddProjectModal } = useAddProjectModal();
   const { status, data } = useSession();
   const handleAddProject = () => {
@@ -32,8 +25,8 @@ export const BottomBar = () => {
   const router = useRouter();
 
   const handleNavLink = (nav: { link: string; addUsername?: boolean }) => {
-    if (nav.addUsername && profileDetails?.results?.username) {
-      return `${nav.link}/${profileDetails.results.username}`;
+    if (nav.addUsername && profile.profileDetails?.results?.username) {
+      return `${nav.link}/${profile.profileDetails.results.username}`;
     } else {
       return nav.link;
     }
@@ -43,12 +36,12 @@ export const BottomBar = () => {
     <div className="h-full w-full">
       <AddProjectModal email={data?.user?.email} />
       <ul className="flex h-14 flex-row items-center justify-around">
-        {isDetailsLoading && (
+        {profile.isDetailsLoading && (
           <div>
             <Loader className="animate-spin" />
           </div>
         )}
-        {!isDetailsLoading &&
+        {!profile.isDetailsLoading &&
           NavRoutes.map((route) => {
             const isActive =
               router.pathname === route.link ||
