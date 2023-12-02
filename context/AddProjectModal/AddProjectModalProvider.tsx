@@ -5,7 +5,6 @@ import { addProjectModalReducer } from './reducers';
 
 const initialAddProjectModalState: AddProjectModalState = {
   isOpen: false,
-  randomKey: 'random',
 };
 
 export const AddProjectModalProvider: FC<PropsWithChildren> = ({
@@ -20,13 +19,8 @@ export const AddProjectModalProvider: FC<PropsWithChildren> = ({
 
   const closeModal = () => dispatch({ type: 'CLOSE_MODAL' });
 
-  const setKey = (keyValue: string) =>
-    dispatch({ type: 'SET_KEY', randomKey: keyValue });
-
   return (
-    <AddProjectModalContext.Provider
-      value={{ state, openModal, closeModal, setKey }}
-    >
+    <AddProjectModalContext.Provider value={{ state, openModal, closeModal }}>
       {children}
     </AddProjectModalContext.Provider>
   );

@@ -8,17 +8,11 @@ export const addProjectModalReducer = (
     case 'OPEN_MODAL':
       return {
         isOpen: true,
-        randomKey: state.randomKey,
       };
     case 'CLOSE_MODAL':
       return {
         ...state,
         isOpen: false,
-      };
-    case 'SET_KEY':
-      return {
-        ...state,
-        randomKey: action.randomKey,
       };
     default:
       return state;
