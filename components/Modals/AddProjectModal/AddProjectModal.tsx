@@ -27,6 +27,7 @@ import { Loader } from 'lucide-react';
 import * as z from 'zod';
 import axios from 'axios';
 import { useToast } from '../../ui/use-toast';
+import { useAppData } from '@/context/Common/CommonContext';
 
 export const AddProjectModal = ({ email }: { email?: string | null }) => {
   const [tagArray, setTagArray] = React.useState<string[]>([]);
@@ -46,8 +47,8 @@ export const AddProjectModal = ({ email }: { email?: string | null }) => {
   const {
     state: { isOpen },
     closeModal,
-    setKey,
   } = useAddProjectModal();
+  const commonData = useAppData();
   async function onSubmit(data: z.infer<typeof formSchema>) {
     try {
       setLoading(true);
@@ -74,7 +75,7 @@ export const AddProjectModal = ({ email }: { email?: string | null }) => {
         variant: 'default',
       });
       form.reset();
-      setKey(String(Math.random())); // it will refresh the projects list in projects page
+      commonData.setRandomKey(String(Math.random())); // it will refresh the projects list in projects page
       closeModal();
     } catch (e) {
       toast({

@@ -1,17 +1,17 @@
 import React from 'react';
 import { ProjectsList } from '@/components/views/ProjectsPage/ProjectsList';
 import { SharedLayout } from '@/components/Layouts';
-import { useAddProjectModal } from '@/hooks/useAddProjectModal';
+import { useAppData } from '@/context/Common/CommonContext';
 
 const Projects = () => {
-  const { state } = useAddProjectModal();
+  const commonData = useAppData();
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sr-only">
         <h1>Projects</h1>
       </header>
       <SharedLayout title="Projects">
-        <ProjectsList key={state.randomKey} />
+        <ProjectsList key={commonData.randomKey} />
       </SharedLayout>
     </div>
   );

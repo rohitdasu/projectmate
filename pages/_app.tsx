@@ -10,9 +10,11 @@ import { fetcher } from '@/lib/fetcher';
 import useSWR from 'swr';
 import { AppDataContext } from '@/context/Common/CommonContext';
 import { Loader } from 'lucide-react';
+import { useState } from 'react';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const userDetailsUrl = `/api/user/details`;
+  const [randomKey, setRandomKey] = useState();
   const { data: profileDetails, isLoading: isDetailsLoading } = useSWR(
     userDetailsUrl,
     fetcher,
@@ -22,6 +24,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   const commonContextData = {
     profileDetails: profileDetails,
     isProfileLoading: isDetailsLoading,
+    randomKey,
+    setRandomKey,
   };
 
   return (
