@@ -19,12 +19,12 @@ const UserProfile = () => {
     data: profileDetails,
     isLoading: isDetailsLoading,
     error: isProfileError,
-  } = useSWR(userDetailsUrl, fetcher);
+  } = useSWR(userDetailsUrl, fetcher, { errorRetryCount: 0 });
   const {
     data: projectDetails,
     isLoading: isProjectsLoading,
     error: isProjectsError,
-  } = useSWR(userProjectsUrl, fetcher);
+  } = useSWR(userProjectsUrl, fetcher, { errorRetryCount: 0 });
 
   const handleProfileEditSuccess = () => {
     mutate(userDetailsUrl);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { PlusCircle } from 'lucide-react';
+import { Loader, PlusCircle } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { Button } from '@/components/ui/button';
 import { useSession } from 'next-auth/react';
@@ -15,7 +15,11 @@ const userDetailsUrl = `/api/user/details`;
 
 export const BottomBar = () => {
   const { openModal } = useAuthModal();
-  const { data: profileDetails } = useSWR(userDetailsUrl, fetcher);
+  const { data: profileDetails, isLoading: isDetailsLoading } = useSWR(
+    userDetailsUrl,
+    fetcher,
+    { errorRetryCount: 0 }
+  );
   const { openModal: openAddProjectModal } = useAddProjectModal();
   const { status, data } = useSession();
   const handleAddProject = () => {
@@ -39,24 +43,30 @@ export const BottomBar = () => {
     <div className="h-full w-full">
       <AddProjectModal email={data?.user?.email} />
       <ul className="flex h-14 flex-row items-center justify-around">
-        {NavRoutes.map((route) => {
-          const isActive =
-            router.pathname === route.link ||
-            router.pathname === route.link + '/[username]';
-          if (route.authGuard && status === 'unauthenticated') {
-            return;
-          }
-          // eslint-disable-next-line consistent-return
-          return (
-            <Link href={handleNavLink(route)} key={route.id}>
-              <li className={`${isActive && ''}`}>
-                {React.cloneElement(route.icon, {
-                  strokeWidth: isActive ? 2 : 1,
-                })}
-              </li>
-            </Link>
-          );
-        })}
+        {isDetailsLoading && (
+          <div>
+            <Loader className="animate-spin" />
+          </div>
+        )}
+        {!isDetailsLoading &&
+          NavRoutes.map((route) => {
+            const isActive =
+              router.pathname === route.link ||
+              router.pathname === route.link + '/[username]';
+            if (route.authGuard && status === 'unauthenticated') {
+              return;
+            }
+            // eslint-disable-next-line consistent-return
+            return (
+              <Link href={handleNavLink(route)} key={route.id}>
+                <li className={`${isActive && ''}`}>
+                  {React.cloneElement(route.icon, {
+                    strokeWidth: isActive ? 2 : 1,
+                  })}
+                </li>
+              </Link>
+            );
+          })}
       </ul>
       <section className="fixed bottom-20 right-5">
         <Button
