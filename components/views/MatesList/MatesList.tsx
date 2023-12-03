@@ -4,17 +4,14 @@ import useSWR from 'swr';
 import { fetcher } from '@/lib/fetcher';
 import { MateProps } from './Mate.interface';
 import { MateSkeleton } from './MateSkeleton';
+import { ErrorPage } from '@/components/Common/Error';
 
 export const MatesList = () => {
   const url = `/api/user/all`;
   const { data, error, isLoading } = useSWR(url, fetcher);
 
   if (error) {
-    return (
-      <div className="flex h-full items-center justify-center">
-        <p>Failed to load mates</p>
-      </div>
-    );
+    return <ErrorPage />;
   }
 
   return (

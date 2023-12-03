@@ -4,8 +4,7 @@ import { fetcher } from '@/lib/fetcher';
 import useSWR, { mutate } from 'swr';
 import { ProfilePage } from '@/components/views/ProfilePage';
 import { useSession } from 'next-auth/react';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import { ErrorPage } from '@/components/Common/Error';
 
 const UserProfile = () => {
   const { data: currentUser, status: isCurrentUserLoading } = useSession();
@@ -37,27 +36,7 @@ const UserProfile = () => {
       </header>
       <SharedLayout title={profileDetails?.results?.name || 'Profile'}>
         <div className="flex h-full w-full flex-col items-center overflow-hidden">
-          {(isProfileError || isProjectsError) && (
-            <div className="flex h-full flex-col items-center justify-center gap-4">
-              <p className="text-base md:text-lg">
-                User not found or something went wrong
-              </p>
-              <div className="flex items-center gap-2">
-                <Button
-                  onClick={() => {
-                    if (window) {
-                      window.location.reload();
-                    }
-                  }}
-                >
-                  Retry
-                </Button>
-                <Button asChild variant={'secondary'}>
-                  <Link href={'/'}>Home</Link>
-                </Button>
-              </div>
-            </div>
-          )}
+          {(isProfileError || isProjectsError) && <ErrorPage />}
           {!isProfileError && !isProjectsError && (
             <ProfilePage
               currentUser={currentUser}

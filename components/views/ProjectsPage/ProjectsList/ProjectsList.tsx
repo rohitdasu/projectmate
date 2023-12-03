@@ -5,6 +5,7 @@ import { ProjectSkeleton } from '../ProjectSkeleton';
 import { IProject } from '../Project/Project.interface';
 import { fetcher } from '@/lib/fetcher';
 import { useShareModal } from '@/hooks/useShareModal';
+import { ErrorPage } from '@/components/Common/Error';
 
 export const ProjectsList = () => {
   const selectedTags: string[] = useMemo(() => [], []);
@@ -65,8 +66,7 @@ export const ProjectsList = () => {
     );
   }, [paginatedProjects, selectedTags]);
 
-  if (error)
-    return <div className="m-auto my-5 text-lg">Failed to load projects</div>;
+  if (error) return <ErrorPage />;
 
   return (
     <>
