@@ -113,24 +113,28 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                       </time>
                     </Typography>
                   </div>
-                  <Link
-                    className="flex max-w-fit items-center gap-2"
-                    href={`/profile/${username}`}
-                  >
-                    <Avatar className="text-sm">
-                      <AvatarImage src={authorImage || undefined}></AvatarImage>
-                      <AvatarFallback className="dark:text-gray-300">
-                        {author &&
-                          author
-                            .split(' ')
-                            .map((word) => word[0])
-                            .join('')}
-                      </AvatarFallback>
-                    </Avatar>
-                    <span className="text-sm text-gray-600 dark:text-gray-300 md:text-base">
-                      {author}
-                    </span>
-                  </Link>
+                  <div>
+                    <Link
+                      className="flex max-w-fit items-center gap-2"
+                      href={`/profile/${username}`}
+                    >
+                      <Avatar className="text-sm">
+                        <AvatarImage
+                          src={authorImage || undefined}
+                        ></AvatarImage>
+                        <AvatarFallback className="dark:text-gray-300">
+                          {author &&
+                            author
+                              .split(' ')
+                              .map((word) => word[0])
+                              .join('')}
+                        </AvatarFallback>
+                      </Avatar>
+                      <span className="text-sm text-gray-600 dark:text-gray-300 md:text-base">
+                        {author}
+                      </span>
+                    </Link>
+                  </div>
                 </Typography>
               </header>
               <Typography
