@@ -113,7 +113,10 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                       </time>
                     </Typography>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <Link
+                    className="flex max-w-fit items-center gap-2"
+                    href={`/profile/${username}`}
+                  >
                     <Avatar className="text-sm">
                       <AvatarImage src={authorImage || undefined}></AvatarImage>
                       <AvatarFallback className="dark:text-gray-300">
@@ -127,7 +130,7 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                     <span className="text-sm text-gray-600 dark:text-gray-300 md:text-base">
                       {author}
                     </span>
-                  </div>
+                  </Link>
                 </Typography>
               </header>
               <Typography
@@ -166,6 +169,16 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                     <GitPullRequest className="mr-1" />
                     <span className="hidden md:block">Contribute</span>
                   </Button>
+                  {liveUrl && (
+                    <Button
+                      size={'sm'}
+                      variant={'ghost'}
+                      onClick={handleLiveClick}
+                    >
+                      <Globe2 className="mr-1" />
+                      <span className="hidden md:block">Live</span>
+                    </Button>
+                  )}
                 </div>
                 <Button
                   size={'sm'}
