@@ -95,7 +95,10 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                   className="flex w-full flex-col gap-4 truncate text-base text-gray-900 md:text-xl"
                 >
                   <div className="flex w-full flex-row items-center justify-between">
-                    <p className="w-40 truncate dark:text-gray-300 md:w-auto">
+                    <p
+                      className="w-40 truncate  hover:cursor-pointer dark:text-gray-300 md:w-auto"
+                      onClick={handleContributeClick}
+                    >
                       {title}
                     </p>
                     <Typography
@@ -110,27 +113,20 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                       </time>
                     </Typography>
                   </div>
-                  <div>
-                    <Link
-                      className="flex max-w-fit items-center gap-2"
-                      href={`/profile/${username}`}
-                    >
-                      <Avatar className="text-sm">
-                        <AvatarImage
-                          src={authorImage || undefined}
-                        ></AvatarImage>
-                        <AvatarFallback className="dark:text-gray-300">
-                          {author &&
-                            author
-                              .split(' ')
-                              .map((word) => word[0])
-                              .join('')}
-                        </AvatarFallback>
-                      </Avatar>
-                      <span className="text-sm text-gray-600 dark:text-gray-300 md:text-base">
-                        {author}
-                      </span>
-                    </Link>
+                  <div className="flex items-center gap-2">
+                    <Avatar className="text-sm">
+                      <AvatarImage src={authorImage || undefined}></AvatarImage>
+                      <AvatarFallback className="dark:text-gray-300">
+                        {author &&
+                          author
+                            .split(' ')
+                            .map((word) => word[0])
+                            .join('')}
+                      </AvatarFallback>
+                    </Avatar>
+                    <span className="text-sm text-gray-600 dark:text-gray-300 md:text-base">
+                      {author}
+                    </span>
                   </div>
                 </Typography>
               </header>
@@ -170,16 +166,6 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                     <GitPullRequest className="mr-1" />
                     <span className="hidden md:block">Contribute</span>
                   </Button>
-                  {liveUrl && (
-                    <Button
-                      size={'sm'}
-                      variant={'ghost'}
-                      onClick={handleLiveClick}
-                    >
-                      <Globe2 className="mr-1" />
-                      <span className="hidden md:block">Live</span>
-                    </Button>
-                  )}
                 </div>
                 <Button
                   size={'sm'}
