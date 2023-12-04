@@ -95,7 +95,10 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                   className="flex w-full flex-col gap-4 truncate text-base text-gray-900 md:text-xl"
                 >
                   <div className="flex w-full flex-row items-center justify-between">
-                    <p className="w-40 truncate dark:text-gray-300 md:w-auto">
+                    <p
+                      className="w-40 truncate  hover:cursor-pointer dark:text-gray-300 md:w-auto"
+                      onClick={handleContributeClick}
+                    >
                       {title}
                     </p>
                     <Typography
