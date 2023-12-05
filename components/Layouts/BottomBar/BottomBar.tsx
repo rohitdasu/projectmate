@@ -59,7 +59,8 @@ export const BottomBar = () => {
         <Button
           onClick={handleAddProject}
           size={'icon'}
-          className="h-12 w-12 rounded-full"
+          variant={'outline'}
+          className="h-12 w-12 rounded-full bg-transparent backdrop-blur-md"
         >
           <PlusCircle className="h-8 w-8" />
         </Button>
