@@ -35,7 +35,7 @@ export const BottomBar = () => {
   return (
     <div className="h-full w-full">
       <AddProjectModal email={data?.user?.email} />
-      <ul className="flex h-14 flex-row items-center justify-around">
+      <ul className="flex h-14 flex-row items-center justify-around backdrop-blur-sm">
         {NavRoutes.map((route) => {
           const isActive =
             router.pathname === route.link ||

@@ -20,7 +20,7 @@ export const TopNavbar = () => {
   const { data, status } = useSession();
   const { openModal } = useAuthModal();
   return (
-    <div className="flex h-14 flex-row items-center justify-between px-4">
+    <div className="flex h-14 flex-row items-center justify-between px-4 backdrop-blur-sm">
       <Link href={'/'}>
         <p className="font-semibold uppercase">projectmate</p>
       </Link>
