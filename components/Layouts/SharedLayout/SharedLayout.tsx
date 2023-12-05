@@ -41,7 +41,7 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
       </Head>
       {topBar && (
         <nav
-          className={`sticky z-10 block overflow-hidden transition-all md:hidden ${
+          className={`sticky z-10 block overflow-hidden border-b transition-all md:hidden ${
             isNavbarVisible ? 'top-0' : '-top-14'
           }`}
         >
