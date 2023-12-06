@@ -17,7 +17,7 @@ export const ActionComponent = () => {
     }
   };
   return (
-    <section className="bg-gray-800 py-16 px-4 dark:bg-black md:py-24">
+    <section className="bg-gray-800 py-16 px-4 dark:bg-black md:px-8 md:py-24 xl:px-0">
       <div
         className="relative mx-auto flex max-w-screen-xl flex-col items-center gap-10 overflow-hidden bg-cover bg-no-repeat"
         style={{

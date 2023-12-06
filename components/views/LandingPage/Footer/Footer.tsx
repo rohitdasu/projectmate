@@ -11,7 +11,7 @@ const Icons = icons.map((social) => {
 
 export const Footer = () => {
   return (
-    <div className="border-t border-gray-200 px-4 dark:border-gray-800">
+    <div className="border-t border-gray-200 px-4 dark:border-gray-800 md:px-8 xl:px-0">
       <div className="mx-auto flex w-full max-w-screen-xl flex-col items-center justify-between gap-4 py-8 md:flex-row md:gap-0">
         <ul className="flex w-full flex-row items-center justify-between gap-4 md:w-auto lg:justify-center">
           {Icons.map((social) => {

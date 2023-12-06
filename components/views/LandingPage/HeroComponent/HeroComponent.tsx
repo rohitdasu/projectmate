@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export const HeroComponent = () => {
   return (
-    <section className="flex h-[calc(100vh-80px)] flex-col items-center justify-center gap-16 px-4 lg:px-0">
+    <section className="flex h-[calc(100vh-80px)] flex-col items-center justify-center gap-16 px-4 md:px-8 xl:px-0">
       <div
         className="relative flex flex-col items-center gap-8 overflow-hidden bg-cover bg-no-repeat"
         style={{

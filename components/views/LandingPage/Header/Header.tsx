@@ -32,7 +32,7 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = ({ homeRoute = '/' }) => {
   const { setTheme } = useTheme();
   return (
-    <nav className="mx-auto flex h-20 w-full max-w-screen-xl flex-row items-center justify-between px-4 md:px-0">
+    <nav className="mx-auto flex h-20 w-full max-w-screen-xl flex-row items-center justify-between px-4 md:px-8 xl:px-0">
       <Logo route={homeRoute} />
       <section className="flex items-center gap-2">
         <Link href={'https://github.com/rohitdasu/projectmate'} target="_blank">
