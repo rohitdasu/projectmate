@@ -68,7 +68,7 @@ export const TopNavbar = () => {
           </DropdownMenu>
         )}
         {status === 'unauthenticated' && (
-          <Button variant="outline" size={'icon'}>
+          <Button variant="secondary" size={'icon'}>
             <LogIn onClick={openModal} />
           </Button>
         )}
