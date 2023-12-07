@@ -1,5 +1,49 @@
 import { Icon } from './Footer.interface';
 
+export const tags = [
+  'Open-source',
+  'Portfolio',
+  'Collaboration',
+  'Contributors',
+  'Github',
+  'Stats',
+  'Profile',
+  'projectmate.net',
+];
+
+export const usefulLinks = [
+  {
+    name: 'Projects',
+    link: '/projects',
+  },
+  {
+    name: 'Mates',
+    link: '/mates',
+  },
+  {
+    name: 'Posts',
+    link: '/posts',
+  },
+];
+
+export const legalLinks = [
+  {
+    name: 'MIT License',
+    link: 'https://github.com/rohitdasu/projectmate/blob/main/LICENSE',
+    target: '_blank',
+  },
+  {
+    name: 'Privacy Policy',
+    link: '#',
+    target: '',
+  },
+  {
+    name: 'Terms of Service',
+    link: '#',
+    target: '',
+  },
+];
+
 export const icons: Icon[] = [
   {
     id: '1',

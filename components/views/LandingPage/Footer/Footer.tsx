@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { icons } from './data';
+import { icons, legalLinks, tags, usefulLinks } from './data';
 
 const Icons = icons.map((social) => {
   return {
@@ -9,26 +9,15 @@ const Icons = icons.map((social) => {
   };
 });
 
-const tags = [
-  'Open-source',
-  'Portfolio',
-  'Collaboration',
-  'Contributors',
-  'Github',
-  'Stats',
-  'Profile',
-  'projectmate.net',
-];
-
 export const Footer = () => {
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
   return (
-    <footer className="bg-gray-200 text-black dark:bg-gray-900 dark:text-white">
+    <footer className="bg-gray-100 text-black dark:bg-gray-900 dark:text-white">
       <div className="container mx-auto py-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h2 className="mb-4 text-xl">Connect with Us</h2>
+            <h2 className="mb-4 text-lg dark:text-gray-300">Connect with Us</h2>
             <ul className="flex gap-4">
               {Icons.map((social) => {
                 return (
@@ -38,7 +27,7 @@ export const Footer = () => {
                       target="_blank"
                       referrerPolicy="no-referrer"
                     >
-                      <span className="cursor-pointer text-sm hover:text-gray-500 dark:hover:text-gray-300 md:text-base">
+                      <span className="cursor-pointer text-sm text-muted-foreground hover:text-gray-900 dark:hover:text-gray-300 md:text-base">
                         {social.name}
                       </span>
                     </Link>
@@ -48,72 +37,48 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <h2 className="mb-4 text-xl">Useful Links</h2>
+            <h2 className="mb-4 text-lg dark:text-gray-300">Useful Links</h2>
             <ul>
-              <li>
-                <Link href="/projects">
-                  <span className="cursor-pointer text-sm hover:text-gray-500 dark:hover:text-gray-300 md:text-base">
-                    Projects
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/mates">
-                  <span className="cursor-pointer text-sm hover:text-gray-500 dark:hover:text-gray-300 md:text-base">
-                    Mates
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/posts">
-                  <span className="cursor-pointer text-sm hover:text-gray-500 dark:hover:text-gray-300 md:text-base">
-                    Posts
-                  </span>
-                </Link>
-              </li>
+              {usefulLinks.map((item, idx) => (
+                <li key={idx}>
+                  <Link href={item.link}>
+                    <span className="cursor-pointer text-sm text-muted-foreground hover:text-gray-900 dark:hover:text-gray-300 md:text-base">
+                      {item.name}
+                    </span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>
-            <h2 className="mb-4 text-xl">Legal</h2>
+            <h2 className="mb-4 text-lg dark:text-gray-300">Legal</h2>
             <ul>
-              <li>
-                <Link
-                  href="https://github.com/rohitdasu/projectmate/blob/main/LICENSE"
-                  target="_blank"
-                >
-                  <span className="cursor-pointer text-sm hover:text-gray-500 dark:hover:text-gray-300 md:text-base">
-                    MIT License
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link href="#">
-                  <span className="cursor-pointer text-sm hover:text-gray-500 dark:hover:text-gray-300 md:text-base">
-                    Privacy Policy
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link href="#">
-                  <span className="cursor-pointer text-sm hover:text-gray-500 dark:hover:text-gray-300 md:text-base">
-                    Terms of Service
-                  </span>
-                </Link>
-              </li>
+              {legalLinks.map((item, idx) => (
+                <li key={idx}>
+                  <Link href={item.link} target={item.target}>
+                    <span className="cursor-pointer text-sm text-muted-foreground hover:text-gray-900 dark:hover:text-gray-300 md:text-base">
+                      {item.name}
+                    </span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>
-            <h2 className="mb-4 text-xl">Tags</h2>
+            <h2 className="mb-4 text-lg dark:text-gray-300">Tags</h2>
             <div className="flex flex-wrap gap-2">
               {tags.map((tag, idx) => (
-                <span key={idx} className="text-sm md:text-base">
+                <span
+                  key={idx}
+                  className="text-sm text-muted-foreground md:text-base"
+                >
                   {tag}
                 </span>
               ))}
             </div>
           </div>
         </div>
-        <div className="mt-10 text-center text-sm font-bold text-black dark:text-white">
+        <div className="mt-10 text-center text-sm font-bold text-gray-700 dark:text-white">
           <p>projectmate {currentYear}</p>
         </div>
       </div>
