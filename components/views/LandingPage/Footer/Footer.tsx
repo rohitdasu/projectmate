@@ -14,7 +14,7 @@ export const Footer = () => {
   const currentYear = currentDate.getFullYear();
   return (
     <footer className="bg-gray-100 text-black dark:bg-gray-900 dark:text-white">
-      <div className="container mx-auto py-8">
+      <div className="mx-auto max-w-screen-xl py-8 px-4 md:px-8 xl:px-0">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <h2 className="mb-4 text-lg dark:text-gray-300">Connect with Us</h2>
