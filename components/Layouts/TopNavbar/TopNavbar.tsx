@@ -4,8 +4,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  // DropdownMenuLabel,
-  // DropdownMenuSeparator,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { Loader, LogIn, MoonIcon, SunIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
@@ -56,11 +56,13 @@ export const TopNavbar = () => {
               </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
-              {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
-              {/* <DropdownMenuSeparator /> */}
-              {/* <DropdownMenuItem disabled>Support</DropdownMenuItem> */}
-              {/* <DropdownMenuItem disabled>Settings</DropdownMenuItem> */}
-              {/* <DropdownMenuSeparator /> */}
+              <DropdownMenuLabel>
+                <p className="leading-none">My Account</p>
+                <span className="mt-1 inline-block text-xs text-black/60 dark:text-white/60">
+                  {data?.user?.email}
+                </span>
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
               <DropdownMenuItem onClick={() => signOut({ redirect: false })}>
                 Log out
               </DropdownMenuItem>

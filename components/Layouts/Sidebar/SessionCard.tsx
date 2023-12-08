@@ -4,8 +4,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  // DropdownMenuLabel,
-  // DropdownMenuSeparator,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -14,6 +14,7 @@ import { signOut } from 'next-auth/react';
 export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
   name,
   image,
+  email,
 }) => {
   return (
     <li className="flex w-full flex-row items-center justify-between">
@@ -28,11 +29,13 @@ export const SessionCard: FC<Pick<User, 'email' | 'name' | 'image'>> = ({
           </section>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
-          {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
-          {/* <DropdownMenuSeparator /> */}
-          {/* <DropdownMenuItem disabled>Support</DropdownMenuItem> */}
-          {/* <DropdownMenuItem disabled>Settings</DropdownMenuItem> */}
-          {/* <DropdownMenuSeparator /> */}
+          <DropdownMenuLabel>
+            <p className="leading-none">My Account</p>
+            <span className="mt-1 inline-block text-xs text-black/60 dark:text-white/60">
+              {email}
+            </span>
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => signOut({ redirect: false })}>
             Log out
           </DropdownMenuItem>
