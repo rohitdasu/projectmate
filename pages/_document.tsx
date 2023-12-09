@@ -30,7 +30,7 @@ export default class MyDocument extends Document {
             property="og:description"
             content="Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 200+ registered users who are already making a difference"
           />
-          <meta property="og:image" content="/og.jpg" />
+          <meta property="og:image" content="/og.png" />
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://www.projectmate.net/" />
           <meta
@@ -41,7 +41,7 @@ export default class MyDocument extends Document {
             property="twitter:description"
             content="Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 200+ registered users who are already making a difference"
           />
-          <meta property="twitter:image" content="/og.jpg" />
+          <meta property="twitter:image" content="/og.png" />
           <script
             dangerouslySetInnerHTML={{
               __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
