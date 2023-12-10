@@ -9,11 +9,11 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Loader, LogIn, MoonIcon, SunIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import Link from 'next/link';
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { signOut, useSession } from 'next-auth/react';
 import { useAuthModal } from '@/hooks/useAuthModal';
+import { Logo } from '@/components/Common/Logo';
 
 export const TopNavbar = () => {
   const { setTheme } = useTheme();
@@ -21,9 +21,7 @@ export const TopNavbar = () => {
   const { openModal } = useAuthModal();
   return (
     <div className="flex h-14 flex-row items-center justify-between px-4 backdrop-blur-sm">
-      <Link href={'/'}>
-        <p className="font-semibold uppercase">projectmate</p>
-      </Link>
+      <Logo route={'/'} />
       <section className="flex flex-row items-center gap-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

@@ -5,3 +5,4 @@ export * from './Header';
 export * from './HeroComponent';
 export * from './SuccessStoryComponent';
 export * from './ContributorsComponent';
+export * from './VideoDemo';

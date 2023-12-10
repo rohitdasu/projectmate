@@ -10,20 +10,7 @@ import { MoonIcon, SunIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
 import { FaDiscord, FaGithub, FaTwitter } from 'react-icons/fa';
-
-interface LogoProps {
-  route: string;
-}
-
-export const Logo: FC<LogoProps> = ({ route }) => {
-  return (
-    <Link href={route}>
-      <h1 className="font-lato text-xl font-medium uppercase md:text-2xl">
-        project<span className="text-primary-color">mate</span>
-      </h1>
-    </Link>
-  );
-};
+import { Logo } from '@/components/Common/Logo';
 
 interface HeaderProps {
   homeRoute?: string;
@@ -32,7 +19,7 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = ({ homeRoute = '/' }) => {
   const { setTheme } = useTheme();
   return (
-    <nav className="mx-auto flex h-20 w-full max-w-screen-xl flex-row items-center justify-between px-4 md:px-8 xl:px-0">
+    <nav className="sticky top-0 z-50 mx-auto flex h-20 w-full max-w-screen-xl flex-row items-center justify-between bg-white/60 px-4 backdrop-blur-md dark:bg-black/60 md:px-8 xl:px-0">
       <Logo route={homeRoute} />
       <section className="flex items-center gap-2">
         <Link href={'https://github.com/rohitdasu/projectmate'} target="_blank">
