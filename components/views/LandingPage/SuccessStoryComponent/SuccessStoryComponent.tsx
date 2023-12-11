@@ -3,7 +3,7 @@ import { FaProductHunt } from 'react-icons/fa';
 
 export const SuccessStoryComponent = () => {
   return (
-    <section className="mx-auto flex max-w-screen-xl flex-col items-center gap-6 py-16 px-4 md:px-8 xl:px-0">
+    <section className="mx-auto flex max-w-screen-lg flex-col items-center gap-6 py-16 px-4 md:px-8 xl:px-0">
       <p className="text-xl text-gray-900 dark:text-gray-300 md:text-3xl lg:text-4xl">
         ProductHunt Success Story 🎉
       </p>
