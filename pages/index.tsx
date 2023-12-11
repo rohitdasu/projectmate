@@ -3,13 +3,12 @@ import Head from 'next/head';
 import type { GetServerSideProps, NextPage } from 'next';
 import {
   HeroComponent,
-  BenefitsComponent,
-  SuccessStoryComponent,
   ActionComponent,
   Header,
   Footer,
   VideoDemo,
   FeaturesComponent,
+  MaintainersComponent,
 } from '@/components/views/LandingPage';
 import { favicons } from '@/data';
 import { prisma } from '../lib/prisma';
@@ -41,9 +40,7 @@ const Home: NextPage<HomeProps> = ({ userCount, randomUsers }) => {
         <VideoDemo />
         <FeaturesComponent />
         <ActionComponent />
-        {/* <SuccessStoryComponent /> */}
-        {/* <BenefitsComponent /> */}
-        {/* <ContributorsComponent /> */}
+        <MaintainersComponent />
       </main>
       <Footer />
     </>

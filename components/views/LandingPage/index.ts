@@ -7,3 +7,4 @@ export * from './SuccessStoryComponent';
 export * from './ContributorsComponent';
 export * from './VideoDemo';
 export * from './FeaturesComponent';
+export * from './MaintainersComponent';
