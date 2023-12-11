@@ -23,7 +23,7 @@ const maintainers = [
 
 export const MaintainersComponent = () => {
   return (
-    <section className="mx-auto mb-16 max-w-screen-lg py-10 text-center">
+    <section className="mx-auto max-w-screen-lg py-10 text-center">
       <div>
         <h2 className="mb-4 text-lg font-bold md:text-3xl">Developed by</h2>
         <div className="flex flex-wrap items-center justify-center gap-2">
