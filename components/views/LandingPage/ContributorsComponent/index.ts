@@ -1,1 +1,0 @@
-export { ContributorsComponent } from './ContributorsComponent';
