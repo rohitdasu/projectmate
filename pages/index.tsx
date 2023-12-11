@@ -9,6 +9,7 @@ import {
   Header,
   Footer,
   VideoDemo,
+  FeaturesComponent,
 } from '@/components/views/LandingPage';
 import { favicons } from '@/data';
 import { prisma } from '../lib/prisma';
@@ -38,9 +39,10 @@ const Home: NextPage<HomeProps> = ({ userCount, randomUsers }) => {
       <main>
         <HeroComponent userCount={userCount} randomUsers={randomUsers} />
         <VideoDemo />
-        <BenefitsComponent />
-        <SuccessStoryComponent />
-        <ActionComponent />
+        <FeaturesComponent />
+        {/* <BenefitsComponent /> */}
+        {/* <SuccessStoryComponent /> */}
+        {/* <ActionComponent /> */}
         {/* <ContributorsComponent /> */}
       </main>
       <Footer />

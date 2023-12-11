@@ -2,10 +2,7 @@ import React from 'react';
 
 export const VideoDemo = () => {
   return (
-    <section
-      className="bg-secondary-background my-8 px-4 md:my-16 md:px-8 xl:px-0"
-      id="demo"
-    >
+    <section className="my-16 px-4 md:px-8 xl:px-0" id="demo">
       <div className="mx-auto flex max-w-screen-lg flex-col gap-8">
         <section>
           <div style={{ padding: '56.04% 0 0 0', position: 'relative' }}>

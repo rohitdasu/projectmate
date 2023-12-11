@@ -4,10 +4,7 @@ import { Benefit } from './Benefit';
 
 export const BenefitsComponent = () => {
   return (
-    <section
-      className="bg-secondary-background my-8 px-4 md:my-16 md:px-8 xl:px-0"
-      id="benefits"
-    >
+    <section className="my-8 px-4 md:my-16 md:px-8 xl:px-0" id="benefits">
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8">
         <div className="flex justify-center">
           <h2 className="text-center text-xl text-gray-900 dark:text-gray-300 md:text-left lg:text-4xl">

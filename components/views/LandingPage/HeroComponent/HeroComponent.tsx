@@ -20,10 +20,10 @@ export const HeroComponent = ({
           backgroundPosition: 'center',
         }}
       >
-        <h1 className="mx-auto max-w-4xl text-center text-3xl font-semibold text-gray-900 dark:text-gray-300 md:text-5xl md:!leading-[1.25]">
+        <h1 className="mx-auto max-w-4xl text-center text-2xl font-semibold text-gray-900 dark:text-gray-300 md:text-5xl md:!leading-[1.25]">
           Supercharge your open-source contributions
         </h1>
-        <p className="mx-auto max-w-2xl text-center text-base text-gray-900 dark:text-gray-300 md:text-lg">
+        <p className="mx-auto max-w-2xl text-center text-sm font-light text-gray-900 dark:text-gray-300 md:text-lg">
           Explore projects, contribute seamlessly, access insightful stats,
           effortlessly share, connect with a vibrant community, and showcase
           your work with a personalized portfolio.
@@ -42,7 +42,7 @@ export const HeroComponent = ({
                 style={{ marginLeft: idx > 0 ? -15 : 0 }}
               >
                 <Link href={'profile/' + user.username}>
-                  <Avatar>
+                  <Avatar className="h-8 w-8 md:h-9 md:w-9">
                     <AvatarImage src={user.image} />
                     <AvatarFallback>{user.name[0]}</AvatarFallback>
                   </Avatar>
@@ -51,7 +51,7 @@ export const HeroComponent = ({
             ))}
           </ul>
           <section>
-            <p className="flex items-center">
+            <section className="flex items-center">
               {Array.from({ length: 5 }).map((_, index) => (
                 <Star
                   key={index}
@@ -59,8 +59,10 @@ export const HeroComponent = ({
                   fill="orange"
                 />
               ))}
+            </section>
+            <p className="text-xs font-light md:text-sm">
+              loved by {userCount} registered users
             </p>
-            <p className="text-sm">loved by {userCount} registered users</p>
           </section>
         </section>
       </div>
