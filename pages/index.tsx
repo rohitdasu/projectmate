@@ -40,9 +40,9 @@ const Home: NextPage<HomeProps> = ({ userCount, randomUsers }) => {
         <HeroComponent userCount={userCount} randomUsers={randomUsers} />
         <VideoDemo />
         <FeaturesComponent />
+        <ActionComponent />
         {/* <SuccessStoryComponent /> */}
         {/* <BenefitsComponent /> */}
-        {/* <ActionComponent /> */}
         {/* <ContributorsComponent /> */}
       </main>
       <Footer />

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { icons, legalLinks, tags, usefulLinks } from './data';
 import React from 'react';
+import { Logo } from '@/components/Common/Logo';
 
 const Icons = icons.map((social) => ({
   id: social.id,
