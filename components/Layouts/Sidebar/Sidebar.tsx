@@ -26,6 +26,7 @@ import {
 } from '@/components/ui/tooltip';
 import { useTheme } from 'next-themes';
 import { useAppData } from '@/context/Common/CommonContext';
+import { Logo } from '@/components/Common/Logo';
 
 const NavElements = NavRoutes.map((nav) => {
   return {
@@ -37,16 +38,6 @@ const NavElements = NavRoutes.map((nav) => {
     addUsername: nav.addUsername,
   };
 });
-
-const Logo = () => {
-  return (
-    <Link href="/">
-      <h1 className="font-lato hidden text-xl font-medium uppercase md:text-2xl lg:block">
-        projectmate
-      </h1>
-    </Link>
-  );
-};
 
 export const Sidebar = () => {
   const data = useAppData();
@@ -75,7 +66,7 @@ export const Sidebar = () => {
 
   return (
     <div className="fixed inset-0 z-10 flex h-screen flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
-      <Logo />
+      <Logo route={'/'} />
       <ul className="mt-16 flex w-full flex-col items-center justify-center gap-4 md:items-start">
         {NavElements.map((nav) => {
           if (nav.authGuard && status === 'unauthenticated') {

@@ -17,23 +17,21 @@ export const ActionComponent = () => {
     }
   };
   return (
-    <section className="bg-gray-800 py-16 px-4 dark:bg-black md:px-8 md:py-24 xl:px-0">
-      <div
-        className="relative mx-auto flex max-w-screen-xl flex-col items-center gap-10 overflow-hidden bg-cover bg-no-repeat"
-        style={{
-          backgroundImage: "url('/checks.png')",
-          backgroundPosition: 'center',
-        }}
-      >
-        <p className="w-full text-center text-base leading-[1.25] text-gray-50 dark:text-gray-300 md:w-3/4 lg:w-2/3 lg:text-3xl">
-          Join the ranks of 200+ talented developers who have already signed up
+    <section
+      style={{
+        backgroundImage: "url('/checks.png')",
+      }}
+      className="mx-auto my-8 max-w-screen-xl overflow-hidden bg-cover bg-no-repeat py-8 dark:text-gray-300 md:my-16 md:py-12"
+      id="action"
+    >
+      <div className="container mx-auto text-center">
+        <h2 className="mb-4 text-2xl font-semibold md:text-3xl">
+          Ready to get started?
+        </h2>
+        <p className="mb-8 text-sm font-light md:text-lg">
+          Join our community and unleash the power of collaboration!
         </p>
-        <Button
-          size={'lg'}
-          variant={'secondary'}
-          onClick={join}
-          disabled={status === 'loading'}
-        >
+        <Button size={'lg'} onClick={join} disabled={status === 'loading'}>
           {status === 'unauthenticated'
             ? 'Sign Up'
             : status === 'authenticated'

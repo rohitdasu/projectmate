@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { Sidebar } from '../Sidebar';
 import { BottomBar } from '../BottomBar';
 import { TopNavbar } from '../TopNavbar';
+import { favicons } from '@/data';
 
 export const SharedLayout: FC<SharedLayoutProps> = ({
   title = '',
@@ -37,7 +38,9 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
     <div className="flex min-h-screen w-full flex-col">
       <Head>
         <title>{`${title} | Projectmate`}</title>
-        <link rel="icon" href="/logo.svg" />
+        {favicons.map((favicon, index) => (
+          <link key={index} {...favicon} />
+        ))}
       </Head>
       {topBar && (
         <nav

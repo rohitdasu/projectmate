@@ -1,34 +1,88 @@
 import React from 'react';
 import Head from 'next/head';
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import {
   HeroComponent,
-  BenefitsComponent,
-  SuccessStoryComponent,
   ActionComponent,
-  ContributorsComponent,
   Header,
   Footer,
+  VideoDemo,
+  FeaturesComponent,
+  MaintainersComponent,
 } from '@/components/views/LandingPage';
+import { favicons } from '@/data';
+import { prisma } from '../lib/prisma';
 
-const Home: NextPage = () => {
+interface HomeProps {
+  userCount: number | null;
+  randomUsers: User[] | null;
+}
+
+export type User = {
+  id: string;
+  name: string;
+  image: string;
+  username: string;
+};
+
+const Home: NextPage<HomeProps> = ({ userCount, randomUsers }) => {
   return (
     <>
       <Head>
         <title>Home | Projectmate</title>
-        <link rel="icon" href="/logo.svg" />
+        {favicons.map((favicon, index) => (
+          <link key={index} {...favicon} />
+        ))}
       </Head>
       <Header />
       <main>
-        <HeroComponent />
-        <BenefitsComponent />
-        <SuccessStoryComponent />
+        <HeroComponent userCount={userCount} randomUsers={randomUsers} />
+        <VideoDemo />
+        <FeaturesComponent />
         <ActionComponent />
-        <ContributorsComponent />
+        <MaintainersComponent />
       </main>
       <Footer />
     </>
   );
 };
+
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
+  try {
+    const userCount = await prisma.user.count();
+    const allUsers = await prisma.user.findMany({
+      select: {
+        image: true,
+        name: true,
+        id: true,
+        username: true,
+      },
+    });
+    const randomUsers = shuffleArray(allUsers).slice(0, 4);
+
+    return {
+      props: {
+        userCount,
+        randomUsers,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        userCount: null,
+        randomUsers: null,
+      },
+    };
+  }
+};
+
+function shuffleArray(array: any[]) {
+  const shuffledArray = array.slice();
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
+}
 
 export default Home;
