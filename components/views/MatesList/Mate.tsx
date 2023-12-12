@@ -13,7 +13,7 @@ import Link from 'next/link';
 export const Mate: FC<MateProps> = (mate) => {
   return (
     <Link href={`/profile/${mate.username}`}>
-      <li
+      <section
         className="flex flex-col items-center justify-center gap-2"
         key={mate.id}
       >
@@ -43,7 +43,7 @@ export const Mate: FC<MateProps> = (mate) => {
             {mate.name.split(' ')[0]}
           </span>
         </div>
-      </li>
+      </section>
     </Link>
   );
 };

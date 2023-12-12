@@ -6,18 +6,22 @@ const maintainers = [
   {
     name: 'Rohit',
     avatar: 'https://avatars.githubusercontent.com/u/48400770?v=4',
+    github: 'https://github.com/rohitdasu',
   },
   {
     name: 'Leewan',
     avatar: 'https://avatars.githubusercontent.com/u/60838584?v=4',
+    github: 'https://github.com/leewan-09',
   },
   {
     name: 'Jakub',
     avatar: 'https://avatars.githubusercontent.com/u/74047866?v=4',
+    github: 'https://github.com/JakubChorzepa',
   },
   {
     name: 'Yazdun',
     avatar: 'https://avatars.githubusercontent.com/u/83041367?v=4',
+    github: 'https://github.com/Yazdun',
   },
 ];
 
@@ -36,13 +40,15 @@ export const MaintainersComponent = () => {
               style={{ marginLeft: index > 0 ? -30 : 0 }}
               key={index}
             >
-              <Image
-                src={maintainer.avatar}
-                alt={`${maintainer.name}'s Avatar`}
-                className="mb-2 h-10 w-10 rounded-full object-cover md:h-16 md:w-16"
-                height={50}
-                width={50}
-              />
+              <Link href={maintainer.github} target="_blank">
+                <Image
+                  src={maintainer.avatar}
+                  alt={`${maintainer.name}'s Avatar`}
+                  className="mb-2 h-10 w-10 rounded-full object-cover md:h-16 md:w-16"
+                  height={50}
+                  width={50}
+                />
+              </Link>
             </div>
           ))}
           <Link

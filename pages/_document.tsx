@@ -9,11 +9,11 @@ export default class MyDocument extends Document {
         <Head>
           <meta
             name="description"
-            content="Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 200+ registered users who are already making a difference"
+            content="Explore projects, contribute seamlessly, access insightful stats, effortlessly share, connect with a vibrant community, and showcase your work with a personalized portfolio."
           />
           <meta
             name="keywords"
-            content="opensource, github, reactjs, nextjs, technology"
+            content="opensource, github, reactjs, nextjs, technology, portfolio, profile"
           />
           <meta name="robots" content="index,follow" />
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -28,7 +28,7 @@ export default class MyDocument extends Document {
           />
           <meta
             property="og:description"
-            content="Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 200+ registered users who are already making a difference"
+            content="Explore projects, contribute seamlessly, access insightful stats, effortlessly share, connect with a vibrant community, and showcase your work with a personalized portfolio."
           />
           <meta property="og:image" content="/og.png" />
           <meta property="twitter:card" content="summary_large_image" />
@@ -39,7 +39,7 @@ export default class MyDocument extends Document {
           />
           <meta
             property="twitter:description"
-            content="Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 200+ registered users who are already making a difference"
+            content="Explore projects, contribute seamlessly, access insightful stats, effortlessly share, connect with a vibrant community, and showcase your work with a personalized portfolio."
           />
           <meta property="twitter:image" content="/og.png" />
           <script

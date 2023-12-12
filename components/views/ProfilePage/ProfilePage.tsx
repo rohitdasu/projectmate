@@ -31,6 +31,7 @@ import * as z from 'zod';
 import axios from 'axios';
 import Link from 'next/link';
 import { FaGithub, FaGlobeAsia, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 export const ProfilePage = (data: ProfilePageProps) => {
   const [loading, setLoading] = useState(false);
@@ -133,7 +134,12 @@ export const ProfilePage = (data: ProfilePageProps) => {
   const socialSites = data?.profile?.results?.socialSites;
 
   return (
-    <div className="w-full py-4 px-4 md:px-0 md:py-10">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -30 }}
+      className="w-full py-4 px-4 md:px-0 md:py-10"
+    >
       <section className="flex flex-row items-center justify-between">
         {!data.isProfileLoading && data.profile && (
           <Avatar className="h-16 w-16 rounded-lg md:h-24 md:w-24">
@@ -497,6 +503,6 @@ export const ProfilePage = (data: ProfilePageProps) => {
           </SheetContent>
         </Sheet>
       </section>
-    </div>
+    </motion.div>
   );
 };

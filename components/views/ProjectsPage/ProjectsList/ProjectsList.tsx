@@ -6,6 +6,7 @@ import { IProject } from '../Project/Project.interface';
 import { fetcher } from '@/lib/fetcher';
 import { useShareModal } from '@/hooks/useShareModal';
 import { ErrorPage } from '@/components/Common/Error';
+import { motion } from 'framer-motion';
 
 export const ProjectsList = () => {
   const selectedTags: string[] = useMemo(() => [], []);
@@ -70,7 +71,12 @@ export const ProjectsList = () => {
 
   return (
     <>
-      <ul className="h-full w-full">
+      <motion.ul
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -30 }}
+        className="h-full w-full"
+      >
         {isLoading ? (
           skeletonProjectsToLoad.map((randomKey) => (
             <ProjectSkeleton key={randomKey} />
@@ -107,7 +113,7 @@ export const ProjectsList = () => {
         ) : (
           <></>
         )}
-      </ul>
+      </motion.ul>
     </>
   );
 };

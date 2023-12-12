@@ -1,10 +1,11 @@
 import React from 'react';
-import { Mate } from './Mate';
+import { motion } from 'framer-motion'; // Import motion from framer-motion
 import useSWR from 'swr';
 import { fetcher } from '@/lib/fetcher';
 import { MateProps } from './Mate.interface';
 import { MateSkeleton } from './MateSkeleton';
 import { ErrorPage } from '@/components/Common/Error';
+import { Mate } from './Mate';
 
 export const MatesList = () => {
   const url = `/api/user/all`;
@@ -27,7 +28,16 @@ export const MatesList = () => {
           )}
           {data &&
             data.results.map((mate: MateProps) => {
-              return <Mate key={mate.id} {...mate} />;
+              return (
+                <motion.li
+                  key={mate.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -30 }}
+                >
+                  <Mate {...mate} />
+                </motion.li>
+              );
             })}
         </ul>
       </div>
