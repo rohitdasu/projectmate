@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import { icons, legalLinks, tags, usefulLinks } from './data';
+import { icons, legalLinks, usefulLinks } from './data';
 import React from 'react';
-import { Logo } from '@/components/Common/Logo';
+import { maintainers } from '@/data';
+import Image from 'next/image';
+import { SiBuymeacoffee } from 'react-icons/si';
 
 const Icons = icons.map((social) => ({
   id: social.id,
@@ -38,7 +40,7 @@ export const Footer = () => {
             <h2 className="mb-4 text-base font-normal dark:text-gray-300 md:text-lg">
               Connect with Us
             </h2>
-            <ul className="flex gap-4">
+            <ul className="mb-4 flex gap-4">
               {Icons.map((social) => (
                 <li key={social.id}>
                   <FooterLink href={social.link} target="_blank">
@@ -79,21 +81,49 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Tags */}
+          {/* Developers */}
           <div>
             <h2 className="mb-4 text-base font-normal dark:text-gray-300 md:text-lg">
-              Tags
+              Developed by
             </h2>
-            <div className="flex flex-wrap gap-2">
-              {tags.map((tag, idx) => (
-                <span
-                  key={idx}
-                  className="text-xs font-light text-muted-foreground md:text-sm"
+            <div className="mb-4 flex flex-col items-start">
+              <div className="flex flex-wrap items-center gap-2">
+                {maintainers.map((maintainer, index) => (
+                  <div
+                    className="transition-all hover:z-10 hover:-translate-y-1"
+                    style={{ marginLeft: index > 0 ? -20 : 0 }}
+                    key={index}
+                  >
+                    <Link href={maintainer.github} target="_blank">
+                      <Image
+                        src={maintainer.avatar}
+                        alt={`${maintainer.name}'s Avatar`}
+                        className="mb-2 h-10 w-10 rounded-full object-cover"
+                        height={50}
+                        width={50}
+                      />
+                    </Link>
+                  </div>
+                ))}
+                <Link
+                  href="https://github.com/rohitdasu/projectmate/graphs/contributors"
+                  target="_blank"
                 >
-                  {tag}
-                </span>
-              ))}
+                  <span className="text-sm text-blue-600 dark:text-blue-400 md:text-base">
+                    and others
+                  </span>
+                </Link>
+              </div>
             </div>
+            <Link
+              href="https://www.buymeacoffee.com/rohit.dasu"
+              target="_blank"
+            >
+              <section className="flex max-w-fit flex-row items-center gap-1 rounded-lg bg-[#FFDC03] px-4 py-3">
+                <SiBuymeacoffee className="text-xl md:text-2xl" />
+                <span className="text-sm md:text-base">Buy me a coffee</span>
+              </section>
+            </Link>
           </div>
         </div>
         <div className="mt-10 text-center text-sm font-normal text-gray-700 dark:text-white">

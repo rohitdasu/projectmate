@@ -12,7 +12,7 @@ export const HeroComponent = ({
   randomUsers: User[] | null;
 }) => {
   return (
-    <section className="my-8 flex h-full flex-col items-center justify-center gap-16 px-4 md:my-28 md:px-8 xl:px-0">
+    <section className="flex h-full flex-col items-center justify-center gap-16 px-4 md:px-8 xl:px-0">
       <div
         className="relative flex flex-col items-center gap-8 overflow-hidden bg-cover bg-no-repeat"
         style={{
@@ -66,7 +66,7 @@ export const HeroComponent = ({
           </section>
         </section>
       </div>
-      <Link href="#demo" className="hidden md:block">
+      <Link href="#demo" className="">
         <ArrowDown className="animate-bounce" />
       </Link>
     </section>

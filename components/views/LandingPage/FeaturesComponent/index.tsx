@@ -19,7 +19,7 @@ export const FeaturesComponent = () => {
   };
 
   return (
-    <section className="my-8 px-4 md:my-32 md:px-8 xl:px-0" id="features">
+    <section className="px-4 md:px-8 xl:px-0" id="features">
       <div className="mx-auto max-w-screen-lg">
         <h2 className="mb-8 text-center text-2xl font-semibold md:text-3xl">
           Explore Features

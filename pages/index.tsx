@@ -8,7 +8,7 @@ import {
   Footer,
   VideoDemo,
   FeaturesComponent,
-  MaintainersComponent,
+  FAQ,
 } from '@/components/views/LandingPage';
 import { favicons } from '@/data';
 import { prisma } from '../lib/prisma';
@@ -35,12 +35,12 @@ const Home: NextPage<HomeProps> = ({ userCount, randomUsers }) => {
         ))}
       </Head>
       <Header />
-      <main>
+      <main className="my-16 flex flex-col gap-16 md:my-32 md:gap-32">
         <HeroComponent userCount={userCount} randomUsers={randomUsers} />
         <VideoDemo />
         <FeaturesComponent />
         <ActionComponent />
-        <MaintainersComponent />
+        <FAQ />
       </main>
       <Footer />
     </>

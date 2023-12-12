@@ -13,7 +13,7 @@ export const VideoDemo = () => {
   });
 
   return (
-    <section className="my-16 px-4 md:px-8 xl:px-0" id="demo">
+    <section className="px-4 md:px-8 xl:px-0" id="demo">
       <motion.div
         ref={ref}
         variants={videoVariants}

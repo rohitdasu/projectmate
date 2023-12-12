@@ -63,3 +63,58 @@ export const features = [
     image: '/profile.gif',
   },
 ];
+
+export const maintainers = [
+  {
+    name: 'Rohit',
+    avatar: 'https://avatars.githubusercontent.com/u/48400770?v=4',
+    github: 'https://github.com/rohitdasu',
+  },
+  {
+    name: 'Leewan',
+    avatar: 'https://avatars.githubusercontent.com/u/60838584?v=4',
+    github: 'https://github.com/leewan-09',
+  },
+  {
+    name: 'Jakub',
+    avatar: 'https://avatars.githubusercontent.com/u/74047866?v=4',
+    github: 'https://github.com/JakubChorzepa',
+  },
+  {
+    name: 'Yazdun',
+    avatar: 'https://avatars.githubusercontent.com/u/83041367?v=4',
+    github: 'https://github.com/Yazdun',
+  },
+];
+
+export const faqData = [
+  {
+    id: 'item-1',
+    question: 'What is Projectmate.net?',
+    answer: `Projectmate.net is a platform that helps you discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors.`,
+  },
+  {
+    id: 'item-2',
+    question: 'Who is Projectmate.net for?',
+    answer:
+      'Projectmate.net is for anyone who is interested in contributing to open-source projects, regardless of their experience level. Whether you are a seasoned developer looking for new challenges or a beginner wanting to learn from experienced contributors, Projectmate.net can help you find the right project and connect with the right people.',
+  },
+  {
+    id: 'item-3',
+    question: 'How do I get started with Projectmate.net?',
+    answer:
+      '1. Register 2. Find projects that matches your interests 3. Collaborate with the project maintainers 4. Start contributing',
+  },
+  {
+    id: 'item-4',
+    question: 'Is Projectmate.net free to use?',
+    answer:
+      'Yes, Projectmate.net is completely free to use for both contributors and project maintainers.',
+  },
+  {
+    id: 'item-5',
+    question: 'Do you have any other questions?',
+    answer:
+      'Please feel free to contact us (Discord recommended) if you have any other questions about Projectmate.net. We are always happy to help!',
+  },
+];
