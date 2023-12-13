@@ -2,14 +2,12 @@ import { useEffect } from 'react';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 
-import 'nprogress/nprogress.css'; // Import the styles for nprogress
-import { useTheme } from 'next-themes';
+import 'nprogress/nprogress.css';
 
 // NProgress configuration
 NProgress.configure({ showSpinner: false });
 
 export const ProgressBar = () => {
-  const { theme } = useTheme();
   useEffect(() => {
     const handleStart = () => {
       NProgress.start();
@@ -30,11 +28,5 @@ export const ProgressBar = () => {
     };
   }, []);
 
-  return (
-    <style jsx global>{`
-      #nprogress .bar {
-        background: ${theme === 'dark' ? '#fff !important' : '#000 !important'};
-      }
-    `}</style>
-  );
+  return null;
 };
