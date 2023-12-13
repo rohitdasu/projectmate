@@ -17,7 +17,12 @@ export const MatesList = () => {
 
   return (
     <section className="px-2 py-6 md:py-12">
-      <div className="mx-auto flex max-w-screen-xl flex-col gap-8">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -30 }}
+        className="mx-auto flex max-w-screen-xl flex-col gap-8"
+      >
         <ul className="grid grid-cols-3 gap-8 md:grid-cols-4 lg:grid-cols-5">
           {isLoading && (
             <>
@@ -29,18 +34,13 @@ export const MatesList = () => {
           {data &&
             data.results.map((mate: MateProps) => {
               return (
-                <motion.li
-                  key={mate.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -30 }}
-                >
+                <li key={mate.id}>
                   <Mate {...mate} />
-                </motion.li>
+                </li>
               );
             })}
         </ul>
-      </div>
+      </motion.div>
     </section>
   );
 };
