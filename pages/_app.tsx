@@ -11,6 +11,7 @@ import useSWR from 'swr';
 import { AppDataContext } from '@/context/Common/CommonContext';
 import { Loader } from 'lucide-react';
 import { useState } from 'react';
+import { ProgressBar } from '@/components/Common/ProgressBar';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const userDetailsUrl = `/api/user/details`;
@@ -37,7 +38,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <AuthModal />
             <ShareModal />
             {!isDetailsLoading ? (
-              <Component {...pageProps} />
+              <>
+                <ProgressBar />
+                <Component {...pageProps} />
+              </>
             ) : (
               <div className="flex h-screen w-screen items-center justify-center">
                 <Loader className="h-10 w-10 animate-spin md:h-20 md:w-20" />
