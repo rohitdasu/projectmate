@@ -9,6 +9,7 @@ import {
 } from '../../ui/tooltip';
 import { Verified } from 'lucide-react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export const Mate: FC<MateProps> = (mate) => {
   return (
@@ -17,7 +18,13 @@ export const Mate: FC<MateProps> = (mate) => {
         className="flex flex-col items-center justify-center gap-2"
         key={mate.id}
       >
-        <div className="text-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center"
+        >
           <section className="relative flex flex-col items-center text-center">
             <Avatar className="h-16 w-16">
               <AvatarImage src={mate.profilePicture} />
@@ -42,7 +49,7 @@ export const Mate: FC<MateProps> = (mate) => {
           <span className="w-20 truncate text-sm md:w-auto">
             {mate.name.split(' ')[0]}
           </span>
-        </div>
+        </motion.div>
       </section>
     </Link>
   );

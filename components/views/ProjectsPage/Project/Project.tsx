@@ -82,8 +82,8 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          layout
           transition={{ duration: 1 }}
+          layout
           className="border border-gray-200 dark:border-gray-800 md:m-auto md:w-full"
         >
           <div className="flex h-full flex-col items-center overflow-hidden rounded-md">

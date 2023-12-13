@@ -142,12 +142,19 @@ export const ProfilePage = (data: ProfilePageProps) => {
     >
       <section className="flex flex-row items-center justify-between">
         {!data.isProfileLoading && data.profile && (
-          <Avatar className="h-16 w-16 rounded-lg md:h-24 md:w-24">
-            <AvatarImage src={data.profile?.results?.image || undefined} />
-            <AvatarFallback className="rounded-lg text-xl md:text-4xl">
-              {getFallbackName()}
-            </AvatarFallback>
-          </Avatar>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Avatar className="h-16 w-16 rounded-lg md:h-24 md:w-24">
+              <AvatarImage src={data.profile?.results?.image || undefined} />
+              <AvatarFallback className="rounded-lg text-xl md:text-4xl">
+                {getFallbackName()}
+              </AvatarFallback>
+            </Avatar>
+          </motion.div>
         )}
         {data.isProfileLoading && (
           <div className="h-16 w-16 animate-pulse rounded-lg bg-gray-700 md:h-24 md:w-24" />
@@ -160,7 +167,13 @@ export const ProfilePage = (data: ProfilePageProps) => {
       </section>
       <section className="my-2 flex flex-col items-start gap-2">
         {!data.isProjectsLoading && !data.isProfileLoading ? (
-          <div className="text-base font-semibold md:text-xl">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-base font-semibold md:text-xl"
+          >
             <section className="flex flex-col">
               <p className="flex items-center gap-1">
                 <span>{data.profile?.results?.name}</span>{' '}
@@ -183,7 +196,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
                 </p>
               )}
             </section>
-          </div>
+          </motion.div>
         ) : (
           <section>
             <section className="flex animate-pulse items-center gap-2">
@@ -198,9 +211,15 @@ export const ProfilePage = (data: ProfilePageProps) => {
         ) : (
           <>
             {data.profile?.results.title ? (
-              <p className="text-base text-black dark:text-white md:text-lg">
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-base text-black dark:text-white md:text-lg"
+              >
                 {data.profile?.results.title}
-              </p>
+              </motion.p>
             ) : (
               <></>
             )}
@@ -211,9 +230,15 @@ export const ProfilePage = (data: ProfilePageProps) => {
         ) : (
           <>
             {data.profile?.results.description ? (
-              <p className="text-sm text-gray-900 dark:text-gray-100 md:text-base">
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-sm text-gray-900 dark:text-gray-100 md:text-base"
+              >
                 {data.profile?.results.description}
-              </p>
+              </motion.p>
             ) : (
               <></>
             )}
@@ -235,7 +260,12 @@ export const ProfilePage = (data: ProfilePageProps) => {
               </section>
             </section>
           ) : (
-            <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            >
               {data.profile?.results?.skills?.length > 0 ? (
                 data.profile?.results.skills.map((skill, idx) => (
                   <Badge className="text-sm" variant={'secondary'} key={idx}>
@@ -245,7 +275,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
               ) : (
                 <></>
               )}
-            </>
+            </motion.div>
           )}
         </div>
         {((!data.isProfileLoading && socialSites?.github) ||
@@ -253,7 +283,13 @@ export const ProfilePage = (data: ProfilePageProps) => {
           socialSites?.twitter ||
           socialSites?.website) && (
           <section className="">
-            <ul className="flex flex-wrap items-center gap-1">
+            <motion.ul
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-wrap items-center gap-1"
+            >
               {!data.isProfileLoading && socialSites?.github && (
                 <li>
                   <Button asChild variant={'ghost'} size={'sm'}>
@@ -310,12 +346,12 @@ export const ProfilePage = (data: ProfilePageProps) => {
                   </Button>
                 </li>
               )}
-            </ul>
+            </motion.ul>
           </section>
         )}
       </section>
       <section>
-        <div className="my-6 grid grid-cols-1 gap-2 lg:grid-cols-2">
+        <ul className="my-6 grid grid-cols-1 gap-2 lg:grid-cols-2">
           {data.isProjectsLoading && (
             <>
               {Array.from({ length: 9 }).map((_, index) => (
@@ -344,7 +380,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
               )}
             </>
           )}
-        </div>
+        </ul>
       </section>
       <section>
         <Sheet open={isSheetOpen} onOpenChange={toggleSheet}>
