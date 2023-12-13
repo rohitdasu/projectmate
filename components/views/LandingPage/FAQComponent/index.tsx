@@ -19,7 +19,9 @@ export const FAQ = () => {
           <Accordion type="single" collapsible className="w-full">
             {faqData.map((item) => (
               <AccordionItem key={item.id} value={item.id}>
-                <AccordionTrigger>{item.question}</AccordionTrigger>
+                <AccordionTrigger className="text-start">
+                  {item.question}
+                </AccordionTrigger>
                 <AccordionContent className="text-start">
                   {item.answer}
                 </AccordionContent>

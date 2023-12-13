@@ -46,10 +46,10 @@ export const FeaturesComponent = () => {
                     )}`}
                   >
                     <div className="w-full md:w-1/2">
-                      <motion.h3 className="text-sm font-semibold md:text-xl">
+                      <motion.h3 className="text-base font-semibold md:text-xl">
                         {feature.title}
                       </motion.h3>
-                      <motion.h4 className="text-xs font-light md:text-base">
+                      <motion.h4 className="text-sm font-light md:text-base">
                         {feature.subTitle}
                       </motion.h4>
                     </div>
