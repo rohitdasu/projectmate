@@ -21,7 +21,7 @@ const FooterLink = ({
   children?: React.ReactNode;
 }) => (
   <Link href={href} target={target}>
-    <span className="cursor-pointer text-xs font-light text-muted-foreground hover:text-gray-900 dark:hover:text-gray-300 md:text-sm">
+    <span className="cursor-pointer text-sm font-light text-muted-foreground hover:text-gray-900 dark:hover:text-gray-300">
       {children}
     </span>
   </Link>
@@ -94,7 +94,10 @@ export const Footer = () => {
                     style={{ marginLeft: index > 0 ? -20 : 0 }}
                     key={index}
                   >
-                    <Link href={maintainer.github} target="_blank">
+                    <Link
+                      href={`${maintainer.github}/?ref=projectmate.net`}
+                      target="_blank"
+                    >
                       <Image
                         src={maintainer.avatar}
                         alt={`${maintainer.name}'s Avatar`}
@@ -109,7 +112,7 @@ export const Footer = () => {
                   href="https://github.com/rohitdasu/projectmate/graphs/contributors"
                   target="_blank"
                 >
-                  <span className="text-sm text-blue-600 dark:text-blue-400 md:text-base">
+                  <span className="text-sm text-blue-600 dark:text-blue-400">
                     and others
                   </span>
                 </Link>
@@ -121,14 +124,14 @@ export const Footer = () => {
             >
               <section className="flex max-w-fit flex-row items-center gap-1 rounded-lg bg-[#FFDC03] px-4 py-3 shadow hover:bg-[#FFDC03]/80">
                 <SiBuymeacoffee className="text-xl text-black md:text-2xl" />
-                <span className="text-sm text-black md:text-base">
+                <span className="font-[Cookie] text-xl text-black md:text-2xl">
                   Buy me a coffee
                 </span>
               </section>
             </Link>
           </div>
         </div>
-        <div className="mt-10 text-center text-sm font-normal text-gray-700 dark:text-white">
+        <div className="mt-10 text-center text-sm font-normal text-black/70 dark:text-white/70">
           <p>projectmate {currentYear}</p>
         </div>
       </div>

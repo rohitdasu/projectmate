@@ -351,7 +351,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
         )}
       </section>
       <section>
-        <ul className="my-6 grid grid-cols-1 gap-2 lg:grid-cols-2">
+        <div className="my-6 grid grid-cols-1 gap-2 lg:grid-cols-2">
           {data.isProjectsLoading && (
             <>
               {Array.from({ length: 9 }).map((_, index) => (
@@ -380,7 +380,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
               )}
             </>
           )}
-        </ul>
+        </div>
       </section>
       <section>
         <Sheet open={isSheetOpen} onOpenChange={toggleSheet}>

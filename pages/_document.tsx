@@ -66,6 +66,10 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
             rel="stylesheet"
           />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Cookie&display=swap"
+            rel="stylesheet"
+          />
           {/* /fonts */}
         </Head>
         <body className="bg-primary-background">

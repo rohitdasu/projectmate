@@ -25,54 +25,47 @@ export const ProfilePageProject = ({
   liveUrl: string;
 }) => {
   return (
-    <motion.li
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <Card className="flex flex-col justify-between overflow-hidden">
-        <CardHeader>
-          <CardTitle className="text-base md:text-xl">{title}</CardTitle>
-          <CardDescription>{description}</CardDescription>
-        </CardHeader>
+    <Card className="flex flex-col justify-between overflow-hidden">
+      <CardHeader>
+        <CardTitle className="text-base md:text-xl">{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
+      </CardHeader>
 
-        <CardFooter className="flex flex-row items-center gap-2">
-          <Button asChild variant={'secondary'} size={'sm'}>
+      <CardFooter className="flex flex-row items-center gap-2">
+        <Button asChild variant={'secondary'} size={'sm'}>
+          <Link
+            href={githubRepository}
+            className="flex items-center gap-1"
+            target="_blank"
+          >
+            <Github className="h-5" />
+            <span className="hidden md:block">Github</span>
+          </Link>
+        </Button>
+        {liveUrl && (
+          <Button asChild variant={'outline'} size={'sm'}>
             <Link
-              href={githubRepository}
+              href={liveUrl}
               className="flex items-center gap-1"
               target="_blank"
             >
-              <Github className="h-5" />
-              <span className="hidden md:block">Github</span>
+              <Globe2 className="h-5" />
+              <span className="hidden md:block">Live</span>
             </Link>
           </Button>
-          {liveUrl && (
-            <Button asChild variant={'outline'} size={'sm'}>
-              <Link
-                href={liveUrl}
-                className="flex items-center gap-1"
-                target="_blank"
-              >
-                <Globe2 className="h-5" />
-                <span className="hidden md:block">Live</span>
-              </Link>
-            </Button>
-          )}
-          {isCurrentUser && (
-            <Button
-              className="flex items-center gap-1"
-              disabled
-              variant={'ghost'}
-              size={'sm'}
-            >
-              <Edit className="h-5" />
-              <span className="hidden md:block">Edit</span>
-            </Button>
-          )}
-        </CardFooter>
-      </Card>
-    </motion.li>
+        )}
+        {isCurrentUser && (
+          <Button
+            className="flex items-center gap-1"
+            disabled
+            variant={'ghost'}
+            size={'sm'}
+          >
+            <Edit className="h-5" />
+            <span className="hidden md:block">Edit</span>
+          </Button>
+        )}
+      </CardFooter>
+    </Card>
   );
 };
