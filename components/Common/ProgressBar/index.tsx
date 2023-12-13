@@ -33,7 +33,7 @@ export const ProgressBar = () => {
   return (
     <style jsx global>{`
       #nprogress .bar {
-        background: ${theme === 'dark' ? '#fff' : '#000'};
+        background: ${theme === 'dark' ? '#fff !important' : '#000 !important'};
       }
     `}</style>
   );
