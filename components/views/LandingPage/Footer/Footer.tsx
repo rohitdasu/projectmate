@@ -119,7 +119,7 @@ export const Footer = () => {
               href="https://www.buymeacoffee.com/rohit.dasu"
               target="_blank"
             >
-              <section className="flex max-w-fit flex-row items-center gap-1 rounded-lg bg-[#FFDC03] px-4 py-3">
+              <section className="flex max-w-fit flex-row items-center gap-1 rounded-lg bg-[#FFDC03] px-4 py-3 shadow hover:bg-[#FFDC03]/80">
                 <SiBuymeacoffee className="text-xl text-black md:text-2xl" />
                 <span className="text-sm text-black md:text-base">
                   Buy me a coffee
