@@ -120,8 +120,10 @@ export const Footer = () => {
               target="_blank"
             >
               <section className="flex max-w-fit flex-row items-center gap-1 rounded-lg bg-[#FFDC03] px-4 py-3">
-                <SiBuymeacoffee className="text-xl md:text-2xl" />
-                <span className="text-sm md:text-base">Buy me a coffee</span>
+                <SiBuymeacoffee className="text-xl text-black md:text-2xl" />
+                <span className="text-sm text-black md:text-base">
+                  Buy me a coffee
+                </span>
               </section>
             </Link>
           </div>
