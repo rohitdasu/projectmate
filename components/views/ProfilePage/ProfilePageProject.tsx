@@ -45,7 +45,7 @@ export const ProfilePageProject = ({
         {liveUrl && (
           <Button asChild variant={'outline'} size={'sm'}>
             <Link
-              href={liveUrl}
+              href={`${liveUrl}/?ref=projectmate.net`}
               className="flex items-center gap-1"
               target="_blank"
             >

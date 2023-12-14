@@ -247,12 +247,12 @@ export const ProfilePage = (data: ProfilePageProps) => {
         <div className="flex flex-row flex-wrap gap-2">
           {data.isProfileLoading ? (
             <section className="flex flex-col gap-2">
-              <section className="flex flex-row flex-wrap gap-2">
+              <section className="flex flex-row flex-wrap gap-1">
                 <Badge className="h-6 w-20 animate-pulse bg-gray-700"></Badge>
                 <Badge className="h-6 w-16 animate-pulse bg-gray-700"></Badge>
                 <Badge className="h-6 w-24 animate-pulse bg-gray-700"></Badge>
               </section>
-              <section className="flex flex-row flex-wrap gap-2">
+              <section className="flex flex-row flex-wrap gap-1">
                 <div className="h-5 w-20 animate-pulse bg-gray-700"></div>
                 <div className="h-5 w-16 animate-pulse bg-gray-700"></div>
                 <div className="h-5 w-24 animate-pulse bg-gray-700"></div>
@@ -265,6 +265,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
+              className="flex flex-row flex-wrap gap-1"
             >
               {data.profile?.results?.skills?.length > 0 ? (
                 data.profile?.results.skills.map((skill, idx) => (
