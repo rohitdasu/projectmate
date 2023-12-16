@@ -10,7 +10,7 @@ import { faqData } from '@/data';
 export const FAQ = () => {
   return (
     <section
-      className="mx-auto w-full max-w-screen-lg px-4 py-10 text-center md:px-0"
+      className="mx-auto w-full max-w-screen-lg px-4 py-10 text-center md:px-8 xl:px-0"
       id="faq"
     >
       <div>
