@@ -13,10 +13,20 @@ export const postSchema = z.object({
   content: z.string({
     required_error: 'Content is required',
   }),
-  githubRepository: z.string({
-    required_error: 'githubRepository is required',
-  }),
-  liveUrl: z.string().optional(),
+  githubRepository: z
+    .string({
+      required_error: 'githubRepository is required',
+    })
+    .regex(new RegExp('^https://github.com/[a-zA-Z0-9_-]+/[a-zA-Z0-9_-]+$'), {
+      message: 'Invalid URL (We support only GitHub repositories now)',
+    }),
+  liveUrl: z
+    .string()
+    .nullable()
+    .optional()
+    .refine((value) => !value || /^https:\/\/(www\.)?.*$/.test(value), {
+      message: 'Invalid URL (We support only live websites now)',
+    }),
   coverImg: z.string().url().optional(),
   tags: z.array(z.string()).min(1).max(5),
 });
