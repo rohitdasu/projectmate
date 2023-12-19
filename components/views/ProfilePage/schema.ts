@@ -15,28 +15,24 @@ export const formSchema = z.object({
   skills: z.string().min(2).max(160),
   github: z
     .string()
-    .nullable()
     .optional()
     .refine((value) => !value || socialMediaRegex.github.test(value), {
       message: 'Invalid GitHub URL',
     }),
   linkedin: z
     .string()
-    .nullable()
     .optional()
     .refine((value) => !value || socialMediaRegex.linkedin.test(value), {
       message: 'Invalid LinkedIn profile URL',
     }),
   twitter: z
     .string()
-    .nullable()
     .optional()
     .refine((value) => !value || socialMediaRegex.twitter.test(value), {
       message: 'Invalid Twitter profile URL',
     }),
   website: z
     .string()
-    .nullable()
     .optional()
     .refine((value) => !value || socialMediaRegex.website.test(value), {
       message: 'Invalid website URL',
