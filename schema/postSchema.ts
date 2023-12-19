@@ -22,11 +22,16 @@ export const postSchema = z.object({
     }),
   liveUrl: z
     .string()
-    .nullable()
-    .optional()
-    .refine((value) => !value || /^https:\/\/(www\.)?.*$/.test(value), {
-      message: 'Invalid URL (We support only live websites now)',
-    }),
+    .refine(
+      (value) =>
+        !value ||
+        new RegExp(
+          '^https?://(www\\.)?[a-zA-Z0-9_-]+(\\.[a-zA-Z]{2,})+(/[a-zA-Z0-9_-]*)*$'
+        ).test(value),
+      {
+        message: 'Invalid URL (We support only live websites now)',
+      }
+    ),
   coverImg: z.string().url().optional(),
   tags: z.array(z.string()).min(1).max(5),
 });
