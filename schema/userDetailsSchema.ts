@@ -15,7 +15,9 @@ export const userDetailsSchema = z.object({
         .refine(
           (value) =>
             !value ||
-            new RegExp('^https://github.com/[a-zA-Z0-9_-]+$').test(value),
+            new RegExp('(https://)?(www\\.)?github.com/[a-zA-Z0-9_-]+$').test(
+              value
+            ),
           {
             message: 'Invalid URL format for the github',
           }
@@ -26,7 +28,7 @@ export const userDetailsSchema = z.object({
           (value) =>
             !value ||
             new RegExp(
-              '^(https?://)?(www.)?linkedin.com/in/[a-zA-Z0-9-]+/?$'
+              '(https://)?(www\\.)?linkedin.com/in/[a-zA-Z0-9-]+/?$'
             ).test(value),
           {
             message: 'Invalid URL format for the linkedin',
@@ -37,7 +39,9 @@ export const userDetailsSchema = z.object({
         .refine(
           (value) =>
             !value ||
-            new RegExp('^https://twitter.com/[a-zA-Z0-9_]+$').test(value),
+            new RegExp('^(https://)?(www\\.)?twitter.com/[a-zA-Z0-9_]+$').test(
+              value
+            ),
           {
             message: 'Invalid URL format for the twitter',
           }
@@ -48,7 +52,7 @@ export const userDetailsSchema = z.object({
           (value) =>
             !value ||
             new RegExp(
-              '^https?://(www\\.)?[a-zA-Z0-9_-]+(\\.[a-zA-Z]{2,})+(/[a-zA-Z0-9_-]*)*$'
+              '^(https://)?(www\\.)?[a-zA-Z0-9_-]+(\\.[a-zA-Z]{2,})+(/[a-zA-Z0-9_-]*)*$'
             ).test(value),
           {
             message: 'Invalid URL format for the website',

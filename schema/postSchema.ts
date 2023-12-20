@@ -17,16 +17,21 @@ export const postSchema = z.object({
     .string({
       required_error: 'githubRepository is required',
     })
-    .regex(new RegExp('^https://github.com/[a-zA-Z0-9_-]+/[a-zA-Z0-9_-]+$'), {
-      message: 'Invalid URL (We support only GitHub repositories now)',
-    }),
+    .regex(
+      new RegExp(
+        '^(https://)?(www\\.)?github.com/[a-zA-Z0-9_-]+/[a-zA-Z0-9_-]+$'
+      ),
+      {
+        message: 'Invalid URL (We support only GitHub repositories now)',
+      }
+    ),
   liveUrl: z
     .string()
     .refine(
       (value) =>
         !value ||
         new RegExp(
-          '^https?://(www\\.)?[a-zA-Z0-9_-]+(\\.[a-zA-Z]{2,})+(/[a-zA-Z0-9_-]*)*$'
+          '^(https://)?(www\\.)?[a-zA-Z0-9_-]+(\\.[a-zA-Z]{2,})+(/[a-zA-Z0-9_-]*)*$'
         ).test(value),
       {
         message: 'Invalid URL (We support only live websites now)',
