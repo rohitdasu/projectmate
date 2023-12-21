@@ -1,9 +1,9 @@
+import React from 'react';
 import Link from 'next/link';
 import { icons, legalLinks, usefulLinks } from './data';
-import React from 'react';
 import { maintainers } from '@/data';
-import Image from 'next/image';
 import { SiBuymeacoffee } from 'react-icons/si';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const Icons = icons.map((social) => ({
   id: social.id,
@@ -98,13 +98,10 @@ export const Footer = () => {
                       href={`${maintainer.github}/?ref=projectmate.net`}
                       target="_blank"
                     >
-                      <Image
-                        src={maintainer.avatar}
-                        alt={`${maintainer.name}'s Avatar`}
-                        className="mb-2 h-10 w-10 rounded-full object-cover"
-                        height={50}
-                        width={50}
-                      />
+                      <Avatar className="h-8 w-8 md:h-10 md:w-10">
+                        <AvatarImage src={maintainer.avatar} />
+                        <AvatarFallback>{maintainer.name[0]}</AvatarFallback>
+                      </Avatar>
                     </Link>
                   </div>
                 ))}
