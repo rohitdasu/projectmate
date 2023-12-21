@@ -115,14 +115,14 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                   </div>
                   <div>
                     <Link
-                      className="flex max-w-fit items-center gap-2"
+                      className="flex max-w-fit items-center gap-1 text-xs text-muted-foreground md:text-sm"
                       href={`/profile/${username}`}
                     >
-                      <Avatar className="text-sm">
+                      <Avatar className="h-4 w-4 text-xs">
                         <AvatarImage
                           src={authorImage || undefined}
                         ></AvatarImage>
-                        <AvatarFallback className="dark:text-gray-300">
+                        <AvatarFallback>
                           {author &&
                             author
                               .split(' ')
@@ -130,9 +130,8 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                               .join('')}
                         </AvatarFallback>
                       </Avatar>
-                      <span className="text-sm text-gray-600 dark:text-gray-300 md:text-base">
-                        {author}
-                      </span>
+
+                      <span>{author}</span>
                     </Link>
                   </div>
                 </Typography>
