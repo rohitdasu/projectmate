@@ -32,12 +32,10 @@ const BackToTopButton = () => {
   return (
     <div
       style={{
-        position: 'fixed',
-        bottom: '20px',
-        right: '20px',
         opacity: isVisible ? 1 : 0,
         transition: 'opacity 0.3s',
       }}
+      className="fixed right-[20px] bottom-[150px] md:bottom-[50px]"
     >
       <Button
         variant="default"
