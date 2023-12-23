@@ -84,7 +84,7 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
           layout
-          className="border border-gray-200 dark:border-gray-800 md:m-auto md:w-full"
+          className="rounded-lg border bg-card text-card-foreground shadow-sm md:m-auto md:w-full"
         >
           <div className="flex h-full flex-col items-center overflow-hidden rounded-md">
             <div className="flex w-full grow flex-col justify-center gap-5 p-4 pt-4">
@@ -96,7 +96,7 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                 >
                   <div className="flex w-full flex-row items-center justify-between">
                     <p
-                      className="w-40 truncate  hover:cursor-pointer dark:text-gray-300 md:w-auto"
+                      className="w-40 truncate  hover:cursor-pointer md:w-auto dark:text-gray-100"
                       onClick={handleContributeClick}
                     >
                       {title}
@@ -115,14 +115,14 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                   </div>
                   <div>
                     <Link
-                      className="flex max-w-fit items-center gap-1 text-xs text-muted-foreground md:text-sm"
+                      className="flex max-w-fit items-center gap-1"
                       href={`/profile/${username}`}
                     >
-                      <Avatar className="h-4 w-4 text-xs">
+                      <Avatar className="h-4 w-4">
                         <AvatarImage
                           src={authorImage || undefined}
                         ></AvatarImage>
-                        <AvatarFallback>
+                        <AvatarFallback className="text-[8px] text-black opacity-70 dark:text-white">
                           {author &&
                             author
                               .split(' ')
@@ -131,7 +131,9 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                         </AvatarFallback>
                       </Avatar>
 
-                      <span>{author}</span>
+                      <span className="text-xs text-black opacity-70 md:text-sm dark:text-white">
+                        {author}
+                      </span>
                     </Link>
                   </div>
                 </Typography>
@@ -139,7 +141,7 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
               <Typography
                 as="p"
                 fontSize="sm"
-                className="text-gray-600 dark:text-gray-300"
+                className="text-muted-foreground"
               >
                 {description}
               </Typography>

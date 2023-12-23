@@ -5,7 +5,7 @@ export const ProjectSkeleton = () => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    className="animate-pulse border border-gray-200 dark:border-gray-800"
+    className="animate-pulse rounded-lg border border-gray-200 dark:border-gray-800"
   >
     <div className="shadow-border-shadow flex h-full flex-col justify-center space-y-2 overflow-hidden rounded-md">
       <div className="flex flex-col gap-5 p-4 pt-4">

@@ -138,7 +138,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -30 }}
-      className="w-full py-4 px-4 md:px-0 md:py-10"
+      className="w-full px-4 py-4 md:px-0 md:py-10"
     >
       <section className="flex flex-row items-center justify-between">
         {!data.isProfileLoading && data.profile && (
@@ -216,7 +216,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-base text-black dark:text-white md:text-lg"
+                className="text-base text-black/85 dark:text-white/85"
               >
                 {data.profile?.results.title}
               </motion.p>
@@ -235,7 +235,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-sm text-gray-900 dark:text-gray-100 md:text-base"
+                className="text-sm text-muted-foreground"
               >
                 {data.profile?.results.description}
               </motion.p>
@@ -269,7 +269,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
             >
               {data.profile?.results?.skills?.length > 0 ? (
                 data.profile?.results.skills.map((skill, idx) => (
-                  <Badge className="text-sm" variant={'secondary'} key={idx}>
+                  <Badge className="" variant={'secondary'} key={idx}>
                     {skill}
                   </Badge>
                 ))
@@ -385,10 +385,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
       </section>
       <section>
         <Sheet open={isSheetOpen} onOpenChange={toggleSheet}>
-          <SheetContent
-            side={sheetSide}
-            className="max-h-screen overflow-y-auto"
-          >
+          <SheetContent side={sheetSide} className="max-h-dvh overflow-y-auto">
             <SheetHeader>
               <SheetTitle>Edit profile</SheetTitle>
               <SheetDescription>

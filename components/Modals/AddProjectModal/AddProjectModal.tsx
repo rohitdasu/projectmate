@@ -106,7 +106,7 @@ export const AddProjectModal = ({ email }: { email?: string | null }) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={closeModal}>
-      <DialogContent className="max-h-[95vh] overflow-y-auto">
+      <DialogContent className="max-h-[95dvh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Add project</DialogTitle>
           <DialogDescription>

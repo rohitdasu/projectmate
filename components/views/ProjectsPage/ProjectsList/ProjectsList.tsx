@@ -70,50 +70,44 @@ export const ProjectsList = () => {
   if (error) return <ErrorPage />;
 
   return (
-    <>
-      <motion.ul
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -30 }}
-        className="h-full w-full"
-      >
-        {isLoading ? (
-          skeletonProjectsToLoad.map((randomKey) => (
+    <motion.ul
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -30 }}
+      className="mx-2 my-2 flex h-full flex-col gap-2 md:mx-auto"
+    >
+      {isLoading
+        ? skeletonProjectsToLoad.map((randomKey) => (
             <ProjectSkeleton key={randomKey} />
           ))
-        ) : (
-          <>
-            {filteredProjects.map((project: IProject) => (
-              <ProjectWrapper
-                key={project.id}
-                id={project.id}
-                description={project.description}
-                title={project.title}
-                tags={project.tags}
-                author={project.author.name}
-                username={project.author.username}
-                authorImage={project.author.image}
-                createdAt={project.createdAt}
-                githubRepository={project.githubRepository}
-                liveUrl={project.liveUrl}
-                openShareModal={openShareModal}
-              />
-            ))}
-          </>
-        )}
-        {filteredProjects.length === 0 && (
-          <div className="flex h-screen items-center justify-center text-xl">
-            No Data
-          </div>
-        )}
-        {data && isLoadingMore && isNotReachEnd ? (
-          skeletonProjectsToLoad.map((randomKey) => (
-            <ProjectSkeleton key={randomKey} />
-          ))
-        ) : (
-          <></>
-        )}
-      </motion.ul>
-    </>
+        : filteredProjects.map((project: IProject) => (
+            <ProjectWrapper
+              key={project.id}
+              id={project.id}
+              description={project.description}
+              title={project.title}
+              tags={project.tags}
+              author={project.author.name}
+              username={project.author.username}
+              authorImage={project.author.image}
+              createdAt={project.createdAt}
+              githubRepository={project.githubRepository}
+              liveUrl={project.liveUrl}
+              openShareModal={openShareModal}
+            />
+          ))}
+      {filteredProjects.length === 0 && !isLoading && (
+        <div className="flex h-dvh items-center justify-center text-xl">
+          No Data
+        </div>
+      )}
+      {data && isLoadingMore && isNotReachEnd ? (
+        skeletonProjectsToLoad.map((randomKey) => (
+          <ProjectSkeleton key={randomKey} />
+        ))
+      ) : (
+        <></>
+      )}
+    </motion.ul>
   );
 };

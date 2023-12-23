@@ -15,7 +15,7 @@ const Posts: NextPage = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -30 }}
-          className="flex h-screen animate-pulse flex-col items-center justify-center"
+          className="flex h-dvh animate-pulse flex-col items-center justify-center"
         >
           <CalendarClock className="h-20 w-20" />
           <p className="text-base font-bold md:text-lg">coming soon</p>

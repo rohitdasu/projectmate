@@ -43,7 +43,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 <Component {...pageProps} />
               </>
             ) : (
-              <div className="flex h-screen w-screen items-center justify-center">
+              <div className="flex h-dvh w-screen items-center justify-center">
                 <Loader className="h-10 w-10 animate-spin md:h-20 md:w-20" />
               </div>
             )}

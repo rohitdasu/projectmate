@@ -12,7 +12,7 @@ const NotFound: NextPage = () => {
       bottomBar={false}
       leftSidebar={false}
     >
-      <div className="flex min-h-screen flex-col items-center justify-center gap-8">
+      <div className="flex min-h-dvh flex-col items-center justify-center gap-8">
         <section className="flex flex-col items-center justify-center gap-4">
           <ShieldAlert className="h-20 w-20 md:h-32 md:w-32" />
           <p className="text-center text-base md:text-lg">

@@ -6,7 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { motion } from 'framer-motion';
 import { Edit, Github, Globe2 } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';

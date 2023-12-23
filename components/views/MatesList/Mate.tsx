@@ -36,7 +36,7 @@ export const Mate: FC<MateProps> = (mate) => {
                   <TooltipTrigger asChild>
                     <Verified
                       fill="#F87315"
-                      className="absolute right-0 -top-3 h-8 w-8 animate-wiggle text-white"
+                      className="absolute -top-3 right-0 h-8 w-8 animate-wiggle text-white"
                     />
                   </TooltipTrigger>
                   <TooltipContent className="bg-yellow-400 text-yellow-900">
