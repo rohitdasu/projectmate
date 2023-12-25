@@ -19,17 +19,17 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = ({ homeRoute = '/' }) => {
   const { setTheme } = useTheme();
   return (
-    <nav className="sticky top-0 z-50 mx-auto flex h-14 w-full max-w-screen-lg flex-row items-center justify-between bg-white/60 px-4 backdrop-blur-md dark:bg-black/60 md:h-20 md:px-8 xl:px-0">
+    <nav className="sticky top-0 z-50 mx-auto flex h-14 w-full max-w-screen-lg flex-row items-center justify-between bg-white/60 px-4 backdrop-blur-md md:h-20 md:px-8 xl:px-0 dark:bg-black/60">
       <Logo route={homeRoute} />
       <section className="flex items-center gap-2">
         <Link href={'https://github.com/rohitdasu/projectmate'} target="_blank">
-          <FaGithub className="text-xl text-black hover:text-black/60 dark:text-white dark:hover:text-white/60 md:text-3xl" />
+          <FaGithub className="text-xl text-black hover:text-black/60 md:text-3xl dark:text-white dark:hover:text-white/60" />
         </Link>
         <Link href={'https://discord.com/invite/FQtyMWFZQ9'} target="_blank">
-          <FaDiscord className="text-xl text-black hover:text-black/60 dark:text-white dark:hover:text-white/60 md:text-3xl" />
+          <FaDiscord className="text-xl text-black hover:text-black/60 md:text-3xl dark:text-white dark:hover:text-white/60" />
         </Link>
         <Link href={'https://twitter.com/projectmateHQ'} target="_blank">
-          <FaTwitter className="text-xl text-black hover:text-black/60 dark:text-white dark:hover:text-white/60 md:text-3xl" />
+          <FaTwitter className="text-xl text-black hover:text-black/60 md:text-3xl dark:text-white dark:hover:text-white/60" />
         </Link>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

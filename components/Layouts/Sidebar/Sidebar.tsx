@@ -65,7 +65,7 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-10 flex h-screen flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
+    <div className="fixed inset-0 z-10 flex h-dvh flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
       <Logo route={'/'} />
       <ul className="mt-16 flex w-full flex-col items-center justify-center gap-4 md:items-start">
         {NavElements.map((nav) => {
@@ -78,14 +78,14 @@ export const Sidebar = () => {
             router.pathname === nav.link + '/[username]';
 
           let spanNameTag = (
-            <span className="hidden text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 lg:block">
+            <span className="hidden text-gray-600 hover:text-gray-900 lg:block dark:text-gray-400 dark:hover:text-gray-300">
               {nav.name}
             </span>
           );
 
           if (isActive) {
             spanNameTag = (
-              <span className="hidden text-gray-900 dark:text-gray-300 lg:block">
+              <span className="hidden text-gray-900 lg:block dark:text-gray-300">
                 {nav.name}
               </span>
             );

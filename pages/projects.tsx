@@ -6,7 +6,7 @@ import { useAppData } from '@/context/Common/CommonContext';
 const Projects = () => {
   const commonData = useAppData();
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-dvh flex-col">
       <header className="sr-only">
         <h1>Projects</h1>
       </header>

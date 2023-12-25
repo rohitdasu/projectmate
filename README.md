@@ -168,7 +168,7 @@ Figma design:
 
 ## Contributing Guidelines 📜
 
-Any contributions you make are truly appreciated, go to our [CONTRIBUTING.md](https://github.com/rohitdasu/projectmate/blob/main/CONTRIBUTING.md) file for more information.
+Any contributions you make are truly appreciated, go to our [CONTRIBUTING.md](https://github.com/rohitdasu/projectmate/blob/main/CONTRIBUTING.md) file for more information on how to contribute.
 
 ## Code of Conduct 📜
 
@@ -182,8 +182,8 @@ View [CODE_OF_CONDUCT.md](https://github.com/rohitdasu/projectmate/blob/main/COD
 
 ## Support ⭐
 
-Don't forget to leave a star ⭐ if you want to support us.
+Don't forget to support us by leaving a star ⭐
 
 ## License 📃
 
-projectmate is licensed under the MIT License - see the [LICENSE](https://github.com/rohitdasu/projectmate/blob/main/LICENSE) file for details.
+projectmate is licensed under the MIT License - see the [LICENSE](https://github.com/rohitdasu/projectmate/blob/main/LICENSE) file for the details.

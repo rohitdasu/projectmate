@@ -33,14 +33,14 @@ export const Footer = () => {
 
   return (
     <footer className="bg-gray-100 text-black dark:bg-gray-900 dark:text-white">
-      <div className="mx-auto max-w-screen-lg py-8 px-4 md:px-8 xl:px-0">
+      <div className="mx-auto max-w-screen-lg px-4 py-8 md:px-8 xl:px-0">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Connect with Us */}
           <div>
-            <h2 className="mb-4 text-base font-normal dark:text-gray-300 md:text-lg">
+            <h2 className="mb-4 text-base font-normal md:text-lg dark:text-gray-300">
               Connect with Us
             </h2>
-            <ul className="mb-4 flex gap-4">
+            <ul>
               {Icons.map((social) => (
                 <li key={social.id}>
                   <FooterLink href={social.link} target="_blank">
@@ -53,7 +53,7 @@ export const Footer = () => {
 
           {/* Useful Links */}
           <div>
-            <h2 className="mb-4 text-base font-normal dark:text-gray-300 md:text-lg">
+            <h2 className="mb-4 text-base font-normal md:text-lg dark:text-gray-300">
               Useful Links
             </h2>
             <ul>
@@ -67,7 +67,7 @@ export const Footer = () => {
 
           {/* Legal */}
           <div>
-            <h2 className="mb-4 text-base font-normal dark:text-gray-300 md:text-lg">
+            <h2 className="mb-4 text-base font-normal md:text-lg dark:text-gray-300">
               Legal
             </h2>
             <ul>
@@ -83,7 +83,7 @@ export const Footer = () => {
 
           {/* Developers */}
           <div>
-            <h2 className="mb-4 text-base font-normal dark:text-gray-300 md:text-lg">
+            <h2 className="mb-4 text-base font-normal md:text-lg dark:text-gray-300">
               Developed by
             </h2>
             <div className="mb-4 flex flex-col items-start">

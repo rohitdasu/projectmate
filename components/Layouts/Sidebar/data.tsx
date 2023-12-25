@@ -25,9 +25,9 @@ export const NavRoutes = [
   },
   {
     id: '4',
-    title: 'Posts',
+    title: 'Blogs',
     icon: <Newspaper />,
-    link: '/posts',
+    link: '/blogs',
     authGuard: false,
   },
 ];
