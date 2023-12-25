@@ -21,8 +21,8 @@ export const usefulLinks = [
     link: '/mates',
   },
   {
-    name: 'Posts',
-    link: '/posts',
+    name: 'Blogs',
+    link: '/blogs',
   },
 ];
 
