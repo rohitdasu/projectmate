@@ -5,6 +5,7 @@ import { Sidebar } from '../Sidebar';
 import { BottomBar } from '../BottomBar';
 import { TopNavbar } from '../TopNavbar';
 import { favicons } from '@/data';
+import BackToTopButton from '@/components/Common/BackToTop';
 
 export const SharedLayout: FC<SharedLayoutProps> = ({
   title = '',
@@ -71,6 +72,7 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
           <BottomBar />
         </div>
       )}
+      <BackToTopButton />
     </div>
   );
 };

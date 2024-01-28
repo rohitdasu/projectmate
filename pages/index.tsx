@@ -12,6 +12,7 @@ import {
 } from '@/components/views/LandingPage';
 import { favicons } from '@/data';
 import { prisma } from '../lib/prisma';
+import BackToTopButton from '@/components/Common/BackToTop';
 
 interface HomeProps {
   userCount: number | null;
@@ -41,6 +42,7 @@ const Home: NextPage<HomeProps> = ({ userCount, randomUsers }) => {
         <FeaturesComponent />
         <ActionComponent />
         <FAQ />
+        <BackToTopButton />
       </main>
       <Footer />
     </>
