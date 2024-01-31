@@ -15,6 +15,7 @@ import {
 import moment from 'moment';
 import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';
+import { BUTTON_TEXT } from '@/components/Common/Constants/textLabels';
 
 const INSIGHTS_WEBAPP = 'https://analyzemyrepo.com/analyze';
 
@@ -164,7 +165,7 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                     onClick={extractAccountAndRepo}
                   >
                     <BarChart2 className="mr-1" />
-                    <span className="hidden md:block">Stats</span>
+                    <span className="hidden md:block">{BUTTON_TEXT.stats}</span>
                   </Button>
                   <Button
                     size={'sm'}
@@ -172,7 +173,9 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                     onClick={handleContributeClick}
                   >
                     <GitPullRequest className="mr-1" />
-                    <span className="hidden md:block">Contribute</span>
+                    <span className="hidden md:block">
+                      {BUTTON_TEXT.contribute}
+                    </span>
                   </Button>
                   {liveUrl && (
                     <Button
@@ -181,7 +184,9 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                       onClick={handleLiveClick}
                     >
                       <Globe2 className="mr-1" />
-                      <span className="hidden md:block">Live</span>
+                      <span className="hidden md:block">
+                        {BUTTON_TEXT.live}
+                      </span>
                     </Button>
                   )}
                 </div>
@@ -193,7 +198,7 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                   variant={'ghost'}
                 >
                   <Forward className="mr-1" />
-                  <span className="hidden md:block">Share</span>
+                  <span className="hidden md:block">{BUTTON_TEXT.share}</span>
                 </Button>
               </div>
             </div>

@@ -24,6 +24,7 @@ import { useCopyToClipboard } from 'usehooks-ts';
 import { useShareModal } from '@/hooks/useShareModal';
 import { Button } from '../../ui/button';
 import { useToast } from '../../ui/use-toast';
+import { BUTTON_TEXT } from '@/components/Common/Constants/textLabels';
 
 export const ShareModal: FC = () => {
   const {
@@ -86,7 +87,7 @@ export const ShareModal: FC = () => {
               </Typography>
             </div>
             <Button size={'sm'} onClick={() => copyToClipboard(url)}>
-              Copy
+              {BUTTON_TEXT.copy}
             </Button>
           </div>
         </DialogFooter>

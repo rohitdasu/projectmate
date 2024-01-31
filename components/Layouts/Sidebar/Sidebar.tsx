@@ -27,6 +27,7 @@ import {
 import { useTheme } from 'next-themes';
 import { useAppData } from '@/context/Common/CommonContext';
 import { Logo } from '@/components/Common/Logo';
+import { BUTTON_TEXT } from '@/components/Common/Constants/textLabels';
 
 const NavElements = NavRoutes.map((nav) => {
   return {
@@ -110,7 +111,7 @@ export const Sidebar = () => {
         })}
         <AddProjectModal email={session?.user?.email} />
         <li onClick={handleAddProject}>
-          <Button size="lg">Add project</Button>
+          <Button size="lg">{BUTTON_TEXT.addProject}</Button>
         </li>
         <TooltipProvider>
           <Tooltip>
@@ -164,7 +165,7 @@ export const ThemeToggler = () => {
         <Button variant="secondary" size="icon">
           <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
+          <span className="sr-only">{BUTTON_TEXT.toggleTheme}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

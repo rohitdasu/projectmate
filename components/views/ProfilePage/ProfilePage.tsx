@@ -32,6 +32,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import { FaGithub, FaGlobeAsia, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { BUTTON_TEXT } from '@/components/Common/Constants/textLabels';
 
 export const ProfilePage = (data: ProfilePageProps) => {
   const [loading, setLoading] = useState(false);
@@ -161,7 +162,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
         )}
         {isCurrentUser && (
           <Button variant={'outline'} onClick={toggleSheet}>
-            Edit profile
+            {BUTTON_TEXT.editProfile}
           </Button>
         )}
       </section>
@@ -300,7 +301,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
                       href={socialSites?.github || '#'}
                     >
                       <FaGithub className="text-blue-500" />
-                      <span>GitHub</span>
+                      <span>{BUTTON_TEXT.gitHub}</span>
                     </Link>
                   </Button>
                 </li>
@@ -314,7 +315,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
                       href={socialSites?.linkedin || '#'}
                     >
                       <FaLinkedin className="text-blue-500" />
-                      <span>LinkedIn</span>
+                      <span>{BUTTON_TEXT.linkedIn}</span>
                     </Link>
                   </Button>
                 </li>
@@ -328,7 +329,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
                       href={socialSites?.twitter || '#'}
                     >
                       <FaTwitter className="text-blue-500" />
-                      <span>Twitter</span>
+                      <span>{BUTTON_TEXT.twitter}</span>
                     </Link>
                   </Button>
                 </li>
@@ -342,7 +343,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
                       href={socialSites?.website || '#'}
                     >
                       <FaGlobeAsia className="text-blue-500" />
-                      <span>Website</span>
+                      <span>{BUTTON_TEXT.website}</span>
                     </Link>
                   </Button>
                 </li>
@@ -529,7 +530,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
                     className="float-right"
                   >
                     {loading && <Loader className="mr-2 animate-spin" />}
-                    Save changes
+                    {BUTTON_TEXT.saveChanges}
                   </Button>
                 </form>
               </Form>

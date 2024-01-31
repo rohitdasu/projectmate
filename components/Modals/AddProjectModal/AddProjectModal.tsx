@@ -28,6 +28,7 @@ import * as z from 'zod';
 import axios from 'axios';
 import { useToast } from '../../ui/use-toast';
 import { useAppData } from '@/context/Common/CommonContext';
+import { BUTTON_TEXT } from '@/components/Common/Constants/textLabels';
 
 export const AddProjectModal = ({ email }: { email?: string | null }) => {
   const [tagArray, setTagArray] = React.useState<string[]>([]);
@@ -207,7 +208,7 @@ export const AddProjectModal = ({ email }: { email?: string | null }) => {
               />
               <Button disabled={loading} type="submit" className="float-right">
                 {loading && <Loader className="mr-2 animate-spin" />}
-                Submit
+                {BUTTON_TEXT.submit}
               </Button>
             </form>
           </Form>
