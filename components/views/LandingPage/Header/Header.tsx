@@ -11,6 +11,7 @@ import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
 import { FaDiscord, FaGithub, FaTwitter } from 'react-icons/fa';
 import { Logo } from '@/components/Common/Logo';
+import { BUTTON_TEXT } from '@/components/Common/Constants/textLabels';
 
 interface HeaderProps {
   homeRoute?: string;
@@ -36,7 +37,7 @@ export const Header: FC<HeaderProps> = ({ homeRoute = '/' }) => {
             <Button variant="secondary" size="icon">
               <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
+              <span className="sr-only">{BUTTON_TEXT.toggleTheme}</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">

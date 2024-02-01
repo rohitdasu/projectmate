@@ -3,6 +3,7 @@ import { SharedLayout } from '@/components/Layouts';
 import Link from 'next/link';
 import { ShieldAlert } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { BUTTON_TEXT } from '@/components/Common/Constants/textLabels';
 
 const NotFound: NextPage = () => {
   return (
@@ -20,7 +21,7 @@ const NotFound: NextPage = () => {
           </p>
         </section>
         <Button asChild>
-          <Link href="/">Go Home</Link>
+          <Link href="/">{BUTTON_TEXT.goHome}</Link>
         </Button>
       </div>
     </SharedLayout>

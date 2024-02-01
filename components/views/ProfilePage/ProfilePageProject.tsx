@@ -1,3 +1,4 @@
+import { BUTTON_TEXT } from '@/components/Common/Constants/textLabels';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -38,7 +39,7 @@ export const ProfilePageProject = ({
             target="_blank"
           >
             <Github className="h-5" />
-            <span className="hidden md:block">Github</span>
+            <span className="hidden md:block">{BUTTON_TEXT.gitHub}</span>
           </Link>
         </Button>
         {liveUrl && (
@@ -49,7 +50,7 @@ export const ProfilePageProject = ({
               target="_blank"
             >
               <Globe2 className="h-5" />
-              <span className="hidden md:block">Live</span>
+              <span className="hidden md:block">{BUTTON_TEXT.live}</span>
             </Link>
           </Button>
         )}
@@ -61,7 +62,7 @@ export const ProfilePageProject = ({
             size={'sm'}
           >
             <Edit className="h-5" />
-            <span className="hidden md:block">Edit</span>
+            <span className="hidden md:block">{BUTTON_TEXT.edit}</span>
           </Button>
         )}
       </CardFooter>

@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import React from 'react';
+import { BUTTON_TEXT } from '../Constants/textLabels';
 
 export const ErrorPage = () => {
   return (
@@ -14,10 +15,10 @@ export const ErrorPage = () => {
             }
           }}
         >
-          Retry
+          {BUTTON_TEXT.retry}
         </Button>
         <Button asChild variant={'secondary'}>
-          <Link href={'/'}>Home</Link>
+          <Link href={'/'}>{BUTTON_TEXT.home}</Link>
         </Button>
       </div>
     </div>

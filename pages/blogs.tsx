@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import { SharedLayout } from '@/components/Layouts';
 import { CalendarClock } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { MESSAGES } from '@/components/Common/Constants/messages';
 
 const Posts: NextPage = () => {
   return (
@@ -18,7 +19,9 @@ const Posts: NextPage = () => {
           className="flex h-dvh animate-pulse flex-col items-center justify-center"
         >
           <CalendarClock className="h-20 w-20" />
-          <p className="text-base font-bold md:text-lg">coming soon</p>
+          <p className="text-base font-bold md:text-lg">
+            {MESSAGES.comingSoon}
+          </p>
         </motion.div>
       </SharedLayout>
     </>

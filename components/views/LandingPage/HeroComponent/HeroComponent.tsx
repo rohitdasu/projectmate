@@ -1,3 +1,4 @@
+import { BUTTON_TEXT } from '@/components/Common/Constants/textLabels';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { User } from '@/pages';
@@ -30,7 +31,7 @@ export const HeroComponent = ({
         </p>
         <Button size={'lg'} asChild>
           <Link href="/projects" className="text-center">
-            Explore Projects
+            {BUTTON_TEXT.exploreProjects}
           </Link>
         </Button>
         <section className="flex flex-row gap-3">

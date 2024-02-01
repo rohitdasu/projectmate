@@ -2,6 +2,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useAuthModal } from '@/hooks/useAuthModal';
 import { Button } from '@/components/ui/button';
+import { BUTTON_TEXT } from '@/components/Common/Constants/textLabels';
 
 export const ActionComponent = () => {
   const { status } = useSession();
@@ -33,9 +34,9 @@ export const ActionComponent = () => {
         </p>
         <Button size={'lg'} onClick={join} disabled={status === 'loading'}>
           {status === 'unauthenticated'
-            ? 'Sign Up'
+            ? BUTTON_TEXT.singUp
             : status === 'authenticated'
-            ? 'Explore projects'
+            ? BUTTON_TEXT.exploreProjects
             : 'loading'}
         </Button>
       </div>

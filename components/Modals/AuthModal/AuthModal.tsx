@@ -9,6 +9,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { Button } from '../../ui/button';
+import { BUTTON_TEXT } from '@/components/Common/Constants/textLabels';
 
 export const AuthModal = () => {
   const {
@@ -38,7 +39,7 @@ export const AuthModal = () => {
               }}
             >
               <FaGithub className="mr-2" size={32} />
-              <span>Continue with Github</span>
+              <span>{BUTTON_TEXT.continueWithGitHub}</span>
             </Button>
             <Button
               variant={'outline'}
@@ -49,7 +50,7 @@ export const AuthModal = () => {
               }}
             >
               <FcGoogle className="mr-2" size={32} />
-              <span>Continue with Google</span>
+              <span>{BUTTON_TEXT.continueWithGoogle}</span>
             </Button>
           </section>
         </DialogContent>
