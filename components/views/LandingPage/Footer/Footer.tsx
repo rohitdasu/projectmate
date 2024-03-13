@@ -129,7 +129,7 @@ export const Footer = () => {
           </div>
         </div>
         <div className="mt-10 text-center text-sm font-normal text-black/70 dark:text-white/70">
-          <p>projectmate {currentYear}</p>
+          <p>©️ projectmate {currentYear}</p>
         </div>
       </div>
     </footer>
