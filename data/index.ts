@@ -80,11 +80,6 @@ export const maintainers = [
     avatar: 'https://avatars.githubusercontent.com/u/74047866?v=4',
     github: 'https://github.com/JakubChorzepa',
   },
-  {
-    name: 'Yazdun',
-    avatar: 'https://avatars.githubusercontent.com/u/83041367?v=4',
-    github: 'https://github.com/Yazdun',
-  },
 ];
 
 export const faqData = [
