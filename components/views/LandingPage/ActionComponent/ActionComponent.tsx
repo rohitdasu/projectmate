@@ -22,7 +22,7 @@ export const ActionComponent = () => {
       style={{
         backgroundImage: "url('/checks.png')",
       }}
-      className="mx-auto max-w-screen-xl overflow-hidden bg-cover bg-no-repeat py-8 md:py-12 dark:text-gray-300"
+      className="mx-auto max-w-screen-xl overflow-hidden bg-cover bg-no-repeat py-8 dark:text-gray-300 md:py-12"
       id="action"
     >
       <div className="container mx-auto text-center">
