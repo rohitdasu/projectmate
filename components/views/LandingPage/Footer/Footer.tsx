@@ -37,7 +37,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Connect with Us */}
           <div>
-            <h2 className="mb-4 text-base font-normal md:text-lg dark:text-gray-300">
+            <h2 className="mb-4 text-base font-normal dark:text-gray-300 md:text-lg">
               Connect with Us
             </h2>
             <ul>
@@ -53,7 +53,7 @@ export const Footer = () => {
 
           {/* Useful Links */}
           <div>
-            <h2 className="mb-4 text-base font-normal md:text-lg dark:text-gray-300">
+            <h2 className="mb-4 text-base font-normal dark:text-gray-300 md:text-lg">
               Useful Links
             </h2>
             <ul>
@@ -67,7 +67,7 @@ export const Footer = () => {
 
           {/* Legal */}
           <div>
-            <h2 className="mb-4 text-base font-normal md:text-lg dark:text-gray-300">
+            <h2 className="mb-4 text-base font-normal dark:text-gray-300 md:text-lg">
               Legal
             </h2>
             <ul>
@@ -83,7 +83,7 @@ export const Footer = () => {
 
           {/* Developers */}
           <div>
-            <h2 className="mb-4 text-base font-normal md:text-lg dark:text-gray-300">
+            <h2 className="mb-4 text-base font-normal dark:text-gray-300 md:text-lg">
               Developed by
             </h2>
             <div className="mb-4 flex flex-col items-start">

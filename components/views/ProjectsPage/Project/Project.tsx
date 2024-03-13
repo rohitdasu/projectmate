@@ -97,7 +97,7 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                 >
                   <div className="flex w-full flex-row items-center justify-between">
                     <p
-                      className="w-40 truncate  hover:cursor-pointer md:w-auto dark:text-gray-100"
+                      className="w-40 truncate  hover:cursor-pointer dark:text-gray-100 md:w-auto"
                       onClick={handleContributeClick}
                     >
                       {title}
@@ -132,7 +132,7 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                         </AvatarFallback>
                       </Avatar>
 
-                      <span className="text-xs text-black opacity-70 md:text-sm dark:text-white">
+                      <span className="text-xs text-black opacity-70 dark:text-white md:text-sm">
                         {author}
                       </span>
                     </Link>
