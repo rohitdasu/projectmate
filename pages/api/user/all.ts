@@ -10,11 +10,12 @@ export default async function handler(
 ) {
   switch (req.method) {
     case 'GET':
-      const { limit } = req.query;
+      const { limit, cursorId } = req.query;
       const userLimit: number = Number(limit) || 35;
       try {
         const data = await getAllUsers({
           limit: userLimit,
+          cursorId: cursorId ? cursorId.toString() : undefined,
         });
         return res.json(data);
       } catch (error) {
@@ -36,10 +37,21 @@ export default async function handler(
   }
 }
 
-async function getAllUsers(args: { limit: number }) {
-  const { limit } = args;
+async function getAllUsers(args: { limit: number; cursorId?: string }) {
+  const { limit, cursorId } = args;
+  let users: User[];
   try {
-    const users: User[] = await prisma.user.findMany({ take: limit });
+    if (cursorId) {
+      users = await prisma.user.findMany({
+        take: limit,
+        skip: 1,
+        cursor: {
+          id: cursorId,
+        },
+      });
+    } else {
+      users = await prisma.user.findMany({ take: limit });
+    }
 
     const usersWithProjects = await getUsersWithProjects(users);
 

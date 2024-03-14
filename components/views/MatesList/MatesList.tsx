@@ -18,7 +18,7 @@ export const MatesList = () => {
 
     if (pageIndex === 0) return `/api/user/all`;
 
-    return `/api/user/mates?cursorId=${cursorId}&limit=15`;
+    return `/api/user/all?cursorId=${cursorId}&limit=15`;
   };
 
   const { data, size, setSize, error, isLoading } = useSWRInfinite<MateProps[]>(
