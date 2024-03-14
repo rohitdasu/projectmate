@@ -26,7 +26,7 @@ export const MatesList = () => {
     fetcher
   );
 
-  const numberOfSKeletonPost = 7;
+  const numberOfSKeletonPost = 15;
   const skeletonMatesToLoad = Array.from({ length: numberOfSKeletonPost }, () =>
     (Math.random() + 1).toString(36).substring(7)
   );
