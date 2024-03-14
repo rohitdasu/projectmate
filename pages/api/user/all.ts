@@ -55,11 +55,11 @@ async function getAllUsers(args: { limit: number; cursorId?: string }) {
 
     const usersWithProjects = await getUsersWithProjects(users);
 
-    const sortedUsers = usersWithProjects.sort(
-      (a, b) => b.numberOfProjects - a.numberOfProjects
-    );
+    // const sortedUsers = usersWithProjects.sort(
+    //   (a, b) => b.numberOfProjects - a.numberOfProjects
+    // );
 
-    return sortedUsers;
+    return usersWithProjects;
   } catch (error) {
     throw error;
   }
