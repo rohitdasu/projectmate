@@ -28,13 +28,13 @@ export const Header: FC<HeaderProps> = ({ homeRoute = '/' }) => {
             href={'https://github.com/rohitdasu/projectmate'}
             target="_blank"
           >
-            <FaGithub className="text-xl text-black hover:text-black/60 md:text-3xl dark:text-white dark:hover:text-white/60" />
+            <FaGithub className="text-xl text-black hover:text-black/60 dark:text-white dark:hover:text-white/60 md:text-3xl" />
           </Link>
           <Link href={'https://discord.com/invite/FQtyMWFZQ9'} target="_blank">
-            <FaDiscord className="text-xl text-black hover:text-black/60 md:text-3xl dark:text-white dark:hover:text-white/60" />
+            <FaDiscord className="text-xl text-black hover:text-black/60 dark:text-white dark:hover:text-white/60 md:text-3xl" />
           </Link>
           <Link href={'https://twitter.com/projectmateHQ'} target="_blank">
-            <FaTwitter className="text-xl text-black hover:text-black/60 md:text-3xl dark:text-white dark:hover:text-white/60" />
+            <FaTwitter className="text-xl text-black hover:text-black/60 dark:text-white dark:hover:text-white/60 md:text-3xl" />
           </Link>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

@@ -21,10 +21,10 @@ export const HeroComponent = ({
           backgroundPosition: 'center',
         }}
       >
-        <h1 className="mx-auto max-w-4xl text-center text-2xl font-semibold text-gray-900 md:text-5xl md:!leading-[1.25] dark:text-gray-300">
+        <h1 className="mx-auto max-w-4xl text-center text-2xl font-semibold text-gray-900 dark:text-gray-300 md:text-5xl md:!leading-[1.25]">
           Supercharge your open-source contributions
         </h1>
-        <p className="mx-auto max-w-2xl text-center text-sm font-light text-gray-900 md:text-lg dark:text-gray-300">
+        <p className="mx-auto max-w-2xl text-center text-sm font-light text-gray-900 dark:text-gray-300 md:text-lg">
           Explore projects, contribute seamlessly, access insightful stats,
           effortlessly share, connect with a vibrant community, and showcase
           your work with a personalized portfolio.

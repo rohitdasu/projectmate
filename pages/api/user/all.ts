@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '@/lib/prisma';
 import { User } from '@prisma/client';
-import { errorResponse, successResponse } from '@/lib/httpResponse';
+import { errorResponse } from '@/lib/httpResponse';
+import { getUsersWithProjects } from '@/lib/user';
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,15 +10,14 @@ export default async function handler(
 ) {
   switch (req.method) {
     case 'GET':
+      const { limit, cursorId } = req.query;
+      const userLimit: number = Number(limit) || 35;
       try {
-        const data = await getUsers();
-        return successResponse({
-          res,
-          message: '',
-          results: data,
-          statusCode: 200,
-          success: true,
+        const data = await getAllUsers({
+          limit: userLimit,
+          cursorId: cursorId ? cursorId.toString() : undefined,
         });
+        return res.json(data);
       } catch (error) {
         return errorResponse({
           res,
@@ -37,38 +37,29 @@ export default async function handler(
   }
 }
 
-async function getUsers() {
+async function getAllUsers(args: { limit: number; cursorId?: string }) {
+  const { limit, cursorId } = args;
+  let users: User[];
   try {
-    const users: User[] = await prisma.user.findMany();
+    if (cursorId) {
+      users = await prisma.user.findMany({
+        take: limit,
+        skip: 1,
+        cursor: {
+          id: cursorId,
+        },
+      });
+    } else {
+      users = await prisma.user.findMany({ take: limit });
+    }
 
-    const usersWithProjects = await Promise.all(
-      users.map(async (user) => {
-        const projects = await prisma.project.findMany({
-          where: { authorId: user.id },
-        });
+    const usersWithProjects = await getUsersWithProjects(users);
 
-        const userProjects = projects.map((project) => project.title);
+    // const sortedUsers = usersWithProjects.sort(
+    //   (a, b) => b.numberOfProjects - a.numberOfProjects
+    // );
 
-        return {
-          id: user.id,
-          name: user.name,
-          title: user.title,
-          username: user.username,
-          skills: user.skills,
-          description: user.description,
-          profilePicture: user.image,
-          role: userProjects.length > 0 ? 'GS' : 'NS',
-          projects: userProjects,
-          numberOfProjects: userProjects.length,
-        };
-      })
-    );
-
-    const sortedUsers = usersWithProjects.sort(
-      (a, b) => b.numberOfProjects - a.numberOfProjects
-    );
-
-    return sortedUsers;
+    return usersWithProjects;
   } catch (error) {
     throw error;
   }

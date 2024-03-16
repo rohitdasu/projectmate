@@ -79,14 +79,14 @@ export const Sidebar = () => {
             router.pathname === nav.link + '/[username]';
 
           let spanNameTag = (
-            <span className="hidden text-gray-600 hover:text-gray-900 lg:block dark:text-gray-400 dark:hover:text-gray-300">
+            <span className="hidden text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 lg:block">
               {nav.name}
             </span>
           );
 
           if (isActive) {
             spanNameTag = (
-              <span className="hidden text-gray-900 lg:block dark:text-gray-300">
+              <span className="hidden text-gray-900 dark:text-gray-300 lg:block">
                 {nav.name}
               </span>
             );
