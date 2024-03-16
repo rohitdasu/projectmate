@@ -36,12 +36,6 @@ export const MatesList = () => {
   const isLoadingMore = data && typeof data[size - 1] === 'undefined';
   const isNotReachEnd = data && data[data.length - 1].length;
 
-  const sortedPaginatedMates = (paginatedMates: MateProps[]) =>
-    paginatedMates.sort(
-      (mateItemA, mateItemB) =>
-        mateItemB.numberOfProjects - mateItemA.numberOfProjects
-    );
-
   useEffect(() => {
     const onScroll = () => {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
@@ -75,7 +69,7 @@ export const MatesList = () => {
             </>
           )}
           {paginatedMates &&
-            sortedPaginatedMates(paginatedMates)?.map((mate: MateProps) => {
+            paginatedMates?.map((mate: MateProps) => {
               return (
                 <li key={mate.id}>
                   <Mate {...mate} />
