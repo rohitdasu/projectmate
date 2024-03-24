@@ -51,6 +51,7 @@ async function getAllTags() {
     allProjects.forEach((project) =>
       project.tags.forEach((tag) => allTags.add(tag))
     );
+
     return Array.from(allTags);
   } catch (error) {
     throw error;
