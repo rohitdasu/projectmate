@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -28,7 +28,6 @@ import { useTheme } from 'next-themes';
 import { useAppData } from '@/context/Common/CommonContext';
 import { Logo } from '@/components/Common/Logo';
 import { BUTTON_TEXT } from '@/components/Common/Constants/textLabels';
-import useGetAllTags from '@/hooks/useGetAllTags';
 
 const NavElements = NavRoutes.map((nav) => {
   return {
@@ -65,18 +64,7 @@ export const Sidebar = () => {
       return nav.link;
     }
   };
-  const { data: tags } = useGetAllTags();
-  // const allUniqueTag = tags?.results;
 
-  const handleClick = useCallback(
-    (e: any, tag: string) => {
-      e.stopPropagation();
-
-      const url = `/tprojects/${tag}`;
-      router.push(url);
-    },
-    [router]
-  );
   return (
     <div className="fixed inset-0 z-10 flex h-dvh flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
       <Logo route={'/'} />
@@ -143,22 +131,6 @@ export const Sidebar = () => {
           </Tooltip>
         </TooltipProvider>
       </ul>
-
-      {/*....... tags to be added */}
-      <div className="mt-3 flex flex-wrap">
-        {tags?.results.map((item: string, index: number) => {
-          return (
-            <Button
-              key={index}
-              className="mb-2 mr-2"
-              onClick={(e) => handleClick(e, item)}
-            >
-              {item}
-            </Button>
-          );
-        })}
-      </div>
-
       <ul className="absolute bottom-4 flex w-3/4 flex-col items-start gap-4 transition-all">
         <Separator />
         {status === 'authenticated' ? (
