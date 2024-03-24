@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import Header from '@/components/ui/header';
 import useGetAllTags from '@/hooks/useGetAllTags';
 import { useRouter } from 'next/router';
 import React, { useCallback } from 'react';
@@ -19,6 +20,7 @@ const RightBar = () => {
   );
   return (
     <div className="mt-7">
+      <Header data="Tags" />
       {tags?.results.map((item: string, index: number) => {
         return (
           <Button
