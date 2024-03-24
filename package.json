@@ -48,7 +48,7 @@
     "react-intersection-observer": "^9.5.3",
     "react-share": "^4.4.1",
     "sitemap": "^7.1.1",
-    "swr": "^2.0.3",
+    "swr": "^2.2.5",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
     "ts-node": "^10.9.1",
