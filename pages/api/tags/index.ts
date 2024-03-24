@@ -47,12 +47,17 @@ export default async function handler(
 async function getAllTags() {
   try {
     const allProjects = await prisma.project.findMany();
-    const allTags = new Set<string>();
-    allProjects.forEach((project) =>
-      project.tags.forEach((tag) => allTags.add(tag))
-    );
 
-    return Array.from(allTags);
+    const allTags = allProjects.flatMap((project) => project.tags);
+    const lowercasedArray: string[] = allTags.map((str) =>
+      str.toLowerCase().trim()
+    );
+    // console.log("LINE AT 53" , lowercasedArray);
+
+    const uniqueTagsSet = new Set(lowercasedArray);
+    // console.log("LINE AT 56" , uniqueTagsSet);
+
+    return Array.from(uniqueTagsSet);
   } catch (error) {
     throw error;
   }
