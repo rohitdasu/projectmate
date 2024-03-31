@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import Header from '@/components/ui/header';
 import useGetAllTags from '@/hooks/useGetAllTags';
 import { useRouter } from 'next/router';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 
 const RightBar = () => {
   const { data: tags } = useGetAllTags();
@@ -11,21 +11,20 @@ const RightBar = () => {
   const router = useRouter();
   const { tag } = router.query;
   // console.log(tag);
-  const [flag, setFlag] = useState(true);
+  // const [flag, setFlag] = useState(true);
   // console.log("LINE AT 16" , flag);
   const handleClick = useCallback(
     (e: any, tag: string) => {
       e.stopPropagation();
-      if (flag) {
-        const url = `/tprojects/${tag}`;
-        router.push(url);
-        setFlag(!flag);
-      } else {
+      if (tag === router.query.tag) {
         router.push('/projects');
-        setFlag(!flag);
+        return; // Exit the function to avoid unnecessary state update
       }
+      // Otherwise, navigate to the tag's page
+      const url = `/tprojects/${tag}`;
+      router.push(url);
     },
-    [router, flag]
+    [router]
   );
   return (
     <div className="fixed   h-dvh  items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
