@@ -6,12 +6,13 @@ import { BottomBar } from '../BottomBar';
 import { TopNavbar } from '../TopNavbar';
 import { favicons } from '@/data';
 import BackToTopButton from '@/components/Common/BackToTop';
+import RightBar from '../RightBar';
 
 export const SharedLayout: FC<SharedLayoutProps> = ({
   title = '',
   children,
   leftSidebar = true,
-  rightSidebar = false,
+  rightSidebar = true,
   topBar = true,
   bottomBar = true,
 }) => {
@@ -65,7 +66,11 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
         >
           {children}
         </main>
-        {rightSidebar && <div></div>}
+        {rightSidebar && (
+          <div className="grid min-h-dvh grid-cols-4">
+            <RightBar />
+          </div>
+        )}
       </div>
       {bottomBar && (
         <div className="sticky bottom-0 z-10 block h-14 w-full border-t bg-white/60 dark:bg-black/60 lg:hidden">
