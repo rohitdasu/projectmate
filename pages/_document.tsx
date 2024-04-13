@@ -42,6 +42,18 @@ export default class MyDocument extends Document {
             content="Explore projects, contribute seamlessly, access insightful stats, effortlessly share, connect with a vibrant community, and showcase your work with a personalized portfolio."
           />
           <meta property="twitter:image" content="/og.png" />
+
+          <script
+            src="https://survei-feedback.vercel.app/scripts/popup.min.js"
+            data-popup-id="661a22d329ea73467e541e30"
+            data-theme="sun"
+            data-position="left"
+            data-button-color="#3b82f6"
+            data-input-placeholder="I liked the ...."
+            data-trigger-text="Feedback"
+            data-input-label="What did you like or dislike?"
+            defer
+          ></script>
           <script
             dangerouslySetInnerHTML={{
               __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
