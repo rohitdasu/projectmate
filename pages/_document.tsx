@@ -45,10 +45,10 @@ export default class MyDocument extends Document {
 
           <script
             src="https://survei-feedback.vercel.app/scripts/popup.min.js"
-            data-popup-id="661a22d329ea73467e541e30"
+            data-popup-id="661d54a06635b504822c38e0"
             data-theme="sun"
             data-position="left"
-            data-button-color="#3b82f6"
+            data-button-color="#000000"
             data-input-placeholder="I liked the ...."
             data-trigger-text="Feedback"
             data-input-label="What did you like or dislike?"
