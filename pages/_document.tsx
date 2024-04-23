@@ -44,7 +44,7 @@ export default class MyDocument extends Document {
           <meta property="twitter:image" content="/og.png" />
 
           <script
-            src="https://survei-feedback.vercel.app/scripts/popup.min.js"
+            src="https://survei-feedback.vercel.app/scripts/survei.js"
             data-survei-id="661d54a06635b504822c38e0"
             data-theme="sun"
             data-position="left"
