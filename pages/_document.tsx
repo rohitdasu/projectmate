@@ -45,6 +45,7 @@ export default class MyDocument extends Document {
 
           <script
             src="https://survei-feedback.vercel.app/scripts/survei.js"
+            data-widget="feedbackform1"
             data-survei-id="661d54a06635b504822c38e0"
             data-theme="sun"
             data-position="left"
