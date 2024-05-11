@@ -7,7 +7,7 @@
 Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 200+ registered users who are already making a difference
 
 ## Demo
-  
+
 Check out the web app 🌏 : https://projectmate.net/
 <br>
 <br>

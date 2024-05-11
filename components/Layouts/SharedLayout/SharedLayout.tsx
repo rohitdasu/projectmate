@@ -6,7 +6,7 @@ import { BottomBar } from '../BottomBar';
 import { TopNavbar } from '../TopNavbar';
 import { favicons } from '@/data';
 import BackToTopButton from '@/components/Common/BackToTop';
-import RightBar from '../RightBar';
+// import RightBar from '../RightBar';
 
 export const SharedLayout: FC<SharedLayoutProps> = ({
   title = '',
@@ -67,9 +67,7 @@ export const SharedLayout: FC<SharedLayoutProps> = ({
           {children}
         </main>
         {rightSidebar && (
-          <div className="grid min-h-dvh grid-cols-4">
-            <RightBar />
-          </div>
+          <div className="grid min-h-dvh grid-cols-4">{/* <RightBar /> */}</div>
         )}
       </div>
       {bottomBar && (
