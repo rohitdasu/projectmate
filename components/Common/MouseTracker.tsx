@@ -28,13 +28,9 @@ export const MouseTracker = () => {
       }}
     >
       <div
+        className="h-2 w-2 -translate-x-1 -translate-y-1 rounded-full bg-foreground/50"
         style={{
-          width: '8px',
-          height: '8px',
-          backgroundColor: 'rgba(var(--foreground-rgb), 0.5)',
-          borderRadius: '50%',
-          marginLeft: '-4px',
-          marginTop: '-4px',
+          mixBlendMode: 'difference',
         }}
       />
     </div>
