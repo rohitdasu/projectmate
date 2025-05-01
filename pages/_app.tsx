@@ -12,6 +12,7 @@ import { AppDataContext } from '@/context/Common/CommonContext';
 import { Loader } from 'lucide-react';
 import { useState } from 'react';
 import { ProgressBar } from '@/components/Common/ProgressBar';
+import { MouseTracker } from '@/components/Common/MouseTracker';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const userDetailsUrl = `/api/user/details`;
@@ -37,6 +38,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <Toaster />
             <AuthModal />
             <ShareModal />
+            <MouseTracker />
             {!isDetailsLoading ? (
               <>
                 <ProgressBar />

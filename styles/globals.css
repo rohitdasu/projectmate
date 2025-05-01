@@ -72,6 +72,16 @@
   }
   body {
     @apply bg-background text-foreground;
+    transition: background-color 0.5s ease;
+  }
+
+  body.video-in-view {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  body.video-in-view .bg-background {
+    position: relative;
+    z-index: 1;
   }
 }
 
