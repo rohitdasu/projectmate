@@ -2,16 +2,18 @@
 
 ### Fixes Issue
 
-<!-- Remove this section if not applicable -->
-
 <!-- Example: Closes #31 -->
 
 ### Changes proposed
 
 <!-- List all the proposed changes in your PR -->
+<!-- Example: 1. Added new modal -->
 
 ### Note to reviewers
 
 <!-- Add notes to reviewers if applicable -->
+<!-- Example: Please install service X before reviewing-->
 
 ### Screenshots
+
+<!-- Add screenshots for reviewer convenience -->
