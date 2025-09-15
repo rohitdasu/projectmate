@@ -9,7 +9,7 @@ import { ShareModal } from '@/components/Modals/ShareModal';
 import { fetcher } from '@/lib/fetcher';
 import useSWR from 'swr';
 import { AppDataContext } from '@/context/Common/CommonContext';
-import { Loader } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
 import { ProgressBar } from '@/components/Common/ProgressBar';
 
@@ -44,7 +44,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
               </>
             ) : (
               <div className="flex h-dvh w-screen items-center justify-center">
-                <Loader className="h-10 w-10 animate-spin md:h-20 md:w-20" />
+                <Loader2 className="h-10 w-10 animate-spin" />
               </div>
             )}
           </AppDataContext.Provider>
