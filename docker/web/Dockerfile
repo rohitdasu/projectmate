@@ -1,5 +1,5 @@
-# Use actuall node version specified in .nvmrc
-FROM node:18.12.0
+# Use latest LTS node version
+FROM node:20
 
 # Install rsync for fast copying node_modules files
 RUN apt-get update -y
