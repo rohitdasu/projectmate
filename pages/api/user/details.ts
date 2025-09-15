@@ -10,11 +10,9 @@ import { prisma } from '@/lib/prisma';
 import { Prisma } from '@prisma/client';
 import bodyValidator from '@/lib/bodyValidator';
 import { userDetailsSchema } from '@/schema/userDetailsSchema';
+import { withRateLimit } from '@/lib/withRateLimit';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   const session = await getServerAuthSession({ req, res });
   if (!session) {
     return errorResponse({
@@ -178,3 +176,5 @@ async function updateUserDetails(args: EditableUserDetails, session: Session) {
     throw error;
   }
 }
+
+export default withRateLimit(handler);

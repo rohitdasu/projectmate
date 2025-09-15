@@ -3,11 +3,9 @@ import { prisma } from '@/lib/prisma';
 import { User } from '@prisma/client';
 import { errorResponse } from '@/lib/httpResponse';
 import { getUsersWithProjects } from '@/lib/user';
+import { withRateLimit } from '@/lib/withRateLimit';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
     case 'GET':
       const { limit, cursorId } = req.query;
@@ -64,3 +62,5 @@ async function getAllUsers(args: { limit: number; cursorId?: string }) {
     throw error;
   }
 }
+
+export default withRateLimit(handler);
