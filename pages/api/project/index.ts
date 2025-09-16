@@ -9,11 +9,9 @@ import { prisma } from '@/lib/prisma';
 import bodyValidator from '@/lib/bodyValidator';
 import { postSchema } from '@/schema/index';
 import { getServerAuthSession } from '@/lib/getServerAuthSession';
+import { withRateLimit } from '@/lib/withRateLimit';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
     case 'GET':
       const { limit, cursorId } = req.query;
@@ -178,3 +176,5 @@ async function addProject(args: {
     throw error;
   }
 }
+
+export default withRateLimit(handler);

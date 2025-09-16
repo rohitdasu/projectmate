@@ -2,11 +2,9 @@ import { errorResponse, successResponse } from '@/lib/httpResponse';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '@/lib/prisma';
 import { Prisma } from '@prisma/client';
+import { withRateLimit } from '@/lib/withRateLimit';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
     const { username } = req.query;
 
@@ -76,3 +74,5 @@ async function getUserDetailsByUsername(username: string) {
     throw error;
   }
 }
+
+export default withRateLimit(handler);
