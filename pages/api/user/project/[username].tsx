@@ -2,11 +2,9 @@ import { errorResponse, successResponse } from '@/lib/httpResponse';
 import { Project } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '@/lib/prisma';
+import { withRateLimit } from '@/lib/withRateLimit';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
     case 'GET':
       try {
@@ -67,3 +65,5 @@ async function getProjectsByUsername(username: string) {
     throw error;
   }
 }
+
+export default withRateLimit(handler);

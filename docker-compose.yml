@@ -14,9 +14,9 @@ services:
       MONGO_REPLICA_HOST: mongo
       MONGO_REPLICA_PORT: 27017
     ports:
-      - "27017:27017"
-    
-    command: mongod --quiet --logpath /dev/null 
+      - '27017:27017'
+
+    command: mongod --quiet --logpath /dev/null
     networks:
       projectmate-network:
 
@@ -26,6 +26,9 @@ services:
       dockerfile: ./docker/web/Dockerfile
     container_name: web
     restart: always
+    environment:
+      UPSTASH_REDIS_REST_URL: ${UPSTASH_REDIS_REST_URL}
+      UPSTASH_REDIS_REST_TOKEN: ${UPSTASH_REDIS_REST_TOKEN}
     ports:
       - 3000:3000
     networks:

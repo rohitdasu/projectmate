@@ -1,11 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '@/lib/prisma';
 import { errorResponse, successResponse } from '@/lib/httpResponse';
+import { withRateLimit } from '@/lib/withRateLimit';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
     case 'GET':
       const { tag } = req.query;
@@ -83,3 +81,5 @@ async function getPostById(tag: string | string[] | undefined) {
     throw error;
   }
 }
+
+export default withRateLimit(handler);
