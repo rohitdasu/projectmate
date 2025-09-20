@@ -2,7 +2,7 @@
   <h1>PROJECTMATE - Supercharge your open-source contributions</h1>
 </div>
 
-![COVER-PROJECTMATE](https://projectmate.net/og.png)
+![COVER-PROJECTMATE](https://projectmate.rohitdasu.dev/og.png)
 
 Discover open-source projects, connect with experienced maintainers, and collaborate with a community of passionate contributors. Join over 200+ registered users who are already making a difference
 
@@ -12,7 +12,7 @@ Check out the web app 🌏 : https://projectmate.net/
 <br>
 <br>
 <a href="https://www.projectmate.net/" target="_blank">
-<img width="1440" alt="LandingPage Screenshot" src="https://projectmate.net/landingpage-screenshot.png">
+<img width="1440" alt="LandingPage Screenshot" src="https://projectmate.rohitdasu.dev/landingpage-screenshot.png">
 </a>
 
 ## Connect with us
