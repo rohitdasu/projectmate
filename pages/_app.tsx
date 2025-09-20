@@ -1,23 +1,24 @@
-import { AppProps } from 'next/app';
-import { Toaster } from '@/components/ui/toaster';
-import { SessionProvider } from 'next-auth/react';
-import '@/styles/globals.css';
-import { AppContextProvider } from '@/context/AppContextProvider';
-import { ThemeProvider } from '@/components/ThemeProvider/ThemeProvider';
-import { AuthModal } from '@/components/Modals/AuthModal';
-import { ShareModal } from '@/components/Modals/ShareModal';
-import { fetcher } from '@/lib/fetcher';
-import useSWR from 'swr';
-import { AppDataContext } from '@/context/Common/CommonContext';
-import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
+import { AppProps } from 'next/app';
+import useSWR from 'swr';
+import { SessionProvider } from 'next-auth/react';
+import { Loader2 } from 'lucide-react';
+import { AppContextProvider } from '@/context/AppContextProvider';
+import { AppDataContext } from '@/context/Common/CommonContext';
+import { fetcher } from '@/lib/fetcher';
+import { Toaster } from '@/components/ui/toaster';
+import { AuthModal } from '@/components/Modals/AuthModal';
 import { ProgressBar } from '@/components/Common/ProgressBar';
+import { ShareModal } from '@/components/Modals/ShareModal';
+import { ThemeProvider } from '@/components/ThemeProvider/ThemeProvider';
+import '@/styles/globals.css';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  const userDetailsUrl = `/api/user/details`;
+  const getUserDetailsApiUrl = `/api/user/details`;
   const [randomKey, setRandomKey] = useState();
+
   const { data: profileDetails, isLoading: isDetailsLoading } = useSWR(
-    userDetailsUrl,
+    getUserDetailsApiUrl,
     fetcher,
     { errorRetryCount: 0 }
   );
