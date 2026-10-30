@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { AppProps } from 'next/app';
 import useSWR from 'swr';
 import { SessionProvider } from 'next-auth/react';
-import { Loader2 } from 'lucide-react';
 import { AppContextProvider } from '@/context/AppContextProvider';
 import { AppDataContext } from '@/context/Common/CommonContext';
 import { fetcher } from '@/lib/fetcher';
@@ -38,16 +37,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <Toaster />
             <AuthModal />
             <ShareModal />
-            {!isDetailsLoading ? (
-              <>
-                <ProgressBar />
-                <Component {...pageProps} />
-              </>
-            ) : (
-              <div className="flex h-dvh w-screen items-center justify-center">
-                <Loader2 className="h-10 w-10 animate-spin" />
-              </div>
-            )}
+            <ProgressBar />
+            <Component {...pageProps} />
           </AppDataContext.Provider>
         </AppContextProvider>
       </ThemeProvider>

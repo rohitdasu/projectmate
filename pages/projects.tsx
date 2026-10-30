@@ -1,20 +1,12 @@
-import React from 'react';
-import { ProjectsList } from '@/components/views/ProjectsPage/ProjectsList';
-import { SharedLayout } from '@/components/Layouts';
-import { useAppData } from '@/context/Common/CommonContext';
+import type { GetServerSideProps, NextPage } from 'next';
 
-const Projects = () => {
-  const commonData = useAppData();
-  return (
-    <div className="flex min-h-dvh flex-col">
-      <header className="sr-only">
-        <h1>Projects</h1>
-      </header>
-      <SharedLayout title="Projects">
-        <ProjectsList key={commonData.randomKey} />
-      </SharedLayout>
-    </div>
-  );
-};
+const LegacyProjectsPage: NextPage = () => null;
 
-export default Projects;
+export const getServerSideProps: GetServerSideProps = async () => ({
+  redirect: {
+    destination: '/explore',
+    permanent: true,
+  },
+});
+
+export default LegacyProjectsPage;

@@ -26,7 +26,11 @@ export const TopNavbar = () => {
       <section className="flex flex-row items-center gap-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="secondary" size="icon">
+            <Button
+              variant="secondary"
+              size="icon"
+              className="rounded-none border-2 border-[#0f0f0f] bg-white"
+            >
               <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               <span className="sr-only">{BUTTON_TEXT.toggleTheme}</span>
@@ -69,7 +73,11 @@ export const TopNavbar = () => {
           </DropdownMenu>
         )}
         {status === 'unauthenticated' && (
-          <Button variant="secondary" size={'icon'}>
+          <Button
+            variant="secondary"
+            size={'icon'}
+            className="rounded-none border-2 border-[#0f0f0f] bg-white"
+          >
             <LogIn onClick={openModal} />
           </Button>
         )}

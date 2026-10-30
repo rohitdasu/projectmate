@@ -17,7 +17,7 @@ const RightBar = () => {
     (e: any, tag: string) => {
       e.stopPropagation();
       if (tag === router.query.tag) {
-        router.push('/projects');
+        router.push('/explore');
         return; // Exit the function to avoid unnecessary state update
       }
       // Otherwise, navigate to the tag's page

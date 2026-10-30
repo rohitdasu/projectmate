@@ -6,7 +6,6 @@ import { SessionCard } from './SessionCard';
 import { SessionLessCard } from './SessionLessCard';
 import { NavRoutes } from './data';
 import { useAuthModal } from '@/hooks/useAuthModal';
-import { Separator } from '@/components/ui/separator';
 import { Verified, Info, Loader } from 'lucide-react';
 import { AddProjectModal } from '@/components/Modals/AddProjectModal';
 import { useAddProjectModal } from '@/hooks/useAddProjectModal';
@@ -66,9 +65,9 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-10 flex h-dvh flex-col items-center px-2 pt-6 md:items-start md:px-8 lg:w-1/4">
+    <div className="sticky top-0 z-10 flex h-dvh flex-col items-start px-5 py-7 xl:px-7">
       <Logo route={'/'} />
-      <ul className="mt-16 flex w-full flex-col items-center justify-center gap-4 md:items-start">
+      <ul className="mt-14 flex w-full flex-col items-stretch gap-2">
         {NavElements.map((nav) => {
           if (nav.authGuard && status === 'unauthenticated') {
             return;
@@ -79,25 +78,29 @@ export const Sidebar = () => {
             router.pathname === nav.link + '/[username]';
 
           let spanNameTag = (
-            <span className="hidden text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 lg:block">
+            <span className="text-gray-600 group-hover:text-[#0044ff]">
               {nav.name}
             </span>
           );
 
           if (isActive) {
-            spanNameTag = (
-              <span className="hidden text-gray-900 dark:text-gray-300 lg:block">
-                {nav.name}
-              </span>
-            );
+            spanNameTag = <span className="text-[#0044ff]">{nav.name}</span>;
           }
           // eslint-disable-next-line consistent-return
           return (
             <Link key={nav.id} href={handleNavLink(nav)}>
-              <div className="flex h-9 items-center justify-center gap-4  md:flex-row md:items-start">
+              <div
+                className={`group flex h-11 items-center gap-3 border-2 px-3 font-display text-sm font-bold uppercase transition-colors ${
+                  isActive
+                    ? 'border-[#0f0f0f] bg-[#eaf0ff] shadow-[3px_3px_0_0_#0044ff]'
+                    : 'border-transparent hover:border-[#0f0f0f] hover:bg-white'
+                }`}
+              >
                 <section
-                  className={`transition-all hover:text-gray-900 dark:hover:text-gray-300 ${
-                    isActive && 'text-gray-900 dark:text-gray-300'
+                  className={`transition-all ${
+                    isActive
+                      ? 'text-[#0044ff]'
+                      : 'text-gray-500 group-hover:text-[#0044ff]'
                   }`}
                 >
                   {React.cloneElement(nav.icon, {
@@ -111,12 +114,17 @@ export const Sidebar = () => {
         })}
         <AddProjectModal email={session?.user?.email} />
         <li onClick={handleAddProject}>
-          <Button size="lg">{BUTTON_TEXT.addProject}</Button>
+          <Button
+            size="lg"
+            className="h-12 w-full rounded-none border-2 border-[#0f0f0f] bg-[#0044ff] font-display text-xs font-bold uppercase text-white shadow-[4px_4px_0_0_#0f0f0f] hover:translate-x-1 hover:translate-y-1 hover:bg-[#0f0f0f] hover:shadow-none"
+          >
+            {BUTTON_TEXT.addProject}
+          </Button>
         </li>
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <p className="flex items-center text-sm text-gray-500 dark:text-gray-300">
+              <p className="flex items-center gap-1 text-xs font-semibold text-gray-500">
                 <Info className="inline-block h-4" />
                 Become a Gold Member
                 <Verified
@@ -131,8 +139,7 @@ export const Sidebar = () => {
           </Tooltip>
         </TooltipProvider>
       </ul>
-      <ul className="absolute bottom-4 flex w-3/4 flex-col items-start gap-4 transition-all">
-        <Separator />
+      <ul className="mt-auto flex w-full flex-col items-start gap-4 border-t-2 border-[#0f0f0f] pt-5 transition-all">
         {status === 'authenticated' ? (
           <div className="flex w-full flex-row items-center justify-between">
             <SessionCard
@@ -162,7 +169,11 @@ export const ThemeToggler = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="secondary" size="icon">
+        <Button
+          variant="secondary"
+          size="icon"
+          className="rounded-none border-2 border-[#0f0f0f] bg-white"
+        >
           <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">{BUTTON_TEXT.toggleTheme}</span>

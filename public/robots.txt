@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /api/
 Disallow: /user/profile
+Sitemap: https://projectmate.rohitdasu.com/sitemap.xml

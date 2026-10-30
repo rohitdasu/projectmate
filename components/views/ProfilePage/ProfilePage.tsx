@@ -139,9 +139,9 @@ export const ProfilePage = (data: ProfilePageProps) => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -30 }}
-      className="w-full px-4 py-4 md:px-0 md:py-10"
+      className="w-full px-4 py-8 md:px-0 md:py-12"
     >
-      <section className="flex flex-row items-center justify-between">
+      <section className="relative flex flex-row items-center justify-between gap-5 border-2 border-[#0f0f0f] bg-white p-5 shadow-[5px_5px_0_0_#0044ff] md:p-8">
         {!data.isProfileLoading && data.profile && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -149,19 +149,23 @@ export const ProfilePage = (data: ProfilePageProps) => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Avatar className="h-16 w-16 rounded-lg md:h-24 md:w-24">
+            <Avatar className="h-20 w-20 rounded-none border-2 border-[#0f0f0f] md:h-28 md:w-28">
               <AvatarImage src={data.profile?.results?.image || undefined} />
-              <AvatarFallback className="rounded-lg text-xl md:text-4xl">
+              <AvatarFallback className="rounded-none bg-[#eaf0ff] font-display text-xl font-black text-[#0044ff] md:text-4xl">
                 {getFallbackName()}
               </AvatarFallback>
             </Avatar>
           </motion.div>
         )}
         {data.isProfileLoading && (
-          <div className="h-16 w-16 animate-pulse rounded-lg bg-gray-700 md:h-24 md:w-24" />
+          <div className="h-20 w-20 animate-pulse border-2 border-[#0f0f0f] bg-gray-200 md:h-28 md:w-28" />
         )}
         {isCurrentUser && (
-          <Button variant={'outline'} onClick={toggleSheet}>
+          <Button
+            variant={'outline'}
+            onClick={toggleSheet}
+            className="rounded-none border-2 border-[#0f0f0f] font-display text-xs font-bold uppercase shadow-[3px_3px_0_0_#0f0f0f] hover:bg-[#0044ff] hover:text-white"
+          >
             {BUTTON_TEXT.editProfile}
           </Button>
         )}
@@ -175,24 +179,18 @@ export const ProfilePage = (data: ProfilePageProps) => {
             transition={{ duration: 0.5 }}
             className="text-base font-semibold md:text-xl"
           >
-            <section className="flex flex-col">
-              <p className="flex items-center gap-1">
-                <span>{data.profile?.results?.name}</span>{' '}
-                {!data.error &&
-                  data.projects &&
-                  data.projects?.results?.length > 0 && (
-                    <span className="text-white">
-                      <Verified fill="#F87315" className="h-5 text-white" />
-                    </span>
-                  )}
-                {!data.error && !data.projects?.results?.length && (
-                  <span className="text-white">
-                    <Verified fill="#3B81F6" className="h-5" />
-                  </span>
-                )}
+            <section className="mt-5 flex flex-col gap-2">
+              <p className="flex items-center gap-2 font-display text-2xl font-black uppercase tracking-tight md:text-4xl">
+                <span>{data.profile?.results?.name}</span>
+                {!data.error && data.projects?.results?.length ? (
+                  <Verified fill="#F87315" className="h-5 text-white" />
+                ) : null}
+                {!data.error && !data.projects?.results?.length ? (
+                  <Verified fill="#3B81F6" className="h-5" />
+                ) : null}
               </p>
               {data?.profile?.results?.username && (
-                <p className="text-sm text-black/50 dark:text-white/60">
+                <p className="text-sm font-semibold text-gray-500">
                   @{data.profile.results.username}
                 </p>
               )}
@@ -217,7 +215,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-base text-black/85 dark:text-white/85"
+                className="mt-5 border-l-4 border-[#0044ff] pl-4 text-base font-semibold text-[#0f0f0f] md:text-lg"
               >
                 {data.profile?.results.title}
               </motion.p>
@@ -236,7 +234,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-sm text-muted-foreground"
+                className="max-w-3xl leading-relaxed text-gray-600"
               >
                 {data.profile?.results.description}
               </motion.p>
@@ -270,7 +268,11 @@ export const ProfilePage = (data: ProfilePageProps) => {
             >
               {data.profile?.results?.skills?.length > 0 ? (
                 data.profile?.results.skills.map((skill, idx) => (
-                  <Badge className="" variant={'secondary'} key={idx}>
+                  <Badge
+                    className="rounded-none border border-[#0f0f0f] bg-[#eaf0ff] text-xs font-bold uppercase text-[#0044ff]"
+                    variant={'secondary'}
+                    key={idx}
+                  >
                     {skill}
                   </Badge>
                 ))
@@ -294,7 +296,12 @@ export const ProfilePage = (data: ProfilePageProps) => {
             >
               {!data.isProfileLoading && socialSites?.github && (
                 <li>
-                  <Button asChild variant={'ghost'} size={'sm'}>
+                  <Button
+                    asChild
+                    variant={'outline'}
+                    size={'sm'}
+                    className="rounded-none border-[#0f0f0f] font-bold uppercase hover:bg-[#0044ff] hover:text-white"
+                  >
                     <Link
                       target="_blank"
                       className="flex items-center gap-2"
@@ -308,7 +315,12 @@ export const ProfilePage = (data: ProfilePageProps) => {
               )}
               {!data.isProfileLoading && socialSites?.linkedin && (
                 <li>
-                  <Button asChild variant={'ghost'} size={'sm'}>
+                  <Button
+                    asChild
+                    variant={'outline'}
+                    size={'sm'}
+                    className="rounded-none border-[#0f0f0f] font-bold uppercase hover:bg-[#0044ff] hover:text-white"
+                  >
                     <Link
                       target="_blank"
                       className="flex items-center gap-2"
@@ -322,7 +334,12 @@ export const ProfilePage = (data: ProfilePageProps) => {
               )}
               {!data.isProfileLoading && socialSites?.twitter && (
                 <li>
-                  <Button asChild variant={'ghost'} size={'sm'}>
+                  <Button
+                    asChild
+                    variant={'outline'}
+                    size={'sm'}
+                    className="rounded-none border-[#0f0f0f] font-bold uppercase hover:bg-[#0044ff] hover:text-white"
+                  >
                     <Link
                       target="_blank"
                       className="flex items-center gap-2"
@@ -336,7 +353,12 @@ export const ProfilePage = (data: ProfilePageProps) => {
               )}
               {!data.isProfileLoading && socialSites?.website && (
                 <li>
-                  <Button asChild variant={'ghost'} size={'sm'}>
+                  <Button
+                    asChild
+                    variant={'outline'}
+                    size={'sm'}
+                    className="rounded-none border-[#0f0f0f] font-bold uppercase hover:bg-[#0044ff] hover:text-white"
+                  >
                     <Link
                       target="_blank"
                       className="flex items-center gap-2"
@@ -353,7 +375,17 @@ export const ProfilePage = (data: ProfilePageProps) => {
         )}
       </section>
       <section>
-        <div className="my-6 grid grid-cols-1 gap-2 lg:grid-cols-2">
+        <div className="mb-4 mt-12 flex items-end justify-between border-b-2 border-[#0f0f0f] pb-3">
+          <h2 className="font-display text-2xl font-black uppercase md:text-3xl">
+            Projects
+          </h2>
+          {!data.isProjectsLoading && (
+            <span className="text-xs font-bold uppercase text-gray-500">
+              {data.projects?.results?.length ?? 0} shared
+            </span>
+          )}
+        </div>
+        <div className="mb-8 grid grid-cols-1 gap-5 lg:grid-cols-2">
           {data.isProjectsLoading && (
             <>
               {Array.from({ length: 9 }).map((_, index) => (
@@ -386,10 +418,18 @@ export const ProfilePage = (data: ProfilePageProps) => {
       </section>
       <section>
         <Sheet open={isSheetOpen} onOpenChange={toggleSheet}>
-          <SheetContent side={sheetSide} className="max-h-dvh overflow-y-auto">
+          <SheetContent
+            side={sheetSide}
+            className="max-h-dvh overflow-y-auto rounded-none border-2 border-[#0f0f0f] bg-[#f8f9fa] shadow-[8px_8px_0_0_#0044ff]"
+          >
             <SheetHeader>
-              <SheetTitle>Edit profile</SheetTitle>
-              <SheetDescription>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0044ff]">
+                Your public profile
+              </p>
+              <SheetTitle className="font-display text-2xl font-black uppercase">
+                Edit profile
+              </SheetTitle>
+              <SheetDescription className="text-gray-600">
                 Make changes to your profile here. Click save when you are done.
               </SheetDescription>
             </SheetHeader>
@@ -404,9 +444,12 @@ export const ProfilePage = (data: ProfilePageProps) => {
                     name="title"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Title</FormLabel>
+                        <FormLabel className="text-xs font-bold uppercase tracking-widest">
+                          Title
+                        </FormLabel>
                         <FormControl>
                           <Input
+                            className="rounded-none border-2 border-[#0f0f0f] bg-white focus-visible:border-[#0044ff] focus-visible:ring-0"
                             placeholder="ex: Software Engineer | Developer"
                             {...field}
                           />
@@ -420,9 +463,12 @@ export const ProfilePage = (data: ProfilePageProps) => {
                     name="description"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Description</FormLabel>
+                        <FormLabel className="text-xs font-bold uppercase tracking-widest">
+                          Description
+                        </FormLabel>
                         <FormControl>
                           <Input
+                            className="rounded-none border-2 border-[#0f0f0f] bg-white focus-visible:border-[#0044ff] focus-visible:ring-0"
                             placeholder="ex: Hey there, I'm a software Engineer from IND"
                             {...field}
                           />
@@ -436,9 +482,12 @@ export const ProfilePage = (data: ProfilePageProps) => {
                     name="skills"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Skills / Interests</FormLabel>
+                        <FormLabel className="text-xs font-bold uppercase tracking-widest">
+                          Skills / Interests
+                        </FormLabel>
                         <FormControl>
                           <Input
+                            className="rounded-none border-2 border-[#0f0f0f] bg-white focus-visible:border-[#0044ff] focus-visible:ring-0"
                             placeholder="ex: React.js, Open-Source"
                             {...field}
                           />
@@ -454,7 +503,11 @@ export const ProfilePage = (data: ProfilePageProps) => {
                         .watch('skills')
                         .split(',')
                         .map((tag, idx) => (
-                          <Badge variant="secondary" key={idx}>
+                          <Badge
+                            variant="secondary"
+                            className="rounded-none border border-[#0f0f0f] bg-[#eaf0ff] text-[#0044ff]"
+                            key={idx}
+                          >
                             {tag}
                           </Badge>
                         ))}
@@ -465,10 +518,13 @@ export const ProfilePage = (data: ProfilePageProps) => {
                     name="github"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>GitHub</FormLabel>
+                        <FormLabel className="text-xs font-bold uppercase tracking-widest">
+                          GitHub
+                        </FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="htpps://github.com/@username"
+                            className="rounded-none border-2 border-[#0f0f0f] bg-white focus-visible:border-[#0044ff] focus-visible:ring-0"
+                            placeholder="https://github.com/username"
                             {...field}
                           />
                         </FormControl>
@@ -481,10 +537,13 @@ export const ProfilePage = (data: ProfilePageProps) => {
                     name="linkedin"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>LinkedIn</FormLabel>
+                        <FormLabel className="text-xs font-bold uppercase tracking-widest">
+                          LinkedIn
+                        </FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="https://linkedin.com/in/@username"
+                            className="rounded-none border-2 border-[#0f0f0f] bg-white focus-visible:border-[#0044ff] focus-visible:ring-0"
+                            placeholder="https://linkedin.com/in/username"
                             {...field}
                           />
                         </FormControl>
@@ -497,10 +556,13 @@ export const ProfilePage = (data: ProfilePageProps) => {
                     name="twitter"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Twitter</FormLabel>
+                        <FormLabel className="text-xs font-bold uppercase tracking-widest">
+                          Twitter
+                        </FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="https://twitter.com/@username"
+                            className="rounded-none border-2 border-[#0f0f0f] bg-white focus-visible:border-[#0044ff] focus-visible:ring-0"
+                            placeholder="https://twitter.com/username"
                             {...field}
                           />
                         </FormControl>
@@ -513,10 +575,13 @@ export const ProfilePage = (data: ProfilePageProps) => {
                     name="website"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Website</FormLabel>
+                        <FormLabel className="text-xs font-bold uppercase tracking-widest">
+                          Website
+                        </FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="https://rohitdasu.dev"
+                            className="rounded-none border-2 border-[#0f0f0f] bg-white focus-visible:border-[#0044ff] focus-visible:ring-0"
+                            placeholder="https://yourwebsite.com"
                             {...field}
                           />
                         </FormControl>
@@ -527,7 +592,7 @@ export const ProfilePage = (data: ProfilePageProps) => {
                   <Button
                     disabled={loading}
                     type="submit"
-                    className="float-right"
+                    className="float-right rounded-none border-2 border-[#0f0f0f] bg-[#0044ff] px-5 font-display font-bold uppercase text-white shadow-[4px_4px_0_0_#0f0f0f] hover:translate-x-1 hover:translate-y-1 hover:bg-[#0f0f0f] hover:shadow-none"
                   >
                     {loading && <Loader className="mr-2 animate-spin" />}
                     {BUTTON_TEXT.saveChanges}

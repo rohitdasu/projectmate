@@ -14,7 +14,6 @@ import {
 } from 'lucide-react';
 import moment from 'moment';
 import { useToast } from '@/components/ui/use-toast';
-import Link from 'next/link';
 import { BUTTON_TEXT } from '@/components/Common/Constants/textLabels';
 
 const INSIGHTS_WEBAPP = 'https://analyzemyrepo.com/analyze';
@@ -41,7 +40,6 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
       author,
       createdAt,
       authorImage,
-      username,
       githubRepository,
       liveUrl,
       openShareModal,
@@ -85,19 +83,19 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
           layout
-          className="rounded-lg border bg-card text-card-foreground shadow-sm md:m-auto md:w-full"
+          className="group relative flex h-full flex-col border-2 border-[#0f0f0f] bg-white text-[#0f0f0f] shadow-[4px_4px_0_0_#0f0f0f] transition-[transform,box-shadow] duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0_0_#0f0f0f]"
         >
-          <div className="flex h-full flex-col items-center overflow-hidden rounded-md">
-            <div className="flex w-full grow flex-col justify-center gap-5 p-4 pt-4">
-              <header className="flex flex-row items-start justify-between">
+          <div className="flex h-full flex-col">
+            <div className="flex w-full grow flex-col justify-between gap-5 p-5 md:p-6">
+              <header className="flex flex-col items-start gap-4">
                 <Typography
                   as="h2"
-                  fontWeight="semibold"
+                  fontWeight="bold"
                   className="flex w-full flex-col gap-4 truncate text-base text-gray-900 md:text-xl"
                 >
-                  <div className="flex w-full flex-row items-center justify-between">
+                  <div className="flex w-full flex-row items-start justify-between gap-3">
                     <p
-                      className="w-40 truncate  hover:cursor-pointer dark:text-gray-100 md:w-auto"
+                      className="w-40 truncate font-display text-2xl font-black tracking-tight hover:cursor-pointer hover:text-[#0044ff] md:w-auto"
                       onClick={handleContributeClick}
                     >
                       {title}
@@ -106,7 +104,7 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                       as="p"
                       fontSize="sm"
                       fontWeight="normal"
-                      className="flex flex-row items-center text-gray-900 dark:text-gray-300"
+                      className="flex shrink-0 flex-row items-center gap-1 text-xs font-medium text-gray-500"
                     >
                       <History height={16} />
                       <time dateTime={createdAt.toString()}>
@@ -114,12 +112,9 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                       </time>
                     </Typography>
                   </div>
-                  <div>
-                    <Link
-                      className="flex max-w-fit items-center gap-1"
-                      href={`/profile/${username}`}
-                    >
-                      <Avatar className="h-4 w-4">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex max-w-fit items-center gap-2">
+                      <Avatar className="h-7 w-7 border border-[#0f0f0f]">
                         <AvatarImage
                           src={authorImage || undefined}
                         ></AvatarImage>
@@ -132,36 +127,41 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                         </AvatarFallback>
                       </Avatar>
 
-                      <span className="text-xs text-black opacity-70 dark:text-white md:text-sm">
+                      <span className="text-xs font-semibold text-gray-600 md:text-sm">
                         {author}
                       </span>
-                    </Link>
+                    </div>
                   </div>
                 </Typography>
               </header>
               <Typography
                 as="p"
                 fontSize="sm"
-                className="text-muted-foreground"
+                className="min-h-12 text-sm leading-relaxed text-gray-600"
               >
                 {description}
               </Typography>
-              <div className="flex flex-col gap-5">
-                <div className="flex flex-wrap gap-2 pb-2 md:pb-0">
+              <div className="flex flex-col gap-4">
+                <div className="flex min-h-7 flex-wrap gap-2">
                   {tags.map((tag, idx) => {
                     return (
-                      <Badge variant="secondary" key={idx}>
+                      <Badge
+                        variant="secondary"
+                        className="rounded-none border border-[#0f0f0f] bg-[#f1f5ff] px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-[#0044ff]"
+                        key={idx}
+                      >
                         {tag}
                       </Badge>
                     );
                   })}
                 </div>
               </div>
-              <div className="flex w-full flex-row items-center justify-between sm:gap-2">
-                <div className="flex flex-row items-center">
+              <div className="mt-auto flex w-full flex-row items-center justify-between gap-2 border-t-2 border-gray-100 pt-4">
+                <div className="flex flex-row items-center gap-1">
                   <Button
                     size={'sm'}
-                    variant={'ghost'}
+                    variant={'outline'}
+                    className="h-9 border-[#0f0f0f] bg-white px-2 text-xs text-[#0f0f0f] hover:bg-[#0044ff] hover:text-white"
                     onClick={extractAccountAndRepo}
                   >
                     <BarChart2 className="mr-1" />
@@ -169,7 +169,8 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                   </Button>
                   <Button
                     size={'sm'}
-                    variant={'ghost'}
+                    variant={'outline'}
+                    className="h-9 border-[#0f0f0f] bg-white px-2 text-xs text-[#0f0f0f] hover:bg-[#0044ff] hover:text-white"
                     onClick={handleContributeClick}
                   >
                     <GitPullRequest className="mr-1" />
@@ -180,7 +181,8 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                   {liveUrl && (
                     <Button
                       size={'sm'}
-                      variant={'ghost'}
+                      variant={'outline'}
+                      className="h-9 border-[#0f0f0f] bg-white px-2 text-xs text-[#0f0f0f] hover:bg-[#0044ff] hover:text-white"
                       onClick={handleLiveClick}
                     >
                       <Globe2 className="mr-1" />
@@ -195,7 +197,8 @@ export const Project: React.FC<ProjectProps & { handleToast: () => void }> =
                   onClick={() =>
                     openShareModal({ title, url: githubRepository })
                   }
-                  variant={'ghost'}
+                  variant={'outline'}
+                  className="h-9 border-[#0f0f0f] bg-white px-2 text-xs text-[#0f0f0f] hover:bg-[#0f0f0f] hover:text-white"
                 >
                   <Forward className="mr-1" />
                   <span className="hidden md:block">{BUTTON_TEXT.share}</span>

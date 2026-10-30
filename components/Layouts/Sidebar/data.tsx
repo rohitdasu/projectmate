@@ -5,14 +5,14 @@ export const NavRoutes = [
     id: '1',
     title: 'Projects',
     icon: <Home />,
-    link: '/projects',
+    link: '/explore',
     authGuard: false,
   },
   {
     id: '2',
     title: 'Mates',
     icon: <Users />,
-    link: '/mates',
+    link: '/community',
     authGuard: false,
   },
   {

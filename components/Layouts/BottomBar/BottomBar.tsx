@@ -46,7 +46,11 @@ export const BottomBar = () => {
           // eslint-disable-next-line consistent-return
           return (
             <Link href={handleNavLink(route)} key={route.id}>
-              <li className={`${isActive && ''}`}>
+              <li
+                className={`flex h-10 w-12 items-center justify-center transition-colors ${
+                  isActive ? 'bg-[#eaf0ff] text-[#0044ff]' : 'text-gray-500'
+                }`}
+              >
                 {React.cloneElement(route.icon, {
                   strokeWidth: isActive ? 2 : 1,
                 })}
@@ -60,7 +64,7 @@ export const BottomBar = () => {
           onClick={handleAddProject}
           size={'icon'}
           variant={'outline'}
-          className="h-12 w-12 rounded-full bg-transparent backdrop-blur-md"
+          className="h-12 w-12 rounded-none border-2 border-[#0f0f0f] bg-[#0044ff] text-white shadow-[3px_3px_0_0_#0f0f0f] backdrop-blur-md hover:bg-[#0f0f0f]"
         >
           <PlusCircle className="h-8 w-8" />
         </Button>

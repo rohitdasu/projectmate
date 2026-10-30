@@ -76,5 +76,33 @@
 }
 
 #nprogress .bar {
-  background: red !important;
+  background: #0044ff !important;
+}
+
+@keyframes projectmate-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.project-modal-scroll {
+  scrollbar-color: #0044ff #e5e7eb;
+  scrollbar-width: thin;
+}
+
+.project-modal-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.project-modal-scroll::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-left: 1px solid #0f0f0f;
+}
+
+.project-modal-scroll::-webkit-scrollbar-thumb {
+  background: #0044ff;
+  border: 1px solid #0f0f0f;
 }

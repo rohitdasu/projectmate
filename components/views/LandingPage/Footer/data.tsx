@@ -14,11 +14,11 @@ export const tags = [
 export const usefulLinks = [
   {
     name: 'Projects',
-    link: '/projects',
+    link: '/explore',
   },
   {
     name: 'Mates',
-    link: '/mates',
+    link: '/community',
   },
   {
     name: 'Blogs',

@@ -1,8 +1,6 @@
+import { ReactNode } from 'react';
+
 export interface SharedLayoutProps {
-  children: React.ReactElement;
+  children: ReactNode;
   title: string;
-  leftSidebar?: boolean;
-  rightSidebar?: boolean;
-  topBar?: boolean;
-  bottomBar?: boolean;
 }

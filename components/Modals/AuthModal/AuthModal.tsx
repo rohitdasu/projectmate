@@ -20,19 +20,23 @@ export const AuthModal = () => {
   return (
     <>
       <Dialog open={isOpen} onOpenChange={closeModal}>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle className="flex justify-center text-xl">
-              projectmate
+        <DialogContent className="max-w-[425px] rounded-none border-2 border-[#0f0f0f] bg-[#f8f9fa] p-7 shadow-[8px_8px_0_0_#0044ff] sm:!rounded-none">
+          <DialogHeader className="text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#0044ff]">
+              Open source starts here
+            </p>
+            <DialogTitle className="flex justify-center font-display text-2xl font-black uppercase tracking-tight">
+              PROJECT_MATE
             </DialogTitle>
-            <DialogDescription className="flex justify-center">
-              Continue with your social accounts
+            <DialogDescription className="flex justify-center text-gray-600">
+              Sign in to share projects and connect with makers.
             </DialogDescription>
           </DialogHeader>
           <section className="flex flex-col items-center gap-4">
             <Button
               variant={'outline'}
               size={'lg'}
+              className="h-12 w-full justify-start rounded-none border-2 border-[#0f0f0f] bg-white font-display text-xs font-bold uppercase shadow-[3px_3px_0_0_#0f0f0f] transition-all hover:translate-x-1 hover:translate-y-1 hover:bg-[#eaf0ff] hover:shadow-none"
               onClick={() => {
                 popupCenter('/auth/github', 'Sign In With Github');
                 closeModal();
@@ -44,6 +48,7 @@ export const AuthModal = () => {
             <Button
               variant={'outline'}
               size={'lg'}
+              className="h-12 w-full justify-start rounded-none border-2 border-[#0f0f0f] bg-white font-display text-xs font-bold uppercase shadow-[3px_3px_0_0_#0f0f0f] transition-all hover:translate-x-1 hover:translate-y-1 hover:bg-[#eaf0ff] hover:shadow-none"
               onClick={() => {
                 popupCenter('/auth/google', 'Sign In With Google');
                 closeModal();

@@ -25,14 +25,23 @@ export const ProfilePageProject = ({
   liveUrl: string;
 }) => {
   return (
-    <Card className="flex flex-col justify-between overflow-hidden">
+    <Card className="flex flex-col justify-between overflow-hidden rounded-none border-2 border-[#0f0f0f] bg-white text-[#0f0f0f] shadow-[4px_4px_0_0_#0f0f0f]">
       <CardHeader>
-        <CardTitle className="text-base md:text-xl">{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+        <CardTitle className="font-display text-xl font-black uppercase md:text-2xl">
+          {title}
+        </CardTitle>
+        <CardDescription className="leading-relaxed text-gray-600">
+          {description}
+        </CardDescription>
       </CardHeader>
 
       <CardFooter className="flex flex-row items-center gap-2">
-        <Button asChild variant={'secondary'} size={'sm'}>
+        <Button
+          asChild
+          variant={'secondary'}
+          size={'sm'}
+          className="rounded-none border-2 border-[#0f0f0f] font-bold uppercase"
+        >
           <Link
             href={githubRepository}
             className="flex items-center gap-1"
@@ -43,7 +52,12 @@ export const ProfilePageProject = ({
           </Link>
         </Button>
         {liveUrl && (
-          <Button asChild variant={'outline'} size={'sm'}>
+          <Button
+            asChild
+            variant={'outline'}
+            size={'sm'}
+            className="rounded-none border-2 border-[#0f0f0f] font-bold uppercase"
+          >
             <Link
               href={`${liveUrl}/?ref=projectmate.net`}
               className="flex items-center gap-1"

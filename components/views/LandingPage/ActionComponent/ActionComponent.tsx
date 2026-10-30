@@ -14,7 +14,7 @@ export const ActionComponent = () => {
     if (status === 'unauthenticated') {
       openModal();
     } else {
-      router.replace('/projects');
+      router.replace('/explore');
     }
   };
   return (

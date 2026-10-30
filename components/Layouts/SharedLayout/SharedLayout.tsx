@@ -1,81 +1,57 @@
-import { FC, useState, useEffect } from 'react';
+import { FC } from 'react';
 import { SharedLayoutProps } from './SharedLayout.interface';
 import Head from 'next/head';
-import { Sidebar } from '../Sidebar';
-import { BottomBar } from '../BottomBar';
-import { TopNavbar } from '../TopNavbar';
-import { favicons } from '@/data';
-import BackToTopButton from '@/components/Common/BackToTop';
-// import RightBar from '../RightBar';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
+import { AddProjectModal } from '@/components/Modals/AddProjectModal';
+import { Logo } from '@/components/Common/Logo';
+import { AccountMenu } from '@/components/Common/AccountMenu';
 
 export const SharedLayout: FC<SharedLayoutProps> = ({
   title = '',
   children,
-  leftSidebar = true,
-  rightSidebar = true,
-  topBar = true,
-  bottomBar = true,
 }) => {
-  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
-
-  useEffect(() => {
-    let prevScrollPos = window.pageYOffset;
-
-    const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
-      const isScrollingDown = prevScrollPos < currentScrollPos;
-
-      setIsNavbarVisible(!isScrollingDown);
-      prevScrollPos = currentScrollPos;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const router = useRouter();
+  const { data: session } = useSession();
+  const isExplorePage = router.pathname === '/explore';
 
   return (
-    <div className="flex min-h-dvh w-full flex-col">
+    <div className="flex min-h-dvh w-full flex-col bg-[#f8f9fa] text-[#0f0f0f]">
       <Head>
         <title>{`${title} | Projectmate`}</title>
-        {favicons.map((favicon, index) => (
-          <link key={index} {...favicon} />
-        ))}
       </Head>
-      {topBar && (
+      <header className="sticky top-0 z-40 border-b-2 border-[#0f0f0f] bg-[#f8f9fa]/95 px-4 backdrop-blur md:px-8">
         <nav
-          className={`sticky z-10 block overflow-hidden border-b bg-white/60 transition-all dark:bg-black/60 lg:hidden ${
-            isNavbarVisible ? 'top-0' : '-top-14'
-          }`}
+          className="mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-4 py-3"
+          aria-label="Main navigation"
         >
-          <TopNavbar />
-        </nav>
-      )}
-      <div className="grid min-h-dvh grid-cols-4">
-        {leftSidebar && (
-          <div className="hidden grid-cols-1 lg:block">
-            <Sidebar />
+          <Logo route="/" />
+          <div className="flex items-center gap-2 font-display text-[10px] font-bold uppercase tracking-wide sm:gap-5 sm:text-xs md:gap-8">
+            <Link
+              href="/explore"
+              className={`transition-colors hover:text-[#0044ff] ${
+                router.pathname === '/explore' ? 'text-[#0044ff]' : ''
+              }`}
+            >
+              Explore
+            </Link>
+            <Link
+              href="/community"
+              className={`transition-colors hover:text-[#0044ff] ${
+                router.pathname === '/community' ? 'text-[#0044ff]' : ''
+              }`}
+            >
+              Community
+            </Link>
           </div>
-        )}
-        <main
-          className={`col-span-4 mx-auto w-full max-w-2xl ${
-            leftSidebar ? 'lg:col-span-2' : 'lg:col-span-4'
-          }`}
-        >
-          {children}
-        </main>
-        {rightSidebar && (
-          <div className="grid min-h-dvh grid-cols-4">{/* <RightBar /> */}</div>
-        )}
-      </div>
-      {bottomBar && (
-        <div className="sticky bottom-0 z-10 block h-14 w-full border-t bg-white/60 dark:bg-black/60 lg:hidden">
-          <BottomBar />
-        </div>
-      )}
-      <BackToTopButton />
+          <AccountMenu />
+        </nav>
+      </header>
+      <main className="mx-auto w-full max-w-[1500px] flex-1 px-4 pb-8 md:px-8 lg:px-12">
+        {children}
+      </main>
+      {isExplorePage && <AddProjectModal email={session?.user?.email} />}
     </div>
   );
 };

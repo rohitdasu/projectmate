@@ -30,7 +30,7 @@ export const HeroComponent = ({
           your work with a personalized portfolio.
         </p>
         <Button size={'lg'} asChild>
-          <Link href="/projects" className="text-center">
+          <Link href="/explore" className="text-center">
             {BUTTON_TEXT.exploreProjects}
           </Link>
         </Button>

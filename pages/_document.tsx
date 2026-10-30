@@ -7,41 +7,9 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta
-            name="description"
-            content="Explore projects, contribute seamlessly, access insightful stats, effortlessly share, connect with a vibrant community, and showcase your work with a personalized portfolio."
-          />
-          <meta
-            name="keywords"
-            content="opensource, github, reactjs, nextjs, technology, portfolio, profile"
-          />
-          <meta name="robots" content="index,follow" />
-          <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-          <meta name="language" content="English" />
-          <meta name="revisit-after" content="2 days" />
-          <meta name="author" content="Rohit Dasu" />
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://www.projectmate.net/" />
-          <meta
-            property="og:title"
-            content="Supercharge your open-source contributions with projectmate.net"
-          />
-          <meta
-            property="og:description"
-            content="Explore projects, contribute seamlessly, access insightful stats, effortlessly share, connect with a vibrant community, and showcase your work with a personalized portfolio."
-          />
-          <meta property="og:image" content="/og.png" />
-          <meta property="twitter:card" content="summary_large_image" />
-          <meta property="twitter:url" content="https://www.projectmate.net/" />
-          <meta
-            property="twitter:title"
-            content="Supercharge your open-source contributions with projectmate.net"
-          />
-          <meta
-            property="twitter:description"
-            content="Explore projects, contribute seamlessly, access insightful stats, effortlessly share, connect with a vibrant community, and showcase your work with a personalized portfolio."
-          />
-          <meta property="twitter:image" content="/og.png" />
+          <meta name="theme-color" content="#f8f9fa" />
+          <link rel="manifest" href="/site.webmanifest" />
+          <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
 
           <script
             src="https://survei-feedback.vercel.app/scripts/survei.js"
@@ -72,7 +40,7 @@ export default class MyDocument extends Document {
             crossOrigin="anonymous"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Lato:wght@100;300;400;700;900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Lato:wght@100;300;400;700;900&family=Space+Grotesk:wght@500;700&display=swap"
             rel="stylesheet"
           />
           <link
